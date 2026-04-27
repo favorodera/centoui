@@ -1,6 +1,7 @@
 {
   "name": "centoui-monorepo",
   "version": "0.0.2",
+  "description": "Precise vue components",
   "private": true,
   "license": "MIT",
   "author": "Favour Emeka <favorodera@gmail.com>",
@@ -40,5 +41,14 @@
   "packageManager": "pnpm@10.33.2",
   "engines": {
     "node": ">=22.0.0"
+  },
+  "pnpm": {
+    "peerDependencyRules": {
+      "ignoreMissing": [ ],
+      "allowedVersions": {
+        "vite": "8",
+        "typescript": "6"
+      }
+    }
   }
 }

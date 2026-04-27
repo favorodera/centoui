@@ -4,13 +4,13 @@
 [![npm downloads](https://img.shields.io/npm/dm/centoui-cli.svg?style=flat-square)](https://www.npmjs.com/package/centoui-cli)
 [![license](https://img.shields.io/github/license/favorodera/centoui.svg?style=flat-square)](https://github.com/favorodera/centoui/blob/main/LICENSE)
 
-**CentoUI CLI: Manage your components with ease.**
+**CentoUI CLI: Manage your CentoUI components with ease.**
 
 `centoui-cli` is the official command-line interface for [CentoUI](https://github.com/favorodera/centoui). It allows you to initialize CentoUI in your project, add new components, and manage their versions directly from your terminal.
 
 ## Commands
 
-- **`init`**: Set up a new CentoUI project (generates `centoui.config.ts` and `tokens.css`).
+- **`init`**: Set up a new CentoUI project (generates `centoui.config.ts` and `centoui.css`).
 - **`add [component]`**: Add specific components to your project. Peer dependencies install automatically.
 - **`remove [component]`**: Cleanly remove components and their dependencies.
 
@@ -18,10 +18,10 @@
 
 ```bash
 # Initialize CentoUI in your project
-npx centoui init
+pnpm dlx centoui init
 
 # Add components
-npx centoui add button dialog input select
+pnpm dlx centoui add button dialog input select
 ```
 
 ## Configuration
@@ -42,7 +42,3 @@ export default defineConfig({
   },
 })
 ```
-
-## License
-
-[MIT](../../LICENSE) &copy; [Favour Emeka](https://github.com/favorodera)

@@ -18,12 +18,15 @@ Components are copied into your project — you own every line. One CSS file con
 
 ## Quick Start
 
-```bash
-# Initialize CentoUI in your project
-npx centoui@latest init
+### Initialize CentoUI in your project
 
-# Add a component
-npx centoui@latest add button
+```bash
+pnpm dlx centoui@latest init
+```
+
+### Add a component
+```bash
+pnpm dlx centoui@latest add button
 ```
 
 ---
@@ -56,9 +59,3 @@ pnpm typecheck  # type-check all
 pnpm test       # run all tests
 pnpm ready      # full pre-publish gate: install → lint → typecheck → build → test
 ```
-
----
-
-## License
-
-[MIT](./LICENSE) &copy; [Favour Emeka](https://github.com/favorodera)

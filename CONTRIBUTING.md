@@ -263,7 +263,7 @@ Always use `Primitive` from Reka UI as the root element — handles `as`, `asChi
 
 | Command | Purpose |
 |---|---|
-| `centoui init` | Generate `centoui.config.ts`, copy `theme.css` to project |
+| `centoui init` | Generate `centoui.config.ts`, copy `centoui.css` to project |
 | `centoui add <component>` | Copy component files, install peer deps |
 | `centoui remove <component>` | Remove files + warn on dependents |
 

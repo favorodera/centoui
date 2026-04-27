@@ -1,0 +1,55 @@
+{
+  "name": "centoui-nuxt",
+  "version": "0.0.2",
+  "description": "Official Nuxt module for CentoUI",
+  "author": "Favour Emeka <favorodera@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://centoui.vercel.app",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/favorodera/centoui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/favorodera/centoui/issues"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/types.d.mts",
+      "import": "./dist/module.mjs"
+    }
+  },
+  "main": "./dist/module.mjs",
+  "typesVersions": {
+    "*": {
+      ".": [
+        "./dist/types.d.mts"
+      ]
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "dev": "nuxt prepare && nuxt-module-build build --stub",
+    "build": "nuxt prepare && nuxt-module-build build",
+    "typecheck": "nuxt prepare && vue-tsc --noEmit",
+    "lint": "eslint . --fix",
+    "prepublishOnly": "pnpm build"
+  },
+  "dependencies": {
+    "@nuxt/kit": "^4.4.2"
+  },
+  "devDependencies": {
+    "@nuxt/module-builder": "^1.0.2",
+    "@nuxt/schema": "^4.4.2",
+    "nuxt": "^4.4.2",
+    "vue-tsc": "^3.2.6"
+  },
+  "engines": {
+    "node": ">=24.13.0"
+  },
+  "packageManager": "pnpm@10.32.1"
+}

@@ -1,9 +1,9 @@
 {
   "name": "centoui",
   "type": "module",
+  "description": "Precise vue components",
   "private": false,
   "version": "0.0.2",
-  "description": "Sharp components. Flawless interfaces.",
   "author": "Favour Emeka <favorodera@gmail.com>",
   "license": "MIT",
   "homepage": "https://centoui.vercel.app",
