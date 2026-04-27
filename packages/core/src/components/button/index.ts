@@ -26,45 +26,69 @@ export const buttonVariants = tv({
       solid: {},
       outline: {
         root: [
-          'border bg-transparent'
-        ]
+          'border bg-transparent',
+        ],
       },
       ghost: {
         root: [
-          'bg-transparent'
-        ]
+          'bg-transparent',
+        ],
       },
       link: {
         root: [
           'h-auto bg-transparent p-0 underline-offset-4',
           'hover:underline',
-        ]
+        ],
       },
     },
     color: {
       primary: {
-        root: 'text-primary focus-visible:ring-primary'
+        root: `
+          text-primary
+          focus-visible:ring-primary
+        `,
       },
       secondary: {
-        root: 'text-secondary-foreground focus-visible:ring-secondary'
+        root: `
+          text-secondary-foreground
+          focus-visible:ring-secondary
+        `,
       },
       accent: {
-        root: 'text-accent focus-visible:ring-accent'
+        root: `
+          text-accent
+          focus-visible:ring-accent
+        `,
       },
       neutral: {
-        root: 'text-neutral focus-visible:ring-neutral'
+        root: `
+          text-neutral
+          focus-visible:ring-neutral
+        `,
       },
       success: {
-        root: 'text-success focus-visible:ring-success'
+        root: `
+          text-success
+          focus-visible:ring-success
+        `,
       },
       warning: {
-        root: 'text-warning focus-visible:ring-warning'
+        root: `
+          text-warning
+          focus-visible:ring-warning
+        `,
       },
       error: {
-        root: 'text-error focus-visible:ring-error'
+        root: `
+          text-error
+          focus-visible:ring-error
+        `,
       },
       info: {
-        root: 'text-info focus-visible:ring-info'
+        root: `
+          text-info
+          focus-visible:ring-info
+        `,
       },
     },
     size: {
@@ -121,7 +145,7 @@ export const buttonVariants = tv({
     {
       variant: 'solid',
       color: 'neutral',
-      class: { root: 'bg-neutral text-neutral-foreground' }
+      class: { root: 'bg-neutral text-neutral-foreground' },
     },
     {
       variant: 'solid',
@@ -159,22 +183,22 @@ export const buttonVariants = tv({
     {
       variant: 'outline',
       color: 'accent',
-      class: { root: 'border-accent' }
+      class: { root: 'border-accent' },
     },
     {
       variant: 'outline',
       color: 'neutral',
-      class: { root: 'border-neutral' }
+      class: { root: 'border-neutral' },
     },
     {
       variant: 'outline',
       color: 'success',
-      class: { root: 'border-success' }
+      class: { root: 'border-success' },
     },
     {
       variant: 'outline',
       color: 'warning',
-      class: { root: 'border-warning' }
+      class: { root: 'border-warning' },
     },
     {
       variant: 'outline',
@@ -197,7 +221,7 @@ export const buttonVariants = tv({
     {
       variant: 'ghost',
       color: 'secondary',
-      class: { root: 'hover:bg-secondary' }
+      class: { root: 'hover:bg-secondary' },
     },
     {
       variant: 'ghost',
