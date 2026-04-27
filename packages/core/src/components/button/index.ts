@@ -11,8 +11,8 @@ export const buttonVariants = tv({
         outline-none select-none
       `,
       `
-        disabled:cursor-not-allowed disabled:opacity-40
-        aria-disabled:cursor-not-allowed aria-disabled:opacity-40
+        disabled:pointer-events-none disabled:opacity-40
+        aria-disabled:pointer-events-none aria-disabled:opacity-40
       `,
       '[&_svg]:pointer-events-none [&_svg]:shrink-0',
       'active:scale-98 active:opacity-80',
@@ -24,19 +24,48 @@ export const buttonVariants = tv({
   variants: {
     variant: {
       solid: {},
-      outline: {},
-      ghost: {},
-      link: {},
+      outline: {
+        root: [
+          'border bg-transparent'
+        ]
+      },
+      ghost: {
+        root: [
+          'bg-transparent'
+        ]
+      },
+      link: {
+        root: [
+          'h-auto bg-transparent p-0 underline-offset-4',
+          'hover:underline',
+        ]
+      },
     },
     color: {
-      primary: {},
-      secondary: {},
-      accent: {},
-      neutral: {},
-      success: {},
-      warning: {},
-      error: {},
-      info: {},
+      primary: {
+        root: 'text-primary focus-visible:ring-primary'
+      },
+      secondary: {
+        root: 'text-secondary-foreground focus-visible:ring-secondary'
+      },
+      accent: {
+        root: 'text-accent focus-visible:ring-accent'
+      },
+      neutral: {
+        root: 'text-neutral focus-visible:ring-neutral'
+      },
+      success: {
+        root: 'text-success focus-visible:ring-success'
+      },
+      warning: {
+        root: 'text-warning focus-visible:ring-warning'
+      },
+      error: {
+        root: 'text-error focus-visible:ring-error'
+      },
+      info: {
+        root: 'text-info focus-visible:ring-info'
+      },
     },
     size: {
       xs: {
@@ -47,112 +76,163 @@ export const buttonVariants = tv({
       },
       sm: {
         root: [
-          'gap-1.5 px-2.5 py-1.5 text-xs',
+          'gap-1.5 px-3 py-1.5 text-xs',
           '[&_svg]:size-4',
         ],
       },
       md: {
         root: [
-          'gap-1.5 px-2.5 py-1.5 text-sm',
+          'gap-1.5 px-4 py-2 text-sm',
           '[&_svg]:size-5',
         ],
       },
       lg: {
         root: [
-          'gap-2 px-3 py-2 text-sm',
+          'gap-2 px-5 py-2.5 text-sm',
           '[&_svg]:size-5',
         ],
       },
       xl: {
         root: [
-          'gap-2.5 px-3.5 py-2.5 text-base',
+          'gap-2.5 px-6 py-3 text-base',
           '[&_svg]:size-6',
         ],
       },
     },
   },
   compoundVariants: [
-    // Solid
+    // Solid — compound overrides the base `text-{color}` with `text-{color}-foreground`
+    // so the label stays readable against the filled background.
     {
       variant: 'solid',
       color: 'primary',
-      class: {
-        root: [
-          'bg-primary text-primary-foreground',
-          'focus-visible:ring-primary',
-        ],
-      },
+      class: { root: 'bg-primary text-primary-foreground' },
     },
     {
       variant: 'solid',
       color: 'secondary',
-      class: {
-        root: [
-          'bg-secondary text-secondary-foreground',
-          'focus-visible:ring-secondary',
-        ],
-      },
+      class: { root: 'bg-secondary text-secondary-foreground' },
     },
     {
       variant: 'solid',
       color: 'accent',
-      class: {
-        root: [
-          'bg-accent text-accent-foreground',
-          'focus-visible:ring-accent',
-        ],
-      },
+      class: { root: 'bg-accent text-accent-foreground' },
     },
     {
       variant: 'solid',
       color: 'neutral',
-      class: {
-        root: [
-          'bg-neutral text-neutral-foreground',
-          'focus-visible:ring-neutral',
-        ],
-      },
+      class: { root: 'bg-neutral text-neutral-foreground' }
     },
     {
       variant: 'solid',
       color: 'success',
-      class: {
-        root: [
-          'bg-success text-success-foreground',
-          'focus-visible:ring-success',
-        ],
-      },
+      class: { root: 'bg-success text-success-foreground' },
     },
     {
       variant: 'solid',
       color: 'warning',
-      class: {
-        root: [
-          'bg-warning text-warning-foreground',
-          'focus-visible:ring-warning',
-        ],
-      },
+      class: { root: 'bg-warning text-warning-foreground' },
     },
     {
       variant: 'solid',
       color: 'error',
-      class: {
-        root: [
-          'bg-error text-error-foreground',
-          'focus-visible:ring-error',
-        ],
-      },
+      class: { root: 'bg-error text-error-foreground' },
     },
     {
       variant: 'solid',
       color: 'info',
-      class: {
-        root: [
-          'bg-info text-info-foreground',
-          'focus-visible:ring-info',
-        ],
-      },
+      class: { root: 'bg-info text-info-foreground' },
     },
+
+    // Outline — only the border color needs overriding; text and ring come from
+    // the base color variant.
+    {
+      variant: 'outline',
+      color: 'primary',
+      class: { root: 'border-primary' },
+    },
+    {
+      variant: 'outline',
+      color: 'secondary',
+      class: { root: 'border-secondary-foreground' },
+    },
+    {
+      variant: 'outline',
+      color: 'accent',
+      class: { root: 'border-accent' }
+    },
+    {
+      variant: 'outline',
+      color: 'neutral',
+      class: { root: 'border-neutral' }
+    },
+    {
+      variant: 'outline',
+      color: 'success',
+      class: { root: 'border-success' }
+    },
+    {
+      variant: 'outline',
+      color: 'warning',
+      class: { root: 'border-warning' }
+    },
+    {
+      variant: 'outline',
+      color: 'error',
+      class: { root: 'border-error' },
+    },
+    {
+      variant: 'outline',
+      color: 'info',
+      class: { root: 'border-info' },
+    },
+
+    // Ghost — only the hover background needs overriding; text and ring come from
+    // the base color variant.
+    {
+      variant: 'ghost',
+      color: 'primary',
+      class: { root: 'hover:bg-primary/10' },
+    },
+    {
+      variant: 'ghost',
+      color: 'secondary',
+      class: { root: 'hover:bg-secondary' }
+    },
+    {
+      variant: 'ghost',
+      color: 'accent',
+      class: { root: 'hover:bg-accent/10' },
+    },
+    {
+      variant: 'ghost',
+      color: 'neutral',
+      class: { root: 'hover:bg-neutral/10' },
+    },
+    {
+      variant: 'ghost',
+      color: 'success',
+      class: { root: 'hover:bg-success/10' },
+    },
+    {
+      variant: 'ghost',
+      color: 'warning',
+      class: { root: 'hover:bg-warning/10' },
+    },
+    {
+      variant: 'ghost',
+      color: 'error',
+      class: { root: 'hover:bg-error/10' },
+    },
+    {
+      variant: 'ghost',
+      color: 'info',
+      class: { root: 'hover:bg-info/10' },
+    },
+
+    // Note: `link` has no compound variants — text color is purely semantic and
+    // fully covered by the base `color` variant's `text-{color}` class. There is
+    // no background or border to tint, so no per-color overrides are needed.
   ],
   defaultVariants: {
     variant: 'solid',
