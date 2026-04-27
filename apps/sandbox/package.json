@@ -1,0 +1,42 @@
+{
+  "name": "sandbox",
+  "private": true,
+  "type": "module",
+  "description": "Playground for CentoUI",
+  "author": "Favour Emeka <favorodera@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://centoui.vercel.app",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/favorodera/centoui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/favorodera/centoui/issues"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "typecheck": "vue-tsc --noEmit",
+    "lint": "eslint . --fix",
+    "centoui": "node ../../packages/core/bin/centoui.js"
+  },
+  "dependencies": {
+    "vue": "^3.5.32"
+  },
+  "devDependencies": {
+    "@tsconfig/node24": "^24.0.4",
+    "@types/node": "^24.12.2",
+    "@vitejs/plugin-vue": "^6.0.6",
+    "@vue/tsconfig": "^0.9.1",
+    "vite": "^8.0.8",
+    "vue-tsc": "^3.2.6",
+    "centoui": "workspace:*",
+    "@tailwindcss/vite": "^4.2.2",
+    "tailwindcss": "^4.2.2"
+  },
+  "packageManager": "pnpm@10.33.2",
+  "engines": {
+    "node": ">=22.0.0"
+  }
+}

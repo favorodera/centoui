@@ -1,0 +1,53 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://centoui.dev/schema/component.json",
+  "title": "CentoUI Component Registry Entry",
+  "type": "object",
+  "required": [ "name", "files", "componentDependencies", "packageDependencies" ],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "JSON Schema reference URI."
+    },
+    "name": {
+      "type": "string",
+      "description": "Unique component identifier. Must match the registry filename (e.g. 'button' for button.json). Used in CLI: `centoui add <name>`.",
+      "pattern": "^[a-z][a-z0-9-]*$"
+    },
+    "description": {
+      "type": "string",
+      "description": "Short human-readable description."
+    },
+    "files": {
+      "type": "array",
+      "description": "Source file paths relative to the repo root. The CLI copies these into the user's component directory.",
+      "items": {
+        "type": "string",
+        "description": "Relative path from repo root. Must be under src/components/ and end in .vue, .ts, or .css.",
+        "pattern": "^src/components/[a-z][a-z0-9-/.]*(\\.(vue|ts|css))$"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "componentDependencies": {
+      "type": "array",
+      "description": "Other CentoUI components that must be installed alongside this one. The CLI resolves and installs these automatically.",
+      "items": {
+        "type": "string",
+        "description": "Component name matching its registry filename (e.g. 'button', 'label').",
+        "pattern": "^[a-z][a-z0-9-]*$"
+      },
+      "uniqueItems": true
+    },
+    "packageDependencies": {
+      "type": "object",
+      "description": "npm packages required by this component beyond the global dependencies. The CLI installs these automatically.",
+      "additionalProperties": {
+        "type": "string",
+        "description": "Semver version range for the package (e.g. '^1.0.0', '~2.3.1', '>=3.0.0').",
+        "pattern": "^(\\^|~|>=|>|<=|<|=)?[0-9]+\\.[0-9]+\\.[0-9]+.*$"
+      }
+    }
+  }
+}

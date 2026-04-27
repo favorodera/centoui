@@ -1,0 +1,2 @@
+@import "../../../packages/core/src/css/centoui.css";
+@source "../../../packages/core/src/**/*.{ts,vue}";
