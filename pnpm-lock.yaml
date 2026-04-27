@@ -30,7 +30,7 @@ importers:
         specifier: ^10.9.0
         version: 10.9.0(@stylistic/eslint-plugin@5.10.0(eslint@10.2.1(jiti@2.6.1)))(@typescript-eslint/parser@8.59.0(eslint@10.2.1(jiti@2.6.1))(typescript@6.0.3))(eslint@10.2.1(jiti@2.6.1))(vue-eslint-parser@10.4.0(eslint@10.2.1(jiti@2.6.1)))
       relizy:
-        specifier: ^1.2.1
+        specifier: ^1.4.1
         version: 1.4.1(@types/node@25.6.0)(magicast@0.5.2)
       turbo:
         specifier: ^2.9.5
