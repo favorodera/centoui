@@ -6,5 +6,10 @@ export function add() {
       name: 'add',
       description: 'Add one or more components to your project',
     },
+
+    args: {},
+
+    async run({ args }) {
+    },
   })
 }
