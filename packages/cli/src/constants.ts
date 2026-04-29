@@ -10,7 +10,8 @@ export const CONFIG_FILE_NAME = 'centoui.config.ts'
 export const REGISTRY_FILE_NAME = 'index.json'
 
 /** CentoUI core base API URL */
-export const BASE_URL = `https://raw.githubusercontent.com/favorodera/centoui/refs/tags/v${VERSION}/packages/core/src`
+// export const BASE_URL = `https://raw.githubusercontent.com/favorodera/centoui/refs/tags/v${VERSION}/packages/core/src`
+export const BASE_URL = 'https://raw.githubusercontent.com/favorodera/centoui/main/packages/core/src'
 
 /** CentoUI registry files URL */
 export const REGISTRY_URL = `${BASE_URL}/registry`
