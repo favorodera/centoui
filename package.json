@@ -1,6 +1,6 @@
 {
   "name": "centoui-monorepo",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Precise vue components",
   "private": true,
   "license": "MIT",
