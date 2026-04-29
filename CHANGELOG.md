@@ -1,5 +1,35 @@
 # Changelog
 
+## v0.2.0...v0.2.2
+
+[compare changes](https://github.com/favorodera/centoui/compare/v0.2.0...v0.2.2)
+
+### Added
+
+- Add 'add' command to CLI ([26220e7](https://github.com/favorodera/centoui/commit/26220e7))
+- Implement component adding functionality ([974b2f9](https://github.com/favorodera/centoui/commit/974b2f9))
+- Update centoui version to 0.2.0 ([fa6c55a](https://github.com/favorodera/centoui/commit/fa6c55a))
+
+### Fixed
+
+- Revert BASE_URL to use versioned tags ([08f6fdd](https://github.com/favorodera/centoui/commit/08f6fdd))
+- Adjust component path normalization regex ([b78ac84](https://github.com/favorodera/centoui/commit/b78ac84))
+
+### Refactors
+
+- Uncomment and enable add command functionality ([7da5368](https://github.com/favorodera/centoui/commit/7da5368))
+- Rename component and package dependency fields ([8fcafda](https://github.com/favorodera/centoui/commit/8fcafda))
+- Rename componentDependencies to componentDeps and packageDependencies to packageDeps in registry ([06a218e](https://github.com/favorodera/centoui/commit/06a218e))
+- Update file path prefixes in component registry and schema ([dd57637](https://github.com/favorodera/centoui/commit/dd57637))
+- Improve variable naming in add command file fetching ([566a89f](https://github.com/favorodera/centoui/commit/566a89f))
+- Rename registryPath to path in fetchComponentFile ([d4e47ce](https://github.com/favorodera/centoui/commit/d4e47ce))
+- Correct path prefixes in schemas and registry ([ff4756e](https://github.com/favorodera/centoui/commit/ff4756e))
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v0.0.0...v0.2.0
 
 [compare changes](https://github.com/favorodera/centoui/compare/67135c6ab21dfd109993537b0391b3d9f3116541...v0.2.0)
