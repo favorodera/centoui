@@ -6,6 +6,6 @@
     "src/components/button/button.vue",
     "src/components/button/index.ts"
   ],
-  "componentDependencies": [],
-  "packageDependencies": {}
+  "componentDeps": [],
+  "packageDeps": {}
 }

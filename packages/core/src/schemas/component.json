@@ -3,7 +3,7 @@
   "$id": "https://centoui.dev/schema/component.json",
   "title": "CentoUI Component Registry Entry",
   "type": "object",
-  "required": [ "name", "files", "componentDependencies", "packageDependencies" ],
+  "required": [ "name", "files", "componentDeps", "packageDeps" ],
   "additionalProperties": false,
   "properties": {
     "$schema": {
@@ -30,7 +30,7 @@
       "minItems": 1,
       "uniqueItems": true
     },
-    "componentDependencies": {
+    "componentDeps": {
       "type": "array",
       "description": "Other CentoUI components that must be installed alongside this one. The CLI resolves and installs these automatically.",
       "items": {
@@ -40,7 +40,7 @@
       },
       "uniqueItems": true
     },
-    "packageDependencies": {
+    "packageDeps": {
       "type": "object",
       "description": "npm packages required by this component beyond the global dependencies. The CLI installs these automatically.",
       "additionalProperties": {
