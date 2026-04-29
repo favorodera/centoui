@@ -17,8 +17,8 @@
       "name": "button",
       "description": "Interactive element for triggering actions.",
       "files": [
-        "src/components/button/button.vue",
-        "src/components/button/index.ts"
+        "/components/button/button.vue",
+        "/components/button/index.ts"
       ],
       "componentDeps": [],
       "packageDeps": {}

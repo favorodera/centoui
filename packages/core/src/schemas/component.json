@@ -24,8 +24,8 @@
       "description": "Source file paths relative to the repo root. The CLI copies these into the user's component directory.",
       "items": {
         "type": "string",
-        "description": "Relative path from repo root. Must be under src/components/ and end in .vue, .ts, or .css.",
-        "pattern": "^src/components/[a-z][a-z0-9-/.]*(\\.(vue|ts|css))$"
+        "description": "Relative path from repo root. Must be under /components/ and end in .vue, .ts, or .css.",
+        "pattern": "^/components/[a-z][a-z0-9-/.]*(\\.(vue|ts|css))$"
       },
       "minItems": 1,
       "uniqueItems": true
