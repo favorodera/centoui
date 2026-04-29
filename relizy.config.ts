@@ -3,7 +3,7 @@ import { defineConfig } from 'relizy'
 export default defineConfig({
   projectName: 'centoui-monorepo',
   monorepo: {
-    versionMode: 'unified',
+    versionMode: 'selective',
     packages: ['packages/*'],
   },
   excludeAuthors: [
