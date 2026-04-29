@@ -1,7 +1,7 @@
 import { defineConfig } from 'centoui'
 
 export default defineConfig({
-  version: '0.1.0',
+  version: '0.2.0',
   componentsDir: 'src/components/centoui',
   themeFilePath: 'src/assets/css/centoui.css',
   icons: {
