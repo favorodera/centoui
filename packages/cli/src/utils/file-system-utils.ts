@@ -16,7 +16,7 @@ import { confirm, isCancel, cancel } from '@clack/prompts'
  * @returns The destination path for the component file.
  */
 export function resolveComponentsDestinationPath(path: string, config: CentoUIConfig, cwd: string) {
-  const normalizedPath = path.replace(/^src\/components\//, '')
+  const normalizedPath = path.replace(/^components\//, '')
   return join(cwd, config.componentsDir, normalizedPath)
 }
 
