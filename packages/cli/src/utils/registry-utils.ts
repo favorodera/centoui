@@ -72,11 +72,11 @@ export function resolveComponentTree(name: string, registry: Registry, seen = ne
 /**
  * Fetches the raw source code of a component or utility file from the registry.
  *
- * @param registryPath - Path as listed in the component registry (e.g. 'src/components/button/button.vue')
+ * @param path - Path as listed in the component registry (e.g. '/components/button/button.vue')
  * @returns The raw source code of the file
  */
-export async function fetchComponentFile(registryPath: string) {
-  const requestUrl = `${BASE_URL}/${registryPath}`
+export async function fetchComponentFile(path: string) {
+  const requestUrl = `${BASE_URL}/${path}`
 
   const response = await fetch(requestUrl, { headers: FETCH_HEADERS })
   if (!response.ok) throw new Error(`${response.status}: ${response.statusText}`)
