@@ -17,7 +17,7 @@ const buttonPropsSchema: PropsSchema = {
   variant: {
     type: 'select',
     label: 'Variant',
-    options: ['solid', 'outline', 'ghost', 'link'],
+    options: ['solid', 'soft', 'subtle', 'outline', 'ghost', 'link'],
     default: 'solid',
   },
   color: {

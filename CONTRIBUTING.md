@@ -11,6 +11,8 @@
   - [Token Vocabulary](#token-vocabulary)
   - [The Theme File](#the-theme-file)
   - [Interaction States](#interaction-states)
+  - [Shade Levels](#shade-levels)
+  - [Variant Anatomy](#variant-anatomy)
   - [Applying the Design System](#applying-the-design-system)
   - [centoui-data-* CSS API](#centoui-data--css-api)
 - [Component Structure](#component-structure)
@@ -100,7 +102,7 @@ Components must only reference semantic tokens — never raw values or Tailwind 
 | `error` | Destructive states — failures, deletions |
 | `info` | Neutral informational messages |
 
-Each exposes two tokens: `--<category>` (fill) and `--<category>-foreground` (text/icons on that fill).
+Each exposes two tokens: `--color-<category>` (fill) and `--color-<category>-foreground` (text/icons on that fill).
 
 Structural tokens:
 
@@ -158,10 +160,74 @@ Read-only and loading states that display readable text must maintain 4.5:1 cont
 
 ---
 
+### Shade Levels
+
+Interaction states use opacity on the **root element** to dim the whole component. Shade levels are a different, orthogonal system — they are **color-fill intensities** used only as `background-color` alpha on transparent-background variants (`subtle`, `soft`, `outline`, `ghost`) and their hover/active states.
+
+The scale is expressed as Tailwind color-opacity modifiers and is fixed. Do not invent intermediate values.
+
+| Level | Modifier | Used by |
+|---|---|---|
+| `subtle` | `/5` | `subtle` — resting background |
+| `ghost` | `/10` | `subtle` hover · `outline` hover · `ghost` hover |
+| `ghost-active` | `/15` | `subtle` active · `outline` active · `ghost` active |
+| `soft` | `/20` | `soft` — resting background |
+| `soft-hover` | `/25` | `soft` hover |
+| `soft-active` | `/30` | `soft` active |
+
+#### Two systems, two CSS properties — never mix them
+
+| System | CSS property | Scope |
+|---|---|---|
+| Interaction states | `opacity` | Entire element (fill + text + border) |
+| Shade levels | `background-color` alpha | Background only |
+
+#### How variants and compoundVariants share the work
+
+Styles that apply regardless of color belong in the `variant` slot. Styles that depend on a specific color belong in `compoundVariants`. This keeps each piece of logic in exactly one place.
+
+```
+variant slot        → structural, color-agnostic classes (border, bg-transparent, padding)
+color variant       → text-{color}, focus ring, aria-invalid ring — declared once, inherited by all variants
+compoundVariants    → bg-{color}, border-{color}, hover/active backgrounds — only what's unique per color
+```
+
+`subtle`, `outline`, and `ghost` share the same hover (`/10`) and active (`/15`) shade levels, so those are declared once using the array syntax rather than repeated three times:
+
+```ts
+{ variant: ['subtle', 'outline', 'ghost'], color: 'primary', class: { root: 'hover:bg-primary/10 active:bg-primary/15' } }
+```
+
+---
+
+### Variant Anatomy
+
+CentoUI ships six variants covering the full range of visual emphasis. They are fully orthogonal with every color token.
+
+| Variant | Rest background | Hover bg | Active bg | Text | Border | Emphasis |
+|---|---|---|---|---|---|---|
+| `solid` | full fill | `opacity-90` on root | `opacity-80` on root | `-foreground` | — | Highest |
+| `soft` | `/20` | `/25` | `/30` | colored | — | High |
+| `subtle` | `/5` | `/10` | `/15` | colored | — | Medium |
+| `outline` | transparent | `/10` | `/15` | colored | colored | Medium |
+| `ghost` | transparent | `/10` | `/15` | colored | — | Low |
+| `link` | transparent | transparent | transparent | colored | — | Lowest |
+
+```vue
+<Button variant="solid"   color="primary" />
+<Button variant="soft"    color="success" />
+<Button variant="subtle"  color="info"    />
+<Button variant="outline" color="error"   />
+<Button variant="ghost"   color="warning" />
+<Button variant="link"    color="neutral" />
+```
+
+---
+
 ### Applying the Design System
 
 1. Map your brand colors to the semantic categories above.
-2. Update `:root` and `.dark` in `theme.css` with your values.
+2. Update `:root` and `.dark` in `centoui.css` with your values.
 3. Use `data-centoui-*` attributes for brand-specific visual additions (gradients, textures, shimmer) — scoped to your own stylesheet, never requires opening a component file.
 
 ```css
@@ -191,7 +257,7 @@ Every component element carries `data-centoui-*` attributes. The namespace preve
 | Attribute | Values |
 |---|---|
 | `data-centoui-slot` | Component-specific — e.g. `button`, `card-header`, `dialog-overlay` |
-| `data-centoui-variant` | `solid`, `outlined`, `ghost`, `soft`, `link` |
+| `data-centoui-variant` | `solid`, `soft`, `subtle`, `outline`, `ghost`, `link` |
 | `data-centoui-color` | `primary`, `secondary`, `error`, `success`, `warning`, `info`, `accent`, `neutral` |
 | `data-centoui-size` | `xs`, `sm`, `md`, `lg`, `xl` |
 | `data-centoui-state` | `idle`, `loading`, `disabled` |
@@ -222,7 +288,7 @@ src/components/card/
 ### `index.ts` anatomy
 
 ```ts
-// 1. tailwind-variants config — all color classes use @theme tokens, never static colors
+// 1. tailwind-variants config
 export const buttonVariants = tv({ slots, variants, compoundVariants, defaultVariants })
 
 // 2. Named component exports
@@ -240,12 +306,14 @@ export type ButtonSlots    = { default: [] }
 ### Variant × Color
 
 ```vue
-<Button variant="solid"    color="primary" />
-<Button variant="outlined" color="error"   />
-<Button variant="ghost"    color="success" />
+<Button variant="solid"   color="primary" />
+<Button variant="outline" color="error"   />
+<Button variant="ghost"   color="success" />
+<Button variant="soft"    color="warning" />
+<Button variant="subtle"  color="info"    />
 ```
 
-- `variant` — how it looks: `solid`, `outlined`, `ghost`, `soft`, `link`
+- `variant` — how it looks: `solid`, `soft`, `subtle`, `outline`, `ghost`, `link`
 - `color` — what it means: `primary`, `secondary`, `error`, `success`, `warning`, `info`, `accent`, `neutral`
 
 Fully orthogonal — any variant works with any color.
@@ -282,6 +350,7 @@ export default defineConfig({
   },
 })
 ```
+
 ---
 
 ## Nuxt Module
