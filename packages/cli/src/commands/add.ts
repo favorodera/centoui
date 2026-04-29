@@ -79,9 +79,9 @@ export function add() {
           ...componentsToInstall.map(([name, entry]) => ({
             title: `Installing ${name}`,
             task: async () => {
-              for (const registryPath of entry.files) {
-                const content = await fetchComponentFile(registryPath)
-                const dest = resolveComponentsDestinationPath(registryPath, config, cwd)
+              for (const path of entry.files) {
+                const content = await fetchComponentFile(path)
+                const dest = resolveComponentsDestinationPath(path, config, cwd)
                 await writeFile(dest, content)
               }
               return `${name} installed (${entry.files.length} file${entry.files.length !== 1 ? 's' : ''})`
