@@ -1,6 +1,6 @@
 {
   "$schema": "../schemas/globals.json",
-  "packageDependencies": {
+  "packageDeps": {
     "tailwindcss": "^4.2.2",
     "@tailwindcss/vite": "^4.2.2",
     "reka-ui": "^2.9.2",

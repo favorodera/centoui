@@ -3,14 +3,14 @@
   "$id": "https://centoui.dev/schema/globals.json",
   "title": "CentoUI Global Registry",
   "type": "object",
-  "required": [ "packageDependencies" ],
+  "required": [ "packageDeps" ],
   "additionalProperties": false,
   "properties": {
     "$schema": {
       "type": "string",
       "description": "JSON Schema reference URI."
     },
-    "packageDependencies": {
+    "packageDeps": {
       "type": "object",
       "description": "npm packages required in every CentoUI project regardless of which components are installed. The CLI installs these on first setup.",
       "additionalProperties": {
