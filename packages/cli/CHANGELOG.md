@@ -1,5 +1,26 @@
 # Changelog
 
+## v1.0.0-alpha.0...v1.0.0-alpha.1
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.0...v1.0.0-alpha.1)
+
+### Added
+
+- Add vitest configuration for CLI package ([96c8dae](https://github.com/favorodera/centoui/commit/96c8dae))
+
+### Tests
+
+- Add tests for component dependency resolution utility ([5fac5aa](https://github.com/favorodera/centoui/commit/5fac5aa))
+- Add tests for buildDefaultConfigFileContent utility ([6801119](https://github.com/favorodera/centoui/commit/6801119))
+- Add package management tests ([33a320c](https://github.com/favorodera/centoui/commit/33a320c))
+- Add tests for file-system-utils and package-utils ([b7b2487](https://github.com/favorodera/centoui/commit/b7b2487))
+- Add tests for fetchFullRegistry caching and error handling ([3e80149](https://github.com/favorodera/centoui/commit/3e80149))
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v0.2.2...v1.0.0-alpha.0
 
 [compare changes](https://github.com/favorodera/centoui/compare/v0.2.2...v1.0.0-alpha.0)

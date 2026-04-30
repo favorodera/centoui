@@ -1,7 +1,7 @@
 {
   "name": "centoui-cli",
   "type": "module",
-  "version": "1.0.0-alpha.0",
+  "version": "1.0.0-alpha.1",
   "private": false,
   "description": "Official CLI for CentoUI.",
   "author": "Favour Emeka <favorodera@gmail.com>",
@@ -31,7 +31,7 @@
   "scripts": {
     "build": "tsdown",
     "dev": "tsdown --watch",
-     "test": "vitest",
+    "test": "vitest",
     "test:watch": "vitest watch --ui",
     "typecheck": "tsc --noEmit",
     "lint": "eslint . --fix",
