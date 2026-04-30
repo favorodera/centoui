@@ -1,5 +1,79 @@
 # Changelog
 
+## v0.2.2...v1.0.0-alpha.0
+
+[compare changes](https://github.com/favorodera/centoui/compare/v0.2.2...v1.0.0-alpha.0)
+
+### Added
+
+- Add remove command to CLI ([4b1170d](https://github.com/favorodera/centoui/commit/4b1170d))
+- Enhance component installation with dependency resolution and overwrite confirmation ([63409bd](https://github.com/favorodera/centoui/commit/63409bd))
+- Improve init command user experience and robustness ([902b918](https://github.com/favorodera/centoui/commit/902b918))
+- Implement component removal command ([99536bd](https://github.com/favorodera/centoui/commit/99536bd))
+
+### Refactors
+
+- Improve CLI constants for URL and fetch headers ([73fcc33](https://github.com/favorodera/centoui/commit/73fcc33))
+- Update CORE_SRC_BASE_URL to use versioned tag ([5a559ca](https://github.com/favorodera/centoui/commit/5a559ca))
+- Improve component utility function names and descriptions ([e325d38](https://github.com/favorodera/centoui/commit/e325d38))
+- Improve config loading and generation functions ([adb16e8](https://github.com/favorodera/centoui/commit/adb16e8))
+
+  This commit refactors the `loadUserConfig` function to `loadCentoUIConfig` and `generateDefaultUserConfigTemplate` to `buildDefaultConfigFileContent`.
+  The changes include:
+  - Renaming functions for clarity and consistency.
+  - Updating JSDoc comments to be more descriptive and accurate.
+  - Enhancing error messages for better debugging.
+  - Adjusting the dynamic import mechanism to use `file://` URLs for more robust TypeScript config file loading.
+  - Modifying the default config template generation to use `defineConfig` for improved IDE support and pre-filling common icon mappings.
+
+- Improve file system utility function clarity and naming ([86516fe](https://github.com/favorodera/centoui/commit/86516fe))
+- Improve clarity and error handling in package utility functions ([eb5db50](https://github.com/favorodera/centoui/commit/eb5db50))
+
+  This commit refactors the `installPackages` and `removePackages` functions in `packages/cli/src/utils/package-utils.ts`.
+  Key changes include:
+  - Renaming `installPackages` to `installMissingPackages` and `removePackages` to `removeOrphanedPackages` to better reflect their functionality.
+  - Enhancing JSDoc comments for improved clarity and detail on parameters, return values, and error conditions.
+  - Adding try-catch blocks to `installMissingPackages` and `removeOrphanedPackages` to provide more specific error messages when package manager operations fail.
+  - Renaming the `ProgressCallback` type to `PackageProgressCallback` for better context.
+  - Renaming the `packages` parameter to `requiredPackages` in `installMissingPackages` and to `packagesToConsider` in `removeOrphanedPackages`.
+  - Renaming the `installedPackages` variable to `alreadyInstalled` for better readability.
+  - Renaming the `packagesToInstall` variable to `packagesToInstall` (no change, but clarified purpose).
+  - Renaming the `packagesToRemove` variable to `packagesToRemove` (no change, but clarified purpose).
+  - Renaming the `validatePath` function to `validateNonEmptyPath` and refining its validation logic and JSDoc.
+
+- Improve registry fetching and file content retrieval ([bea1aaf](https://github.com/favorodera/centoui/commit/bea1aaf))
+
+  This commit refactors the registry utility functions to enhance clarity, robustness, and naming conventions.
+  Key changes include:
+  - Renaming `fetchRegistry` to `fetchFullRegistry` for better semantic accuracy.
+  - Renaming `fetchComponent` to `fetchRegistryComponentEntry`.
+  - Renaming `resolveComponentTree` to `resolveComponentWithDependencies`.
+  - Renaming `fetchComponentFile` to `fetchRegistryFileContent`.
+  - Renaming `fetchThemeFile` to `fetchThemeCSSContent`.
+  - Updating internal variable names for better readability (e.g., `registryCache` to `cachedRegistry`).
+  - Enhancing error handling with more descriptive messages and including relevant URLs.
+  - Updating JSDoc comments to accurately reflect the function's purpose, parameters, and return values.
+  - Modifying constants usage to align with the new function names and purpose.
+
+
+### Documentation
+
+- Improve type definitions and JSDoc comments ([4e08e8c](https://github.com/favorodera/centoui/commit/4e08e8c))
+
+  This commit enhances the type definitions and JSDoc comments for the `GlobalsRegistry`, `ComponentRegistry`, `Registry`, and `CentoUIConfig` types. The goal is to provide clearer explanations of their purpose, properties, and usage, particularly in the context of the CentoUI CLI and its configuration.
+  Key changes include:
+  - Refining descriptions for better clarity and context.
+  - Adding more specific examples for `packageDeps` and `icons`.
+  - Clarifying the relationship between registry files (`globals.json`, `component.json`, `index.json`) and the type definitions.
+  - Specifying the expected file paths and conventions for component source files.
+  - Emphasizing that `componentDeps` are resolved automatically into a dependency tree.
+  - Explaining the role of `CentoUIConfig` as generated by `centoui init` and consumed by CLI commands.
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v0.2.0...v0.2.2
 
 [compare changes](https://github.com/favorodera/centoui/compare/v0.2.0...v0.2.2)

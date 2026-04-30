@@ -1,5 +1,19 @@
 # Changelog
 
+## v0.2.2...v1.0.0-alpha.0
+
+[compare changes](https://github.com/favorodera/centoui/compare/v0.2.2...v1.0.0-alpha.0)
+
+### Documentation
+
+- Clarify component schema descriptions ([07a8d54](https://github.com/favorodera/centoui/commit/07a8d54))
+- Add description to globals.json schema ([4f98713](https://github.com/favorodera/centoui/commit/4f98713))
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v0.2.0...v0.2.2
 
 [compare changes](https://github.com/favorodera/centoui/compare/v0.2.0...v0.2.2)
