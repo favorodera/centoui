@@ -3,26 +3,33 @@ import fsExtra from 'fs-extra'
 import type { PackageJson } from 'type-fest'
 import { addDependency, removeDependency } from 'nypm'
 
-/** Called with a status message as each package is processed. */
-type ProgressCallback = (message: string) => void
+/**
+ * Callback invoked with a status string each time a package operation starts.
+ * Used to update a spinner or progress display in the CLI.
+ */
+type PackageProgressCallback = (statusMessage: string) => void
 
 /**
- * Install packages that are missing or on a different version.
- * Reads the project's `package.json` to diff against what's already installed.
- * nypm auto-detects the package manager from lockfiles (npm / pnpm / yarn / bun).
+ * Installs any packages from `requiredPackages` that are missing from — or at
+ * a different version than what is listed in — the project's `package.json`.
  *
- * @param packages - Map of package name → required version
- * @param cwd - Root of the project to install into
- * @param onProgress - Optional callback fired with a status string per package
- * @returns A human-readable summary string (used as the task return value in clack)
+ * Already-satisfied packages are skipped entirely to avoid unnecessary network
+ * traffic and lockfile churn. The package manager is auto-detected from
+ * lockfiles by nypm (npm / pnpm / yarn / bun).
+ *
+ * @param requiredPackages - Map of `packageName → semver version range`.
+ * @param cwd - Absolute path to the project root (must contain `package.json`).
+ * @param onProgress - Optional callback fired before each `addDependency` call
+ *                     with a `"[n/total] package@version"` string.
+ * @returns Human-readable summary (e.g. `"Installed 3 package(s)"`).
+ * @throws If reading `package.json` or running the package manager fails.
  */
-
-export async function installPackages(
-  packages: Record<string, string>,
+export async function installMissingPackages(
+  requiredPackages: Record<string, string>,
   cwd: string,
-  onProgress?: ProgressCallback,
+  onProgress?: PackageProgressCallback,
 ) {
-  if (Object.keys(packages).length === 0) {
+  if (Object.keys(requiredPackages).length === 0) {
     return 'No packages to install'
   }
 
@@ -30,73 +37,82 @@ export async function installPackages(
     .readJson(join(cwd, 'package.json'))
     .catch(() => ({}))
 
-  const installedPackages = {
+  const alreadyInstalled = {
     ...packageJson.dependencies,
     ...packageJson.devDependencies,
   }
 
-  // Only install packages that are missing or on a mismatched version
-  const packagesToInstall = Object
-    .entries(packages)
-    .filter(([packageName, version]) => installedPackages[packageName] !== version)
-    .map(([packageName, version]) => `${packageName}@${version}`)
+  // Only install packages that are absent or whose listed version differs.
+  const packagesToInstall = Object.entries(requiredPackages)
+    .filter(([name, version]) => alreadyInstalled[name] !== version)
+    .map(([name, version]) => `${name}@${version}`)
 
   if (packagesToInstall.length === 0) {
     return 'All packages already up to date'
   }
 
-  for (const [index, packageToInstall] of packagesToInstall.entries()) {
-    onProgress?.(`[${index + 1}/${packagesToInstall.length}] ${packageToInstall}`)
-    await addDependency(packageToInstall, { cwd, silent: true })
+  try {
+    for (const [index, pkg] of packagesToInstall.entries()) {
+      onProgress?.(`[${index + 1}/${packagesToInstall.length}] ${pkg}`)
+      await addDependency(pkg, { cwd, silent: true })
+    }
+  } catch (error) {
+    throw new Error(`[installMissingPackages] Failed to install packages: ${error}`)
   }
 
   return `Installed ${packagesToInstall.length} package(s)`
 }
 
 /**
- * Remove packages that are no longer needed by any installed component.
- * Skips any package that still appears in `stillNeeded`.
+ * Removes packages that were used by a component being uninstalled, but only
+ * if those packages are not still required by other remaining components.
  *
- * @param packages - Packages belonging to the component being removed
- * @param stillNeeded - Packages still required by other installed components
- * @param cwd - Root of the project to remove from
- * @param onProgress - Optional callback fired with a status string per package
- * @returns A human-readable summary string
+ * Skips any package that appears in `packagesStillNeeded` so that shared
+ * dependencies are never removed prematurely.
+ *
+ * @param packagesToConsider - Packages belonging to the component being removed.
+ * @param packagesStillNeeded - Union of `packageDeps` from all other installed components.
+ * @param cwd - Absolute path to the project root.
+ * @param onProgress - Optional callback fired before each `removeDependency` call.
+ * @returns Human-readable summary (e.g. `"Removed 2 package(s)"`).
+ * @throws If the package manager fails to remove a dependency.
  */
-export async function removePackages(
-  packages: Record<string, string>,
-  stillNeeded: Record<string, string>,
+export async function removeOrphanedPackages(
+  packagesToConsider: Record<string, string>,
+  packagesStillNeeded: Record<string, string>,
   cwd: string,
-  onProgress?: ProgressCallback,
+  onProgress?: PackageProgressCallback,
 ) {
-  const packagesToRemove = Object
-    .keys(packages)
-    .filter(packageName => !(packageName in stillNeeded))
+  const packagesToRemove = Object.keys(packagesToConsider).filter(
+    name => !(name in packagesStillNeeded),
+  )
 
   if (packagesToRemove.length === 0) {
     return 'No packages to remove'
   }
 
-  for (const [index, packageToRemove] of packagesToRemove.entries()) {
-    onProgress?.(`[${index + 1}/${packagesToRemove.length}] ${packageToRemove}`)
-    await removeDependency(packageToRemove, { cwd, silent: true })
+  try {
+    for (const [index, pkg] of packagesToRemove.entries()) {
+      onProgress?.(`[${index + 1}/${packagesToRemove.length}] ${pkg}`)
+      await removeDependency(pkg, { cwd, silent: true })
+    }
+  } catch (error) {
+    throw new Error(`[removeOrphanedPackages] Failed to remove packages: ${error}`)
   }
 
   return `Removed ${packagesToRemove.length} package(s)`
 }
 
 /**
- * Validate that the given value is a non-empty string representing a valid directory path.
- * Returns `undefined` if valid, otherwise returns an error message.
+ * Validates that a value is a non-empty string usable as a file-system path.
+ *
+ * Intended as a `validate` callback for `@clack/prompts` text inputs.
+ *
+ * @param value - The raw value from the prompt.
+ * @returns An error message string if invalid, or `undefined` if valid.
  */
-export function validatePath(path: unknown) {
-  if (typeof path !== 'string') {
-    return 'Invalid input'
-  }
-
-  if (path.trim().length < 1) {
-    return 'Path is required'
-  }
-
+export function validateNonEmptyPath(value: unknown) {
+  if (typeof value !== 'string') return 'Expected a string path'
+  if (value.trim().length === 0) return 'Path cannot be empty'
   return undefined
 }
