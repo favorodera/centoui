@@ -2,6 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://centoui.dev/schema/component.json",
   "title": "CentoUI Component Registry Entry",
+  "description": "Describes a single installable CentoUI component. One file per component, located at registry/<name>.json.",
   "type": "object",
   "required": [ "name", "files", "componentDeps", "packageDeps" ],
   "additionalProperties": false,
@@ -12,19 +13,19 @@
     },
     "name": {
       "type": "string",
-      "description": "Unique component identifier. Must match the registry filename (e.g. 'button' for button.json). Used in CLI: `centoui add <name>`.",
+      "description": "Unique component identifier in kebab-case. Must match the registry filename (e.g. 'button' for button.json) and is the name used in `centoui add <name>`.",
       "pattern": "^[a-z][a-z0-9-]*$"
     },
     "description": {
       "type": "string",
-      "description": "Short human-readable description."
+      "description": "Short human-readable description shown in CLI output and documentation."
     },
     "files": {
       "type": "array",
-      "description": "Source file paths relative to the repo root. The CLI copies these into the user's component directory.",
+      "description": "Source file paths relative to packages/core/src/. All paths must start with 'components/' — the CLI fetches them from GitHub and writes them into the user's configured components directory.",
       "items": {
         "type": "string",
-        "description": "Relative path from repo root. Must be under src/components/ and end in .vue, .ts, or .css.",
+        "description": "Path relative to packages/core/src/. Must start with 'components/' and end with a supported extension (.vue, .ts, or .css).",
         "pattern": "^components/[a-z][a-z0-9-/.]*(\\.(vue|ts|css))$"
       },
       "minItems": 1,
@@ -32,17 +33,17 @@
     },
     "componentDeps": {
       "type": "array",
-      "description": "Other CentoUI components that must be installed alongside this one. The CLI resolves and installs these automatically.",
+      "description": "Names of other CentoUI components that must be installed alongside this one. The CLI resolves the full transitive dependency tree automatically.",
       "items": {
         "type": "string",
-        "description": "Component name matching its registry filename (e.g. 'button', 'label').",
+        "description": "Component name in kebab-case, matching its registry filename (e.g. 'button', 'label').",
         "pattern": "^[a-z][a-z0-9-]*$"
       },
       "uniqueItems": true
     },
     "packageDeps": {
       "type": "object",
-      "description": "npm packages required by this component beyond the global dependencies. The CLI installs these automatically.",
+      "description": "npm packages required by this component beyond the global dependencies in globals.json. The CLI installs these automatically when the component is added.",
       "additionalProperties": {
         "type": "string",
         "description": "Semver version range for the package (e.g. '^1.0.0', '~2.3.1', '>=3.0.0').",
