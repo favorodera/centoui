@@ -4,24 +4,21 @@
 
 ## Table of Contents
 
-- [Code of Conduct](#code-of-conduct)
-- [Getting Started](#getting-started)
-- [Development Workflow](#development-workflow)
-- [Design System](#design-system)
-  - [Token Vocabulary](#token-vocabulary)
-  - [The Theme File](#the-theme-file)
-  - [Interaction States](#interaction-states)
-  - [Shade Levels](#shade-levels)
-  - [Variant Anatomy](#variant-anatomy)
-  - [Applying the Design System](#applying-the-design-system)
-  - [centoui-data-* CSS API](#centoui-data--css-api)
-- [Component Structure](#component-structure)
-- [CLI](#cli)
-- [Nuxt Module](#nuxt-module)
-- [Testing](#testing)
-- [Pull Request Process](#pull-request-process)
-- [Reporting Bugs](#reporting-bugs)
-- [Suggesting Features](#suggesting-features)
+  - [Code of Conduct](#code-of-conduct)
+  - [Getting Started](#getting-started)
+  - [Development Workflow](#development-workflow)
+  - [Design System](#design-system)
+      - [Token Vocabulary](#token-vocabulary)
+      - [The Theme File](#the-theme-file)
+      - [Interaction States](#interaction-states)
+      - [Shade Levels](#shade-levels)
+      - [Variant Anatomy](#variant-anatomy)
+      - [centoui-data-* CSS API](#centoui-data--css-api)
+  - [Component Structure](#component-structure)
+  - [Testing](#testing)
+  - [Pull Request Process](#pull-request-process)
+  - [Reporting Bugs](#reporting-bugs)
+  - [Suggesting Features](#suggesting-features)
 
 ---
 
@@ -33,10 +30,10 @@ By participating you agree to the [Contributor Covenant Code of Conduct](./CODE_
 
 ## Getting Started
 
-**Prerequisites:** Node.js v22+, pnpm v10+
+  **Prerequisites:** Node.js v22+, pnpm v10+
 
 ```bash
-git clone https://github.com/<your-username>/centoui.git
+git clone https://github.com/favorodera/centoui.git
 cd centoui
 pnpm install
 pnpm dev
@@ -85,37 +82,37 @@ pnpm ready      # full pre-publish gate: install → lint → typecheck → buil
 
 ## Design System
 
-The design file and codebase use identical token names, state names, and values — zero translation between them.
+  The design file and codebase use identical token names, state names, and values — zero translation between them.
 
 ### Token Vocabulary
 
-Components must only reference semantic tokens — never raw values or Tailwind palette colors.
+  Components must only reference semantic tokens — never raw values or Tailwind palette colors.
 
-| Token | Purpose |
-|---|---|
-| `primary` | Main brand color — CTAs, key actions |
-| `secondary` | Supporting brand color — secondary actions |
-| `accent` | Highlight color — decorative, hover states |
-| `neutral` | Subtle non-branded actions |
-| `success` | Positive states — confirmations, completions |
-| `warning` | Caution states — alerts, pending actions |
-| `error` | Destructive states — failures, deletions |
-| `info` | Neutral informational messages |
+  | Token | Purpose |
+  |---|---|
+  | `primary` | Main brand color — CTAs, key actions |
+  | `secondary` | Supporting brand color — secondary actions |
+  | `accent` | Highlight color — decorative, hover states |
+  | `neutral` | Subtle non-branded actions |
+  | `success` | Positive states — confirmations, completions |
+  | `warning` | Caution states — alerts, pending actions |
+  | `error` | Destructive states — failures, deletions |
+  | `info` | Neutral informational messages |
 
-Each exposes two tokens: `--color-<category>` (fill) and `--color-<category>-foreground` (text/icons on that fill).
+  Each exposes two tokens: `--color-<category>` (fill) and `--color-<category>-foreground` (text/icons on that fill).
 
-Structural tokens:
+  Structural tokens:
 
-| Token | Purpose |
-|---|---|
-| `--background` | Page canvas |
-| `--foreground` | Default text |
-| `--surface` | Cards, modals, drawers |
-| `--overlay` | Modal scrim |
-| `--muted` | Subtle fills, input backgrounds |
-| `--muted-foreground` | Secondary text, placeholders, captions |
+  | Token | Purpose |
+  |---|---|
+  | `--background` | Page canvas |
+  | `--foreground` | Default text |
+  | `--surface` | Cards, modals, drawers |
+  | `--overlay` | Modal scrim |
+  | `--muted` | Subtle fills, input backgrounds |
+  | `--muted-foreground` | Secondary text, placeholders, captions |
 
-Reference these only via Tailwind utilities (`bg-primary`, `text-error-foreground`) or `var(--color-*)`.
+  Reference these only via Tailwind utilities (`bg-primary`, `text-error-foreground`) or `var(--color-*)`.
 
 ---
 
@@ -133,30 +130,30 @@ Reference these only via Tailwind utilities (`bg-primary`, `text-error-foregroun
 
 ### Interaction States
 
-CentoUI uses a standard opacity scale rather than separate color tokens per state. Adding a new color automatically inherits correct state behaviour.
+  CentoUI uses a standard opacity scale rather than separate color tokens per state. Adding a new color automatically inherits correct state behaviour.
 
-**Apply opacity to the component's root element, never to text nodes in isolation.** This preserves relative contrast between foreground and background. For text-only states (placeholders, captions), use `--muted-foreground`.
+  **Apply opacity to the component's root element, never to text nodes in isolation.** This preserves relative contrast between foreground and background. For text-only states (placeholders, captions), use `--muted-foreground`.
 
 #### Core States
 
-| State | Opacity | Tailwind Utility |
-|---|---|---|
-| Default | 100% | `opacity-100` |
-| Hover | 90% | `hover:opacity-90` |
-| Active | 80% | `active:opacity-80` |
-| Disabled | 40% | `disabled:opacity-40` |
+  | State | Opacity | Tailwind Utility |
+  |---|---|---|
+  | Default | 100% | `opacity-100` |
+  | Hover | 90% | `hover:opacity-90` |
+  | Active | 80% | `active:opacity-80` |
+  | Disabled | 40% | `disabled:opacity-40` |
 
-Disabled is the only state WCAG 2.1 SC 1.4.3 explicitly exempts from contrast requirements.
+  Disabled is the only state WCAG 2.1 SC 1.4.3 explicitly exempts from contrast requirements.
 
 #### Extended States
 
-| State | Opacity | Usage |
-|---|---|---|
-| Read-only | 75% | Non-editable but visible content |
-| Loading | 70% | Component awaiting data |
-| Skeleton | 20% | Shape placeholder — no text rendered |
+  | State | Opacity | Usage |
+  |---|---|---|
+  | Read-only | 75% | Non-editable but visible content |
+  | Loading | 70% | Component awaiting data |
+  | Skeleton | 20% | Shape placeholder — no text rendered |
 
-Read-only and loading states that display readable text must maintain 4.5:1 contrast for normal text (3:1 for large text). Apply opacity to the wrapper, not to text directly, and verify contrast against your token values if you push below these figures.
+  Read-only and loading states that display readable text must maintain 4.5:1 contrast for normal text (3:1 for large text). Apply opacity to the wrapper, not to text directly, and verify contrast against your token values if you push below these figures.
 
 ---
 
@@ -195,23 +192,31 @@ compoundVariants    → bg-{color}, border-{color}, hover/active backgrounds —
 `subtle`, `outline`, and `ghost` share the same hover (`/10`) and active (`/15`) shade levels, so those are declared once using the array syntax rather than repeated three times:
 
 ```ts
-{ variant: ['subtle', 'outline', 'ghost'], color: 'primary', class: { root: 'hover:bg-primary/10 active:bg-primary/15' } }
+{
+  variant: [
+    'subtle',
+    'outline',
+    'ghost',
+  ],
+  color: 'primary',
+  class: { root: 'hover:bg-primary/10 active:bg-primary/15' }
+}
 ```
 
 ---
 
 ### Variant Anatomy
 
-CentoUI ships six variants covering the full range of visual emphasis. They are fully orthogonal with every color token.
+  CentoUI ships six variants covering the full range of visual emphasis. They are fully orthogonal with every color token.
 
-| Variant | Rest background | Hover bg | Active bg | Text | Border | Emphasis |
-|---|---|---|---|---|---|---|
-| `solid` | full fill | `opacity-90` on root | `opacity-80` on root | `-foreground` | — | Highest |
-| `soft` | `/20` | `/25` | `/30` | colored | — | High |
-| `subtle` | `/5` | `/10` | `/15` | colored | — | Medium |
-| `outline` | transparent | `/10` | `/15` | colored | colored | Medium |
-| `ghost` | transparent | `/10` | `/15` | colored | — | Low |
-| `link` | transparent | transparent | transparent | colored | — | Lowest |
+  | Variant | Rest background | Hover bg | Active bg | Text | Border | Emphasis |
+  |---|---|---|---|---|---|---|
+  | `solid` | full fill | `opacity-90` on root | `opacity-80` on root | `-foreground` | — | Highest |
+  | `soft` | `/20` | `/25` | `/30` | colored | — | High |
+  | `subtle` | `/5` | `/10` | `/15` | colored | — | Medium |
+  | `outline` | transparent | `/10` | `/15` | colored | colored | Medium |
+  | `ghost` | transparent | `/10` | `/15` | colored | — | Low |
+  | `link` | transparent | transparent | transparent | colored | — | Lowest |
 
 ```vue
 <Button variant="solid"   color="primary" />
@@ -221,28 +226,11 @@ CentoUI ships six variants covering the full range of visual emphasis. They are 
 <Button variant="ghost"   color="warning" />
 <Button variant="link"    color="neutral" />
 ```
-
----
-
-### Applying the Design System
-
-1. Map your brand colors to the semantic categories above.
-2. Update `:root` and `.dark` in `centoui.css` with your values.
-3. Use `data-centoui-*` attributes for brand-specific visual additions (gradients, textures, shimmer) — scoped to your own stylesheet, never requires opening a component file.
-
-```css
-/* Example: dotted texture on primary solid buttons */
-[data-centoui-slot="button"][data-centoui-variant="solid"][data-centoui-color="primary"] {
-  background-image: radial-gradient(circle, oklch(100% 0 0 / 0.15) 1px, transparent 1px);
-  background-size: 8px 8px;
-}
-```
-
 ---
 
 ### `centoui-data-*` CSS API
 
-Every component element carries `data-centoui-*` attributes. The namespace prevents collisions with host apps and other libraries.
+  Every component element carries `data-centoui-*` attributes. The namespace prevents collisions with host apps and other libraries.
 
 ```html
 <button
@@ -254,15 +242,15 @@ Every component element carries `data-centoui-*` attributes. The namespace preve
 />
 ```
 
-| Attribute | Values |
-|---|---|
-| `data-centoui-slot` | Component-specific — e.g. `button`, `card-header`, `dialog-overlay` |
-| `data-centoui-variant` | `solid`, `soft`, `subtle`, `outline`, `ghost`, `link` |
-| `data-centoui-color` | `primary`, `secondary`, `error`, `success`, `warning`, `info`, `accent`, `neutral` |
-| `data-centoui-size` | `xs`, `sm`, `md`, `lg`, `xl` |
-| `data-centoui-state` | `idle`, `loading`, `disabled` |
+  | Attribute | Values |
+  |---|---|
+  | `data-centoui-slot` | Component-specific — e.g. `button`, `card-header`, `dialog-overlay` |
+  | `data-centoui-variant` | `solid`, `soft`, `subtle`, `outline`, `ghost`, `link` |
+  | `data-centoui-color` | `primary`, `secondary`, `error`, `success`, `warning`, `info`, `accent`, `neutral` |
+  | `data-centoui-size` | `xs`, `sm`, `md`, `lg`, `xl` |
+  | `data-centoui-state` | `idle`, `loading`, `disabled` |
 
-Treat these as stable public API — as intentional as Vue props. Document every `data-centoui-slot` value per component.
+  Treat these as stable public API — as intentional as Vue props. Document every `data-centoui-slot` value per component.
 
 ---
 
@@ -270,11 +258,12 @@ Treat these as stable public API — as intentional as Vue props. Document every
 
 ```
 src/components/<name>/
-  <name>.vue      ← Vue SFC
-  index.ts        ← tv() variants, TypeScript types, named re-exports
+  <name>.vue -> Vue SFC
+  index.ts   -> variants, TypeScript types, named re-exports
+  utils.ts   -> component utilities if any
 ```
 
-Compound components ship sub-parts directly — no convenience wrappers:
+Compound components ship sub-parts directly:
 
 ```
 src/components/card/
@@ -327,54 +316,16 @@ Always use `Primitive` from Reka UI as the root element — handles `as`, `asChi
 
 ---
 
-## CLI
-
-| Command | Purpose |
-|---|---|
-| `centoui init` | Generate `centoui.config.ts`, copy `centoui.css` to project |
-| `centoui add <component>` | Copy component files, install peer deps |
-| `centoui remove <component>` | Remove files + warn on dependents |
-
-```ts
-// centoui.config.ts
-import { defineConfig } from "centoui"
-
-export default defineConfig({
-  version: "1.0.0",
-  componentsDir: "./src/components/centoui",
-  themeFilePath: "./src/assets/css/centoui.css",
-  icons: {
-    check: "lucide:check",
-    close: "lucide:x",
-    menu: "lucide:menu",
-  },
-})
-```
-
----
-
-## Nuxt Module
-
-```ts
-export default defineNuxtConfig({
-  modules: ["centoui-nuxt"],
-})
-```
-
-Auto-imports all installed components and composables. Registers the CSS layer automatically.
-
----
-
 ## Testing
 
-Tests use **Vitest** with **jsdom**, **Vue Test Utils**, and **axe-core** for accessibility assertions. No browser runner.
+  Tests use **Vitest** with **jsdom**, **Vue Test Utils**, and **axe-core** for accessibility assertions. No browser runner.
 
 ```bash
 pnpm test        # run all tests
 pnpm test:watch  # watch mode
 ```
 
-Cover DOM structure, ARIA attributes, and visual states when adding features or fixing bugs.
+  Cover DOM structure, ARIA attributes, and visual states when adding features or fixing bugs.
 
 ---
 
@@ -395,12 +346,12 @@ pnpm ready
 
 ## Reporting Bugs
 
-Check existing issues first. When filing, include:
+  Check existing issues first. When filing, include:
 
-- A clear, descriptive title
-- Steps to reproduce
-- Expected vs. actual behaviour
-- Environment (OS, Node.js version, pnpm version)
+  - A clear, descriptive title
+  - Steps to reproduce
+  - Expected vs. actual behaviour
+  - Environment (OS, Node.js version, pnpm version)
 
 ---
 
@@ -412,7 +363,7 @@ Open an issue describing the problem you're solving, your proposed solution, and
 
 ## Questions?
 
-- [Discussions](https://github.com/favorodera/centoui/discussions)
-- [Documentation](https://centoui.vercel.app/)
+  - [Discussions](https://github.com/favorodera/centoui/discussions)
+  - [Documentation](https://centoui.vercel.app/)
 
-Thank you for contributing! 🎉
+  Thank you for contributing! 🎉
