@@ -13,8 +13,7 @@ export const CONFIG_FILE_NAME = 'centoui.config.ts'
  * The path ends at `src/` so that registry and component paths from the
  * registry (e.g. `components/button/button.vue`) can be appended directly.
  */
-export const CORE_SRC_BASE_URL = 'https://raw.githubusercontent.com/favorodera/centoui/main/packages/core/src'
-// TODO: Switch to: `https://raw.githubusercontent.com/favorodera/centoui/refs/tags/v${VERSION}/packages/core/src`
+export const CORE_SRC_BASE_URL = `https://raw.githubusercontent.com/favorodera/centoui/refs/tags/v${VERSION}/packages/core/src`
 
 /**
  * URL to the `registry/` directory inside core/src.
