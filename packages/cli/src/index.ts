@@ -3,6 +3,7 @@ import { defineCommand, runMain } from 'citty'
 import { VERSION } from './constants'
 import { init } from './commands/init'
 import { add } from './commands/add'
+import { remove } from './commands/remove'
 
 export * from './types'
 
@@ -11,6 +12,7 @@ const main = defineCommand({
   subCommands: {
     init,
     add,
+    remove,
   },
 })
 
