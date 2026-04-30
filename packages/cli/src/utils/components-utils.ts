@@ -3,60 +3,78 @@ import { join } from 'pathe'
 import type { CentoUIConfig } from '../types'
 
 /**
- * Gets all installed components by scanning the components directory.
- * Assumes each subdirectory corresponds to a component name.
+ * Scans the configured components directory and returns a sorted list of
+ * installed component names.
  *
- * @param config - CentoUI configuration
- * @param cwd - Current working directory
- * @returns Sorted array of installed component names
- * @throws If the components directory cannot be read or any error occurs
+ * Each direct subdirectory of `config.componentsDir` is treated as one
+ * installed component. Non-directory entries (loose files) are ignored.
+ *
+ * @param config - The loaded CentoUI project configuration.
+ * @param cwd - Absolute path to the project root.
+ * @returns Sorted array of installed component names, or an empty array if
+ *          the components directory does not exist yet.
+ * @throws If the directory exists but cannot be read.
  */
-export async function getInstalledComponents(config: CentoUIConfig, cwd: string) {
-  // Get the absolute path to the components directory.
+export async function listInstalledComponentNames(
+  config: CentoUIConfig,
+  cwd: string,
+) {
   const componentsDir = join(cwd, config.componentsDir)
 
-  // If the components directory does not exist, return an empty array.
-  const componentsDirExists = await fsExtra.pathExists(componentsDir)
-  if (!componentsDirExists) {
-    return []
-  }
-
   try {
-    // Get all components in the components directory.
-    const components = await fsExtra.readdir(componentsDir, { withFileTypes: true })
+    const dirExists = await fsExtra.pathExists(componentsDir)
+    if (!dirExists) return []
 
-    // Filter out non-directory entries and get component names.
-    const componentsNames = components
-      .filter(component => component.isDirectory())
-      .map(component => component.name)
+    const entries = await fsExtra.readdir(componentsDir, { withFileTypes: true })
 
-    // Return sorted component names.
-    return componentsNames.sort()
+    return entries
+      .filter(entry => entry.isDirectory())
+      .map(entry => entry.name)
+      .sort()
   } catch (error) {
-    throw new Error(`Failed to get installed components: ${error}`)
+    throw new Error(
+      `[listInstalledComponentNames] Failed to read components directory "${componentsDir}": ${error}`,
+    )
   }
 }
 
 /**
- * Resolves the absolute path to a specific component directory.
+ * Returns the absolute path to a component's installation directory inside
+ * the user's project.
  *
- * @param name - The name of the component (kebab-case)
- * @param config - CentoUI configuration
- * @param cwd - Current working directory
- * @returns The absolute path to the component directory
+ * The directory may or may not exist yet — this function does not check.
+ * Use {@link checkIsComponentInstalled} if you need to verify existence.
+ *
+ * @param componentName - The component name in kebab-case (e.g. `"button"`).
+ * @param config - The loaded CentoUI project configuration.
+ * @param cwd - Absolute path to the project root.
  */
-export function getComponentPath(name: string, config: CentoUIConfig, cwd: string) {
-  return join(cwd, config.componentsDir, name)
+export function resolveComponentInstallDir(
+  componentName: string,
+  config: CentoUIConfig,
+  cwd: string,
+) {
+  return join(cwd, config.componentsDir, componentName)
 }
 
 /**
- * Checks if a specific component is installed.
+ * Checks whether a component is currently installed by testing for the
+ * existence of its installation directory.
  *
- * @param name - The name of the component to check
- * @param config - CentoUI configuration
- * @param cwd - Current working directory
- * @returns True if the component is installed, false otherwise
+ * @param componentName - The component name in kebab-case (e.g. `"button"`).
+ * @param config - The loaded CentoUI project configuration.
+ * @param cwd - Absolute path to the project root.
+ * @returns `true` if the component directory exists, `false` otherwise.
  */
-export async function isComponentInstalled(name: string, config: CentoUIConfig, cwd: string) {
-  return await fsExtra.pathExists(getComponentPath(name, config, cwd))
+export async function checkIsComponentInstalled(
+  componentName: string,
+  config: CentoUIConfig,
+  cwd: string,
+) {
+  const componentInstallDir = resolveComponentInstallDir(componentName, config, cwd)
+  try {
+    return fsExtra.pathExists(componentInstallDir)
+  } catch (error) {
+    throw new Error(`[checkIsComponentInstalled] Failed to check if component "${componentName}" is installed: ${error}`)
+  }
 }
