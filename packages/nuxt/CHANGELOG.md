@@ -1,5 +1,18 @@
 # Changelog
 
+## v1.0.0-alpha.6...v1.0.0-alpha.7
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.6...v1.0.0-alpha.7)
+
+### Chores
+
+- Bump version to alpha.6 ([95231b0](https://github.com/favorodera/centoui/commit/95231b0))
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.4...v1.0.0-alpha.5
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.4...v1.0.0-alpha.5)
