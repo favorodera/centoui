@@ -4,7 +4,7 @@
   "title": "CentoUI Global Registry",
   "description": "Global configuration for the CentoUI registry. Defines properties that every CentoUI project must have.",
   "type": "object",
-  "required": ["packageDeps"],
+  "required": [ "packageDeps" ],
   "additionalProperties": false,
   "properties": {
     "$schema": {
