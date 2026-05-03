@@ -248,7 +248,7 @@ compoundVariants    → bg-{color}, border-{color}, hover/active backgrounds —
   | `data-centoui-variant` | `solid`, `soft`, `subtle`, `outline`, `ghost`, `link` |
   | `data-centoui-color` | `primary`, `secondary`, `error`, `success`, `warning`, `info`, `accent`, `neutral` |
   | `data-centoui-size` | `xs`, `sm`, `md`, `lg`, `xl` |
-  | `data-centoui-state` | `idle`, `loading`, `disabled` |
+  | `data-centoui-[state]` | `idle`, `loading`, `disabled` |
 
   Treat these as stable public API — as intentional as Vue props. Document every `data-centoui-slot` value per component.
 
