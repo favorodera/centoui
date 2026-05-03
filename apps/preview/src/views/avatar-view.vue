@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import { AvatarRoot, AvatarImage, AvatarFallback } from '../../../../packages/core/src/components/avatar'
+import { AvatarRoot, AvatarImage, AvatarFallback, getInitials } from '../../../../packages/core/src/components/avatar'
 import { Icon } from '@iconify/vue'
 import { usePreview } from '../utils/use-preview'
 import type { PropsSchema } from '../components/props-panel.vue'
@@ -34,7 +34,7 @@ const avatarPropsSchema: PropsSchema = {
   textFallback: {
     type: 'string',
     label: 'Text Fallback',
-    default: '',
+    default: 'Favour Emeka',
   },
 }
 
@@ -56,7 +56,7 @@ onMounted(() => {
           v-if="values.iconFallback"
           :icon="values.iconFallback"
         />
-        <span v-else-if="values.textFallback">{{ values.textFallback }}</span>
+        <span v-else-if="values.textFallback">{{ getInitials(values.textFallback) }}</span>
       </AvatarFallback>
     </AvatarRoot>
 
