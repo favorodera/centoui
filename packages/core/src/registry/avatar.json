@@ -7,7 +7,7 @@
     "components/avatar/avatar-image.vue",
     "components/avatar/avatar-fallback.vue",
     "components/avatar/avatar-utils.ts",
-    "components/avatar/avatar-index.ts"
+    "components/avatar/index.ts"
   ],
   "componentDeps": [ ],
   "packageDeps": { }
