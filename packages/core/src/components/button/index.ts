@@ -167,7 +167,8 @@ export const buttonVariants = tv({
       color: 'accent',
       class: {
         root: [
-          'bg-accent', 'text-accent-foreground'],
+          'bg-accent', 'text-accent-foreground',
+        ],
       },
     },
     {
