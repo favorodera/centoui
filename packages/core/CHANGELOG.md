@@ -1,5 +1,18 @@
 # Changelog
 
+## v1.0.0-alpha.5...v1.0.0-alpha.6
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.5...v1.0.0-alpha.6)
+
+### Refactors
+
+- Rename avatar-index.ts to index.ts ([09e7517](https://github.com/favorodera/centoui/commit/09e7517))
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.4...v1.0.0-alpha.5
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.4...v1.0.0-alpha.5)
