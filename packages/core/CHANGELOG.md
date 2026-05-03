@@ -1,5 +1,53 @@
 # Changelog
 
+## v1.0.0-alpha.1...v1.0.0-alpha.2
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.1...v1.0.0-alpha.2)
+
+### Added
+
+- Add AvatarRoot component ([fd80b97](https://github.com/favorodera/centoui/commit/fd80b97))
+- Add Avatar component ([e5e1953](https://github.com/favorodera/centoui/commit/e5e1953))
+- Add avatar fallback component ([ce4d047](https://github.com/favorodera/centoui/commit/ce4d047))
+- Add AvatarImage component ([a3ab91d](https://github.com/favorodera/centoui/commit/a3ab91d))
+- Add disabled prop and slot to AvatarRoot component ([10a7ee9](https://github.com/favorodera/centoui/commit/10a7ee9))
+- Enhance Avatar component with comprehensive styling and props ([9f455b2](https://github.com/favorodera/centoui/commit/9f455b2))
+- Export getInitials utility and refine avatar styles ([6223e43](https://github.com/favorodera/centoui/commit/6223e43))
+- Add getInitials utility for avatar display ([4ed091d](https://github.com/favorodera/centoui/commit/4ed091d))
+- Add avatar component ([2a222f8](https://github.com/favorodera/centoui/commit/2a222f8))
+- Add avatar component ([187c257](https://github.com/favorodera/centoui/commit/187c257))
+- Add AxeMatchers to Vitest setup ([44888d4](https://github.com/favorodera/centoui/commit/44888d4))
+
+### Fixed
+
+- Ensure "packageDeps" is correctly marked as required in globals.json ([b4391dd](https://github.com/favorodera/centoui/commit/b4391dd))
+
+### Refactors
+
+- Use reactivePick instead of reactiveOmit in button component ([b0db238](https://github.com/favorodera/centoui/commit/b0db238))
+- Remove redundant aria-disabled styling from button ([8dccf1a](https://github.com/favorodera/centoui/commit/8dccf1a))
+
+### Tests
+
+- Add avatar component accessibility tests ([9e430d7](https://github.com/favorodera/centoui/commit/9e430d7))
+- Improve button accessibility tests ([b6a7b60](https://github.com/favorodera/centoui/commit/b6a7b60))
+- Remove button snapshot tests ([e0d8b36](https://github.com/favorodera/centoui/commit/e0d8b36))
+
+  The button component has been refactored and its tests have been updated to use a different testing strategy. This commit removes the old snapshot tests to avoid confusion and maintain a clean test suite.
+
+
+### Styling
+
+- Format button accent variant styles ([c214e5e](https://github.com/favorodera/centoui/commit/c214e5e))
+- Refine OKLCH color palette ([062fb00](https://github.com/favorodera/centoui/commit/062fb00))
+- Refine core color palette values ([d2d05bc](https://github.com/favorodera/centoui/commit/d2d05bc))
+- Format button registry JSON ([4f8d95b](https://github.com/favorodera/centoui/commit/4f8d95b))
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.0...v1.0.0-alpha.1
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.0...v1.0.0-alpha.1)
