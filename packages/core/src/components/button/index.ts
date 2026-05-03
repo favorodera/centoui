@@ -35,7 +35,7 @@ export const buttonVariants = tv({
       },
       link: {
         root: [
-          'h-auto bg-transparent p-0 underline-offset-4',
+          'bg-transparent p-0 underline-offset-4',
           'hover:underline',
         ],
       },
@@ -135,6 +135,12 @@ export const buttonVariants = tv({
           'text-base',
           '[&_svg]:size-6',
         ],
+      },
+    },
+
+    square: {
+      true: {
+        root: 'aspect-square',
       },
     },
   },
@@ -539,12 +545,19 @@ export const buttonVariants = tv({
         ],
       },
     },
+
+    { square: true, size: 'xs', class: { root: 'p-1' } },
+    { square: true, size: 'sm', class: { root: 'p-1.5' } },
+    { square: true, size: 'md', class: { root: 'p-2' } },
+    { square: true, size: 'lg', class: { root: 'p-2.5' } },
+    { square: true, size: 'xl', class: { root: 'p-3' } },
   ],
 
   defaultVariants: {
     variant: 'solid',
     color: 'primary',
     size: 'md',
+    square: false,
   },
 })
 
@@ -568,6 +581,12 @@ export type ButtonProps = PrimitiveProps & /* @vue-ignore */ ButtonHTMLAttribute
    * @default 'md'
    */
   size?: ButtonVariants['size']
+  /**
+ * Squares the button by matching horizontal padding to vertical.
+ * Intended for icon-only buttons.
+ * @default false
+ */
+  square?: ButtonVariants['square']
   /** Custom class to apply to the root element. */
   class?: ClassValue
 }
