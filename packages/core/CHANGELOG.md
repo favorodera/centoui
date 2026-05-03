@@ -1,5 +1,22 @@
 # Changelog
 
+## v1.0.0-alpha.2...v1.0.0-alpha.3
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.2...v1.0.0-alpha.3)
+
+### Added
+
+- Add @iconify/vue dependency to registry ([1c107fc](https://github.com/favorodera/centoui/commit/1c107fc))
+
+### Chores
+
+- Add @iconify/vue dependency ([43befd3](https://github.com/favorodera/centoui/commit/43befd3))
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.1...v1.0.0-alpha.2
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.1...v1.0.0-alpha.2)
