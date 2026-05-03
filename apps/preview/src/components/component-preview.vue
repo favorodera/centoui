@@ -5,6 +5,7 @@ import { Icon } from '@iconify/vue'
 import { useDark, useToggle, useStorage } from '@vueuse/core'
 import { usePreview } from '../utils/use-preview'
 import PropsPanel from './props-panel.vue'
+import { Button } from '../../../../packages/core/src/components/button'
 
 const router = useRouter()
 const route = useRoute()
@@ -142,8 +143,8 @@ onUnmounted(() => {
         </span>
         <span
           class="
-            rounded-sm bg-muted px-1.5 py-0.5 text-[10px]
-            text-muted-foreground tabular-nums
+            rounded-sm bg-muted px-1.5 py-0.5 text-[10px] text-muted-foreground
+            tabular-nums
           "
         >
           {{ componentList.length }}
@@ -151,26 +152,20 @@ onUnmounted(() => {
       </div>
 
       <!-- Navigation List -->
-      <nav class="flex-1 space-y-0.5 overflow-y-auto p-2">
-        <RouterLink
+      <nav class="flex-1 space-y-3 overflow-y-auto p-2">
+        <Button
           v-for="component in componentList"
           :key="component.path"
-          :to="component.path"
-          class="
-            group flex items-center gap-3 rounded-sm px-3 py-2 text-sm
-            font-medium transition-all
-          "
-          :class="[
-            $route.path === component.path
-              ? 'bg-primary text-primary-foreground'
-              : `
-                text-muted-foreground
-                hover:bg-muted hover:text-foreground
-              `
-          ]"
+          class="w-full justify-start"
+          as-child
+          :variant="$route.path === component.path ? 'solid' : 'ghost'"
         >
-          <span class="truncate">{{ component.label }}</span>
-        </RouterLink>
+          <RouterLink
+            :to="component.path"
+          >
+            {{ component.label }}
+          </RouterLink>
+        </Button>
       </nav>
 
       <!-- Sidebar Footer -->
@@ -182,16 +177,14 @@ onUnmounted(() => {
         >
           <kbd
             class="
-              rounded-sm border border-muted bg-muted px-1.5 py-0.5
-              font-mono
+              rounded-sm border border-muted bg-muted px-1.5 py-0.5 font-mono
             "
           >
             ←
           </kbd>
           <kbd
             class="
-              rounded-sm border border-muted bg-muted px-1.5 py-0.5
-              font-mono
+              rounded-sm border border-muted bg-muted px-1.5 py-0.5 font-mono
             "
           >
             →
@@ -210,77 +203,54 @@ onUnmounted(() => {
           border-muted bg-surface px-4
         "
       >
-        <button
-          type="button"
-          class="
-            rounded-sm p-1.5 text-muted-foreground transition-colors
-            outline-none
-            hover:bg-muted hover:text-foreground
-            focus-visible:ring-1 focus-visible:ring-primary
-          "
+        <Button
           :title="isSidebarVisible ? 'Hide Sidebar (Ctrl+B)' : 'Show Sidebar (Ctrl+B)'"
+          size="sm"
+          variant="ghost"
           @click="toggleSidebar"
         >
           <Icon
             :icon="isSidebarVisible ? 'lucide:panel-left-close' : 'lucide:panel-left-open'"
-            class="size-4"
           />
-        </button>
+        </Button>
 
         <div class="flex shrink-0 items-center gap-2">
           <!-- Dark Mode Toggle -->
-          <button
-            type="button"
-            class="
-              rounded-sm p-1.5 text-muted-foreground transition-colors
-              outline-none
-              hover:bg-muted hover:text-foreground
-              focus-visible:ring-1 focus-visible:ring-primary
-            "
+          <Button
+            size="sm"
+            variant="ghost"
             @click="toggleDarkMode()"
           >
             <Icon
               :icon="isDark ? 'lucide:sun' : 'lucide:moon'"
-              class="size-4"
             />
-          </button>
+          </Button>
 
           <div class="mx-1 h-4 w-px bg-muted" />
 
           <!-- Component Pagination Controls -->
           <div class="flex items-center gap-1">
-            <button
-              type="button"
+            <Button
+              size="sm"
+              variant="ghost"
               :disabled="activeComponentIndex <= 0"
-              class="
-                rounded-sm p-1.5 text-muted-foreground transition-colors
-                outline-none
-                hover:bg-muted hover:text-foreground
-                disabled:pointer-events-none disabled:opacity-30
-              "
               @click="navigateToComponent(-1)"
             >
               <Icon
                 icon="lucide:chevron-left"
-                class="size-4"
               />
-            </button>
-            <button
-              type="button"
+            </Button>
+
+            <Button
+              size="sm"
+              variant="ghost"
               :disabled="activeComponentIndex >= componentList.length - 1"
-              class="
-                rounded-sm p-1.5 text-muted-foreground transition-colors
-                outline-none
-                hover:bg-muted hover:text-foreground
-                disabled:pointer-events-none disabled:opacity-30
-              "
               @click="navigateToComponent(1)"
             >
               <Icon
                 icon="lucide:chevron-right"
-                class="size-4"
               />
-            </button>
+            </Button>
           </div>
         </div>
       </header>
