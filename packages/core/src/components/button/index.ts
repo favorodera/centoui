@@ -9,7 +9,6 @@ export const buttonVariants = tv({
       'rounded-md font-normal tracking-wide whitespace-nowrap transition-all',
       'outline-none select-none',
       'disabled:pointer-events-none disabled:opacity-40',
-      'aria-disabled:pointer-events-none aria-disabled:opacity-40',
       '[&_svg]:pointer-events-none [&_svg]:shrink-0',
       'active:scale-98 active:opacity-80',
       'hover:opacity-90',
