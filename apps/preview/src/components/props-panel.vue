@@ -165,13 +165,14 @@ function getActiveValue(key: string) {
           <div
             v-if="entry.type === 'boolean'"
             class="
-              flex items-center justify-between rounded-sm border
-              border-muted bg-muted p-2
+              flex items-center justify-between rounded-sm border border-muted
+              bg-muted p-2
             "
           >
             <span class="text-xs text-muted-foreground">
               {{ getActiveValue(entry.key) ? 'Enabled' : 'Disabled' }}
             </span>
+        
             <button
               :id="`prop-${entry.key}`"
               type="button"
@@ -241,8 +242,8 @@ function getActiveValue(key: string) {
             :value="getActiveValue(entry.key)"
             placeholder="No value set"
             class="
-              h-9 w-full rounded-sm border border-muted bg-muted px-3
-              text-xs transition-all outline-none
+              h-9 w-full rounded-sm border border-muted bg-muted px-3 text-xs
+              transition-all outline-none
               placeholder:text-muted-foreground
               hover:border-muted
               focus:border-primary focus:ring-1 focus:ring-primary
@@ -268,8 +269,8 @@ function getActiveValue(key: string) {
               :max="Number(entry.options?.[1] ?? 100)"
               :step="Number(entry.options?.[2] ?? 1)"
               class="
-                h-1.5 w-full cursor-pointer rounded-full bg-muted
-                accent-primary outline-none
+                h-1.5 w-full cursor-pointer rounded-full bg-muted accent-primary
+                outline-none
               "
               @input="handleValueUpdate(entry.key, Number(($event.target as HTMLInputElement).value))"
             >
