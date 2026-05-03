@@ -26,8 +26,8 @@ export default defineConfig({
     style: { title: 'Styling', semver: 'patch' },
     refactor: { title: 'Refactors', semver: 'patch' },
     test: { title: 'Tests', semver: 'patch' },
-    build: false,
-    ci: false,
-    chore: false,
+    build: { title: 'Builds', semver: 'patch' },
+    ci: { title: 'Continuous Integrations', semver: 'patch' },
+    chore: { title: 'Chores', semver: 'patch' },
   },
 })
