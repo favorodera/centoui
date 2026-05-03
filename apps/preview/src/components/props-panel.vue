@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { Icon } from '@iconify/vue'
+import { Button } from '../../../../packages/core/src/components/button'
 
 /**
  * Supported input control types for property editing.
@@ -165,7 +166,7 @@ function getActiveValue(key: string) {
             v-if="entry.type === 'boolean'"
             class="
               flex items-center justify-between rounded-sm border
-              border-muted/50 bg-secondary/30 p-2
+              border-muted bg-muted p-2
             "
           >
             <span class="text-xs text-muted-foreground">
@@ -208,7 +209,7 @@ function getActiveValue(key: string) {
               :value="getActiveValue(entry.key)"
               class="
                 h-9 w-full cursor-pointer appearance-none rounded-sm border
-                border-muted bg-secondary pr-8 pl-3 text-xs transition-all
+                border-muted bg-muted pr-8 pl-3 text-xs transition-all
                 outline-none
                 hover:border-muted
                 focus:border-primary focus:ring-1 focus:ring-primary
@@ -240,7 +241,7 @@ function getActiveValue(key: string) {
             :value="getActiveValue(entry.key)"
             placeholder="No value set"
             class="
-              h-9 w-full rounded-sm border border-muted bg-secondary px-3
+              h-9 w-full rounded-sm border border-muted bg-muted px-3
               text-xs transition-all outline-none
               placeholder:text-muted-foreground
               hover:border-muted
@@ -267,7 +268,7 @@ function getActiveValue(key: string) {
               :max="Number(entry.options?.[1] ?? 100)"
               :step="Number(entry.options?.[2] ?? 1)"
               class="
-                h-1.5 w-full cursor-pointer rounded-full bg-secondary
+                h-1.5 w-full cursor-pointer rounded-full bg-muted
                 accent-primary outline-none
               "
               @input="handleValueUpdate(entry.key, Number(($event.target as HTMLInputElement).value))"
@@ -285,24 +286,14 @@ function getActiveValue(key: string) {
     </div>
 
     <!-- Footer Action -->
-    <div class="shrink-0 border-t border-muted bg-surface/30 p-4">
-      <button
-        type="button"
-        class="
-          flex h-8 w-full items-center justify-center gap-2 rounded-sm border
-          border-dashed border-muted text-[11px] font-bold tracking-wider
-          text-muted-foreground uppercase transition-all outline-none
-          hover:border-primary hover:bg-primary/30 hover:text-primary
-          focus-visible:ring-1 focus-visible:ring-primary
-        "
+    <div class="shrink-0 border-t border-muted bg-surface p-4">
+      <Button
+        class="w-full"
+        color="secondary"
         @click="emit('update:values', Object.fromEntries(propEntries.map(entry => [entry.key, entry.default])))"
       >
-        <Icon
-          icon="lucide:refresh-ccw"
-          class="text-xs"
-        />
         Reset to defaults
-      </button>
+      </Button>
     </div>
   </aside>
 </template>

@@ -142,7 +142,7 @@ onUnmounted(() => {
         </span>
         <span
           class="
-            rounded-sm bg-secondary px-1.5 py-0.5 text-[10px]
+            rounded-sm bg-muted px-1.5 py-0.5 text-[10px]
             text-muted-foreground tabular-nums
           "
         >
@@ -165,17 +165,10 @@ onUnmounted(() => {
               ? 'bg-primary text-primary-foreground'
               : `
                 text-muted-foreground
-                hover:bg-secondary hover:text-foreground
+                hover:bg-muted hover:text-foreground
               `
           ]"
         >
-          <Icon
-            icon="lucide:box"
-            class="
-              size-4 transition-transform
-              group-hover:scale-110
-            "
-          />
           <span class="truncate">{{ component.label }}</span>
         </RouterLink>
       </nav>
@@ -184,12 +177,12 @@ onUnmounted(() => {
       <div class="border-t border-muted p-4">
         <div
           class="
-            flex items-center gap-2 text-[10px] text-muted-foreground opacity-60
+            flex items-center gap-2 text-xs text-muted-foreground opacity-60
           "
         >
           <kbd
             class="
-              rounded-sm border border-muted bg-secondary px-1.5 py-0.5
+              rounded-sm border border-muted bg-muted px-1.5 py-0.5
               font-mono
             "
           >
@@ -197,7 +190,7 @@ onUnmounted(() => {
           </kbd>
           <kbd
             class="
-              rounded-sm border border-muted bg-secondary px-1.5 py-0.5
+              rounded-sm border border-muted bg-muted px-1.5 py-0.5
               font-mono
             "
           >
@@ -222,7 +215,7 @@ onUnmounted(() => {
           class="
             rounded-sm p-1.5 text-muted-foreground transition-colors
             outline-none
-            hover:bg-secondary hover:text-foreground
+            hover:bg-muted hover:text-foreground
             focus-visible:ring-1 focus-visible:ring-primary
           "
           :title="isSidebarVisible ? 'Hide Sidebar (Ctrl+B)' : 'Show Sidebar (Ctrl+B)'"
@@ -241,7 +234,7 @@ onUnmounted(() => {
             class="
               rounded-sm p-1.5 text-muted-foreground transition-colors
               outline-none
-              hover:bg-secondary hover:text-foreground
+              hover:bg-muted hover:text-foreground
               focus-visible:ring-1 focus-visible:ring-primary
             "
             @click="toggleDarkMode()"
@@ -262,7 +255,7 @@ onUnmounted(() => {
               class="
                 rounded-sm p-1.5 text-muted-foreground transition-colors
                 outline-none
-                hover:bg-secondary hover:text-foreground
+                hover:bg-muted hover:text-foreground
                 disabled:pointer-events-none disabled:opacity-30
               "
               @click="navigateToComponent(-1)"
@@ -278,7 +271,7 @@ onUnmounted(() => {
               class="
                 rounded-sm p-1.5 text-muted-foreground transition-colors
                 outline-none
-                hover:bg-secondary hover:text-foreground
+                hover:bg-muted hover:text-foreground
                 disabled:pointer-events-none disabled:opacity-30
               "
               @click="navigateToComponent(1)"
