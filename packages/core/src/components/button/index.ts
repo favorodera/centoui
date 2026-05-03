@@ -546,6 +546,7 @@ export const buttonVariants = tv({
       },
     },
 
+    // Square
     { square: true, size: 'xs', class: { root: 'p-1' } },
     { square: true, size: 'sm', class: { root: 'p-1.5' } },
     { square: true, size: 'md', class: { root: 'p-2' } },
