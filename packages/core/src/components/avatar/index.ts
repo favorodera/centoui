@@ -98,7 +98,7 @@ export { default as AvatarFallback } from './avatar-fallback.vue'
 export { default as AvatarImage } from './avatar-image.vue'
 export { default as AvatarRoot } from './avatar-root.vue'
 
-export { getInitials } from './utils'
+export { getInitials } from './avatar-utils'
 
 export type AvatarVariants = VariantProps<typeof avatarVariants>
 
