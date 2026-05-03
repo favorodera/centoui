@@ -3,28 +3,28 @@
 
 :root {
   /* Base surface of the UI (page, canvas) */
-  --background: oklch(0.984 0.004 243);
-  --foreground: oklch(0.148 0.016 243);
+  --background: oklch(0.9900 0 0);
+  --foreground: oklch(0 0 0);
 
   /* Elevated elements like cards, modals, drawers */
-  --surface: oklch(1.000 0.000 0);
+  --surface: oklch(1 0 0);
   --overlay: oklch(0 0 0 / 40%);
 
   /* Secondary text, placeholders, captions */
-  --muted: oklch(0.922 0.009 243);
-  --muted-foreground: oklch(0.495 0.012 243);
+  --muted: oklch(0.9700 0 0);
+  --muted-foreground: oklch(0.4400 0 0);
 
   /* Main brand color — CTAs, key actions */
-  --primary: oklch(0.565 0.148 234);
-  --primary-foreground: oklch(0.985 0.002 234);
+  --primary: oklch(0 0 0);
+  --primary-foreground: oklch(1 0 0);
 
   /* Supporting brand color — secondary actions */
-  --secondary: oklch(0.872 0.014 243);
-  --secondary-foreground: oklch(0.265 0.018 243);
+  --secondary: oklch(0.9400 0 0);
+  --secondary-foreground: oklch(0 0 0);
 
   /* Highlight color — decorative, hover states */
-  --accent: oklch(0.615 0.132 270);
-  --accent-foreground: oklch(0.985 0.002 270);
+  --accent: oklch(0.9400 0 0);
+  --accent-foreground: oklch(0 0 0);
 
   /* Neutral color — subtle non-branded actions */
   --neutral: oklch(0.552 0.006 243);
@@ -38,9 +38,9 @@
   --warning: oklch(0.718 0.144 70);
   --warning-foreground: oklch(0.162 0.020 70);
 
-  /* Destructive states — failures, deletions */
-  --error: oklch(0.598 0.172 24);
-  --error-foreground: oklch(0.985 0.002 24);
+  /* error states — failures, deletions */
+  --error: oklch(0.6300 0.1900 23.0300);
+  --error-foreground: oklch(1 0 0);
 
   /* Neutral informational messages */
   --info: oklch(0.558 0.138 220);
@@ -48,23 +48,23 @@
 }
 
 .dark {
-  --background: oklch(0.148 0.016 243);
-  --foreground: oklch(0.942 0.006 243);
+  --background: oklch(0 0 0);
+  --foreground: oklch(1 0 0);
 
-  --surface: oklch(0.198 0.016 243);
+  --surface: oklch(0.18 0 0);
   --overlay: oklch(0 0 0 / 60%);
 
-  --muted: oklch(0.278 0.018 243);
-  --muted-foreground: oklch(0.695 0.010 243);
+  --muted: oklch(0.2300 0 0);
+  --muted-foreground: oklch(0.7200 0 0);
 
-  --primary: oklch(0.628 0.148 234);
-  --primary-foreground: oklch(0.985 0.002 234);
+  --primary: oklch(1 0 0);
+  --primary-foreground: oklch(0 0 0);
 
-  --secondary: oklch(0.338 0.018 243);
-  --secondary-foreground: oklch(0.878 0.008 243);
+  --secondary: oklch(0.2500 0 0);
+  --secondary-foreground: oklch(1 0 0);
 
-  --accent: oklch(0.658 0.128 270);
-  --accent-foreground: oklch(0.985 0.002 270);
+  --accent: oklch(0.3200 0 0);
+  --accent-foreground: oklch(1 0 0);
 
   --neutral: oklch(0.498 0.006 243);
   --neutral-foreground: oklch(0.985 0.000 0);
@@ -75,8 +75,8 @@
   --warning: oklch(0.718 0.144 70);
   --warning-foreground: oklch(0.958 0.010 70);
 
-  --error: oklch(0.638 0.165 24);
-  --error-foreground: oklch(0.985 0.002 24);
+  --error: oklch(0.6900 0.2000 23.9100);
+  --error-foreground: oklch(0 0 0);
 
   --info: oklch(0.598 0.132 220);
   --info-foreground: oklch(0.985 0.002 220);
