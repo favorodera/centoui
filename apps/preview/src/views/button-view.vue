@@ -32,6 +32,11 @@ const buttonPropsSchema: PropsSchema = {
     options: ['xs', 'sm', 'md', 'lg', 'xl'],
     default: 'md',
   },
+  square: {
+    type: 'boolean',
+    label: 'Square',
+    default: false,
+  },
   disabled: {
     type: 'boolean',
     label: 'Disabled',
@@ -58,6 +63,7 @@ onMounted(() => {
       :color="values.color"
       :size="values.size"
       :disabled="values.disabled"
+      :square="values.square"
     >
       <Icon
         v-if="values.icon"
