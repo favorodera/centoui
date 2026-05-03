@@ -162,7 +162,7 @@ onUnmounted(() => {
           "
           :class="[
             $route.path === component.path
-              ? 'bg-primary/30 text-primary-foreground'
+              ? 'bg-primary text-primary-foreground'
               : `
                 text-muted-foreground
                 hover:bg-secondary hover:text-foreground

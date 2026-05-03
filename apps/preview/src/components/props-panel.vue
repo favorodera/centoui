@@ -111,7 +111,7 @@ function getActiveValue(key: string) {
     <!-- Header -->
     <div
       class="
-        sticky top-0 z-10 shrink-0 border-b border-muted bg-surface/50 px-4 py-3
+        sticky top-0 z-10 shrink-0 border-b border-muted bg-surface px-4 py-3
         backdrop-blur-sm
       "
     >
