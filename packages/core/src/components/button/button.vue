@@ -20,6 +20,7 @@ const styles = computed(() => {
     variant: props.variant,
     color: props.color,
     size: props.size,
+    square: props.square,
   })
 
   return root({ class: props.class })
