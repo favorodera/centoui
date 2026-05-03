@@ -207,6 +207,7 @@ onUnmounted(() => {
           :title="isSidebarVisible ? 'Hide Sidebar (Ctrl+B)' : 'Show Sidebar (Ctrl+B)'"
           size="sm"
           variant="ghost"
+          :square="true"
           @click="toggleSidebar"
         >
           <Icon
@@ -219,6 +220,7 @@ onUnmounted(() => {
           <Button
             size="sm"
             variant="ghost"
+            :square="true"
             @click="toggleDarkMode()"
           >
             <Icon
@@ -232,6 +234,7 @@ onUnmounted(() => {
           <div class="flex items-center gap-1">
             <Button
               size="sm"
+              :square="true"
               variant="ghost"
               :disabled="activeComponentIndex <= 0"
               @click="navigateToComponent(-1)"
@@ -244,6 +247,7 @@ onUnmounted(() => {
             <Button
               size="sm"
               variant="ghost"
+              :square="true"
               :disabled="activeComponentIndex >= componentList.length - 1"
               @click="navigateToComponent(1)"
             >
