@@ -15,20 +15,20 @@
   --muted-foreground: oklch(0.4400 0 0);
 
   /* Main brand color — CTAs, key actions */
-  --primary: oklch(0 0 0);
-  --primary-foreground: oklch(1 0 0);
+  --primary: oklch(0.15 0 0);
+  --primary-foreground: oklch(0.99 0 0);
 
   /* Supporting brand color — secondary actions */
-  --secondary: oklch(0.9400 0 0);
-  --secondary-foreground: oklch(0 0 0);
+  --secondary: oklch(0.44 0 0);
+  --secondary-foreground: oklch(0.99 0 0);
 
   /* Highlight color — decorative, hover states */
-  --accent: oklch(0.9400 0 0);
-  --accent-foreground: oklch(0 0 0);
+  --accent: oklch(0.50 0.10 285);
+  --accent-foreground: oklch(0.99 0 0);
 
   /* Neutral color — subtle non-branded actions */
-  --neutral: oklch(0.552 0.006 243);
-  --neutral-foreground: oklch(0.985 0.000 0);
+  --neutral: oklch(0.42 0.016 243);
+  --neutral-foreground: oklch(0.99 0 0);
 
   /* Positive states — confirmations, completed tasks */
   --success: oklch(0.548 0.124 158);
@@ -57,17 +57,17 @@
   --muted: oklch(0.2300 0 0);
   --muted-foreground: oklch(0.7200 0 0);
 
-  --primary: oklch(1 0 0);
-  --primary-foreground: oklch(0 0 0);
+  --primary: oklch(0.95 0 0);
+  --primary-foreground: oklch(0.10 0 0);
 
-  --secondary: oklch(0.2500 0 0);
-  --secondary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.72 0 0);
+  --secondary-foreground: oklch(0.10 0 0);
 
-  --accent: oklch(0.3200 0 0);
-  --accent-foreground: oklch(1 0 0);
+  --accent: oklch(0.74 0.10 285);
+  --accent-foreground: oklch(0.10 0 0);
 
-  --neutral: oklch(0.498 0.006 243);
-  --neutral-foreground: oklch(0.985 0.000 0);
+  --neutral: oklch(0.62 0.016 243);
+  --neutral-foreground: oklch(0.10 0 0);
 
   --success: oklch(0.578 0.124 158);
   --success-foreground: oklch(0.985 0.002 158);
