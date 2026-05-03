@@ -3,7 +3,7 @@
   "type": "module",
   "description": "Precise vue components",
   "private": false,
-  "version": "1.0.0-alpha.3",
+  "version": "1.0.0-alpha.4",
   "author": "Favour Emeka <favorodera@gmail.com>",
   "license": "MIT",
   "homepage": "https://centoui.vercel.app",

@@ -1,5 +1,35 @@
 # Changelog
 
+## v1.0.0-alpha.3...v1.0.0-alpha.4
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.3...v1.0.0-alpha.4)
+
+### Added
+
+- Add getInitials utility function for avatar component ([7ab4d6c](https://github.com/favorodera/centoui/commit/7ab4d6c))
+- Add square prop to button component ([cdd62e4](https://github.com/favorodera/centoui/commit/cdd62e4))
+- Add square prop to button component ([c1ad714](https://github.com/favorodera/centoui/commit/c1ad714))
+- Add square prop to Button component ([e120f8c](https://github.com/favorodera/centoui/commit/e120f8c))
+- Add square variant to button component ([2791fc4](https://github.com/favorodera/centoui/commit/2791fc4))
+
+### Refactors
+
+- Replace reactivePick with reactiveOmit for delegated props ([c441f05](https://github.com/favorodera/centoui/commit/c441f05))
+
+### Documentation
+
+- Refine design system documentation and contributing guide ([4257e29](https://github.com/favorodera/centoui/commit/4257e29))
+
+### Styling
+
+- Make buttons square in component preview ([3bab46d](https://github.com/favorodera/centoui/commit/3bab46d))
+- Adjust color definitions in centoui.css ([026df17](https://github.com/favorodera/centoui/commit/026df17))
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.2...v1.0.0-alpha.3
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.2...v1.0.0-alpha.3)
