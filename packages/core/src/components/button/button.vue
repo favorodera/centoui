@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactiveOmit } from '@vueuse/core'
+import { reactivePick } from '@vueuse/core'
 import { Primitive, useForwardProps } from 'reka-ui'
 import { computed } from 'vue'
 import { buttonVariants, type ButtonProps, type ButtonSlots } from '.'
@@ -12,7 +12,7 @@ const props = withDefaults(defineProps<ButtonProps>(), {
   color: 'primary',
   size: 'md',
 })
-const delegatedProps = reactiveOmit(props, 'class')
+const delegatedProps = reactivePick(props, 'as', 'asChild')
 const forwardedProps = useForwardProps(delegatedProps)
 
 const styles = computed(() => {
