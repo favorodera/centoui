@@ -10,13 +10,16 @@ import type { ImgHTMLAttributes } from 'vue'
 export const avatarVariants = tv({
   slots: {
     root: [
-      'inline-flex items-center justify-center shrink-0 select-none rounded-full align-middle bg-surface overflow-hidden',
+      `
+        inline-flex shrink-0 items-center justify-center overflow-hidden
+        rounded-full bg-surface align-middle select-none
+      `,
     ],
     image: [
       'size-full rounded-[inherit] object-cover',
     ],
     fallback: [
-      'font-medium text-muted-foreground truncate',
+      'truncate font-medium text-muted-foreground',
       '[&_svg]:pointer-events-none [&_svg]:shrink-0',
     ],
   },
@@ -94,6 +97,8 @@ export const avatarVariants = tv({
 export { default as AvatarFallback } from './avatar-fallback.vue'
 export { default as AvatarImage } from './avatar-image.vue'
 export { default as AvatarRoot } from './avatar-root.vue'
+
+export { getInitials } from './utils'
 
 export type AvatarVariants = VariantProps<typeof avatarVariants>
 
