@@ -9,11 +9,6 @@ import ViewContainer from '../components/view-container.vue'
 const { values, setPreviewState } = usePreview()
 
 const buttonPropsSchema: PropsSchema = {
-  label: {
-    type: 'string',
-    label: 'Label',
-    default: 'Button',
-  },
   variant: {
     type: 'select',
     label: 'Variant',
@@ -32,21 +27,10 @@ const buttonPropsSchema: PropsSchema = {
     options: ['xs', 'sm', 'md', 'lg', 'xl'],
     default: 'md',
   },
-  square: {
-    type: 'boolean',
-    label: 'Square',
-    default: false,
-  },
   disabled: {
     type: 'boolean',
     label: 'Disabled',
     default: false,
-  },
-  icon: {
-    type: 'string',
-    label: 'Icon',
-    hint: 'Enter an Iconify icon name (e.g., lucide:plus)',
-    default: '',
   },
 }
 
@@ -57,21 +41,39 @@ onMounted(() => {
 
 <template>
   <ViewContainer>
+
+    <Button
+      :variant="values.variant"
+      :color="values.color"
+      :size="values.size"
+      :disabled="values.disabled"
+    >
+      Button
+    </Button>
+
+    <Button
+      :variant="values.variant"
+      :color="values.color"
+      :size="values.size"
+      :disabled="values.disabled"
+    >
+      <Icon
+        icon="lucide:plus"
+      />
+      
+      Button
+    </Button>
       
     <Button
       :variant="values.variant"
       :color="values.color"
       :size="values.size"
       :disabled="values.disabled"
-      :square="values.square"
+      :square="true"
     >
       <Icon
-        v-if="values.icon"
-        :icon="values.icon"
+        icon="lucide:plus"
       />
-
-      {{ values.label }}
-
     </Button>
 
   </ViewContainer>
