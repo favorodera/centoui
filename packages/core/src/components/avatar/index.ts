@@ -11,8 +11,8 @@ export const avatarVariants = tv({
   slots: {
     root: [
       `
-        inline-flex shrink-0 items-center justify-center overflow-hidden
-        rounded-full bg-surface align-middle select-none
+        relative inline-flex shrink-0 items-center justify-center
+        overflow-hidden rounded-full bg-surface align-middle select-none
       `,
     ],
     image: [
