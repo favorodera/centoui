@@ -5,15 +5,17 @@ import type { ButtonHTMLAttributes } from 'vue'
 export const buttonVariants = tv({
   slots: {
     root: [
-      'inline-flex shrink-0 cursor-default items-center justify-center truncate',
+      `
+        inline-flex shrink-0 cursor-default items-center justify-center truncate
+        font-medium
+      `,
       'rounded-md font-normal tracking-wide whitespace-nowrap transition-all',
       'outline-none select-none',
-      'disabled:pointer-events-none disabled:opacity-40',
+      'disabled:pointer-events-none disabled:opacity-50',
       '[&_svg]:pointer-events-none [&_svg]:shrink-0',
-      'active:scale-98 active:opacity-80',
-      'hover:opacity-90',
+      'active:scale-98',
       'focus-visible:ring-2 focus-visible:ring-offset-2',
-      'aria-invalid:ring-2 aria-invalid:ring-offset-2',
+      'aria-invalid:ring-2 aria-invalid:ring-error aria-invalid:ring-offset-2',
     ],
   },
 
@@ -21,23 +23,17 @@ export const buttonVariants = tv({
     variant: {
       solid: {},
       soft: {},
-      subtle: {},
+      subtle: {
+        root: 'ring ring-inset',
+      },
       outline: {
-        root: [
-          'border',
-          'bg-transparent',
-        ],
+        root: 'bg-transparent ring ring-inset',
       },
       ghost: {
-        root: [
-          'bg-transparent',
-        ],
+        root: 'bg-transparent',
       },
       link: {
-        root: [
-          'bg-transparent p-0 underline-offset-4',
-          'hover:underline',
-        ],
+        root: 'h-auto bg-transparent p-0',
       },
     },
 
@@ -46,56 +42,48 @@ export const buttonVariants = tv({
         root: [
           'text-primary',
           'focus-visible:ring-primary',
-          'aria-invalid:ring-primary',
         ],
       },
       secondary: {
         root: [
           'text-secondary',
           'focus-visible:ring-secondary',
-          'aria-invalid:ring-secondary',
         ],
       },
       accent: {
         root: [
           'text-accent',
           'focus-visible:ring-accent',
-          'aria-invalid:ring-accent',
         ],
       },
       neutral: {
         root: [
           'text-neutral',
           'focus-visible:ring-neutral',
-          'aria-invalid:ring-neutral',
         ],
       },
       success: {
         root: [
           'text-success',
           'focus-visible:ring-success',
-          'aria-invalid:ring-success',
         ],
       },
       warning: {
         root: [
           'text-warning',
           'focus-visible:ring-warning',
-          'aria-invalid:ring-warning',
         ],
       },
       error: {
         root: [
           'text-error',
           'focus-visible:ring-error',
-          'aria-invalid:ring-error',
         ],
       },
       info: {
         root: [
           'text-info',
           'focus-visible:ring-info',
-          'aria-invalid:ring-info',
         ],
       },
     },
@@ -152,8 +140,8 @@ export const buttonVariants = tv({
       color: 'primary',
       class: {
         root: [
-          'bg-primary',
-          'text-primary-foreground',
+          'bg-primary text-primary-foreground',
+          'hover:bg-primary/80',
         ],
       },
     },
@@ -162,8 +150,8 @@ export const buttonVariants = tv({
       color: 'secondary',
       class: {
         root: [
-          'bg-secondary',
-          'text-secondary-foreground',
+          'bg-secondary text-secondary-foreground',
+          'hover:bg-secondary/80',
         ],
       },
     },
@@ -172,7 +160,8 @@ export const buttonVariants = tv({
       color: 'accent',
       class: {
         root: [
-          'bg-accent', 'text-accent-foreground',
+          'bg-accent text-accent-foreground',
+          'hover:bg-accent/80',
         ],
       },
     },
@@ -181,7 +170,8 @@ export const buttonVariants = tv({
       color: 'neutral',
       class: {
         root: [
-          'bg-neutral', 'text-neutral-foreground',
+          'bg-neutral text-neutral-foreground',
+          'hover:bg-neutral/80',
         ],
       },
     },
@@ -190,8 +180,8 @@ export const buttonVariants = tv({
       color: 'success',
       class: {
         root: [
-          'bg-success',
-          'text-success-foreground',
+          'bg-success text-success-foreground',
+          'hover:bg-success/80',
         ],
       },
     },
@@ -200,8 +190,8 @@ export const buttonVariants = tv({
       color: 'warning',
       class: {
         root: [
-          'bg-warning',
-          'text-warning-foreground',
+          'bg-warning text-warning-foreground',
+          'hover:bg-warning/80',
         ],
       },
     },
@@ -210,8 +200,8 @@ export const buttonVariants = tv({
       color: 'error',
       class: {
         root: [
-          'bg-error',
-          'text-error-foreground',
+          'bg-error text-error-foreground',
+          'hover:bg-error/80',
         ],
       },
     },
@@ -220,8 +210,8 @@ export const buttonVariants = tv({
       color: 'info',
       class: {
         root: [
-          'bg-info',
-          'text-info-foreground',
+          'bg-info text-info-foreground',
+          'hover:bg-info/80',
         ],
       },
     },
@@ -232,9 +222,8 @@ export const buttonVariants = tv({
       color: 'primary',
       class: {
         root: [
-          'bg-primary/20',
-          'hover:bg-primary/25',
-          'active:bg-primary/30',
+          'bg-primary/15',
+          'hover:bg-primary/20',
         ],
       },
     },
@@ -243,9 +232,8 @@ export const buttonVariants = tv({
       color: 'secondary',
       class: {
         root: [
-          'bg-secondary/20',
-          'hover:bg-secondary/25',
-          'active:bg-secondary/30',
+          'bg-secondary/15',
+          'hover:bg-secondary/20',
         ],
       },
     },
@@ -254,9 +242,8 @@ export const buttonVariants = tv({
       color: 'accent',
       class: {
         root: [
-          'bg-accent/20',
-          'hover:bg-accent/25',
-          'active:bg-accent/30',
+          'bg-accent/15',
+          'hover:bg-accent/20',
         ],
       },
     },
@@ -265,9 +252,8 @@ export const buttonVariants = tv({
       color: 'neutral',
       class: {
         root: [
-          'bg-neutral/20',
-          'hover:bg-neutral/25',
-          'active:bg-neutral/30',
+          'bg-neutral/15',
+          'hover:bg-neutral/20',
         ],
       },
     },
@@ -276,9 +262,8 @@ export const buttonVariants = tv({
       color: 'success',
       class: {
         root: [
-          'bg-success/20',
-          'hover:bg-success/25',
-          'active:bg-success/30',
+          'bg-success/15',
+          'hover:bg-success/20',
         ],
       },
     },
@@ -287,9 +272,8 @@ export const buttonVariants = tv({
       color: 'warning',
       class: {
         root: [
-          'bg-warning/20',
-          'hover:bg-warning/25',
-          'active:bg-warning/30',
+          'bg-warning/15',
+          'hover:bg-warning/20',
         ],
       },
     },
@@ -298,9 +282,8 @@ export const buttonVariants = tv({
       color: 'error',
       class: {
         root: [
-          'bg-error/20',
-          'hover:bg-error/25',
-          'active:bg-error/30',
+          'bg-error/15',
+          'hover:bg-error/20',
         ],
       },
     },
@@ -309,9 +292,8 @@ export const buttonVariants = tv({
       color: 'info',
       class: {
         root: [
-          'bg-info/20',
-          'hover:bg-info/25',
-          'active:bg-info/30',
+          'bg-info/15',
+          'hover:bg-info/20',
         ],
       },
     },
@@ -322,7 +304,8 @@ export const buttonVariants = tv({
       color: 'primary',
       class: {
         root: [
-          'bg-primary/5',
+          'bg-primary/8 ring-primary/25',
+          'hover:bg-primary/12',
         ],
       },
     },
@@ -331,7 +314,8 @@ export const buttonVariants = tv({
       color: 'secondary',
       class: {
         root: [
-          'bg-secondary/5',
+          'bg-secondary/8 ring-secondary/25',
+          'hover:bg-secondary/12',
         ],
       },
     },
@@ -340,7 +324,8 @@ export const buttonVariants = tv({
       color: 'accent',
       class: {
         root: [
-          'bg-accent/5',
+          'bg-accent/8 ring-accent/25',
+          'hover:bg-accent/12',
         ],
       },
     },
@@ -349,7 +334,8 @@ export const buttonVariants = tv({
       color: 'neutral',
       class: {
         root: [
-          'bg-neutral/5',
+          'bg-neutral/8 ring-neutral/25',
+          'hover:bg-neutral/12',
         ],
       },
     },
@@ -358,7 +344,8 @@ export const buttonVariants = tv({
       color: 'success',
       class: {
         root: [
-          'bg-success/5',
+          'bg-success/8 ring-success/25',
+          'hover:bg-success/12',
         ],
       },
     },
@@ -367,7 +354,8 @@ export const buttonVariants = tv({
       color: 'warning',
       class: {
         root: [
-          'bg-warning/5',
+          'bg-warning/8 ring-warning/25',
+          'hover:bg-warning/12',
         ],
       },
     },
@@ -376,7 +364,8 @@ export const buttonVariants = tv({
       color: 'error',
       class: {
         root: [
-          'bg-error/5',
+          'bg-error/8 ring-error/25',
+          'hover:bg-error/12',
         ],
       },
     },
@@ -385,7 +374,8 @@ export const buttonVariants = tv({
       color: 'info',
       class: {
         root: [
-          'bg-info/5',
+          'bg-info/8 ring-info/25',
+          'hover:bg-info/12',
         ],
       },
     },
@@ -396,7 +386,8 @@ export const buttonVariants = tv({
       color: 'primary',
       class: {
         root: [
-          'border-primary',
+          'ring-primary',
+          'hover:bg-primary/10',
         ],
       },
     },
@@ -405,7 +396,8 @@ export const buttonVariants = tv({
       color: 'secondary',
       class: {
         root: [
-          'border-secondary',
+          'ring-secondary',
+          'hover:bg-secondary/10',
         ],
       },
     },
@@ -414,7 +406,8 @@ export const buttonVariants = tv({
       color: 'accent',
       class: {
         root: [
-          'border-accent',
+          'ring-accent',
+          'hover:bg-accent/10',
         ],
       },
     },
@@ -423,7 +416,8 @@ export const buttonVariants = tv({
       color: 'neutral',
       class: {
         root: [
-          'border-neutral',
+          'ring-neutral',
+          'hover:bg-neutral/10',
         ],
       },
     },
@@ -432,7 +426,8 @@ export const buttonVariants = tv({
       color: 'success',
       class: {
         root: [
-          'border-success',
+          'ring-success',
+          'hover:bg-success/10',
         ],
       },
     },
@@ -441,7 +436,8 @@ export const buttonVariants = tv({
       color: 'warning',
       class: {
         root: [
-          'border-warning',
+          'ring-warning',
+          'hover:bg-warning/10',
         ],
       },
     },
@@ -450,7 +446,8 @@ export const buttonVariants = tv({
       color: 'error',
       class: {
         root: [
-          'border-error',
+          'ring-error',
+          'hover:bg-error/10',
         ],
       },
     },
@@ -459,91 +456,94 @@ export const buttonVariants = tv({
       color: 'info',
       class: {
         root: [
-          'border-info',
+          'ring-info',
+          'hover:bg-info/10',
         ],
       },
     },
 
-    // Subtle, Outline, Ghost (Hover & Active states)
+    // Ghost
     {
-      variant: ['subtle', 'outline', 'ghost'],
+      variant: 'ghost',
       color: 'primary',
-      class: {
-        root: [
-          'hover:bg-primary/10',
-          'active:bg-primary/15',
-        ],
-      },
+      class: { root: 'hover:bg-primary/10' },
     },
     {
-      variant: ['subtle', 'outline', 'ghost'],
+      variant: 'ghost',
       color: 'secondary',
-      class: {
-        root: [
-          'hover:bg-secondary/10',
-          'active:bg-secondary/15',
-        ],
-      },
+      class: { root: 'hover:bg-secondary/10' },
     },
     {
-      variant: ['subtle', 'outline', 'ghost'],
+      variant: 'ghost',
       color: 'accent',
-      class: {
-        root: [
-          'hover:bg-accent/10',
-          'active:bg-accent/15',
-        ],
-      },
+      class: { root: 'hover:bg-accent/10' },
     },
     {
-      variant: ['subtle', 'outline', 'ghost'],
+      variant: 'ghost',
       color: 'neutral',
-      class: {
-        root: [
-          'hover:bg-neutral/10',
-          'active:bg-neutral/15',
-        ],
-      },
+      class: { root: 'hover:bg-neutral/10' },
     },
     {
-      variant: ['subtle', 'outline', 'ghost'],
+      variant: 'ghost',
       color: 'success',
-      class: {
-        root: [
-          'hover:bg-success/10',
-          'active:bg-success/15',
-        ],
-      },
+      class: { root: 'hover:bg-success/10' },
     },
     {
-      variant: ['subtle', 'outline', 'ghost'],
+      variant: 'ghost',
       color: 'warning',
-      class: {
-        root: [
-          'hover:bg-warning/10',
-          'active:bg-warning/15',
-        ],
-      },
+      class: { root: 'hover:bg-warning/10' },
     },
     {
-      variant: ['subtle', 'outline', 'ghost'],
+      variant: 'ghost',
       color: 'error',
-      class: {
-        root: [
-          'hover:bg-error/10',
-          'active:bg-error/15',
-        ],
-      },
+      class: { root: 'hover:bg-error/10' },
     },
     {
-      variant: ['subtle', 'outline', 'ghost'],
+      variant: 'ghost',
       color: 'info',
-      class: {
-        root: [
-          'hover:bg-info/10',
-          'active:bg-info/15',
-        ],
-      },
+      class: { root: 'hover:bg-info/10' },
+    },
+
+    // Link
+    {
+      variant: 'link',
+      color: 'primary',
+      class: { root: 'hover:text-primary/70' },
+    },
+    {
+      variant: 'link',
+      color: 'secondary',
+      class: { root: 'hover:text-secondary/70' },
+    },
+    {
+      variant: 'link',
+      color: 'accent',
+      class: { root: 'hover:text-accent/70' },
+    },
+    {
+      variant: 'link',
+      color: 'neutral',
+      class: { root: 'hover:text-neutral/70' },
+    },
+    {
+      variant: 'link',
+      color: 'success',
+      class: { root: 'hover:text-success/70' },
+    },
+    {
+      variant: 'link',
+      color: 'warning',
+      class: { root: 'hover:text-warning/70' },
+    },
+    {
+      variant: 'link',
+      color: 'error',
+      class: { root: 'hover:text-error/70' },
+    },
+    {
+      variant: 'link',
+      color: 'info',
+      class: { root: 'hover:text-info/70' },
     },
 
     // Square
@@ -583,11 +583,11 @@ export type ButtonProps = PrimitiveProps & /* @vue-ignore */ ButtonHTMLAttribute
    */
   size?: ButtonVariants['size']
   /**
- * Squares the button by matching horizontal padding to vertical.
- * Intended for icon-only buttons.
- * @default false
- */
-  square?: ButtonVariants['square']
+   * Squares the button by matching horizontal padding to vertical.
+   * Intended for icon-only buttons.
+   * @default false
+   */
+  square?: boolean
   /** Custom class to apply to the root element. */
   class?: ClassValue
 }
