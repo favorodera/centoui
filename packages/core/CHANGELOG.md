@@ -1,5 +1,29 @@
 # Changelog
 
+## v1.0.0-alpha.10...v1.0.0-alpha.11
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.10...v1.0.0-alpha.11)
+
+### Added
+
+- Add button group component ([da22cfa](https://github.com/favorodera/centoui/commit/da22cfa))
+
+### Refactors
+
+- Consolidate button variant classes ([399d998](https://github.com/favorodera/centoui/commit/399d998))
+- Remove unused compoundVariants from separator component ([d1b0a63](https://github.com/favorodera/centoui/commit/d1b0a63))
+
+### Styling
+
+- Add relative positioning to avatar root ([1d125ef](https://github.com/favorodera/centoui/commit/1d125ef))
+- Adjust button root styles and consolidate class definitions ([2206619](https://github.com/favorodera/centoui/commit/2206619))
+- Format avatar tv class definitions ([8951c28](https://github.com/favorodera/centoui/commit/8951c28))
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.9...v1.0.0-alpha.10
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.9...v1.0.0-alpha.10)
