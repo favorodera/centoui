@@ -1,7 +1,7 @@
 import * as matchers from 'vitest-axe/matchers'
 
 import { expect } from 'vitest'
-import { AxeMatchers, configureAxe } from 'vitest-axe'
+import { configureAxe } from 'vitest-axe'
 
 // @ts-expect-error incomplete implementation
 window.IntersectionObserver = class IntersectionObserver {
@@ -23,8 +23,3 @@ configureAxe({
 })
 
 expect.extend(matchers)
-
-declare module 'vitest' {
-  export interface Assertion extends AxeMatchers {}
-  export interface AsymmetricMatchersContaining extends AxeMatchers {}
-}
