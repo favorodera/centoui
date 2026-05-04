@@ -30,8 +30,8 @@ importers:
         specifier: ^10.9.0
         version: 10.9.0(@stylistic/eslint-plugin@5.10.0(eslint@10.2.1(jiti@2.6.1)))(@typescript-eslint/parser@8.59.1(eslint@10.2.1(jiti@2.6.1))(typescript@6.0.3))(eslint@10.2.1(jiti@2.6.1))(vue-eslint-parser@10.4.0(eslint@10.2.1(jiti@2.6.1)))
       relizy:
-        specifier: ^1.4.1
-        version: 1.4.1(@types/node@25.6.0)(magicast@0.5.2)
+        specifier: ^1.4.2
+        version: 1.4.2(@types/node@25.6.0)(magicast@0.5.2)
       turbo:
         specifier: ^2.9.5
         version: 2.9.6
@@ -4458,8 +4458,8 @@ packages:
     peerDependencies:
       vue: '>= 3.4.0'
 
-  relizy@1.4.1:
-    resolution: {integrity: sha512-t8VO8PjdCcx5nZ9K+cFdYAgoCuPdwIpq2GOYYjjCFbYa7DqYnR9qSKd3XJKp0ufqSICQTqzGDveZv2ygoiNhig==}
+  relizy@1.4.2:
+    resolution: {integrity: sha512-WqI7Yp0kFBn0rN0U/CXtrQu7X1V2/bnpDRB9c9RpO3qEavIkOdw/LqQ9DQED2tcudP/0cCthQrrtlU5z7fI3Ng==}
     engines: {node: '>=20.0.0'}
     hasBin: true
     peerDependencies:
@@ -9694,7 +9694,7 @@ snapshots:
     transitivePeerDependencies:
       - '@vue/composition-api'
 
-  relizy@1.4.1(@types/node@25.6.0)(magicast@0.5.2):
+  relizy@1.4.2(@types/node@25.6.0)(magicast@0.5.2):
     dependencies:
       '@inquirer/prompts': 8.4.2(@types/node@25.6.0)
       '@maz-ui/node': 4.6.1
