@@ -37,6 +37,7 @@ onMounted(() => {
         src="https://github.com/favorodera.png"
         alt="Image"
       />
+      <AvatarFallback>FE</AvatarFallback>
     </AvatarRoot>
 
     <AvatarRoot
