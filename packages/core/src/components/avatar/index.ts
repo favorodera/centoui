@@ -9,82 +9,76 @@ import type { ImgHTMLAttributes } from 'vue'
 
 export const avatarVariants = tv({
   slots: {
-    root: [
-      `
-        relative inline-flex shrink-0 items-center justify-center
-        overflow-hidden rounded-full bg-surface align-middle select-none
-      `,
-    ],
-    image: [
-      'size-full rounded-[inherit] object-cover',
-    ],
-    fallback: [
-      'truncate font-medium text-muted-foreground',
-      '[&_svg]:pointer-events-none [&_svg]:shrink-0',
-    ],
+    root: `
+      relative inline-flex shrink-0 items-center justify-center overflow-hidden
+      rounded-full bg-surface align-middle select-none
+    `,
+    image: 'size-full rounded-[inherit] object-cover',
+    fallback: `
+      truncate font-medium text-muted-foreground
+      [&_svg]:pointer-events-none [&_svg]:shrink-0
+    `,
   },
   variants: {
     disabled: {
       true: {
-        root: [
-          'pointer-events-none opacity-40',
-        ],
+        root: 'pointer-events-none opacity-40',
       },
     },
     size: {
       '3xs': {
-        root: [
-          'size-4 text-[8px]',
-          '[&_svg]:size-2',
-        ],
+        root: `
+          size-4 text-[8px]
+          [&_svg]:size-2
+        `,
       },
       '2xs': {
-        root: [
-          'size-5 text-[10px]',
-          '[&_svg]:size-2.5',
-        ],
+        root: `
+          size-5 text-[10px]
+          [&_svg]:size-2.5
+        `,
       },
       'xs': {
-        root: [
-          'size-6 text-xs',
-          '[&_svg]:size-3',
-        ],
+        root: `
+          size-6 text-xs
+          [&_svg]:size-3
+        `,
       },
       'sm': {
-        root: [
-          'size-7 text-sm',
-          '[&_svg]:size-3.5',
-        ],
+        root: `
+          size-7 text-sm
+          [&_svg]:size-3.5
+        `,
       },
       'md': {
-        root: [
-          'size-8 text-base',
-          '[&_svg]:size-4',
-        ],
+        root: `
+          size-8 text-base
+          [&_svg]:size-4
+        `,
       },
       'lg': {
-        root: [
-          'size-9 text-lg',
-          '[&_svg]:size-4.5',
-        ],
+        root: `
+          size-9 text-lg
+          [&_svg]:size-4.5
+        `,
       },
       'xl': {
-        root: [
-          'size-10 text-xl',
-          '[&_svg]:size-5',
-        ],
+        root: `
+          size-10 text-xl
+          [&_svg]:size-5
+        `,
       },
       '2xl': {
-        root: [
-          'size-11 text-[22px]',
-          '[&_svg]:size-5.5',
-        ],
+        root: `
+          size-11 text-[22px]
+          [&_svg]:size-5.5
+        `,
       },
       '3xl': {
-        root: [
-          'size-12 text-2xl',
-          '[&_svg]:size-6',
-        ],
+        root: `
+          size-12 text-2xl
+          [&_svg]:size-6
+        `,
       },
     },
   },
