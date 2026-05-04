@@ -1,5 +1,41 @@
 # Changelog
 
+## v1.0.0-alpha.9...v1.0.0-alpha.10
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.9...v1.0.0-alpha.10)
+
+### Added
+
+- Add Separator component ([bbfcb45](https://github.com/favorodera/centoui/commit/bbfcb45))
+- Add Separator component ([f750cd3](https://github.com/favorodera/centoui/commit/f750cd3))
+- Add separator component to registry ([959b23f](https://github.com/favorodera/centoui/commit/959b23f))
+- Add separator component to registry ([3806bd4](https://github.com/favorodera/centoui/commit/3806bd4))
+- Add Vitest type augmentation for vitest-axe ([06f19cc](https://github.com/favorodera/centoui/commit/06f19cc))
+- Add color, size, variant, and orientation props to Separator component ([9b3b755](https://github.com/favorodera/centoui/commit/9b3b755))
+- Add content slot and styling props to Separator component ([02becf8](https://github.com/favorodera/centoui/commit/02becf8))
+
+### Refactors
+
+- Unify button styling, variants, and states ([63ac2e9](https://github.com/favorodera/centoui/commit/63ac2e9))
+- Remove unused AxeMatchers import and declaration ([7f18278](https://github.com/favorodera/centoui/commit/7f18278))
+
+### Chores
+
+- Include augment.d.ts in core tsconfig ([5773085](https://github.com/favorodera/centoui/commit/5773085))
+
+### Tests
+
+- Add accessibility tests for Separator component ([cdeae59](https://github.com/favorodera/centoui/commit/cdeae59))
+
+### Styling
+
+- Format import statement for SeparatorProps ([0b091ed](https://github.com/favorodera/centoui/commit/0b091ed))
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.8...v1.0.0-alpha.9
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.8...v1.0.0-alpha.9)

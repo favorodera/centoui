@@ -1,5 +1,54 @@
 # Changelog
 
+## v1.0.0-alpha.9...v1.0.0-alpha.10
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.9...v1.0.0-alpha.10)
+
+### Added
+
+- Add AvatarFallback component ([122d8c5](https://github.com/favorodera/centoui/commit/122d8c5))
+- Add Separator component ([bbfcb45](https://github.com/favorodera/centoui/commit/bbfcb45))
+- Add Separator component ([f750cd3](https://github.com/favorodera/centoui/commit/f750cd3))
+- Add separator component to registry ([959b23f](https://github.com/favorodera/centoui/commit/959b23f))
+- Add separator component to registry ([3806bd4](https://github.com/favorodera/centoui/commit/3806bd4))
+- Add Separator component preview ([bbc4cd0](https://github.com/favorodera/centoui/commit/bbc4cd0))
+- Add Vitest type augmentation for vitest-axe ([06f19cc](https://github.com/favorodera/centoui/commit/06f19cc))
+- Add color, size, variant, and orientation props to Separator component ([9b3b755](https://github.com/favorodera/centoui/commit/9b3b755))
+- Add content slot and styling props to Separator component ([02becf8](https://github.com/favorodera/centoui/commit/02becf8))
+
+### Refactors
+
+- Simplify button preview schema and examples ([0595abf](https://github.com/favorodera/centoui/commit/0595abf))
+- Update Avatar component props and fallback logic ([1dcdbcb](https://github.com/favorodera/centoui/commit/1dcdbcb))
+
+  The Avatar component's props have been refactored to leverage the `avatarVariants` utility for dynamic size options. The fallback logic has also been simplified, removing direct props for `iconFallback` and `textFallback` and instead relying on the `AvatarFallback` slot for more flexible rendering. The example usage in `avatar-view.vue` has been updated to reflect these changes.
+
+- Dynamically load button variant, color, and size options in preview ([baf45d5](https://github.com/favorodera/centoui/commit/baf45d5))
+- Unify button styling, variants, and states ([63ac2e9](https://github.com/favorodera/centoui/commit/63ac2e9))
+- Remove unused AxeMatchers import and declaration ([7f18278](https://github.com/favorodera/centoui/commit/7f18278))
+
+### Documentation
+
+- Revise design system guidelines and interaction state rules ([d15debe](https://github.com/favorodera/centoui/commit/d15debe))
+
+### Chores
+
+- Include augment.d.ts in core tsconfig ([5773085](https://github.com/favorodera/centoui/commit/5773085))
+- Update relizy to 1.4.2 ([726ac81](https://github.com/favorodera/centoui/commit/726ac81))
+
+### Tests
+
+- Add accessibility tests for Separator component ([cdeae59](https://github.com/favorodera/centoui/commit/cdeae59))
+
+### Styling
+
+- Format import statement for SeparatorProps ([0b091ed](https://github.com/favorodera/centoui/commit/0b091ed))
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.8...v1.0.0-alpha.9
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.8...v1.0.0-alpha.9)
