@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import { Button } from '../../../../packages/core/src/components/button'
+import { Button, buttonVariants } from '../../../../packages/core/src/components/button'
 import { Icon } from '@iconify/vue'
 import { usePreview } from '../utils/use-preview'
 import type { PropsSchema } from '../components/props-panel.vue'
@@ -12,19 +12,19 @@ const buttonPropsSchema: PropsSchema = {
   variant: {
     type: 'select',
     label: 'Variant',
-    options: ['solid', 'soft', 'subtle', 'outline', 'ghost', 'link'],
+    options: Object.keys(buttonVariants.variants.variant),
     default: 'solid',
   },
   color: {
     type: 'select',
     label: 'Color',
-    options: ['primary', 'secondary', 'accent', 'neutral', 'success', 'warning', 'error', 'info'],
+    options: Object.keys(buttonVariants.variants.color),
     default: 'primary',
   },
   size: {
     type: 'select',
     label: 'Size',
-    options: ['xs', 'sm', 'md', 'lg', 'xl'],
+    options: Object.keys(buttonVariants.variants.size),
     default: 'md',
   },
   disabled: {
