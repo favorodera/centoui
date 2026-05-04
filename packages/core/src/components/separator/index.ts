@@ -1,6 +1,4 @@
-import {
-  type SeparatorProps as RekaSeparatorProps,
-} from 'reka-ui'
+import { type SeparatorProps as RekaSeparatorProps } from 'reka-ui'
 import { tv, type ClassValue } from 'tailwind-variants'
 
 export const separatorVariants = tv({
