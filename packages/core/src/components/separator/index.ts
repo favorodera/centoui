@@ -39,7 +39,6 @@ export const separatorVariants = tv({
       },
     },
   },
-  compoundVariants: [],
   defaultVariants: {
     orientation: 'horizontal',
     size: 'xs',
