@@ -6,6 +6,8 @@ import { useDark, useToggle, useStorage } from '@vueuse/core'
 import { usePreview } from '../utils/use-preview'
 import PropsPanel from './props-panel.vue'
 import { Button } from '../../../../packages/core/src/components/button'
+import { ButtonGroup } from '../../../../packages/core/src/components/button-group'
+import ButtonGroupSeparator from '../../../../packages/core/src/components/button-group/button-group-separator.vue'
 
 const router = useRouter()
 const route = useRoute()
@@ -215,27 +217,29 @@ onUnmounted(() => {
           />
         </Button>
 
-        <div class="flex shrink-0 items-center gap-2">
-          <!-- Dark Mode Toggle -->
-          <Button
-            size="sm"
-            variant="ghost"
-            :square="true"
-            @click="toggleDarkMode()"
-          >
-            <Icon
-              :icon="isDark ? 'lucide:sun' : 'lucide:moon'"
-            />
-          </Button>
+        <ButtonGroup>
+          <ButtonGroup>
+            <!-- Dark Mode Toggle -->
+            <Button
+              size="sm"
+              variant="ghost"
+              :square="true"
+              @click="toggleDarkMode()"
+            >
+              <Icon
+                :icon="isDark ? 'lucide:sun' : 'lucide:moon'"
+              />
+            </Button>
+          </ButtonGroup>
 
-          <div class="mx-1 h-4 w-px bg-muted" />
+          <ButtonGroupSeparator />
 
-          <!-- Component Pagination Controls -->
-          <div class="flex items-center gap-1">
+          <ButtonGroup>
+            <!-- Component Pagination Controls -->
             <Button
               size="sm"
               :square="true"
-              variant="ghost"
+              variant="soft"
               :disabled="activeComponentIndex <= 0"
               @click="navigateToComponent(-1)"
             >
@@ -244,9 +248,11 @@ onUnmounted(() => {
               />
             </Button>
 
+            <ButtonGroupSeparator />
+
             <Button
               size="sm"
-              variant="ghost"
+              variant="soft"
               :square="true"
               :disabled="activeComponentIndex >= componentList.length - 1"
               @click="navigateToComponent(1)"
@@ -255,8 +261,8 @@ onUnmounted(() => {
                 icon="lucide:chevron-right"
               />
             </Button>
-          </div>
-        </div>
+          </ButtonGroup>
+        </ButtonGroup>
       </header>
 
       <!-- Workspace Area -->
