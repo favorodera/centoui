@@ -90,5 +90,23 @@ onMounted(() => {
       </ButtonGroup>
     </ButtonGroup>
 
+    <ButtonGroup>
+      <Button
+        class="pointer-events-none"
+        variant="soft"
+        as="div"
+        size="sm"
+      >
+        Text
+      </Button>
+      <ButtonGroupSeparator />
+      <Button
+        variant="soft"
+        size="sm"
+      >
+        Button 2
+      </Button>
+    </ButtonGroup>
+
   </ViewContainer>
 </template>
