@@ -32,7 +32,7 @@ provide(
 <template>
   <Primitive
     role="group"
-    data-centoui-slot="button-group-root"
+    data-centoui-slot="button-group"
     :data-centoui-orientation="props.orientation"
     v-bind="forwardedProps"
     :class="styles"
