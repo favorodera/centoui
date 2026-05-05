@@ -19,7 +19,7 @@ const styles = computed(() => {
   return separator({ class: props.class })
 })
 
-const buttonGroupContext = inject(buttonGroupContextKey, { orientation: 'vertical' })
+const buttonGroupContext = inject(buttonGroupContextKey, { orientation: 'horizontal' })
 
 const orientation = computed<SeparatorProps['orientation']>(() => {
   return buttonGroupContext.orientation === 'vertical' ? 'horizontal' : 'vertical'
