@@ -16,13 +16,6 @@ export const separatorVariants = tv({
       error: { line: 'border-error' },
       neutral: { line: 'border-muted' },
     },
-    size: {
-      xs: { line: 'border' },
-      sm: { line: 'border-2' },
-      md: { line: 'border-3' },
-      lg: { line: 'border-4' },
-      xl: { line: 'border-5' },
-    },
     variant: {
       solid: { line: 'border-solid' },
       dashed: { line: 'border-dashed' },
@@ -30,15 +23,35 @@ export const separatorVariants = tv({
     },
     orientation: {
       horizontal: {
-        root: 'my-3 w-full flex-row',
-        line: 'w-full border-t',
+        root: 'my-3 w-full',
+        line: 'w-full',
       },
       vertical: {
         root: 'mx-3 h-full flex-col',
-        line: 'h-full border-s',
+        line: 'h-full',
       },
     },
+    size: {
+      xs: {},
+      sm: {},
+      md: {},
+      lg: {},
+      xl: {},
+    },
   },
+  compoundVariants: [
+    { orientation: 'horizontal', size: 'xs', class: { line: 'border-t' } },
+    { orientation: 'horizontal', size: 'sm', class: { line: 'border-t-2' } },
+    { orientation: 'horizontal', size: 'md', class: { line: 'border-t-3' } },
+    { orientation: 'horizontal', size: 'lg', class: { line: 'border-t-4' } },
+    { orientation: 'horizontal', size: 'xl', class: { line: 'border-t-5' } },
+
+    { orientation: 'vertical', size: 'xs', class: { line: 'border-s' } },
+    { orientation: 'vertical', size: 'sm', class: { line: 'border-s-2' } },
+    { orientation: 'vertical', size: 'md', class: { line: 'border-s-3' } },
+    { orientation: 'vertical', size: 'lg', class: { line: 'border-s-4' } },
+    { orientation: 'vertical', size: 'xl', class: { line: 'border-s-5' } },
+  ],
   defaultVariants: {
     orientation: 'horizontal',
     size: 'xs',
@@ -46,7 +59,6 @@ export const separatorVariants = tv({
     color: 'neutral',
   },
 })
-
 export { default as Separator } from './separator.vue'
 
 export type SeparatorVariants = VariantProps<typeof separatorVariants>
