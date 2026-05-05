@@ -16,8 +16,5 @@
     "verbatimModuleSyntax": true,
     "skipLibCheck": true
   },
-  "include": [
-    "src",
-    "augment.d.ts"
-  ]
+  "include": ["src"]
 }
