@@ -26,7 +26,7 @@ const styles = computed(() => separatorVariants({
 
 <template>
   <Separator
-    data-centoui-slot="separator-root"
+    data-centoui-slot="separator"
     :data-centoui-orientation="orientation"
     v-bind="forwardedProps"
     :class="styles.root({ class: props.class })"
