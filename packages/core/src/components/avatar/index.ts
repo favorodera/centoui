@@ -125,11 +125,11 @@ export type AvatarImageEmits = RekaAvatarImageEmits
 
 
 export type AvatarRootSlots = {
-  /** Avatar root content - image and fallback */
+  /** AvatarRoot content - image and fallback */
   default: []
 }
 
 export type AvatarFallbackSlots = {
-  /** Avatar fallback content - text, icons, etc. */
+  /** AvatarFallback content - text, icons, etc. */
   default: []
 }
