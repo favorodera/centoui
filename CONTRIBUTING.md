@@ -8,12 +8,11 @@
   - [Getting Started](#getting-started)
   - [Development Workflow](#development-workflow)
   - [Design System](#design-system)
-      - [Token Vocabulary](#token-vocabulary)
+      - [Tokens](#tokens)
+      - [Variants](#variants)
       - [Interaction States](#interaction-states)
-      - [Shade Levels](#shade-levels)
       - [Selected State](#selected-state)
-      - [Variant Anatomy](#variant-anatomy)
-      - [centoui-data-* CSS API](#centoui-data--css-api)
+      - [data-centoui-* API](#data-centoui--api)
   - [Component Structure](#component-structure)
   - [Testing](#testing)
   - [Pull Request Process](#pull-request-process)
@@ -43,7 +42,7 @@ pnpm dev
 
 ## Development Workflow
 
-### Branch Naming
+### Branch naming
 
 | Pattern | Use |
 |---|---|
@@ -52,9 +51,9 @@ pnpm dev
 | `docs/<what>` | Documentation |
 | `chore/<task>` | Maintenance |
 
-### Commit Messages
+### Commit messages
 
-Follows [Conventional Commits](https://www.conventionalcommits.org/). `relizy` reads these for changelogs.
+Follows [Conventional Commits](https://www.conventionalcommits.org/).
 
 | Prefix | Use |
 |---|---|
@@ -82,15 +81,15 @@ pnpm ready      # full pre-publish gate: install → lint → typecheck → buil
 
 ## Design System
 
-  The design file and codebase use identical token names, state names, and values — zero translation between them.
+  The design file and codebase share identical token names, state names, and values — no translation layer between them.
 
 ---
 
-### Token Vocabulary
+### Tokens
 
-Components must only reference semantic tokens — never raw values or Tailwind palette colors.
+Components reference **semantic tokens only** — never raw values or Tailwind palette colors.
 
-Two categories of tokens exist. **Structural tokens** define surfaces and layout:
+**Structural tokens** define surfaces and layout:
 
 | Token | Purpose |
 |---|---|
@@ -98,10 +97,10 @@ Two categories of tokens exist. **Structural tokens** define surfaces and layout
 | `foreground` | Default text |
 | `surface` | Elevated elements — cards, modals, drawers |
 | `overlay` | Modal and drawer scrims |
-| `muted` | Subtle fills — input backgrounds, skeleton shapes |
+| `muted` | Subtle fills — input backgrounds, skeletons |
 | `muted-foreground` | Secondary text — placeholders, captions, helper text |
 
-**Semantic color tokens** define intent. Each exposes two values — a fill (`--color-{name}`) and a foreground (`--color-{name}-foreground`) for text and icons rendered on top of that fill:
+**Semantic color tokens** communicate intent. Each exposes a fill (`--color-{name}`) and a foreground (`--color-{name}-foreground`) for text/icons rendered on top:
 
 | Token | Purpose |
 |---|---|
@@ -114,160 +113,136 @@ Two categories of tokens exist. **Structural tokens** define surfaces and layout
 | `error` | Destructive states — failures, deletions, validation errors |
 | `info` | Informational states — neutral messages, tips |
 
-Reference tokens only via Tailwind utilities (`bg-primary`, `text-error-foreground`) or `var(--color-*)`. Never use raw oklch values or Tailwind palette colors directly in component code.
+Use tokens via Tailwind utilities (`bg-primary`, `text-error-foreground`) or `var(--color-*)`.
+
+---
+
+### Variants
+
+  Six visual variants covering the full range of emphasis, fully orthogonal — any variant works with any color.
+
+  | Variant | Rest bg | Hover | Ring | Text | Emphasis |
+  |---|---|---|---|---|---|
+  | `solid` | full fill | `/80` | — | `-foreground` | Highest |
+  | `soft` | `/15` | `/20` | — | colored | High |
+  | `subtle` | `/8` | `/12` | `/25` inset | colored | Medium |
+  | `outline` | transparent | `/10` | full inset | colored | Medium |
+  | `ghost` | transparent | `/10` | — | colored | Low |
+  | `link` | transparent | text `/70` | — | colored | Lowest |
+
+  `subtle` and `outline` both use an inset ring — `subtle` pairs it with a tinted fill, `outline` has none at rest. Press feedback is always `active:translate-y-px` on the root across all variants.
+
+#### How slots divide the work
+
+  **`variant` slot:** structural, color-agnostic classes
+  (ring ring-inset for subtle/outline, bg-transparent for ghost/link/outline)
+
+  **`color` variant:** text-{color} and focus-visible ring color
+  declared once, inherited by all variants automatically
+
+  **`compoundVariants`:** bg-{color}/{alpha}, ring-{color}/{alpha}, hover classes
+  only what differs per color x variant combination
+
+  Adding a new color only requires new `color` and `compoundVariant` entries — no variant logic changes.
 
 ---
 
 ### Interaction States
 
-  CentoUI changes **individual CSS properties** per state — never the opacity of the root element. Root opacity dims fill, text, and border together uniformly, producing dull results and destroying relative contrast. Targeting properties independently keeps text crisp while only the intended property responds.
+CentoUI changes **individual CSS properties** per state — never root element opacity (except `disabled`). Targeting properties independently keeps text crisp while only the intended property responds to each state.
 
-  **`disabled` is the sole exception.** WCAG 2.1 SC 1.4.3 explicitly exempts disabled controls from contrast requirements. Dimming the whole element via root opacity correctly communicates unavailability and is appropriate here.
+| State | Pseudo | Property | How |
+|---|---|---|---|
+| Default | — | — | Base classes |
+| Hover | `:hover` | `background-color` or `color` | `hover:bg-{color}/{alpha}` · `hover:text-{color}/70` (link only) |
+| Press | `:active` | `transform` | `active:translate-y-px` on root |
+| Disabled | `:disabled` | `opacity` | `disabled:opacity-50` on root |
+| Focus | `:focus-visible` | `box-shadow` | `focus-visible:ring-2 focus-visible:ring-offset-2` |
+| Invalid | `[aria-invalid]` | `box-shadow` | `aria-invalid:ring-2 aria-invalid:ring-error aria-invalid:ring-offset-2` |
 
-#### Rules
-
-  - Change only the property relevant to the state. Hover changes background; it does not touch text or border.
-  - Never apply `hover:opacity-*` or `active:opacity-*` to a root element. Use bg alpha instead.
-  - `disabled:opacity-50` on the root is the only permitted root opacity utility.
-  - Press feedback is handled universally by `active:scale-98` on the root — not by further background changes. `transition-all` is used (not `transition-colors`) to animate the scale smoothly. The scale is kept minimal (98) so children are not visibly distorted.
-  - `link` is the only variant where hover changes text color instead of background — there is no fill to respond to, so text alpha fades to `/70`.
-
-#### State reference
-
-  | State | CSS pseudo | Property changed | How |
-  |---|---|---|---|
-  | Default | — | — | Base classes |
-  | Hover | `:hover` | `background-color` or `color` | `hover:bg-{color}/{alpha}` · `hover:text-{color}/70` (link only) |
-  | Press | `:active` | `transform` | `active:scale-98` on root |
-  | Disabled | `:disabled` | `opacity` | `disabled:opacity-50` on root |
-  | Focus | `:focus-visible` | `box-shadow` | `focus-visible:ring-2 focus-visible:ring-offset-2` |
-  | Invalid | `[aria-invalid]` | `box-shadow` | `aria-invalid:ring-2 aria-invalid:ring-offset-2 aria-invalid:ring-error` |
-
-  The focus ring color is set by the `color` variant and inherited by all visual variants automatically. The invalid ring is always `error` regardless of the component's color — invalid state has its own semantic meaning that overrides the component's intent color.
-
----
-
-### Shade Levels
-
-Shade levels are fixed background-color alpha values that define the resting fill of each visual variant and the single hover step above it. Press feedback is always `active:scale-98` on the root — not a background change.
-
-The scale is fixed. Do not invent intermediate values.
-
-| Variant | Rest bg | Hover bg | Ring | Press |
-|---|---|---|---|---|
-| `solid` | full | `/80` | — | `scale-98` |
-| `soft` | `/15` | `/20` | — | `scale-98` |
-| `subtle` | `/8` | `/12` | `/25` inset | `scale-98` |
-| `outline` | transparent | `/10` | full inset | `scale-98` |
-| `ghost` | transparent | `/10` | — | `scale-98` |
-| `link` | transparent | — | — | — |
-
-`subtle` and `outline` both use an inset ring. The distinction is that `subtle` pairs its ring with a tinted background fill, while `outline` has no fill at rest. This gives them clearly different visual weight despite sharing the ring mechanism.
-
-#### How variants and compoundVariants share the work
-
-```
-variant slot      → structural, color-agnostic classes
-                    (ring ring-inset, bg-transparent, h-auto p-0 for link)
-
-color variant     → text-{color}, focus-visible ring color
-                    declared once — inherited automatically by all variants
-
-compoundVariants  → bg-{color}, ring-{color}, hover bg, hover text (link)
-                    only what differs per color × variant combination
-```
-
-Adding a new color requires only new `color` and `compoundVariant` entries — no variant logic changes.
+Rules:
+- Change only the property relevant to the state. Hover changes background; it does not touch text or border.
+- Never use `hover:opacity-*` or `active:opacity-*` on a root element.
+- `disabled:opacity-50` on root is the only permitted root opacity utility. WCAG 2.1 SC 1.4.3 exempts disabled controls from contrast requirements — dimming the whole element correctly communicates unavailability.
+- The focus ring color comes from the `color` variant and is inherited automatically.
+- The invalid ring is always `error` regardless of the component's color.
 
 ---
 
 ### Selected State
 
-  The selected state represents a persistent condition — the current route in a nav, the active tab, the chosen option in a segmented control. It is distinct from the CSS `:active` pseudo-class which is the momentary press.
-
-  Selected state is expressed by stepping the background alpha up from the hover level, creating a visible persistent highlight that reads as "you are here."
+  Selected state represents a persistent condition — active tab, current nav route, chosen option. It is distinct from `:active` (momentary press) and is expressed by stepping background alpha above the hover level.
 
   | Variant | Hover bg | Selected bg |
   |---|---|---|
+  | `ghost` | `/10` | `/16` |
   | `subtle` | `/12` | `/18` |
   | `soft` | `/20` | `/28` |
-  | `ghost` | `/10` | `/16` |
 
   Apply via a boolean prop (`active`, `selected`, or equivalent) mapped to a `compoundVariant`, or via `aria-current="page"` / `aria-selected="true"` CSS selectors where appropriate.
 
-  Do not use selected state on trigger components like buttons. It applies only to components that represent location or persistent selection — nav items, tabs, menu items, segmented controls.
+  Selected state applies to components that represent location or persistent selection — nav items, tabs, menu items, segmented controls. It does not apply to trigger components.
 
 ---
 
-### Variant Anatomy
+### `data-centoui-*` API
 
-Six visual variants covering the full range of emphasis. Fully orthogonal — any variant works with any semantic color.
-
-| Variant | Rest | Hover | Press | Ring | Text | Emphasis |
-|---|---|---|---|---|---|---|
-| `solid` | full fill | `/80` bg | `scale-98` | — | `-foreground` | Highest |
-| `soft` | `/15` bg | `/20` bg | `scale-98` | — | colored | High |
-| `subtle` | `/8` bg | `/12` bg | `scale-98` | `/25` inset | colored | Medium |
-| `outline` | transparent | `/10` bg | `scale-98` | full inset | colored | Medium |
-| `ghost` | transparent | `/10` bg | `scale-98` | — | colored | Low |
-| `link` | transparent | text `/70` | — | — | colored | Lowest |
-
-Any variant works with any color:
-
-```vue
-<Component variant="solid"   color="primary" />
-<Component variant="soft"    color="success" />
-<Component variant="subtle"  color="info"    />
-<Component variant="outline" color="error"   />
-<Component variant="ghost"   color="warning" />
-<Component variant="link"    color="neutral" />
-```
-
----
-
-### `centoui-data-*` CSS API
-
-  Every component element carries `data-centoui-*` attributes. The namespace prevents collisions with host applications and other libraries. Treat these as stable public API — as intentional as Vue props. Do not remove or rename them.
+Every rendered element carries `data-centoui-*` attributes. The namespace prevents collisions with host apps and other libraries. Treat these as stable public API — as intentional as Vue props. Do not remove or rename them.
 
 ```html
-<button
+<!-- Button -->
+<Button
   data-centoui-slot="button"
   data-centoui-variant="solid"
   data-centoui-color="primary"
   data-centoui-size="md"
   data-centoui-disabled="true"
 />
+
+<!-- Avatar -->
+<AvatarRoot
+  data-centoui-slot="avatar-root"
+  data-centoui-size="lg"
+/>
+
+<!-- Separator -->
+<Separator
+  data-centoui-slot="separator"
+  data-centoui-orientation="horizontal"
+  data-centoui-color="neutral"
+  data-centoui-size="xs"
+/>
 ```
 
-  | Attribute | Values |
-  |---|---|
-  | `data-centoui-slot` | Component-specific — e.g. `button`, `card-header`, `dialog-overlay` |
-  | `data-centoui-variant` | `solid`, `soft`, `subtle`, `outline`, `ghost`, `link` |
-  | `data-centoui-color` | `primary`, `secondary`, `accent`, `neutral`, `success`, `warning`, `error`, `info` |
-  | `data-centoui-size` | `xs`, `sm`, `md`, `lg`, `xl` |
-  | `data-centoui-<state>` | `idle`, `loading`, `disabled` |
+| Attribute | Values |
+|---|---|
+| `data-centoui-slot` | Component-specific — e.g. `button`, `avatar-root`, `avatar-fallback`, `separator`, `button-group` |
+| `data-centoui-variant` | `solid`, `soft`, `subtle`, `outline`, `ghost`, `link` (component-specific extensions like `dashed`, `dotted` for separators are documented per component) |
+| `data-centoui-color` | `primary`, `secondary`, `accent`, `neutral`, `success`, `warning`, `error`, `info` |
+| `data-centoui-size` | `xs`, `sm`, `md`, `lg`, `xl` (component-specific extensions like `2xs`, `3xl` are documented per component) |
+| `data-centoui-<state>` | `idle`, `loading`, `disabled` |
 
-  Document every `data-centoui-slot` value in the component's own section of the docs. Consumers use these attributes for custom styling without touching source files.
+Document every `data-centoui-slot` value in the component's own docs section. Consumers use these for custom styling without touching source.
 
 ---
 
 ## Component Structure
 
-```
+```text
 src/components/<name>/
-  <name>.vue  > Vue SFC
-  index.ts    > variants, TypeScript types, named re-exports
-  <name>-utils.ts    > component utilities if any
+  <name>.vue          # Vue SFC
+  index.ts            # variants, types, named re-exports
+  <name>-utils.ts     # utilities (if needed)
 ```
 
-Compound components ship sub-parts directly:
+  Compound components ship sub-parts directly:
 
-```
-src/components/card/
-  card-root.vue
-  card-header.vue
-  card-body.vue
-  card-footer.vue
+```text
+src/components/avatar/
+  avatar-root.vue
+  avatar-image.vue
+  avatar-fallback.vue
+  avatar-utils.ts
   index.ts
 ```
 
@@ -280,8 +255,8 @@ export const componentVariants = tv({ slots, variants, compoundVariants, default
 // 2. Named component exports
 export { default as Component } from './component.vue'
 
-// 3. Component-specific utilities (optional)
-export {someUtility} from './component-utils'
+// 3. Utilities (optional)
+export { someUtility } from './component-utils'
 
 // 4. TypeScript types — all exported types and public props must have JSDoc /** */ comments
 export type ComponentVariants = VariantProps<typeof componentVariants>
@@ -291,71 +266,57 @@ export type ComponentSlots    = { default: [] }
 
 ### Prop forwarding
 
-Use `reactiveOmit` from `@vueuse/core` to strip custom props the component consumes itself before forwarding the rest to the primitive. Never use `reactivePick` for forwarding — it silently drops native attributes like `disabled`, `type`, and event handlers.
+  Use `reactiveOmit` from `@vueuse/core` to strip props the component consumes itself before forwarding the rest to the primitive. Never use `reactivePick` — it silently drops native attributes like `disabled`, `type`, and event handlers.
 
 ```ts
-// omit only what you read yourself — everything else flows through
 const delegatedProps = reactiveOmit(props, 'class', 'variant', 'color', 'size')
 const forwardedProps = useForwardProps(delegatedProps)
 ```
 
 ### Accessibility
 
-- **Simple components** (Button, Badge, Label, Card): semantic HTML + correct ARIA attributes.
-- **Complex components** (Dialog, Select, Dropdown, Tooltip, Tabs): [Reka UI](https://reka-ui.com) primitives for keyboard navigation, focus trapping, and screen reader behavior.
+  - **Simple components** (Button, Badge, Avatar, Separator): semantic HTML + correct ARIA attributes.
+  - **Complex components** (Dialog, Select, Dropdown, Tabs): [Reka UI](https://reka-ui.com) primitives for keyboard navigation, focus trapping, and screen-reader behavior.
 
-Always use `Primitive` from Reka UI as the root element — it handles `as`, `asChild`, and native attribute forwarding.
+  Always use `Primitive` from Reka UI as the root element — it handles `as`, `asChild`, and native attribute forwarding.
 
 ---
 
 ## Testing
 
-  Tests use **Vitest** with **jsdom**, **Vue Test Utils**, and **axe-core** for accessibility assertions. No browser runner.
+Tests use **Vitest** with **jsdom**, **Vue Test Utils**, and **axe-core** for accessibility assertions.
 
 ```bash
 pnpm test        # run all tests
 pnpm test:watch  # watch mode
 ```
 
-  Cover DOM structure, ARIA attributes, and visual states when adding features or fixing bugs.
+Cover DOM structure, ARIA attributes, and visual states when adding features or fixing bugs.
 
 ---
 
 ## Pull Request Process
 
-1. Follow the conventions in this file.
-2. Update documentation if changing functionality.
-3. Add or update tests as appropriate.
-4. Run the full validation suite:
-
-```bash
-pnpm ready
-```
-
-5. Commit using Conventional Commits and open a Pull Request.
+  1. Follow the conventions in this file.
+  2. Update documentation if changing functionality.
+  3. Add or update tests as appropriate.
+  4. Run the full validation suite: `pnpm ready`
+  5. Commit using Conventional Commits and open a Pull Request.
 
 ---
 
 ## Reporting Bugs
 
-  Check existing issues first. When filing, include:
-
-  - A clear, descriptive title
-  - Steps to reproduce
-  - Expected vs. actual behavior
-  - Environment (OS, Node.js version, pnpm version)
+Check existing issues first. When filing, include a clear title, steps to reproduce, expected vs. actual behavior, and your environment (OS, Node.js, pnpm versions).
 
 ---
 
 ## Suggesting Features
 
-Open an issue describing the problem you're solving, your proposed solution, and alternatives considered.
+  Open an issue describing the problem you're solving, your proposed solution, and alternatives considered.
 
 ---
 
-## Questions?
-
-  - [Discussions](https://github.com/favorodera/centoui/discussions)
-  - [Documentation](https://centoui.vercel.app/)
-
-  Thank you for contributing!
+Questions Feedback? Ideas? Join the conversation in
+[Discussions](https://github.com/favorodera/centoui/discussions)
+[Docs](https://centoui.vercel.app/)
