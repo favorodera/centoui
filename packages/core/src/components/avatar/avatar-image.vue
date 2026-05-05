@@ -9,9 +9,12 @@ defineEmits<AvatarImageEmits>()
 const props = withDefaults(defineProps<AvatarImageProps>(), {
   src: '',
 })
+
+// Strip component-specific props and forward native props.
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
 
+// Compute class string for the image slot.
 const styles = computed(() => {
   const { image } = avatarVariants()
 

@@ -3,6 +3,7 @@ import { tv, type ClassValue, type VariantProps } from 'tailwind-variants'
 import type { SeparatorProps } from '../separator'
 import type { InjectionKey } from 'vue'
 
+/** ButtonGroup style variants */
 export const buttonGroupVariants = tv({
   slots: {
     root: `
@@ -41,13 +42,19 @@ export const buttonGroupVariants = tv({
   },
 })
 
+// Component exports
 export { default as ButtonGroup } from './button-group.vue'
 export { default as ButtonGroupSeparator } from './button-group-separator.vue'
 
-export type ButtonGroupVariants = VariantProps<typeof buttonGroupVariants>
-
+// Variables exports
+/** Injection key for sharing root context with child components. */
 export const buttonGroupContextKey: InjectionKey<Pick<ButtonGroupVariants, 'orientation'>> = Symbol('centoui:button-group:context')
 
+// Types exports
+/** Extractable variant props for ButtonGroup component. */
+export type ButtonGroupVariants = VariantProps<typeof buttonGroupVariants>
+
+/** Props for ButtonGroup component. */
 export type ButtonGroupProps = PrimitiveProps & {
   /**
    * The orientation of the button group.
@@ -58,11 +65,13 @@ export type ButtonGroupProps = PrimitiveProps & {
   class?: ClassValue
 }
 
+/** Props for ButtonGroupSeparator component. */
 export type ButtonGroupSeparatorProps = Pick<SeparatorProps, 'color' | 'size' | 'variant' | 'decorative'> & {
   /** Custom class to apply to the root element. */
   class?: ClassValue
 }
 
+/** Slots for ButtonGroup component. */
 export type ButtonGroupSlots = {
   /** ButtonGroup content — buttons, inputs, selects etc. */
   default: []

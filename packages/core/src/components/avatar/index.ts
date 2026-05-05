@@ -7,6 +7,7 @@ import {
 import { tv, type ClassValue, type VariantProps } from 'tailwind-variants'
 import type { ImgHTMLAttributes } from 'vue'
 
+/** Avatar style variants */
 export const avatarVariants = tv({
   slots: {
     root: `
@@ -82,25 +83,29 @@ export const avatarVariants = tv({
       },
     },
   },
-  compoundVariants: [],
   defaultVariants: {
     size: 'md',
   },
 })
 
+// Component exports
 export { default as AvatarFallback } from './avatar-fallback.vue'
 export { default as AvatarImage } from './avatar-image.vue'
 export { default as AvatarRoot } from './avatar-root.vue'
 
+// Utils exports
 export { getInitials } from './avatar-utils'
 
+// Types exports
+/** Extractable variant props for Avatar component. */
 export type AvatarVariants = VariantProps<typeof avatarVariants>
 
+/** Props for AvatarRoot component. */
 export type AvatarRootProps = RekaAvatarRootProps & {
   /**
-    * The size of the avatar.
-    * @default 'md'
-    */
+   * The size of the avatar.
+   * @default 'md'
+   */
   size?: AvatarVariants['size']
   /**
    * Whether the avatar is disabled.
@@ -111,25 +116,29 @@ export type AvatarRootProps = RekaAvatarRootProps & {
   class?: ClassValue
 }
 
+/** Props for AvatarImage component. */
 export type AvatarImageProps = RekaAvatarImageProps & /* @vue-ignore */ Omit<ImgHTMLAttributes, 'src' | 'crossorigin' | 'referrerpolicy'> & {
   /** Custom class to apply to the root element. */
   class?: ClassValue
 }
 
+/** Props for AvatarFallback component. */
 export type AvatarFallbackProps = RekaAvatarFallbackProps & {
   /** Custom class to apply to the root element. */
   class?: ClassValue
 }
 
+/** Emits for AvatarImage component. */
 export type AvatarImageEmits = RekaAvatarImageEmits
 
-
+/** Slots for AvatarRoot component. */
 export type AvatarRootSlots = {
-  /** AvatarRoot content - image and fallback */
+  /** AvatarRoot content — image and fallback. */
   default: []
 }
 
+/** Slots for AvatarFallback component. */
 export type AvatarFallbackSlots = {
-  /** AvatarFallback content - text, icons, etc. */
+  /** AvatarFallback content — text, icons, etc. */
   default: []
 }

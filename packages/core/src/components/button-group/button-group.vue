@@ -11,9 +11,11 @@ const props = withDefaults(defineProps<ButtonGroupProps>(), {
   orientation: 'horizontal',
 })
 
+// Strip component-specific props and forward native props.
 const delegatedProps = reactiveOmit(props, 'class', 'orientation')
 const forwardedProps = useForwardProps(delegatedProps)
 
+// Compute class string for the root slot.
 const styles = computed(() => {
   const { root } = buttonGroupVariants({
     orientation: props.orientation,
@@ -21,6 +23,7 @@ const styles = computed(() => {
   return root({ class: props.class })
 })
 
+// Provide orientation to child components (e.g. ButtonGroupSeparator).
 provide(
   buttonGroupContextKey,
   reactive({

@@ -13,9 +13,12 @@ const props = withDefaults(defineProps<SeparatorProps>(), {
   variant: 'solid',
   color: 'neutral',
 })
+
+// Strip component-specific props and forward native props.
 const delegatedProps = reactiveOmit(props, 'class', 'size', 'variant', 'color')
 const forwardedProps = useForwardProps(delegatedProps)
 
+// Compute class string for the root slot.
 const styles = computed(() => separatorVariants({
   orientation: props.orientation,
   size: props.size,
@@ -31,6 +34,7 @@ const styles = computed(() => separatorVariants({
     v-bind="forwardedProps"
     :class="styles.root({ class: props.class })"
   >
+    <!-- When slot content is provided, render flanking lines around it. -->
     <template v-if="!!slots.default">
       <div
         :class="styles.line()"
@@ -50,6 +54,7 @@ const styles = computed(() => separatorVariants({
       />
     </template>
 
+    <!-- No content — render a single line. -->
     <div
       v-else
       data-centoui-slot="separator-line"

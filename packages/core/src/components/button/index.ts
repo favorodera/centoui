@@ -2,6 +2,7 @@ import type { PrimitiveProps } from 'reka-ui'
 import { tv, type ClassValue, type VariantProps } from 'tailwind-variants'
 import type { ButtonHTMLAttributes } from 'vue'
 
+/** Button style variants */
 export const buttonVariants = tv({
   slots: {
     root: `
@@ -126,7 +127,7 @@ export const buttonVariants = tv({
   },
 
   compoundVariants: [
-    // Solid
+    // Solid variant
     {
       variant: 'solid',
       color: 'primary',
@@ -208,7 +209,7 @@ export const buttonVariants = tv({
       },
     },
 
-    // Soft
+    // Soft variant
     {
       variant: 'soft',
       color: 'primary',
@@ -290,7 +291,7 @@ export const buttonVariants = tv({
       },
     },
 
-    // Subtle
+    // Subtle variant
     {
       variant: 'subtle',
       color: 'primary',
@@ -372,7 +373,7 @@ export const buttonVariants = tv({
       },
     },
 
-    // Outline
+    // Outline variant
     {
       variant: 'outline',
       color: 'primary',
@@ -454,7 +455,7 @@ export const buttonVariants = tv({
       },
     },
 
-    // Ghost
+    // Ghost variant
     {
       variant: 'ghost',
       color: 'primary',
@@ -496,7 +497,7 @@ export const buttonVariants = tv({
       class: { root: 'hover:bg-info/10' },
     },
 
-    // Link
+    // Link variant
     {
       variant: 'link',
       color: 'primary',
@@ -538,7 +539,7 @@ export const buttonVariants = tv({
       class: { root: 'hover:text-info/70' },
     },
 
-    // Square
+    // Square variant (icon-only padding overrides)
     { square: true, size: 'xs', class: { root: 'p-1' } },
     { square: true, size: 'sm', class: { root: 'p-1.5' } },
     { square: true, size: 'md', class: { root: 'p-2' } },
@@ -554,10 +555,14 @@ export const buttonVariants = tv({
   },
 })
 
+// Component exports
 export { default as Button } from './button.vue'
 
+// Types exports
+/** Extractable variant props for Button component. */
 export type ButtonVariants = VariantProps<typeof buttonVariants>
 
+/** Props for Button component. */
 export type ButtonProps = PrimitiveProps & /* @vue-ignore */ ButtonHTMLAttributes & {
   /**
    * The visual style of the button.
@@ -584,6 +589,7 @@ export type ButtonProps = PrimitiveProps & /* @vue-ignore */ ButtonHTMLAttribute
   class?: ClassValue
 }
 
+/** Slots for Button component. */
 export type ButtonSlots = {
   /** Button content — text, icons, or both. */
   default: []
