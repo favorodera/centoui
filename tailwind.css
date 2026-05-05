@@ -1,2 +1,2 @@
 /* Dummy CSS file to solve tailwind intellisense issue */
-@import './packages/core/src/css/centoui.css';
+@import './packages/core/src/defaults/centoui.css';

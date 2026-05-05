@@ -14,13 +14,6 @@ describe('buildDefaultConfigFileContent', () => {
     expect(result).toContain('src/assets/css/centoui.css')
   })
 
-  it('includes the current VERSION from constants', async () => {
-    const { VERSION } = await import('../src/constants')
-    const result = buildDefaultConfigFileContent('theme.css', 'components')
-
-    expect(result).toContain(VERSION)
-  })
-
   it('is valid TypeScript — exports a default and calls defineConfig', () => {
     const result = buildDefaultConfigFileContent('theme.css', 'components')
 

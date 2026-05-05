@@ -1,7 +1,7 @@
 import fsExtra from 'fs-extra'
 import { pathToFileURL } from 'node:url'
 import { join } from 'pathe'
-import { CONFIG_FILE_NAME, VERSION } from '../constants'
+import { CONFIG_FILE_NAME } from '../constants'
 import type { CentoUIConfig } from '../types'
 
 /**
@@ -54,7 +54,6 @@ export function buildDefaultConfigFileContent(
   return `import { defineConfig } from 'centoui'
 
 export default defineConfig({
-  version: '${VERSION}',
   componentsDir: '${componentsDir}',
   themeFilePath: '${themeFilePath}',
   icons: {

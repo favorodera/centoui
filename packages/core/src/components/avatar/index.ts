@@ -11,12 +11,12 @@ import type { ImgHTMLAttributes } from 'vue'
 export const avatarVariants = tv({
   slots: {
     root: `
-      relative inline-flex shrink-0 items-center justify-center overflow-hidden
-      rounded-full bg-surface align-middle select-none
+      bg-surface relative inline-flex shrink-0 items-center justify-center
+      overflow-hidden rounded-full align-middle select-none
     `,
     image: 'size-full rounded-[inherit] object-cover',
     fallback: `
-      truncate font-medium text-muted-foreground
+      text-muted-foreground truncate font-medium
       [&_svg]:pointer-events-none [&_svg]:shrink-0
     `,
   },

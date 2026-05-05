@@ -6,13 +6,14 @@ import type { ButtonHTMLAttributes } from 'vue'
 export const buttonVariants = tv({
   slots: {
     root: `
+      aria-invalid:ring-error
       relative inline-flex shrink-0 cursor-default items-center justify-center
       truncate rounded-md font-medium tracking-wide whitespace-nowrap
       transition-all outline-none select-none
       focus-visible:ring-2 focus-visible:ring-offset-2
       active:not-aria-[haspopup]:translate-y-px
       disabled:pointer-events-none disabled:opacity-50
-      aria-invalid:ring-2 aria-invalid:ring-error aria-invalid:ring-offset-2
+      aria-invalid:ring-2 aria-invalid:ring-offset-2
       [&_svg]:pointer-events-none [&_svg]:shrink-0
     `,
   },

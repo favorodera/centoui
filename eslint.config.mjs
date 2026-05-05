@@ -43,7 +43,7 @@ export default defineConfigWithVueTs(
     plugins: { 'better-tailwindcss': betterTailwind },
     settings: {
       'better-tailwindcss': {
-        entryPoint: fileURLToPath(new URL('./packages/core/src/css/centoui.css', import.meta.url)),
+        entryPoint: fileURLToPath(new URL('./packages/core/src/defaults/centoui.css', import.meta.url)),
       },
     },
     rules: {

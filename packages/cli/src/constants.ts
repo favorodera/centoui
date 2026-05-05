@@ -28,7 +28,7 @@ export const REGISTRY_INDEX_URL = `${REGISTRY_DIR_URL}/index.json`
  * Full URL to the CentoUI CSS theme file.
  * This file is written to the user's project during `centoui init`.
  */
-export const THEME_CSS_URL = `${CORE_SRC_BASE_URL}/css/centoui.css`
+export const THEME_CSS_URL = `${CORE_SRC_BASE_URL}/defaults/centoui.css`
 
 /**
  * HTTP headers required when fetching raw content from the GitHub API.
