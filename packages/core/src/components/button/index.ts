@@ -30,7 +30,7 @@ export const buttonVariants = tv({
         root: 'bg-transparent',
       },
       link: {
-        root: 'h-auto bg-transparent p-0',
+        root: 'bg-transparent',
       },
     },
 
