@@ -1,5 +1,34 @@
 # Changelog
 
+## v1.0.0-alpha.11...v1.0.0-alpha.12
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.11...v1.0.0-alpha.12)
+
+### Added
+
+- Add button group separator component ([907eed9](https://github.com/favorodera/centoui/commit/907eed9))
+- Add ButtonGroup component ([1a3859a](https://github.com/favorodera/centoui/commit/1a3859a))
+- Enhance button group component with orientation and separator props ([3360192](https://github.com/favorodera/centoui/commit/3360192))
+- Add button-group component to registry ([7a832e7](https://github.com/favorodera/centoui/commit/7a832e7))
+- Add button-group component to registry ([e2f838d](https://github.com/favorodera/centoui/commit/e2f838d))
+
+### Fixed
+
+- Remove unnecessary padding from link button variant ([36407e8](https://github.com/favorodera/centoui/commit/36407e8))
+- Correct default orientation for button group separator ([a2c9ecf](https://github.com/favorodera/centoui/commit/a2c9ecf))
+
+### Refactors
+
+- Update slot name for button root element ([06d4000](https://github.com/favorodera/centoui/commit/06d4000))
+- Restructure separator size variants using compoundVariants ([7637c96](https://github.com/favorodera/centoui/commit/7637c96))
+
+  This change refactors the `separatorVariants` to utilize `compoundVariants` for defining size variations. Previously, size was directly mapped to border widths. Now, the size definitions are leaner, and the specific border widths for horizontal and vertical orientations are applied through compound variants. This approach offers better organization and maintainability for the size configurations.
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.10...v1.0.0-alpha.11
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.10...v1.0.0-alpha.11)
