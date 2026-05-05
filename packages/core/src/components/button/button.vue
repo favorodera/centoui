@@ -30,7 +30,7 @@ const styles = computed(() => {
 
 <template>
   <Primitive
-    data-centoui-slot="button-root"
+    data-centoui-slot="button"
     :data-centoui-variant="variant"
     :data-centoui-size="size"
     :data-centoui-color="color"
