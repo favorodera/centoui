@@ -6,9 +6,9 @@ import type { InjectionKey } from 'vue'
 export const buttonGroupVariants = tv({
   slots: {
     root: `
-      flex w-fit items-stretch
+      relative flex w-fit items-stretch
       *:focus-visible:relative *:focus-visible:z-10
-      has-[>[data-centoui-slot=button-group-root]]:gap-2
+      has-[>[data-centoui-slot=button-group]]:gap-2
       has-[select[aria-hidden=true]:last-child]:[&>[data-centoui-slot=select-trigger]:last-of-type]:rounded-r-md
       [&>[data-centoui-slot=select-trigger]:not([class*=\'w-\'])]:w-fit
       [&>input]:flex-1
@@ -64,6 +64,6 @@ export type ButtonGroupSeparatorProps = Pick<SeparatorProps, 'color' | 'size' | 
 }
 
 export type ButtonGroupSlots = {
-  /** Button group content — buttons, inputs, selects etc. */
+  /** ButtonGroup content — buttons, inputs, selects etc. */
   default: []
 }
