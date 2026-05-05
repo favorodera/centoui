@@ -1,5 +1,40 @@
 # Changelog
 
+## v1.0.0-alpha.12...v1.0.0-alpha.13
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.12...v1.0.0-alpha.13)
+
+### Added
+
+- Add ButtonGroup example with separator ([bf29365](https://github.com/favorodera/centoui/commit/bf29365))
+
+### Refactors
+
+- Rename button slot attribute ([8be0879](https://github.com/favorodera/centoui/commit/8be0879))
+- Remove augment.d.ts from core tsconfig include ([c160ae2](https://github.com/favorodera/centoui/commit/c160ae2))
+- Simplify button group data slot name ([59068f8](https://github.com/favorodera/centoui/commit/59068f8))
+- Update button group slot name and styling ([b7b46c0](https://github.com/favorodera/centoui/commit/b7b46c0))
+- Update data-centoui-slot attribute for separator component ([9da422f](https://github.com/favorodera/centoui/commit/9da422f))
+
+### Documentation
+
+- Refactor and clarify Design System documentation ([972206e](https://github.com/favorodera/centoui/commit/972206e))
+- Update slot descriptions in Avatar component ([aed3198](https://github.com/favorodera/centoui/commit/aed3198))
+- Improve code comments and JSDoc across core components ([e0c4e0a](https://github.com/favorodera/centoui/commit/e0c4e0a))
+
+### Tests
+
+- Add button group accessibility tests ([199722d](https://github.com/favorodera/centoui/commit/199722d))
+
+### Styling
+
+- Refine button active state styling ([d58e8cd](https://github.com/favorodera/centoui/commit/d58e8cd))
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.11...v1.0.0-alpha.12
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.11...v1.0.0-alpha.12)
