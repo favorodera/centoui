@@ -1,0 +1,13 @@
+{
+  "$schema": "../schemas/component.json",
+  "name": "kbd-group",
+  "description": "Component for displaying a group of keyboard inputs.",
+  "files": [
+    "components/kbd/kbd-group.vue",
+    "components/kbd/index.ts"
+  ],
+  "componentDeps": [
+    "kbd"
+  ],
+  "packageDeps": {}
+}
