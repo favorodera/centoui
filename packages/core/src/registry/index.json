@@ -54,6 +54,30 @@
     },
     {
       "$schema": "../schemas/component.json",
+      "name": "kbd-group",
+      "description": "Component for displaying a group of keyboard inputs.",
+      "files": [
+        "components/kbd/kbd-group.vue",
+        "components/kbd/index.ts"
+      ],
+      "componentDeps": [
+        "kbd"
+      ],
+      "packageDeps": {}
+    },
+    {
+      "$schema": "../schemas/component.json",
+      "name": "kbd",
+      "description": "Component for displaying keyboard input.",
+      "files": [
+        "components/kbd/kbd.vue",
+        "components/kbd/index.ts"
+      ],
+      "componentDeps": [],
+      "packageDeps": {}
+    },
+    {
+      "$schema": "../schemas/component.json",
       "name": "separator",
       "description": "Component for displaying a visual separator.",
       "files": [
