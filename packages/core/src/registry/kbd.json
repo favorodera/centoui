@@ -1,0 +1,11 @@
+{
+  "$schema": "../schemas/component.json",
+  "name": "kbd",
+  "description": "Component for displaying keyboard input.",
+  "files": [
+    "components/kbd/kbd.vue",
+    "components/kbd/index.ts"
+  ],
+  "componentDeps": [ ],
+  "packageDeps": { }
+}
