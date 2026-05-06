@@ -4,7 +4,10 @@ import { tv, type ClassValue, type VariantProps } from 'tailwind-variants'
 /** Kbd style variants */
 export const kbdVariants = tv({
   slots: {
-    root: 'font sans font-medium pointer-events-none select-none inline-flex items-center justify-center rounded-sm px-1 w-fit',
+    root: `
+      font sans pointer-events-none inline-flex w-fit items-center
+      justify-center rounded-sm px-1 font-medium select-none
+    `,
   },
   variants: {
     color: {

@@ -120,24 +120,24 @@ onUnmounted(() => {
 <template>
   <div
     class="
-      bg-background flex h-screen w-full overflow-hidden font-sans
+      flex h-screen w-full overflow-hidden bg-background font-sans
       transition-colors
     "
   >
     <!-- SIDEBAR -->
     <aside
       v-if="isSidebarVisible"
-      class="border-muted bg-surface flex w-64 shrink-0 flex-col border-r"
+      class="flex w-64 shrink-0 flex-col border-r border-muted bg-surface"
     >
       <!-- Sidebar Header -->
       <div
         class="
-          border-muted flex h-12 items-center justify-between border-b px-4
+          flex h-12 items-center justify-between border-b border-muted px-4
         "
       >
         <span
           class="
-            text-muted-foreground text-[10px] font-bold tracking-widest
+            text-[10px] font-bold tracking-widest text-muted-foreground
             uppercase
           "
         >
@@ -145,7 +145,7 @@ onUnmounted(() => {
         </span>
         <span
           class="
-            bg-muted text-muted-foreground rounded-sm px-1.5 py-0.5 text-[10px]
+            rounded-sm bg-muted px-1.5 py-0.5 text-[10px] text-muted-foreground
             tabular-nums
           "
         >
@@ -171,22 +171,22 @@ onUnmounted(() => {
       </nav>
 
       <!-- Sidebar Footer -->
-      <div class="border-muted border-t p-4">
+      <div class="border-t border-muted p-4">
         <div
           class="
-            text-muted-foreground flex items-center gap-2 text-xs opacity-60
+            flex items-center gap-2 text-xs text-muted-foreground opacity-60
           "
         >
           <kbd
             class="
-              border-muted bg-muted rounded-sm border px-1.5 py-0.5 font-mono
+              rounded-sm border border-muted bg-muted px-1.5 py-0.5 font-mono
             "
           >
             ←
           </kbd>
           <kbd
             class="
-              border-muted bg-muted rounded-sm border px-1.5 py-0.5 font-mono
+              rounded-sm border border-muted bg-muted px-1.5 py-0.5 font-mono
             "
           >
             →
@@ -201,8 +201,8 @@ onUnmounted(() => {
       <!-- Top Header Bar -->
       <header
         class="
-          border-muted bg-surface z-10 flex h-12 shrink-0 items-center
-          justify-between border-b px-4
+          z-10 flex h-12 shrink-0 items-center justify-between border-b
+          border-muted bg-surface px-4
         "
       >
         <Button
@@ -269,7 +269,7 @@ onUnmounted(() => {
       <div class="flex min-h-0 flex-1 overflow-hidden">
         <!-- Canvas Background Layer -->
         <main
-          class="bg-background relative flex flex-1 flex-col overflow-auto"
+          class="relative flex flex-1 flex-col overflow-auto bg-background"
         >
           <!-- Actual View Slot -->
           <slot />

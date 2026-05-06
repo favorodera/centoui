@@ -105,21 +105,21 @@ function getActiveValue(key: string) {
 <template>
   <aside
     class="
-      border-muted bg-surface flex h-full w-80 shrink-0 flex-col overflow-hidden
-      border-l
+      flex h-full w-80 shrink-0 flex-col overflow-hidden border-l border-muted
+      bg-surface
     "
   >
     <!-- Header -->
     <div
       class="
-        border-muted bg-surface sticky top-0 z-10 shrink-0 border-b px-4 py-3
+        sticky top-0 z-10 shrink-0 border-b border-muted bg-surface px-4 py-3
         backdrop-blur-sm
       "
     >
       <div class="flex items-center justify-between">
         <p
           class="
-            text-muted-foreground mb-0.5 text-[10px] font-bold tracking-widest
+            mb-0.5 text-[10px] font-bold tracking-widest text-muted-foreground
             uppercase
           "
         >
@@ -145,16 +145,16 @@ function getActiveValue(key: string) {
             <label
               :for="`prop-${entry.key}`"
               class="
-                text-muted-foreground
+                text-xs font-bold tracking-wider text-muted-foreground uppercase
+                transition-colors
                 group-hover:text-foreground
-                text-xs font-bold tracking-wider uppercase transition-colors
               "
             >
               {{ entry.label }}
             </label>
             <span
               class="
-                text-muted-foreground font-mono text-xs tabular-nums opacity-40
+                font-mono text-xs text-muted-foreground tabular-nums opacity-40
               "
             >
               {{ typeof getActiveValue(entry.key) }}
@@ -165,11 +165,11 @@ function getActiveValue(key: string) {
           <div
             v-if="entry.type === 'boolean'"
             class="
-              border-muted bg-muted flex items-center justify-between rounded-sm
-              border p-2
+              flex items-center justify-between rounded-sm border border-muted
+              bg-muted p-2
             "
           >
-            <span class="text-muted-foreground text-xs">
+            <span class="text-xs text-muted-foreground">
               {{ getActiveValue(entry.key) ? 'Enabled' : 'Disabled' }}
             </span>
         
@@ -179,11 +179,11 @@ function getActiveValue(key: string) {
               role="switch"
               :aria-checked="!!getActiveValue(entry.key)"
               class="
-                focus-visible:ring-primary focus-visible:ring-offset-surface
                 relative inline-flex h-5 w-9 shrink-0 cursor-pointer
                 rounded-full border-2 border-transparent transition-colors
                 outline-none
-                focus-visible:ring-2 focus-visible:ring-offset-2
+                focus-visible:ring-2 focus-visible:ring-primary
+                focus-visible:ring-offset-2 focus-visible:ring-offset-surface
               "
               :class="getActiveValue(entry.key) ? 'bg-primary' : `bg-muted`"
               @click="handleValueUpdate(entry.key, !getActiveValue(entry.key))"
@@ -209,12 +209,11 @@ function getActiveValue(key: string) {
               :id="`prop-${entry.key}`"
               :value="getActiveValue(entry.key)"
               class="
-                border-muted bg-muted
+                h-9 w-full cursor-pointer appearance-none rounded-sm border
+                border-muted bg-muted pr-8 pl-3 text-xs transition-all
+                outline-none
                 hover:border-muted
-                focus:border-primary focus:ring-primary
-                h-9 w-full cursor-pointer appearance-none rounded-sm border pr-8
-                pl-3 text-xs transition-all outline-none
-                focus:ring-1
+                focus:border-primary focus:ring-1 focus:ring-primary
               "
               @change="handleValueUpdate(entry.key, ($event.target as HTMLSelectElement).value)"
             >
@@ -229,8 +228,8 @@ function getActiveValue(key: string) {
             <Icon
               icon="lucide:chevron-down"
               class="
-                text-muted-foreground pointer-events-none absolute top-1/2
-                right-2.5 -translate-y-1/2 text-xs
+                pointer-events-none absolute top-1/2 right-2.5 -translate-y-1/2
+                text-xs text-muted-foreground
               "
             />
           </div>
@@ -243,13 +242,11 @@ function getActiveValue(key: string) {
             :value="getActiveValue(entry.key)"
             placeholder="No value set"
             class="
-              border-muted bg-muted
+              h-9 w-full rounded-sm border border-muted bg-muted px-3 text-xs
+              transition-all outline-none
               placeholder:text-muted-foreground
               hover:border-muted
-              focus:border-primary focus:ring-primary
-              h-9 w-full rounded-sm border px-3 text-xs transition-all
-              outline-none
-              focus:ring-1
+              focus:border-primary focus:ring-1 focus:ring-primary
             "
             @input="handleValueUpdate(entry.key, ($event.target as HTMLInputElement).value)"
           >
@@ -260,9 +257,9 @@ function getActiveValue(key: string) {
             class="space-y-4 px-1 pt-1"
           >
             <div class="flex items-center justify-between">
-              <span class="text-muted-foreground text-[10px] tabular-nums">{{ entry.options?.[0] ?? 0 }}</span>
-              <span class="text-primary text-xs font-bold tabular-nums">{{ getActiveValue(entry.key) }}</span>
-              <span class="text-muted-foreground text-[10px] tabular-nums">{{ entry.options?.[1] ?? 100 }}</span>
+              <span class="text-[10px] text-muted-foreground tabular-nums">{{ entry.options?.[0] ?? 0 }}</span>
+              <span class="text-xs font-bold text-primary tabular-nums">{{ getActiveValue(entry.key) }}</span>
+              <span class="text-[10px] text-muted-foreground tabular-nums">{{ entry.options?.[1] ?? 100 }}</span>
             </div>
             <input
               :id="`prop-${entry.key}`"
@@ -272,7 +269,7 @@ function getActiveValue(key: string) {
               :max="Number(entry.options?.[1] ?? 100)"
               :step="Number(entry.options?.[2] ?? 1)"
               class="
-                bg-muted accent-primary h-1.5 w-full cursor-pointer rounded-full
+                h-1.5 w-full cursor-pointer rounded-full bg-muted accent-primary
                 outline-none
               "
               @input="handleValueUpdate(entry.key, Number(($event.target as HTMLInputElement).value))"
@@ -281,7 +278,7 @@ function getActiveValue(key: string) {
 
           <p
             v-if="entry.hint"
-            class="text-muted-foreground pl-1 text-xs/relaxed italic"
+            class="pl-1 text-xs/relaxed text-muted-foreground italic"
           >
             {{ entry.hint }}
           </p>
@@ -290,7 +287,7 @@ function getActiveValue(key: string) {
     </div>
 
     <!-- Footer Action -->
-    <div class="border-muted bg-surface shrink-0 border-t p-4">
+    <div class="shrink-0 border-t border-muted bg-surface p-4">
       <Button
         class="w-full"
         color="secondary"
