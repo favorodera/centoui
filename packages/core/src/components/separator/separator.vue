@@ -7,18 +7,16 @@ import { separatorVariants, type SeparatorProps, type SeparatorSlots } from './i
 const slots = defineSlots<SeparatorSlots>()
 
 const props = withDefaults(defineProps<SeparatorProps>(), {
-  as: 'div',
-  orientation: 'horizontal',
   size: 'xs',
   variant: 'solid',
   color: 'neutral',
 })
 
-// Strip component-specific props and forward native props.
+// Forward props.
 const delegatedProps = reactiveOmit(props, 'class', 'size', 'variant', 'color')
 const forwardedProps = useForwardProps(delegatedProps)
 
-// Compute class string for the root slot.
+// Style class string for the component.
 const styles = computed(() => separatorVariants({
   orientation: props.orientation,
   size: props.size,
