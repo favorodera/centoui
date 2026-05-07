@@ -1,7 +1,6 @@
-import type { PrimitiveProps } from 'reka-ui'
+import { createContext, type PrimitiveProps } from 'reka-ui'
 import { tv, type ClassValue, type VariantProps } from 'tailwind-variants'
 import type { SeparatorProps } from '../separator'
-import type { InjectionKey } from 'vue'
 
 /** ButtonGroup style variants */
 export const buttonGroupVariants = tv({
@@ -18,6 +17,7 @@ export const buttonGroupVariants = tv({
   },
   variants: {
     orientation: {
+      // Vertical
       vertical: {
         root: `
           flex-col
@@ -27,6 +27,7 @@ export const buttonGroupVariants = tv({
         `,
         separator: '',
       },
+      // Horizontal
       horizontal: {
         root: `
           [&>*:not(:first-child)]:rounded-l-none
@@ -42,16 +43,24 @@ export const buttonGroupVariants = tv({
   },
 })
 
-// Component exports
-export { default as ButtonGroup } from './button-group.vue'
-export { default as ButtonGroupSeparator } from './button-group-separator.vue'
 
-// Variables exports
-/** Injection key for sharing root context with child components. */
-export const buttonGroupContextKey: InjectionKey<Pick<ButtonGroupVariants, 'orientation'>> = Symbol('centoui:button-group:context')
+// Component exports
+
+export { default as ButtonGroupSeparator } from './button-group-separator.vue'
+export { default as ButtonGroup } from './button-group.vue'
+
+
+// Methods exports
+
+export const [injectButtonGroupContext, provideButtonGroupContext] = createContext<ButtonGroupContext>('ButtonGroup', 'centoui:button-group:context')
+
 
 // Types exports
-/** Extractable variant props for ButtonGroup component. */
+
+/** ButtonGroup context type */
+export type ButtonGroupContext = Pick<ButtonGroupVariants, 'orientation'>
+
+/** Variant props for ButtonGroup component. */
 export type ButtonGroupVariants = VariantProps<typeof buttonGroupVariants>
 
 /** Props for ButtonGroup component. */
@@ -73,6 +82,6 @@ export type ButtonGroupSeparatorProps = Pick<SeparatorProps, 'color' | 'size' | 
 
 /** Slots for ButtonGroup component. */
 export type ButtonGroupSlots = {
-  /** ButtonGroup content — buttons, inputs, selects etc. */
+  /** Default slot. */
   default: []
 }
