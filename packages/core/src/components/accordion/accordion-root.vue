@@ -12,30 +12,31 @@ import {
 defineSlots<AccordionRootSlots>()
 const emits = defineEmits<AccordionRootEmits>()
 
-const props = withDefaults(defineProps<AccordionRootProps>(), {
-  as: 'div',
-  collapsible: false,
-  disabled: false,
-  orientation: 'vertical',
-  unmountOnHide: true,
-})
+const props = defineProps<AccordionRootProps>()
 
-// Strip component-specific props and forward native props and emits.
+// Forward props and emits.
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedPropsEmits = useForwardPropsEmits(delegatedProps, emits)
 
-// Compute class string for the root slot.
+// Style class string for the component.
 const styles = computed(() => {
   const { root } = accordionVariants()
 
   return root({ class: props.class })
 })
+
+// Computations
+// Mirror reka's internal default ('vertical') so the attribute is always present and correct.
+const orientation = computed(() => props.orientation ?? 'vertical')
+const disabled = computed(() => props.disabled ? '' : undefined)
 </script>
 
 <template>
   <AccordionRoot
     v-slot="slotProps"
     data-centoui-slot="accordion-root"
+    :data-centoui-orientation="orientation"
+    :data-centoui-disabled="disabled"
     v-bind="forwardedPropsEmits"
     :class="styles"
   >
