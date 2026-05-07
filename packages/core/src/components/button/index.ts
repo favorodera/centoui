@@ -127,7 +127,7 @@ export const buttonVariants = tv({
   },
 
   compoundVariants: [
-    // Solid variant
+    // Solid
     {
       variant: 'solid',
       color: 'primary',
@@ -209,7 +209,7 @@ export const buttonVariants = tv({
       },
     },
 
-    // Soft variant
+    // Soft
     {
       variant: 'soft',
       color: 'primary',
@@ -291,7 +291,7 @@ export const buttonVariants = tv({
       },
     },
 
-    // Subtle variant
+    // Subtle
     {
       variant: 'subtle',
       color: 'primary',
@@ -373,7 +373,7 @@ export const buttonVariants = tv({
       },
     },
 
-    // Outline variant
+    // Outline
     {
       variant: 'outline',
       color: 'primary',
@@ -455,7 +455,7 @@ export const buttonVariants = tv({
       },
     },
 
-    // Ghost variant
+    // Ghost
     {
       variant: 'ghost',
       color: 'primary',
@@ -497,7 +497,7 @@ export const buttonVariants = tv({
       class: { root: 'hover:bg-info/10' },
     },
 
-    // Link variant
+    // Link
     {
       variant: 'link',
       color: 'primary',
@@ -539,12 +539,42 @@ export const buttonVariants = tv({
       class: { root: 'hover:text-info/70' },
     },
 
-    // Square variant (icon-only padding overrides)
-    { square: true, size: 'xs', class: { root: 'p-1' } },
-    { square: true, size: 'sm', class: { root: 'p-1.5' } },
-    { square: true, size: 'md', class: { root: 'p-2' } },
-    { square: true, size: 'lg', class: { root: 'p-2.5' } },
-    { square: true, size: 'xl', class: { root: 'p-3' } },
+    // Square
+    {
+      square: true,
+      size: 'xs',
+      class: {
+        root: 'p-1',
+      },
+    },
+    {
+      square: true,
+      size: 'sm',
+      class: {
+        root: 'p-1.5',
+      },
+    },
+    {
+      square: true,
+      size: 'md',
+      class: {
+        root: 'p-2',
+      },
+    },
+    {
+      square: true,
+      size: 'lg',
+      class: {
+        root: 'p-2.5',
+      },
+    },
+    {
+      square: true,
+      size: 'xl',
+      class: {
+        root: 'p-3',
+      },
+    },
   ],
 
   defaultVariants: {
@@ -555,11 +585,14 @@ export const buttonVariants = tv({
   },
 })
 
+
 // Component exports
+
 export { default as Button } from './button.vue'
 
 // Types exports
-/** Extractable variant props for Button component. */
+
+/** Variant props for Button component. */
 export type ButtonVariants = VariantProps<typeof buttonVariants>
 
 /** Props for Button component. */
@@ -591,6 +624,6 @@ export type ButtonProps = PrimitiveProps & /* @vue-ignore */ ButtonHTMLAttribute
 
 /** Slots for Button component. */
 export type ButtonSlots = {
-  /** Button content — text, icons, or both. */
+  /** Default slot. */
   default: []
 }
