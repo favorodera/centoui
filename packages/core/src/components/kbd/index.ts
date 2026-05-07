@@ -5,8 +5,8 @@ import { tv, type ClassValue, type VariantProps } from 'tailwind-variants'
 export const kbdVariants = tv({
   slots: {
     root: `
-      font sans pointer-events-none inline-flex w-fit items-center
-      justify-center rounded-sm px-1 font-medium select-none
+      pointer-events-none inline-flex w-fit items-center justify-center
+      rounded-sm px-1 font-medium select-none
     `,
   },
   variants: {
@@ -304,11 +304,15 @@ export const kbdVariants = tv({
   },
 })
 
+
 // Component exports
+
 export { default as Kbd } from './kbd.vue'
 
+
 // Types exports
-/** Extractable variant props for Kbd component. */
+
+/** Variant props for Kbd component. */
 export type KbdVariants = VariantProps<typeof kbdVariants>
 
 /** Props for Kbd component. */
@@ -334,6 +338,6 @@ export type KbdProps = PrimitiveProps & {
 
 /** Slots for Kbd component. */
 export type KbdSlots = {
-  /** Kbd content — text. */
+  /** Default slot. */
   default: []
 }
