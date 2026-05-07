@@ -14,11 +14,11 @@ const props = withDefaults(defineProps<ButtonProps>(), {
   square: false,
 })
 
-// Strip component-specific props and forward native props.
+// Forward props.
 const delegatedProps = reactiveOmit(props, 'class', 'variant', 'color', 'size', 'square')
 const forwardedProps = useForwardProps(delegatedProps)
 
-// Compute class string for the root slot
+// Style class string for the component.
 const styles = computed(() => {
   const { root } = buttonVariants({
     variant: props.variant,
