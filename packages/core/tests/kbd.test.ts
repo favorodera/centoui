@@ -4,7 +4,7 @@ import { axe } from 'vitest-axe'
 import { Kbd } from '../src/components/kbd'
 
 describe('accessibility', () => {
-  test('basic kbd', async () => {
+  test('basic usage', async () => {
     const wrapper = mount(Kbd, {
       slots: { default: 'Ctrl' },
     })
