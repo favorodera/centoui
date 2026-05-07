@@ -88,16 +88,21 @@ export const avatarVariants = tv({
   },
 })
 
+
 // Component exports
+
 export { default as AvatarFallback } from './avatar-fallback.vue'
 export { default as AvatarImage } from './avatar-image.vue'
 export { default as AvatarRoot } from './avatar-root.vue'
 
 // Utils exports
+
 export { getInitials } from './avatar-utils'
 
+
 // Types exports
-/** Extractable variant props for Avatar component. */
+
+/** Variant props for Avatar component. */
 export type AvatarVariants = VariantProps<typeof avatarVariants>
 
 /** Props for AvatarRoot component. */
@@ -133,12 +138,12 @@ export type AvatarImageEmits = RekaAvatarImageEmits
 
 /** Slots for AvatarRoot component. */
 export type AvatarRootSlots = {
-  /** AvatarRoot content — image and fallback. */
+  /** Default slot. */
   default: []
 }
 
 /** Slots for AvatarFallback component. */
 export type AvatarFallbackSlots = {
-  /** AvatarFallback content — text, icons, etc. */
+  /** Default slot. */
   default: []
 }
