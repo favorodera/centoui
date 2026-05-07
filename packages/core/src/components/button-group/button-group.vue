@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { Primitive, useForwardProps } from 'reka-ui'
-import { buttonGroupContextKey, buttonGroupVariants, type ButtonGroupProps, type ButtonGroupSlots } from '.'
 import { reactiveOmit } from '@vueuse/core'
-import { computed, provide, reactive, toRef } from 'vue'
+import { Primitive, useForwardProps } from 'reka-ui'
+import { computed, reactive, toRef } from 'vue'
+import { buttonGroupVariants, provideButtonGroupContext, type ButtonGroupProps, type ButtonGroupSlots } from '.'
 
 defineSlots<ButtonGroupSlots>()
 
@@ -11,11 +11,11 @@ const props = withDefaults(defineProps<ButtonGroupProps>(), {
   orientation: 'horizontal',
 })
 
-// Strip component-specific props and forward native props.
+// Forward props.
 const delegatedProps = reactiveOmit(props, 'class', 'orientation')
 const forwardedProps = useForwardProps(delegatedProps)
 
-// Compute class string for the root slot.
+// Style class string for the component.
 const styles = computed(() => {
   const { root } = buttonGroupVariants({
     orientation: props.orientation,
@@ -23,9 +23,8 @@ const styles = computed(() => {
   return root({ class: props.class })
 })
 
-// Provide orientation to child components (e.g. ButtonGroupSeparator).
-provide(
-  buttonGroupContextKey,
+// Provide context to child components.
+provideButtonGroupContext(
   reactive({
     orientation: toRef(props, 'orientation'),
   }),
