@@ -13,6 +13,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
+      '#centoui/config': fileURLToPath(new URL('../../packages/core/src/defaults/config.ts', import.meta.url)),
     },
   },
 })
