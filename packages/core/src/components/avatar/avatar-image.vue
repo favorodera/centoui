@@ -6,15 +6,13 @@ import { avatarVariants, type AvatarImageEmits, type AvatarImageProps } from '.'
 
 const emits = defineEmits<AvatarImageEmits>()
 
-const props = withDefaults(defineProps<AvatarImageProps>(), {
-  src: '',
-})
+const props = defineProps<AvatarImageProps>()
 
-// Strip component-specific props and forward native props and emits.
+// Forward props and emits.
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedPropsEmits = useForwardPropsEmits(delegatedProps, emits)
 
-// Compute class string for the image slot.
+// Style class string for the component.
 const styles = computed(() => {
   const { image } = avatarVariants()
 
