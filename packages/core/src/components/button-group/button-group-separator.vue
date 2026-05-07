@@ -1,32 +1,32 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
-import { computed, inject, useAttrs } from 'vue'
-import { buttonGroupContextKey, buttonGroupVariants, type ButtonGroupSeparatorProps } from '.'
-import { Separator, type SeparatorProps } from '../separator'
+import { computed, useAttrs } from 'vue'
+import { buttonGroupVariants, injectButtonGroupContext, type ButtonGroupSeparatorProps } from '.'
+import { Separator } from '../separator'
 
 defineOptions({
   inheritAttrs: false,
 })
 
-// Raw attrs to merge onto the Separator (inheritAttrs is disabled).
 const attributes = useAttrs()
 
 const props = defineProps<ButtonGroupSeparatorProps>()
 
-// Strip component-specific props and forward native props.
+// Delegate props.
 const delegatedProps = reactiveOmit(props, 'class')
 
-// Compute class string for the separator slot.
+// Style class string for the component.
 const styles = computed(() => {
   const { separator } = buttonGroupVariants()
   return separator({ class: props.class })
 })
 
-// Read the parent ButtonGroup's orientation
-const buttonGroupContext = inject(buttonGroupContextKey, { orientation: 'horizontal' })
+// Inject ButtonGroup's context
+const buttonGroupContext = injectButtonGroupContext()
 
-// Flip orientation so the separator is perpendicular to the group's layout direction.
-const orientation = computed<SeparatorProps['orientation']>(() => {
+// Computations
+const orientation = computed(() => {
+  // Flip orientation so the separator is perpendicular to the group's layout direction.
   return buttonGroupContext.orientation === 'vertical' ? 'horizontal' : 'vertical'
 })
 </script>
