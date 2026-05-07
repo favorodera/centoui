@@ -8,11 +8,11 @@ defineSlots<AvatarFallbackSlots>()
 
 const props = defineProps<AvatarFallbackProps>()
 
-// Strip component-specific props and forward native props.
+// Forward props.
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
 
-// Compute class string for the fallback slot.
+// Style class string for the component.
 const styles = computed(() => {
   const { fallback } = avatarVariants()
 
