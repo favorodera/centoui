@@ -11,11 +11,11 @@ const props = withDefaults(defineProps<AvatarRootProps>(), {
   disabled: false,
 })
 
-// Strip component-specific props and forward native props.
+// Forward props.
 const delegatedProps = reactiveOmit(props, 'class', 'disabled', 'size')
 const forwardedProps = useForwardProps(delegatedProps)
 
-// Compute class string for the root slot.
+// Style class string for the component.
 const styles = computed(() => {
   const { root } = avatarVariants({
     size: props.size,
