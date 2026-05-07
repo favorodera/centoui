@@ -8,11 +8,15 @@ export const kbdVariants = tv({
   },
 })
 
+
 // Component exports
+
 export { default as KbdGroup } from './kbd-group.vue'
 
+
 // Types exports
-/** Extractable variant props for Kbd component. */
+
+/** Variant props for Kbd component. */
 export type KbdGroupVariants = VariantProps<typeof kbdVariants>
 
 /** Props for KbdGroup component. */
@@ -23,6 +27,6 @@ export type KbdGroupProps = PrimitiveProps & {
 
 /** Slots for Kbd component. */
 export type KbdGroupSlots = {
-  /** KbdGroup content — kbd elements. */
+  /** Default slot. */
   default: []
 }
