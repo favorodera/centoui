@@ -4,7 +4,7 @@ import { axe } from 'vitest-axe'
 import { Separator } from '../src/components/separator'
 
 describe('accessibility', () => {
-  test('only separator', async () => {
+  test('basic usage', async () => {
     const wrapper = mount(Separator)
     expect(await axe(wrapper.element)).toHaveNoViolations()
   })
