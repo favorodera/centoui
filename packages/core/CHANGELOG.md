@@ -1,5 +1,117 @@
 # Changelog
 
+## v1.0.0-alpha.13...v1.0.0-alpha.14
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.13...v1.0.0-alpha.14)
+
+### Added
+
+- Add Kbd component ([8da3248](https://github.com/favorodera/centoui/commit/8da3248))
+- Add Kbd component ([0760eb6](https://github.com/favorodera/centoui/commit/0760eb6))
+- Add KbdGroup component and types ([338c200](https://github.com/favorodera/centoui/commit/338c200))
+- Add KbdGroup component ([8160fd7](https://github.com/favorodera/centoui/commit/8160fd7))
+- Add kbd and kbd-group components to registry ([40bf675](https://github.com/favorodera/centoui/commit/40bf675))
+- Add kbd component registry entry ([15bf3a4](https://github.com/favorodera/centoui/commit/15bf3a4))
+- Add kbd-group component registry entry ([b05a02d](https://github.com/favorodera/centoui/commit/b05a02d))
+- Introduce accordion root component ([0bddac9](https://github.com/favorodera/centoui/commit/0bddac9))
+- Add accordion component ([2cb0a6d](https://github.com/favorodera/centoui/commit/2cb0a6d))
+- Add AccordionItem component ([485539b](https://github.com/favorodera/centoui/commit/485539b))
+- Export AccordionItem and add default borders ([562834a](https://github.com/favorodera/centoui/commit/562834a))
+- Add AccordionContent component ([1b0a38d](https://github.com/favorodera/centoui/commit/1b0a38d))
+- Add AccordionHeader component - New Vue component for AccordionHeader - Integrates with Reka UI Accordion - Handles styling and context injection ([a8991c4](https://github.com/favorodera/centoui/commit/a8991c4))
+- Integrate AccordionItem with root context - Inject AccordionRoot context. - Compute disabled state from root. - Compute open/closed state from root. - Add data attributes for state and orientation. - Enhances styling and accessibility. ([ea1cf58](https://github.com/favorodera/centoui/commit/ea1cf58))
+- Add AccordionTrigger component ([1673892](https://github.com/favorodera/centoui/commit/1673892))
+- Add accordion component registry ([09d5ae8](https://github.com/favorodera/centoui/commit/09d5ae8))
+- Add accordion component to registry ([e197acd](https://github.com/favorodera/centoui/commit/e197acd))
+
+### Refactors
+
+- Migrate theme and config to defaults directory ([d6b5c74](https://github.com/favorodera/centoui/commit/d6b5c74))
+
+  This commit introduces a `defaults` directory within the `packages/core` package to house the default theme CSS and configuration. This change aims to centralize these core assets and improve the project's structure.
+  Key changes include:
+  - **Moving `centoui.css`**: The main theme CSS file has been moved from `packages/core/src/css` to `packages/core/src/defaults/centoui.css`.
+  - **New `config.ts`**: A new file `packages/core/src/defaults/config.ts` is introduced to hold default configuration options, specifically icon mappings.
+  - **Updated Imports**: All references to the theme CSS and the `centoui.config.ts` in the `apps/preview` directory have been updated to reflect the new path.
+  - **CLI Adjustments**: The `THEME_CSS_URL` constant in `packages/cli/src/constants.ts` and the `buildDefaultConfigFileContent` utility in `packages/cli/src/utils/config-utils.ts` have been updated to point to the new location. The `version` field has been removed from the generated `centoui.config.ts` as it's no longer necessary.
+  - **Vite Alias**: A new Vite alias is added in `packages/core/vite.config.ts` to resolve `#centoui/config` to the new `config.ts` file.
+  - **Tailwind CSS Integration**: The `eslint.config.mjs` and `tailwind.css` files have been updated to reflect the new path for the `centoui.css` import.
+  - **Dependency Removal**: The `centoui` workspace dependency is removed from `apps/preview/package.json` as it's no longer needed for the preview app.
+  - **Styling Cleanup**: Minor adjustments to Tailwind CSS class order in various Vue components for improved readability.
+  - **Avatar and Button Variants**: Minor adjustments to Tailwind CSS class order in `avatar/index.ts` and `button/index.ts` for consistency.
+
+- Update useForwardProps to useForwardPropsEmits in AvatarImage ([c87e5f1](https://github.com/favorodera/centoui/commit/c87e5f1))
+- Accordion root defaults and data attributes ([1c8ab41](https://github.com/favorodera/centoui/commit/1c8ab41))
+
+  - Remove `withDefaults` from props.
+  - Compute `orientation` and `disabled` state.
+  - Expose `orientation` via data attribute.
+  - Expose `disabled` via data attribute.
+  - Align defaults with headless component.
+
+- Simplify AvatarImage prop handling - No longer set default for src prop - Update comments for clarity ([a145d8e](https://github.com/favorodera/centoui/commit/a145d8e))
+- Use injectButtonGroupContext helper - Encapsulate context injection logic - Improve readability and maintainability - Update comments for clarity ([62b8307](https://github.com/favorodera/centoui/commit/62b8307))
+- Use dedicated function for context provision ([da705ca](https://github.com/favorodera/centoui/commit/da705ca))
+- Use createContext for button group context ([e04e5cd](https://github.com/favorodera/centoui/commit/e04e5cd))
+- Simplify Kbd component props handling ([a5c7268](https://github.com/favorodera/centoui/commit/a5c7268))
+
+  - Forward props to native element.
+  - Improve style class computation logic.
+
+- Improve prop handling in KbdGroup ([5287140](https://github.com/favorodera/centoui/commit/5287140))
+
+  - Forward props to native elements
+  - Simplify computed styles logic
+
+- Improve separator variant definitions ([ec86bab](https://github.com/favorodera/centoui/commit/ec86bab))
+
+  - Update color and variant definitions
+  - Restructure compound variants
+  - Clarify slot documentation
+
+- Simplify separator props handling ([d686610](https://github.com/favorodera/centoui/commit/d686610))
+
+  - Remove default values from `as` and `orientation`
+  - Streamline prop delegation and forwarding
+
+
+### Documentation
+
+- Clarify comments in avatar-root.vue - Update prop forwarding comment. - Clarify style class comment. ([7566927](https://github.com/favorodera/centoui/commit/7566927))
+- Refine avatar component JSDoc comments ([b4f70c7](https://github.com/favorodera/centoui/commit/b4f70c7))
+- Update KbdGroup type and slot descriptions ([3c7b9f8](https://github.com/favorodera/centoui/commit/3c7b9f8))
+
+### Chores
+
+- Update default icon set ([4f189bc](https://github.com/favorodera/centoui/commit/4f189bc))
+
+### Tests
+
+- Add accessibility tests for KbdGroup ([65e423a](https://github.com/favorodera/centoui/commit/65e423a))
+- Add accessibility tests for Kbd component ([299d5ed](https://github.com/favorodera/centoui/commit/299d5ed))
+- Add accordion accessibility tests ([46b57a4](https://github.com/favorodera/centoui/commit/46b57a4))
+- Rename kbd-group test to basic usage ([d8d274a](https://github.com/favorodera/centoui/commit/d8d274a))
+- Rename kbd test case ([a61ad30](https://github.com/favorodera/centoui/commit/a61ad30))
+
+  - improve test description
+
+- Rename separator test to basic usage ([7a68116](https://github.com/favorodera/centoui/commit/7a68116))
+
+### Styling
+
+- Reorder active state class in button variants ([32c58b0](https://github.com/favorodera/centoui/commit/32c58b0))
+- Adjust Tailwind CSS class order for consistency ([6456e8e](https://github.com/favorodera/centoui/commit/6456e8e))
+- Apply comprehensive styling to Accordion components - Add styles for header, trigger, and content - Ensure Accordion sub-components are exported - Update slot documentation for clarity ([29a6133](https://github.com/favorodera/centoui/commit/29a6133))
+- Clarify comments in avatar fallback ([613a2b6](https://github.com/favorodera/centoui/commit/613a2b6))
+- Clarify comments in button component ([1633df4](https://github.com/favorodera/centoui/commit/1633df4))
+- Improve button variant comments and formatting ([9664040](https://github.com/favorodera/centoui/commit/9664040))
+- Remove font sans from Kbd root slot - Update Kbd component JSDoc comments ([1c61446](https://github.com/favorodera/centoui/commit/1c61446))
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.12...v1.0.0-alpha.13
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.12...v1.0.0-alpha.13)
