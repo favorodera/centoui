@@ -6,7 +6,7 @@ import { KbdGroup } from '../src/components/kbd-group'
 import { h } from 'vue'
 
 describe('accessibility', () => {
-  test('basic kbd group', async () => {
+  test('basic usage', async () => {
     const wrapper = mount(KbdGroup, {
       slots: {
         default: [
