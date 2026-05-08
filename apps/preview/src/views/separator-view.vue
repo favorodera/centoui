@@ -8,35 +8,35 @@ import ViewContainer from '../components/view-container.vue'
 
 const { values, setPreviewState } = usePreview()
 
-const separatorPropsSchema: PropsSchema = {
+const schema: PropsSchema = {
   size: {
     type: 'select',
     label: 'Size',
     options: Object.keys(separatorVariants.variants.size),
-    default: 'xs',
+    default: separatorVariants.defaultVariants.size,
   },
   color: {
     type: 'select',
     label: 'Color',
     options: Object.keys(separatorVariants.variants.color),
-    default: 'neutral',
+    default: separatorVariants.defaultVariants.color,
   },
   variant: {
     type: 'select',
     label: 'Variant',
     options: Object.keys(separatorVariants.variants.variant),
-    default: 'solid',
+    default: separatorVariants.defaultVariants.variant,
   },
   orientation: {
     type: 'select',
     label: 'Orientation',
     options: Object.keys(separatorVariants.variants.orientation),
-    default: 'horizontal',
+    default: separatorVariants.defaultVariants.orientation,
   },
 }
 
 onMounted(() => {
-  setPreviewState('Separator', separatorPropsSchema)
+  setPreviewState('Separator', schema)
 })
 </script>
 
