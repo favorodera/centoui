@@ -8,12 +8,12 @@ import ViewContainer from '../components/view-container.vue'
 
 const { values, setPreviewState } = usePreview()
 
-const avatarPropsSchema: PropsSchema = {
+const schema: PropsSchema = {
   size: {
     type: 'select',
     label: 'Size',
     options: Object.keys(avatarVariants.variants.size),
-    default: 'md',
+    default: avatarVariants.defaultVariants.size,
   },
   disabled: {
     type: 'boolean',
@@ -23,7 +23,7 @@ const avatarPropsSchema: PropsSchema = {
 }
 
 onMounted(() => {
-  setPreviewState('Avatar', avatarPropsSchema)
+  setPreviewState('Avatar', schema)
 })
 </script>
 

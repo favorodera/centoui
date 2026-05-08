@@ -5,17 +5,15 @@ import type { PropsSchema } from '../components/props-panel.vue'
 import ViewContainer from '../components/view-container.vue'
 import { TooltipRoot, TooltipContent, TooltipProvider, TooltipTrigger, TooltipArrow, TooltipPortal, tooltipVariants } from '#centoui/components/tooltip'
 import { Button } from '#centoui/components/button'
-import { Kbd } from '#centoui/components/kbd'
-import { KbdGroup } from '#centoui/components/kbd-group'
 
 const { values, setPreviewState } = usePreview()
 
-const tooltipPropsSchema: PropsSchema = {
+const schema: PropsSchema = {
   variant: {
     type: 'select',
     label: 'Variant',
     options: Object.keys(tooltipVariants.variants.variant),
-    default: 'solid',
+    default: tooltipVariants.defaultVariants.variant,
   },
   side: {
     type: 'select',
@@ -26,7 +24,7 @@ const tooltipPropsSchema: PropsSchema = {
 }
 
 onMounted(() => {
-  setPreviewState('Tooltip', tooltipPropsSchema)
+  setPreviewState('Tooltip', schema)
 })
 </script>
 
@@ -47,16 +45,8 @@ onMounted(() => {
             :side="values.side"
             class="flex gap-2"
           >
-
-            <p>Add to library</p>
-
-            <KbdGroup>
-              <Kbd>Ctrl</Kbd>
-              <Kbd>D</Kbd>
-            </KbdGroup>
-
+            <p>This is a tooltip</p>
             <TooltipArrow />
-
           </TooltipContent>
         </TooltipPortal>
 

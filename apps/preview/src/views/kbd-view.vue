@@ -7,29 +7,29 @@ import ViewContainer from '../components/view-container.vue'
 
 const { values, setPreviewState } = usePreview()
 
-const kbdPropsSchema: PropsSchema = {
+const schema: PropsSchema = {
   size: {
     type: 'select',
     label: 'Size',
     options: Object.keys(kbdVariants.variants.size),
-    default: 'md',
+    default: kbdVariants.defaultVariants.size,
   },
   color: {
     type: 'select',
     label: 'Color',
     options: Object.keys(kbdVariants.variants.color),
-    default: 'neutral',
+    default: kbdVariants.defaultVariants.color,
   },
   variant: {
     type: 'select',
     label: 'Variant',
     options: Object.keys(kbdVariants.variants.variant),
-    default: 'solid',
+    default: kbdVariants.defaultVariants.variant,
   },
 }
 
 onMounted(() => {
-  setPreviewState('Kbd', kbdPropsSchema)
+  setPreviewState('Kbd', schema)
 })
 </script>
 
@@ -48,23 +48,7 @@ onMounted(() => {
       :color="values.color"
       :variant="values.variant"
     >
-      ⇧
-    </Kbd>
-
-    <Kbd
-      :size="values.size"
-      :color="values.color"
-      :variant="values.variant"
-    >
-      ⌥
-    </Kbd>
-
-    <Kbd
-      :size="values.size"
-      :color="values.color"
-      :variant="values.variant"
-    >
-      ⌃
+      Ctrl
     </Kbd>
   </ViewContainer>
 </template>
