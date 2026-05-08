@@ -18,6 +18,7 @@ const { schema, values, hasProps, updateValues } = usePreview()
 const dropdownRef = ref<HTMLElement | null>(null)
 const arenaRef = ref<HTMLElement | null>(null)
 const isSelectOpen = ref(false)
+const isPropsPanelOpen = ref(false)
 
 const isDark = useDark()
 const toggleDarkMode = useToggle(isDark)
@@ -107,6 +108,7 @@ watch(direction, (currentDirection) => {
 
 watch(() => route.path, () => {
   isSelectOpen.value = false
+  isPropsPanelOpen.value = false
 })
 
 onClickOutside(dropdownRef, () => {
@@ -201,11 +203,12 @@ onClickOutside(dropdownRef, () => {
 
     <p
       class="
-        pointer-events-none absolute bottom-3 left-1/2 z-10 -translate-x-1/2
-        rounded-sm border border-muted bg-surface/90 px-2 py-1 text-[10px]
-        text-muted-foreground backdrop-blur-sm
+        pointer-events-none absolute left-1/2 z-10 -translate-x-1/2 rounded-sm
+        border border-muted bg-surface/90 px-2 py-1 text-[10px]
+        text-muted-foreground backdrop-blur-sm transition-[bottom]
         sm:bottom-4
       "
+      :class="hasProps ? 'bottom-14 sm:bottom-4' : 'bottom-3 sm:bottom-4'"
     >
       Swipe left or right to paginate
       <span
@@ -218,11 +221,42 @@ onClickOutside(dropdownRef, () => {
       </span>
     </p>
 
+    <button
+      v-if="hasProps && schema"
+      type="button"
+      class="
+        absolute right-3 bottom-3 z-30 flex h-9 items-center gap-1 rounded-sm
+        border border-muted bg-surface px-2 text-xs shadow-lg
+        sm:hidden
+      "
+      @click="isPropsPanelOpen = !isPropsPanelOpen"
+    >
+      <Icon :icon="isPropsPanelOpen ? 'lucide:sliders-horizontal' : 'lucide:settings-2'" />
+      {{ isPropsPanelOpen ? 'Hide props' : 'Props' }}
+    </button>
+
+    <div
+      v-if="hasProps && schema && isPropsPanelOpen"
+      class="
+        absolute inset-0 z-20 bg-background/55 p-3 backdrop-blur-[1px]
+        sm:hidden
+      "
+      @click.self="isPropsPanelOpen = false"
+    >
+      <div class="absolute inset-x-3 bottom-14 max-h-[65vh] overflow-auto">
+        <PropsPanel
+          :schema="schema"
+          :values="values"
+          @update:values="updateValues"
+        />
+      </div>
+    </div>
+
     <div
       v-if="hasProps && schema"
       class="
-        absolute right-3 bottom-3 z-20
-        sm:right-4 sm:bottom-4
+        hidden
+        sm:absolute sm:right-4 sm:bottom-4 sm:z-20 sm:block
       "
     >
       <PropsPanel
