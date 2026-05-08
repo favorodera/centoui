@@ -8,24 +8,24 @@ import ViewContainer from '../components/view-container.vue'
 
 const { values, setPreviewState } = usePreview()
 
-const buttonPropsSchema: PropsSchema = {
+const schema: PropsSchema = {
   variant: {
     type: 'select',
     label: 'Variant',
     options: Object.keys(buttonVariants.variants.variant),
-    default: 'solid',
+    default: buttonVariants.defaultVariants.variant,
   },
   color: {
     type: 'select',
     label: 'Color',
     options: Object.keys(buttonVariants.variants.color),
-    default: 'primary',
+    default: buttonVariants.defaultVariants.color,
   },
   size: {
     type: 'select',
     label: 'Size',
     options: Object.keys(buttonVariants.variants.size),
-    default: 'md',
+    default: buttonVariants.defaultVariants.size,
   },
   disabled: {
     type: 'boolean',
@@ -35,7 +35,7 @@ const buttonPropsSchema: PropsSchema = {
 }
 
 onMounted(() => {
-  setPreviewState('Button', buttonPropsSchema)
+  setPreviewState('Button', schema)
 })
 </script>
 
