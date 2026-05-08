@@ -1,5 +1,45 @@
 # Changelog
 
+## v1.0.0-alpha.15...v1.0.0-alpha.16
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.15...v1.0.0-alpha.16)
+
+### Fixed
+
+- Adjust avatar fallback text color ([7113ce2](https://github.com/favorodera/centoui/commit/7113ce2))
+- Update kbd component default variants and styling ([aea85a1](https://github.com/favorodera/centoui/commit/aea85a1))
+
+  - Adjust default variant from 'outline' to 'soft'
+  - Update styling from 'bg-muted' to 'bg-neutral'
+  - Update text color from 'text-muted-foreground' to 'text-neutral-foreground'
+
+- Update separator border color ([a3bc2d4](https://github.com/favorodera/centoui/commit/a3bc2d4))
+
+  - Change neutral border to border-neutral
+
+
+### Refactors
+
+- Rename kbdVariants to kbdGroupVariants ([733b631](https://github.com/favorodera/centoui/commit/733b631))
+
+  - Clarify component scope for variants.
+  - Update type names accordingly.
+
+- Rename kbdVariants to kbdGroupVariants ([2182000](https://github.com/favorodera/centoui/commit/2182000))
+
+  - Use kbdGroupVariants for clarity
+  - Update component styles
+
+
+### Styling
+
+- Adjust accordion hover text color ([eb2b78c](https://github.com/favorodera/centoui/commit/eb2b78c))
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.14...v1.0.0-alpha.15
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.14...v1.0.0-alpha.15)

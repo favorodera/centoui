@@ -1,5 +1,133 @@
 # Changelog
 
+## v1.0.0-alpha.15...v1.0.0-alpha.16
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.15...v1.0.0-alpha.16)
+
+### Added
+
+- Add Pinia for state management ([0b2b428](https://github.com/favorodera/centoui/commit/0b2b428))
+- Add Pinia state management ([e5acd38](https://github.com/favorodera/centoui/commit/e5acd38))
+- Add preview store for component props ([6427b25](https://github.com/favorodera/centoui/commit/6427b25))
+
+  - Manages active component state
+  - Tracks props schema and values
+  - Supports hot module reloading
+
+- Update Avatar component schema default size ([87387aa](https://github.com/favorodera/centoui/commit/87387aa))
+- Update preview app title ([fb9f26c](https://github.com/favorodera/centoui/commit/fb9f26c))
+- Enhance button group preview with variant and color controls ([6477f2d](https://github.com/favorodera/centoui/commit/6477f2d))
+
+  - Add button variant and color options
+  - Update schema for preview state
+  - Dynamically apply button styles
+
+- Add KbdGroup preview with dynamic props ([14de269](https://github.com/favorodera/centoui/commit/14de269))
+
+  - Add KbdSize, KbdColor, KbdVariant props
+  - Enable dynamic prop selection
+  - Update Kbd component usage
+
+- Add mobile props panel ([df41d48](https://github.com/favorodera/centoui/commit/df41d48))
+
+  - Implement responsive props panel
+  - Show button on mobile screens
+  - Hide props panel on route change
+
+- Improve component preview layout and responsiveness ([5572152](https://github.com/favorodera/centoui/commit/5572152))
+
+  - Add border and background to header
+  - Hide Button component from header
+  - Add props panel toggle button to header
+  - Integrate props panel into main layout for large screens
+  - Refactor mobile props panel to slide in from the side
+  - Update pagination indicator text and styling
+
+
+### Fixed
+
+- Adjust avatar fallback text color ([7113ce2](https://github.com/favorodera/centoui/commit/7113ce2))
+- Update kbd component default variants and styling ([aea85a1](https://github.com/favorodera/centoui/commit/aea85a1))
+
+  - Adjust default variant from 'outline' to 'soft'
+  - Update styling from 'bg-muted' to 'bg-neutral'
+  - Update text color from 'text-muted-foreground' to 'text-neutral-foreground'
+
+- Update separator border color ([a3bc2d4](https://github.com/favorodera/centoui/commit/a3bc2d4))
+
+  - Change neutral border to border-neutral
+
+
+### Refactors
+
+- Use path aliases for component imports ([8995bd0](https://github.com/favorodera/centoui/commit/8995bd0))
+- Remove props panel from App.vue ([d5d57c7](https://github.com/favorodera/centoui/commit/d5d57c7))
+- Overhaul component preview layout - Remove sidebar navigation - Introduce dropdown component selector - Add keyboard and swipe navigation - Float props panel at bottom right - Enhance component exploration UX ([4894605](https://github.com/favorodera/centoui/commit/4894605))
+- Simplify props-panel and improve types ([1a2d131](https://github.com/favorodera/centoui/commit/1a2d131))
+
+  - Refactor PropDefinition into union types
+  - Add InferValuesFromSchema type helper
+  - Simplify UI layout and remove footer
+  - Convert range input to standard number input
+  - Remove external icon and button dependencies
+
+- Migrate usePreview to Pinia ([8d6f58e](https://github.com/favorodera/centoui/commit/8d6f58e))
+
+  - Use Pinia for state management
+  - Simplify composable logic
+  - Remove local refs
+
+- Rename accordion props schema ([2160bbc](https://github.com/favorodera/centoui/commit/2160bbc))
+- Use button default variants for schema ([5d5a705](https://github.com/favorodera/centoui/commit/5d5a705))
+- Update Kbd component preview schema and content ([fe52932](https://github.com/favorodera/centoui/commit/fe52932))
+
+  - Use default variants from kbdVariants
+  - Update preview content from symbols to 'Ctrl'
+
+- Use default variants for separator props ([4fe8321](https://github.com/favorodera/centoui/commit/4fe8321))
+
+  - Update schema definition to use default variants.
+  - Improve default prop values for separator.
+
+- Simplify tooltip preview props schema ([26da0ae](https://github.com/favorodera/centoui/commit/26da0ae))
+
+  - Removed unused Kbd and KbdGroup imports.
+  - Renamed tooltipPropsSchema to schema for brevity.
+  - Updated default variant to use tooltipVariants.defaultVariants.variant.
+  - Simplified tooltip content within the preview.
+
+- Rename kbdVariants to kbdGroupVariants ([733b631](https://github.com/favorodera/centoui/commit/733b631))
+
+  - Clarify component scope for variants.
+  - Update type names accordingly.
+
+- Rename kbdVariants to kbdGroupVariants ([2182000](https://github.com/favorodera/centoui/commit/2182000))
+
+  - Use kbdGroupVariants for clarity
+  - Update component styles
+
+- Simplify props-panel layout ([f8bbf58](https://github.com/favorodera/centoui/commit/f8bbf58))
+
+  - Remove fixed panel styling and header
+  - Change root element from aside to div
+  - Use utility classes for selection control
+
+
+### Chores
+
+- Add Vercel rewrite for preview app ([c92e5d8](https://github.com/favorodera/centoui/commit/c92e5d8))
+
+### Styling
+
+- Refine view container padding and gap ([f4dea4d](https://github.com/favorodera/centoui/commit/f4dea4d))
+- Update Button component usage in component-preview.vue ([990e3cf](https://github.com/favorodera/centoui/commit/990e3cf))
+- Adjust accordion hover text color ([eb2b78c](https://github.com/favorodera/centoui/commit/eb2b78c))
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.14...v1.0.0-alpha.15
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.14...v1.0.0-alpha.15)
