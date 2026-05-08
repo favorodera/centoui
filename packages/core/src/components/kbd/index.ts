@@ -119,7 +119,7 @@ export const kbdVariants = tv({
       variant: 'solid',
       color: 'neutral',
       class: {
-        root: 'bg-muted text-muted-foreground',
+        root: 'bg-neutral text-neutral-foreground',
       },
     },
 
@@ -299,7 +299,7 @@ export const kbdVariants = tv({
   ],
   defaultVariants: {
     color: 'neutral',
-    variant: 'solid',
+    variant: 'soft',
     size: 'md',
   },
 })
@@ -329,7 +329,7 @@ export type KbdProps = PrimitiveProps & {
   color?: KbdVariants['color']
   /**
    * The variant of the kbd.
-   * @default 'outline'
+   * @default 'soft'
    */
   variant?: KbdVariants['variant']
   /** Custom class to apply to the root element. */
