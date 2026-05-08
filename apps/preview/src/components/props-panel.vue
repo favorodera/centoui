@@ -133,150 +133,132 @@ function getActiveValue(key: string): unknown {
 </script>
 
 <template>
-  <aside
-    class="
-      w-[min(20rem,calc(100vw-1.5rem))] rounded-md border border-muted
-      bg-surface/95 p-3 shadow-lg backdrop-blur-sm
-    "
-  >
-    <p class="text-xs font-medium">
-      Props
-    </p>
-    <div class="my-2 h-px bg-muted" />
-
-    <div class="max-h-[50vh] space-y-3 overflow-y-auto pr-1">
-      <template
-        v-for="entry in propEntries"
-        :key="entry.key"
-      >
-        <div class="space-y-1.5">
-          <div class="group flex items-center justify-between">
-            <label
-              :for="`prop-${entry.key}`"
-              class="
-                text-[11px] text-muted-foreground transition-colors
-                group-hover:text-foreground
-              "
-            >
-              {{ entry.label }}
-            </label>
-          </div>
-
-          <div
-            v-if="entry.type === 'boolean'"
+  <div class="w-full space-y-3 select-none">
+    <template
+      v-for="entry in propEntries"
+      :key="entry.key"
+    >
+      <div class="space-y-1.5">
+        <div class="group flex items-center justify-between">
+          <label
+            :for="`prop-${entry.key}`"
             class="
-              flex items-center justify-between rounded-sm border border-muted
-              bg-muted px-2 py-1.5
+              text-[11px] text-muted-foreground transition-colors
+              group-hover:text-foreground
             "
           >
-            <span class="text-[11px] text-muted-foreground">
-              {{ getActiveValue(entry.key) ? 'Enabled' : 'Disabled' }}
-            </span>
-            <button
-              :id="`prop-${entry.key}`"
-              type="button"
-              role="switch"
-              :aria-checked="!!getActiveValue(entry.key)"
-              class="
-                relative inline-flex h-5 w-9 shrink-0 cursor-pointer
-                rounded-full border-2 border-transparent transition-colors
-                outline-none
-                focus-visible:ring-2 focus-visible:ring-primary
-                focus-visible:ring-offset-2 focus-visible:ring-offset-surface
-              "
-              :class="getActiveValue(entry.key) ? 'bg-primary' : `bg-muted`"
-              @click="handleValueUpdate(entry.key, !getActiveValue(entry.key))"
-            >
-              <span
-                class="
-                  inline-block size-4 rounded-full bg-white shadow-sm
-                  transition-transform
-                "
-                :class="getActiveValue(entry.key) ? 'translate-x-4' : `
-                  translate-x-0
-                `"
-              />
-            </button>
-          </div>
+            {{ entry.label }}
+          </label>
+        </div>
 
-          <div
-            v-else-if="entry.type === 'select'"
-            class="relative"
+        <div
+          v-if="entry.type === 'boolean'"
+          class="
+            flex items-center justify-between rounded-sm border border-muted
+            bg-muted px-2 py-1.5
+          "
+        >
+          <span class="text-[11px] text-muted-foreground">
+            {{ getActiveValue(entry.key) ? 'Enabled' : 'Disabled' }}
+          </span>
+          <button
+            :id="`prop-${entry.key}`"
+            type="button"
+            role="switch"
+            :aria-checked="!!getActiveValue(entry.key)"
+            class="
+              relative inline-flex h-5 w-9 shrink-0 cursor-pointer rounded-full
+              border-2 border-transparent transition-colors outline-none
+              focus-visible:ring-2 focus-visible:ring-primary
+              focus-visible:ring-offset-2 focus-visible:ring-offset-surface
+            "
+            :class="getActiveValue(entry.key) ? 'bg-primary' : `bg-muted`"
+            @click="handleValueUpdate(entry.key, !getActiveValue(entry.key))"
           >
-            <select
-              :id="`prop-${entry.key}`"
-              :value="getActiveValue(entry.key)"
-              class="
-                h-8 w-full cursor-pointer appearance-none rounded-sm border
-                border-muted bg-muted px-2 pr-8 text-xs transition-all
-                outline-none
-                hover:border-muted
-                focus:border-primary focus:ring-1 focus:ring-primary
-              "
-              @change="handleValueUpdate(entry.key, ($event.target as HTMLSelectElement).value)"
-            >
-              <option
-                v-for="option in entry.options"
-                :key="String(option)"
-                :value="option"
-              >
-                {{ option }}
-              </option>
-            </select>
             <span
               class="
-                pointer-events-none absolute top-1/2 right-2.5 -translate-y-1/2
-                text-[10px] text-muted-foreground
+                inline-block size-4 rounded-full bg-white shadow-sm
+                transition-transform
               "
-            >
-              v
-            </span>
-          </div>
-
-          <input
-            v-else-if="entry.type === 'string'"
-            :id="`prop-${entry.key}`"
-            type="text"
-            :value="getActiveValue(entry.key)"
-            placeholder="No value set"
-            class="
-              h-8 w-full rounded-sm border border-muted bg-muted px-2 text-xs
-              transition-all outline-none
-              placeholder:text-muted-foreground
-              hover:border-muted
-              focus:border-primary focus:ring-1 focus:ring-primary
-            "
-            @input="handleValueUpdate(entry.key, ($event.target as HTMLInputElement).value)"
-          >
-
-          <input
-            v-else-if="entry.type === 'number'"
-            :id="`prop-${entry.key}`"
-            type="number"
-            :value="getActiveValue(entry.key)"
-            :min="entry.options?.[0]"
-            :max="entry.options?.[1]"
-            :step="entry.options?.[2] ?? 1"
-            class="
-              h-8 w-full rounded-sm border border-muted bg-muted px-2 text-xs
-              transition-all outline-none
-              hover:border-muted
-              focus:border-primary focus:ring-1 focus:ring-primary
-            "
-            @input="handleValueUpdate(entry.key, Number(($event.target as HTMLInputElement).value))"
-          >
+              :class="getActiveValue(entry.key) ? 'translate-x-4' : `
+                translate-x-0
+              `"
+            />
+          </button>
         </div>
-      </template>
-    </div>
-  </aside>
+
+        <div
+          v-else-if="entry.type === 'select'"
+          class="relative"
+        >
+          <select
+            :id="`prop-${entry.key}`"
+            :value="getActiveValue(entry.key)"
+            class="
+              h-8 w-full cursor-pointer appearance-none rounded-sm border
+              border-muted bg-muted px-2 pr-8 text-xs transition-all
+              outline-none
+              hover:border-muted
+              focus:border-primary focus:ring-1 focus:ring-primary
+            "
+            @change="handleValueUpdate(entry.key, ($event.target as HTMLSelectElement).value)"
+          >
+            <option
+              v-for="option in entry.options"
+              :key="String(option)"
+              :value="option"
+            >
+              {{ option }}
+            </option>
+          </select>
+          <span
+            class="
+              pointer-events-none absolute top-1/2 right-2.5 -translate-y-1/2
+              text-[10px] text-muted-foreground
+            "
+          >
+            v
+          </span>
+        </div>
+
+        <input
+          v-else-if="entry.type === 'string'"
+          :id="`prop-${entry.key}`"
+          type="text"
+          :value="getActiveValue(entry.key)"
+          placeholder="No value set"
+          class="
+            h-8 w-full rounded-sm border border-muted bg-muted px-2 text-xs
+            transition-all outline-none
+            placeholder:text-muted-foreground
+            hover:border-muted
+            focus:border-primary focus:ring-1 focus:ring-primary
+          "
+          @input="handleValueUpdate(entry.key, ($event.target as HTMLInputElement).value)"
+        >
+
+        <input
+          v-else-if="entry.type === 'number'"
+          :id="`prop-${entry.key}`"
+          type="number"
+          :value="getActiveValue(entry.key)"
+          :min="entry.options?.[0]"
+          :max="entry.options?.[1]"
+          :step="entry.options?.[2] ?? 1"
+          class="
+            h-8 w-full rounded-sm border border-muted bg-muted px-2 text-xs
+            transition-all outline-none
+            hover:border-muted
+            focus:border-primary focus:ring-1 focus:ring-primary
+          "
+          @input="handleValueUpdate(entry.key, Number(($event.target as HTMLInputElement).value))"
+        >
+      </div>
+    </template>
+  </div>
 </template>
 
 <style scoped>
-/* Prevent text selection while interacting with controls */
-aside {
-  user-select: none;
-}
-
 input[type="text"],
 select {
   user-select: text;
