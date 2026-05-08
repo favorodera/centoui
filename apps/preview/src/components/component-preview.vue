@@ -5,9 +5,8 @@ import { Icon } from '@iconify/vue'
 import { useDark, useToggle, useStorage } from '@vueuse/core'
 import { usePreview } from '../utils/use-preview'
 import PropsPanel from './props-panel.vue'
-import { Button } from '../../../../packages/core/src/components/button'
-import { ButtonGroup } from '../../../../packages/core/src/components/button-group'
-import ButtonGroupSeparator from '../../../../packages/core/src/components/button-group/button-group-separator.vue'
+import { Button } from '#centoui/components/button'
+import { ButtonGroup, ButtonGroupSeparator } from '#centoui/components/button-group'
 
 const router = useRouter()
 const route = useRoute()

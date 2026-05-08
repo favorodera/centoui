@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import { Button, buttonVariants } from '../../../../packages/core/src/components/button'
+import { Button, buttonVariants } from '#centoui/components/button'
 import { Icon } from '@iconify/vue'
 import { usePreview } from '../utils/use-preview'
 import type { PropsSchema } from '../components/props-panel.vue'

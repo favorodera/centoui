@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import { Kbd, kbdVariants } from '../../../../packages/core/src/components/kbd'
+import { Kbd, kbdVariants } from '#centoui/components/kbd'
 import { usePreview } from '../utils/use-preview'
 import type { PropsSchema } from '../components/props-panel.vue'
 import ViewContainer from '../components/view-container.vue'

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import { AccordionRoot, AccordionItem, AccordionHeader, AccordionTrigger, AccordionContent } from '../../../../packages/core/src/components/accordion'
+import { AccordionRoot, AccordionItem, AccordionHeader, AccordionTrigger, AccordionContent } from '#centoui/components/accordion'
 import { usePreview } from '../utils/use-preview'
 import type { PropsSchema } from '../components/props-panel.vue'
 import ViewContainer from '../components/view-container.vue'

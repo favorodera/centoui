@@ -9,7 +9,8 @@
     // Path mapping for cleaner imports.
     "paths": {
       "@/*": ["./src/*"],
-      "#centoui/config": ["../../packages/core/src/defaults/config.ts"]
+      "#centoui/config": ["../../packages/core/src/defaults/config.ts"],
+      "#centoui/components/*": ["../../packages/core/src/components/*"]
     },
 
     // `vue-tsc --build` produces a .tsbuildinfo file for incremental type-checking.

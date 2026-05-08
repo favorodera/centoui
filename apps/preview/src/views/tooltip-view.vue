@@ -3,10 +3,10 @@ import { onMounted } from 'vue'
 import { usePreview } from '../utils/use-preview'
 import type { PropsSchema } from '../components/props-panel.vue'
 import ViewContainer from '../components/view-container.vue'
-import { TooltipRoot, TooltipContent, TooltipProvider, TooltipTrigger, TooltipArrow, TooltipPortal, tooltipVariants } from '../../../../packages/core/src/components/tooltip'
-import { Button } from '../../../../packages/core/src/components/button'
-import { Kbd } from '../../../../packages/core/src/components/kbd'
-import { KbdGroup } from '../../../../packages/core/src/components/kbd-group'
+import { TooltipRoot, TooltipContent, TooltipProvider, TooltipTrigger, TooltipArrow, TooltipPortal, tooltipVariants } from '#centoui/components/tooltip'
+import { Button } from '#centoui/components/button'
+import { Kbd } from '#centoui/components/kbd'
+import { KbdGroup } from '#centoui/components/kbd-group'
 
 const { values, setPreviewState } = usePreview()
 

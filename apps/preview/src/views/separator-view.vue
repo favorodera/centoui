@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import { Separator, separatorVariants } from '../../../../packages/core/src/components/separator'
+import { Separator, separatorVariants } from '#centoui/components/separator'
 import { Icon } from '@iconify/vue'
 import { usePreview } from '../utils/use-preview'
 import type { PropsSchema } from '../components/props-panel.vue'

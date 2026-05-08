@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
 import { onMounted } from 'vue'
-import { Button } from '../../../../packages/core/src/components/button'
-import { ButtonGroup, ButtonGroupSeparator, buttonGroupVariants } from '../../../../packages/core/src/components/button-group'
+import { Button } from '#centoui/components/button'
+import { ButtonGroup, ButtonGroupSeparator, buttonGroupVariants } from '#centoui/components/button-group'
 import type { PropsSchema } from '../components/props-panel.vue'
 import ViewContainer from '../components/view-container.vue'
 import { usePreview } from '../utils/use-preview'

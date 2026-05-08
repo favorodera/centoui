@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { Icon } from '@iconify/vue'
-import { Button } from '../../../../packages/core/src/components/button'
+import { Button } from '#centoui/components/button'
 
 /**
  * Supported input control types for property editing.

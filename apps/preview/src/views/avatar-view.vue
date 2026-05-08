@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import { AvatarRoot, AvatarImage, AvatarFallback, avatarVariants } from '../../../../packages/core/src/components/avatar'
+import { AvatarRoot, AvatarImage, AvatarFallback, avatarVariants } from '#centoui/components/avatar'
 import { Icon } from '@iconify/vue'
 import { usePreview } from '../utils/use-preview'
 import type { PropsSchema } from '../components/props-panel.vue'
