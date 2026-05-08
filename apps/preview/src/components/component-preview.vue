@@ -127,7 +127,7 @@ onClickOutside(dropdownRef, () => {
         ref="dropdownRef"
         class="relative"
       >
-      <Button></Button>
+        <Button />
         <button
           type="button"
           class="
