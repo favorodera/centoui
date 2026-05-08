@@ -121,7 +121,7 @@ onClickOutside(dropdownRef, () => {
     <header
       class="
         absolute inset-x-0 top-0 z-20 flex h-12 items-center justify-between
-        px-3
+        border-b border-muted/60 bg-background/90 px-3 backdrop-blur-sm
         sm:px-4
       "
     >
@@ -129,7 +129,6 @@ onClickOutside(dropdownRef, () => {
         ref="dropdownRef"
         class="relative"
       >
-        <Button />
         <button
           type="button"
           class="
@@ -182,88 +181,137 @@ onClickOutside(dropdownRef, () => {
         </div>
       </div>
 
-      <button
-        type="button"
-        class="
-          flex size-8 items-center justify-center rounded-sm border border-muted
-          bg-surface text-xs
-        "
-        @click="toggleDarkMode()"
-      >
-        <Icon :icon="isDark ? 'lucide:sun' : 'lucide:moon'" />
-      </button>
+      <div class="flex items-center gap-2">
+        <button
+          v-if="hasProps && schema"
+          type="button"
+          class="
+            flex h-8 items-center gap-1 rounded-sm border border-muted
+            bg-surface px-2 text-xs
+            lg:hidden
+          "
+          @click="isPropsPanelOpen = !isPropsPanelOpen"
+        >
+          <Icon :icon="isPropsPanelOpen ? 'lucide:panel-right-close' : 'lucide:panel-right-open'" />
+          Props
+        </button>
+
+        <button
+          type="button"
+          class="
+            flex size-8 items-center justify-center rounded-sm border
+            border-muted bg-surface text-xs
+          "
+          @click="toggleDarkMode()"
+        >
+          <Icon :icon="isDark ? 'lucide:sun' : 'lucide:moon'" />
+        </button>
+      </div>
     </header>
 
-    <main
-      ref="arenaRef"
-      class="relative flex min-h-0 flex-1 overflow-auto pt-12"
-    >
-      <slot />
-    </main>
+    <div class="flex min-h-0 flex-1 pt-12">
+      <main
+        ref="arenaRef"
+        class="relative flex min-h-0 flex-1 flex-col overflow-auto"
+      >
+        <div class="min-h-0 flex-1">
+          <slot />
+        </div>
 
-    <p
-      class="
-        pointer-events-none absolute left-1/2 z-10 -translate-x-1/2 rounded-sm
-        border border-muted bg-surface/90 px-2 py-1 text-[10px]
-        text-muted-foreground backdrop-blur-sm transition-[bottom]
-        sm:bottom-4
-      "
-      :class="hasProps ? 'bottom-14 sm:bottom-4' : 'bottom-3 sm:bottom-4'"
-    >
-      Swipe left or right to paginate
-      <span
+        <div class="flex justify-center px-3 py-2">
+          <p
+            class="
+              inline-flex rounded-full border border-muted bg-surface/70 px-3
+              py-1 text-[11px] text-muted-foreground
+            "
+          >
+            <span class="lg:hidden">Swipe left or right to paginate</span>
+            <span
+              class="
+                hidden
+                lg:inline
+              "
+            >
+              Use left and right arrow keys to paginate
+            </span>
+          </p>
+        </div>
+      </main>
+
+      <aside
+        v-if="hasProps && schema"
         class="
-          hidden
-          sm:inline
+          hidden min-h-0 shrink-0 border-l border-muted/60 bg-surface/30
+          lg:flex lg:w-88 lg:flex-col
         "
       >
-        . Use arrow keys on desktop.
-      </span>
-    </p>
+        <div class="border-b border-muted/60 px-4 py-3">
+          <p class="text-xs font-semibold tracking-wide uppercase">
+            Props
+          </p>
+        </div>
 
-    <button
-      v-if="hasProps && schema"
-      type="button"
-      class="
-        absolute right-3 bottom-3 z-30 flex h-9 items-center gap-1 rounded-sm
-        border border-muted bg-surface px-2 text-xs shadow-lg
-        sm:hidden
-      "
-      @click="isPropsPanelOpen = !isPropsPanelOpen"
-    >
-      <Icon :icon="isPropsPanelOpen ? 'lucide:sliders-horizontal' : 'lucide:settings-2'" />
-      {{ isPropsPanelOpen ? 'Hide props' : 'Props' }}
-    </button>
+        <div
+          class="
+            min-h-0 flex-1 overflow-auto border-b border-muted/60 px-4 py-3
+          "
+        >
+          <PropsPanel
+            :schema="schema"
+            :values="values"
+            @update:values="updateValues"
+          />
+        </div>
+
+      </aside>
+    </div>
 
     <div
       v-if="hasProps && schema && isPropsPanelOpen"
       class="
-        absolute inset-0 z-20 bg-background/55 p-3 backdrop-blur-[1px]
-        sm:hidden
+        absolute inset-0 z-20 bg-overlay backdrop-blur-[1px]
+        lg:hidden
       "
       @click.self="isPropsPanelOpen = false"
     >
-      <div class="absolute inset-x-3 bottom-14 max-h-[65vh] overflow-auto">
-        <PropsPanel
-          :schema="schema"
-          :values="values"
-          @update:values="updateValues"
-        />
+      <div
+        class="
+          absolute inset-y-0 right-0 w-[min(22rem,92vw)] border-l border-muted
+          bg-surface shadow-2xl
+        "
+      >
+        <div class="flex h-full min-h-0 flex-col">
+          <div
+            class="
+              flex items-center justify-between gap-2 border-b border-muted/60
+              p-3
+            "
+          >
+            <p class="text-xs font-semibold tracking-wide uppercase">
+              Props
+            </p>
+            <button
+              type="button"
+              class="
+                flex size-8 items-center justify-center rounded-sm border
+                border-muted bg-surface text-xs
+              "
+              @click="isPropsPanelOpen = false"
+            >
+              <Icon icon="lucide:x" />
+            </button>
+          </div>
+
+          <div class="min-h-0 flex-1 overflow-auto p-3">
+            <PropsPanel
+              :schema="schema"
+              :values="values"
+              @update:values="updateValues"
+            />
+          </div>
+        </div>
       </div>
     </div>
 
-    <div
-      v-if="hasProps && schema"
-      class="
-        hidden
-        sm:absolute sm:right-4 sm:bottom-4 sm:z-20 sm:block
-      "
-    >
-      <PropsPanel
-        :schema="schema"
-        :values="values"
-        @update:values="updateValues"
-      />
-    </div>
   </div>
 </template>
