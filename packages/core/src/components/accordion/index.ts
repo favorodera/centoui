@@ -17,7 +17,7 @@ export const accordionVariants = tv({
       border-b border-b-muted
       last:border-b-0
     `,
-    header: 'flex',
+    header: 'flex flex-wrap',
     trigger: `
       flex flex-1 items-start justify-between gap-4 rounded-md py-4 text-start
       text-sm font-medium transition-all outline-none

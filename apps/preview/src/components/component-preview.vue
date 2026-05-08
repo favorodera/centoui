@@ -117,11 +117,11 @@ onClickOutside(dropdownRef, () => {
 </script>
 
 <template>
-  <div class="relative flex h-screen w-full overflow-hidden bg-background">
+  <div class="relative flex h-dvh w-full flex-col bg-background">
     <header
       class="
-        absolute inset-x-0 top-0 z-20 flex h-12 items-center justify-between
-        border-b border-muted/60 bg-background/90 px-3 backdrop-blur-sm
+        sticky top-0 z-20 flex h-12 items-center justify-between border-b
+        border-muted/60 bg-background/90 px-3 backdrop-blur-sm
         sm:px-4
       "
     >
@@ -212,9 +212,9 @@ onClickOutside(dropdownRef, () => {
     <div class="flex min-h-0 flex-1 pt-12">
       <main
         ref="arenaRef"
-        class="relative flex min-h-0 flex-1 flex-col overflow-auto"
+        class="relative flex min-h-0 min-w-0 flex-1 flex-col overflow-auto"
       >
-        <div class="min-h-0 flex-1">
+        <div class="flex min-h-0 flex-1 flex-col">
           <slot />
         </div>
 
