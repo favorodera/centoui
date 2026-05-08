@@ -26,7 +26,7 @@ export const separatorVariants = tv({
         line: 'border-error',
       },
       neutral: {
-        line: 'border-muted',
+        line: 'border-neutral',
       },
     },
     variant: {
