@@ -100,6 +100,22 @@
       ],
       "componentDeps": [],
       "packageDeps": {}
+    },
+    {
+      "$schema": "../schemas/component.json",
+      "name": "tooltip",
+      "description": "A popup that appears when a user hovers over or focuses on an element.",
+      "files": [
+        "components/tooltip/tooltip-root.vue",
+        "components/tooltip/tooltip-trigger.vue",
+        "components/tooltip/tooltip-content.vue",
+        "components/tooltip/tooltip-arrow.vue",
+        "components/tooltip/tooltip-portal.vue",
+        "components/tooltip/tooltip-provider.vue",
+        "components/tooltip/index.ts"
+      ],
+      "componentDeps": [],
+      "packageDeps": {}
     }
   ]
 }
