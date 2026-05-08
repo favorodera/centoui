@@ -7,7 +7,7 @@ import ViewContainer from '../components/view-container.vue'
 
 const { values, setPreviewState } = usePreview()
 
-const accordionPropsSchema: PropsSchema = {
+const schema: PropsSchema = {
   disabled: {
     type: 'boolean',
     label: 'Disabled',
@@ -16,7 +16,7 @@ const accordionPropsSchema: PropsSchema = {
 }
 
 onMounted(() => {
-  setPreviewState('Accordion', accordionPropsSchema)
+  setPreviewState('Accordion', schema)
 })
 </script>
 
