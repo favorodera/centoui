@@ -1,5 +1,35 @@
 # Changelog
 
+## v1.0.0-alpha.14...v1.0.0-alpha.15
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.14...v1.0.0-alpha.15)
+
+### Added
+
+- Add Tooltip component ([aafc23d](https://github.com/favorodera/centoui/commit/aafc23d))
+- Add tooltip arrow component ([a35000f](https://github.com/favorodera/centoui/commit/a35000f))
+- Add TooltipContent component ([c209c97](https://github.com/favorodera/centoui/commit/c209c97))
+- Add TooltipPortal component ([e8cbb59](https://github.com/favorodera/centoui/commit/e8cbb59))
+- Add TooltipProvider component - Wraps the reka-ui TooltipProvider. - Forwards all props and slots. - Sets delayDuration default to 0. ([e8d349f](https://github.com/favorodera/centoui/commit/e8d349f))
+- Add TooltipRoot component ([46f373c](https://github.com/favorodera/centoui/commit/46f373c))
+- Add tooltip trigger component ([6306e0d](https://github.com/favorodera/centoui/commit/6306e0d))
+- Add tooltip component to registry ([7e4dd9e](https://github.com/favorodera/centoui/commit/7e4dd9e))
+- Add tooltip component registry entry ([b28aa37](https://github.com/favorodera/centoui/commit/b28aa37))
+
+### Tests
+
+- Add tooltip component tests - Includes basic usage test - Adds accessibility checks with axe ([b764af3](https://github.com/favorodera/centoui/commit/b764af3))
+
+### Styling
+
+- Format tooltip content classes ([a11f1b0](https://github.com/favorodera/centoui/commit/a11f1b0))
+- Remove z-50 from tooltip content ([ca64328](https://github.com/favorodera/centoui/commit/ca64328))
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.13...v1.0.0-alpha.14
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.13...v1.0.0-alpha.14)
