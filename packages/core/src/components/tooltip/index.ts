@@ -15,13 +15,14 @@ export const tooltipVariants = tv({
   slots: {
     trigger: '',
     content: `
-      z-50 pointer-events-auto w-fit animate-in rounded-md px-3 py-1.5 text-sm
+      pointer-events-auto z-50 w-fit animate-in rounded-md px-3 py-1.5 text-sm
       text-balance fade-in-0 zoom-in-95
       data-[centoui-side=bottom]:slide-in-from-top-2
       data-[centoui-side=left]:slide-in-from-right-2
       data-[centoui-side=right]:slide-in-from-left-2
       data-[centoui-side=top]:slide-in-from-bottom-2
-      data-[centoui-state=closed]:animate-out data-[centoui-state=closed]:fade-out-0
+      data-[centoui-state=closed]:animate-out
+      data-[centoui-state=closed]:fade-out-0
       data-[centoui-state=closed]:zoom-out-95
     `,
     arrow: '',
