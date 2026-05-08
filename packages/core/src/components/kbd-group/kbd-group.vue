@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Primitive, useForwardProps } from 'reka-ui'
-import { kbdVariants, type KbdGroupProps, type KbdGroupSlots } from './index'
+import { kbdGroupVariants, type KbdGroupProps, type KbdGroupSlots } from './index'
 import { reactiveOmit } from '@vueuse/core'
 import { computed } from 'vue'
 
@@ -16,7 +16,7 @@ const forwardedProps = useForwardProps(delegatedProps)
 
 // Style class string for the component.
 const styles = computed(() => {
-  const { root } = kbdVariants()
+  const { root } = kbdGroupVariants()
 
   return root({ class: props.class })
 })
