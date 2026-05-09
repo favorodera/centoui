@@ -23,9 +23,7 @@ const isPropsPanelOpen = ref(false)
 const isDark = useDark()
 const toggleDarkMode = useToggle(isDark)
 
-/**
- * Creates route options for the custom component selector.
- */
+/** Creates route options for the custom component selector. */
 const components = computed<ComponentOption[]>(() => {
   return router
     .getRoutes()
@@ -55,9 +53,7 @@ function goTo(path: string) {
   router.push(path)
 }
 
-/**
- * Moves to the previous or next component by index.
- */
+/** Moves to the previous or next component by index. */
 function navigateByStep(step: number) {
   const target = components.value[activeIndex.value + step]
   if (target) {
@@ -65,9 +61,7 @@ function navigateByStep(step: number) {
   }
 }
 
-/**
- * Avoids keyboard navigation while inputs are active.
- */
+/** Avoids keyboard navigation while inputs are active. */
 function shouldIgnoreKeyboardEvent(event: KeyboardEvent) {
   const element = event.target as HTMLElement | null
   if (!element) {
@@ -90,9 +84,7 @@ onKeyStroke(['ArrowLeft', 'ArrowRight'], (event) => {
   }
 })
 
-/**
- * Swipe gestures provide component navigation on touch devices.
- */
+/** Swipe gestures provide component navigation on touch devices. */
 const { direction } = useSwipe(arenaRef, {
   threshold: 36,
 })
@@ -209,7 +201,7 @@ onClickOutside(dropdownRef, () => {
       </div>
     </header>
 
-    <div class="flex min-h-0 flex-1 pt-12">
+    <div class="flex min-h-0 flex-1">
       <main
         ref="arenaRef"
         class="relative flex min-h-0 min-w-0 flex-1 flex-col overflow-auto"
