@@ -182,10 +182,10 @@ export const buttonVariants = tv({
       variant: 'solid',
       color: 'warning',
       class: {
-        root: [
-          'bg-warning text-warning-foreground',
-          'hover:bg-warning/80',
-        ],
+        root: `
+          bg-warning text-warning-foreground
+          hover:bg-warning/80
+        `,
       },
     },
     {
@@ -274,10 +274,10 @@ export const buttonVariants = tv({
       variant: 'soft',
       color: 'error',
       class: {
-        root: [
-          'bg-error/15',
-          'hover:bg-error/20',
-        ],
+        root: `
+          bg-error/15
+          hover:bg-error/20
+        `,
       },
     },
     {
@@ -613,8 +613,7 @@ export type ButtonProps = PrimitiveProps & /* @vue-ignore */ ButtonHTMLAttribute
    */
   size?: ButtonVariants['size']
   /**
-   * Squares the button by matching horizontal padding to vertical.
-   * Intended for icon-only buttons.
+   * Render the button with equal padding on all sides..
    * @default false
    */
   square?: boolean
