@@ -1,0 +1,11 @@
+{
+  "$schema": "../schemas/component.json",
+  "name": "badge",
+  "description": "A small label or indicator for displaying status, count, or notifications.",
+  "files": [
+    "components/badge/badge.vue",
+    "components/badge/index.ts"
+  ],
+  "componentDeps": [ ],
+  "packageDeps": { }
+}
