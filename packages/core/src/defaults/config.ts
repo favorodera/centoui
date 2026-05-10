@@ -3,8 +3,6 @@ import type { CentoUIConfig } from 'centoui-cli'
 export default {
   icons: {
     chevronDown: 'lucide:chevron-down',
-    chevronLeft: 'lucide:chevron-left',
-    chevronRight: 'lucide:chevron-right',
-    chevronUp: 'lucide:chevron-up',
+    close: 'lucide:x',
   },
 } satisfies Pick<CentoUIConfig, 'icons'>
