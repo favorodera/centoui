@@ -20,6 +20,7 @@ const styles = computed(() => {
   const { root } = buttonGroupVariants({
     orientation: props.orientation,
   })
+  
   return root({ class: props.class })
 })
 
