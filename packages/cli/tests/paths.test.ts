@@ -4,7 +4,6 @@ import { mapRegistryPathToProjectDest } from '../src/utils/file-system-utils'
 import { validateNonEmptyPath } from '../src/utils/package-utils'
 
 const mockConfig: CentoUIConfig = {
-  version: '0.0.1',
   componentsDir: 'src/components/centoui',
   themeFilePath: 'src/assets/css/centoui.css',
   icons: {},
