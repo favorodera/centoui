@@ -1,6 +1,10 @@
 import fsExtra from 'fs-extra'
-import { resolve, join, extname } from 'pathe'
-import { intro, outro, tasks, log, note } from '@clack/prompts'
+import {
+  resolve, join, extname,
+} from 'pathe'
+import {
+  intro, outro, tasks, log, note,
+} from '@clack/prompts'
 
 const REGISTRY_DIR = resolve(import.meta.dirname, '../src/registry')
 const REGISTRY_OUTPUT = join(REGISTRY_DIR, 'index.json')
@@ -62,7 +66,10 @@ try {
       task: async (message) => {
         const resolved: Record<string, unknown>[] = []
 
-        for (const [index, file] of componentFiles.entries()) {
+        for (const [
+          index,
+          file,
+        ] of componentFiles.entries()) {
           const filePath = join(REGISTRY_DIR, file)
 
           message(`[${index + 1}/${componentFiles.length}] ${file}`)
@@ -79,8 +86,13 @@ try {
       task: async () => {
         await fsExtra.writeJSON(
           REGISTRY_OUTPUT,
-          { globals: globalsFileContent, components: componentsFileContent },
-          { spaces: 2 },
+          {
+            globals: globalsFileContent,
+            components: componentsFileContent,
+          },
+          {
+            spaces: 2,
+          },
         )
         return `Written: ${REGISTRY_OUTPUT}`
       },
