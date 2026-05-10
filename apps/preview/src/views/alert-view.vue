@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
 import { AlertRoot, AlertDescription, AlertClose, AlertActions, alertVariants, AlertMedia, AlertTitle } from '#centoui/components/alert'
 import { Button } from '#centoui/components/button'
 import { Icon } from '@iconify/vue'
@@ -30,6 +30,8 @@ const schema: PropsSchema = {
   },
 }
 
+const isAlertOpen = ref(true)
+
 onMounted(() => {
   setPreviewState('Alert', schema)
 })
@@ -37,7 +39,17 @@ onMounted(() => {
 
 <template>
   <ViewContainer>
+    <Button
+      v-if="!isAlertOpen"
+      variant="soft"
+      size="sm"
+      @click="isAlertOpen = true"
+    >
+      Open alert
+    </Button>
+
     <AlertRoot
+      v-model:open="isAlertOpen"
       :variant="values.variant"
       :color="values.color"
       :orientation="values.orientation"
@@ -46,15 +58,10 @@ onMounted(() => {
         <Icon icon="lucide:bell" />
       </AlertMedia>
 
-      <AlertTitle>Unable to process your payment.</AlertTitle>
+      <AlertTitle>Alert Title.</AlertTitle>
 
       <AlertDescription>
-        <p>Please verify your billing information and try again.</p>
-        <ul class="mt-2 list-inside list-disc space-y-1">
-          <li>Check your card details</li>
-          <li>Ensure sufficient funds</li>
-          <li>Verify billing address</li>
-        </ul>
+        Alert description
       </AlertDescription>
 
       <AlertActions>
