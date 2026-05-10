@@ -25,11 +25,9 @@ const styles = computed(() => {
 })
 
 // Provide context to child components.
-provideButtonGroupContext(
-  reactive({
-    orientation: toRef(props, 'orientation'),
-  }),
-)
+provideButtonGroupContext(reactive({
+  orientation: toRef(props, 'orientation'),
+}))
 </script>
 
 <template>
