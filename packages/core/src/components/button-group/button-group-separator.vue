@@ -18,6 +18,7 @@ const delegatedProps = reactiveOmit(props, 'class')
 // Style class string for the component.
 const styles = computed(() => {
   const { separator } = buttonGroupVariants()
+  
   return separator({ class: props.class })
 })
 
