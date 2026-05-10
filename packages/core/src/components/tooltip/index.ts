@@ -27,7 +27,6 @@ export const tooltipVariants = tv({
     `,
     arrow: '',
   },
-
   variants: {
     variant: {
       solid: {
@@ -89,7 +88,7 @@ export type TooltipProviderProps = Omit<RekaTooltipProviderProps, 'delayDuration
 }
 
 /** Props for TooltipRoot component. */
-export type TooltipRootProps = RekaTooltipRootProps & { }
+export type TooltipRootProps = RekaTooltipRootProps
 
 /** Props for TooltipTrigger component. */
 export type TooltipTriggerProps = RekaTooltipTriggerProps & {
@@ -98,7 +97,7 @@ export type TooltipTriggerProps = RekaTooltipTriggerProps & {
 }
 
 /** Props for TooltipPortal component. */
-export type TooltipPortalProps = RekaTooltipPortalProps & { }
+export type TooltipPortalProps = RekaTooltipPortalProps
 
 /** Props for TooltipContent component. */
 export type TooltipContentProps = Omit<RekaTooltipContentProps, 'sideOffset'> & {
