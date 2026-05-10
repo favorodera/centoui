@@ -5,20 +5,21 @@ import { configureAxe } from 'vitest-axe'
 
 // @ts-expect-error incomplete implementation
 window.IntersectionObserver = class IntersectionObserver {
-   
-  constructor() {}
-  observe() {}
-  unobserve() {}
-  disconnect() {}
+  constructor() { }
+  observe() { }
+  unobserve() { }
+  disconnect() { }
 }
 
 configureAxe({
   globalOptions: {
-    rules: [{
+    rules: [
+      {
       // Disable region rule as it doesn't work well with components rendered in isolation.
-      id: 'region',
-      enabled: false,
-    }],
+        id: 'region',
+        enabled: false,
+      },
+    ],
   },
 })
 
