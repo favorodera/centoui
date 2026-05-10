@@ -394,13 +394,17 @@ export { default as AlertActions } from './alert-actions.vue'
 export { default as AlertClose } from './alert-close.vue'
 
 // Methods exports
-
 export const [injectAlertRootContext, provideAlertRootContext] = createContext<AlertRootContext>('AlertRoot', 'centoui:alert-root:context')
 
 // Types exports
 
-/** Alert context type */
-export type AlertRootContext = AlertVariants
+/** AlertRoot context type */
+export type AlertRootContext = AlertVariants & Pick<AlertRootProps, 'open'> & {
+  /** State of the alert (open or closed). */
+  state: 'open' | 'closed'
+  /** Closes the alert by setting open to false. */
+  onClose: () => void
+}
 
 /** Variant props for Alert component. */
 export type AlertVariants = VariantProps<typeof alertVariants>
@@ -422,6 +426,11 @@ export type AlertRootProps = PrimitiveProps & {
      * @default 'primary'
      */
   color?: AlertVariants['color']
+  /**
+   * Controlled open state of the alert (use with v-model:open).
+   * @default true
+   */
+  open?: boolean
   /** Custom class to apply to the root element. */
   class?: ClassValue
 }
@@ -454,6 +463,17 @@ export type AlertActionsProps = PrimitiveProps & {
 export type AlertCloseProps = PrimitiveProps & {
   /** Custom class to apply to the root element. */
   class?: ClassValue
+}
+
+/** Emits for AlertRoot component. */
+export type AlertRootEmits = {
+  /**
+   * Emitted when the open state changes (v-model:open).
+   *
+   * @param event - The emit event name.
+   * @param value - The new open state.
+   */
+  (event: 'update:open', value: boolean): void
 }
 
 /** Slots for AlertRoot component. */
