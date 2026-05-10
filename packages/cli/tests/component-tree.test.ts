@@ -26,7 +26,7 @@ const baseRegistry: Registry = {
     {
       name: 'nested',
       files: ['components/nested/nested.vue'],
-      componentDeps: ['dialog'], // dialog → button (transitive)
+      componentDeps: ['dialog'], // dialog > button (transitive)
       packageDeps: {},
     },
   ],
