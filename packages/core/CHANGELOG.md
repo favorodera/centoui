@@ -1,5 +1,119 @@
 # Changelog
 
+## v1.0.0-alpha.16...v1.0.0-alpha.17
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.16...v1.0.0-alpha.17)
+
+### Added
+
+- Add Badge component - Introduces a new UI element - Customizable via variant, color, size - Provides a flexible visual indicator ([dd91b33](https://github.com/favorodera/centoui/commit/dd91b33))
+- Add Badge component ([0a8cdb9](https://github.com/favorodera/centoui/commit/0a8cdb9))
+
+  - Define styles with tailwind-variants
+  - Support multiple variants, colors, and sizes
+  - Include square prop for equal padding
+  - Export types for props and slots
+
+- Add badge component to registry ([f9b81bc](https://github.com/favorodera/centoui/commit/f9b81bc))
+- Add badge component to registry ([1a2685b](https://github.com/favorodera/centoui/commit/1a2685b))
+- Add AlertActions component ([4b2d08b](https://github.com/favorodera/centoui/commit/4b2d08b))
+- Add AlertClose component - Provides a dedicated close button for alerts - Integrates with AlertRoot context for styling - Renders a configurable button with a close icon ([5a53e73](https://github.com/favorodera/centoui/commit/5a53e73))
+- Add AlertDescription component ([31c079b](https://github.com/favorodera/centoui/commit/31c079b))
+- Add AlertMedia component - New component for alert media content. - Integrates with alert context for styling. - Provides a slot for custom media. ([ded1fd9](https://github.com/favorodera/centoui/commit/ded1fd9))
+- Add AlertRoot component ([52cfc0a](https://github.com/favorodera/centoui/commit/52cfc0a))
+- Add AlertTitle component ([8706aa3](https://github.com/favorodera/centoui/commit/8706aa3))
+- Add Alert component - Defines alert styles and variants - Provides solid, soft, subtle, and outline variants - Supports multiple color schemes - Includes sub-components for structure ([abe69d6](https://github.com/favorodera/centoui/commit/abe69d6))
+- Consolidate button styles for clarity ([65807b6](https://github.com/favorodera/centoui/commit/65807b6))
+
+  - Refactor button variants
+  - Simplify color and variant combinations
+  - Improve hover and focus states
+
+- Update default icons ([4f1748c](https://github.com/favorodera/centoui/commit/4f1748c))
+
+  - Replaced chevron icons with close icon
+  - Updated lucide icon import
+
+- Register alert component ([a17b804](https://github.com/favorodera/centoui/commit/a17b804))
+- Add alert component to registry ([8389672](https://github.com/favorodera/centoui/commit/8389672))
+- Add state and close handler to alert ([e2ecca0](https://github.com/favorodera/centoui/commit/e2ecca0))
+
+  - Pass variant, color, orientation
+  - Add data-centoui-state attribute
+  - Bind click event to onClose
+
+- Add state attribute to alert description ([39e4bc9](https://github.com/favorodera/centoui/commit/39e4bc9))
+
+  - improve alert styling options
+  - enhance component accessibility
+
+- Add state attribute to alert-media ([62fd41e](https://github.com/favorodera/centoui/commit/62fd41e))
+- Implement controllable alert open state ([ea847ae](https://github.com/favorodera/centoui/commit/ea847ae))
+
+  - Add `open` v-model
+  - Add `state` computed property
+  - Add `onClose` function
+  - Forward `open` prop
+  - Conditionally render alert
+
+- Enhance alert root context and props ([0da4f58](https://github.com/favorodera/centoui/commit/0da4f58))
+
+  - add controlled open state
+  - update context with state and onClose
+  - add update:open emit
+
+
+### Refactors
+
+- Use template literals for button classes - Improves readability - Clarifies square prop JSDoc ([84d255d](https://github.com/favorodera/centoui/commit/84d255d))
+- Internal vitest type declarations ([b144fbd](https://github.com/favorodera/centoui/commit/b144fbd))
+- Refine badge styling logic ([68acac2](https://github.com/favorodera/centoui/commit/68acac2))
+- Update Kbd component color variants ([1c240b4](https://github.com/favorodera/centoui/commit/1c240b4))
+- Simplify tooltip component props ([0aa8aa8](https://github.com/favorodera/centoui/commit/0aa8aa8))
+
+  - Remove unnecessary intersections
+  - Clean up type definitions
+
+- Add state data attribute to alert actions ([536056c](https://github.com/favorodera/centoui/commit/536056c))
+- Simplify button group context provision ([1a58bd9](https://github.com/favorodera/centoui/commit/1a58bd9))
+
+### Chores
+
+- Include augment.d.dts in tsconfig ([6e7eb37](https://github.com/favorodera/centoui/commit/6e7eb37))
+
+### Tests
+
+- Add accessibility tests for Badge component ([e3ad979](https://github.com/favorodera/centoui/commit/e3ad979))
+- Add alert component tests ([9935505](https://github.com/favorodera/centoui/commit/9935505))
+
+  - Accessibility tests
+  - Visibility tests
+
+
+### Styling
+
+- Improve preview app layout and header behavior ([7a20689](https://github.com/favorodera/centoui/commit/7a20689))
+- Format tsdown config ([f8e9b6f](https://github.com/favorodera/centoui/commit/f8e9b6f))
+- Format vite.config.ts ([5e91b9c](https://github.com/favorodera/centoui/commit/5e91b9c))
+- Format build registry script ([e51a3e8](https://github.com/favorodera/centoui/commit/e51a3e8))
+- Format badge.vue ([06a85e0](https://github.com/favorodera/centoui/commit/06a85e0))
+- Simplify badge export syntax ([118daaa](https://github.com/favorodera/centoui/commit/118daaa))
+- Add blank line for readability in button ([0f4abb5](https://github.com/favorodera/centoui/commit/0f4abb5))
+- Add blank line in button-group-separator.vue ([2081ddc](https://github.com/favorodera/centoui/commit/2081ddc))
+- Add spacing to button group styles ([d28b37a](https://github.com/favorodera/centoui/commit/d28b37a))
+
+  - Improve readability of computed styles
+
+- Format test setup utility ([6fb4b6c](https://github.com/favorodera/centoui/commit/6fb4b6c))
+
+  - Update indentation in IntersectionObserver mock
+  - Reformat configureAxe rules for consistency
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.15...v1.0.0-alpha.16
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.15...v1.0.0-alpha.16)

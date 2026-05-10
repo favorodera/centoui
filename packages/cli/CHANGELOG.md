@@ -1,5 +1,22 @@
 # Changelog
 
+## v1.0.0-alpha.16...v1.0.0-alpha.17
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.16...v1.0.0-alpha.17)
+
+### Tests
+
+- Remove mock version from mock config ([241f29f](https://github.com/favorodera/centoui/commit/241f29f))
+
+### Styling
+
+- Update comment arrow in test ([78f699d](https://github.com/favorodera/centoui/commit/78f699d))
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.15...v1.0.0-alpha.16
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.15...v1.0.0-alpha.16)
