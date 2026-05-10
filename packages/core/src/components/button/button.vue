@@ -26,6 +26,7 @@ const styles = computed(() => {
     size: props.size,
     square: props.square,
   })
+  
   return root({ class: props.class })
 })
 </script>
