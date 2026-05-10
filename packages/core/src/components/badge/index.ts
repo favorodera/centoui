@@ -7,8 +7,6 @@ export const badgeVariants = tv({
     root: `
       relative inline-flex shrink-0 items-center justify-center truncate
       whitespace-nowrap transition-all outline-none select-none
-      focus-visible:ring-2 focus-visible:ring-offset-2
-      aria-invalid:ring-2 aria-invalid:ring-error aria-invalid:ring-offset-2
       [&_svg]:pointer-events-none [&_svg]:shrink-0
     `,
   },
@@ -26,55 +24,30 @@ export const badgeVariants = tv({
 
     color: {
       primary: {
-        root: `
-          text-primary
-          focus-visible:ring-primary
-        `,
+        root: 'focus-visible:ring-primary',
       },
       secondary: {
-        root: `
-          text-secondary
-          focus-visible:ring-secondary
-        `,
+        root: 'focus-visible:ring-secondary',
       },
       accent: {
-        root: `
-          text-accent
-          focus-visible:ring-accent
-        `,
+        root: 'focus-visible:ring-accent',
       },
       neutral: {
-        root: `
-          text-neutral
-          focus-visible:ring-neutral
-        `,
+        root: 'focus-visible:ring-neutral',
       },
       success: {
-        root: `
-          text-success
-          focus-visible:ring-success
-        `,
+        root: 'focus-visible:ring-success',
       },
       warning: {
-        root: `
-          text-warning
-          focus-visible:ring-warning
-        `,
+        root: 'focus-visible:ring-warning',
       },
       error: {
-        root: `
-          text-error
-          focus-visible:ring-error
-        `,
+        root: 'focus-visible:ring-error',
       },
       info: {
-        root: `
-          text-info
-          focus-visible:ring-info
-        `,
+        root: 'focus-visible:ring-info',
       },
     },
-
 
     size: {
       xs: {
@@ -110,12 +83,10 @@ export const badgeVariants = tv({
     },
 
     square: {
-      true: {
-        root: 'aspect-square',
-      },
+      true: {},
+      false: {},
     },
   },
-
   compoundVariants: [
     // Solid
     {
@@ -180,58 +151,56 @@ export const badgeVariants = tv({
       variant: 'soft',
       color: 'primary',
       class: {
-        root: 'bg-primary/15',
+        root: 'bg-primary/15 text-primary',
       },
     },
     {
       variant: 'soft',
       color: 'secondary',
       class: {
-        root: 'bg-secondary/15',
+        root: 'bg-secondary/15 text-secondary',
       },
     },
     {
       variant: 'soft',
       color: 'accent',
       class: {
-        root: 'bg-accent/15',
+        root: 'bg-accent/15 text-accent',
       },
     },
     {
       variant: 'soft',
       color: 'neutral',
       class: {
-        root: 'bg-neutral/15',
+        root: 'bg-neutral/15 text-neutral',
       },
     },
     {
       variant: 'soft',
       color: 'success',
       class: {
-        root: 'bg-success/15',
+        root: 'bg-success/15 text-success',
       },
     },
     {
       variant: 'soft',
       color: 'warning',
       class: {
-        root: 'bg-warning/15',
+        root: 'bg-warning/15 text-warning',
       },
     },
     {
       variant: 'soft',
       color: 'error',
       class: {
-        root: [
-          'bg-error/15',
-        ],
+        root: 'bg-error/15 text-error',
       },
     },
     {
       variant: 'soft',
       color: 'info',
       class: {
-        root: 'bg-info/15',
+        root: 'bg-info/15 text-info',
       },
     },
 
@@ -240,56 +209,56 @@ export const badgeVariants = tv({
       variant: 'subtle',
       color: 'primary',
       class: {
-        root: 'bg-primary/8 ring-primary/25',
+        root: 'bg-primary/8 text-primary ring-primary/25',
       },
     },
     {
       variant: 'subtle',
       color: 'secondary',
       class: {
-        root: 'bg-secondary/8 ring-secondary/25',
+        root: 'bg-secondary/8 text-secondary ring-secondary/25',
       },
     },
     {
       variant: 'subtle',
       color: 'accent',
       class: {
-        root: 'bg-accent/8 ring-accent/25',
+        root: 'bg-accent/8 text-accent ring-accent/25',
       },
     },
     {
       variant: 'subtle',
       color: 'neutral',
       class: {
-        root: 'bg-neutral/8 ring-neutral/25',
+        root: 'bg-neutral/8 text-neutral ring-neutral/25',
       },
     },
     {
       variant: 'subtle',
       color: 'success',
       class: {
-        root: 'bg-success/8 ring-success/25',
+        root: 'bg-success/8 text-success ring-success/25',
       },
     },
     {
       variant: 'subtle',
       color: 'warning',
       class: {
-        root: 'bg-warning/8 ring-warning/25',
+        root: 'bg-warning/8 text-warning ring-warning/25',
       },
     },
     {
       variant: 'subtle',
       color: 'error',
       class: {
-        root: 'bg-error/8 ring-error/25',
+        root: 'bg-error/8 text-error ring-error/25',
       },
     },
     {
       variant: 'subtle',
       color: 'info',
       class: {
-        root: 'bg-info/8 ring-info/25',
+        root: 'bg-info/8 text-info ring-info/25',
       },
     },
 
@@ -298,56 +267,56 @@ export const badgeVariants = tv({
       variant: 'outline',
       color: 'primary',
       class: {
-        root: 'ring-primary',
+        root: 'text-primary ring-primary',
       },
     },
     {
       variant: 'outline',
       color: 'secondary',
       class: {
-        root: 'ring-secondary',
+        root: 'text-secondary ring-secondary',
       },
     },
     {
       variant: 'outline',
       color: 'accent',
       class: {
-        root: 'ring-accent',
+        root: 'text-accent ring-accent',
       },
     },
     {
       variant: 'outline',
       color: 'neutral',
       class: {
-        root: 'ring-neutral',
+        root: 'text-neutral ring-neutral',
       },
     },
     {
       variant: 'outline',
       color: 'success',
       class: {
-        root: 'ring-success',
+        root: 'text-success ring-success',
       },
     },
     {
       variant: 'outline',
       color: 'warning',
       class: {
-        root: 'ring-warning',
+        root: 'text-warning ring-warning',
       },
     },
     {
       variant: 'outline',
       color: 'error',
       class: {
-        root: 'ring-error',
+        root: 'text-error ring-error',
       },
     },
     {
       variant: 'outline',
       color: 'info',
       class: {
-        root: 'ring-info',
+        root: 'text-info ring-info',
       },
     },
 
@@ -388,7 +357,6 @@ export const badgeVariants = tv({
       },
     },
   ],
-
   defaultVariants: {
     variant: 'solid',
     color: 'primary',
@@ -400,7 +368,10 @@ export const badgeVariants = tv({
 
 // Component exports
 
-export { default as Badge } from './badge.vue'
+export {
+  default as Badge,
+} from './badge.vue'
+
 
 // Types exports
 
