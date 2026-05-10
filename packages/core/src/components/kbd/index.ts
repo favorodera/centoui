@@ -11,30 +11,14 @@ export const kbdVariants = tv({
   },
   variants: {
     color: {
-      primary: {
-        root: 'text-primary',
-      },
-      secondary: {
-        root: 'text-secondary',
-      },
-      accent: {
-        root: 'text-accent',
-      },
-      neutral: {
-        root: 'text-neutral',
-      },
-      success: {
-        root: 'text-success',
-      },
-      warning: {
-        root: 'text-warning',
-      },
-      error: {
-        root: 'text-error',
-      },
-      info: {
-        root: 'text-info',
-      },
+      primary: {},
+      secondary: { },
+      accent: {},
+      neutral: {},
+      success: {},
+      warning: {},
+      error: {},
+      info: {},
     },
     variant: {
       solid: {},
@@ -89,9 +73,9 @@ export const kbdVariants = tv({
     },
     {
       variant: 'solid',
-      color: 'info',
+      color: 'neutral',
       class: {
-        root: 'bg-info text-info-foreground',
+        root: 'bg-neutral text-neutral-foreground',
       },
     },
     {
@@ -117,9 +101,9 @@ export const kbdVariants = tv({
     },
     {
       variant: 'solid',
-      color: 'neutral',
+      color: 'info',
       class: {
-        root: 'bg-neutral text-neutral-foreground',
+        root: 'bg-info text-info-foreground',
       },
     },
 
@@ -128,56 +112,56 @@ export const kbdVariants = tv({
       variant: 'soft',
       color: 'primary',
       class: {
-        root: 'bg-primary/15',
+        root: 'bg-primary/15 text-primary',
       },
     },
     {
       variant: 'soft',
       color: 'secondary',
       class: {
-        root: 'bg-secondary/15',
+        root: 'bg-secondary/15 text-secondary',
       },
     },
     {
       variant: 'soft',
       color: 'accent',
       class: {
-        root: 'bg-accent/15',
-      },
-    },
-    {
-      variant: 'soft',
-      color: 'info',
-      class: {
-        root: 'bg-info/15',
-      },
-    },
-    {
-      variant: 'soft',
-      color: 'success',
-      class: {
-        root: 'bg-success/15',
-      },
-    },
-    {
-      variant: 'soft',
-      color: 'warning',
-      class: {
-        root: 'bg-warning/15',
-      },
-    },
-    {
-      variant: 'soft',
-      color: 'error',
-      class: {
-        root: 'bg-error/15',
+        root: 'bg-accent/15 text-accent',
       },
     },
     {
       variant: 'soft',
       color: 'neutral',
       class: {
-        root: 'bg-neutral/15',
+        root: 'bg-neutral/15 text-neutral',
+      },
+    },
+    {
+      variant: 'soft',
+      color: 'success',
+      class: {
+        root: 'bg-success/15 text-success',
+      },
+    },
+    {
+      variant: 'soft',
+      color: 'warning',
+      class: {
+        root: 'bg-warning/15 text-warning',
+      },
+    },
+    {
+      variant: 'soft',
+      color: 'error',
+      class: {
+        root: 'bg-error/15 text-error',
+      },
+    },
+    {
+      variant: 'soft',
+      color: 'info',
+      class: {
+        root: 'bg-info/15 text-info',
       },
     },
 
@@ -186,56 +170,56 @@ export const kbdVariants = tv({
       variant: 'subtle',
       color: 'primary',
       class: {
-        root: 'bg-primary/8 ring-primary/25',
+        root: 'bg-primary/8 text-primary ring-primary/25',
       },
     },
     {
       variant: 'subtle',
       color: 'secondary',
       class: {
-        root: 'bg-secondary/8 ring-secondary/25',
+        root: 'bg-secondary/8 text-secondary ring-secondary/25',
       },
     },
     {
       variant: 'subtle',
       color: 'accent',
       class: {
-        root: 'bg-accent/8 ring-accent/25',
+        root: 'bg-accent/8 text-accent ring-accent/25',
       },
     },
     {
       variant: 'subtle',
       color: 'neutral',
       class: {
-        root: 'bg-neutral/8 ring-neutral/25',
+        root: 'bg-neutral/8 text-neutral ring-neutral/25',
       },
     },
     {
       variant: 'subtle',
       color: 'success',
       class: {
-        root: 'bg-success/8 ring-success/25',
+        root: 'bg-success/8 text-success ring-success/25',
       },
     },
     {
       variant: 'subtle',
       color: 'warning',
       class: {
-        root: 'bg-warning/8 ring-warning/25',
+        root: 'bg-warning/8 text-warning ring-warning/25',
       },
     },
     {
       variant: 'subtle',
       color: 'error',
       class: {
-        root: 'bg-error/8 ring-error/25',
+        root: 'bg-error/8 text-error ring-error/25',
       },
     },
     {
       variant: 'subtle',
       color: 'info',
       class: {
-        root: 'bg-info/8 ring-info/25',
+        root: 'bg-info/8 text-info ring-info/25',
       },
     },
 
@@ -244,56 +228,56 @@ export const kbdVariants = tv({
       variant: 'outline',
       color: 'primary',
       class: {
-        root: 'ring-primary',
+        root: 'text-primary ring-primary',
       },
     },
     {
       variant: 'outline',
       color: 'secondary',
       class: {
-        root: 'ring-secondary',
+        root: 'text-secondary ring-secondary',
       },
     },
     {
       variant: 'outline',
       color: 'accent',
       class: {
-        root: 'ring-accent',
+        root: 'text-accent ring-accent',
       },
     },
     {
       variant: 'outline',
       color: 'neutral',
       class: {
-        root: 'ring-neutral',
+        root: 'text-neutral ring-neutral',
       },
     },
     {
       variant: 'outline',
       color: 'success',
       class: {
-        root: 'ring-success',
+        root: 'text-success ring-success',
       },
     },
     {
       variant: 'outline',
       color: 'warning',
       class: {
-        root: 'ring-warning',
+        root: 'text-warning ring-warning',
       },
     },
     {
       variant: 'outline',
       color: 'error',
       class: {
-        root: 'ring-error',
+        root: 'text-error ring-error',
       },
     },
     {
       variant: 'outline',
       color: 'info',
       class: {
-        root: 'ring-info',
+        root: 'text-info ring-info',
       },
     },
   ],
