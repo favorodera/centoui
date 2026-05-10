@@ -36,6 +36,7 @@ const styles = computed(() => {
     :data-centoui-variant="alertContext.variant"
     :data-centoui-color="alertContext.color"
     :data-centoui-orientation="alertContext.orientation"
+    :data-centoui-state="alertContext.state"
     :class="styles"
   >
     <slot />
