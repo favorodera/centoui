@@ -206,7 +206,7 @@ onClickOutside(dropdownRef, () => {
         ref="arenaRef"
         class="relative flex min-h-0 min-w-0 flex-1 flex-col overflow-auto"
       >
-        <div class="flex min-h-0 flex-1 flex-col">
+        <div class="flex min-h-0 flex-1 items-center justify-center">
           <slot />
         </div>
 
