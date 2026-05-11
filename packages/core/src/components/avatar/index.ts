@@ -21,11 +21,6 @@ export const avatarVariants = tv({
     `,
   },
   variants: {
-    disabled: {
-      true: {
-        root: 'pointer-events-none opacity-40',
-      },
-    },
     size: {
       '3xs': {
         root: `
@@ -112,11 +107,6 @@ export type AvatarRootProps = RekaAvatarRootProps & {
    * @default 'md'
    */
   size?: AvatarVariants['size']
-  /**
-   * Whether the avatar is disabled.
-   * @default false
-   */
-  disabled?: AvatarVariants['disabled']
   /** Custom class to apply to the root element. */
   class?: ClassValue
 }
