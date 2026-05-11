@@ -8,18 +8,16 @@ defineSlots<AvatarRootSlots>()
 
 const props = withDefaults(defineProps<AvatarRootProps>(), {
   size: 'md',
-  disabled: false,
 })
 
 // Forward props.
-const delegatedProps = reactiveOmit(props, 'class', 'disabled', 'size')
+const delegatedProps = reactiveOmit(props, 'class', 'size')
 const forwardedProps = useForwardProps(delegatedProps)
 
 // Style class string for the component.
 const styles = computed(() => {
   const { root } = avatarVariants({
     size: props.size,
-    disabled: props.disabled,
   })
 
   return root({ class: props.class })
@@ -30,8 +28,6 @@ const styles = computed(() => {
   <AvatarRoot
     data-centoui-slot="avatar-root"
     :data-centoui-size="size"
-    :data-centoui-disabled="disabled"
-    :aria-disabled="disabled"
     v-bind="forwardedProps"
     :class="styles"
   >
