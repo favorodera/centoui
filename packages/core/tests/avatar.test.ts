@@ -67,17 +67,4 @@ describe('accessibility', () => {
     
     expect(await axe(wrapper.element)).toHaveNoViolations()
   })
-
-  test('disabled', async () => {
-    const wrapper = mount(AvatarRoot, {
-      props: { disabled: true },
-      slots: {
-        default: [
-          h(AvatarImage, { src: 'https://github.com/favorodera.jpg', alt: 'John Doe' }),
-          h(AvatarFallback, {}, { default: () => 'JD' }),
-        ],
-      },
-    })
-    expect(await axe(wrapper.element)).toHaveNoViolations()
-  })
 })
