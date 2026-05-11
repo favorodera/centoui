@@ -15,11 +15,6 @@ const schema: PropsSchema = {
     options: Object.keys(avatarVariants.variants.size),
     default: avatarVariants.defaultVariants.size,
   },
-  disabled: {
-    type: 'boolean',
-    label: 'Disabled',
-    default: false,
-  },
 }
 
 onMounted(() => {
@@ -31,7 +26,6 @@ onMounted(() => {
   <ViewContainer>
     <AvatarRoot
       :size="values.size"
-      :disabled="values.disabled"
     >
       <AvatarImage
         src="https://github.com/favorodera.png"
@@ -42,7 +36,6 @@ onMounted(() => {
 
     <AvatarRoot
       :size="values.size"
-      :disabled="values.disabled"
     >
       <AvatarImage
         src=""
@@ -53,7 +46,6 @@ onMounted(() => {
 
     <AvatarRoot
       :size="values.size"
-      :disabled="values.disabled"
     >
       <AvatarImage
         src=""
