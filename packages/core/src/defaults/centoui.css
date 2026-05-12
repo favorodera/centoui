@@ -2,45 +2,49 @@
 @import "tw-animate-css";
 
 :root {
-  /* Base surface of the UI (page, canvas) */
-  --background: oklch(0.9900 0 0);
-  --foreground: oklch(0 0 0);
+  /* Page canvas */
+  --background: oklch(0.955 0 0);
+  --foreground: oklch(0.080 0 0);
 
-  /* Elevated elements like cards, modals, drawers */
-  --surface: oklch(1 0 0);
+  /* Elevated elements — cards, modals, panels */
+  --surface: oklch(1.000 0 0);
+  /* Modal and drawer scrims */
   --overlay: oklch(0 0 0 / 40%);
 
-  /* Subtle fills, input backgrounds, secondary text, placeholders, captions */
-  --muted: oklch(0.9400 0 0);
-  --muted-foreground: oklch(0.4400 0 0);
+  /* Subtle fills — input backgrounds, skeletons */
+  --muted: oklch(0.928 0 0);
+  /* Secondary text — placeholders, captions */
+  --muted-foreground: oklch(0.440 0 0);
+  /* All strokes and dividers */
+  --border: oklch(0.870 0 0);
 
   /* Main brand color — CTAs, key actions */
-  --primary: oklch(0.15 0 0);
-  --primary-foreground: oklch(0.99 0 0);
+  --primary: oklch(0.145 0 0);
+  --primary-foreground: oklch(0.955 0 0);
 
   /* Supporting brand color — secondary actions */
-  --secondary: oklch(0.44 0 0);
-  --secondary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.420 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
 
-  /* Highlight color — decorative, hover states */
-  --accent: oklch(0.62 0 0);
-  --accent-foreground: oklch(0.10 0 0);
+  /* Highlight color — decorative accents, active indicators */
+  --accent: oklch(0.600 0 0);
+  --accent-foreground: oklch(0.080 0 0);
 
-  /* Subtle non-branded actions */
-  --neutral: oklch(0.54 0 0);
-  --neutral-foreground: oklch(0.10 0 0);
+  /* Intentionally colorless — never changes with brand */
+  --neutral: oklch(0.520 0 0);
+  --neutral-foreground: oklch(0.985 0 0);
 
-  /* Positive states — confirmations, completed tasks */
+  /* Positive states — confirmations, success */
   --success: oklch(0.548 0.124 158);
   --success-foreground: oklch(0.985 0.002 158);
 
-  /* Caution states — alerts, pending actions */
+  /* Caution states — warnings, pending */
   --warning: oklch(0.718 0.144 70);
   --warning-foreground: oklch(0.162 0.020 70);
 
-  /* Destructive states — failures, deletions */
-  --error: oklch(0.6300 0.1900 23.0300);
-  --error-foreground: oklch(1 0 0);
+  /* Destructive states — errors, deletions */
+  --error: oklch(0.598 0.190 23);
+  --error-foreground: oklch(0.985 0 0);
 
   /* Neutral informational messages */
   --info: oklch(0.558 0.138 220);
@@ -48,26 +52,27 @@
 }
 
 .dark {
-  --background: oklch(0 0 0);
-  --foreground: oklch(1 0 0);
+  --background: oklch(0.080 0 0);
+  --foreground: oklch(0.985 0 0);
 
-  --surface: oklch(0.18 0 0);
+  --surface: oklch(0.155 0 0);
   --overlay: oklch(0 0 0 / 60%);
 
-  --muted: oklch(0.2300 0 0);
-  --muted-foreground: oklch(0.7200 0 0);
+  --muted: oklch(0.200 0 0);
+  --muted-foreground: oklch(0.620 0 0);
+  --border: oklch(0.260 0 0);
 
-  --primary: oklch(0.95 0 0);
-  --primary-foreground: oklch(0.10 0 0);
+  --primary: oklch(0.985 0 0);
+  --primary-foreground: oklch(0.080 0 0);
 
-  --secondary: oklch(0.72 0 0);
-  --secondary-foreground: oklch(0.10 0 0);
+  --secondary: oklch(0.700 0 0);
+  --secondary-foreground: oklch(0.080 0 0);
 
-  --accent: oklch(0.68 0 0);
-  --accent-foreground: oklch(0.10 0 0);
+  --accent: oklch(0.620 0 0);
+  --accent-foreground: oklch(0.080 0 0);
 
-  --neutral: oklch(0.58 0 0);
-  --neutral-foreground: oklch(0.10 0 0);
+  --neutral: oklch(0.480 0 0);
+  --neutral-foreground: oklch(0.985 0 0);
 
   --success: oklch(0.578 0.124 158);
   --success-foreground: oklch(0.985 0.002 158);
@@ -75,8 +80,8 @@
   --warning: oklch(0.718 0.144 70);
   --warning-foreground: oklch(0.958 0.010 70);
 
-  --error: oklch(0.6900 0.2000 23.9100);
-  --error-foreground: oklch(0 0 0);
+  --error: oklch(0.648 0.190 23);
+  --error-foreground: oklch(0.080 0 0);
 
   --info: oklch(0.598 0.132 220);
   --info-foreground: oklch(0.985 0.002 220);
@@ -91,6 +96,7 @@
 
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
 
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
