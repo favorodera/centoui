@@ -2,7 +2,7 @@
 
 **Component Viewer for CentoUI.**
 
-This is a Vite-based preview app for [CentoUI](https://github.com/favorodera/centoui) components. Use it to view, inspect, and preview components directly, similar to Histoire or Storybook.
+This is a Vite-based preview app for [CentoUI](../../packages/core) components. Use it to view, inspect, and preview components directly, similar to Histoire or Storybook.
 
 ## Features
 
@@ -11,24 +11,20 @@ This is a Vite-based preview app for [CentoUI](https://github.com/favorodera/cen
 - **Component Development:** Live-link to `centoui` package (monorepo).
 - **TypeScript:** Full type support for component development.
 
-## Setup
+## Development
 
 ```bash
 # Install dependencies
 pnpm install
-```
 
-## Development
-
-```bash
-# Start the sandbox on http://localhost:5173
+# Start the preview app on http://localhost:5173
 pnpm dev
 ```
 
 ## Production
 
 ```bash
-# Build the sandbox for production
+# Build the preview app for production
 pnpm build
 
 # Preview the production build
@@ -37,10 +33,10 @@ pnpm preview
 
 ## CLI Usage
 
-The sandbox is pre-configured with a local CentoUI CLI command for development testing:
+The preview app is pre-configured with a local CentoUI CLI command for development testing:
 
 ```bash
-# Run the local CentoUI CLI in the sandbox
+# Run the local CentoUI CLI in the preview app
 pnpm centoui init
 ```
 
