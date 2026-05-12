@@ -1,12 +1,12 @@
 # centoui-cli
 
-[![npm version](https://img.shields.io/npm/v/centoui-cli.svg?style=flat-square)](https://www.npmjs.com/package/centoui-cli)
-[![npm downloads](https://img.shields.io/npm/dm/centoui-cli.svg?style=flat-square)](https://www.npmjs.com/package/centoui-cli)
-[![license](https://img.shields.io/github/license/favorodera/centoui.svg?style=flat-square)](https://github.com/favorodera/centoui/blob/main/LICENSE)
+[![npm version](https://img.shields.io/npm/v/centoui-cli.svg?style=plastic)](https://npmx.dev/package/centoui-cli)
+[![npm downloads](https://img.shields.io/npm/dm/centoui-cli.svg?style=plastic)](https://npmx.dev/package/centoui-cli)
+[![NPM Unpacked Size](https://img.shields.io/npm/unpacked-size/centoui-cli?style=plastic)](https://npmx.dev/package/centoui-cli)
 
-**CentoUI CLI: Manage your CentoUI components with ease.**
+**Manage CentoUI Components with Ease.**
 
-`centoui-cli` is the official command-line interface for [CentoUI](https://github.com/favorodera/centoui). It allows you to initialize CentoUI in your project, add new components, and manage their versions directly from your terminal.
+`centoui-cli` is the official command-line interface for [CentoUI](../core). It allows you to initialize CentoUI in your project, add new components, and manage their versions directly from your terminal.
 
 ## Commands
 
@@ -32,7 +32,6 @@ The CLI generates a `centoui.config.ts` file in your root directory. You can cus
 import { defineConfig } from "centoui"
 
 export default defineConfig({
-  version: "1.0.0",
   componentsDir: "./src/components/centoui",
   themeFilePath: "./src/assets/css/centoui.css",
   icons: {
