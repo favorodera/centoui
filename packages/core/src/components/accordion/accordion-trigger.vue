@@ -2,49 +2,43 @@
 import { reactiveOmit } from '@vueuse/core'
 import { AccordionTrigger, injectAccordionItemContext, injectAccordionRootContext, useForwardProps } from 'reka-ui'
 import { Icon } from '@iconify/vue'
-import { computed } from 'vue'
 import {
-  accordionVariants,
+  injectCentouiAccordionRootContext,
   type AccordionTriggerProps,
   type AccordionTriggerSlots,
 } from '.'
 import { default as config } from '#centoui/config'
+import { computed } from 'vue'
+
+const rootContext = computed(() => {
+  return { ...injectAccordionRootContext(), ...injectCentouiAccordionRootContext() }
+})
+const itemContext = injectAccordionItemContext()
 
 defineSlots<AccordionTriggerSlots>()
 
 const props = defineProps<AccordionTriggerProps>()
-
-// Forward props.
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
-
-// Style class string for the component.
-const styles = computed(() => {
-  const { trigger } = accordionVariants()
-
-  return trigger({ class: props.class })
-})
-
-// Inject AccordionRoots's and AccordionItem's context
-const rootContext = injectAccordionRootContext()
-const itemContext = injectAccordionItemContext()
-
-// Computations
-const disabled = computed(() => itemContext.disabled.value ? '' : undefined)
-const state = computed(() => itemContext.dataState.value)
 </script>
 
 <template>
   <AccordionTrigger
     data-centoui-slot="accordion-trigger"
     v-bind="forwardedProps"
-    :data-centoui-state="state"
-    :data-centoui-disabled="disabled"
+    :data-centoui-state="itemContext.dataState.value"
     :data-centoui-orientation="rootContext.orientation"
-    :class="styles"
+    :data-centoui-disabled="itemContext.dataDisabled.value"
+    :class="rootContext.styles.trigger({ class: props.class })"
   >
     <slot />
 
-    <Icon :icon="config.icons.chevronDown" />
+    <slot name="icon">
+      <Icon
+        data-centoui-slot="accordion-trigger-icon"
+        :icon="config.icons.chevronDown"
+        :class="rootContext.styles.triggerIcon()"
+      />
+    </slot>
   </AccordionTrigger>
 </template>
