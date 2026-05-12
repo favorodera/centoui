@@ -213,8 +213,8 @@ onClickOutside(dropdownRef, () => {
         <div class="flex justify-center px-3 py-2">
           <p
             class="
-              inline-flex rounded-full border border-border bg-surface px-3
-              py-1 text-[11px] text-muted-foreground
+              inline-flex rounded-full border border-border bg-surface px-3 py-1
+              text-[11px] text-muted-foreground
             "
           >
             <span class="lg:hidden">Swipe left or right to paginate</span>
@@ -244,9 +244,7 @@ onClickOutside(dropdownRef, () => {
         </div>
 
         <div
-          class="
-            min-h-0 flex-1 overflow-auto border-b border-border px-4 py-3
-          "
+          class="min-h-0 flex-1 overflow-auto border-b border-border px-4 py-3"
         >
           <PropsPanel
             :schema="schema"
@@ -275,8 +273,7 @@ onClickOutside(dropdownRef, () => {
         <div class="flex h-full min-h-0 flex-col">
           <div
             class="
-              flex items-center justify-between gap-2 border-b border-border
-              p-3
+              flex items-center justify-between gap-2 border-b border-border p-3
             "
           >
             <p class="text-xs font-semibold tracking-wide uppercase">
