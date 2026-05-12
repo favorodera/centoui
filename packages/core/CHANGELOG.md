@@ -1,5 +1,120 @@
 # Changelog
 
+## v1.0.0-alpha.17...v1.0.0-alpha.18
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.17...v1.0.0-alpha.18)
+
+### Added
+
+- **accordion:** Add root context and refine styles ([a385351](https://github.com/favorodera/centoui/commit/a385351))
+
+  - Introduce root context for component
+  - Update trigger and item styling
+  - Add icon slot for trigger
+  - Refine content slot selectors
+
+
+### Refactors
+
+- Remove disabled prop from AvatarRoot ([76290d4](https://github.com/favorodera/centoui/commit/76290d4))
+
+  - Remove disabled prop from AvatarRoot.
+  - Remove disabled attribute binding.
+  - Update component styles.
+
+- Remove disabled variant from avatarVariants and related props ([61e550f](https://github.com/favorodera/centoui/commit/61e550f))
+- Remove disabled test case from AvatarRoot accessibility tests ([63de736](https://github.com/favorodera/centoui/commit/63de736))
+- **accordion:** Unify content styling ([d532a6d](https://github.com/favorodera/centoui/commit/d532a6d))
+
+  - Externalize content styling to root
+  - Integrate Centoui accordion root context
+  - Simplify data attribute bindings
+  - Rename inner slot to content-inner
+
+- **accordion:** Centralize header styles and context ([4199a83](https://github.com/favorodera/centoui/commit/4199a83))
+
+  - Use root context for header styles
+  - Simplify data state and disabled props
+  - Adjust context injection logic
+
+- **accordion:** Centralize item styling & context ([c1e8711](https://github.com/favorodera/centoui/commit/c1e8711))
+
+  - Remove local item styling logic
+  - Inject Centoui accordion root context
+  - Retrieve item styles from root context
+  - Update data attributes computations
+
+- **accordion:** Provide style context ([d41a191](https://github.com/favorodera/centoui/commit/d41a191))
+
+  - Provide full style variants via context
+  - Remove direct attribute for disabled state
+  - Simplify orientation attribute binding
+
+- **accordion:** Streamline trigger styling ([79121c4](https://github.com/favorodera/centoui/commit/79121c4))
+
+  - Use root context for trigger styling
+  - Combine accordion root contexts
+  - Wrap trigger icon in a named slot
+  - Remove local style computations
+
+- **alert:** Centralize styles for alert actions ([29c9a56](https://github.com/favorodera/centoui/commit/29c9a56))
+
+  - Remove local style computation
+  - Consume styles from root context
+  - Update context injection method
+
+- **alert:** Streamline close component - Migrate to new alert root context - Centralize styling via context - Update data attributes for state - Revise close button color logic ([0a70400](https://github.com/favorodera/centoui/commit/0a70400))
+- **alert:** Streamline description styling ([ac8c7e8](https://github.com/favorodera/centoui/commit/ac8c7e8))
+
+  - Removed direct variant style computation
+  - Injected styles from root context
+  - Updated data attributes for state
+  - Renamed context injection function
+
+- **alert:** Delegate media styling to context ([4461c6e](https://github.com/favorodera/centoui/commit/4461c6e))
+
+  - Delegate media styling to root context
+  - Remove local `alertVariants` usage
+  - Update data attributes from context
+  - Rename alert context
+
+- **alert:** Update styling props and context ([995ddb7](https://github.com/favorodera/centoui/commit/995ddb7))
+
+  - Rename color/variant to status prop
+  - Update alert context provision
+  - Rename internal open model
+  - Adjust style computation logic
+
+- **alert:** Improve title component context usage ([b4daec5](https://github.com/favorodera/centoui/commit/b4daec5))
+
+  - Use injected context directly
+  - Remove computed styles logic
+  - Bind attributes from root context
+
+- **alert:** Simplify variant and color system` ([a195e04](https://github.com/favorodera/centoui/commit/a195e04))
+
+### Documentation
+
+- Update README with new badges and features ([f497238](https://github.com/favorodera/centoui/commit/f497238))
+
+  - Updated npmx badges for better tracking
+  - Added a new Features section
+  - Improved description clarity
+
+
+### Styling
+
+- **theme:** Refine default theme colors ([e58739c](https://github.com/favorodera/centoui/commit/e58739c))
+
+  - Adjusted various color values
+  - Added `--border` color variable
+  - Refined color variable descriptions
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.16...v1.0.0-alpha.17
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.16...v1.0.0-alpha.17)

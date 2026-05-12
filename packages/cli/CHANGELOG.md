@@ -1,5 +1,23 @@
 # Changelog
 
+## v1.0.0-alpha.17...v1.0.0-alpha.18
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.17...v1.0.0-alpha.18)
+
+### Documentation
+
+- Update README shields and description ([55d77d1](https://github.com/favorodera/centoui/commit/55d77d1))
+
+  - Updated npm shield styles
+  - Changed npm shield links
+  - Updated project description text
+  - Updated CentoUI link to core package
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.16...v1.0.0-alpha.17
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.16...v1.0.0-alpha.17)

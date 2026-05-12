@@ -1,5 +1,23 @@
 # Changelog
 
+## v1.0.0-alpha.17...v1.0.0-alpha.18
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.17...v1.0.0-alpha.18)
+
+### Documentation
+
+- Update README with new badges and features ([ebbf1ca](https://github.com/favorodera/centoui/commit/ebbf1ca))
+
+  - Updated npm badges to use npmx.dev
+  - Improved description for clarity
+  - Added features section
+  - Updated installation command
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.16...v1.0.0-alpha.17
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.16...v1.0.0-alpha.17)
