@@ -154,7 +154,7 @@ function getActiveValue(key: string): unknown {
         <div
           v-if="entry.type === 'boolean'"
           class="
-            flex items-center justify-between rounded-sm border border-muted
+            flex items-center justify-between rounded-sm border border-border
             bg-muted px-2 py-1.5
           "
         >
@@ -196,9 +196,9 @@ function getActiveValue(key: string): unknown {
             :value="getActiveValue(entry.key)"
             class="
               h-8 w-full cursor-pointer appearance-none rounded-sm border
-              border-muted bg-muted px-2 pr-8 text-xs transition-all
+              border-border bg-muted px-2 pr-8 text-xs transition-all
               outline-none
-              hover:border-muted
+              hover:border-border
               focus:border-primary focus:ring-1 focus:ring-primary
             "
             @change="handleValueUpdate(entry.key, ($event.target as HTMLSelectElement).value)"
@@ -228,10 +228,10 @@ function getActiveValue(key: string): unknown {
           :value="getActiveValue(entry.key)"
           placeholder="No value set"
           class="
-            h-8 w-full rounded-sm border border-muted bg-muted px-2 text-xs
+            h-8 w-full rounded-sm border border-border bg-muted px-2 text-xs
             transition-all outline-none
             placeholder:text-muted-foreground
-            hover:border-muted
+            hover:border-border
             focus:border-primary focus:ring-1 focus:ring-primary
           "
           @input="handleValueUpdate(entry.key, ($event.target as HTMLInputElement).value)"
@@ -246,9 +246,9 @@ function getActiveValue(key: string): unknown {
           :max="entry.options?.[1]"
           :step="entry.options?.[2] ?? 1"
           class="
-            h-8 w-full rounded-sm border border-muted bg-muted px-2 text-xs
+            h-8 w-full rounded-sm border border-border bg-muted px-2 text-xs
             transition-all outline-none
-            hover:border-muted
+            hover:border-border
             focus:border-primary focus:ring-1 focus:ring-primary
           "
           @input="handleValueUpdate(entry.key, Number(($event.target as HTMLInputElement).value))"
