@@ -19,10 +19,10 @@ export const alertVariants = tv({
   variants: {
     status: {
       neutral: {
-        root: 'bg-surface',
-        title: 'text-foreground',
-        description: 'text-foreground/80',
-        media: '[&>svg]:text-foreground',
+        root: 'bg-neutral/15',
+        title: 'text-neutral-foreground',
+        description: 'text-neutral-foreground/80',
+        media: '[&>svg]:text-neutral-foreground',
       },
       success: {
         root: 'bg-success/15',
