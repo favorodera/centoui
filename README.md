@@ -1,61 +1,59 @@
 # CentoUI
 
-[![license](https://img.shields.io/github/license/favorodera/centoui.svg?style=flat-square)](https://github.com/favorodera/centoui/blob/main/LICENSE)
-[![npm version](https://img.shields.io/npm/v/centoui.svg?style=flat-square)](https://www.npmjs.com/package/centoui)
-[![github stars](https://img.shields.io/github/stars/favorodera/centoui.svg?style=flat-square)](https://github.com/favorodera/centoui/stargazers)
+[![license](https://img.shields.io/github/license/favorodera/centoui.svg?style=plastic)](https://github.com/favorodera/centoui/blob/main/LICENSE)
+[![github stars](https://img.shields.io/github/stars/favorodera/centoui.svg?style=plastic)](https://github.com/favorodera/centoui/stargazers)
+[![documentation](https://img.shields.io/badge/-documentation-green?style=plastic)](https://centoui.vercel.app/)
+[![centoui core](https://img.shields.io/badge/core-%234FC08D?style=plastic&logo=vuedotjs)](./packages/core)
+[![centoui cli](https://img.shields.io/badge/cli-%234FC08D?style=plastic&logo=typescript)](./packages/cli)
+[![nuxt module](https://img.shields.io/badge/nuxt_module-%234FC08D?style=plastic&logo=nuxt)](./packages/nuxt)
 
----
+**Vue Components Built Like a Blade.**
 
-## What is CentoUI
+CentoUI is a Vue component library designed for modern web applications. It provides a comprehensive set of accessible, customizable components built with Vue 3, RekaUI, TypeScript, and Tailwind CSS.
 
-CentoUI is a Vue component library built like a blade — every component is sharp, every prop intentional. No translation layer, no fighting the library to get a variant it didn't anticipate.
+## Documentation
 
-Components are copied into your project — you own every line. One CSS file controls the entire theme.
+Full documentation and examples can be found at:
+**[centoui.vercel.app](https://centoui.vercel.app/)**
 
-- [Documentation](https://centoui.vercel.app/)
+## Features
 
----
+- **Component-driven:** Copy components directly into your project — you own every line.
+- **Zero configuration:** One CSS file controls the entire theme.
+- **Type-safe:** Built with TypeScript from the ground up.
+- **CLI-powered:** Add components instantly with the CentoUI CLI.
+- **Nuxt Support:** Official Nuxt module for a first-class Nuxt experience.
 
-## Quick Start
+## Project Structure
 
-### Initialize CentoUI in your project
+This is a monorepo managed with `pnpm` and `turbo`.
 
-```bash
-pnpm dlx centoui@latest init
-```
-
-### Add a component
-```bash
-pnpm dlx centoui@latest add button
-```
-
----
-
-## Monorepo Structure
-
-```
-centoui/
-├── packages/
-│   ├── core/       ← Vue components + CSS  (centoui)
-│   ├── cli/        ← CLI tool              (centoui-cli)
-│   └── nuxt/       ← Nuxt module           (centoui-nuxt)
-├── apps/
-│   ├── docs/       ← Nuxt Content documentation site
-│   ├── preview/    ← Component viewer
-│   └── sandbox/    ← Vite dev playground
-```
-
----
+- [`packages/core`](./packages/core): Vue components and CSS (centoui).
+- [`packages/cli`](./packages/cli): CLI tool for component management (centoui-cli).
+- [`packages/nuxt`](./packages/nuxt): Official Nuxt module (centoui-nuxt).
+- [`apps/docs`](./apps/docs): Documentation site built with Nuxt Content.
+- [`apps/preview`](./apps/preview): Component viewer and playground.
+- [`apps/sandbox`](./apps/sandbox): Vite dev playground.
 
 ## Development
 
-**Prerequisites:** Node.js v22+, pnpm v10+
+### Prerequisites
+
+- [pnpm](https://pnpm.io/installation) (v10 or later)
+- Node.js (v22 or later)
+
+### Setup
 
 ```bash
-pnpm dev        # start all packages/apps in watch mode
-pnpm build      # build all packages
-pnpm lint       # lint all
-pnpm typecheck  # type-check all
-pnpm test       # run all tests
-pnpm ready      # full pre-publish gate: install → lint → typecheck → build → test
+# Install dependencies
+pnpm install
+
+# Start development in watch mode
+pnpm dev
+
+# Build all packages
+pnpm build
+
+# Run tests
+pnpm test
 ```
