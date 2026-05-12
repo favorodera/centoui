@@ -2,62 +2,52 @@
 import { reactiveOmit } from '@vueuse/core'
 import { useForwardProps, Primitive } from 'reka-ui'
 import { computed, reactive, toRef } from 'vue'
-import { type AlertRootSlots, type AlertRootProps, alertVariants, provideAlertRootContext, type AlertRootEmits } from '.'
-
+import { type AlertRootSlots, type AlertRootProps, alertVariants, provideCentouiAlertRootContext, type AlertRootEmits } from '.'
 
 defineEmits<AlertRootEmits>()
+
 defineSlots<AlertRootSlots>()
 
 const props = withDefaults(defineProps<AlertRootProps>(), {
   as: 'div',
-  color: 'primary',
-  variant: 'solid',
+  status: 'neutral',
   orientation: 'vertical',
 })
-
-// Forward props.
-const delegatedProps = reactiveOmit(props, 'class', 'orientation', 'color', 'variant', 'open')
+const delegatedProps = reactiveOmit(
+  props,
+  'class',
+  'orientation',
+  'status',
+  'open',
+)
 const forwardedProps = useForwardProps(delegatedProps)
 
-// Models
-const open = defineModel<boolean>('open', { default: true })
+const openModel = defineModel<boolean>('open', { default: true })
 
-// Style class string for the component.
-const styles = computed(() => {
-  const { root } = alertVariants({
-    color: props.color,
-    variant: props.variant,
-    orientation: props.orientation,
-  })
+const styles = computed(() => alertVariants({
+  status: props.status,
+  orientation: props.orientation,
+}))
 
-  return root({ class: props.class })
-})
-
-// Computations
-const state = computed(() => open.value ? 'open' : 'closed')
-
-// Provide context to child components.
-provideAlertRootContext(reactive({
-  variant: toRef(props, 'variant'),
-  color: toRef(props, 'color'),
+provideCentouiAlertRootContext(reactive({
+  styles,
+  status: toRef(props, 'status'),
   orientation: toRef(props, 'orientation'),
-  state,
-  open,
-  onClose: () => open.value = false,
+  open: openModel,
+  onClose: () => openModel.value = false,
 }))
 </script>
 
 <template>
   <Primitive
-    v-if="open"
+    v-if="openModel"
     data-centoui-slot="alert-root"
-    :data-centoui-variant="variant"
-    :data-centoui-color="color"
+    :data-centoui-status="status"
     :data-centoui-orientation="orientation"
-    :data-centoui-state="state"
+    :data-centoui-open="openModel"
     role="alert"
     v-bind="forwardedProps"
-    :class="styles"
+    :class="styles.root({ class: props.class })"
   >
     <slot />
   </Primitive>
