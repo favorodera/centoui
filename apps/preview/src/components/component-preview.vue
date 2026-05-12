@@ -113,7 +113,7 @@ onClickOutside(dropdownRef, () => {
     <header
       class="
         sticky top-0 z-20 flex h-12 items-center justify-between border-b
-        border-muted/60 bg-background/90 px-3 backdrop-blur-sm
+        border-border bg-background/90 px-3 backdrop-blur-sm
         sm:px-4
       "
     >
@@ -124,7 +124,7 @@ onClickOutside(dropdownRef, () => {
         <button
           type="button"
           class="
-            flex h-8 items-center gap-2 rounded-sm border border-muted
+            flex h-8 items-center gap-2 rounded-sm border border-border
             bg-surface px-2 text-xs
           "
           @click="isSelectOpen = !isSelectOpen"
@@ -148,7 +148,7 @@ onClickOutside(dropdownRef, () => {
         <div
           v-if="isSelectOpen"
           class="
-            absolute left-0 mt-1 w-56 rounded-sm border border-muted bg-surface
+            absolute left-0 mt-1 w-56 rounded-sm border border-border bg-surface
             p-1 shadow-lg
           "
         >
@@ -178,7 +178,7 @@ onClickOutside(dropdownRef, () => {
           v-if="hasProps && schema"
           type="button"
           class="
-            flex h-8 items-center gap-1 rounded-sm border border-muted
+            flex h-8 items-center gap-1 rounded-sm border border-border
             bg-surface px-2 text-xs
             lg:hidden
           "
@@ -192,7 +192,7 @@ onClickOutside(dropdownRef, () => {
           type="button"
           class="
             flex size-8 items-center justify-center rounded-sm border
-            border-muted bg-surface text-xs
+            border-border bg-surface text-xs
           "
           @click="toggleDarkMode()"
         >
@@ -213,7 +213,7 @@ onClickOutside(dropdownRef, () => {
         <div class="flex justify-center px-3 py-2">
           <p
             class="
-              inline-flex rounded-full border border-muted bg-surface/70 px-3
+              inline-flex rounded-full border border-border bg-surface px-3
               py-1 text-[11px] text-muted-foreground
             "
           >
@@ -233,11 +233,11 @@ onClickOutside(dropdownRef, () => {
       <aside
         v-if="hasProps && schema"
         class="
-          hidden min-h-0 shrink-0 border-l border-muted/60 bg-surface/30
+          hidden min-h-0 shrink-0 border-l border-border bg-surface
           lg:flex lg:w-88 lg:flex-col
         "
       >
-        <div class="border-b border-muted/60 px-4 py-3">
+        <div class="border-b border-border px-4 py-3">
           <p class="text-xs font-semibold tracking-wide uppercase">
             Props
           </p>
@@ -245,7 +245,7 @@ onClickOutside(dropdownRef, () => {
 
         <div
           class="
-            min-h-0 flex-1 overflow-auto border-b border-muted/60 px-4 py-3
+            min-h-0 flex-1 overflow-auto border-b border-border px-4 py-3
           "
         >
           <PropsPanel
@@ -268,14 +268,14 @@ onClickOutside(dropdownRef, () => {
     >
       <div
         class="
-          absolute inset-y-0 right-0 w-[min(22rem,92vw)] border-l border-muted
+          absolute inset-y-0 right-0 w-[min(22rem,92vw)] border-l border-border
           bg-surface shadow-2xl
         "
       >
         <div class="flex h-full min-h-0 flex-col">
           <div
             class="
-              flex items-center justify-between gap-2 border-b border-muted/60
+              flex items-center justify-between gap-2 border-b border-border
               p-3
             "
           >
@@ -286,7 +286,7 @@ onClickOutside(dropdownRef, () => {
               type="button"
               class="
                 flex size-8 items-center justify-center rounded-sm border
-                border-muted bg-surface text-xs
+                border-border bg-surface text-xs
               "
               @click="isPropsPanelOpen = false"
             >
