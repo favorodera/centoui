@@ -10,17 +10,11 @@ import ViewContainer from '../components/view-container.vue'
 const { values, setPreviewState } = usePreview()
 
 const schema: PropsSchema = {
-  variant: {
+  status: {
     type: 'select',
-    label: 'Variant',
-    options: Object.keys(alertVariants.variants.variant),
-    default: alertVariants.defaultVariants.variant,
-  },
-  color: {
-    type: 'select',
-    label: 'Color',
-    options: Object.keys(alertVariants.variants.color),
-    default: alertVariants.defaultVariants.color,
+    label: 'Status',
+    options: Object.keys(alertVariants.variants.status),
+    default: alertVariants.defaultVariants.status,
   },
   orientation: {
     type: 'select',
@@ -51,7 +45,7 @@ onMounted(() => {
     <AlertRoot
       v-model:open="isAlertOpen"
       :variant="values.variant"
-      :color="values.color"
+      :status="values.status"
       :orientation="values.orientation"
     >
       <AlertMedia>
@@ -67,7 +61,7 @@ onMounted(() => {
       <AlertActions>
         <Button
           variant="solid"
-          :color="values.color"
+          :color="values.status === 'neutral' ? 'primary' : values.status"
           size="sm"
         >
           Learn more
