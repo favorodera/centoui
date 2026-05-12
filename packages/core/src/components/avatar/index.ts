@@ -1,4 +1,5 @@
 import {
+  createContext,
   type AvatarFallbackProps as RekaAvatarFallbackProps,
   type AvatarImageEmits as RekaAvatarImageEmits,
   type AvatarImageProps as RekaAvatarImageProps,
@@ -16,65 +17,43 @@ export const avatarVariants = tv({
     `,
     image: 'size-full rounded-[inherit] object-cover',
     fallback: `
-      truncate font-medium text-foreground
+      truncate font-medium text-foreground/80
       [&_svg]:pointer-events-none [&_svg]:shrink-0
     `,
   },
   variants: {
     size: {
-      '3xs': {
-        root: `
-          size-4 text-[8px]
-          [&_svg]:size-2
-        `,
-      },
       '2xs': {
-        root: `
-          size-5 text-[10px]
-          [&_svg]:size-2.5
-        `,
+        root: 'size-5',
+        fallback: 'text-[10px] [&_svg]:size-2.5',
       },
       'xs': {
-        root: `
-          size-6 text-xs
-          [&_svg]:size-3
-        `,
+        root: 'size-6',
+        fallback: 'text-xs [&_svg]:size-3',
       },
       'sm': {
-        root: `
-          size-7 text-sm
-          [&_svg]:size-3.5
-        `,
+        root: 'size-7',
+        fallback: 'text-sm [&_svg]:size-3.5',
       },
       'md': {
-        root: `
-          size-8 text-base
-          [&_svg]:size-4
-        `,
+        root: 'size-8',
+        fallback: 'text-base [&_svg]:size-4',
       },
       'lg': {
-        root: `
-          size-9 text-lg
-          [&_svg]:size-4.5
-        `,
+        root: 'size-9',
+        fallback: 'text-lg [&_svg]:size-4.5',
       },
       'xl': {
-        root: `
-          size-10 text-xl
-          [&_svg]:size-5
-        `,
+        root: 'size-10',
+        fallback: 'text-xl [&_svg]:size-5',
       },
       '2xl': {
-        root: `
-          size-11 text-[22px]
-          [&_svg]:size-5.5
-        `,
+        root: 'size-11',
+        fallback: 'text-[22px] [&_svg]:size-5.5',
       },
       '3xl': {
-        root: `
-          size-12 text-2xl
-          [&_svg]:size-6
-        `,
+        root: 'size-12',
+        fallback: 'text-2xl [&_svg]:size-6',
       },
     },
   },
@@ -84,18 +63,27 @@ export const avatarVariants = tv({
 })
 
 
-// Component exports
+// COMPONENTS
 
 export { default as AvatarFallback } from './avatar-fallback.vue'
 export { default as AvatarImage } from './avatar-image.vue'
 export { default as AvatarRoot } from './avatar-root.vue'
 
-// Utils exports
+
+// COMPONENT UTILS
 
 export { getInitials } from './avatar-utils'
 
 
-// Types exports
+export const [injectCentouiAvatarRootContext, provideCentouiAvatarRootContext] = createContext<AvatarRootContext>('AvatarRoot', 'centoui:avatar-root:context')
+
+
+// PROPS
+
+export type AvatarRootContext = {
+  /** Styles for the alert */
+  styles: ReturnType<typeof avatarVariants>
+}
 
 /** Variant props for Avatar component. */
 export type AvatarVariants = VariantProps<typeof avatarVariants>
@@ -123,8 +111,14 @@ export type AvatarFallbackProps = RekaAvatarFallbackProps & {
   class?: ClassValue
 }
 
+
+// EMITS
+
 /** Emits for AvatarImage component. */
 export type AvatarImageEmits = RekaAvatarImageEmits
+
+
+// SLOTS
 
 /** Slots for AvatarRoot component. */
 export type AvatarRootSlots = {
