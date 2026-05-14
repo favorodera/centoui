@@ -1,25 +1,15 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
 import { Kbd, kbdVariants } from '#centoui/components/kbd'
 import { KbdGroup } from '#centoui/components/kbd-group'
-import { usePreview } from '../utils/use-preview'
-import type { PropsSchema } from '../components/props-panel.vue'
-import ViewContainer from '../components/view-container.vue'
+import ViewContainer from '@/components/view-container.vue'
+import { usePreview } from '@/composables/use-preview'
 
-const { values, setPreviewState } = usePreview()
-
-const schema: PropsSchema = {
+const values = usePreview('Kbd Group', {
   kbdSize: {
     type: 'select',
     label: 'Kbd Size',
     options: Object.keys(kbdVariants.variants.size),
     default: kbdVariants.defaultVariants.size,
-  },
-  kbdColor: {
-    type: 'select',
-    label: 'Kbd Color',
-    options: Object.keys(kbdVariants.variants.color),
-    default: kbdVariants.defaultVariants.color,
   },
   kbdVariant: {
     type: 'select',
@@ -27,10 +17,6 @@ const schema: PropsSchema = {
     options: Object.keys(kbdVariants.variants.variant),
     default: kbdVariants.defaultVariants.variant,
   },
-}
-
-onMounted(() => {
-  setPreviewState('Kbd Group', schema)
 })
 </script>
 
@@ -39,14 +25,12 @@ onMounted(() => {
     <KbdGroup>
       <Kbd
         :size="values.kbdSize"
-        :color="values.kbdColor"
         :variant="values.kbdVariant"
       >
         ⌘
       </Kbd>
       <Kbd
         :size="values.kbdSize"
-        :color="values.kbdColor"
         :variant="values.kbdVariant"
       >
         K
@@ -56,7 +40,6 @@ onMounted(() => {
     <KbdGroup>
       <Kbd
         :size="values.kbdSize"
-        :color="values.kbdColor"
         :variant="values.kbdVariant"
       >
         Ctrl
@@ -64,7 +47,6 @@ onMounted(() => {
 
       <Kbd
         :size="values.kbdSize"
-        :color="values.kbdColor"
         :variant="values.kbdVariant"
       >
         C
