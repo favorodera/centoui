@@ -2,49 +2,35 @@
 import { reactiveOmit } from '@vueuse/core'
 import { useForwardProps, Primitive } from 'reka-ui'
 import { computed, reactive, toRef } from 'vue'
-import { type AlertRootSlots, type AlertRootProps, alertVariants, provideCentouiAlertRootContext, type AlertRootEmits } from '.'
-
-defineEmits<AlertRootEmits>()
+import { type AlertRootSlots, type AlertRootProps, alertVariants, provideCentouiAlertRootContext } from '.'
 
 defineSlots<AlertRootSlots>()
 
 const props = withDefaults(defineProps<AlertRootProps>(), {
   as: 'div',
-  status: 'neutral',
-  orientation: 'vertical',
+  variant: 'neutral',
 })
 const delegatedProps = reactiveOmit(
   props,
   'class',
-  'orientation',
-  'status',
-  'open',
+  'variant',
 )
 const forwardedProps = useForwardProps(delegatedProps)
 
-const openModel = defineModel<boolean>('open', { default: true })
-
 const styles = computed(() => alertVariants({
-  status: props.status,
-  orientation: props.orientation,
+  variant: props.variant,
 }))
 
 provideCentouiAlertRootContext(reactive({
   styles,
-  status: toRef(props, 'status'),
-  orientation: toRef(props, 'orientation'),
-  open: openModel,
-  onClose: () => openModel.value = false,
+  variant: toRef(props, 'variant'),
 }))
 </script>
 
 <template>
   <Primitive
-    v-if="openModel"
-    data-centoui-slot="alert-root"
-    :data-centoui-status="status"
-    :data-centoui-orientation="orientation"
-    :data-centoui-open="openModel"
+    data-slot="alert-root"
+    :data-variant="variant"
     role="alert"
     v-bind="forwardedProps"
     :class="styles.root({ class: props.class })"
