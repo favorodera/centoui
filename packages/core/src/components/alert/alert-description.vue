@@ -12,17 +12,13 @@ const props = withDefaults(defineProps<AlertDescriptionProps>(), {
 })
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
-
-
 </script>
 
 <template>
   <Primitive
-    data-centoui-slot="alert-description"
+    data-slot="alert-description"
     v-bind="forwardedProps"
-    :data-centoui-status="rootContext.status"
-    :data-centoui-orientation="rootContext.orientation"
-    :data-centoui-open="rootContext.open"
+    :data-variant="rootContext.variant"
     :class="rootContext.styles.description({ class: props.class })"
   >
     <slot />
