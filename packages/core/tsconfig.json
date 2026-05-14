@@ -19,5 +19,5 @@
       "#centoui/config": [ "./src/defaults/config.ts" ]
     },
   },
-  "include": [ "src", "augment.d.dts" ]
+  "include": [ "src", "augment.d.ts" ]
 }
