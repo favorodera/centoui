@@ -1,30 +1,16 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
-import { usePreview } from '../utils/use-preview'
-import type { PropsSchema } from '../components/props-panel.vue'
-import ViewContainer from '../components/view-container.vue'
-import { TooltipRoot, TooltipContent, TooltipProvider, TooltipTrigger, TooltipArrow, TooltipPortal, tooltipVariants } from '#centoui/components/tooltip'
 import { Button } from '#centoui/components/button'
+import { TooltipArrow, TooltipContent, TooltipPortal, TooltipProvider, TooltipRoot, TooltipTrigger } from '#centoui/components/tooltip'
+import ViewContainer from '@/components/view-container.vue'
+import { usePreview } from '@/composables/use-preview'
 
-const { values, setPreviewState } = usePreview()
-
-const schema: PropsSchema = {
-  variant: {
-    type: 'select',
-    label: 'Variant',
-    options: Object.keys(tooltipVariants.variants.variant),
-    default: tooltipVariants.defaultVariants.variant,
-  },
+const values = usePreview('Separator', {
   side: {
     type: 'select',
     label: 'Side',
     options: ['top', 'bottom', 'left', 'right'],
     default: 'top',
   },
-}
-
-onMounted(() => {
-  setPreviewState('Tooltip', schema)
 })
 </script>
 
@@ -41,8 +27,7 @@ onMounted(() => {
 
         <TooltipPortal>
           <TooltipContent
-            :variant="values.variant"
-            :side="values.side"
+            :side="values.side as any"
             class="flex gap-2"
           >
             <p>This is a tooltip</p>
