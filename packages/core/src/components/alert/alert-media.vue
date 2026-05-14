@@ -16,11 +16,9 @@ const forwardedProps = useForwardProps(delegatedProps)
 
 <template>
   <Primitive
-    data-centoui-slot="alert-media"
+    data-slot="alert-media"
     v-bind="forwardedProps"
-    :data-centoui-status="rootContext.status"
-    :data-centoui-orientation="rootContext.orientation"
-    :data-centoui-open="rootContext.open"
+    :data-variant="rootContext.variant"
     :class="rootContext.styles.media({ class: props.class })"
   >
     <slot />
