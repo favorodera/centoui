@@ -1,15 +1,11 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-import { onMounted } from 'vue'
 import { Button, buttonVariants } from '#centoui/components/button'
 import { ButtonGroup, ButtonGroupSeparator, buttonGroupVariants } from '#centoui/components/button-group'
-import type { PropsSchema } from '../components/props-panel.vue'
-import ViewContainer from '../components/view-container.vue'
-import { usePreview } from '../utils/use-preview'
+import ViewContainer from '@/components/view-container.vue'
+import { usePreview } from '@/composables/use-preview'
 
-const { values, setPreviewState } = usePreview()
-
-const schema: PropsSchema = {
+const values = usePreview('Button Group', {
   orientation: {
     type: 'select',
     label: 'Orientation',
@@ -22,22 +18,12 @@ const schema: PropsSchema = {
     options: Object.keys(buttonVariants.variants.variant),
     default: buttonVariants.defaultVariants.variant,
   },
-  buttonColor: {
-    type: 'select',
-    label: 'Button Color',
-    options: Object.keys(buttonVariants.variants.color),
-    default: buttonVariants.defaultVariants.color,
-  },
   buttonSize: {
     type: 'select',
     label: 'Button Size',
     options: Object.keys(buttonVariants.variants.size),
     default: buttonVariants.defaultVariants.size,
   },
-}
-
-onMounted(() => {
-  setPreviewState('Button Group', schema)
 })
 </script>
 
@@ -51,12 +37,11 @@ onMounted(() => {
       >
         <Button
           :variant="values.buttonVariant"
-          :color="values.buttonColor"
           :size="values.buttonSize"
         >
           Button {{ n }}
         </Button>
-        <ButtonGroupSeparator v-if="n < 2 && values.variant !== 'solid'" />
+        <ButtonGroupSeparator v-if="n < 2 && values.buttonVariant !== 'outline'" />
       </template>
     </ButtonGroup>
 
@@ -68,12 +53,11 @@ onMounted(() => {
         >
           <Button
             :variant="values.buttonVariant"
-            :color="values.buttonColor"
             :size="values.buttonSize"
           >
             {{ n }}
           </Button>
-          <ButtonGroupSeparator v-if="n < 5 && values.variant !== 'solid'" />
+          <ButtonGroupSeparator v-if="n < 5 && values.buttonVariant !== 'outline'" />
         </template>
       </ButtonGroup>
 
@@ -83,7 +67,6 @@ onMounted(() => {
       >
         <Button
           :variant="values.buttonVariant"
-          :color="values.buttonColor"
           :size="values.buttonSize"
           aria-label="Previous"
           square
@@ -91,11 +74,10 @@ onMounted(() => {
           <Icon icon="lucide:arrow-left" />
         </Button>
 
-        <ButtonGroupSeparator v-if="values.variant !== 'solid'" />
+        <ButtonGroupSeparator v-if="values.buttonVariant !== 'outline'" />
 
         <Button
           :variant="values.buttonVariant"
-          :color="values.buttonColor"
           :size="values.buttonSize"
           aria-label="Next"
           square
@@ -109,18 +91,16 @@ onMounted(() => {
       <Button
         class="pointer-events-none"
         :variant="values.buttonVariant"
-        :color="values.buttonColor"
         :size="values.buttonSize"
         as="div"
       >
         Text
       </Button>
 
-      <ButtonGroupSeparator v-if="values.variant !== 'solid'" />
+      <ButtonGroupSeparator v-if="values.buttonVariant !== 'outline'" />
       
       <Button
         :variant="values.buttonVariant"
-        :color="values.buttonColor"
         :size="values.buttonSize"
       >
         Button 2
