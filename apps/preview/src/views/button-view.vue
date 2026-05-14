@@ -1,25 +1,15 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
 import { Button, buttonVariants } from '#centoui/components/button'
 import { Icon } from '@iconify/vue'
-import { usePreview } from '../utils/use-preview'
-import type { PropsSchema } from '../components/props-panel.vue'
-import ViewContainer from '../components/view-container.vue'
+import ViewContainer from '@/components/view-container.vue'
+import { usePreview } from '@/composables/use-preview'
 
-const { values, setPreviewState } = usePreview()
-
-const schema: PropsSchema = {
+const values = usePreview('Button', {
   variant: {
     type: 'select',
     label: 'Variant',
     options: Object.keys(buttonVariants.variants.variant),
     default: buttonVariants.defaultVariants.variant,
-  },
-  color: {
-    type: 'select',
-    label: 'Color',
-    options: Object.keys(buttonVariants.variants.color),
-    default: buttonVariants.defaultVariants.color,
   },
   size: {
     type: 'select',
@@ -32,10 +22,6 @@ const schema: PropsSchema = {
     label: 'Disabled',
     default: false,
   },
-}
-
-onMounted(() => {
-  setPreviewState('Button', schema)
 })
 </script>
 
@@ -44,7 +30,6 @@ onMounted(() => {
 
     <Button
       :variant="values.variant"
-      :color="values.color"
       :size="values.size"
       :disabled="values.disabled"
     >
@@ -53,7 +38,6 @@ onMounted(() => {
 
     <Button
       :variant="values.variant"
-      :color="values.color"
       :size="values.size"
       :disabled="values.disabled"
     >
@@ -66,7 +50,6 @@ onMounted(() => {
       
     <Button
       :variant="values.variant"
-      :color="values.color"
       :size="values.size"
       :disabled="values.disabled"
       :square="true"
