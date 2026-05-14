@@ -4,7 +4,8 @@ import { useRoute, useRouter } from 'vue-router'
 import { Icon } from '@iconify/vue'
 import { onClickOutside, onKeyStroke, useDark, useSwipe, useToggle } from '@vueuse/core'
 import PropsPanel from './props-panel.vue'
-import { usePreview } from '../utils/use-preview'
+import { usePreviewStore } from '@/stores/preview-store'
+import { storeToRefs } from 'pinia'
 
 type ComponentOption = {
   path: string
@@ -13,7 +14,8 @@ type ComponentOption = {
 
 const router = useRouter()
 const route = useRoute()
-const { schema, values, hasProps, updateValues } = usePreview()
+const { schema, values, hasProps } = storeToRefs(usePreviewStore())
+const { updateValues } = usePreviewStore()
 
 const dropdownRef = ref<HTMLElement | null>(null)
 const arenaRef = ref<HTMLElement | null>(null)
@@ -125,7 +127,8 @@ onClickOutside(dropdownRef, () => {
           type="button"
           class="
             flex h-8 items-center gap-2 rounded-sm border border-border
-            bg-surface px-2 text-xs
+            bg-surface px-2 text-xs outline-none
+            focus-visible:ring-2 focus-visible:ring-ring
           "
           @click="isSelectOpen = !isSelectOpen"
         >
@@ -148,8 +151,8 @@ onClickOutside(dropdownRef, () => {
         <div
           v-if="isSelectOpen"
           class="
-            absolute left-0 mt-1 w-56 rounded-sm border border-border bg-surface
-            p-1 shadow-lg
+            absolute left-0 mt-1 w-56 rounded-sm border border-border
+            bg-surface-raised p-1 shadow-lg
           "
         >
           <button
@@ -159,7 +162,7 @@ onClickOutside(dropdownRef, () => {
             class="
               flex w-full items-center justify-between rounded-sm px-2 py-1.5
               text-left text-xs
-              hover:bg-muted
+              hover:bg-accent
             "
             @click="goTo(item.path)"
           >
@@ -179,7 +182,8 @@ onClickOutside(dropdownRef, () => {
           type="button"
           class="
             flex h-8 items-center gap-1 rounded-sm border border-border
-            bg-surface px-2 text-xs
+            bg-surface px-2 text-xs outline-none
+            focus-visible:ring-2 focus-visible:ring-ring
             lg:hidden
           "
           @click="isPropsPanelOpen = !isPropsPanelOpen"
@@ -192,7 +196,8 @@ onClickOutside(dropdownRef, () => {
           type="button"
           class="
             flex size-8 items-center justify-center rounded-sm border
-            border-border bg-surface text-xs
+            border-border bg-surface text-xs outline-none
+            focus-visible:ring-2 focus-visible:ring-ring
           "
           @click="toggleDarkMode()"
         >
