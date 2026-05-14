@@ -1,24 +1,22 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
 import { AvatarRoot, AvatarImage, AvatarFallback, avatarVariants } from '#centoui/components/avatar'
 import { Icon } from '@iconify/vue'
-import { usePreview } from '../utils/use-preview'
-import type { PropsSchema } from '../components/props-panel.vue'
-import ViewContainer from '../components/view-container.vue'
+import ViewContainer from '@/components/view-container.vue'
+import { usePreview } from '@/composables/use-preview'
 
-const { values, setPreviewState } = usePreview()
-
-const schema: PropsSchema = {
+const values = usePreview('Avatar', {
   size: {
     type: 'select',
     label: 'Size',
     options: Object.keys(avatarVariants.variants.size),
     default: avatarVariants.defaultVariants.size,
   },
-}
-
-onMounted(() => {
-  setPreviewState('Avatar', schema)
+  shape: {
+    type: 'select',
+    label: 'Shape',
+    options: Object.keys(avatarVariants.variants.shape),
+    default: avatarVariants.defaultVariants.shape,
+  },
 })
 </script>
 
@@ -26,6 +24,7 @@ onMounted(() => {
   <ViewContainer>
     <AvatarRoot
       :size="values.size"
+      :shape="values.shape"
     >
       <AvatarImage
         src="https://github.com/favorodera.png"
@@ -36,6 +35,7 @@ onMounted(() => {
 
     <AvatarRoot
       :size="values.size"
+      :shape="values.shape"
     >
       <AvatarImage
         src=""
@@ -46,6 +46,7 @@ onMounted(() => {
 
     <AvatarRoot
       :size="values.size"
+      :shape="values.shape"
     >
       <AvatarImage
         src=""
