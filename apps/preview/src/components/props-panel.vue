@@ -1,133 +1,40 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import { Icon } from '@iconify/vue'
+import type { PropsSchema } from '@/utils/types'
 
-/**
- * Supported input control types for property editing.
- */
-export type PropType = 'select' | 'boolean' | 'string' | 'number'
-
-type SelectOption = string | number
-
-interface BasePropDefinition {
-  /** Human-readable label for the property. Falls back to a formatted key name if omitted. */
-  label?: string
-  /** Optional documentation or contextual help text. */
-  hint?: string
-}
-
-export interface SelectPropDefinition extends BasePropDefinition {
-  type: 'select'
-  options?: SelectOption[]
-  default?: SelectOption
-}
-
-export interface BooleanPropDefinition extends BasePropDefinition {
-  type: 'boolean'
-  default?: boolean
-}
-
-export interface StringPropDefinition extends BasePropDefinition {
-  type: 'string'
-  default?: string
-}
-
-export interface NumberPropDefinition extends BasePropDefinition {
-  type: 'number'
-  /** Optional [min, max, step]. */
-  options?: [number?, number?, number?]
-  default?: number
-}
-
-/**
- * Defines the configuration for a single property control.
- */
-export type PropDefinition
-  = | SelectPropDefinition
-    | BooleanPropDefinition
-    | StringPropDefinition
-    | NumberPropDefinition
-
-/**
- * Map of property keys to their configuration definitions.
- */
-export type PropsSchema = Record<string, PropDefinition>
-
-/* eslint-disable-next-line @typescript-eslint/no-explicit-any */
-type FallbackValue = any
-
-type InferValueFromDefinition<T extends PropDefinition>
-  = T extends SelectPropDefinition ? NonNullable<T['default']>
-    : T extends BooleanPropDefinition ? boolean
-      : T extends StringPropDefinition ? string
-        : T extends NumberPropDefinition ? number
-          : FallbackValue
-
-export type InferValuesFromSchema<S extends PropsSchema> = {
-  [K in keyof S]: InferValueFromDefinition<S[K]>
-}
-
-/**
- * Component properties for the PropsPanel.
- */
-interface PropsPanelProps {
-  /** The schema defining which controls to render. */
+interface Props {
   schema: PropsSchema
-  /** The current reactive values bound to the controls. */
   values: Record<string, unknown>
 }
 
-const props = defineProps<PropsPanelProps>()
+const props = defineProps<Props>()
 
-/**
- * Component events.
- */
 const emit = defineEmits<{
-  /** Emitted when a property value is changed by the user. */
   'update:values': [values: Record<string, unknown>]
 }>()
 
-/**
- * Processes the raw schema into a list of normalized entries for iteration.
- */
-const propEntries = computed(() => {
-  return Object.entries(props.schema).map(([key, definition]) => ({
+const propEntries = computed(() =>
+  Object.entries(props.schema).map(([key, definition]) => ({
     key,
     label: definition.label ?? formatKeyToLabel(key),
     ...definition,
-  }))
-})
+  })),
+)
 
-/**
- * Converts a camelCase or hyphenated key name into a Capitalized Label.
- *
- * @param key - The raw property key
- * @returns A formatted label string
- */
 function formatKeyToLabel(key: string): string {
   return key
     .replace(/([A-Z])/g, ' $1')
     .replace(/-/g, ' ')
-    .replace(/^./, string => string.toUpperCase())
+    .replace(/^./, s => s.toUpperCase())
     .trim()
 }
 
-/**
- * Updates a specific property value and emits the updated values object.
- *
- * @param key - The property identifier
- * @param value - The new value to assign
- */
-function handleValueUpdate(key: string, value: unknown) {
+function update(key: string, value: unknown) {
   emit('update:values', { ...props.values, [key]: value })
 }
 
-/**
- * Retrieves the current value for a key, falling back to the schema default.
- *
- * @param key - The property identifier
- * @returns The active or default value
- */
-function getActiveValue(key: string): unknown {
+function get(key: string): unknown {
   return props.values?.[key] ?? props.schema?.[key]?.default
 }
 </script>
@@ -151,6 +58,7 @@ function getActiveValue(key: string): unknown {
           </label>
         </div>
 
+        <!-- Boolean -->
         <div
           v-if="entry.type === 'boolean'"
           class="
@@ -159,49 +67,46 @@ function getActiveValue(key: string): unknown {
           "
         >
           <span class="text-[11px] text-muted-foreground">
-            {{ getActiveValue(entry.key) ? 'Enabled' : 'Disabled' }}
+            {{ get(entry.key) ? 'Enabled' : 'Disabled' }}
           </span>
           <button
             :id="`prop-${entry.key}`"
             type="button"
             role="switch"
-            :aria-checked="!!getActiveValue(entry.key)"
+            :aria-checked="!!get(entry.key)"
             class="
               relative inline-flex h-5 w-9 shrink-0 cursor-pointer rounded-full
               border-2 border-transparent transition-colors outline-none
-              focus-visible:ring-2 focus-visible:ring-primary
-              focus-visible:ring-offset-2 focus-visible:ring-offset-surface
+              focus-visible:ring-2 focus-visible:ring-ring
             "
-            :class="getActiveValue(entry.key) ? 'bg-primary' : `bg-muted`"
-            @click="handleValueUpdate(entry.key, !getActiveValue(entry.key))"
+            :class="get(entry.key) ? 'bg-primary' : 'bg-muted'"
+            @click="update(entry.key, !get(entry.key))"
           >
             <span
               class="
                 inline-block size-4 rounded-full bg-white shadow-sm
                 transition-transform
               "
-              :class="getActiveValue(entry.key) ? 'translate-x-4' : `
-                translate-x-0
-              `"
+              :class="get(entry.key) ? 'translate-x-4' : 'translate-x-0'"
             />
           </button>
         </div>
 
+        <!-- Select -->
         <div
           v-else-if="entry.type === 'select'"
           class="relative"
         >
           <select
             :id="`prop-${entry.key}`"
-            :value="getActiveValue(entry.key)"
+            :value="get(entry.key)"
             class="
               h-8 w-full cursor-pointer appearance-none rounded-sm border
               border-border bg-muted px-2 pr-8 text-xs transition-all
               outline-none
-              hover:border-border
-              focus:border-primary focus:ring-1 focus:ring-primary
+              focus-visible:ring-2 focus-visible:ring-ring
             "
-            @change="handleValueUpdate(entry.key, ($event.target as HTMLSelectElement).value)"
+            @change="update(entry.key, ($event.target as HTMLSelectElement).value)"
           >
             <option
               v-for="option in entry.options"
@@ -211,47 +116,46 @@ function getActiveValue(key: string): unknown {
               {{ option }}
             </option>
           </select>
-          <span
+          <Icon
+            icon="lucide:chevron-down"
             class="
-              pointer-events-none absolute top-1/2 right-2.5 -translate-y-1/2
-              text-[10px] text-muted-foreground
+              absolute top-1/2 right-2.5 size-4 -translate-y-1/2
+              text-muted-foreground
             "
-          >
-            v
-          </span>
+          />
         </div>
 
+        <!-- String -->
         <input
           v-else-if="entry.type === 'string'"
           :id="`prop-${entry.key}`"
           type="text"
-          :value="getActiveValue(entry.key)"
+          :value="get(entry.key)"
           placeholder="No value set"
           class="
             h-8 w-full rounded-sm border border-border bg-muted px-2 text-xs
             transition-all outline-none
             placeholder:text-muted-foreground
-            hover:border-border
-            focus:border-primary focus:ring-1 focus:ring-primary
+            focus-visible:ring-2 focus-visible:ring-ring
           "
-          @input="handleValueUpdate(entry.key, ($event.target as HTMLInputElement).value)"
+          @input="update(entry.key, ($event.target as HTMLInputElement).value)"
         >
 
+        <!-- Number -->
         <input
           v-else-if="entry.type === 'number'"
           :id="`prop-${entry.key}`"
           type="number"
-          :value="getActiveValue(entry.key)"
+          :value="get(entry.key)"
           :min="entry.options?.[0]"
           :max="entry.options?.[1]"
           :step="entry.options?.[2] ?? 1"
           class="
             h-8 w-full rounded-sm border border-border bg-muted px-2 text-xs
             transition-all outline-none
-            hover:border-border
-            focus:border-primary focus:ring-1 focus:ring-primary
+            focus-visible:ring-2 focus-visible:ring-ring
           "
-          @input="handleValueUpdate(entry.key, Number(($event.target as HTMLInputElement).value))"
+          @input="update(entry.key, Number(($event.target as HTMLInputElement).value))"
         >
       </div>
     </template>
