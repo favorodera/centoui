@@ -20,13 +20,6 @@ const forwardedPropsEmits = useForwardPropsEmits(delegatedProps, emits)
 
 const styles = computed(() => accordionVariants())
 
-// Attributes
-
-const dataCentouiOrientation = computed(() => {
-// Mirror reka's internal default ('vertical') so the attribute is always present and correct.
-  return props.orientation ?? 'vertical'
-})
-
 provideCentouiAccordionRootContext(reactive({
   styles,
 }))
@@ -35,8 +28,7 @@ provideCentouiAccordionRootContext(reactive({
 <template>
   <AccordionRoot
     v-slot="slotProps"
-    data-centoui-slot="accordion-root"
-    :data-centoui-orientation
+    data-slot="accordion-root"
     v-bind="forwardedPropsEmits"
     :class="styles.root({ class: props.class })"
   >
