@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
-import { AccordionTrigger, injectAccordionItemContext, injectAccordionRootContext, useForwardProps } from 'reka-ui'
+import { AccordionTrigger, useForwardProps } from 'reka-ui'
 import { Icon } from '@iconify/vue'
 import {
   injectCentouiAccordionRootContext,
@@ -8,12 +8,8 @@ import {
   type AccordionTriggerSlots,
 } from '.'
 import { default as config } from '#centoui/config'
-import { computed } from 'vue'
 
-const rootContext = computed(() => {
-  return { ...injectAccordionRootContext(), ...injectCentouiAccordionRootContext() }
-})
-const itemContext = injectAccordionItemContext()
+const rootContext = injectCentouiAccordionRootContext()
 
 defineSlots<AccordionTriggerSlots>()
 
@@ -24,18 +20,15 @@ const forwardedProps = useForwardProps(delegatedProps)
 
 <template>
   <AccordionTrigger
-    data-centoui-slot="accordion-trigger"
+    data-slot="accordion-trigger"
     v-bind="forwardedProps"
-    :data-centoui-state="itemContext.dataState.value"
-    :data-centoui-orientation="rootContext.orientation"
-    :data-centoui-disabled="itemContext.dataDisabled.value"
     :class="rootContext.styles.trigger({ class: props.class })"
   >
     <slot />
 
     <slot name="icon">
       <Icon
-        data-centoui-slot="accordion-trigger-icon"
+        data-slot="accordion-trigger-icon"
         :icon="config.icons.chevronDown"
         :class="rootContext.styles.triggerIcon()"
       />
