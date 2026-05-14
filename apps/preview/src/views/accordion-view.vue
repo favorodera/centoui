@@ -1,22 +1,14 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
 import { AccordionRoot, AccordionItem, AccordionHeader, AccordionTrigger, AccordionContent } from '#centoui/components/accordion'
-import { usePreview } from '../utils/use-preview'
-import type { PropsSchema } from '../components/props-panel.vue'
-import ViewContainer from '../components/view-container.vue'
+import ViewContainer from '@/components/view-container.vue'
+import { usePreview } from '@/composables/use-preview'
 
-const { values, setPreviewState } = usePreview()
-
-const schema: PropsSchema = {
+const values = usePreview('Accordion', {
   disabled: {
     type: 'boolean',
     label: 'Disabled',
     default: false,
   },
-}
-
-onMounted(() => {
-  setPreviewState('Accordion', schema)
 })
 </script>
 
@@ -28,12 +20,10 @@ onMounted(() => {
       :disabled="values.disabled"
       default-value="item-1"
     >
-
       <AccordionItem value="item-1">
-        <AccordionHeader disabled>
+        <AccordionHeader>
           <AccordionTrigger>Product Information</AccordionTrigger>
         </AccordionHeader>
-        
         <AccordionContent>
           <p>
             Our flagship product combines cutting-edge technology with sleek
@@ -51,7 +41,6 @@ onMounted(() => {
         <AccordionHeader>
           <AccordionTrigger>Shipping Details</AccordionTrigger>
         </AccordionHeader>
-        
         <AccordionContent>
           <p>
             We offer worldwide shipping through trusted courier partners.
@@ -64,7 +53,6 @@ onMounted(() => {
           </p>
         </AccordionContent>
       </AccordionItem>
-
     </AccordionRoot>
   </ViewContainer>
 </template>
