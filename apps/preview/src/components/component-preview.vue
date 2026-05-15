@@ -2,10 +2,19 @@
 import { computed, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { Icon } from '@iconify/vue'
-import { onClickOutside, onKeyStroke, useDark, useSwipe, useToggle } from '@vueuse/core'
+import {
+  onClickOutside,
+  onKeyStroke,
+  useClipboard,
+  useDark,
+  useStorage,
+  useSwipe,
+  useToggle,
+} from '@vueuse/core'
 import PropsPanel from './props-panel.vue'
 import { usePreviewStore } from '@/stores/preview-store'
 import { storeToRefs } from 'pinia'
+import defaultThemeCss from '../../../../packages/core/src/defaults/centoui.css?raw'
 
 type ComponentOption = {
   path: string
@@ -19,86 +28,102 @@ const { updateValues } = usePreviewStore()
 
 const dropdownRef = ref<HTMLElement | null>(null)
 const arenaRef = ref<HTMLElement | null>(null)
+const themeDropdownRef = ref<HTMLElement | null>(null)
+
 const isSelectOpen = ref(false)
 const isPropsPanelOpen = ref(false)
+const isThemeOpen = ref(false)
 
 const isDark = useDark()
 const toggleDarkMode = useToggle(isDark)
 
-/** Creates route options for the custom component selector. */
+// Theme injection
+
+const customThemeStyleTagId = 'cento-custom-theme'
+
+const customThemeCss = useStorage(
+  'cento-custom-theme',
+  defaultThemeCss,
+)
+
+const hasCustomTheme = computed(() => {
+  return customThemeCss.value.trim() !== defaultThemeCss.trim()
+})
+
+const { copy, copied } = useClipboard()
+
+function resetCustomTheme() {
+  customThemeCss.value = defaultThemeCss
+
+  document.getElementById(customThemeStyleTagId)?.remove()
+}
+
+function copyCustomTheme() {
+  copy(customThemeCss.value)
+}
+
+watch(
+  customThemeCss,
+  (value) => {
+    if (value.trim() === defaultThemeCss.trim()) {
+      document.getElementById(customThemeStyleTagId)?.remove()
+      return
+    }
+
+    let styleTag = document.getElementById(customThemeStyleTagId) as HTMLStyleElement | null
+
+    if (!styleTag) {
+      styleTag = document.createElement('style')
+      styleTag.id = customThemeStyleTagId
+      document.head.appendChild(styleTag)
+    }
+
+    styleTag.textContent = value
+  },
+  { immediate: true },
+)
+
+// Component navigation
+
 const components = computed<ComponentOption[]>(() => {
   return router
     .getRoutes()
-    .filter(routeItem => routeItem.name && routeItem.path !== '/' && !routeItem.path.includes(':'))
-    .map((routeItem) => {
-      const routeName = routeItem.name as string
-      const label = routeName
+    .filter(r => r.name && r.path !== '/' && !r.path.includes(':'))
+    .map((r) => {
+      const label = (r.name as string)
         .split('-')
-        .map(part => part.charAt(0).toUpperCase() + part.slice(1))
+        .map(p => p.charAt(0).toUpperCase() + p.slice(1))
         .join(' ')
-
-      return { path: routeItem.path, label }
+      return { path: r.path, label }
     })
     .sort((a, b) => a.label.localeCompare(b.label))
 })
 
-const activeIndex = computed(() => {
-  return components.value.findIndex(item => item.path === route.path)
-})
-
-const selectedLabel = computed(() => {
-  return components.value[activeIndex.value]?.label ?? 'Select'
-})
+const activeIndex = computed(() => components.value.findIndex(i => i.path === route.path))
+const selectedLabel = computed(() => components.value[activeIndex.value]?.label ?? 'Select')
 
 function goTo(path: string) {
   isSelectOpen.value = false
   router.push(path)
 }
 
-/** Moves to the previous or next component by index. */
 function navigateByStep(step: number) {
   const target = components.value[activeIndex.value + step]
-  if (target) {
-    router.push(target.path)
-  }
+  if (target) router.push(target.path)
 }
 
-/** Avoids keyboard navigation while inputs are active. */
-function shouldIgnoreKeyboardEvent(event: KeyboardEvent) {
-  const element = event.target as HTMLElement | null
-  if (!element) {
-    return false
-  }
-
-  return ['INPUT', 'TEXTAREA', 'SELECT'].includes(element.tagName) || element.isContentEditable
+function shouldIgnoreKeyboardEvent(e: KeyboardEvent) {
+  const el = e.target as HTMLElement | null
+  return !!el && (['INPUT', 'TEXTAREA', 'SELECT'].includes(el.tagName) || el.isContentEditable)
 }
 
-onKeyStroke(['ArrowLeft', 'ArrowRight'], (event) => {
-  if (shouldIgnoreKeyboardEvent(event)) {
-    return
-  }
-
-  if (event.key === 'ArrowLeft') {
-    navigateByStep(-1)
-  }
-  if (event.key === 'ArrowRight') {
-    navigateByStep(1)
-  }
+onKeyStroke(['ArrowLeft', 'ArrowRight'], (e) => {
+  if (shouldIgnoreKeyboardEvent(e)) return
+  navigateByStep(e.key === 'ArrowLeft' ? -1 : 1)
 })
 
-/** Swipe gestures provide component navigation on touch devices. */
-const { direction } = useSwipe(arenaRef, {
-  threshold: 36,
-})
-
-watch(direction, (currentDirection) => {
-  if (currentDirection === 'left') {
-    navigateByStep(1)
-  }
-  if (currentDirection === 'right') {
-    navigateByStep(-1)
-  }
-})
+const { direction } = useSwipe(arenaRef, { threshold: 36 })
+watch(direction, d => navigateByStep(d === 'left' ? 1 : -1))
 
 watch(() => route.path, () => {
   isSelectOpen.value = false
@@ -107,6 +132,9 @@ watch(() => route.path, () => {
 
 onClickOutside(dropdownRef, () => {
   isSelectOpen.value = false
+})
+onClickOutside(themeDropdownRef, () => {
+  isThemeOpen.value = false
 })
 </script>
 
@@ -192,6 +220,107 @@ onClickOutside(dropdownRef, () => {
           Props
         </button>
 
+        <!-- Theme injector -->
+        <div
+          ref="themeDropdownRef"
+          class="relative"
+        >
+          <button
+            type="button"
+            :class="[
+              `
+                flex size-8 items-center justify-center rounded-sm border
+                text-xs outline-none
+              `,
+              'focus-visible:ring-2 focus-visible:ring-ring',
+              hasCustomTheme ? 'border-ring bg-ring/10 text-ring' : `
+                border-border bg-surface
+              `,
+            ]"
+            @click="isThemeOpen = !isThemeOpen"
+          >
+            <Icon icon="lucide:swatch-book" />
+          </button>
+
+          <Transition
+            enter-active-class="transition duration-150 ease-out"
+            enter-from-class="opacity-0 translate-y-1 scale-95"
+            enter-to-class="opacity-100 translate-y-0 scale-100"
+            leave-active-class="transition duration-100 ease-in"
+            leave-from-class="opacity-100"
+            leave-to-class="opacity-0"
+          >
+            <div
+              v-if="isThemeOpen"
+              class="
+                absolute right-0 mt-1 w-[min(26rem,92vw)] rounded-sm border
+                border-border bg-surface-raised shadow-xl
+              "
+            >
+              <div
+                class="
+                  flex items-center justify-between border-b border-border px-3
+                  py-2
+                "
+              >
+                <p class="text-xs font-semibold">
+                  Custom Theme
+                </p>
+                <button
+                  v-if="hasCustomTheme"
+                  type="button"
+                  class="
+                    flex h-6 items-center gap-1 rounded-sm border border-border
+                    px-2 text-[11px] text-muted-foreground
+                    hover:border-error hover:text-error
+                  "
+                  @click="resetCustomTheme"
+                >
+                  <Icon
+                    icon="lucide:rotate-ccw"
+                    class="size-3"
+                  />
+                  Reset
+                </button>
+              </div>
+
+              <div class="p-3">
+                <textarea
+                  v-model="customThemeCss"
+                  spellcheck="false"
+                  rows="10"
+                  class="
+                    w-full resize-none rounded-sm border border-input bg-muted
+                    px-3 py-2 font-mono text-[11px] leading-relaxed
+                    text-foreground outline-none
+                    placeholder:text-muted-foreground
+                    focus:border-ring focus:ring-1 focus:ring-ring
+                  "
+                />
+              </div>
+
+              <div class="border-t border-border p-3">
+                <button
+                  type="button"
+                  class="
+                    flex h-8 w-full items-center justify-center gap-1.5
+                    rounded-sm border border-border bg-surface text-[11px]
+                    font-medium
+                    hover:bg-accent
+                  "
+                  @click="copyCustomTheme"
+                >
+                  <Icon
+                    :icon="copied ? 'lucide:check' : 'lucide:copy'"
+                    class="size-3"
+                  />
+                  {{ copied ? 'Copied to clipboard' : 'Copy theme' }}
+                </button>
+              </div>
+            </div>
+          </Transition>
+        </div>
+
         <button
           type="button"
           class="
@@ -247,7 +376,6 @@ onClickOutside(dropdownRef, () => {
             Props
           </p>
         </div>
-
         <div
           class="min-h-0 flex-1 overflow-auto border-b border-border px-4 py-3"
         >
@@ -257,7 +385,6 @@ onClickOutside(dropdownRef, () => {
             @update:values="updateValues"
           />
         </div>
-
       </aside>
     </div>
 
@@ -295,7 +422,6 @@ onClickOutside(dropdownRef, () => {
               <Icon icon="lucide:x" />
             </button>
           </div>
-
           <div class="min-h-0 flex-1 overflow-auto p-3">
             <PropsPanel
               :schema="schema"
@@ -306,6 +432,5 @@ onClickOutside(dropdownRef, () => {
         </div>
       </div>
     </div>
-
   </div>
 </template>

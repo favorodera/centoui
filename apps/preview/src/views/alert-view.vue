@@ -34,7 +34,6 @@ const values = usePreview('Alert', {
 
       <AlertActions>
         <Button
-          :variant="values.variant === 'inverted' ? 'secondary' : 'inverted'"
           size="sm"
         >
           Learn more

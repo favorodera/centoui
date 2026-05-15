@@ -5,7 +5,7 @@
 [![NPM Unpacked Size](https://img.shields.io/npm/unpacked-size/centoui-nuxt?style=plastic)](https://npmx.dev/package/centoui)
 
 
-**Precise Vue Components. Seamlessly Integrated with Nuxt.**
+**Vue components for modern interfaces, Seamlessly Integrated with Nuxt.**
 
 `centoui-nuxt` is the official Nuxt module for [CentoUI](../core).
 

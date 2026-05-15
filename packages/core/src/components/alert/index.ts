@@ -18,9 +18,6 @@ export const alertVariants = tv({
       neutral: {
         root: 'bg-neutral text-foreground',
       },
-      inverted: {
-        root: 'bg-inverted text-inverted-foreground',
-      },
       success: {
         root: 'bg-success/8 text-success',
       },

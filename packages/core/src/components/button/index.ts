@@ -44,12 +44,6 @@ export const buttonVariants = tv({
           hover:bg-accent hover:text-accent-foreground
         `,
       },
-      inverted: {
-        root: `
-          bg-inverted text-inverted-foreground
-          hover:bg-inverted/80
-        `,
-      },
     },
     size: {
       xs: {

@@ -1,7 +1,7 @@
 {
   "name": "centoui",
   "type": "module",
-  "description": "Precise vue components",
+  "description": "Vue components for modern interfaces",
   "private": false,
   "version": "1.0.0-alpha.19",
   "author": "Favour Emeka <favorodera@gmail.com>",

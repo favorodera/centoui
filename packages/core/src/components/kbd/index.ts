@@ -4,19 +4,11 @@ import { tv, type ClassValue, type VariantProps } from 'tailwind-variants'
 export const kbdVariants = tv({
   slots: {
     root: `
-      pointer-events-none inline-flex w-fit items-center justify-center px-1
-      font-medium select-none
+      pointer-events-none inline-flex w-fit items-center justify-center
+      bg-neutral px-1 font-medium text-neutral-foreground select-none
     `,
   },
   variants: {
-    variant: {
-      neutral: {
-        root: 'bg-neutral text-neutral-foreground',
-      },
-      inverted: {
-        root: 'bg-inverted text-inverted-foreground',
-      },
-    },
     size: {
       xs: {
         root: 'h-3.5 min-w-3.5 rounded-sm text-[9px]',
@@ -36,7 +28,6 @@ export const kbdVariants = tv({
     },
   },
   defaultVariants: {
-    variant: 'neutral',
     size: 'md',
   },
 })
@@ -60,11 +51,6 @@ export type KbdProps = PrimitiveProps & {
    * @default 'md'
    */
   size?: KbdVariants['size']
-  /**
-   * The variant of the kbd.
-   * @default 'soft'
-   */
-  variant?: KbdVariants['variant']
   /** Custom class to apply to the root element. */
   class?: ClassValue
 }

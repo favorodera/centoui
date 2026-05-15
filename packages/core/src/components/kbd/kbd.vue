@@ -9,16 +9,14 @@ defineSlots<KbdSlots>()
 const props = withDefaults(defineProps<KbdProps>(), {
   as: 'kbd',
   size: 'md',
-  variant: 'neutral',
 })
 
-const delegatedProps = reactiveOmit(props, 'class', 'size', 'variant')
+const delegatedProps = reactiveOmit(props, 'class', 'size')
 const forwardedProps = useForwardProps(delegatedProps)
 
 const styles = computed(() => {
   const { root } = kbdVariants({
     size: props.size,
-    variant: props.variant,
   })
   return root({ class: props.class })
 })
@@ -28,7 +26,6 @@ const styles = computed(() => {
   <Primitive
     data-slot="kbd"
     :data-size="size"
-    :data-variant="variant"
     :class="styles"
     v-bind="forwardedProps"
   >

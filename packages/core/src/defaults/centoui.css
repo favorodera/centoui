@@ -16,10 +16,6 @@
   /* Backdrop scrim behind modals and drawers */
   --overlay: oklch(0 0 0 / 0.4);
 
-  /* Contrast-flip surface — dark tooltips, inverse badges */
-  --inverted: oklch(0.09 0 0);
-  --inverted-foreground: oklch(0.98 0 0);
-
   /* Focus ring */
   --ring: oklch(0.55 0.22 258);
 
@@ -75,9 +71,6 @@
 
   --overlay: oklch(0 0 0 / 0.75);
 
-  --inverted: oklch(0.98 0 0);
-  --inverted-foreground: oklch(0.08 0 0);
-
   --ring: oklch(0.65 0.18 258);
 
   --border: oklch(0.27 0 0);
@@ -119,9 +112,6 @@
   --color-surface-raised: var(--surface-raised);
 
   --color-overlay: var(--overlay);
-
-  --color-inverted: var(--inverted);
-  --color-inverted-foreground: var(--inverted-foreground);
 
   --color-ring: var(--ring);
 

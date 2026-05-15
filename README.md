@@ -7,7 +7,7 @@
 [![centoui cli](https://img.shields.io/badge/cli-%234FC08D?style=plastic&logo=typescript)](./packages/cli)
 [![nuxt module](https://img.shields.io/badge/nuxt_module-%234FC08D?style=plastic&logo=nuxt)](./packages/nuxt)
 
-**Vue Components Built Like a Blade.**
+**Vue components for modern interfaces**
 
 CentoUI is a Vue component library designed for modern web applications. It provides a comprehensive set of accessible, customizable components built with Vue 3, RekaUI, TypeScript, and Tailwind CSS.
 

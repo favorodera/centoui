@@ -1,7 +1,7 @@
 {
   "name": "centoui-monorepo",
   "version": "1.0.0-alpha.19",
-  "description": "Precise vue components",
+  "description": "Vue components for modern interfaces",
   "private": true,
   "license": "MIT",
   "author": "Favour Emeka <favorodera@gmail.com>",

@@ -10,12 +10,6 @@ const values = usePreview('Kbd', {
     options: Object.keys(kbdVariants.variants.size),
     default: kbdVariants.defaultVariants.size,
   },
-  variant: {
-    type: 'select',
-    label: 'Variant',
-    options: Object.keys(kbdVariants.variants.variant),
-    default: kbdVariants.defaultVariants.variant,
-  },
 })
 </script>
 
@@ -23,14 +17,12 @@ const values = usePreview('Kbd', {
   <ViewContainer>
     <Kbd
       :size="values.size"
-      :variant="values.variant"
     >
       ⌘
     </Kbd>
 
     <Kbd
       :size="values.size"
-      :variant="values.variant"
     >
       Ctrl
     </Kbd>

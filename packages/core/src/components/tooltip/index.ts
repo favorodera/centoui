@@ -15,13 +15,13 @@ export const tooltipVariants = tv({
   slots: {
     trigger: '',
     content: `
-      pointer-events-auto z-50 w-fit animate-in rounded-lg bg-inverted px-3
-      py-1.5 text-sm text-balance text-inverted-foreground fade-in-0 zoom-in-95
+      pointer-events-auto z-50 w-fit animate-in rounded-lg bg-foreground px-3
+      py-1.5 text-sm text-balance text-background fade-in-0 zoom-in-95
       data-[side=bottom]:slide-in-from-top-2
       data-[side=left]:slide-in-from-right-2
       data-[side=right]:slide-in-from-left-2
       data-[side=top]:slide-in-from-bottom-2
-      **:data-[slot=tooltip-arrow]:fill-inverted
+      **:data-[slot=tooltip-arrow]:fill-foreground
       data-[state=closed]:animate-out data-[state=closed]:fade-out-0
       data-[state=closed]:zoom-out-95
     `,
