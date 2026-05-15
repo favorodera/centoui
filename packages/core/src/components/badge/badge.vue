@@ -8,35 +8,32 @@ defineSlots<BadgeSlots>()
 
 const props = withDefaults(defineProps<BadgeProps>(), {
   as: 'span',
-  variant: 'solid',
-  color: 'primary',
+  variant: 'neutral',
   size: 'md',
   square: false,
 })
-
-// Forward props.
-const delegatedProps = reactiveOmit(props, 'class', 'variant', 'color', 'size', 'square')
+const delegatedProps = reactiveOmit(
+  props,
+  'class',
+  'variant',
+  'size',
+)
 const forwardedProps = useForwardProps(delegatedProps)
 
-// Style class string for the component.
 const styles = computed(() => {
   const { root } = badgeVariants({
     variant: props.variant,
-    color: props.color,
     size: props.size,
-    square: props.square,
   })
-  
   return root({ class: props.class })
 })
 </script>
 
 <template>
   <Primitive
-    data-centoui-slot="badge"
-    :data-centoui-variant="variant"
-    :data-centoui-size="size"
-    :data-centoui-color="color"
+    data-slot="badge"
+    :data-variant="variant"
+    :data-size="size"
     v-bind="forwardedProps"
     :class="styles"
   >
