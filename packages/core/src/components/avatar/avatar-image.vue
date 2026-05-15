@@ -13,12 +13,13 @@ const emits = defineEmits<AvatarImageEmits>()
 
 const props = defineProps<AvatarImageProps>()
 const delegatedProps = reactiveOmit(props, 'class')
+
 const forwardedPropsEmits = useForwardPropsEmits(delegatedProps, emits)
 </script>
 
 <template>
   <AvatarImage
-    data-centoui-slot="avatar-image"
+    data-slot="avatar-image"
     :src
     v-bind="forwardedPropsEmits"
     :class="rootContext.styles.image({ class: props.class })"
