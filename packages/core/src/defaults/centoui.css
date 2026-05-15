@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+@custom-variant dark (&:is(.dark *));
+
 :root {
   /* Page canvas */
   --background: oklch(0.98 0 0);
@@ -155,5 +157,5 @@
 }
 
 body {
-  @apply antialiased text-foreground bg-background scheme-light dark:scheme-dark;
+  @apply antialiased text-foreground bg-background;
 }
