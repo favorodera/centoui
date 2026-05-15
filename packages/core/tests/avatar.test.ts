@@ -1,4 +1,5 @@
 import { describe, expect, test } from 'vitest'
+import { getInitials } from '../src/components/avatar'
 
 describe('getInitials', () => {
   test('returns two initials for full name', () => {
