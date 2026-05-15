@@ -2,7 +2,7 @@
 import { reactiveOmit } from '@vueuse/core'
 import { Primitive, useForwardProps } from 'reka-ui'
 import { computed, reactive, toRef } from 'vue'
-import { buttonGroupVariants, provideButtonGroupContext, type ButtonGroupProps, type ButtonGroupSlots } from '.'
+import { buttonGroupVariants, provideCentouiButtonGroupContext, type ButtonGroupProps, type ButtonGroupSlots } from '.'
 
 defineSlots<ButtonGroupSlots>()
 
@@ -10,22 +10,15 @@ const props = withDefaults(defineProps<ButtonGroupProps>(), {
   as: 'div',
   orientation: 'horizontal',
 })
-
-// Forward props.
 const delegatedProps = reactiveOmit(props, 'class', 'orientation')
 const forwardedProps = useForwardProps(delegatedProps)
 
-// Style class string for the component.
-const styles = computed(() => {
-  const { root } = buttonGroupVariants({
-    orientation: props.orientation,
-  })
-  
-  return root({ class: props.class })
-})
+const styles = computed(() => buttonGroupVariants({
+  orientation: props.orientation,
+}))
 
-// Provide context to child components.
-provideButtonGroupContext(reactive({
+provideCentouiButtonGroupContext(reactive({
+  styles,
   orientation: toRef(props, 'orientation'),
 }))
 </script>
@@ -33,10 +26,10 @@ provideButtonGroupContext(reactive({
 <template>
   <Primitive
     role="group"
-    data-centoui-slot="button-group"
-    :data-centoui-orientation="props.orientation"
+    data-slot="button-group"
+    :data-orientation="props.orientation"
     v-bind="forwardedProps"
-    :class="styles"
+    :class="styles.root({ class: props.class })"
   >
     <slot />
   </Primitive>
