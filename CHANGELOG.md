@@ -1,5 +1,368 @@
 # Changelog
 
+## v1.0.0-alpha.18...v1.0.0-alpha.19
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.18...v1.0.0-alpha.19)
+
+### Added
+
+- **avatar:** Improve root component implementation ([51a3a7f](https://github.com/favorodera/centoui/commit/51a3a7f))
+
+  - Use provideCentouiAvatarRootContext
+  - Simplify computed styles
+  - Pass class to root variant
+
+- **preview:** Expose workspace state for UI - Creates `usePreviewPanel` composable - Exposes preview store state for shell UI - Provides `componentName`, `schema`, ([438007f](https://github.com/favorodera/centoui/commit/438007f))
+- **preview:** Add usePreview composable ([d912e49](https://github.com/favorodera/centoui/commit/d912e49))
+
+  - Registers component schema
+  - Provides typed values ref
+  - Integrates with Pinia store
+  - Simplifies preview state setup
+
+- **preview:** Add state management store ([89914aa](https://github.com/favorodera/centoui/commit/89914aa))
+
+  - Manages component and props state
+  - Tracks current and initial prop values
+  - Persists prop values per component
+  - Implements setPreviewState and updateValues
+  - Includes HMR support for development
+
+- **props:** Define component props schema ([e5be780](https://github.com/favorodera/centoui/commit/e5be780))
+
+  - Defines types for component property definitions
+  - Supports select, boolean, string, and number types
+  - Introduces `PropsSchema` for prop mapping
+
+- **preview:** Add AlertDialog view ([626fca5](https://github.com/favorodera/centoui/commit/626fca5))
+
+  - Adds new view for AlertDialog
+  - Showcases basic component usage
+  - Imports AlertDialog elements
+  - Includes trigger button and overlay
+  - Demonstrates title and description
+
+- **preview:** Add Avatar shape prop control ([dc47b5c](https://github.com/favorodera/centoui/commit/dc47b5c))
+
+  - Added shape prop to Avatar preview
+  - Refactored usePreview hook integration
+  - Updated component import paths
+
+- **alert:** Add alert content component ([312aca1](https://github.com/favorodera/centoui/commit/312aca1))
+
+  - Implemented new alert content component
+  - Added primitive element support
+  - Integrated context and prop forwarding
+
+- **alert-dialog:** Add action component ([f28e709](https://github.com/favorodera/centoui/commit/f28e709))
+
+  - Implemented AlertDialogAction component
+  - Integrated with button variants
+  - Added slot forwarding
+
+- **alert-dialog:** Add cancel button component ([0aff4b4](https://github.com/favorodera/centoui/commit/0aff4b4))
+
+  - Implemented new AlertDialogCancel component
+  - Integrated with reka-ui and centoui context
+  - Added styling and prop forwarding
+
+- **alert-dialog:** Add content component ([c979401](https://github.com/favorodera/centoui/commit/c979401))
+
+  - Implemented AlertDialogContent component
+  - Integrated with Reka UI and VueUse
+  - Added styling and slot support
+
+- **alert-dialog:** Add description component ([a682906](https://github.com/favorodera/centoui/commit/a682906))
+
+  - Implemented AlertDialogDescription.vue
+  - Integrated with reka-ui and @vueuse/core
+  - Added slot and prop forwarding
+
+- **alert-dialog:** Add footer component ([4685efd](https://github.com/favorodera/centoui/commit/4685efd))
+
+  - Adds AlertDialogFooter component
+  - Integrates with root context
+  - Uses Primitive base element
+  - Applies root context styles
+
+- **alert-dialog:** Add alert dialog header component ([9096d44](https://github.com/favorodera/centoui/commit/9096d44))
+
+  - Implemented new alert dialog header
+  - Added props and slots support
+  - Integrated with root context styles
+
+- **alert-dialog:** Add overlay component - Add AlertDialogOverlay component - Integrate with AlertDialog root context - Forward delegated props - Apply contextual styles ([b22a7a4](https://github.com/favorodera/centoui/commit/b22a7a4))
+- **alert-dialog:** Add portal component ([c5521c0](https://github.com/favorodera/centoui/commit/c5521c0))
+
+  - Implemented AlertDialogPortal component
+  - Utilized reka-ui for forwarding props
+  - Added slots for content
+
+- **alert-dialog:** Add alert dialog root component ([6bd3db0](https://github.com/favorodera/centoui/commit/6bd3db0))
+
+  - Implemented AlertDialogRoot component
+  - Integrated reka-ui and centoui
+  - Provided context for variants and styles
+
+- **alert-dialog:** Add alert dialog title component ([28ea75e](https://github.com/favorodera/centoui/commit/28ea75e))
+
+  - Implemented AlertDialogTitle component
+  - Added slot and prop forwarding
+  - Integrated with root context styles
+
+- **alert-dialog:** Add trigger component ([ce32ad0](https://github.com/favorodera/centoui/commit/ce32ad0))
+
+  - Implemented AlertDialogTrigger component
+  - Integrated with reka-ui and centoui
+  - Added slot and prop forwarding
+
+- **alert-dialog:** Implement alert dialog component with variants and context ([34b03cc](https://github.com/favorodera/centoui/commit/34b03cc))
+- **alert-dialog:** Add alert dialog component configuration ([0a9a85a](https://github.com/favorodera/centoui/commit/0a9a85a))
+- **alert-dialog:** Expand alert dialog component with additional files and dependencies ([66c73e6](https://github.com/favorodera/centoui/commit/66c73e6))
+
+### Fixed
+
+- **core:** Correct tsconfig.json include path ([a6a7dfc](https://github.com/favorodera/centoui/commit/a6a7dfc))
+
+  - Changed augment.d.dts to augment.d.ts
+  - Corrected a typo in the tsconfig.json file
+  - Ensures correct type definition loading
+
+- **avatar-fallback:** Correct data attribute for avatar fallback component ([6d5420f](https://github.com/favorodera/centoui/commit/6d5420f))
+- **avatar-image:** Update data attribute for avatar image component ([45f6490](https://github.com/favorodera/centoui/commit/45f6490))
+- **avatar-root:** Update delegated props to include shape and adjust data attributes ([64674a3](https://github.com/favorodera/centoui/commit/64674a3))
+- **avatar-variants:** Refine fallback styles and add shape variant to avatar component ([9bb8905](https://github.com/favorodera/centoui/commit/9bb8905))
+- **badge:** Update default variant to neutral and remove color prop ([d3ddb9a](https://github.com/favorodera/centoui/commit/d3ddb9a))
+- **badge:** Simplify badge variants and update default styles ([e02ceb7](https://github.com/favorodera/centoui/commit/e02ceb7))
+- **button:** Update default variant to primary and remove color prop ([9acaf46](https://github.com/favorodera/centoui/commit/9acaf46))
+- **button:** Refine button variants and update default styles ([cf51f05](https://github.com/favorodera/centoui/commit/cf51f05))
+- **button-group-separator:** Update context injection and refine orientation handling ([611eb7a](https://github.com/favorodera/centoui/commit/611eb7a))
+- **button-group:** Update context provider and streamline style computation ([45eeb9f](https://github.com/favorodera/centoui/commit/45eeb9f))
+- **button-group:** Refine style variants and update context exports ([28033af](https://github.com/favorodera/centoui/commit/28033af))
+- **kbd:** Simplify variants and remove unused color options ([5cd04c2](https://github.com/favorodera/centoui/commit/5cd04c2))
+- **kbd:** Update variant handling and remove unused color prop ([513d7d8](https://github.com/favorodera/centoui/commit/513d7d8))
+- **kbd-group:** Clean up comments and remove redundant documentation ([a42ee4c](https://github.com/favorodera/centoui/commit/a42ee4c))
+- **kbd-group:** Clean up comments and standardize slot attribute ([8a81e7a](https://github.com/favorodera/centoui/commit/8a81e7a))
+- **separator:** Simplify variants by removing unused properties and comments ([45f1455](https://github.com/favorodera/centoui/commit/45f1455))
+- **separator:** Remove unused props and standardize slot attributes ([4d340fe](https://github.com/favorodera/centoui/commit/4d340fe))
+- **tooltip:** Update styles and clean up variant definitions ([16075bd](https://github.com/favorodera/centoui/commit/16075bd))
+- **tooltip-arrow:** Refactor to use root context for styling and clean up unused code ([7d5f53e](https://github.com/favorodera/centoui/commit/7d5f53e))
+- **tooltip-content:** Refactor to use Centoui context and clean up unused code ([b3d98e6](https://github.com/favorodera/centoui/commit/b3d98e6))
+- **tooltip-portal:** Remove commented code and clean up prop forwarding ([4f7bb2a](https://github.com/favorodera/centoui/commit/4f7bb2a))
+- **tooltip-provider:** Remove commented code for clarity ([8bd0b11](https://github.com/favorodera/centoui/commit/8bd0b11))
+- **tooltip-root:** Update imports and enhance context provision for styles ([b7f007f](https://github.com/favorodera/centoui/commit/b7f007f))
+- **tooltip-trigger:** Refactor to use Centoui context and clean up unused imports and code ([789bc94](https://github.com/favorodera/centoui/commit/789bc94))
+- **centoui.css:** Update color variables for improved consistency and clarity ([81ee3a1](https://github.com/favorodera/centoui/commit/81ee3a1))
+- **alert.json:** Update alert component file references for accuracy ([d7cb19a](https://github.com/favorodera/centoui/commit/d7cb19a))
+- **setup:** Correct indentation in configureAxe region rule comment ([15ee41a](https://github.com/favorodera/centoui/commit/15ee41a))
+
+### Refactors
+
+- **avatar:** Improve component structure ([dc4ae10](https://github.com/favorodera/centoui/commit/dc4ae10))
+
+  - Introduce root context for styles
+  - Refactor avatarVariants definition
+  - Remove 3xs size variant
+  - Adjust fallback text color
+
+- **avatar:** Use context for fallback styles ([28329df](https://github.com/favorodera/centoui/commit/28329df))
+
+  - Inject root context for styles
+  - Remove local computed styles
+  - Simplify fallback class binding
+
+- **avatar:** Use root context for styles ([d347639](https://github.com/favorodera/centoui/commit/d347639))
+
+  - Inject root context instead of local computed styles
+  - Pass class prop to root context style function
+
+- **preview:** Use Pinia for state management ([2f1ef8b](https://github.com/favorodera/centoui/commit/2f1ef8b))
+
+  - Migrated usePreview composable to Pinia store
+  - Improved state management for component preview
+  - Added focus-visible styles
+
+- **props-panel:** Simplify types and styling ([71e0f83](https://github.com/favorodera/centoui/commit/71e0f83))
+
+  - Moved prop types to shared utils module
+  - Imported `PropsSchema` from `@/utils/types`
+  - Simplified prop update and access functions
+  - Updated focus ring styles for all inputs
+  - Replaced select arrow with Lucide icon
+
+- **preview:** Remove preview state store - Removed shared state for preview - Eliminated component props management - Store is no longer required ([2664c58](https://github.com/favorodera/centoui/commit/2664c58))
+- **preview:** Remove usePreview composable ([196db32](https://github.com/favorodera/centoui/commit/196db32))
+- **preview:** Simplify accordion view setup ([281f193](https://github.com/favorodera/centoui/commit/281f193))
+
+  - Integrate schema into usePreview call
+  - Remove onMounted for state setup
+  - Update import paths to use aliases
+  - Remove redundant AccordionHeader prop
+
+- **alert-view:** Simplify alert component usage ([12c5b02](https://github.com/favorodera/centoui/commit/12c5b02))
+
+  - Introduce AlertContent wrapper
+  - Remove status and orientation props
+  - Use single variant prop for AlertRoot
+  - Streamline preview state management
+
+- **preview:** Simplify Badge component preview ([ccec7b6](https://github.com/favorodera/centoui/commit/ccec7b6))
+
+  - Removed color prop from preview schema
+  - Removed square prop usage from template
+  - Updated usePreview hook integration
+  - Standardized import paths for components
+
+- **preview:** Streamline Button Group view ([ebc266e](https://github.com/favorodera/centoui/commit/ebc266e))
+
+  - Removed `buttonColor` prop from schema
+  - Streamlined `usePreview` integration
+  - Updated `ButtonGroupSeparator` display logic
+  - Consolidated preview schema definition
+
+- **preview:** Streamline button view setup ([06df7c1](https://github.com/favorodera/centoui/commit/06df7c1))
+
+  - Direct `usePreview` initialization
+  - Removed `color` prop from preview
+  - Cleaned up `onMounted` hook
+  - Updated import aliases
+
+- **kbd-group:** Streamline preview setup ([1f75aec](https://github.com/favorodera/centoui/commit/1f75aec))
+
+  - Simplify usePreview composable usage
+  - Remove kbdColor prop from preview
+  - Update import paths to use aliases
+
+- **preview:** Simplify Kbd view setup ([511e501](https://github.com/favorodera/centoui/commit/511e501))
+
+  - Simplified `usePreview` hook integration
+  - Removed `color` prop from Kbd preview
+  - Updated import paths to use `@`
+
+- **preview:** Simplify Separator view config** ([ce6aba1](https://github.com/favorodera/centoui/commit/ce6aba1))
+
+  - Update usePreview hook integration
+  - Remove redundant prop definitions
+  - Use alias paths for imports
+
+- **tooltip:** Simplify preview setup ([159d7b1](https://github.com/favorodera/centoui/commit/159d7b1))
+
+  - Removed `variant` prop from preview
+  - Streamlined `usePreview` initialization
+  - Removed `onMounted` hook
+  - Updated import paths
+
+- **accordion:** Simplify content component context ([0a9e944](https://github.com/favorodera/centoui/commit/0a9e944))
+
+  - Removed redundant context injection
+  - Updated data attribute naming
+  - Streamlined prop forwarding
+
+- **accordion:** Simplify header context injection ([9634d9a](https://github.com/favorodera/centoui/commit/9634d9a))
+
+  - Removed redundant root context merging
+  - Simplified data-centoui-state and data-centoui-disabled binding
+  - Updated data-slot attribute name
+
+- **accordion:** Simplify accordion item context injection ([2a319a6](https://github.com/favorodera/centoui/commit/2a319a6))
+
+  - Removed redundant computed for root context
+  - Simplified data attribute logic
+  - Removed unused data-centoui-disabled attribute
+
+- **accordion:** Simplify accordion-root.vue ([8c0ecc7](https://github.com/favorodera/centoui/commit/8c0ecc7))
+
+  - Removed unused orientation computed
+  - Updated data attribute name
+
+- **accordion:** Simplify trigger context injection ([f86de9e](https://github.com/favorodera/centoui/commit/f86de9e))
+
+  - Removed unused computed for root context
+  - Simplified data attribute binding
+  - Updated slot data attribute
+
+- **accordion:** Update data attributes and styles ([ff42884](https://github.com/favorodera/centoui/commit/ff42884))
+
+  - Replaced 'data-centoui-state' with 'data-state'
+  - Changed 'data-centoui-slot' to 'data-slot'
+  - Updated focus-visible ring width and color
+  - Adjusted icon size and vertical alignment
+
+- **alert:** Update data attributes ([5ed26d8](https://github.com/favorodera/centoui/commit/5ed26d8))
+
+  - Changed data-centoui-slot to data-slot
+  - Changed data-centoui-status to data-variant
+  - Removed data-centoui-orientation
+  - Removed data-centoui-open
+
+- Remove AlertClose component ([8ea8ca8](https://github.com/favorodera/centoui/commit/8ea8ca8))
+
+  - Component was no longer needed
+  - Streamlined alert component structure
+
+- **alert:** Update slot and data attributes ([7f641c5](https://github.com/favorodera/centoui/commit/7f641c5))
+
+  - Changed data-centoui-slot to data-slot
+  - Removed data-centoui-status, orientation, open
+  - Added data-variant attribute
+
+- **alert:** Standardize data attributes ([d84d89b](https://github.com/favorodera/centoui/commit/d84d89b))
+- **alert:** Rename status to variant ([8ada8be](https://github.com/favorodera/centoui/commit/8ada8be))
+
+  - Changed prop name from `status` to `variant`
+  - Updated context and template bindings
+  - Simplified alert component props
+
+- **alert:** Update title slot and data attributes ([0eb67c0](https://github.com/favorodera/centoui/commit/0eb67c0))
+
+  - Changed data-centoui-slot to data-slot
+  - Removed data-centoui-status
+  - Removed data-centoui-orientation
+  - Removed data-centoui-open
+  - Added data-variant
+
+- **alert:** Simplify and update variants ([3aca411](https://github.com/favorodera/centoui/commit/3aca411))
+
+  - Streamlined CSS class structure
+  - Renamed status to variant for clarity
+  - Updated slot names and types
+
+- **alert.test:** Simplify accessibility test structure and remove unused visibility tests ([e380f5c](https://github.com/favorodera/centoui/commit/e380f5c))
+
+### Documentation
+
+- Remove design system details ([8ab195b](https://github.com/favorodera/centoui/commit/8ab195b))
+
+  - Removed component philosophy
+  - Removed design system tokens guide
+  - Removed border vs ring explanation
+  - Removed variant design patterns
+  - Removed data-centoui-* API docs
+
+
+### Chores
+
+- Adjust CSS color variables ([ada75de](https://github.com/favorodera/centoui/commit/ada75de))
+
+  - Tweaked background and foreground colors
+  - Adjusted overlay opacity
+  - Modified muted and border colors
+  - Updated primary and secondary hues
+
+
+### Tests
+
+- **alert-dialog:** Add accessibility tests for alert dialog component ([c4adea1](https://github.com/favorodera/centoui/commit/c4adea1))
+
+### Styling
+
+- **alert:** Adjust neutral variant colors ([79fa95e](https://github.com/favorodera/centoui/commit/79fa95e))
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.17...v1.0.0-alpha.18
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.17...v1.0.0-alpha.18)
