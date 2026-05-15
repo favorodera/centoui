@@ -9,8 +9,6 @@ defineOptions({
 defineSlots<TooltipPortalSlots>()
 
 const props = defineProps<TooltipPortalProps>()
-
-// Forward props.
 const forwardedProps = useForwardProps(props)
 </script>
 
