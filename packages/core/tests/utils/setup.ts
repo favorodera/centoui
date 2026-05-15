@@ -15,7 +15,7 @@ configureAxe({
   globalOptions: {
     rules: [
       {
-      // Disable region rule as it doesn't work well with components rendered in isolation.
+        // Disable region rule as it doesn't work well with components rendered in isolation.
         id: 'region',
         enabled: false,
       },
