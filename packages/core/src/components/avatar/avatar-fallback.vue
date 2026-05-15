@@ -14,7 +14,7 @@ const forwardedProps = useForwardProps(delegatedProps)
 
 <template>
   <AvatarFallback
-    data-centoui-slot="avatar-fallback"
+    data-slot="avatar-fallback"
     v-bind="forwardedProps"
     :class="rootContext.styles.fallback({ class: props.class })"
   >
