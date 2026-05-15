@@ -1,5 +1,5 @@
 import type { PrimitiveProps } from 'reka-ui'
-import { tv, type ClassValue, type VariantProps } from 'tailwind-variants'
+import { tv, type ClassValue } from 'tailwind-variants'
 
 export const kbdGroupVariants = tv({
   slots: {
@@ -11,11 +11,6 @@ export const kbdGroupVariants = tv({
 // COMPONENT
 
 export { default as KbdGroup } from './kbd-group.vue'
-
-
-// TYPES — Variants
-
-export type KbdGroupVariants = VariantProps<typeof kbdGroupVariants>
 
 
 // TYPES — Props
