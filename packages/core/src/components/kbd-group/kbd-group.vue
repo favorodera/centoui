@@ -9,22 +9,18 @@ defineSlots<KbdGroupSlots>()
 const props = withDefaults(defineProps<KbdGroupProps>(), {
   as: 'kbd',
 })
-
-// Forward props.
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
 
-// Style class string for the component.
 const styles = computed(() => {
   const { root } = kbdGroupVariants()
-
   return root({ class: props.class })
 })
 </script>
 
 <template>
   <Primitive
-    data-centoui-slot="kbd-group"
+    data-slot="kbd-group"
     :class="styles"
     v-bind="forwardedProps"
   >
