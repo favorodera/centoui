@@ -11,8 +11,6 @@ defineSlots<TooltipProviderSlots>()
 const props = withDefaults(defineProps<TooltipProviderProps>(), {
   delayDuration: 0,
 })
-
-// Forward props.
 const forwardedProps = useForwardProps(props)
 </script>
 
