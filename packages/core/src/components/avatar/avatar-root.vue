@@ -8,12 +8,14 @@ defineSlots<AvatarRootSlots>()
 
 const props = withDefaults(defineProps<AvatarRootProps>(), {
   size: 'md',
+  shape: 'squircle',
 })
-const delegatedProps = reactiveOmit(props, 'class', 'size')
+const delegatedProps = reactiveOmit(props, 'class', 'size', 'shape')
 const forwardedProps = useForwardProps(delegatedProps)
 
 const styles = computed(() => avatarVariants({
   size: props.size,
+  shape: props.shape,
 }))
 
 provideCentouiAvatarRootContext(reactive({
@@ -23,8 +25,8 @@ provideCentouiAvatarRootContext(reactive({
 </script>
 <template>
   <AvatarRoot
-    data-centoui-slot="avatar-root"
-    :data-centoui-size="size"
+    data-slot="avatar-root"
+    :data-size="size"
     v-bind="forwardedProps"
     :class="styles.root({ class: props.class })"
   >
