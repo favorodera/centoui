@@ -8,25 +8,27 @@ defineSlots<ButtonSlots>()
 
 const props = withDefaults(defineProps<ButtonProps>(), {
   as: 'button',
-  variant: 'solid',
-  color: 'primary',
+  variant: 'primary',
   size: 'md',
   square: false,
 })
 
-// Forward props.
-const delegatedProps = reactiveOmit(props, 'class', 'variant', 'color', 'size', 'square')
+const delegatedProps = reactiveOmit(
+  props,
+  'class',
+  'variant',
+  'size',
+  'square',
+)
 const forwardedProps = useForwardProps(delegatedProps)
 
-// Style class string for the component.
 const styles = computed(() => {
   const { root } = buttonVariants({
     variant: props.variant,
-    color: props.color,
     size: props.size,
     square: props.square,
   })
-  
+
   return root({ class: props.class })
 })
 </script>
@@ -36,7 +38,6 @@ const styles = computed(() => {
     data-centoui-slot="button"
     :data-centoui-variant="variant"
     :data-centoui-size="size"
-    :data-centoui-color="color"
     v-bind="forwardedProps"
     :class="styles"
   >
