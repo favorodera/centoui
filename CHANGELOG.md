@@ -1,5 +1,92 @@
 # Changelog
 
+## v1.0.0-alpha.19...v1.0.0-alpha.20
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.19...v1.0.0-alpha.20)
+
+### Added
+
+- **preview:** Add AspectRatio component view ([904bc1a](https://github.com/favorodera/centoui/commit/904bc1a))
+
+  - Adds new view for AspectRatio component
+  - Implements dynamic ratio parsing
+  - Previews image within ratio container
+
+- **aspect-ratio:** Add aspect ratio component ([0d0fd74](https://github.com/favorodera/centoui/commit/0d0fd74))
+- **aspect-ratio:** Implement AspectRatio component ([c166823](https://github.com/favorodera/centoui/commit/c166823))
+
+  - Export AspectRatio component
+  - Define and export aspectRatioVariants
+  - Export AspectRatioProps and AspectRatioSlots
+
+- **styling:** Add custom dark variant ([2836ca5](https://github.com/favorodera/centoui/commit/2836ca5))
+
+  - Introduced `@custom-variant dark`
+  - Removed scheme classes from body
+
+- **registry:** Add aspect-ratio component ([82dbc5b](https://github.com/favorodera/centoui/commit/82dbc5b))
+- Add aspect-ratio component to registry ([1b9c5db](https://github.com/favorodera/centoui/commit/1b9c5db))
+
+  - Added aspect-ratio component definition
+  - Included component schema and dependencies
+  - Updated index.json with new entry
+
+- **preview:** Add theme customization ([6266e4f](https://github.com/favorodera/centoui/commit/6266e4f))
+
+  - Implement dynamic theme injection via textarea
+  - Add copy and reset theme functionality
+  - Update README descriptions
+
+
+### Refactors
+
+- Remove unused VariantProps type ([074ea48](https://github.com/favorodera/centoui/commit/074ea48))
+
+  - Removed redundant KbdGroupVariants type
+  - Cleaned up kbd-group component exports
+
+- **preview:** Move defaultThemeCss import ([c855bce](https://github.com/favorodera/centoui/commit/c855bce))
+
+  - Moved CSS import to script tag
+  - No functional change
+
+
+### Chores
+
+- Remove unused accessibility tests ([f18c8e9](https://github.com/favorodera/centoui/commit/f18c8e9))
+
+  - Removed accordion tests
+  - Removed alert-dialog tests
+  - Removed alert tests
+  - Removed badge tests
+  - Removed button-group tests
+  - Removed button tests
+  - Removed kbd-group tests
+  - Removed kbd tests
+  - Removed separator tests
+  - Removed tooltip tests
+
+
+### Tests
+
+- **avatar:** Import getInitials for tests ([1d82da6](https://github.com/favorodera/centoui/commit/1d82da6))
+
+  - Added import for getInitials
+  - Enabled testing of avatar component logic
+
+
+### Styling
+
+- Adjust Tailwind class order ([f456182](https://github.com/favorodera/centoui/commit/f456182))
+
+  - Moved background class to front
+  - Consolidated rounded class attribute
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.18...v1.0.0-alpha.19
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.18...v1.0.0-alpha.19)

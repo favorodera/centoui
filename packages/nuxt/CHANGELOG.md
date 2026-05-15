@@ -1,5 +1,22 @@
 # Changelog
 
+## v1.0.0-alpha.19...v1.0.0-alpha.20
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.19...v1.0.0-alpha.20)
+
+### Added
+
+- **preview:** Add theme customization ([6266e4f](https://github.com/favorodera/centoui/commit/6266e4f))
+
+  - Implement dynamic theme injection via textarea
+  - Add copy and reset theme functionality
+  - Update README descriptions
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.18...v1.0.0-alpha.19
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.18...v1.0.0-alpha.19)

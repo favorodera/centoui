@@ -1,7 +1,7 @@
 {
   "name": "centoui-cli",
   "type": "module",
-  "version": "1.0.0-alpha.19",
+  "version": "1.0.0-alpha.20",
   "private": false,
   "description": "Official CLI for CentoUI.",
   "author": "Favour Emeka <favorodera@gmail.com>",
