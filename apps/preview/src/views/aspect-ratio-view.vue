@@ -22,12 +22,12 @@ const values = usePreview('Aspect Ratio', {
   <ViewContainer>
     <AspectRatio
       :ratio="parseRatio(values.ratio)"
-      class="bg-muted rounded-lg"
+      class="rounded-lg bg-muted"
     >
       <img
         src="https://github.com/favorodera.png"
         alt="Favour Emeka"
-        class="size-full rounded-[inherit] object-cover "
+        class="size-full rounded-[inherit] object-cover"
       >
     </AspectRatio>
   </ViewContainer>
