@@ -27,10 +27,8 @@ onBeforeUnmount(() => {
 
 <template>
   <ViewContainer>
-
     <ProgressRoot v-model="progressValue">
       <ProgressIndicator />
     </ProgressRoot>
-
   </ViewContainer>
 </template>
