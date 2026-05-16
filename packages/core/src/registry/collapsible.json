@@ -1,0 +1,13 @@
+{
+  "$schema": "../schemas/component.json",
+  "name": "collapsible",
+  "description": "An interactive component that expands or collapses content sections.",
+  "files": [
+    "components/collapsible/collapsible-content.vue",
+    "components/collapsible/collapsible-root.vue",
+    "components/collapsible/collapsible-trigger.vue",
+    "components/collapsible/index.ts"
+  ],
+  "componentDeps": [],
+  "packageDeps": { }
+}
