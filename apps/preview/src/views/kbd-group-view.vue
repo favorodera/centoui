@@ -11,12 +11,6 @@ const values = usePreview('Kbd Group', {
     options: Object.keys(kbdVariants.variants.size),
     default: kbdVariants.defaultVariants.size,
   },
-  kbdVariant: {
-    type: 'select',
-    label: 'Kbd Variant',
-    options: Object.keys(kbdVariants.variants.variant),
-    default: kbdVariants.defaultVariants.variant,
-  },
 })
 </script>
 
@@ -25,13 +19,11 @@ const values = usePreview('Kbd Group', {
     <KbdGroup>
       <Kbd
         :size="values.kbdSize"
-        :variant="values.kbdVariant"
       >
         ⌘
       </Kbd>
       <Kbd
         :size="values.kbdSize"
-        :variant="values.kbdVariant"
       >
         K
       </Kbd>
@@ -40,14 +32,12 @@ const values = usePreview('Kbd Group', {
     <KbdGroup>
       <Kbd
         :size="values.kbdSize"
-        :variant="values.kbdVariant"
       >
         Ctrl
       </Kbd>
 
       <Kbd
         :size="values.kbdSize"
-        :variant="values.kbdVariant"
       >
         C
       </Kbd>
