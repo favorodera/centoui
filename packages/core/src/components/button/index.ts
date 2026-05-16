@@ -131,7 +131,10 @@ export const buttonVariants = tv({
     {
       variant: 'link',
       class: {
-        root: 'p-0 h-auto rounded-none active:translate-y-0',
+        root: `
+          h-auto rounded-none p-0
+          active:translate-y-0
+        `,
       },
     },
   ],
