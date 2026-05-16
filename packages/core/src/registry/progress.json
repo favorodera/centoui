@@ -1,0 +1,12 @@
+{
+  "$schema": "../schemas/component.json",
+  "name": "progress",
+  "description": "A progress bar component.",
+  "files": [
+    "components/progress/progress-root.vue",
+    "components/progress/progress-indicator.vue",
+    "components/progress/index.ts"
+  ],
+  "componentDeps": [],
+  "packageDeps": {}
+}
