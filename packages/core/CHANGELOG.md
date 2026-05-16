@@ -1,5 +1,36 @@
 # Changelog
 
+## v1.0.0-alpha.20...v1.0.0-alpha.21
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.20...v1.0.0-alpha.21)
+
+### Added
+
+- **collapsible:** Add CollapsibleContent component - Implement CollapsibleContent - Wrap Reka UI's CollapsibleContent - Inject context for styling - Use forwarded props and emits ([23033c7](https://github.com/favorodera/centoui/commit/23033c7))
+- **collapsible:** Add CollapsibleRoot component ([1c08791](https://github.com/favorodera/centoui/commit/1c08791))
+
+  - Wraps Reka UI CollapsibleRoot component
+  - Applies Cento UI styling via variants
+  - Provides collapsible context for children
+
+- **collapsible:** Add CollapsibleTrigger component ([d8717ac](https://github.com/favorodera/centoui/commit/d8717ac))
+- **collapsible:** Implement collapsible component structure and types ([d8ae61f](https://github.com/favorodera/centoui/commit/d8ae61f))
+- **collapsible:** Add collapsible component registry configuration ([ad1fc55](https://github.com/favorodera/centoui/commit/ad1fc55))
+- **collapsible:** Add collapsible component definition and update alert-dialog file paths ([c1d8848](https://github.com/favorodera/centoui/commit/c1d8848))
+
+### Fixed
+
+- **alert-dialog:** Correct file paths for alert-dialog components ([d3a3660](https://github.com/favorodera/centoui/commit/d3a3660))
+
+### Styling
+
+- **avatar:** Format avatar root template ([28d09f1](https://github.com/favorodera/centoui/commit/28d09f1))
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.19...v1.0.0-alpha.20
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.19...v1.0.0-alpha.20)
