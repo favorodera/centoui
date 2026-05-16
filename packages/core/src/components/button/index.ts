@@ -6,8 +6,8 @@ export const buttonVariants = tv({
   slots: {
     root: `
       relative inline-flex shrink-0 cursor-default items-center justify-center
-      truncate rounded-lg font-medium tracking-wide whitespace-nowrap
-      transition-all outline-none select-none
+      truncate font-medium tracking-wide whitespace-nowrap transition-all
+      outline-none select-none
       focus-visible:ring-3 focus-visible:ring-ring
       active:translate-y-px
       disabled:pointer-events-none disabled:opacity-50
@@ -55,31 +55,31 @@ export const buttonVariants = tv({
     size: {
       xs: {
         root: `
-          gap-1 px-2 py-1 text-xs
+          gap-1 rounded-md px-2 py-1 text-xs
           [&_svg]:size-4
         `,
       },
       sm: {
         root: `
-          gap-1.5 px-3 py-1.5 text-xs
+          gap-1.5 rounded-md px-3 py-1.5 text-xs
           [&_svg]:size-4
         `,
       },
       md: {
         root: `
-          gap-1.5 px-4 py-2 text-sm
+          gap-1.5 rounded-lg px-4 py-2 text-sm
           [&_svg]:size-5
         `,
       },
       lg: {
         root: `
-          gap-2 px-5 py-2.5 text-sm
+          gap-2 rounded-lg px-5 py-2.5 text-sm
           [&_svg]:size-5
         `,
       },
       xl: {
         root: `
-          gap-2.5 px-6 py-3 text-base
+          gap-2.5 rounded-lg px-6 py-3 text-base
           [&_svg]:size-6
         `,
       },
