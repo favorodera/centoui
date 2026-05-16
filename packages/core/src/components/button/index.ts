@@ -44,6 +44,13 @@ export const buttonVariants = tv({
           hover:bg-accent hover:text-accent-foreground
         `,
       },
+      link: {
+        root: `
+          text-foreground underline decoration-muted-foreground/40 decoration-1
+          underline-offset-5
+          hover:text-primary hover:decoration-primary
+        `,
+      },
     },
     size: {
       xs: {
@@ -117,6 +124,14 @@ export const buttonVariants = tv({
       square: true,
       class: {
         root: 'p-3',
+      },
+    },
+
+    // LINK
+    {
+      variant: 'link',
+      class: {
+        root: 'p-0 h-auto rounded-none active:translate-y-0',
       },
     },
   ],
