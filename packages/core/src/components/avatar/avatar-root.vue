@@ -23,6 +23,7 @@ provideCentouiAvatarRootContext(reactive({
   size: toRef(props, 'size'),
 }))
 </script>
+
 <template>
   <AvatarRoot
     data-slot="avatar-root"
