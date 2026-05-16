@@ -3,17 +3,18 @@
   "name": "alert-dialog",
   "description": "A modal dialog that interrupts the user with important content and expects a response.",
   "files": [
-    "components/accordion/alert-dialog-action.vue",
-    "components/accordion/alert-dialog-cancel.vue",
-    "components/accordion/alert-dialog-content.vue",
-    "components/accordion/alert-dialog-description.vue",
-    "components/accordion/alert-dialog-footer.vue",
-    "components/accordion/alert-dialog-header.vue",
-    "components/accordion/alert-dialog-overlay.vue",
-    "components/accordion/alert-dialog-portal.vue",
-    "components/accordion/alert-dialog-root.vue",
-    "components/accordion/alert-dialog-title.vue",
-    "components/accordion/alert-dialog-trigger.vue"
+    "components/alert-dialog/alert-dialog-action.vue",
+    "components/alert-dialog/alert-dialog-cancel.vue",
+    "components/alert-dialog/alert-dialog-content.vue",
+    "components/alert-dialog/alert-dialog-description.vue",
+    "components/alert-dialog/alert-dialog-footer.vue",
+    "components/alert-dialog/alert-dialog-header.vue",
+    "components/alert-dialog/alert-dialog-overlay.vue",
+    "components/alert-dialog/alert-dialog-portal.vue",
+    "components/alert-dialog/alert-dialog-root.vue",
+    "components/alert-dialog/alert-dialog-title.vue",
+    "components/alert-dialog/alert-dialog-trigger.vue",
+    "components/alert-dialog/index.ts"
   ],
   "componentDeps": [
     "button"
