@@ -3,7 +3,7 @@
   "type": "module",
   "description": "Vue components for modern interfaces",
   "private": false,
-  "version": "1.0.0-alpha.21",
+  "version": "1.0.0-alpha.22",
   "author": "Favour Emeka <favorodera@gmail.com>",
   "license": "MIT",
   "homepage": "https://centoui.vercel.app",

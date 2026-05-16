@@ -1,5 +1,24 @@
 # Changelog
 
+## v1.0.0-alpha.21...v1.0.0-alpha.22
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.21...v1.0.0-alpha.22)
+
+### Added
+
+- **button:** Add link variant ([e2685d1](https://github.com/favorodera/centoui/commit/e2685d1))
+- **text:** Add Text component with variants ([075c261](https://github.com/favorodera/centoui/commit/075c261))
+- **text:** Add Text component - Provides basic text styling - Supports size and weight props ([58e6d7e](https://github.com/favorodera/centoui/commit/58e6d7e))
+
+### Styling
+
+- **button:** Improve readability of link variant classes ([7f5a650](https://github.com/favorodera/centoui/commit/7f5a650))
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.20...v1.0.0-alpha.21
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.20...v1.0.0-alpha.21)
