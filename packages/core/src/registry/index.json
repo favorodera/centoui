@@ -32,17 +32,18 @@
       "name": "alert-dialog",
       "description": "A modal dialog that interrupts the user with important content and expects a response.",
       "files": [
-        "components/accordion/alert-dialog-action.vue",
-        "components/accordion/alert-dialog-cancel.vue",
-        "components/accordion/alert-dialog-content.vue",
-        "components/accordion/alert-dialog-description.vue",
-        "components/accordion/alert-dialog-footer.vue",
-        "components/accordion/alert-dialog-header.vue",
-        "components/accordion/alert-dialog-overlay.vue",
-        "components/accordion/alert-dialog-portal.vue",
-        "components/accordion/alert-dialog-root.vue",
-        "components/accordion/alert-dialog-title.vue",
-        "components/accordion/alert-dialog-trigger.vue"
+        "components/alert-dialog/alert-dialog-action.vue",
+        "components/alert-dialog/alert-dialog-cancel.vue",
+        "components/alert-dialog/alert-dialog-content.vue",
+        "components/alert-dialog/alert-dialog-description.vue",
+        "components/alert-dialog/alert-dialog-footer.vue",
+        "components/alert-dialog/alert-dialog-header.vue",
+        "components/alert-dialog/alert-dialog-overlay.vue",
+        "components/alert-dialog/alert-dialog-portal.vue",
+        "components/alert-dialog/alert-dialog-root.vue",
+        "components/alert-dialog/alert-dialog-title.vue",
+        "components/alert-dialog/alert-dialog-trigger.vue",
+        "components/alert-dialog/index.ts"
       ],
       "componentDeps": [
         "button"
@@ -122,6 +123,19 @@
       "files": [
         "components/button/button.vue",
         "components/button/index.ts"
+      ],
+      "componentDeps": [],
+      "packageDeps": {}
+    },
+    {
+      "$schema": "../schemas/component.json",
+      "name": "collapsible",
+      "description": "An interactive component that expands or collapses content sections.",
+      "files": [
+        "components/collapsible/collapsible-content.vue",
+        "components/collapsible/collapsible-root.vue",
+        "components/collapsible/collapsible-trigger.vue",
+        "components/collapsible/index.ts"
       ],
       "componentDeps": [],
       "packageDeps": {}
