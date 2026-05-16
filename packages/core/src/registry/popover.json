@@ -1,0 +1,24 @@
+{
+  "$schema": "../schemas/component.json",
+  "name": "popover",
+  "description": "Displays rich content in a portal, triggered by a button.",
+  "files": [
+    "components/popover/index.ts",
+    "components/popover/popover-anchor.vue",
+    "components/popover/popover-arrow.vue",
+    "components/popover/popover-close.vue",
+    "components/popover/popover-content.vue",
+    "components/popover/popover-description.vue",
+    "components/popover/popover-body.vue",
+    "components/popover/popover-footer.vue",
+    "components/popover/popover-header.vue",
+    "components/popover/popover-portal.vue",
+    "components/popover/popover-root.vue",
+    "components/popover/popover-title.vue",
+    "components/popover/popover-trigger.vue"
+  ],
+  "componentDeps": [
+    "button"
+  ],
+  "packageDeps": {}
+}
