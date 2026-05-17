@@ -97,8 +97,8 @@
   --warning: oklch(0.84 0.16 75);
   --warning-foreground: oklch(0.18 0.04 75);
 
-  --error: oklch(0.68 0.20 28);
-  --error-foreground: oklch(0.14 0.02 28);
+  --error: oklch(0.62 0.22 28);
+  --error-foreground: oklch(0.98 0.01 28);
 
   --info: oklch(0.68 0.16 255);
   --info-foreground: oklch(0.14 0.02 255);
