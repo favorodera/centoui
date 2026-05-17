@@ -5,7 +5,7 @@ export const badgeVariants = tv({
   slots: {
     root: `
       relative inline-flex shrink-0 items-center justify-center truncate
-      rounded-md whitespace-nowrap outline-none select-none
+      whitespace-nowrap outline-none select-none
       focus-visible:ring-3 focus-visible:ring-ring
       [&_svg]:pointer-events-none [&_svg]:shrink-0
     `,
@@ -32,26 +32,26 @@ export const badgeVariants = tv({
     size: {
       sm: {
         root: `
-          gap-1 px-1.5 py-1 text-[10px]/3
+          gap-1 px-1.5 py-1 text-[10px]/3 rounded-sm
           [&_svg]:size-3
         `,
       },
       md: {
         root: `
-          gap-1 px-2 py-1 text-xs
+          gap-1 px-2 py-1 text-xs rounded-md
           [&_svg]:size-4
         `,
       },
       lg: {
         root: `
           gap-1.5 px-2 py-1 text-sm
-          [&_svg]:size-5
+          [&_svg]:size-5 rounded-lg
         `,
       },
       xl: {
         root: `
           gap-1.5 px-2.5 py-1 text-base
-          [&_svg]:size-6
+          [&_svg]:size-6 rounded-lg
         `,
       },
     },
