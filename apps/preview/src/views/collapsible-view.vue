@@ -15,7 +15,7 @@ const open = ref(false)
   <ViewContainer>
     <CollapsibleRoot
       v-model:open="open"
-      class="flex w-xl flex-col gap-2"
+      class="flex max-w-xl w-full flex-col gap-2"
     >
 
       <div class="flex items-center justify-between gap-4">
