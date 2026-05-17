@@ -149,9 +149,3 @@
 body {
   @apply antialiased text-foreground bg-background;
 }
-
-@supports (corner-shape: squircle) {
-  [data-slot] {
-    corner-shape: squircle;
-  }
-}
