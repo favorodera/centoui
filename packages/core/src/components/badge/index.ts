@@ -32,26 +32,26 @@ export const badgeVariants = tv({
     size: {
       sm: {
         root: `
-          gap-1 px-1.5 py-1 text-[10px]/3 rounded-sm
+          gap-1 rounded-sm px-1.5 py-1 text-[10px]/3
           [&_svg]:size-3
         `,
       },
       md: {
         root: `
-          gap-1 px-2 py-1 text-xs rounded-md
+          gap-1 rounded-md px-2 py-1 text-xs
           [&_svg]:size-4
         `,
       },
       lg: {
         root: `
-          gap-1.5 px-2 py-1 text-sm
-          [&_svg]:size-5 rounded-lg
+          gap-1.5 rounded-lg px-2 py-1 text-sm
+          [&_svg]:size-5
         `,
       },
       xl: {
         root: `
-          gap-1.5 px-2.5 py-1 text-base
-          [&_svg]:size-6 rounded-lg
+          gap-1.5 rounded-lg px-2.5 py-1 text-base
+          [&_svg]:size-6
         `,
       },
     },
