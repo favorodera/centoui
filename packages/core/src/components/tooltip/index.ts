@@ -15,8 +15,8 @@ export const tooltipVariants = tv({
   slots: {
     trigger: '',
     content: `
-      pointer-events-auto z-50 w-fit animate-in rounded-lg bg-surface-raised px-3
-      py-1.5 text-sm text-balance text-foreground fade-in-0 zoom-in-95
+      pointer-events-auto z-50 w-fit animate-in rounded-lg bg-surface-raised
+      px-3 py-1.5 text-sm text-balance text-foreground fade-in-0 zoom-in-95
       data-[side=bottom]:slide-in-from-top-2
       data-[side=left]:slide-in-from-right-2
       data-[side=right]:slide-in-from-left-2
