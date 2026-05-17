@@ -64,7 +64,7 @@ const values = usePreview('Popover', {
             </PopoverDescription>
 
             <PopoverClose
-              variant="outline"
+              variant="link"
               class="absolute top-0 right-4"
               size="sm"
               square
