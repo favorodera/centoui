@@ -77,7 +77,7 @@ export type AlertDialogVariants = VariantProps<typeof alertDialogVariants>
 // TYPES — Context
 
 export type AlertDialogRootContext = {
-  /** Styles for the alert */
+  /** Styles for the alert dialog */
   styles: ReturnType<typeof alertDialogVariants>
 }
 
