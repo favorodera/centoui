@@ -11,12 +11,6 @@ const values = usePreview('Avatar', {
     options: Object.keys(avatarVariants.variants.size),
     default: avatarVariants.defaultVariants.size,
   },
-  shape: {
-    type: 'select',
-    label: 'Shape',
-    options: Object.keys(avatarVariants.variants.shape),
-    default: avatarVariants.defaultVariants.shape,
-  },
 })
 </script>
 
@@ -24,7 +18,6 @@ const values = usePreview('Avatar', {
   <ViewContainer>
     <AvatarRoot
       :size="values.size"
-      :shape="values.shape"
     >
       <AvatarImage
         src="https://github.com/favorodera.png"
@@ -35,7 +28,6 @@ const values = usePreview('Avatar', {
 
     <AvatarRoot
       :size="values.size"
-      :shape="values.shape"
     >
       <AvatarImage
         src=""
@@ -46,7 +38,6 @@ const values = usePreview('Avatar', {
 
     <AvatarRoot
       :size="values.size"
-      :shape="values.shape"
     >
       <AvatarImage
         src=""

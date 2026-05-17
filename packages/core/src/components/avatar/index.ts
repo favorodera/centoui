@@ -12,7 +12,7 @@ export const avatarVariants = tv({
   slots: {
     root: `
       relative inline-flex shrink-0 items-center justify-center overflow-hidden
-      bg-surface align-middle select-none
+      bg-surface align-middle select-none rounded-full
     `,
     image: 'size-full rounded-[inherit] object-cover',
     fallback: `
@@ -72,15 +72,6 @@ export const avatarVariants = tv({
         `,
       },
     },
-    shape: {
-      square: {},
-      squircle: {
-        root: 'rounded-lg',
-      },
-      circle: {
-        root: 'rounded-full',
-      },
-    },
   },
   defaultVariants: {
     size: 'md',
@@ -127,11 +118,6 @@ export type AvatarRootProps = RekaAvatarRootProps & {
    * @default 'md'
    */
   size?: AvatarVariants['size']
-  /**
-   * Visual shape of the avatar.
-   * @default 'squircle'
-   */
-  shape?: AvatarVariants['shape']
   /** Custom class to apply to the root element. */
   class?: ClassValue
 }
