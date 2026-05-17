@@ -1,5 +1,83 @@
 # Changelog
 
+## v1.0.0-alpha.22...v1.0.0-alpha.23
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.22...v1.0.0-alpha.23)
+
+### Added
+
+- **progress:** Add Progress component ([8a432fd](https://github.com/favorodera/centoui/commit/8a432fd))
+- **progress:** Add progress indicator component - Implements visual progress bar - Calculates transform for animation - Integrates with progress root context ([15c72c7](https://github.com/favorodera/centoui/commit/15c72c7))
+- **progress:** Add ProgressRoot component - Use reka-ui for base functionality - Integrate centoui styling and context - Provide ProgressRoot component ([2cd64ae](https://github.com/favorodera/centoui/commit/2cd64ae))
+- **registry:** Add progress component ([3dd6633](https://github.com/favorodera/centoui/commit/3dd6633))
+- **progress:** Add component to registry ([7aae4ab](https://github.com/favorodera/centoui/commit/7aae4ab))
+- **popover:** Add Popover component ([d3b48be](https://github.com/favorodera/centoui/commit/d3b48be))
+- **popover:** Add PopoverAnchor component ([2c8d5fb](https://github.com/favorodera/centoui/commit/2c8d5fb))
+- **popover:** Add PopoverArrow component ([9ee9ef8](https://github.com/favorodera/centoui/commit/9ee9ef8))
+- **popover:** Add PopoverBody component ([56b9439](https://github.com/favorodera/centoui/commit/56b9439))
+- **popover:** Add PopoverClose component ([7222720](https://github.com/favorodera/centoui/commit/7222720))
+- **popover:** Add PopoverContent component ([6e69816](https://github.com/favorodera/centoui/commit/6e69816))
+- **popover:** Add PopoverDescription component ([68762ec](https://github.com/favorodera/centoui/commit/68762ec))
+- **popover:** Add PopoverFooter component ([b23300a](https://github.com/favorodera/centoui/commit/b23300a))
+- **popover:** Add PopoverHeader component ([e63b52d](https://github.com/favorodera/centoui/commit/e63b52d))
+- **popover:** Create PopoverPortal component ([dcaab6c](https://github.com/favorodera/centoui/commit/dcaab6c))
+- **popover:** Add PopoverRoot component ([9ee5e5e](https://github.com/favorodera/centoui/commit/9ee5e5e))
+- **popover:** Add PopoverTitle component ([2777a9d](https://github.com/favorodera/centoui/commit/2777a9d))
+- **popover:** Add PopoverTrigger component ([e039c46](https://github.com/favorodera/centoui/commit/e039c46))
+- **popover:** Add popover component registry file ([86cded8](https://github.com/favorodera/centoui/commit/86cded8))
+- **registry:** Add popover component - Registers files and dependencies. - Used for displaying rich content in a portal. ([ddae914](https://github.com/favorodera/centoui/commit/ddae914))
+- **badge:** Apply size-specific border radius ([898f599](https://github.com/favorodera/centoui/commit/898f599))
+- **css:** Enable squircle corners via @supports ([cfa6182](https://github.com/favorodera/centoui/commit/cfa6182))
+- **select:** Add Select component structure - Define styling variants with `tailwind-variants`. - Export all sub-components. - Set up context for component interaction. - ([884f942](https://github.com/favorodera/centoui/commit/884f942))
+- **select:** Add select arrow component ([b82587a](https://github.com/favorodera/centoui/commit/b82587a))
+- **select:** Add SelectContent component ([541a510](https://github.com/favorodera/centoui/commit/541a510))
+- **select-group:** Add select group component ([7434d62](https://github.com/favorodera/centoui/commit/7434d62))
+- **select:** Add select icon component - Implements the SelectIcon component - Provides a default chevron down icon - Integrates with Select root context - Uses reka-ui's SelectIcon primitive ([be01167](https://github.com/favorodera/centoui/commit/be01167))
+- **select:** Add select item indicator component ([c5f0509](https://github.com/favorodera/centoui/commit/c5f0509))
+- **select:** Add select item text component ([a14b0ba](https://github.com/favorodera/centoui/commit/a14b0ba))
+- **select:** Add initial select item component ([ff8a9f9](https://github.com/favorodera/centoui/commit/ff8a9f9))
+- **select:** Add select label component ([e1f42b4](https://github.com/favorodera/centoui/commit/e1f42b4))
+- **select:** Add select portal component ([08fdda5](https://github.com/favorodera/centoui/commit/08fdda5))
+- **select:** Implement select root component ([9948674](https://github.com/favorodera/centoui/commit/9948674))
+- **select:** Add scroll down button component ([fd5ae65](https://github.com/favorodera/centoui/commit/fd5ae65))
+- **select:** Add scroll up button component ([d857578](https://github.com/favorodera/centoui/commit/d857578))
+- **select:** Add select separator component ([bf17962](https://github.com/favorodera/centoui/commit/bf17962))
+- **select:** Add select trigger component ([12595cc](https://github.com/favorodera/centoui/commit/12595cc))
+- **select:** Add select value component ([45fbd09](https://github.com/favorodera/centoui/commit/45fbd09))
+- **select:** Add select viewport component ([96c9810](https://github.com/favorodera/centoui/commit/96c9810))
+
+### Fixed
+
+- **tooltip:** Update arrow style to include fill-foreground ([eb8cad5](https://github.com/favorodera/centoui/commit/eb8cad5))
+- **tooltip:** Format content styles for better readability ([86ee3be](https://github.com/favorodera/centoui/commit/86ee3be))
+- **config:** Add missing check icon to icons configuration ([4ab82db](https://github.com/favorodera/centoui/commit/4ab82db))
+
+### Refactors
+
+- **avatar:** Remove shape prop ([5c8232e](https://github.com/favorodera/centoui/commit/5c8232e))
+- **css:** Remove experimental squircle support ([df55eca](https://github.com/favorodera/centoui/commit/df55eca))
+
+### Documentation
+
+- **alert-dialog:** Clarify JSDoc for AlertDialogRootContext ([2715111](https://github.com/favorodera/centoui/commit/2715111))
+
+### Styling
+
+- **progress:** Reorder Tailwind classes ([d9e201c](https://github.com/favorodera/centoui/commit/d9e201c))
+- **progress:** Adjust root border radius ([05154ba](https://github.com/favorodera/centoui/commit/05154ba))
+- **progress:** Update root background to use bg-muted ([3084fb5](https://github.com/favorodera/centoui/commit/3084fb5))
+- **alert-dialog:** Adjust padding for consistent layout - Update content padding to vertical only - Add horizontal padding to header - Add horizontal padding to footer ([652e9fa](https://github.com/favorodera/centoui/commit/652e9fa))
+- **button:** Adjust border radius per size variant ([1c04e44](https://github.com/favorodera/centoui/commit/1c04e44))
+- **theme:** Adjust error colors ([199f105](https://github.com/favorodera/centoui/commit/199f105))
+- **tooltip:** Update color tokens for content and arrow ([4b7e149](https://github.com/favorodera/centoui/commit/4b7e149))
+- **avatar:** Reorder root CSS classes ([9d6cb25](https://github.com/favorodera/centoui/commit/9d6cb25))
+- **badge:** Reorder Tailwind classes for consistency ([1ac52dd](https://github.com/favorodera/centoui/commit/1ac52dd))
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.21...v1.0.0-alpha.22
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.21...v1.0.0-alpha.22)
