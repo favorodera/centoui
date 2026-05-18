@@ -1,76 +1,195 @@
-import { tv, type ClassValue, type VariantProps } from 'tailwind-variants'
 import {
   createContext,
-  type SelectRootProps as RekaSelectRootProps,
+  type AcceptableValue,
+  type SelectArrowProps as RekaSelectArrowProps,
+  type SelectContentEmits as RekaSelectContentEmits,
+  type SelectContentProps as RekaSelectContentProps,
+  type SelectGroupProps as RekaSelectGroupProps,
+  type SelectIconProps as RekaSelectIconProps,
+  type SelectItemEmits as RekaSelectItemEmits,
+  type SelectItemIndicatorProps as RekaSelectItemIndicatorProps,
+  type SelectItemProps as RekaSelectItemProps,
+  type SelectItemTextProps as RekaSelectItemTextProps,
+  type SelectLabelProps as RekaSelectLabelProps,
+  type SelectPortalProps as RekaSelectPortalProps,
   type SelectRootEmits as RekaSelectRootEmits,
+  type SelectRootProps as RekaSelectRootProps,
+  type SelectScrollDownButtonProps as RekaSelectScrollDownButtonProps,
+  type SelectScrollUpButtonProps as RekaSelectScrollUpButtonProps,
+  type SelectSeparatorProps as RekaSelectSeparatorProps,
   type SelectTriggerProps as RekaSelectTriggerProps,
   type SelectValueProps as RekaSelectValueProps,
-  type SelectIconProps as RekaSelectIconProps,
-  type SelectPortalProps as RekaSelectPortalProps,
-  type SelectContentProps as RekaSelectContentProps,
-  type SelectContentEmits as RekaSelectContentEmits,
   type SelectViewportProps as RekaSelectViewportProps,
-  type AcceptableValue,
 } from 'reka-ui'
+import { tv, type ClassProp, type VariantProps } from 'tailwind-variants'
 
 export const selectVariants = tv({
   slots: {
-    root: '',
-    trigger: '',
-    value: '',
-    icon: '',
-    portal: '',
-    content: '',
-    viewport: '', // Stopped here
-    item: '',
+    trigger: `
+      relative inline-flex w-fit items-center justify-between truncate
+      transition-all outline-none
+      focus-visible:ring-3 focus-visible:ring-ring
+      disabled:pointer-events-none disabled:cursor-not-allowed
+      disabled:opacity-75
+      aria-invalid:ring-3 aria-invalid:ring-error
+      data-placeholder:text-muted-foreground
+      [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg]:text-muted-foreground
+    `,
+    value: 'inline-flex items-center truncate',
+    icon: 'opacity-50',
+    content: `
+      relative z-50 max-h-(--reka-select-content-available-height)
+      w-(--reka-select-trigger-width) scrollbar-none overflow-x-hidden
+      overflow-y-auto rounded-md bg-surface-raised ring ring-border ring-inset
+      data-[side=bottom]:slide-in-from-top-2
+      data-[side=left]:slide-in-from-right-2
+      data-[side=right]:slide-in-from-left-2
+      data-[side=top]:slide-in-from-bottom-2
+      data-[state=closed]:animate-out data-[state=closed]:fade-out-0
+      data-[state=closed]:zoom-out-95
+      data-[state=open]:animate-in data-[state=open]:fade-in-0
+      data-[state=open]:zoom-in-95
+    `,
+    viewport: 'p-1',
+    item: `
+      relative inline-flex w-full cursor-default items-center justify-between
+      rounded-sm outline-none select-none
+      focus:bg-accent focus:text-accent-foreground
+      data-disabled:pointer-events-none data-disabled:opacity-75
+    `,
     itemText: '',
     itemIndicator: '',
-    scrollUpButton: '',
-    scrollDownButton: '',
-    group: '',
-    label: '',
-    separator: '',
-    arrow: '',
+    scrollUpButton: `
+      inline-flex cursor-default items-center justify-center py-1
+    `,
+    scrollDownButton: `
+      inline-flex cursor-default items-center justify-center py-1
+    `,
+    group: 'isolate p-1',
+    label: 'text-muted-foreground',
+    separator: 'my-1',
+    arrow: 'z-50 fill-surface-raised',
   },
   variants: {
     size: {
-      xs: {},
-      sm: {},
-      md: {},
-      lg: {},
-      xl: {},
+      xs: {
+        trigger: `
+          gap-1 rounded-md px-2 py-1 text-xs
+          [&_svg]:size-4
+        `,
+        icon: 'size-4',
+        label: 'gap-1 p-1 text-[10px]/3',
+        item: 'gap-1 p-1 text-xs',
+        scrollUpButton: '[&_svg]:size-4',
+        scrollDownButton: '[&_svg]:size-4',
+      },
+      sm: {
+        trigger: `
+          gap-1.5 rounded-md px-2.5 py-1.5 text-xs
+          [&_svg]:size-4
+        `,
+        icon: 'size-4',
+        label: 'gap-1.5 p-1.5 text-[10px]/3',
+        item: 'gap-1.5 p-1.5 text-xs',
+        scrollUpButton: '[&_svg]:size-4',
+        scrollDownButton: '[&_svg]:size-4',
+      },
+      md: {
+        trigger: `
+          gap-1.5 rounded-lg px-2.5 py-1.5 text-sm
+          [&_svg]:size-5
+        `,
+        icon: 'size-5',
+        label: 'gap-1.5 p-1.5 text-xs',
+        item: 'gap-1.5 p-1.5 text-sm',
+        scrollUpButton: '[&_svg]:size-5',
+        scrollDownButton: '[&_svg]:size-5',
+      },
+      lg: {
+        trigger: `
+          gap-2 rounded-lg px-3 py-2 text-sm
+          [&_svg]:size-5
+        `,
+        icon: 'size-5',
+        label: 'gap-2 p-2 text-xs',
+        item: 'gap-2 p-2 text-sm',
+        scrollUpButton: '[&_svg]:size-5',
+        scrollDownButton: '[&_svg]:size-5',
+      },
+      xl: {
+        trigger: `
+          gap-2 rounded-lg px-3 py-2 text-base
+          [&_svg]:size-5
+        `,
+        icon: 'size-5',
+        label: 'gap-2 p-2 text-sm',
+        item: 'gap-2 p-2 text-base',
+        scrollUpButton: '[&_svg]:size-5',
+        scrollDownButton: '[&_svg]:size-5',
+      },
     },
-    variant: {
-      outline: {},
-      subtle: {},
-      soft: {},
+    triggerVariant: {
+      outline: {
+        trigger: `
+          bg-transparent ring ring-input ring-inset
+          hover:bg-input/50
+        `,
+      },
+      subtle: {
+        trigger: `
+          bg-input/50 ring ring-input ring-inset
+          hover:bg-input/80
+        `,
+      },
+      soft: {
+        trigger: `
+          bg-input
+          hover:bg-input/80
+        `,
+      },
+    },
+    contentPosition: {
+      'popper': {
+        content: `
+          data-[side=bottom]:translate-y-1
+          data-[side=left]:-translate-x-1
+          data-[side=right]:translate-x-1
+          data-[side=top]:-translate-y-1
+        `,
+        viewport: `
+          h-(--reka-select-trigger-height) w-fit
+          min-w-(--reka-select-trigger-width) scroll-my-1
+        `,
+      },
+      'item-aligned': {},
     },
   },
   defaultVariants: {
     size: 'md',
-    variant: 'outline',
+    triggerVariant: 'outline',
+    contentPosition: 'popper',
   },
 })
 
 
 // COMPONENTS
 
+export { default as SelectArrow } from './select-arrow.vue'
+export { default as SelectContent } from './select-content.vue'
+export { default as SelectGroup } from './select-group.vue'
+export { default as SelectIcon } from './select-icon.vue'
+export { default as SelectItemIndicator } from './select-item-indicator.vue'
+export { default as SelectItemText } from './select-item-text.vue'
+export { default as SelectItem } from './select-item.vue'
+export { default as SelectLabel } from './select-label.vue'
+export { default as SelectPortal } from './select-portal.vue'
 export { default as SelectRoot } from './select-root.vue'
+export { default as SelectScrollDownButton } from './select-scroll-down-button.vue'
+export { default as SelectScrollUpButton } from './select-scroll-up-button.vue'
+export { default as SelectSeparator } from './select-separator.vue'
 export { default as SelectTrigger } from './select-trigger.vue'
 export { default as SelectValue } from './select-value.vue'
-export { default as SelectIcon } from './select-icon.vue'
-export { default as SelectPortal } from './select-portal.vue'
-export { default as SelectContent } from './select-content.vue'
 export { default as SelectViewport } from './select-viewport.vue'
-export { default as SelectItem } from './select-item.vue'
-export { default as SelectItemText } from './select-item-text.vue'
-export { default as SelectItemIndicator } from './select-item-indicator.vue'
-export { default as SelectScrollUpButton } from './select-scroll-up-button.vue'
-export { default as SelectScrollDownButton } from './select-scroll-down-button.vue'
-export { default as SelectGroup } from './select-group.vue'
-export { default as SelectLabel } from './select-label.vue'
-export { default as SelectSeparator } from './select-separator.vue'
-export { default as SelectArrow } from './select-arrow.vue'
 
 
 // CONTEXT
@@ -85,9 +204,9 @@ export type SelectVariants = VariantProps<typeof selectVariants>
 
 // TYPES — Context
 
-export type SelectRootContext = {
-  /** Styles for the select */
-  styles: ReturnType<typeof selectVariants>
+export type SelectRootContext = Pick<SelectRootProps, 'size'> & {
+  /** @see {@link SelectTriggerProps.variant} */
+  triggerVariant?: SelectTriggerProps['variant']
 }
 
 
@@ -95,43 +214,47 @@ export type SelectRootContext = {
 
 export type SelectRootProps = RekaSelectRootProps & {
   /**
-   * The visual size of the select trigger and its contents.
+   * The visual size of the select.
    * @default 'md'
    */
   size?: SelectVariants['size']
 }
 
-export type SelectTriggerProps = RekaSelectTriggerProps & {
+export type SelectTriggerProps = RekaSelectTriggerProps & Pick<ClassProp, 'class'> & {
   /**
    * The visual style of the select trigger.
    * @default 'outline'
    */
-  variant?: SelectVariants['variant']
-  /** Custom class to apply to the root element. */
-  class?: ClassValue
+  variant?: SelectVariants['triggerVariant']
 }
 
-export type SelectValueProps = RekaSelectValueProps & {
-  /** Custom class to apply to the root element. */
-  class?: ClassValue
-}
+export type SelectValueProps = RekaSelectValueProps & Pick<ClassProp, 'class'>
 
-export type SelectIconProps = RekaSelectIconProps & {
-  /** Custom class to apply to the root element. */
-  class?: ClassValue
-}
+export type SelectIconProps = RekaSelectIconProps & Pick<ClassProp, 'class'>
 
 export type SelectPortalProps = RekaSelectPortalProps
 
-export type SelectContentProps = RekaSelectContentProps & {
-  /** Custom class to apply to the root element. */
-  class?: ClassValue
-}
+export type SelectContentProps = RekaSelectContentProps & Pick<ClassProp, 'class'>
 
-export type SelectViewportProps = RekaSelectViewportProps & {
-  /** Custom class to apply to the root element. */
-  class?: ClassValue
-}
+export type SelectViewportProps = RekaSelectViewportProps & Pick<ClassProp, 'class'>
+
+export type SelectItemProps = RekaSelectItemProps & Pick<ClassProp, 'class'>
+
+export type SelectItemTextProps = RekaSelectItemTextProps & Pick<ClassProp, 'class'>
+
+export type SelectItemIndicatorProps = RekaSelectItemIndicatorProps & Pick<ClassProp, 'class'>
+
+export type SelectScrollUpButtonProps = RekaSelectScrollUpButtonProps & Pick<ClassProp, 'class'>
+
+export type SelectScrollDownButtonProps = RekaSelectScrollDownButtonProps & Pick<ClassProp, 'class'>
+
+export type SelectGroupProps = RekaSelectGroupProps & Pick<ClassProp, 'class'>
+
+export type SelectLabelProps = RekaSelectLabelProps & Pick<ClassProp, 'class'>
+
+export type SelectSeparatorProps = RekaSelectSeparatorProps & Pick<ClassProp, 'class'>
+
+export type SelectArrowProps = RekaSelectArrowProps & Pick<ClassProp, 'class'>
 
 
 // TYPES — Emits
@@ -139,6 +262,8 @@ export type SelectViewportProps = RekaSelectViewportProps & {
 export type SelectRootEmits = RekaSelectRootEmits
 
 export type SelectContentEmits = RekaSelectContentEmits
+
+export type SelectItemEmits = RekaSelectItemEmits
 
 
 // TYPES — Slots
@@ -152,10 +277,6 @@ export type SelectRootSlots = {
   }) => []
 }
 
-export type SelectTriggerSlots = {
-  default: []
-}
-
 export type SelectValueSlots = {
   default: (props: {
     /** Current input values */
@@ -163,20 +284,4 @@ export type SelectValueSlots = {
     /** Current selected label */
     selectedLabel: string[]
   }) => []
-}
-
-export type SelectIconSlots = {
-  default: []
-}
-
-export type SelectPortalSlots = {
-  default: []
-}
-
-export type SelectContentSlots = {
-  default: []
-}
-
-export type SelectViewportSlots = {
-  default: []
 }
