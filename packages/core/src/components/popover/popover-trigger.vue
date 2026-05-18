@@ -2,25 +2,27 @@
 import { reactiveOmit } from '@vueuse/core'
 import { useForwardProps, PopoverTrigger } from 'reka-ui'
 import {
-  type PopoverTriggerSlots,
   type PopoverTriggerProps,
-  injectCentouiPopoverRootContext,
+  popoverVariants,
 } from '.'
-
-const rootContext = injectCentouiPopoverRootContext()
-
-defineSlots<PopoverTriggerSlots>()
+import { computed } from 'vue'
 
 const props = defineProps<PopoverTriggerProps>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
+
+const classNames = computed(() => {
+  const { trigger } = popoverVariants()
+  
+  return trigger({ class: props.class })
+})
 </script>
 
 <template>
   <PopoverTrigger
     data-slot="popover-trigger"
     v-bind="forwardedProps"
-    :class="rootContext.styles.trigger({ class: props.class })"
+    :class="classNames"
   >
     <slot />
   </PopoverTrigger>
