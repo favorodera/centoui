@@ -2,9 +2,7 @@
 import { reactiveOmit } from '@vueuse/core'
 import { Primitive, useForwardProps } from 'reka-ui'
 import { computed } from 'vue'
-import { buttonVariants, type ButtonProps, type ButtonSlots } from '.'
-
-defineSlots<ButtonSlots>()
+import { buttonVariants, type ButtonProps } from '.'
 
 const props = withDefaults(defineProps<ButtonProps>(), {
   as: 'button',
@@ -22,7 +20,7 @@ const delegatedProps = reactiveOmit(
 )
 const forwardedProps = useForwardProps(delegatedProps)
 
-const styles = computed(() => {
+const classNames = computed(() => {
   const { root } = buttonVariants({
     variant: props.variant,
     size: props.size,
@@ -39,7 +37,7 @@ const styles = computed(() => {
     :data-centoui-variant="variant"
     :data-centoui-size="size"
     v-bind="forwardedProps"
-    :class="styles"
+    :class="classNames"
   >
     <slot />
   </Primitive>
