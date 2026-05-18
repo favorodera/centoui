@@ -1,25 +1,31 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
 import { useForwardProps, Primitive } from 'reka-ui'
-import { type AlertTitleSlots, type AlertTitleProps, injectCentouiAlertRootContext } from '.'
+import { type AlertTitleProps, alertVariants, injectCentouiAlertRootContext } from '.'
+import { computed } from 'vue'
 
 const rootContext = injectCentouiAlertRootContext()
-
-defineSlots<AlertTitleSlots>()
 
 const props = withDefaults(defineProps<AlertTitleProps>(), {
   as: 'div',
 })
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
+
+const classNames = computed(() => {
+  const { title } = alertVariants({
+    variant: rootContext.variant,
+  })
+  
+  return title({ class: props.class })
+})
 </script>
 
 <template>
   <Primitive
     data-slot="alert-title"
     v-bind="forwardedProps"
-    :data-variant="rootContext.variant"
-    :class="rootContext.styles.title({ class: props.class })"
+    :class="classNames"
   >
     <slot />
   </Primitive>
