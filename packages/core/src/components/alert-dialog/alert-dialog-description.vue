@@ -3,24 +3,26 @@ import { reactiveOmit } from '@vueuse/core'
 import { AlertDialogDescription, useForwardPropsEmits } from 'reka-ui'
 import {
   type AlertDialogDescriptionProps,
-  type AlertDialogDescriptionSlots,
-  injectCentouiAlertDialogRootContext,
+  alertDialogVariants,
 } from '.'
-
-const rootContext = injectCentouiAlertDialogRootContext()
-
-defineSlots<AlertDialogDescriptionSlots>()
+import { computed } from 'vue'
 
 const props = defineProps<AlertDialogDescriptionProps>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardPropsEmits(delegatedProps)
+
+const classNames = computed(() => {
+  const { description } = alertDialogVariants()
+  
+  return description({ class: props.class })
+})
 </script>
 
 <template>
   <AlertDialogDescription
     data-slot="alert-dialog-description"
     v-bind="forwardedProps"
-    :class="rootContext.styles.description({ class: props.class })"
+    :class="classNames"
   >
     <slot />
   </AlertDialogDescription>
