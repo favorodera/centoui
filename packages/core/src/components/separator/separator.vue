@@ -10,34 +10,41 @@ const props = defineProps<SeparatorProps>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
 
-// Style class string for the component.
-const styles = computed(() => separatorVariants({
-  orientation: props.orientation,
-}))
+const classNames = computed(() => {
+  const { root, line, content } = separatorVariants({
+    orientation: props.orientation,
+  })
+  
+  return {
+    root: root({ class: props.class }),
+    line: line(),
+    content: content(),
+  }
+})
 </script>
 
 <template>
   <Separator
     data-slot="separator"
     v-bind="forwardedProps"
-    :class="styles.root({ class: props.class })"
+    :class="classNames.root"
   >
     <!-- When slot content is provided, render flanking lines around it. -->
     <template v-if="!!slots.default">
       <div
-        :class="styles.line()"
+        :class="classNames.line"
         data-slot="separator-line-1"
       />
 
       <div
-        :class="styles.content()"
+        :class="classNames.content"
         data-slot="separator-content"
       >
         <slot />
       </div>
 
       <div
-        :class="styles.line()"
+        :class="classNames.line"
         data-slot="separator-line-2"
       />
     </template>
@@ -46,7 +53,7 @@ const styles = computed(() => separatorVariants({
     <div
       v-else
       data-slot="separator-line"
-      :class="styles.line()"
+      :class="classNames.line"
     />
   </Separator>
 </template>
