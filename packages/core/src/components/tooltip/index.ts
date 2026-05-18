@@ -1,4 +1,4 @@
-import { tv, type ClassValue, type VariantProps } from 'tailwind-variants'
+import { tv, type ClassProp, type VariantProps } from 'tailwind-variants'
 import {
   type TooltipProviderProps as RekaTooltipProviderProps,
   type TooltipRootProps as RekaTooltipRootProps,
@@ -8,7 +8,6 @@ import {
   type TooltipArrowProps as RekaTooltipArrowProps,
   type TooltipContentEmits as RekaTooltipContentEmits,
   type TooltipRootEmits as RekaTooltipRootEmits,
-  createContext,
 } from 'reka-ui'
 
 export const tooltipVariants = tv({
@@ -39,22 +38,9 @@ export { default as TooltipContent } from './tooltip-content.vue'
 export { default as TooltipArrow } from './tooltip-arrow.vue'
 
 
-// CONTEXT
-
-export const [injectCentouiTooltipRootContext, provideCentouiTooltipRootContext] = createContext<TooltipRootContext>('TooltipRoot', 'centoui:tooltip:context')
-
-
 // TYPES — Variants
 
 export type TooltipVariants = VariantProps<typeof tooltipVariants>
-
-
-// TYPES — Context
-
-export type TooltipRootContext = {
-  /** Styles for the tooltip */
-  styles: ReturnType<typeof tooltipVariants>
-}
 
 
 // TYPES — Props
@@ -69,27 +55,19 @@ export type TooltipProviderProps = Omit<RekaTooltipProviderProps, 'delayDuration
 
 export type TooltipRootProps = RekaTooltipRootProps
 
-export type TooltipTriggerProps = RekaTooltipTriggerProps & {
-  /** Custom class to apply to the root element. */
-  class?: ClassValue
-}
+export type TooltipTriggerProps = RekaTooltipTriggerProps & Pick<ClassProp, 'class'>
 
 export type TooltipPortalProps = RekaTooltipPortalProps
 
-export type TooltipContentProps = Omit<RekaTooltipContentProps, 'sideOffset'> & {
+export type TooltipContentProps = Omit<RekaTooltipContentProps, 'sideOffset'> & Pick<ClassProp, 'class'> & {
   /**
    * The distance in pixels from the trigger.
    * @default 4
    */
   sideOffset?: number
-  /** Custom class to apply to the root element. */
-  class?: ClassValue
 }
 
-export type TooltipArrowProps = RekaTooltipArrowProps & {
-  class?: ClassValue
-}
-
+export type TooltipArrowProps = RekaTooltipArrowProps & Pick<ClassProp, 'class'>
 
 // TYPES — Emits
 
@@ -99,9 +77,6 @@ export type TooltipContentEmits = RekaTooltipContentEmits
 
 
 // TYPES — Slots
-export type TooltipProviderSlots = {
-  default: []
-}
 
 export type TooltipRootSlots = {
   default: (props: {
@@ -110,18 +85,3 @@ export type TooltipRootSlots = {
   }) => []
 }
 
-export type TooltipTriggerSlots = {
-  default: []
-}
-
-export type TooltipPortalSlots = {
-  default: []
-}
-
-export type TooltipContentSlots = {
-  default: []
-}
-
-export type TooltipArrowSlots = {
-  default: []
-}
