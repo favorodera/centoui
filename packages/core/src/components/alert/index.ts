@@ -1,5 +1,5 @@
 import { type PrimitiveProps, createContext } from 'reka-ui'
-import { tv, type VariantProps, type ClassValue } from 'tailwind-variants'
+import { tv, type VariantProps, type ClassProp } from 'tailwind-variants'
 
 export const alertVariants = tv({
   slots: {
@@ -60,72 +60,25 @@ export type AlertVariants = VariantProps<typeof alertVariants>
 
 // TYPES — Context
 
-export type AlertRootContext = Omit<AlertRootProps, 'class'> & {
-  /** Styles for the alert */
-  styles: ReturnType<typeof alertVariants>
-}
+export type AlertRootContext = Pick<AlertRootProps, 'variant'>
 
 
 // TYPES — Props
 
-export type AlertRootProps = PrimitiveProps & {
+export type AlertRootProps = PrimitiveProps & Pick<ClassProp, 'class'> & {
   /**
      * The variant of the alert.
      * @default 'neutral'
      */
   variant?: AlertVariants['variant']
-  /** Custom class to apply to the root element. */
-  class?: ClassValue
 }
 
-export type AlertMediaProps = PrimitiveProps & {
-  /** Custom class to apply to the root element. */
-  class?: ClassValue
-}
+export type AlertMediaProps = PrimitiveProps & Pick<ClassProp, 'class'>
 
-export type AlertContentProps = PrimitiveProps & {
-  /** Custom class to apply to the root element. */
-  class?: ClassValue
-}
+export type AlertContentProps = PrimitiveProps & Pick<ClassProp, 'class'>
 
-export type AlertTitleProps = PrimitiveProps & {
-  /** Custom class to apply to the root element. */
-  class?: ClassValue
-}
+export type AlertTitleProps = PrimitiveProps & Pick<ClassProp, 'class'>
 
-export type AlertDescriptionProps = PrimitiveProps & {
-  /** Custom class to apply to the root element. */
-  class?: ClassValue
-}
+export type AlertDescriptionProps = PrimitiveProps & Pick<ClassProp, 'class'>
 
-export type AlertActionsProps = PrimitiveProps & {
-  /** Custom class to apply to the root element. */
-  class?: ClassValue
-}
-
-
-// TYPES — Slots
-
-export type AlertRootSlots = {
-  default: []
-}
-
-export type AlertMediaSlots = {
-  default: []
-}
-
-export type AlertContentSlots = {
-  default: []
-}
-
-export type AlertTitleSlots = {
-  default: []
-}
-
-export type AlertDescriptionSlots = {
-  default: []
-}
-
-export type AlertActionsSlots = {
-  default: []
-}
+export type AlertActionsProps = PrimitiveProps & Pick<ClassProp, 'class'>
