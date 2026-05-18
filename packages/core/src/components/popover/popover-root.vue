@@ -4,10 +4,7 @@ import {
   type PopoverRootSlots,
   type PopoverRootProps,
   type PopoverRootEmits,
-  provideCentouiPopoverRootContext,
-  popoverVariants,
 } from '.'
-import { computed, reactive } from 'vue'
 
 defineSlots<PopoverRootSlots>()
 
@@ -16,12 +13,6 @@ const emits = defineEmits<PopoverRootEmits>()
 const props = defineProps<PopoverRootProps>()
   
 const forwardedPropsEmits = useForwardPropsEmits(props, emits)
-
-const styles = computed(() => popoverVariants())
-
-provideCentouiPopoverRootContext(reactive({
-  styles,
-}))
 </script>
 
 <template>
