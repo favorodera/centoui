@@ -2,9 +2,9 @@
   "globals": {
     "$schema": "../schemas/globals.json",
     "packageDeps": {
-      "tailwindcss": "^4.2.2",
-      "@tailwindcss/vite": "^4.2.2",
-      "reka-ui": "^2.9.2",
+      "tailwindcss": "^4.3.0",
+      "@tailwindcss/vite": "^4.3.0",
+      "reka-ui": "^2.9.6",
       "tailwind-variants": "^3.2.2",
       "tailwind-merge": "^3.5.0",
       "tw-animate-css": "^1.4.0",
@@ -198,6 +198,34 @@
         "components/progress/index.ts"
       ],
       "componentDeps": [],
+      "packageDeps": {}
+    },
+    {
+      "$schema": "../schemas/component.json",
+      "name": "select",
+      "description": "Displays a list of options for the user to pick from—triggered by a button.",
+      "files": [
+        "components/select/select-arrow.vue",
+        "components/select/select-content.vue",
+        "components/select/select-group.vue",
+        "components/select/select-icon.vue",
+        "components/select/select-item-indicator.vue",
+        "components/select/select-item-text.vue",
+        "components/select/select-item.vue",
+        "components/select/select-label.vue",
+        "components/select/select-portal.vue",
+        "components/select/select-root.vue",
+        "components/select/select-scroll-down-button.vue",
+        "components/select/select-scroll-up-button.vue",
+        "components/select/select-separator.vue",
+        "components/select/select-trigger.vue",
+        "components/select/select-value.vue",
+        "components/select/select-viewport.vue",
+        "components/select/index.ts"
+      ],
+      "componentDeps": [
+        "separator"
+      ],
       "packageDeps": {}
     },
     {
