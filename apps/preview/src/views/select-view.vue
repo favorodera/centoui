@@ -50,7 +50,6 @@ const values = usePreview('Select', {
 <template>
   <ViewContainer>
     <SelectRoot
-      default-open
       :disabled="values.disabled"
       :size="values.size"
     >
