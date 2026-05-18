@@ -1,5 +1,5 @@
 import type { PrimitiveProps } from 'reka-ui'
-import { tv, type ClassValue, type VariantProps } from 'tailwind-variants'
+import { tv, type ClassProp, type VariantProps } from 'tailwind-variants'
 
 export const textVariants = tv({
   slots: {
@@ -39,7 +39,7 @@ export type TextVariants = VariantProps<typeof textVariants>
 
 
 // TYPES — Props
-export type TextProps = PrimitiveProps & {
+export type TextProps = PrimitiveProps & Pick<ClassProp, 'class'> & {
   /**
    * The size of the text.
    * @default 'md'
@@ -51,12 +51,4 @@ export type TextProps = PrimitiveProps & {
    * @default 'normal'
    */
   weight?: TextVariants['weight']
-  /** Custom class to apply to the root element. */
-  class?: ClassValue
-}
-
-
-// TYPES — Slots
-export type TextSlots = {
-  default: []
 }
