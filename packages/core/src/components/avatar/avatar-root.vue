@@ -2,9 +2,7 @@
 import { reactiveOmit } from '@vueuse/core'
 import { AvatarRoot, useForwardProps } from 'reka-ui'
 import { computed, reactive, toRef } from 'vue'
-import { avatarVariants, provideCentouiAvatarRootContext, type AvatarRootProps, type AvatarRootSlots } from '.'
-
-defineSlots<AvatarRootSlots>()
+import { avatarVariants, provideCentouiAvatarRootContext, type AvatarRootProps } from '.'
 
 const props = withDefaults(defineProps<AvatarRootProps>(), {
   size: 'md',
@@ -12,12 +10,15 @@ const props = withDefaults(defineProps<AvatarRootProps>(), {
 const delegatedProps = reactiveOmit(props, 'class', 'size')
 const forwardedProps = useForwardProps(delegatedProps)
 
-const styles = computed(() => avatarVariants({
-  size: props.size,
-}))
+const classNames = computed(() => {
+  const { root } = avatarVariants({
+    size: props.size,
+  })
+
+  return root({ class: props.class })
+})
 
 provideCentouiAvatarRootContext(reactive({
-  styles,
   size: toRef(props, 'size'),
 }))
 </script>
@@ -27,7 +28,7 @@ provideCentouiAvatarRootContext(reactive({
     data-slot="avatar-root"
     :data-size="size"
     v-bind="forwardedProps"
-    :class="styles.root({ class: props.class })"
+    :class="classNames"
   >
     <slot />
   </AvatarRoot>
