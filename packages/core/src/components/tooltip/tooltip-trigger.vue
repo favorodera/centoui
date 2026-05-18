@@ -1,22 +1,25 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
 import { TooltipTrigger, useForwardProps } from 'reka-ui'
-import { injectCentouiTooltipRootContext, type TooltipTriggerProps, type TooltipTriggerSlots } from './index'
-
-const rootContext = injectCentouiTooltipRootContext()
-
-defineSlots<TooltipTriggerSlots>()
+import { computed } from 'vue'
+import { tooltipVariants, type TooltipTriggerProps } from './index'
 
 const props = defineProps<TooltipTriggerProps>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
+
+const classNames = computed(() => {
+  const { trigger } = tooltipVariants()
+  
+  return trigger({ class: props.class })
+})
 </script>
 
 <template>
   <TooltipTrigger
     data-slot="tooltip-trigger"
     v-bind="forwardedProps"
-    :class="rootContext.styles.trigger({ class: props.class })"
+    :class="classNames"
   >
     <slot />
   </TooltipTrigger>
