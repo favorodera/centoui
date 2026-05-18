@@ -1,5 +1,5 @@
 import { createContext, type PrimitiveProps } from 'reka-ui'
-import { tv, type ClassValue, type VariantProps } from 'tailwind-variants'
+import { tv, type ClassProp, type VariantProps } from 'tailwind-variants'
 import type { SeparatorProps } from '../separator'
 
 export const buttonGroupVariants = tv({
@@ -59,29 +59,17 @@ export type ButtonGroupVariants = VariantProps<typeof buttonGroupVariants>
 
 // TYPES — Context
 
-export type ButtonGroupContext = Pick<ButtonGroupVariants, 'orientation'> & {
-  /** Styles for the button group */
-  styles: ReturnType<typeof buttonGroupVariants>
-}
+export type ButtonGroupContext = Pick<ButtonGroupProps, 'orientation'>
 
 
 // TYPES — Props
 
-export type ButtonGroupProps = PrimitiveProps & {
+export type ButtonGroupProps = PrimitiveProps & Pick<ClassProp, 'class'> & {
   /**
    * The orientation of the button group.
    * @default 'horizontal'
    */
   orientation?: ButtonGroupVariants['orientation']
-  /** Custom class to apply to the root element. */
-  class?: ClassValue
 }
 
 export type ButtonGroupSeparatorProps = SeparatorProps
-
-
-// TYPES — Slots
-
-export type ButtonGroupSlots = {
-  default: []
-}
