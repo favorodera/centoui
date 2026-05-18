@@ -5,7 +5,9 @@ import {
   type SelectValueProps,
   type SelectValueSlots,
   injectCentouiSelectRootContext,
+  selectVariants,
 } from '.'
+import { computed } from 'vue'
 
 const rootContext = injectCentouiSelectRootContext()
 
@@ -14,6 +16,14 @@ defineSlots<SelectValueSlots>()
 const props = defineProps<SelectValueProps>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
+
+const classNames = computed(() => {
+  const { value } = selectVariants({
+    size: rootContext.size,
+  })
+  
+  return value({ class: props.class })
+})
 </script>
 
 <template>
@@ -21,7 +31,7 @@ const forwardedProps = useForwardProps(delegatedProps)
     v-slot="slotProps"
     data-slot="select-value"
     v-bind="forwardedProps"
-    :class="rootContext.styles.value({ class: props.class })"
+    :class="classNames"
   >
     <slot v-bind="slotProps" />
   </SelectValue>
