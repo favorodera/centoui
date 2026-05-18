@@ -30,7 +30,8 @@
     "tailwind-variants": "^3.2.2",
     "tailwindcss": "^4.3.0",
     "vue": "^3.5.30",
-    "vue-router": "^5.0.3"
+    "vue-router": "^5.0.3",
+    "centoui": "workspace:*"
   },
   "devDependencies": {
     "@iconify/vue": "^5.0.0",
