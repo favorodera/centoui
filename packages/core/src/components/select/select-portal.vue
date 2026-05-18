@@ -2,10 +2,7 @@
 import { useForwardProps, SelectPortal } from 'reka-ui'
 import {
   type SelectPortalProps,
-  type SelectPortalSlots,
 } from '.'
-
-defineSlots<SelectPortalSlots>()
 
 const props = defineProps<SelectPortalProps>()
 const forwardedProps = useForwardProps(props)
