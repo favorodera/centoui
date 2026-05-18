@@ -3,27 +3,25 @@ import { reactiveOmit } from '@vueuse/core'
 import { injectProgressRootContext, ProgressIndicator, useForwardProps } from 'reka-ui'
 import { computed, type CSSProperties } from 'vue'
 import {
-  injectCentouiProgressRootContext,
-  type ProgressIndicatorSlots,
   type ProgressIndicatorProps,
+  progressVariants,
 } from '.'
 
-const rootContext = computed(() => {
-  return {
-    ...injectProgressRootContext(),
-    ...injectCentouiProgressRootContext(),
-  }
-})
-
-defineSlots<ProgressIndicatorSlots>()
+const rootContext = injectProgressRootContext()
 
 const props = defineProps<ProgressIndicatorProps>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
 
-const progressStyle = computed<CSSProperties>(() => {
-  const value = rootContext.value.modelValue?.value ?? 0
-  const max = rootContext.value.max.value ?? 100
+const classNames = computed(() => {
+  const { indicator } = progressVariants()
+  
+  return indicator({ class: props.class })
+})
+
+const styles = computed<CSSProperties>(() => {
+  const value = rootContext.modelValue?.value ?? 0
+  const max = rootContext.max.value ?? 100
 
   const percent = (value / max) * 100
 
@@ -37,8 +35,8 @@ const progressStyle = computed<CSSProperties>(() => {
   <ProgressIndicator
     data-slot="progress-indicator"
     v-bind="forwardedProps"
-    :class="rootContext.styles.indicator({ class: props.class })"
-    :style="progressStyle"
+    :class="classNames"
+    :style="styles"
   >
     <slot />
   </ProgressIndicator>
