@@ -1,18 +1,16 @@
 import {
-  type PopoverRootProps as RekaPopoverRootProps,
-  type PopoverRootEmits as RekaPopoverRootEmits,
-  type PopoverTriggerProps as RekaPopoverTriggerProps,
+  type PrimitiveProps,
   type PopoverAnchorProps as RekaPopoverAnchorProps,
-  type PopoverPortalProps as RekaPopoverPortalProps,
-  type PopoverContentProps as RekaPopoverContentProps,
-  type PopoverContentEmits as RekaPopoverContentEmits,
   type PopoverArrowProps as RekaPopoverArrowProps,
   type PopoverCloseProps as RekaPopoverCloseProps,
-  createContext,
-  type PrimitiveProps,
+  type PopoverContentEmits as RekaPopoverContentEmits,
+  type PopoverContentProps as RekaPopoverContentProps,
+  type PopoverPortalProps as RekaPopoverPortalProps,
+  type PopoverRootEmits as RekaPopoverRootEmits,
+  type PopoverRootProps as RekaPopoverRootProps,
+  type PopoverTriggerProps as RekaPopoverTriggerProps,
 } from 'reka-ui'
-import { tv, type ClassValue } from 'tailwind-variants'
-import type { ButtonProps } from '../button'
+import { tv, type ClassProp } from 'tailwind-variants'
 
 export const popoverVariants = tv({
   slots: {
@@ -49,81 +47,45 @@ export const popoverVariants = tv({
 
 // COMPONENTS
 
-export { default as PopoverRoot } from './popover-root.vue'
-export { default as PopoverTrigger } from './popover-trigger.vue'
 export { default as PopoverAnchor } from './popover-anchor.vue'
-export { default as PopoverPortal } from './popover-portal.vue'
-export { default as PopoverContent } from './popover-content.vue'
-export { default as PopoverHeader } from './popover-header.vue'
-export { default as PopoverTitle } from './popover-title.vue'
-export { default as PopoverDescription } from './popover-description.vue'
-export { default as PopoverBody } from './popover-body.vue'
-export { default as PopoverFooter } from './popover-footer.vue'
 export { default as PopoverArrow } from './popover-arrow.vue'
+export { default as PopoverBody } from './popover-body.vue'
 export { default as PopoverClose } from './popover-close.vue'
+export { default as PopoverContent } from './popover-content.vue'
+export { default as PopoverDescription } from './popover-description.vue'
+export { default as PopoverFooter } from './popover-footer.vue'
+export { default as PopoverHeader } from './popover-header.vue'
+export { default as PopoverPortal } from './popover-portal.vue'
+export { default as PopoverRoot } from './popover-root.vue'
+export { default as PopoverTitle } from './popover-title.vue'
+export { default as PopoverTrigger } from './popover-trigger.vue'
 
-
-// CONTEXT
-
-export const [injectCentouiPopoverRootContext, provideCentouiPopoverRootContext] = createContext<PopoverRootContext>('PopoverRoot', 'centoui:popover-root:context')
-
-
-// TYPES — Context
-
-export type PopoverRootContext = {
-  /** Styles for the alert */
-  styles: ReturnType<typeof popoverVariants>
-}
 
 // TYPES — Props
 
 export type PopoverRootProps = RekaPopoverRootProps
 
-export type PopoverTriggerProps = RekaPopoverTriggerProps & {
-  /** Custom class to apply to the root element. */
-  class?: ClassValue
-}
+export type PopoverTriggerProps = RekaPopoverTriggerProps & Pick<ClassProp, 'class'>
 
 export type PopoverAnchorProps = RekaPopoverAnchorProps
 
 export type PopoverPortalProps = RekaPopoverPortalProps
 
-export type PopoverContentProps = RekaPopoverContentProps & {
-  /** Custom class to apply to the root element. */
-  class?: ClassValue
-}
+export type PopoverContentProps = RekaPopoverContentProps & Pick<ClassProp, 'class'>
 
-export type PopoverHeaderProps = PrimitiveProps & {
-  /** Custom class to apply to the root element. */
-  class?: ClassValue
-}
+export type PopoverHeaderProps = PrimitiveProps & Pick<ClassProp, 'class'>
 
-export type PopoverTitleProps = PrimitiveProps & {
-  /** Custom class to apply to the root element. */
-  class?: ClassValue
-}
+export type PopoverTitleProps = PrimitiveProps & Pick<ClassProp, 'class'>
 
-export type PopoverDescriptionProps = PrimitiveProps & {
-  /** Custom class to apply to the root element. */
-  class?: ClassValue
-}
+export type PopoverDescriptionProps = PrimitiveProps & Pick<ClassProp, 'class'>
 
-export type PopoverBodyProps = PrimitiveProps & {
-  /** Custom class to apply to the root element. */
-  class?: ClassValue
-}
+export type PopoverBodyProps = PrimitiveProps & Pick<ClassProp, 'class'>
 
-export type PopoverFooterProps = PrimitiveProps & {
-  /** Custom class to apply to the root element. */
-  class?: ClassValue
-}
+export type PopoverFooterProps = PrimitiveProps & Pick<ClassProp, 'class'>
 
-export type PopoverArrowProps = RekaPopoverArrowProps & {
-  /** Custom class to apply to the root element. */
-  class?: ClassValue
-}
+export type PopoverArrowProps = RekaPopoverArrowProps & Pick<ClassProp, 'class'>
 
-export type PopoverCloseProps = RekaPopoverCloseProps & Pick<ButtonProps, 'variant' | 'class' | 'size' | 'square'>
+export type PopoverCloseProps = RekaPopoverCloseProps & Pick<ClassProp, 'class'>
 
 
 // TYPES — Emits
@@ -142,46 +104,3 @@ export type PopoverRootSlots = {
   }) => []
 }
 
-export type PopoverTriggerSlots = {
-  default: []
-}
-
-export type PopoverAnchorSlots = {
-  default: []
-}
-
-export type PopoverPortalSlots = {
-  default: []
-}
-
-export type PopoverContentSlots = {
-  default: []
-}
-
-export type PopoverHeaderSlots = {
-  default: []
-}
-
-export type PopoverTitleSlots = {
-  default: []
-}
-
-export type PopoverDescriptionSlots = {
-  default: []
-}
-
-export type PopoverBodySlots = {
-  default: []
-}
-
-export type PopoverFooterSlots = {
-  default: []
-}
-
-export type PopoverArrowSlots = {
-  default: []
-}
-
-export type PopoverCloseSlots = {
-  default: []
-}
