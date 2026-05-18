@@ -3,26 +3,34 @@ import { reactiveOmit } from '@vueuse/core'
 import { AccordionTrigger, useForwardProps } from 'reka-ui'
 import { Icon } from '@iconify/vue'
 import {
-  injectCentouiAccordionRootContext,
+  accordionVariants,
   type AccordionTriggerProps,
   type AccordionTriggerSlots,
 } from '.'
-import { default as config } from '#centoui/config'
-
-const rootContext = injectCentouiAccordionRootContext()
+import config from '#centoui/config'
+import { computed } from 'vue'
 
 defineSlots<AccordionTriggerSlots>()
 
 const props = defineProps<AccordionTriggerProps>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
+
+const classNames = computed(() => {
+  const { trigger, triggerIcon } = accordionVariants()
+  
+  return {
+    trigger: trigger({ class: props.class }),
+    triggerIcon: triggerIcon(),
+  }
+})
 </script>
 
 <template>
   <AccordionTrigger
     data-slot="accordion-trigger"
     v-bind="forwardedProps"
-    :class="rootContext.styles.trigger({ class: props.class })"
+    :class="classNames.trigger"
   >
     <slot />
 
@@ -30,7 +38,7 @@ const forwardedProps = useForwardProps(delegatedProps)
       <Icon
         data-slot="accordion-trigger-icon"
         :icon="config.icons.chevronDown"
-        :class="rootContext.styles.triggerIcon()"
+        :class="classNames.triggerIcon"
       />
     </slot>
   </AccordionTrigger>
