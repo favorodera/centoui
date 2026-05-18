@@ -2,25 +2,27 @@
 import { reactiveOmit } from '@vueuse/core'
 import { useForwardProps, PopoverArrow } from 'reka-ui'
 import {
-  type PopoverArrowSlots,
+  popoverVariants,
   type PopoverArrowProps,
-  injectCentouiPopoverRootContext,
 } from '.'
-
-const rootContext = injectCentouiPopoverRootContext()
-
-defineSlots<PopoverArrowSlots>()
+import { computed } from 'vue'
 
 const props = defineProps<PopoverArrowProps>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
+
+const classNames = computed(() => {
+  const { arrow } = popoverVariants()
+  
+  return arrow({ class: props.class })
+})
 </script>
 
 <template>
   <PopoverArrow
     data-slot="popover-arrow"
     v-bind="forwardedProps"
-    :class="rootContext.styles.arrow({ class: props.class })"
+    :class="classNames"
   >
     <slot />
   </PopoverArrow>
