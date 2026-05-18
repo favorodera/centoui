@@ -2,9 +2,7 @@
 import { reactiveOmit } from '@vueuse/core'
 import { Primitive, useForwardProps } from 'reka-ui'
 import { computed } from 'vue'
-import { textVariants, type TextProps, type TextSlots } from '.'
-
-defineSlots<TextSlots>()
+import { textVariants, type TextProps } from '.'
 
 const props = withDefaults(defineProps<TextProps>(), {
   as: 'span',
@@ -19,11 +17,12 @@ const delegatedProps = reactiveOmit(
 )
 const forwardedProps = useForwardProps(delegatedProps)
 
-const styles = computed(() => {
+const classNames = computed(() => {
   const { root } = textVariants({
     size: props.size,
     weight: props.weight,
   })
+
   return root({ class: props.class })
 })
 </script>
@@ -34,7 +33,7 @@ const styles = computed(() => {
     :data-size="size"
     :data-weight="weight"
     v-bind="forwardedProps"
-    :class="styles"
+    :class="classNames"
   >
     <slot />
   </Primitive>
