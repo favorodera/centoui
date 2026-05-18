@@ -1,5 +1,5 @@
 import type { PrimitiveProps } from 'reka-ui'
-import { tv, type ClassValue } from 'tailwind-variants'
+import { tv, type ClassProp } from 'tailwind-variants'
 
 export const kbdGroupVariants = tv({
   slots: {
@@ -15,14 +15,4 @@ export { default as KbdGroup } from './kbd-group.vue'
 
 // TYPES — Props
 
-export type KbdGroupProps = PrimitiveProps & {
-  /** Custom class to apply to the root element. */
-  class?: ClassValue
-}
-
-
-// TYPES — Slots
-
-export type KbdGroupSlots = {
-  default: []
-}
+export type KbdGroupProps = PrimitiveProps & Pick<ClassProp, 'class'>
