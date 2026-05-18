@@ -1,5 +1,5 @@
 import { type SeparatorProps as RekaSeparatorProps } from 'reka-ui'
-import { tv, type ClassValue, type VariantProps } from 'tailwind-variants'
+import { tv, type ClassProp, type VariantProps } from 'tailwind-variants'
 
 export const separatorVariants = tv({
   slots: {
@@ -37,14 +37,12 @@ export type SeparatorVariants = VariantProps<typeof separatorVariants>
 
 // TYPES — Props
 
-export type SeparatorProps = RekaSeparatorProps & {
+export type SeparatorProps = RekaSeparatorProps & Pick<ClassProp, 'class'> & {
   /**
    * The orientation of the separator.
    * @default 'horizontal'
    */
   orientation?: SeparatorVariants['orientation']
-  /** Custom class to apply to the root element. */
-  class?: ClassValue
 }
 
 // TYPES — Slots
