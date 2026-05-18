@@ -8,7 +8,10 @@ import { tv, type ClassProp } from 'tailwind-variants'
 export const progressVariants = tv({
   slots: {
     root: 'relative h-2 w-full overflow-hidden rounded-full bg-muted',
-    indicator: 'size-full rounded-[inherit] bg-primary transition-transform duration-200 origin-left',
+    indicator: `
+      size-full origin-left rounded-[inherit] bg-primary transition-transform
+      duration-200
+    `,
   },
 })
 
