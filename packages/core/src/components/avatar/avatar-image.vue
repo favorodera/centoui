@@ -4,8 +4,10 @@ import { AvatarImage, useForwardPropsEmits } from 'reka-ui'
 import {
   type AvatarImageEmits,
   type AvatarImageProps,
+  avatarVariants,
   injectCentouiAvatarRootContext,
 } from '.'
+import { computed } from 'vue'
 
 const rootContext = injectCentouiAvatarRootContext()
 
@@ -15,6 +17,14 @@ const props = defineProps<AvatarImageProps>()
 const delegatedProps = reactiveOmit(props, 'class')
 
 const forwardedPropsEmits = useForwardPropsEmits(delegatedProps, emits)
+
+const classNames = computed(() => {
+  const { image } = avatarVariants({
+    size: rootContext.size,
+  })
+  
+  return image({ class: props.class })
+})
 </script>
 
 <template>
@@ -22,6 +32,6 @@ const forwardedPropsEmits = useForwardPropsEmits(delegatedProps, emits)
     data-slot="avatar-image"
     :src
     v-bind="forwardedPropsEmits"
-    :class="rootContext.styles.image({ class: props.class })"
+    :class="classNames"
   />
 </template>
