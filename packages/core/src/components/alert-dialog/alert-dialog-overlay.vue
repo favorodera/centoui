@@ -2,25 +2,27 @@
 import { reactiveOmit } from '@vueuse/core'
 import { useForwardProps, AlertDialogOverlay } from 'reka-ui'
 import {
-  type AlertDialogOverlaySlots,
   type AlertDialogOverlayProps,
-  injectCentouiAlertDialogRootContext,
+  alertDialogVariants,
 } from '.'
-
-const rootContext = injectCentouiAlertDialogRootContext()
-
-defineSlots<AlertDialogOverlaySlots>()
+import { computed } from 'vue'
 
 const props = defineProps<AlertDialogOverlayProps>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
+
+const classNames = computed(() => {
+  const { overlay } = alertDialogVariants()
+  
+  return overlay({ class: props.class })
+})
 </script>
 
 <template>
   <AlertDialogOverlay
     data-slot="alert-dialog-overlay"
     v-bind="forwardedProps"
-    :class="rootContext.styles.overlay({ class: props.class })"
+    :class="classNames"
   >
     <slot />
   </AlertDialogOverlay>
