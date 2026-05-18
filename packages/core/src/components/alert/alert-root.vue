@@ -2,9 +2,7 @@
 import { reactiveOmit } from '@vueuse/core'
 import { useForwardProps, Primitive } from 'reka-ui'
 import { computed, reactive, toRef } from 'vue'
-import { type AlertRootSlots, type AlertRootProps, alertVariants, provideCentouiAlertRootContext } from '.'
-
-defineSlots<AlertRootSlots>()
+import { type AlertRootProps, alertVariants, provideCentouiAlertRootContext } from '.'
 
 const props = withDefaults(defineProps<AlertRootProps>(), {
   as: 'div',
@@ -17,12 +15,15 @@ const delegatedProps = reactiveOmit(
 )
 const forwardedProps = useForwardProps(delegatedProps)
 
-const styles = computed(() => alertVariants({
-  variant: props.variant,
-}))
+const classNames = computed(() => {
+  const { root } = alertVariants({
+    variant: props.variant,
+  })
+  
+  return root({ class: props.class })
+})
 
 provideCentouiAlertRootContext(reactive({
-  styles,
   variant: toRef(props, 'variant'),
 }))
 </script>
@@ -33,7 +34,7 @@ provideCentouiAlertRootContext(reactive({
     :data-variant="variant"
     role="alert"
     v-bind="forwardedProps"
-    :class="styles.root({ class: props.class })"
+    :class="classNames"
   >
     <slot />
   </Primitive>
