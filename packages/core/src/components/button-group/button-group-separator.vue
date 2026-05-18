@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
 import { computed, useAttrs } from 'vue'
-import { injectCentouiButtonGroupContext, type ButtonGroupSeparatorProps } from '.'
+import { buttonGroupVariants, injectCentouiButtonGroupContext, type ButtonGroupSeparatorProps } from '.'
 import { Separator } from '../separator'
 
 defineOptions({
@@ -15,6 +15,14 @@ const attributes = useAttrs()
 const props = defineProps<ButtonGroupSeparatorProps>()
 const delegatedProps = reactiveOmit(props, 'class')
 
+const classNames = computed(() => {
+  const { separator } = buttonGroupVariants({
+    orientation: buttonGroupContext.orientation,
+  })
+
+  return separator({ class: props.class })
+})
+
 const flippedOrientation = computed(() => {
   return buttonGroupContext.orientation === 'vertical' ? 'horizontal' : 'vertical'
 })
@@ -25,6 +33,6 @@ const flippedOrientation = computed(() => {
     data-centoui-slot="button-group-separator"
     v-bind="{...delegatedProps, ...attributes}"
     :orientation="flippedOrientation"
-    :class="buttonGroupContext.styles.separator({class:props.class})"
+    :class="classNames"
   />
 </template>
