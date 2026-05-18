@@ -1,5 +1,5 @@
 import type { PrimitiveProps } from 'reka-ui'
-import { tv, type ClassValue, type VariantProps } from 'tailwind-variants'
+import { tv, type ClassProp, type VariantProps } from 'tailwind-variants'
 
 export const kbdVariants = tv({
   slots: {
@@ -45,18 +45,10 @@ export type KbdVariants = VariantProps<typeof kbdVariants>
 
 // TYPES — Props
 
-export type KbdProps = PrimitiveProps & {
+export type KbdProps = PrimitiveProps & Pick<ClassProp, 'class'> & {
   /**
    * The size of the kbd.
    * @default 'md'
    */
   size?: KbdVariants['size']
-  /** Custom class to apply to the root element. */
-  class?: ClassValue
-}
-
-
-// TYPES — Slots
-export type KbdSlots = {
-  default: []
 }
