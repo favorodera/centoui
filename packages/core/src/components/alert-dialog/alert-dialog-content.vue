@@ -4,13 +4,9 @@ import { AlertDialogContent, useForwardPropsEmits } from 'reka-ui'
 import {
   type AlertDialogContentEmits,
   type AlertDialogContentProps,
-  type AlertDialogContentSlots,
-  injectCentouiAlertDialogRootContext,
+  alertDialogVariants,
 } from '.'
-
-const rootContext = injectCentouiAlertDialogRootContext()
-
-defineSlots<AlertDialogContentSlots>()
+import { computed } from 'vue'
 
 const emits = defineEmits<AlertDialogContentEmits>()
 
@@ -18,13 +14,19 @@ const props = defineProps<AlertDialogContentProps>()
 const delegatedProps = reactiveOmit(props, 'class')
 
 const forwardedPropsEmits = useForwardPropsEmits(delegatedProps, emits)
+
+const classNames = computed(() => {
+  const { content } = alertDialogVariants()
+  
+  return content({ class: props.class })
+})
 </script>
 
 <template>
   <AlertDialogContent
     data-slot="alert-dialog-content"
     v-bind="forwardedPropsEmits"
-    :class="rootContext.styles.content({ class: props.class })"
+    :class="classNames"
   >
     <slot />
   </AlertDialogContent>
