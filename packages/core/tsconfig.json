@@ -16,7 +16,7 @@
     "verbatimModuleSyntax": true,
     "skipLibCheck": true,
     "paths": {
-      "#centoui/config": [ "./src/defaults/config.ts" ]
+      "#centoui/config": [ "./src/defaults/config.ts" ],
     },
   },
   "include": [ "src", "augment.d.ts" ]
