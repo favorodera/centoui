@@ -1,5 +1,129 @@
 # Changelog
 
+## v1.0.0-alpha.23...v1.0.0-alpha.24
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.23...v1.0.0-alpha.24)
+
+### Added
+
+- **button:** Add aria-invalid state preview ([0b6d584](https://github.com/favorodera/centoui/commit/0b6d584))
+- **preview:** Use button for popover close action ([cd1b377](https://github.com/favorodera/centoui/commit/cd1b377))
+- **preview:** Add select component view ([96d0a1b](https://github.com/favorodera/centoui/commit/96d0a1b))
+- **registry:** Add select component configuration ([81690a0](https://github.com/favorodera/centoui/commit/81690a0))
+
+### Refactors
+
+- **accordion:** Use local variants for styling ([2a8a779](https://github.com/favorodera/centoui/commit/2a8a779))
+- **accordion:** Use local variants for styling ([d356c34](https://github.com/favorodera/centoui/commit/d356c34))
+- **accordion:** Use local variants for styling ([ed20a1e](https://github.com/favorodera/centoui/commit/ed20a1e))
+- **accordion:** Remove styles from root context provider ([fc436b3](https://github.com/favorodera/centoui/commit/fc436b3))
+- **accordion:** Use local variants for styling ([626e695](https://github.com/favorodera/centoui/commit/626e695))
+- **accordion:** Update types to use ClassProp and remove styles from context ([d996ff0](https://github.com/favorodera/centoui/commit/d996ff0))
+- **alert-dialog:** Use local variants for styling ([feac428](https://github.com/favorodera/centoui/commit/feac428))
+- **alert-dialog:** Use local variants for styling ([235000b](https://github.com/favorodera/centoui/commit/235000b))
+- **alert-dialog:** Use local variants for styling ([8ee971f](https://github.com/favorodera/centoui/commit/8ee971f))
+- **alert-dialog:** Use local variants for styling ([989878f](https://github.com/favorodera/centoui/commit/989878f))
+- **alert-dialog:** Use local variants for styling ([bed3d8f](https://github.com/favorodera/centoui/commit/bed3d8f))
+- **alert-dialog:** Use local variants for styling ([d0be0cb](https://github.com/favorodera/centoui/commit/d0be0cb))
+- **alert-dialog:** Use local variants for styling ([b82a4af](https://github.com/favorodera/centoui/commit/b82a4af))
+- **alert-dialog:** Cleanup component imports and template ([1d257fd](https://github.com/favorodera/centoui/commit/1d257fd))
+- **alert-dialog:** Remove styles from root context provider ([5dcf8b1](https://github.com/favorodera/centoui/commit/5dcf8b1))
+- **alert-dialog:** Use local variants for styling ([e57c8fc](https://github.com/favorodera/centoui/commit/e57c8fc))
+- **alert-dialog:** Use local variants for styling ([446350d](https://github.com/favorodera/centoui/commit/446350d))
+- **alert-dialog:** Update types to use ClassProp and remove styles from context ([76cb1f0](https://github.com/favorodera/centoui/commit/76cb1f0))
+- **alert:** Use local variants for styling ([69be7c9](https://github.com/favorodera/centoui/commit/69be7c9))
+- **alert:** Use local variants for styling ([f49af5b](https://github.com/favorodera/centoui/commit/f49af5b))
+- **alert:** Use local variants for styling ([d27c1db](https://github.com/favorodera/centoui/commit/d27c1db))
+- **alert:** Use local variants for styling ([34e063b](https://github.com/favorodera/centoui/commit/34e063b))
+- **alert:** Remove styles from root context provider ([e6bfb9e](https://github.com/favorodera/centoui/commit/e6bfb9e))
+- **alert:** Use local variants for styling ([0a4ebd5](https://github.com/favorodera/centoui/commit/0a4ebd5))
+- **alert:** Update types to use ClassProp and remove styles from context ([b3503b2](https://github.com/favorodera/centoui/commit/b3503b2))
+- **aspect-ratio:** Use local variants for styling ([6d1dde1](https://github.com/favorodera/centoui/commit/6d1dde1))
+- **aspect-ratio:** Update types to use ClassProp and remove styles from context ([0516c61](https://github.com/favorodera/centoui/commit/0516c61))
+- **avatar:** Use local variants for styling ([42aa809](https://github.com/favorodera/centoui/commit/42aa809))
+- **avatar:** Use local variants for styling ([204eb9d](https://github.com/favorodera/centoui/commit/204eb9d))
+- **avatar:** Remove styles from root context provider ([9a42f1c](https://github.com/favorodera/centoui/commit/9a42f1c))
+- **avatar:** Update types to use ClassProp and remove styles from context ([0c5865a](https://github.com/favorodera/centoui/commit/0c5865a))
+- **badge:** Use local variants for styling ([7206701](https://github.com/favorodera/centoui/commit/7206701))
+- **badge:** Update types to use ClassProp and remove styles from context ([b7f6a80](https://github.com/favorodera/centoui/commit/b7f6a80))
+- **button-group:** Use local variants for styling ([7120011](https://github.com/favorodera/centoui/commit/7120011))
+- **button-group:** Remove styles from root context provider ([d2eae72](https://github.com/favorodera/centoui/commit/d2eae72))
+- **button-group:** Update types to use ClassProp and remove styles from context ([302eaaf](https://github.com/favorodera/centoui/commit/302eaaf))
+- **button:** Use local variants for styling ([0c3c954](https://github.com/favorodera/centoui/commit/0c3c954))
+- **button:** Update types to use ClassProp and remove styles from context ([6ff36fc](https://github.com/favorodera/centoui/commit/6ff36fc))
+- **collapsible:** Use local variants for styling ([aee41de](https://github.com/favorodera/centoui/commit/aee41de))
+- **collapsible:** Remove styles from root context provider ([965e29d](https://github.com/favorodera/centoui/commit/965e29d))
+- **collapsible:** Use local variants for styling ([dd056d1](https://github.com/favorodera/centoui/commit/dd056d1))
+- **collapsible:** Update types to use ClassProp and remove styles from context ([281f914](https://github.com/favorodera/centoui/commit/281f914))
+- **kbd-group:** Update types to use ClassProp and remove styles from context ([cb8852e](https://github.com/favorodera/centoui/commit/cb8852e))
+- **kbd-group:** Use local variants for styling ([44b5df5](https://github.com/favorodera/centoui/commit/44b5df5))
+- **kbd:** Update types to use ClassProp and remove styles from context ([057566c](https://github.com/favorodera/centoui/commit/057566c))
+- **kbd:** Use local variants for styling ([cc2d74f](https://github.com/favorodera/centoui/commit/cc2d74f))
+- **popover:** Update types to use ClassProp and remove styles from context ([0faa4f1](https://github.com/favorodera/centoui/commit/0faa4f1))
+- **popover:** Cleanup component imports and template ([4176147](https://github.com/favorodera/centoui/commit/4176147))
+- **popover:** Use local variants for styling ([a31b36f](https://github.com/favorodera/centoui/commit/a31b36f))
+- **popover:** Use local variants for styling ([014ccf1](https://github.com/favorodera/centoui/commit/014ccf1))
+- **popover:** Use local variants for styling ([a141923](https://github.com/favorodera/centoui/commit/a141923))
+- **popover:** Use local variants for styling ([5ad71b8](https://github.com/favorodera/centoui/commit/5ad71b8))
+- **popover:** Use local variants for styling ([5ada8c4](https://github.com/favorodera/centoui/commit/5ada8c4))
+- **popover:** Use local variants for styling ([65fe5a8](https://github.com/favorodera/centoui/commit/65fe5a8))
+- **popover:** Use local variants for styling ([dbe10c1](https://github.com/favorodera/centoui/commit/dbe10c1))
+- **popover:** Cleanup component imports and template ([95800f3](https://github.com/favorodera/centoui/commit/95800f3))
+- **popover:** Remove styles from root context provider ([2bf330c](https://github.com/favorodera/centoui/commit/2bf330c))
+- **popover:** Use local variants for styling ([f89c4a0](https://github.com/favorodera/centoui/commit/f89c4a0))
+- **popover:** Use local variants for styling ([ad15513](https://github.com/favorodera/centoui/commit/ad15513))
+- **progress:** Update types to use ClassProp and remove styles from context ([8abdf38](https://github.com/favorodera/centoui/commit/8abdf38))
+- **progress:** Use local variants for styling ([096d9aa](https://github.com/favorodera/centoui/commit/096d9aa))
+- **progress:** Remove styles from root context provider ([c438824](https://github.com/favorodera/centoui/commit/c438824))
+- **select:** Update types to use ClassProp and remove styles from context ([5b90f10](https://github.com/favorodera/centoui/commit/5b90f10))
+- **select:** Use local variants for styling ([9216373](https://github.com/favorodera/centoui/commit/9216373))
+- **select:** Use local variants for styling ([5264e1b](https://github.com/favorodera/centoui/commit/5264e1b))
+- **select:** Use local variants for styling ([4f56478](https://github.com/favorodera/centoui/commit/4f56478))
+- **select:** Use local variants for styling ([9593f5b](https://github.com/favorodera/centoui/commit/9593f5b))
+- **select:** Use local variants for styling ([65756b6](https://github.com/favorodera/centoui/commit/65756b6))
+- **select:** Use local variants for styling ([19222a0](https://github.com/favorodera/centoui/commit/19222a0))
+- **select:** Use local variants for styling ([ae80f7c](https://github.com/favorodera/centoui/commit/ae80f7c))
+- **select:** Use local variants for styling ([7b861d2](https://github.com/favorodera/centoui/commit/7b861d2))
+- **select:** Cleanup component imports and template ([76eea6e](https://github.com/favorodera/centoui/commit/76eea6e))
+- **select:** Remove styles from root context provider ([2ab9d23](https://github.com/favorodera/centoui/commit/2ab9d23))
+- **select:** Use local variants for styling ([90c7e0a](https://github.com/favorodera/centoui/commit/90c7e0a))
+- **select:** Use local variants for styling ([2117549](https://github.com/favorodera/centoui/commit/2117549))
+- **select:** Use local variants for styling ([0acdd6b](https://github.com/favorodera/centoui/commit/0acdd6b))
+- **select:** Remove styles from root context provider ([81e785a](https://github.com/favorodera/centoui/commit/81e785a))
+- **select:** Use local variants for styling ([39e1007](https://github.com/favorodera/centoui/commit/39e1007))
+- **select:** Use local variants for styling ([e545f37](https://github.com/favorodera/centoui/commit/e545f37))
+- **separator:** Update types to use ClassProp and remove styles from context ([3afe806](https://github.com/favorodera/centoui/commit/3afe806))
+- **separator:** Use local variants for styling ([519185e](https://github.com/favorodera/centoui/commit/519185e))
+- **text:** Update types to use ClassProp and remove styles from context ([a3a0d10](https://github.com/favorodera/centoui/commit/a3a0d10))
+- **text:** Use local variants for styling ([e6f807f](https://github.com/favorodera/centoui/commit/e6f807f))
+- **tooltip:** Update types to use ClassProp and remove styles from context ([0c7e1bb](https://github.com/favorodera/centoui/commit/0c7e1bb))
+- **tooltip:** Use local variants for styling ([06fd657](https://github.com/favorodera/centoui/commit/06fd657))
+- **tooltip:** Use local variants for styling ([087d655](https://github.com/favorodera/centoui/commit/087d655))
+- **tooltip:** Cleanup component imports and template ([8c0bc95](https://github.com/favorodera/centoui/commit/8c0bc95))
+- **tooltip:** Cleanup component imports and template ([d2e484c](https://github.com/favorodera/centoui/commit/d2e484c))
+- **tooltip:** Remove styles from root context provider ([75faf14](https://github.com/favorodera/centoui/commit/75faf14))
+- **tooltip:** Use local variants for styling ([78d7aac](https://github.com/favorodera/centoui/commit/78d7aac))
+- **config:** Update default configuration ([4b7052c](https://github.com/favorodera/centoui/commit/4b7052c))
+- **core:** Update component ([f333a15](https://github.com/favorodera/centoui/commit/f333a15))
+- **core:** Streamline component styling and context API** ([4cc5b48](https://github.com/favorodera/centoui/commit/4cc5b48))
+
+  - Remove style context, directly use `*Variants` in components
+  - Simplify component context types
+  - Update `tailwind-variants` `
+
+
+### Chores
+
+- **preview:** Add workspace dependency ([692781d](https://github.com/favorodera/centoui/commit/692781d))
+- **registry:** Update registry registry ([a81ce6d](https://github.com/favorodera/centoui/commit/a81ce6d))
+- **registry:** Update registry registry ([2a3eb4b](https://github.com/favorodera/centoui/commit/2a3eb4b))
+- **registry:** Update core registry ([69d5394](https://github.com/favorodera/centoui/commit/69d5394))
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.22...v1.0.0-alpha.23
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.22...v1.0.0-alpha.23)
