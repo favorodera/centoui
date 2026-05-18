@@ -2,15 +2,11 @@
 import { reactiveOmit } from '@vueuse/core'
 import { CollapsibleContent, useForwardPropsEmits } from 'reka-ui'
 import {
+  collapsibleVariants,
   type CollapsibleContentEmits,
   type CollapsibleContentProps,
-  type CollapsibleContentSlots,
-  injectCentouiCollapsibleContext,
 } from '.'
-
-const rootContext = injectCentouiCollapsibleContext()
-
-defineSlots<CollapsibleContentSlots>()
+import { computed } from 'vue'
 
 const emits = defineEmits<CollapsibleContentEmits>()
 
@@ -18,13 +14,19 @@ const props = defineProps<CollapsibleContentProps>()
 const delegatedProps = reactiveOmit(props, 'class')
 
 const forwardedPropsEmits = useForwardPropsEmits(delegatedProps, emits)
+
+const classNames = computed(() => {
+  const { content } = collapsibleVariants()
+  
+  return content({ class: props.class })
+})
 </script>
 
 <template>
   <CollapsibleContent
     data-slot="collapsible-content"
     v-bind="forwardedPropsEmits"
-    :class="rootContext.styles.content({ class: props.class })"
+    :class="classNames"
   >
     <slot />
   </CollapsibleContent>
