@@ -2,18 +2,23 @@
 import { reactiveOmit } from '@vueuse/core'
 import { AccordionItem, useForwardProps } from 'reka-ui'
 import {
-  injectCentouiAccordionRootContext,
+  accordionVariants,
   type AccordionItemProps,
   type AccordionItemSlots,
 } from '.'
-
-const rootContext = injectCentouiAccordionRootContext()
+import { computed } from 'vue'
 
 defineSlots<AccordionItemSlots>()
 
 const props = defineProps<AccordionItemProps>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
+
+const classNames = computed(() => {
+  const { item } = accordionVariants()
+  
+  return item({ class: props.class })
+})
 </script>
 
 <template>
@@ -21,7 +26,7 @@ const forwardedProps = useForwardProps(delegatedProps)
     v-slot="slotProps"
     data-slot="accordion-item"
     v-bind="forwardedProps"
-    :class="rootContext.styles.item({ class: props.class })"
+    :class="classNames"
   >
     <slot v-bind="slotProps" />
   </AccordionItem>
