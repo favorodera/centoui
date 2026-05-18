@@ -5,7 +5,7 @@ import {
   type AvatarImageProps as RekaAvatarImageProps,
   type AvatarRootProps as RekaAvatarRootProps,
 } from 'reka-ui'
-import { tv, type ClassValue, type VariantProps } from 'tailwind-variants'
+import { tv, type ClassProp, type VariantProps } from 'tailwind-variants'
 import type { ImgHTMLAttributes } from 'vue'
 
 export const avatarVariants = tv({
@@ -75,7 +75,6 @@ export const avatarVariants = tv({
   },
   defaultVariants: {
     size: 'md',
-    shape: 'squircle',
   },
 })
 
@@ -104,46 +103,24 @@ export type AvatarVariants = VariantProps<typeof avatarVariants>
 
 // TYPES — Context
 
-export type AvatarRootContext = {
-  /** Styles for the alert */
-  styles: ReturnType<typeof avatarVariants>
-}
+export type AvatarRootContext = Pick<AvatarRootProps, 'size'>
 
 
 // TYPES — Props
 
-export type AvatarRootProps = RekaAvatarRootProps & {
+export type AvatarRootProps = RekaAvatarRootProps & Pick<ClassProp, 'class'> & {
   /**
    * The size of the avatar.
    * @default 'md'
    */
   size?: AvatarVariants['size']
-  /** Custom class to apply to the root element. */
-  class?: ClassValue
 }
 
-export type AvatarImageProps = RekaAvatarImageProps & /* @vue-ignore */ Omit<ImgHTMLAttributes, 'src' | 'crossorigin' | 'referrerpolicy'> & {
-  /** Custom class to apply to the root element. */
-  class?: ClassValue
-}
+export type AvatarImageProps = RekaAvatarImageProps & /* @vue-ignore */ Omit<ImgHTMLAttributes, 'src' | 'crossorigin' | 'referrerpolicy'> & Pick<ClassProp, 'class'>
 
-export type AvatarFallbackProps = RekaAvatarFallbackProps & {
-  /** Custom class to apply to the root element. */
-  class?: ClassValue
-}
+export type AvatarFallbackProps = RekaAvatarFallbackProps & Pick<ClassProp, 'class'>
 
 
 // TYPES — Emits
 
 export type AvatarImageEmits = RekaAvatarImageEmits
-
-
-// TYPES — Slots
-
-export type AvatarRootSlots = {
-  default: []
-}
-
-export type AvatarFallbackSlots = {
-  default: []
-}
