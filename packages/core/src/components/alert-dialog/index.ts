@@ -1,4 +1,4 @@
-import { tv, type ClassValue, type VariantProps } from 'tailwind-variants'
+import { tv, type ClassProp } from 'tailwind-variants'
 import {
   type AlertDialogProps as RekaAlertDialogRootProps,
   type AlertDialogEmits as RekaAlertDialogRootEmits,
@@ -11,7 +11,6 @@ import {
   type AlertDialogDescriptionProps as RekaAlertDialogDescriptionProps,
   type AlertDialogCancelProps as RekaAlertDialogCancelProps,
   type AlertDialogActionProps as RekaAlertDialogActionProps,
-  createContext,
   type PrimitiveProps,
 } from 'reka-ui'
 import type { ButtonProps } from '../button'
@@ -64,64 +63,25 @@ export { default as AlertDialogCancel } from './alert-dialog-cancel.vue'
 export { default as AlertDialogAction } from './alert-dialog-action.vue'
 
 
-// CONTEXT
-
-export const [injectCentouiAlertDialogRootContext, provideCentouiAlertDialogRootContext] = createContext<AlertDialogRootContext>('AlertDialogRoot', 'centoui:alert-dialog-root:context')
-
-
-// TYPES — Variants
-
-export type AlertDialogVariants = VariantProps<typeof alertDialogVariants>
-
-
-// TYPES — Context
-
-export type AlertDialogRootContext = {
-  /** Styles for the alert dialog */
-  styles: ReturnType<typeof alertDialogVariants>
-}
-
-
 // TYPES — Props
 
 export type AlertDialogRootProps = RekaAlertDialogRootProps
 
-export type AlertDialogTriggerProps = RekaAlertDialogTriggerProps & {
-  /** Custom class to apply to the root element. */
-  class?: ClassValue
-}
+export type AlertDialogTriggerProps = RekaAlertDialogTriggerProps & Pick<ClassProp, 'class'>
 
 export type AlertDialogPortalProps = RekaAlertDialogPortalProps
 
-export type AlertDialogOverlayProps = RekaAlertDialogOverlayProps & {
-  /** Custom class to apply to the root element. */
-  class?: ClassValue
-}
+export type AlertDialogOverlayProps = RekaAlertDialogOverlayProps & Pick<ClassProp, 'class'>
 
-export type AlertDialogContentProps = RekaAlertDialogContentProps & {
-  /** Custom class to apply to the root element. */
-  class?: ClassValue
-}
+export type AlertDialogContentProps = RekaAlertDialogContentProps & Pick<ClassProp, 'class'>
 
-export type AlertDialogHeaderProps = PrimitiveProps & {
-  /** Custom class to apply to the root element. */
-  class?: ClassValue
-}
+export type AlertDialogHeaderProps = PrimitiveProps & Pick<ClassProp, 'class'>
 
-export type AlertDialogTitleProps = RekaAlertDialogTitleProps & {
-  /** Custom class to apply to the root element. */
-  class?: ClassValue
-}
+export type AlertDialogTitleProps = RekaAlertDialogTitleProps & Pick<ClassProp, 'class'>
 
-export type AlertDialogDescriptionProps = RekaAlertDialogDescriptionProps & {
-  /** Custom class to apply to the root element. */
-  class?: ClassValue
-}
+export type AlertDialogDescriptionProps = RekaAlertDialogDescriptionProps & Pick<ClassProp, 'class'>
 
-export type AlertDialogFooterProps = PrimitiveProps & {
-  /** Custom class to apply to the root element. */
-  class?: ClassValue
-}
+export type AlertDialogFooterProps = PrimitiveProps & Pick<ClassProp, 'class'>
 
 export type AlertDialogCancelProps = RekaAlertDialogCancelProps & Pick<ButtonProps, 'variant' | 'class' | 'size' | 'square'>
 
@@ -129,12 +89,14 @@ export type AlertDialogActionProps = RekaAlertDialogActionProps & Pick<ButtonPro
 
 
 // TYPES — Emits
+
 export type AlertDialogRootEmits = RekaAlertDialogRootEmits
 
 export type AlertDialogContentEmits = RekaAlertDialogContentEmits
 
 
 // TYPES — Slots
+
 export type AlertDialogRootSlots = {
   default: (props: {
     /** Current open state */
@@ -143,45 +105,4 @@ export type AlertDialogRootSlots = {
     close: () => void
   }) => []
 }
-
-export type AlertDialogTriggerSlots = {
-  default: []
-}
-
-export type AlertDialogPortalSlots = {
-  default: []
-}
-
-export type AlertDialogOverlaySlots = {
-  default: []
-}
-
-export type AlertDialogContentSlots = {
-  default: []
-}
-
-export type AlertDialogHeaderSlots = {
-  default: []
-}
-
-export type AlertDialogTitleSlots = {
-  default: []
-}
-
-export type AlertDialogDescriptionSlots = {
-  default: []
-}
-
-export type AlertDialogFooterSlots = {
-  default: []
-}
-
-export type AlertDialogCancelSlots = {
-  default: []
-}
-
-export type AlertDialogActionSlots = {
-  default: []
-}
-
 
