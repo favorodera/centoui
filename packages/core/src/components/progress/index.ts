@@ -1,10 +1,9 @@
 import {
-  createContext,
   type ProgressIndicatorProps as RekaProgressIndicatorProps,
-  type ProgressRootProps as RekaProgressRootProps,
   type ProgressRootEmits as RekaProgressRootEmits,
+  type ProgressRootProps as RekaProgressRootProps,
 } from 'reka-ui'
-import { tv, type ClassValue } from 'tailwind-variants'
+import { tv, type ClassProp } from 'tailwind-variants'
 
 export const progressVariants = tv({
   slots: {
@@ -16,34 +15,15 @@ export const progressVariants = tv({
 
 // COMPONENTS
 
-export { default as ProgressRoot } from './progress-root.vue'
 export { default as ProgressIndicator } from './progress-indicator.vue'
-
-
-// CONTEXT
-
-export const [injectCentouiProgressRootContext, provideCentouiProgressRootContext] = createContext<ProgressRootContext>('ProgressRoot', 'centoui:progress-root:context')
-
-
-// TYPES — Context
-
-export type ProgressRootContext = {
-  /** Styles for the alert */
-  styles: ReturnType<typeof progressVariants>
-}
+export { default as ProgressRoot } from './progress-root.vue'
 
 
 // TYPES — Props
 
-export type ProgressRootProps = RekaProgressRootProps & {
-  /** Custom class to apply to the root element. */
-  class?: ClassValue
-}
+export type ProgressRootProps = RekaProgressRootProps & Pick<ClassProp, 'class'>
 
-export type ProgressIndicatorProps = RekaProgressIndicatorProps & {
-  /** Custom class to apply to the root element. */
-  class?: ClassValue
-}
+export type ProgressIndicatorProps = RekaProgressIndicatorProps & Pick<ClassProp, 'class'>
 
 
 // TYPES — Emits
@@ -58,8 +38,4 @@ export type ProgressRootSlots = {
     /** Current input values */
     modelValue?: number | null
   }) => []
-}
-
-export type ProgressIndicatorSlots = {
-  default: []
 }
