@@ -2,25 +2,28 @@
 import { reactiveOmit } from '@vueuse/core'
 import { CollapsibleTrigger, useForwardProps } from 'reka-ui'
 import {
-  injectCentouiCollapsibleContext,
+  collapsibleVariants,
   type CollapsibleTriggerProps,
-  type CollapsibleTriggerSlots,
 } from '.'
+import { computed } from 'vue'
 
-const rootContext = injectCentouiCollapsibleContext()
-
-defineSlots<CollapsibleTriggerSlots>()
 
 const props = defineProps<CollapsibleTriggerProps>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
+
+const classNames = computed(() => {
+  const { trigger } = collapsibleVariants()
+  
+  return trigger({ class: props.class })
+})
 </script>
 
 <template>
   <CollapsibleTrigger
     data-slot="collapsible-trigger"
     v-bind="forwardedProps"
-    :class="rootContext.styles.trigger({ class: props.class })"
+    :class="classNames"
   >
     <slot />
   </CollapsibleTrigger>
