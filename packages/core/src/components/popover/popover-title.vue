@@ -2,27 +2,29 @@
 import { reactiveOmit } from '@vueuse/core'
 import { useForwardProps, Primitive } from 'reka-ui'
 import {
-  type PopoverTitleSlots,
   type PopoverTitleProps,
-  injectCentouiPopoverRootContext,
+  popoverVariants,
 } from '.'
-
-const rootContext = injectCentouiPopoverRootContext()
-
-defineSlots<PopoverTitleSlots>()
+import { computed } from 'vue'
 
 const props = withDefaults(defineProps<PopoverTitleProps>(), {
   as: 'h4',
 })
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
+
+const classNames = computed(() => {
+  const { title } = popoverVariants()
+  
+  return title({ class: props.class })
+})
 </script>
 
 <template>
   <Primitive
     data-slot="popover-title"
     v-bind="forwardedProps"
-    :class="rootContext.styles.title({ class: props.class })"
+    :class="classNames"
   >
     <slot />
   </Primitive>
