@@ -10,8 +10,9 @@ const props = defineProps<AspectRatioProps>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
 
-const styles = computed(() => {
+const classNames = computed(() => {
   const { root } = aspectRatioVariants()
+
   return root({ class: props.class })
 })
 </script>
@@ -20,7 +21,7 @@ const styles = computed(() => {
   <AspectRatio
     v-slot="slotProps"
     data-slot="aspect-ratio"
-    :class="styles"
+    :class="classNames"
     v-bind="forwardedProps"
   >
     <slot v-bind="slotProps" />
