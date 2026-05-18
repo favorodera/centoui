@@ -2,9 +2,7 @@
 import { reactiveOmit } from '@vueuse/core'
 import { Primitive, useForwardProps } from 'reka-ui'
 import { computed } from 'vue'
-import { badgeVariants, type BadgeProps, type BadgeSlots } from '.'
-
-defineSlots<BadgeSlots>()
+import { badgeVariants, type BadgeProps } from '.'
 
 const props = withDefaults(defineProps<BadgeProps>(), {
   as: 'span',
@@ -20,11 +18,12 @@ const delegatedProps = reactiveOmit(
 )
 const forwardedProps = useForwardProps(delegatedProps)
 
-const styles = computed(() => {
+const classNames = computed(() => {
   const { root } = badgeVariants({
     variant: props.variant,
     size: props.size,
   })
+  
   return root({ class: props.class })
 })
 </script>
@@ -35,7 +34,7 @@ const styles = computed(() => {
     :data-variant="variant"
     :data-size="size"
     v-bind="forwardedProps"
-    :class="styles"
+    :class="classNames"
   >
     <slot />
   </Primitive>
