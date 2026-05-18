@@ -39,9 +39,7 @@ const values = usePreview('Popover', {
   <ViewContainer>
     <PopoverRoot>
 
-  
       <PopoverAnchor as-child>
-
         <PopoverTrigger as-child>
           <Button
             square
@@ -64,12 +62,17 @@ const values = usePreview('Popover', {
             </PopoverDescription>
 
             <PopoverClose
-              variant="link"
               class="absolute top-0 right-4"
-              size="sm"
-              square
+              as-child
             >
-              <Icon icon="lucide:x" />
+              <Button
+                aria-label="Close"
+                size="sm"
+                variant="link"
+              >
+                <Icon icon="lucide:x" />
+              </Button>
+             
             </PopoverClose>
           </PopoverHeader>
 
