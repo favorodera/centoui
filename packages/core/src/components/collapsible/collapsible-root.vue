@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
 import { CollapsibleRoot, useForwardPropsEmits } from 'reka-ui'
-import { computed, reactive } from 'vue'
+import { computed } from 'vue'
 import {
   collapsibleVariants,
-  provideCentouiCollapsibleContext,
   type CollapsibleRootEmits,
   type CollapsibleRootProps,
   type CollapsibleRootSlots,
@@ -19,11 +18,11 @@ const delegatedProps = reactiveOmit(props, 'class')
 
 const forwardedPropsEmits = useForwardPropsEmits(delegatedProps, emits)
 
-const styles = computed(() => collapsibleVariants())
-
-provideCentouiCollapsibleContext(reactive({
-  styles,
-}))
+const classNames = computed(() => {
+  const { root } = collapsibleVariants()
+  
+  return root({ class: props.class })
+})
 </script>
 
 <template>
@@ -31,7 +30,7 @@ provideCentouiCollapsibleContext(reactive({
     v-slot="slotProps"
     data-slot="collapsible-root"
     v-bind="forwardedPropsEmits"
-    :class="styles.root({ class: props.class })"
+    :class="classNames"
   >
     <slot v-bind="slotProps" />
   </CollapsibleRoot>
