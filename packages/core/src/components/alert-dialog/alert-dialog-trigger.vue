@@ -2,25 +2,27 @@
 import { reactiveOmit } from '@vueuse/core'
 import { useForwardProps, AlertDialogTrigger } from 'reka-ui'
 import {
-  type AlertDialogTriggerSlots,
   type AlertDialogTriggerProps,
-  injectCentouiAlertDialogRootContext,
+  alertDialogVariants,
 } from '.'
-
-const rootContext = injectCentouiAlertDialogRootContext()
-
-defineSlots<AlertDialogTriggerSlots>()
+import { computed } from 'vue'
 
 const props = defineProps<AlertDialogTriggerProps>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
+
+const classNames = computed(() => {
+  const { trigger } = alertDialogVariants()
+  
+  return trigger({ class: props.class })
+})
 </script>
 
 <template>
   <AlertDialogTrigger
     data-slot="alert-dialog-trigger"
     v-bind="forwardedProps"
-    :class="rootContext.styles.trigger({ class: props.class })"
+    :class="classNames"
   >
     <slot />
   </AlertDialogTrigger>
