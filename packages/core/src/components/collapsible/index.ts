@@ -1,12 +1,11 @@
 import {
-  createContext,
-  type CollapsibleRootProps as RekaCollapsibleRootProps,
-  type CollapsibleRootEmits as RekaCollapsibleRootEmits,
-  type CollapsibleTriggerProps as RekaCollapsibleTriggerProps,
-  type CollapsibleContentProps as RekaCollapsibleContentProps,
   type CollapsibleContentEmits as RekaCollapsibleContentEmits,
+  type CollapsibleContentProps as RekaCollapsibleContentProps,
+  type CollapsibleRootEmits as RekaCollapsibleRootEmits,
+  type CollapsibleRootProps as RekaCollapsibleRootProps,
+  type CollapsibleTriggerProps as RekaCollapsibleTriggerProps,
 } from 'reka-ui'
-import { tv, type ClassValue } from 'tailwind-variants'
+import { tv, type ClassProp } from 'tailwind-variants'
 
 export const collapsibleVariants = tv({
   slots: {
@@ -23,41 +22,19 @@ export const collapsibleVariants = tv({
 
 // COMPONENTS
 
+export { default as CollapsibleContent } from './collapsible-content.vue'
 export { default as CollapsibleRoot } from './collapsible-root.vue'
 export { default as CollapsibleTrigger } from './collapsible-trigger.vue'
-export { default as CollapsibleContent } from './collapsible-content.vue'
-
-
-// CONTEXT
-
-export const [injectCentouiCollapsibleContext, provideCentouiCollapsibleContext] = createContext<CollapsibleRootContext>('CollapsibleRoot', 'centoui:collapsible-root:context')
-
-
-// TYPES — Context
-
-export type CollapsibleRootContext = {
-  /** Styles for the alert */
-  styles: ReturnType<typeof collapsibleVariants>
-}
 
 
 // TYPES — Props
 
-export type CollapsibleRootProps = RekaCollapsibleRootProps & {
-  /** Custom class to apply to the root element. */
-  class?: ClassValue
-}
+export type CollapsibleRootProps = RekaCollapsibleRootProps & Pick<ClassProp, 'class'>
 
-export type CollapsibleTriggerProps = RekaCollapsibleTriggerProps & {
-  /** Custom class to apply to the root element. */
-  class?: ClassValue
-}
+export type CollapsibleTriggerProps = RekaCollapsibleTriggerProps & Pick<ClassProp, 'class'>
 
 
-export type CollapsibleContentProps = RekaCollapsibleContentProps & {
-  /** Custom class to apply to the root element. */
-  class?: ClassValue
-}
+export type CollapsibleContentProps = RekaCollapsibleContentProps & Pick<ClassProp, 'class'>
 
 
 // TYPES — Emits
@@ -75,12 +52,3 @@ export type CollapsibleRootSlots = {
     open: boolean
   }) => []
 }
-
-export type CollapsibleTriggerSlots = {
-  default: []
-}
-
-export type CollapsibleContentSlots = {
-  default: []
-}
-
