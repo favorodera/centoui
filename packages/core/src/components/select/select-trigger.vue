@@ -1,15 +1,14 @@
 <script setup lang="ts">
+import { reactiveOmit } from '@vueuse/core'
 import { SelectTrigger, useForwardProps } from 'reka-ui'
+import { computed } from 'vue'
 import {
-  type SelectTriggerSlots,
   type SelectTriggerProps,
-  provideCentouiSelectRootContext,
+  injectCentouiSelectRootContext,
   selectVariants,
 } from '.'
-import { computed, reactive } from 'vue'
-import { reactiveOmit } from '@vueuse/core'
 
-defineSlots<SelectTriggerSlots>()
+const rootContext = injectCentouiSelectRootContext()
 
 const props = withDefaults(defineProps<SelectTriggerProps>(), {
   variant: 'outline',
@@ -17,22 +16,22 @@ const props = withDefaults(defineProps<SelectTriggerProps>(), {
 const delegatedProps = reactiveOmit(props, 'class', 'variant')
 const forwardedProps = useForwardProps(delegatedProps)
 
-// Reconstruct the styles accommodate trigger variant-based styles
-const styles = computed(() => selectVariants({
-  size: props.size,
-}))
-
-// Re-provide the context to accommodate trigger variant-based styles
-provideCentouiSelectRootContext(reactive({
-  styles,
-}))
+const classNames = computed(() => {
+  const { trigger } = selectVariants({
+    size: rootContext.size,
+    triggerVariant: props.variant,
+  })
+  
+  return trigger({ class: props.class })
+})
 </script>
 
 <template>
   <SelectTrigger
     v-bind="forwardedProps"
     data-slot="select-trigger"
-    :class="styles.trigger({class:props.class})"
+    :class="classNames"
+    :data-variant="props.variant"
   >
     <slot />
   </SelectTrigger>
