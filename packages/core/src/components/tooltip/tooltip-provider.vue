@@ -1,12 +1,6 @@
 <script setup lang="ts">
 import { TooltipProvider, useForwardProps } from 'reka-ui'
-import { type TooltipProviderProps, type TooltipProviderSlots } from './index'
-
-defineOptions({
-  inheritAttrs: false,
-})
-
-defineSlots<TooltipProviderSlots>()
+import { type TooltipProviderProps } from './index'
 
 const props = withDefaults(defineProps<TooltipProviderProps>(), {
   delayDuration: 0,
