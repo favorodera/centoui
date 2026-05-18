@@ -5,7 +5,7 @@ export const separatorVariants = tv({
   slots: {
     root: 'flex items-center gap-3 align-middle',
     line: 'border-border',
-    content: 'shrink-0 text-center font-medium',
+    content: 'shrink-0 text-center text-sm text-muted-foreground',
   },
   variants: {
     orientation: {

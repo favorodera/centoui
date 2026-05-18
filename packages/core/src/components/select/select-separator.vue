@@ -31,8 +31,6 @@ const classNames = computed(() => {
     data-slot="select-separator"
     v-bind="forwardedProps"
   >
-    <Separator
-      :class="classNames"
-    />
+    <Separator :class="classNames" />
   </SelectSeparator>
 </template>

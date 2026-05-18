@@ -27,7 +27,8 @@ export const selectVariants = tv({
   slots: {
     trigger: `
       relative inline-flex w-fit items-center justify-between truncate
-      transition-all outline-none
+      bg-transparent ring ring-input transition-all outline-none ring-inset
+      hover:bg-input/20
       focus-visible:ring-3 focus-visible:ring-ring
       disabled:pointer-events-none disabled:cursor-not-allowed
       disabled:opacity-75
@@ -128,26 +129,6 @@ export const selectVariants = tv({
         scrollDownButton: '[&_svg]:size-5',
       },
     },
-    triggerVariant: {
-      outline: {
-        trigger: `
-          bg-transparent ring ring-input ring-inset
-          hover:bg-input/50
-        `,
-      },
-      subtle: {
-        trigger: `
-          bg-input/50 ring ring-input ring-inset
-          hover:bg-input/80
-        `,
-      },
-      soft: {
-        trigger: `
-          bg-input
-          hover:bg-input/80
-        `,
-      },
-    },
     contentPosition: {
       'popper': {
         content: `
@@ -204,10 +185,7 @@ export type SelectVariants = VariantProps<typeof selectVariants>
 
 // TYPES — Context
 
-export type SelectRootContext = Pick<SelectRootProps, 'size'> & {
-  /** @see {@link SelectTriggerProps.variant} */
-  triggerVariant?: SelectTriggerProps['variant']
-}
+export type SelectRootContext = Pick<SelectRootProps, 'size'>
 
 
 // TYPES — Props
@@ -220,13 +198,7 @@ export type SelectRootProps = RekaSelectRootProps & {
   size?: SelectVariants['size']
 }
 
-export type SelectTriggerProps = RekaSelectTriggerProps & Pick<ClassProp, 'class'> & {
-  /**
-   * The visual style of the select trigger.
-   * @default 'outline'
-   */
-  variant?: SelectVariants['triggerVariant']
-}
+export type SelectTriggerProps = RekaSelectTriggerProps & Pick<ClassProp, 'class'>
 
 export type SelectValueProps = RekaSelectValueProps & Pick<ClassProp, 'class'>
 

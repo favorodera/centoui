@@ -13,19 +13,19 @@ export const accordionVariants = tv({
   slots: {
     root: 'w-full',
     item: `
-      border-b border-b-border text-sm
+      border-b border-border text-sm
       last:border-b-0
     `,
-    header: 'flex flex-wrap',
+    header: 'flex',
     trigger: `
-      group/trigger flex flex-1 cursor-pointer items-start justify-between gap-4
-      py-4 font-medium outline-none
-      focus-visible:ring-3 focus-visible:ring-ring
-      data-disabled:pointer-events-none data-disabled:opacity-75
+      group/trigger flex flex-1 cursor-pointer items-start justify-between gap-3
+      py-3.5 text-left font-medium transition-colors outline-none
+      focus-visible:ring-2 focus-visible:ring-ring
+      data-disabled:pointer-events-none data-disabled:opacity-60
     `,
     triggerIcon: `
       pointer-events-none h-lh w-4 shrink-0 text-muted-foreground
-      transition-transform
+      transition-transform duration-200
       group-data-[state=open]/trigger:rotate-180
     `,
     content: `

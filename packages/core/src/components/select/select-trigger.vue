@@ -10,16 +10,13 @@ import {
 
 const rootContext = injectCentouiSelectRootContext()
 
-const props = withDefaults(defineProps<SelectTriggerProps>(), {
-  variant: 'outline',
-})
-const delegatedProps = reactiveOmit(props, 'class', 'variant')
+const props = defineProps<SelectTriggerProps>()
+const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
 
 const classNames = computed(() => {
   const { trigger } = selectVariants({
     size: rootContext.size,
-    triggerVariant: props.variant,
   })
   
   return trigger({ class: props.class })

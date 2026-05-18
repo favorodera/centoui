@@ -30,7 +30,7 @@ const classNames = computed(() => {
     :class="classNames.root"
   >
     <!-- When slot content is provided, render flanking lines around it. -->
-    <template v-if="!!slots.default">
+    <template v-if="slots.default">
       <div
         :class="classNames.line"
         data-slot="separator-line-1"

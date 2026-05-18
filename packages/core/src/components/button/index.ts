@@ -6,12 +6,12 @@ export const buttonVariants = tv({
   slots: {
     root: `
       relative inline-flex shrink-0 cursor-default items-center justify-center
-      truncate font-medium tracking-wide whitespace-nowrap transition-all
+      truncate font-medium whitespace-nowrap transition-all duration-200
       outline-none select-none
-      focus-visible:ring-3 focus-visible:ring-ring
+      focus-visible:ring-2 focus-visible:ring-ring
       active:translate-y-px
-      disabled:pointer-events-none disabled:opacity-75
-      aria-invalid:ring-3 aria-invalid:ring-error
+      disabled:pointer-events-none disabled:opacity-60
+      aria-invalid:ring-2 aria-invalid:ring-error
       [&_svg]:pointer-events-none [&_svg]:shrink-0
     `,
   },
@@ -20,19 +20,19 @@ export const buttonVariants = tv({
       primary: {
         root: `
           bg-primary text-primary-foreground
-          hover:bg-primary/80
+          hover:bg-primary/90
         `,
       },
       secondary: {
         root: `
           bg-secondary text-secondary-foreground
-          hover:bg-secondary/80
+          hover:bg-secondary/90
         `,
       },
       error: {
         root: `
           bg-error text-error-foreground
-          hover:bg-error/80
+          hover:bg-error/90
         `,
       },
       ghost: {
@@ -47,7 +47,7 @@ export const buttonVariants = tv({
       link: {
         root: `
           text-foreground underline decoration-muted-foreground/40 decoration-1
-          underline-offset-5
+          underline-offset-3
           hover:text-primary hover:decoration-primary
         `,
       },
@@ -56,31 +56,31 @@ export const buttonVariants = tv({
       xs: {
         root: `
           gap-1 rounded-md px-2 py-1 text-xs
-          [&_svg]:size-4
+          [&_svg]:size-3.5
         `,
       },
       sm: {
         root: `
-          gap-1.5 rounded-md px-3 py-1.5 text-xs
+          gap-1 rounded-md px-2.5 py-1.5 text-xs
           [&_svg]:size-4
         `,
       },
       md: {
         root: `
-          gap-1.5 rounded-lg px-4 py-2 text-sm
-          [&_svg]:size-5
+          gap-1.5 rounded-md px-3 py-1.5 text-sm
+          [&_svg]:size-4
         `,
       },
       lg: {
         root: `
-          gap-2 rounded-lg px-5 py-2.5 text-sm
-          [&_svg]:size-5
+          gap-1.5 rounded-lg px-4 py-2 text-sm
+          [&_svg]:size-4.5
         `,
       },
       xl: {
         root: `
-          gap-2.5 rounded-lg px-6 py-3 text-base
-          [&_svg]:size-6
+          gap-2 rounded-lg px-5 py-2 text-base
+          [&_svg]:size-5
         `,
       },
     },
@@ -99,31 +99,17 @@ export const buttonVariants = tv({
       },
     },
     {
-      size: 'sm',
+      size: ['sm', 'md'],
       square: true,
       class: {
         root: 'p-1.5',
       },
     },
     {
-      size: 'md',
+      size: ['lg', 'xl'],
       square: true,
       class: {
         root: 'p-2',
-      },
-    },
-    {
-      size: 'lg',
-      square: true,
-      class: {
-        root: 'p-2.5',
-      },
-    },
-    {
-      size: 'xl',
-      square: true,
-      class: {
-        root: 'p-3',
       },
     },
 

@@ -5,28 +5,29 @@ export const kbdVariants = tv({
   slots: {
     root: `
       pointer-events-none inline-flex w-fit items-center justify-center
-      bg-neutral px-1 font-medium text-neutral-foreground select-none
+      bg-neutral px-1.5 font-medium text-neutral-foreground select-none
     `,
   },
   variants: {
     size: {
       xs: {
-        root: 'h-3.5 min-w-3.5 rounded-sm text-[9px]',
+        root: 'h-4 min-w-4 rounded-sm text-[9px]',
       },
       sm: {
-        root: 'h-4 min-w-4 rounded-sm text-[10px]',
+        root: 'h-5 min-w-5 rounded-sm text-[10px]',
       },
       md: {
-        root: 'h-5 min-w-5 rounded-sm text-[11px]',
+        root: 'h-6 min-w-6 rounded-md text-[11px]',
       },
       lg: {
-        root: 'h-6 min-w-6 rounded-lg text-xs',
+        root: 'h-7 min-w-7 rounded-md text-xs',
       },
       xl: {
-        root: 'h-7 min-w-7 rounded-lg text-[13px]',
+        root: 'h-8 min-w-8 rounded-lg text-[13px]',
       },
     },
   },
+
   defaultVariants: {
     size: 'md',
   },

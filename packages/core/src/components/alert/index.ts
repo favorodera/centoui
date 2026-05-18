@@ -3,35 +3,51 @@ import { tv, type VariantProps, type ClassProp } from 'tailwind-variants'
 
 export const alertVariants = tv({
   slots: {
-    root: 'flex w-full items-center gap-3 rounded-lg px-4 py-3',
+    root: 'flex w-full items-start gap-3 rounded-lg px-4 py-3',
     media: `
-      shrink-0 self-start
+      shrink-0
       [&>svg]:h-lh [&>svg]:w-4
     `,
-    content: 'min-w-0 flex-1 text-sm/snug',
+    content: 'min-w-0 flex-1 text-sm/5',
     title: 'min-w-0 font-medium',
-    description: 'mt-1 min-w-0',
+    description: 'mt-1 min-w-0 text-muted-foreground',
     actions: 'flex shrink-0 items-center gap-2',
   },
   variants: {
     variant: {
       neutral: {
-        root: 'bg-neutral text-foreground',
+        root: 'bg-neutral',
+        title: 'text-foreground',
+        description: 'text-foreground/80',
+        media: 'text-foreground',
       },
       success: {
-        root: 'bg-success/8 text-success',
+        root: 'bg-success/8',
+        title: 'text-success',
+        description: 'text-success/80',
+        media: 'text-success',
       },
       warning: {
-        root: 'bg-warning/8 text-warning',
+        root: 'bg-warning/8',
+        title: 'text-warning',
+        description: 'text-warning/80',
+        media: 'text-warning',
       },
       error: {
-        root: 'bg-error/8 text-error',
+        root: 'bg-error/8',
+        title: 'text-error',
+        description: 'text-error/80',
+        media: 'text-error',
       },
       info: {
-        root: 'bg-info/8 text-info',
+        root: 'bg-info/8',
+        title: 'text-info',
+        description: 'text-info/80',
+        media: 'text-info',
       },
     },
   },
+
   defaultVariants: {
     variant: 'neutral',
   },

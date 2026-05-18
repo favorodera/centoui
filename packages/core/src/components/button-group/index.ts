@@ -12,7 +12,7 @@ export const buttonGroupVariants = tv({
       [&>[data-slot=select-trigger]:not([class*=\'w-\'])]:w-fit
       [&>input]:flex-1
     `,
-    separator: 'm-0 gap-0 self-stretch',
+    separator: 'm-0 shrink-0 self-stretch',
   },
   variants: {
     orientation: {
@@ -23,7 +23,7 @@ export const buttonGroupVariants = tv({
           [&>*:not(:first-child)]:border-t-0
           [&>*:not(:last-child)]:rounded-b-none
         `,
-        separator: '',
+        separator: 'w-full',
       },
       horizontal: {
         root: `

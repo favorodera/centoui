@@ -22,12 +22,6 @@ import ViewContainer from '@/components/view-container.vue'
 import { usePreview } from '@/composables/use-preview'
 
 const values = usePreview('Select', {
-  variant: {
-    type: 'select',
-    label: 'Variant',
-    options: Object.keys(selectVariants.variants.triggerVariant),
-    default: selectVariants.defaultVariants.triggerVariant,
-  },
   size: {
     type: 'select',
     label: 'Size',
@@ -55,7 +49,6 @@ const values = usePreview('Select', {
     >
       <SelectTrigger
         :aria-invalid="values.invalid"
-        :variant="values.variant"
         class="w-45"
       >
         <SelectValue placeholder="Select a fruit" />

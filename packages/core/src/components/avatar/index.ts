@@ -25,49 +25,49 @@ export const avatarVariants = tv({
       'xs': {
         root: 'size-6',
         fallback: `
-          text-xs
+          text-[10px]
           [&_svg]:size-3
         `,
       },
       'sm': {
         root: 'size-7',
         fallback: `
-          text-sm
+          text-xs
           [&_svg]:size-3.5
         `,
       },
       'md': {
         root: 'size-8',
         fallback: `
-          text-base
+          text-sm
           [&_svg]:size-4
         `,
       },
       'lg': {
         root: 'size-9',
         fallback: `
-          text-lg
+          text-sm
           [&_svg]:size-4.5
         `,
       },
       'xl': {
         root: 'size-10',
         fallback: `
-          text-xl
+          text-base
           [&_svg]:size-5
         `,
       },
       '2xl': {
         root: 'size-11',
         fallback: `
-          text-[22px]
+          text-lg
           [&_svg]:size-5.5
         `,
       },
       '3xl': {
         root: 'size-12',
         fallback: `
-          text-2xl
+          text-xl
           [&_svg]:size-6
         `,
       },

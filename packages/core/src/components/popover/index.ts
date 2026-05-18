@@ -17,7 +17,7 @@ export const popoverVariants = tv({
     trigger: '',
     content: `
       relative z-50 grid w-xs origin-(--reka-popover-content-transform-origin)
-      gap-4 overflow-hidden rounded-lg bg-surface-raised py-4 shadow-md
+      gap-3 overflow-hidden rounded-xl bg-surface-raised py-3 shadow-lg
       outline-none
       data-[side=bottom]:slide-in-from-top-2
       data-[side=left]:slide-in-from-right-2
@@ -28,17 +28,11 @@ export const popoverVariants = tv({
       data-[state=open]:animate-in data-[state=open]:fade-in-0
       data-[state=open]:zoom-in-95
     `,
-    header: `
-      relative flex flex-col items-center gap-1.5 px-4 text-center
-      sm:items-start sm:text-left
-    `,
-    title: 'text-base font-medium',
-    description: 'text-sm text-muted-foreground',
-    body: 'px-4',
-    footer: `
-      relative flex flex-col-reverse gap-4 px-4
-      sm:flex-row sm:justify-end sm:gap-2
-    `,
+    header: 'relative flex flex-col gap-1 px-3 text-left',
+    title: 'text-sm font-medium',
+    description: 'text-sm/5 text-muted-foreground',
+    body: 'px-3',
+    footer: 'relative flex items-center justify-end gap-2 px-3',
     arrow: 'z-50 fill-surface-raised',
     close: '',
   },

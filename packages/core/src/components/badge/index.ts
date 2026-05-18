@@ -6,7 +6,7 @@ export const badgeVariants = tv({
     root: `
       relative inline-flex shrink-0 items-center justify-center truncate
       outline-none select-none
-      focus-visible:ring-3 focus-visible:ring-ring
+      focus-visible:ring-2 focus-visible:ring-ring
       [&_svg]:pointer-events-none [&_svg]:shrink-0
     `,
   },
@@ -28,30 +28,29 @@ export const badgeVariants = tv({
         root: 'bg-info/8 text-info',
       },
     },
-
     size: {
       sm: {
         root: `
-          gap-1 rounded-sm px-1.5 py-1 text-[10px]/3
+          gap-1 rounded-sm px-1.5 py-0.5 text-[10px] font-medium
           [&_svg]:size-3
         `,
       },
       md: {
         root: `
-          gap-1 rounded-md px-2 py-1 text-xs
-          [&_svg]:size-4
+          gap-1 rounded-md px-2 py-0.5 text-xs font-medium
+          [&_svg]:size-3.5
         `,
       },
       lg: {
         root: `
-          gap-1.5 rounded-lg px-2 py-1 text-sm
-          [&_svg]:size-5
+          gap-1.5 rounded-md px-2.5 py-1 text-sm font-medium
+          [&_svg]:size-4
         `,
       },
       xl: {
         root: `
-          gap-1.5 rounded-lg px-2.5 py-1 text-base
-          [&_svg]:size-6
+          gap-1.5 rounded-lg px-3 py-1 text-sm font-medium
+          [&_svg]:size-4.5
         `,
       },
     },

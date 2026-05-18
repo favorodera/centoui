@@ -17,7 +17,6 @@ const forwardedProps = useForwardProps(delegatedProps)
 const classNames = computed(() => {
   const { arrow } = selectVariants({
     size: rootContext.size,
-    triggerVariant: rootContext.triggerVariant,
   })
   
   return arrow({ class: props.class })

@@ -3,7 +3,7 @@ import { tv, type ClassProp } from 'tailwind-variants'
 
 export const kbdGroupVariants = tv({
   slots: {
-    root: 'inline-flex items-center gap-1',
+    root: 'inline-flex items-center gap-1 align-middle',
   },
 })
 
