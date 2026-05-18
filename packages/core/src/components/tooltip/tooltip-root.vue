@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { TooltipRoot, useForwardPropsEmits } from 'reka-ui'
-import { provideCentouiTooltipRootContext, tooltipVariants, type TooltipRootEmits, type TooltipRootProps, type TooltipRootSlots } from './index'
-import { computed, reactive } from 'vue'
+import { type TooltipRootEmits, type TooltipRootProps, type TooltipRootSlots } from './index'
 
 defineSlots<TooltipRootSlots>()
   
@@ -10,12 +9,6 @@ const emits = defineEmits<TooltipRootEmits>()
 const props = defineProps<TooltipRootProps>()
 
 const forwardedPropsEmits = useForwardPropsEmits(props, emits)
-
-const styles = computed(() => tooltipVariants())
-
-provideCentouiTooltipRootContext(reactive({
-  styles,
-}))
 </script>
 
 <template>
