@@ -1,5 +1,5 @@
 import { type AspectRatioProps as RekaAspectRatioProps } from 'reka-ui'
-import { tv, type ClassValue } from 'tailwind-variants'
+import { tv, type ClassProp } from 'tailwind-variants'
 
 export const aspectRatioVariants = tv({
   slots: {
@@ -14,10 +14,7 @@ export { default as AspectRatio } from './aspect-ratio.vue'
 
 // TYPES — Props
 
-export type AspectRatioProps = RekaAspectRatioProps & {
-  /** Custom class to apply to the root element. */
-  class?: ClassValue
-}
+export type AspectRatioProps = RekaAspectRatioProps & Pick<ClassProp, 'class'>
 
 
 // TYPES — Slots
