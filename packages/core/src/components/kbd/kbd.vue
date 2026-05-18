@@ -1,10 +1,8 @@
 <script setup lang="ts">
 import { Primitive, useForwardProps } from 'reka-ui'
-import { kbdVariants, type KbdProps, type KbdSlots } from './index'
+import { kbdVariants, type KbdProps } from './index'
 import { reactiveOmit } from '@vueuse/core'
 import { computed } from 'vue'
-
-defineSlots<KbdSlots>()
 
 const props = withDefaults(defineProps<KbdProps>(), {
   as: 'kbd',
@@ -14,10 +12,11 @@ const props = withDefaults(defineProps<KbdProps>(), {
 const delegatedProps = reactiveOmit(props, 'class', 'size')
 const forwardedProps = useForwardProps(delegatedProps)
 
-const styles = computed(() => {
+const classNames = computed(() => {
   const { root } = kbdVariants({
     size: props.size,
   })
+
   return root({ class: props.class })
 })
 </script>
@@ -26,7 +25,7 @@ const styles = computed(() => {
   <Primitive
     data-slot="kbd"
     :data-size="size"
-    :class="styles"
+    :class="classNames"
     v-bind="forwardedProps"
   >
     <slot />
