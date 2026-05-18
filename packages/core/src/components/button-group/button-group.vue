@@ -2,9 +2,7 @@
 import { reactiveOmit } from '@vueuse/core'
 import { Primitive, useForwardProps } from 'reka-ui'
 import { computed, reactive, toRef } from 'vue'
-import { buttonGroupVariants, provideCentouiButtonGroupContext, type ButtonGroupProps, type ButtonGroupSlots } from '.'
-
-defineSlots<ButtonGroupSlots>()
+import { buttonGroupVariants, provideCentouiButtonGroupContext, type ButtonGroupProps } from '.'
 
 const props = withDefaults(defineProps<ButtonGroupProps>(), {
   as: 'div',
@@ -13,12 +11,15 @@ const props = withDefaults(defineProps<ButtonGroupProps>(), {
 const delegatedProps = reactiveOmit(props, 'class', 'orientation')
 const forwardedProps = useForwardProps(delegatedProps)
 
-const styles = computed(() => buttonGroupVariants({
-  orientation: props.orientation,
-}))
+const classNames = computed(() => {
+  const { root } = buttonGroupVariants({
+    orientation: props.orientation,
+  })
+
+  return root({ class: props.class })
+})
 
 provideCentouiButtonGroupContext(reactive({
-  styles,
   orientation: toRef(props, 'orientation'),
 }))
 </script>
@@ -29,7 +30,7 @@ provideCentouiButtonGroupContext(reactive({
     data-slot="button-group"
     :data-orientation="props.orientation"
     v-bind="forwardedProps"
-    :class="styles.root({ class: props.class })"
+    :class="classNames"
   >
     <slot />
   </Primitive>
