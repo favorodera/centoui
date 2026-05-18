@@ -22,6 +22,11 @@ const values = usePreview('Button', {
     label: 'Disabled',
     default: false,
   },
+  invalid: {
+    type: 'boolean',
+    label: 'Invalid',
+    default: false,
+  },
 })
 </script>
 
@@ -32,6 +37,7 @@ const values = usePreview('Button', {
       :variant="values.variant"
       :size="values.size"
       :disabled="values.disabled"
+      :aria-invalid="values.invalid"
     >
       Button
     </Button>
@@ -40,6 +46,7 @@ const values = usePreview('Button', {
       :variant="values.variant"
       :size="values.size"
       :disabled="values.disabled"
+      :aria-invalid="values.invalid"
     >
       <Icon
         icon="lucide:plus"
@@ -53,6 +60,7 @@ const values = usePreview('Button', {
       :size="values.size"
       :disabled="values.disabled"
       :square="true"
+      :aria-invalid="values.invalid"
     >
       <Icon
         icon="lucide:plus"
