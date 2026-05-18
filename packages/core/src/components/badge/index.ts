@@ -1,11 +1,11 @@
 import type { PrimitiveProps } from 'reka-ui'
-import { tv, type ClassValue, type VariantProps } from 'tailwind-variants'
+import { tv, type ClassProp, type VariantProps } from 'tailwind-variants'
 
 export const badgeVariants = tv({
   slots: {
     root: `
       relative inline-flex shrink-0 items-center justify-center truncate
-      whitespace-nowrap outline-none select-none
+      outline-none select-none
       focus-visible:ring-3 focus-visible:ring-ring
       [&_svg]:pointer-events-none [&_svg]:shrink-0
     `,
@@ -73,7 +73,7 @@ export type BadgeVariants = VariantProps<typeof badgeVariants>
 
 
 // TYPES — Props
-export type BadgeProps = PrimitiveProps & {
+export type BadgeProps = PrimitiveProps & Pick<ClassProp, 'class'> & {
   /**
    * The visual style of the badge.
    * @default 'neutral'
@@ -84,12 +84,5 @@ export type BadgeProps = PrimitiveProps & {
    * @default 'md'
    */
   size?: BadgeVariants['size']
-  /** Custom class to apply to the root element. */
-  class?: ClassValue
 }
 
-
-// TYPES — Slots
-export type BadgeSlots = {
-  default: []
-}
