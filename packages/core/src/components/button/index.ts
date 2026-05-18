@@ -1,5 +1,5 @@
 import type { PrimitiveProps } from 'reka-ui'
-import { tv, type ClassValue, type VariantProps } from 'tailwind-variants'
+import { tv, type ClassProp, type VariantProps } from 'tailwind-variants'
 import type { ButtonHTMLAttributes } from 'vue'
 
 export const buttonVariants = tv({
@@ -10,8 +10,8 @@ export const buttonVariants = tv({
       outline-none select-none
       focus-visible:ring-3 focus-visible:ring-ring
       active:translate-y-px
-      disabled:pointer-events-none disabled:opacity-50
-      aria-invalid:ring-2 aria-invalid:ring-error
+      disabled:pointer-events-none disabled:opacity-75
+      aria-invalid:ring-3 aria-invalid:ring-error
       [&_svg]:pointer-events-none [&_svg]:shrink-0
     `,
   },
@@ -157,7 +157,7 @@ export type ButtonVariants = VariantProps<typeof buttonVariants>
 
 // TYPES — Props
 
-export type ButtonProps = PrimitiveProps & /* @vue-ignore */ ButtonHTMLAttributes & {
+export type ButtonProps = PrimitiveProps & /* @vue-ignore */ ButtonHTMLAttributes & Pick<ClassProp, 'class'> & {
   /**
    * The visual style of the button.
    * @default 'primary'
@@ -173,11 +173,4 @@ export type ButtonProps = PrimitiveProps & /* @vue-ignore */ ButtonHTMLAttribute
    * @default false
    */
   square?: boolean
-  /** Custom class to apply to the root element. */
-  class?: ClassValue
-}
-
-// TYPES — Slots
-export type ButtonSlots = {
-  default: []
 }
