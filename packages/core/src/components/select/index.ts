@@ -53,13 +53,13 @@ export const selectVariants = tv({
     `,
     viewport: 'p-1',
     item: `
-      relative flex w-full cursor-default items-center rounded-md pr-8
-      outline-none select-none
+      relative w-full cursor-default inline-flex items-center
+      gap-2 rounded-md outline-none select-none
       focus:bg-accent focus:text-accent-foreground
       data-disabled:pointer-events-none data-disabled:opacity-60
     `,
-    itemText: '',
-    itemIndicator: 'absolute right-2 inline-flex items-center justify-center',
+    itemText: 'min-w-0 truncate',
+    itemIndicator: 'inline-flex items-center justify-center ml-auto',
     scrollUpButton: `
       inline-flex items-center justify-center py-1 text-muted-foreground
     `,
@@ -75,37 +75,44 @@ export const selectVariants = tv({
     size: {
       sm: {
         trigger: `
-          gap-1 rounded-md px-2.5 py-1.5 text-xs
+          gap-1 rounded-md px-2.5 py-1.5
           [&_svg]:size-4
         `,
         value: 'text-xs',
         icon: 'size-4',
         label: 'px-1.5 py-1 text-[10px]/3',
-        item: 'gap-1.5 px-2.5 py-1.5 text-xs',
+        item: 'gap-1.5 px-2.5 py-1.5 [&_svg]:size-4',
+        itemText: 'text-xs',
+        itemIndicator: '[&_svg]:size-4',
         scrollUpButton: '[&_svg]:size-4',
         scrollDownButton: '[&_svg]:size-4',
+        separator: '**:data-[slot=separator-content]:text-xs',
       },
       md: {
         trigger: `
-          gap-1.5 rounded-lg px-3 py-1.5 text-sm
+          gap-1.5 rounded-md px-3 py-1.5
           [&_svg]:size-4
         `,
         value: 'text-sm',
         icon: 'size-4',
         label: 'px-2 py-1 text-xs',
-        item: 'gap-1.5 px-3 py-1.5 text-sm',
+        item: 'gap-1.5 px-3 py-1.5 [&_svg]:size-4',
+        itemText: 'text-sm',
+        itemIndicator: '[&_svg]:size-4',
         scrollUpButton: '[&_svg]:size-4',
         scrollDownButton: '[&_svg]:size-4',
       },
       lg: {
         trigger: `
-          gap-1.5 rounded-lg px-4 py-2 text-sm
+          gap-1.5 rounded-lg px-4 py-2
           [&_svg]:size-4.5
         `,
         value: 'text-sm',
         icon: 'size-4.5',
         label: 'px-2 py-1 text-xs',
-        item: 'gap-1.5 px-4 py-2 text-sm',
+        item: 'gap-1.5 px-4 py-2 [&_svg]:size-4.5',
+        itemText: 'text-sm',
+        itemIndicator: '[&_svg]:size-4.5',
         scrollUpButton: '[&_svg]:size-4.5',
         scrollDownButton: '[&_svg]:size-4.5',
       },
@@ -238,4 +245,8 @@ export type SelectValueSlots = {
     /** Current selected label */
     selectedLabel: string[]
   }) => []
+}
+
+export type SelectSeparatorSlots = {
+  default: []
 }
