@@ -1,22 +1,43 @@
 <script setup lang="ts">
 import { PaginationRoot, useForwardPropsEmits } from 'reka-ui'
+import { reactive, toRef } from 'vue'
+import { reactiveOmit } from '@vueuse/core'
 import {
   type PaginationRootProps,
   type PaginationRootEmits,
-  paginationVariants,
   type PaginationRootSlots,
+  paginationVariants,
+  provideCentouiPaginationRootContext,
 } from '.'
 import { computed } from 'vue'
-import { reactiveOmit } from '@vueuse/core'
 
 defineSlots<PaginationRootSlots>()
 
 const emits = defineEmits<PaginationRootEmits>()
 
-const props = defineProps<PaginationRootProps>()
-const delegatedProps = reactiveOmit(props, 'class')
+const props = withDefaults(defineProps<PaginationRootProps>(), {
+  size: 'md',
+  variant: 'ghost',
+  activeVariant: 'outline',
+  square: true,
+})
+const delegatedProps = reactiveOmit(
+  props,
+  'class',
+  'size',
+  'variant',
+  'activeVariant',
+  'square',
+)
 
 const forwardedPropsEmits = useForwardPropsEmits(delegatedProps, emits)
+
+provideCentouiPaginationRootContext(reactive({
+  size: toRef(props, 'size'),
+  variant: toRef(props, 'variant'),
+  activeVariant: toRef(props, 'activeVariant'),
+  square: toRef(props, 'square'),
+}))
 
 const classNames = computed(() => {
   const { root } = paginationVariants()
