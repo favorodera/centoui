@@ -1,0 +1,20 @@
+{
+  "$schema": "../schemas/component.json",
+  "name": "pagination",
+  "description": "Displays pagination navigation.",
+  "files": [
+    "components/pagination/pagination-ellipsis.vue",
+    "components/pagination/pagination-first.vue",
+    "components/pagination/pagination-last.vue",
+    "components/pagination/pagination-list-item.vue",
+    "components/pagination/pagination-list.vue",
+    "components/pagination/pagination-next.vue",
+    "components/pagination/pagination-prev.vue",
+    "components/pagination/pagination-root.vue",
+    "components/pagination/index.ts"
+  ],
+  "componentDeps": [
+    "button"
+  ],
+  "packageDeps": {}
+}
