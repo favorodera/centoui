@@ -26,22 +26,22 @@ import { tv, type ClassProp, type VariantProps } from 'tailwind-variants'
 export const selectVariants = tv({
   slots: {
     trigger: `
-      relative inline-flex w-fit items-center justify-between truncate
-      bg-transparent ring ring-input transition-all outline-none ring-inset
-      hover:bg-input/20
-      focus-visible:ring-3 focus-visible:ring-ring
-      disabled:pointer-events-none disabled:cursor-not-allowed
-      disabled:opacity-75
-      aria-invalid:ring-3 aria-invalid:ring-error
+      relative inline-flex w-full items-center justify-between bg-transparent
+      ring ring-input transition-all outline-none
+      not-focus-visible:not-aria-invalid:ring-inset
+      hover:bg-input/15
+      focus-visible:ring-2 focus-visible:ring-ring
+      disabled:pointer-events-none disabled:opacity-60
+      aria-invalid:ring-2 aria-invalid:ring-error
       data-placeholder:text-muted-foreground
       [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg]:text-muted-foreground
     `,
-    value: 'inline-flex items-center truncate',
-    icon: 'opacity-50',
+    value: 'flex-1 truncate text-start',
+    icon: 'opacity-60',
     content: `
       relative z-50 max-h-(--reka-select-content-available-height)
-      w-(--reka-select-trigger-width) scrollbar-none overflow-x-hidden
-      overflow-y-auto rounded-md bg-surface-raised ring ring-border ring-inset
+      scrollbar-none overflow-x-hidden overflow-y-auto rounded-lg
+      bg-surface-raised shadow-md ring ring-border ring-inset
       data-[side=bottom]:slide-in-from-top-2
       data-[side=left]:slide-in-from-right-2
       data-[side=right]:slide-in-from-left-2
@@ -53,101 +53,83 @@ export const selectVariants = tv({
     `,
     viewport: 'p-1',
     item: `
-      relative inline-flex w-full cursor-default items-center justify-between
-      rounded-sm outline-none select-none
+      relative flex w-full cursor-default items-center rounded-md pr-8
+      outline-none select-none
       focus:bg-accent focus:text-accent-foreground
-      data-disabled:pointer-events-none data-disabled:opacity-75
+      data-disabled:pointer-events-none data-disabled:opacity-60
     `,
     itemText: '',
-    itemIndicator: '',
+    itemIndicator: 'absolute right-2 inline-flex items-center justify-center',
     scrollUpButton: `
-      inline-flex cursor-default items-center justify-center py-1
+      inline-flex items-center justify-center py-1 text-muted-foreground
     `,
     scrollDownButton: `
-      inline-flex cursor-default items-center justify-center py-1
+      inline-flex items-center justify-center py-1 text-muted-foreground
     `,
-    group: 'isolate p-1',
-    label: 'text-muted-foreground',
+    group: 'p-1',
+    label: 'font-medium text-muted-foreground',
     separator: 'my-1',
     arrow: 'z-50 fill-surface-raised',
   },
   variants: {
     size: {
-      xs: {
-        trigger: `
-          gap-1 rounded-md px-2 py-1 text-xs
-          [&_svg]:size-4
-        `,
-        icon: 'size-4',
-        label: 'gap-1 p-1 text-[10px]/3',
-        item: 'gap-1 p-1 text-xs',
-        scrollUpButton: '[&_svg]:size-4',
-        scrollDownButton: '[&_svg]:size-4',
-      },
       sm: {
         trigger: `
-          gap-1.5 rounded-md px-2.5 py-1.5 text-xs
+          gap-1 rounded-md px-2.5 py-1.5 text-xs
           [&_svg]:size-4
         `,
+        value: 'text-xs',
         icon: 'size-4',
-        label: 'gap-1.5 p-1.5 text-[10px]/3',
-        item: 'gap-1.5 p-1.5 text-xs',
+        label: 'px-1.5 py-1 text-[10px]/3',
+        item: 'gap-1.5 px-2.5 py-1.5 text-xs',
         scrollUpButton: '[&_svg]:size-4',
         scrollDownButton: '[&_svg]:size-4',
       },
       md: {
         trigger: `
-          gap-1.5 rounded-lg px-2.5 py-1.5 text-sm
-          [&_svg]:size-5
+          gap-1.5 rounded-lg px-3 py-1.5 text-sm
+          [&_svg]:size-4
         `,
-        icon: 'size-5',
-        label: 'gap-1.5 p-1.5 text-xs',
-        item: 'gap-1.5 p-1.5 text-sm',
-        scrollUpButton: '[&_svg]:size-5',
-        scrollDownButton: '[&_svg]:size-5',
+        value: 'text-sm',
+        icon: 'size-4',
+        label: 'px-2 py-1 text-xs',
+        item: 'gap-1.5 px-3 py-1.5 text-sm',
+        scrollUpButton: '[&_svg]:size-4',
+        scrollDownButton: '[&_svg]:size-4',
       },
       lg: {
         trigger: `
-          gap-2 rounded-lg px-3 py-2 text-sm
-          [&_svg]:size-5
+          gap-1.5 rounded-lg px-4 py-2 text-sm
+          [&_svg]:size-4.5
         `,
-        icon: 'size-5',
-        label: 'gap-2 p-2 text-xs',
-        item: 'gap-2 p-2 text-sm',
-        scrollUpButton: '[&_svg]:size-5',
-        scrollDownButton: '[&_svg]:size-5',
-      },
-      xl: {
-        trigger: `
-          gap-2 rounded-lg px-3 py-2 text-base
-          [&_svg]:size-5
-        `,
-        icon: 'size-5',
-        label: 'gap-2 p-2 text-sm',
-        item: 'gap-2 p-2 text-base',
-        scrollUpButton: '[&_svg]:size-5',
-        scrollDownButton: '[&_svg]:size-5',
+        value: 'text-sm',
+        icon: 'size-4.5',
+        label: 'px-2 py-1 text-xs',
+        item: 'gap-1.5 px-4 py-2 text-sm',
+        scrollUpButton: '[&_svg]:size-4.5',
+        scrollDownButton: '[&_svg]:size-4.5',
       },
     },
+
     contentPosition: {
       'popper': {
         content: `
+          w-(--reka-select-trigger-width)
           data-[side=bottom]:translate-y-1
           data-[side=left]:-translate-x-1
           data-[side=right]:translate-x-1
           data-[side=top]:-translate-y-1
         `,
-        viewport: `
-          h-(--reka-select-trigger-height) w-fit
-          min-w-(--reka-select-trigger-width) scroll-my-1
-        `,
+
+        viewport: 'min-w-(--reka-select-trigger-width) scroll-my-1',
       },
+
       'item-aligned': {},
     },
   },
+
   defaultVariants: {
     size: 'md',
-    triggerVariant: 'outline',
     contentPosition: 'popper',
   },
 })
