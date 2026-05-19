@@ -40,7 +40,8 @@ export const buttonVariants = tv({
       },
       outline: {
         root: `
-          ring ring-border not-focus-visible:not-aria-invalid:ring-inset
+          ring ring-border
+          not-focus-visible:not-aria-invalid:ring-inset
           hover:bg-accent hover:text-accent-foreground
         `,
       },
