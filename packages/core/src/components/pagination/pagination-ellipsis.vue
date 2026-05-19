@@ -6,6 +6,8 @@ import {
 } from '.'
 import { computed } from 'vue'
 import { reactiveOmit } from '@vueuse/core'
+import config from '#centoui/config'
+import { Icon } from '@iconify/vue'
 
 const props = defineProps<PaginationEllipsisProps>()
 const delegatedProps = reactiveOmit(props, 'class')
@@ -24,6 +26,9 @@ const classNames = computed(() => {
     v-bind="forwardedProps"
     :class="classNames"
   >
-    <slot />
+    <slot>
+      <Icon :icon="config.icons.ellipsis" />
+      <span class="sr-only">More pages</span>
+    </slot>
   </PaginationEllipsis>
 </template>
