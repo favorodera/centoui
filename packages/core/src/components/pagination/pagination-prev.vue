@@ -1,20 +1,40 @@
 <script setup lang="ts">
 import { PaginationPrev, useForwardProps } from 'reka-ui'
+import { computed } from 'vue'
+import { reactiveOmit } from '@vueuse/core'
+import { Icon } from '@iconify/vue'
+import config from '#centoui/config'
+import { buttonVariants } from '../button'
 import {
   type PaginationPrevProps,
   paginationVariants,
+  injectCentouiPaginationRootContext,
 } from '.'
-import { computed } from 'vue'
-import { reactiveOmit } from '@vueuse/core'
 
-const props = defineProps<PaginationPrevProps>()
-const delegatedProps = reactiveOmit(props, 'class')
+const rootContext = injectCentouiPaginationRootContext()
+
+const props = withDefaults(defineProps<PaginationPrevProps>(), {
+  square: undefined,
+})
+const delegatedProps = reactiveOmit(props, 'class', 'size', 'variant', 'square')
 const forwardedProps = useForwardProps(delegatedProps)
 
-const classNames = computed(() => {
-  const { prev } = paginationVariants()
+const resolvedVariant = computed(() => props.variant ?? rootContext.variant)
+const resolvedSize = computed(() => props.size ?? rootContext.size)
+const resolvedSquare = computed(() => props.square ?? rootContext.square)
 
-  return prev({ class: props.class })
+const classNames = computed(() => {
+  const { root: buttonRoot } = buttonVariants({
+    variant: resolvedVariant.value,
+    size: resolvedSize.value,
+    square: resolvedSquare.value,
+  })
+
+  const { prev: paginationPrev } = paginationVariants()
+
+  return buttonRoot({
+    class: paginationPrev({ class: props.class }),
+  })
 })
 </script>
 
@@ -22,8 +42,13 @@ const classNames = computed(() => {
   <PaginationPrev
     data-slot="pagination-prev"
     v-bind="forwardedProps"
+    :data-variant="resolvedVariant"
+    :data-size="resolvedSize"
     :class="classNames"
   >
-    <slot />
+    <slot>
+      <Icon :icon="config.icons.chevronLeft" />
+      <span class="sr-only">Previous page</span>
+    </slot>
   </PaginationPrev>
 </template>
