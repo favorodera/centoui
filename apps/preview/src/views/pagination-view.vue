@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { buttonVariants } from '#centoui/components/button'
 import {
   PaginationRoot,
   PaginationList,
@@ -12,17 +13,40 @@ import {
 import ViewContainer from '@/components/view-container.vue'
 import { usePreview } from '@/composables/use-preview'
 
-usePreview('Pagination', {})
+const values = usePreview('Pagination', {
+  variant: {
+    type: 'select',
+    label: 'Variant',
+    options: Object.keys(buttonVariants.variants.variant),
+    default: 'ghost',
+  },
+  activeVariant: {
+    type: 'select',
+    label: 'Active variant',
+    options: Object.keys(buttonVariants.variants.variant),
+    default: 'outline',
+  },
+  size: {
+    type: 'select',
+    label: 'Size',
+    options: Object.keys(buttonVariants.variants.size),
+    default: 'md',
+  },
+})
 </script>
 
 <template>
   <ViewContainer>
     <PaginationRoot
+      v-slot="{page}"
       :total="100"
       :sibling-count="1"
-      :items-per-page="10"
+      :items-per-page="5"
       show-edges
       :default-page="2"
+      :variant="values.variant as any"
+      :active-variant="values.activeVariant as any"
+      :size="values.size as any"
     >
       <PaginationList
         v-slot="{ items }"
@@ -31,18 +55,21 @@ usePreview('Pagination', {})
 
         <PaginationPrev />
 
-        <template v-for="(page, index) in items">
+        <template
+          v-for="(item, index) in items"
+          :key="index"
+        >
           <PaginationListItem
-            v-if="page.type === 'page'"
-            :key="index"
-            :value="page.value"
+            v-if="item.type === 'page'"
+            :value="item.value"
+            :active="item.value === page"
           >
-            {{ page.value }}
+            {{ item.value }}
           </PaginationListItem>
 
           <PaginationEllipsis
             v-else
-            :key="page.type"
+            :key="item.type"
             :index="index"
           />
         </template>
