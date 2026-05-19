@@ -20,7 +20,6 @@ import {
 } from '#centoui/components/select'
 import ViewContainer from '@/components/view-container.vue'
 import { usePreview } from '@/composables/use-preview'
-import { Icon } from '@iconify/vue'
 
 const values = usePreview('Select', {
   size: {
@@ -45,6 +44,9 @@ const values = usePreview('Select', {
     default: false,
   },
 })
+
+const fruits = ['Apple', 'Banana', 'Blueberry', 'Grapes', 'Pineapple']
+const vegetables = ['Aubergine', 'Broccoli', 'Carrot', 'Courgette', 'Leek']
 </script>
 
 <template>
@@ -58,42 +60,56 @@ const values = usePreview('Select', {
         :aria-invalid="values.invalid"
         class="max-w-3xs"
       >
-        <Icon icon="lucide:apple" />
-        <SelectValue placeholder="Select a fruit" />
+        <SelectValue placeholder="Select a fruit..." />
         <SelectIcon />
       </SelectTrigger>
 
       <SelectPortal>
-        <SelectContent>
+        <SelectContent :side-offset="5">
           <SelectScrollUpButton />
-          <SelectViewport>
-            <template
-              v-for="group in 3"
-              :key="group"
-            >
-              <SelectGroup>
-                <SelectLabel>Group {{ group }}</SelectLabel>
-                <SelectItem
-                  v-for="index in 5"
-                  :key="`${group}-${index}`"
-                  :value="`fruit-${group}-${index}`"
-                  :disabled="index === 3"
-                >
-                  <Icon icon="lucide:apple" />
-                  <SelectItemText>Group {{ group }} - Fruit {{ index }}</SelectItemText>
-                  <SelectItemIndicator />
-                </SelectItem>
-              </SelectGroup>
-              
-              <SelectSeparator v-if="group === 1">
-                Group {{ group + 1 }}
-              </SelectSeparator>
 
-              <SelectSeparator v-if="group === 2" />
-            </template>
+          <SelectViewport>
+
+            <SelectLabel>
+              Fruits
+            </SelectLabel>
+            <SelectGroup>
+              <SelectItem
+                v-for="(fruit, index) in fruits"
+                :key="index"
+                :value="fruit"
+              >
+                <SelectItemText>
+                  {{ fruit }}
+                </SelectItemText>
+                <SelectItemIndicator />
+              </SelectItem>
+            </SelectGroup>
+
+            <SelectSeparator />
+
+            <SelectLabel>
+              Vegetables
+            </SelectLabel>
+            <SelectGroup>
+              <SelectItem
+                v-for="(vegetable, index) in vegetables"
+                :key="index"
+                :value="vegetable"
+              >
+                <SelectItemText>
+                  {{ vegetable }}
+                </SelectItemText>
+                <SelectItemIndicator />
+              </SelectItem>
+            </SelectGroup>
+
           </SelectViewport>
+
           <SelectScrollDownButton />
+
           <SelectArrow />
+
         </SelectContent>
       </SelectPortal>
     </SelectRoot>
