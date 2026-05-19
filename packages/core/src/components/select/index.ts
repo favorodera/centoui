@@ -53,13 +53,13 @@ export const selectVariants = tv({
     `,
     viewport: 'p-1',
     item: `
-      relative w-full cursor-default inline-flex items-center
-      gap-2 rounded-md outline-none select-none
+      relative inline-flex w-full cursor-default items-center gap-2 rounded-md
+      outline-none select-none
       focus:bg-accent focus:text-accent-foreground
       data-disabled:pointer-events-none data-disabled:opacity-60
     `,
     itemText: 'min-w-0 truncate',
-    itemIndicator: 'inline-flex items-center justify-center ml-auto',
+    itemIndicator: 'ml-auto inline-flex items-center justify-center',
     scrollUpButton: `
       inline-flex items-center justify-center py-1 text-muted-foreground
     `,
@@ -81,7 +81,10 @@ export const selectVariants = tv({
         value: 'text-xs',
         icon: 'size-4',
         label: 'px-1.5 py-1 text-[10px]/3',
-        item: 'gap-1.5 px-2.5 py-1.5 [&_svg]:size-4',
+        item: `
+          gap-1.5 px-2.5 py-1.5
+          [&_svg]:size-4
+        `,
         itemText: 'text-xs',
         itemIndicator: '[&_svg]:size-4',
         scrollUpButton: '[&_svg]:size-4',
@@ -96,7 +99,10 @@ export const selectVariants = tv({
         value: 'text-sm',
         icon: 'size-4',
         label: 'px-2 py-1 text-xs',
-        item: 'gap-1.5 px-3 py-1.5 [&_svg]:size-4',
+        item: `
+          gap-1.5 px-3 py-1.5
+          [&_svg]:size-4
+        `,
         itemText: 'text-sm',
         itemIndicator: '[&_svg]:size-4',
         scrollUpButton: '[&_svg]:size-4',
@@ -110,7 +116,10 @@ export const selectVariants = tv({
         value: 'text-sm',
         icon: 'size-4.5',
         label: 'px-2 py-1 text-xs',
-        item: 'gap-1.5 px-4 py-2 [&_svg]:size-4.5',
+        item: `
+          gap-1.5 px-4 py-2
+          [&_svg]:size-4.5
+        `,
         itemText: 'text-sm',
         itemIndicator: '[&_svg]:size-4.5',
         scrollUpButton: '[&_svg]:size-4.5',
