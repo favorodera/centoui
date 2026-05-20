@@ -18,7 +18,10 @@ export const paginationVariants = tv({
     root: 'mx-auto flex w-full items-center justify-center',
     list: 'flex items-center gap-2',
     listItem: 'shrink-0',
-    ellipsis: 'flex items-center justify-center size-8 [&>svg]:size-4 text-muted-foreground',
+    ellipsis: `
+      flex size-8 items-center justify-center text-muted-foreground
+      [&>svg]:size-4
+    `,
     first: '',
     prev: '',
     next: '',
