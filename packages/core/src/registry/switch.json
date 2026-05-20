@@ -1,0 +1,12 @@
+{
+   "$schema": "../schemas/component.json",
+  "name": "switch",
+  "description": "A control that allows the user to toggle between two states.",
+  "files": [
+    "components/switch/switch-root.vue",
+    "components/switch/switch-thumb.vue",
+    "components/switch/index.ts"
+  ],
+  "componentDeps": [ ],
+  "packageDeps": { }
+}
