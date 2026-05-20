@@ -16,18 +16,9 @@ import { type ButtonProps } from '../button'
 export const paginationVariants = tv({
   slots: {
     root: 'mx-auto flex w-full items-center justify-center',
-    list: 'flex items-center gap-1',
+    list: 'flex items-center gap-2',
     listItem: 'shrink-0',
-    ellipsis: `
-      flex items-center justify-center
-      [&:has(+[data-slot^=pagination]:is([data-size=lg],[data-size=xl]))]:p-2
-      [&:has(+[data-slot^=pagination]:is([data-size=sm],[data-size=md]))]:p-1.5
-      [&:has(+[data-slot^=pagination]:is([data-size=sm],[data-size=md]))_svg]:size-4
-      [&:has(+[data-slot^=pagination][data-size=lg])_svg]:size-4.5
-      [&:has(+[data-slot^=pagination][data-size=xl])_svg]:size-5
-      [&:has(+[data-slot^=pagination][data-size=xs])]:p-1
-      [&:has(+[data-slot^=pagination][data-size=xs])_svg]:size-3.5
-    `,
+    ellipsis: 'flex items-center justify-center size-8 [&>svg]:size-4 text-muted-foreground',
     first: '',
     prev: '',
     next: '',
