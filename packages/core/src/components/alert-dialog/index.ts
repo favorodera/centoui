@@ -24,20 +24,20 @@ export const alertDialogVariants = tv({
       data-[state=open]:animate-in data-[state=open]:fade-in-0
     `,
     content: `
-      fixed top-1/2 left-1/2 z-50 grid w-full max-w-[calc(100%-2rem)]
+      fixed top-1/2 left-1/2 z-50 grid w-full max-w-[calc(100%-3rem)]
       -translate-1/2 gap-5 overflow-hidden rounded-xl bg-surface-raised py-5
       shadow-lg
       data-[state=closed]:animate-out data-[state=closed]:fade-out-0
       data-[state=closed]:zoom-out-95
       data-[state=open]:animate-in data-[state=open]:fade-in-0
       data-[state=open]:zoom-in-95
-      sm:max-w-md
+      sm:max-w-md max-h-[90dvh] overflow-y-auto
     `,
     header: `
-      flex flex-col items-center gap-1 px-5 text-center
+      flex flex-col items-center gap-2 px-5 text-center
       sm:items-start sm:text-left
     `,
-    title: 'text-base font-medium',
+    title: 'text-base sm:text-lg font-medium',
     description: 'text-sm/5 text-muted-foreground',
     footer: `
       flex flex-col-reverse gap-2 px-5
