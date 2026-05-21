@@ -8,9 +8,9 @@ export const alertVariants = tv({
       shrink-0
       [&>svg]:h-lh [&>svg]:w-4
     `,
-    content: 'min-w-0 flex-1 text-sm/5',
+    content: 'min-w-0 flex-1 text-sm',
     title: 'min-w-0 font-medium',
-    description: 'mt-1 min-w-0 text-muted-foreground',
+    description: 'mt-2 min-w-0 text-muted-foreground',
     actions: 'flex shrink-0 items-center gap-2',
   },
   variants: {
@@ -47,7 +47,6 @@ export const alertVariants = tv({
       },
     },
   },
-
   defaultVariants: {
     variant: 'neutral',
   },
