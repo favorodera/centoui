@@ -22,52 +22,24 @@ export const avatarVariants = tv({
   },
   variants: {
     size: {
-      'xs': {
-        root: 'size-6',
-        fallback: `
-          text-[10px]
-          [&_svg]:size-3
-        `,
-      },
-      'sm': {
-        root: 'size-7',
-        fallback: `
-          text-xs
-          [&_svg]:size-3.5
-        `,
-      },
-      'md': {
+      sm: {
         root: 'size-8',
         fallback: `
-          text-sm
+          text-xs
           [&_svg]:size-4
         `,
       },
-      'lg': {
-        root: 'size-9',
-        fallback: `
-          text-sm
-          [&_svg]:size-4.5
-        `,
-      },
-      'xl': {
+      md: {
         root: 'size-10',
         fallback: `
-          text-base
+          text-sm
           [&_svg]:size-5
         `,
       },
-      '2xl': {
-        root: 'size-11',
-        fallback: `
-          text-lg
-          [&_svg]:size-5.5
-        `,
-      },
-      '3xl': {
+      lg: {
         root: 'size-12',
         fallback: `
-          text-xl
+          text-base
           [&_svg]:size-6
         `,
       },
