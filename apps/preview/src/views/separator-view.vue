@@ -2,11 +2,11 @@
 import { Separator, separatorVariants } from '#centoui/components/separator'
 import { Icon } from '@iconify/vue'
 import ViewContainer from '@/components/view-container.vue'
-import { usePreview } from '@/composables/use-preview'
+import { useApp } from '@/composables/use-app'
 
-const values = usePreview('Separator', {
+const values = useApp().preview.initPreview('Separator', {
   orientation: {
-    type: 'select',
+    type: 'array',
     label: 'Orientation',
     options: Object.keys(separatorVariants.variants.orientation),
     default: separatorVariants.defaultVariants.orientation,

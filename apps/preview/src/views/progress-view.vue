@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { ProgressRoot, ProgressIndicator } from '#centoui/components/progress'
 import ViewContainer from '@/components/view-container.vue'
-import { usePreview } from '@/composables/use-preview'
+import { useApp } from '@/composables/use-app'
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 
-usePreview('Progress', {})
+useApp().preview.initPreview('Progress', {})
 
 const progressValue = ref(10)
 const timer = ref()

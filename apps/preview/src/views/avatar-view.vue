@@ -2,11 +2,11 @@
 import { AvatarRoot, AvatarImage, AvatarFallback, avatarVariants } from '#centoui/components/avatar'
 import { Icon } from '@iconify/vue'
 import ViewContainer from '@/components/view-container.vue'
-import { usePreview } from '@/composables/use-preview'
+import { useApp } from '@/composables/use-app'
 
-const values = usePreview('Avatar', {
+const values = useApp().preview.initPreview('Avatar', {
   size: {
-    type: 'select',
+    type: 'array',
     label: 'Size',
     options: Object.keys(avatarVariants.variants.size),
     default: avatarVariants.defaultVariants.size,

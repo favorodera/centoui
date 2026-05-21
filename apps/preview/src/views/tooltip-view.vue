@@ -2,11 +2,11 @@
 import { Button } from '#centoui/components/button'
 import { TooltipArrow, TooltipContent, TooltipPortal, TooltipProvider, TooltipRoot, TooltipTrigger } from '#centoui/components/tooltip'
 import ViewContainer from '@/components/view-container.vue'
-import { usePreview } from '@/composables/use-preview'
+import { useApp } from '@/composables/use-app'
 
-const values = usePreview('Separator', {
+const values = useApp().preview.initPreview('Separator', {
   side: {
-    type: 'select',
+    type: 'array',
     label: 'Side',
     options: ['top', 'bottom', 'left', 'right'],
     default: 'top',

@@ -3,10 +3,10 @@ import { CollapsibleContent, CollapsibleRoot, CollapsibleTrigger } from '#centou
 import { Button } from '#centoui/components/button'
 import { Icon } from '@iconify/vue'
 import ViewContainer from '@/components/view-container.vue'
-import { usePreview } from '@/composables/use-preview'
+import { useApp } from '@/composables/use-app'
 import { ref } from 'vue'
 
-usePreview('Collapsible', {})
+useApp().preview.initPreview('Collapsible', {})
 
 const open = ref(false)
 </script>

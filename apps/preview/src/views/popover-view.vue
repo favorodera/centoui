@@ -16,17 +16,17 @@ import {
   PopoverBody,
 } from '#centoui/components/popover'
 import ViewContainer from '@/components/view-container.vue'
-import { usePreview } from '@/composables/use-preview'
+import { useApp } from '@/composables/use-app'
 
-const values = usePreview('Popover', {
+const values = useApp().preview.initPreview('Popover', {
   side: {
-    type: 'select',
+    type: 'array',
     label: 'Side',
     options: ['top', 'bottom', 'left', 'right'],
     default: 'top',
   },
   align: {
-    type: 'select',
+    type: 'array',
     label: 'Align',
     options: ['start', 'center', 'end'],
     default: 'center',
@@ -39,7 +39,7 @@ const values = usePreview('Popover', {
   <ViewContainer>
     <PopoverRoot>
 
-      <PopoverAnchor as-child>
+      <PopoverAnchor>
         <PopoverTrigger as-child>
           <Button
             square

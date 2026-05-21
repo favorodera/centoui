@@ -3,11 +3,11 @@ import { AlertRoot, AlertDescription, AlertActions, alertVariants, AlertMedia, A
 import { Button } from '#centoui/components/button'
 import { Icon } from '@iconify/vue'
 import ViewContainer from '@/components/view-container.vue'
-import { usePreview } from '@/composables/use-preview'
+import { useApp } from '@/composables/use-app'
 
-const values = usePreview('Alert', {
+const values = useApp().preview.initPreview('Alert', {
   variant: {
-    type: 'select',
+    type: 'array',
     label: 'Variant',
     options: Object.keys(alertVariants.variants.variant),
     default: alertVariants.defaultVariants.variant,

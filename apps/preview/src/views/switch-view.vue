@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { SwitchRoot, SwitchThumb, switchVariants } from '#centoui/components/switch'
 import ViewContainer from '@/components/view-container.vue'
-import { usePreview } from '@/composables/use-preview'
+import { useApp } from '@/composables/use-app'
 import { ref } from 'vue'
 
-const values = usePreview('Switch', {
+const values = useApp().preview.initPreview('Switch', {
   size: {
-    type: 'select',
+    type: 'array',
     label: 'Size',
     options: Object.keys(switchVariants.variants.size),
     default: switchVariants.defaultVariants.size,

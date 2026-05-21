@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { Kbd, kbdVariants } from '#centoui/components/kbd'
 import ViewContainer from '@/components/view-container.vue'
-import { usePreview } from '@/composables/use-preview'
+import { useApp } from '@/composables/use-app'
 
-const values = usePreview('Kbd', {
+const values = useApp().preview.initPreview('Kbd', {
   size: {
-    type: 'select',
+    type: 'array',
     label: 'Size',
     options: Object.keys(kbdVariants.variants.size),
     default: kbdVariants.defaultVariants.size,

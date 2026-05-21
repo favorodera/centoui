@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { AccordionRoot, AccordionItem, AccordionHeader, AccordionTrigger, AccordionContent } from '#centoui/components/accordion'
 import ViewContainer from '@/components/view-container.vue'
-import { usePreview } from '@/composables/use-preview'
+import { useApp } from '@/composables/use-app'
 
-const values = usePreview('Accordion', {
+const values = useApp().preview.initPreview('Accordion', {
   disabled: {
     type: 'boolean',
     label: 'Disabled',
@@ -13,7 +13,7 @@ const values = usePreview('Accordion', {
 </script>
 
 <template>
-  <ViewContainer class="w-lg">
+  <ViewContainer>
     <AccordionRoot
       type="single"
       collapsible

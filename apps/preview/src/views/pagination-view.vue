@@ -11,23 +11,23 @@ import {
   PaginationLast,
 } from '#centoui/components/pagination'
 import ViewContainer from '@/components/view-container.vue'
-import { usePreview } from '@/composables/use-preview'
+import { useApp } from '@/composables/use-app'
 
-const values = usePreview('Pagination', {
+const values = useApp().preview.initPreview('Pagination', {
   variant: {
-    type: 'select',
+    type: 'array',
     label: 'Variant',
     options: Object.keys(buttonVariants.variants.variant),
     default: 'ghost',
   },
   activeVariant: {
-    type: 'select',
+    type: 'array',
     label: 'Active variant',
     options: Object.keys(buttonVariants.variants.variant),
     default: 'outline',
   },
   size: {
-    type: 'select',
+    type: 'array',
     label: 'Size',
     options: Object.keys(buttonVariants.variants.size),
     default: 'md',

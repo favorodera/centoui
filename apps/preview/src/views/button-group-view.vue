@@ -3,23 +3,23 @@ import { Icon } from '@iconify/vue'
 import { Button, buttonVariants } from '#centoui/components/button'
 import { ButtonGroup, ButtonGroupSeparator, buttonGroupVariants } from '#centoui/components/button-group'
 import ViewContainer from '@/components/view-container.vue'
-import { usePreview } from '@/composables/use-preview'
+import { useApp } from '@/composables/use-app'
 
-const values = usePreview('Button Group', {
+const values = useApp().preview.initPreview('Button Group', {
   orientation: {
-    type: 'select',
+    type: 'array',
     label: 'Orientation',
     options: Object.keys(buttonGroupVariants.variants.orientation),
     default: buttonGroupVariants.defaultVariants.orientation,
   },
   buttonVariant: {
-    type: 'select',
+    type: 'array',
     label: 'Button Variant',
     options: Object.keys(buttonVariants.variants.variant),
     default: buttonVariants.defaultVariants.variant,
   },
   buttonSize: {
-    type: 'select',
+    type: 'array',
     label: 'Button Size',
     options: Object.keys(buttonVariants.variants.size),
     default: buttonVariants.defaultVariants.size,

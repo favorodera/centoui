@@ -14,13 +14,13 @@ import {
 } from '#centoui/components/alert-dialog'
 import { Button } from '#centoui/components/button'
 import ViewContainer from '@/components/view-container.vue'
-import { usePreview } from '@/composables/use-preview'
+import { useApp } from '@/composables/use-app'
 
-usePreview('AlertDialog', {})
+useApp().preview.initPreview('AlertDialog', {})
 </script>
 
 <template>
-  <ViewContainer class="w-lg">
+  <ViewContainer>
     <AlertDialogRoot>
 
       <AlertDialogTrigger as-child>

@@ -19,11 +19,11 @@ import {
   selectVariants,
 } from '#centoui/components/select'
 import ViewContainer from '@/components/view-container.vue'
-import { usePreview } from '@/composables/use-preview'
+import { useApp } from '@/composables/use-app'
 
-const values = usePreview('Select', {
+const values = useApp().preview.initPreview('Select', {
   size: {
-    type: 'select',
+    type: 'array',
     label: 'Size',
     options: Object.keys(selectVariants.variants.size),
     default: selectVariants.defaultVariants.size,
