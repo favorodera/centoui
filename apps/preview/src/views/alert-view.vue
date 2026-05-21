@@ -17,30 +17,21 @@ const values = useApp().preview.initPreview('Alert', {
 
 <template>
   <ViewContainer>
-    <AlertRoot
-      :variant="values.variant"
-    >
+    <AlertRoot :variant="values.variant">
       <AlertMedia>
-        <Icon icon="lucide:bell" />
+        <Icon icon="lucide:info" />
       </AlertMedia>
 
       <AlertContent>
-        <AlertTitle>Alert Title.</AlertTitle>
-
-        <AlertDescription>
-          Alert description
-        </AlertDescription>
+        <AlertTitle>New version available</AlertTitle>
+        <AlertDescription>Install the update to improve performance and security.</AlertDescription>
       </AlertContent>
 
       <AlertActions>
-        <Button
-          size="sm"
-        >
-          Learn more
+        <Button size="sm">
+          Update now
         </Button>
       </AlertActions>
-
     </AlertRoot>
-      
   </ViewContainer>
 </template>
