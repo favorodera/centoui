@@ -12,7 +12,7 @@ export const collapsibleVariants = tv({
     root: '',
     trigger: '',
     content: `
-      overflow-hidden
+      overflow-hidden animation-duration-300
       data-[state=closed]:animate-collapsible-up
       data-[state=open]:animate-collapsible-down
     `,
