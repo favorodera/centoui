@@ -22,34 +22,35 @@ const values = useApp().preview.initPreview('Accordion', {
     >
       <AccordionItem value="item-1">
         <AccordionHeader>
-          <AccordionTrigger>Product Information</AccordionTrigger>
+          <AccordionTrigger>Getting Started</AccordionTrigger>
         </AccordionHeader>
         <AccordionContent>
           <p>
-            Our flagship product combines cutting-edge technology with sleek
-            design. Built with premium materials, it offers unparalleled
-            performance and reliability.
+            Start by installing the package with your preferred package manager.
+            Follow the setup guide to import the components and configure your
+            application layout.
           </p>
           <p class="mt-2">
-            Key features include advanced processing capabilities, and an
-            intuitive user interface designed for both beginners and experts.
+            Once installed, you can customize the accordion behavior and styles
+            to fit your design system while keeping interactions accessible and
+            responsive.
           </p>
         </AccordionContent>
       </AccordionItem>
 
       <AccordionItem value="item-2">
         <AccordionHeader>
-          <AccordionTrigger>Shipping Details</AccordionTrigger>
+          <AccordionTrigger>Best Practices</AccordionTrigger>
         </AccordionHeader>
         <AccordionContent>
           <p>
-            We offer worldwide shipping through trusted courier partners.
-            Standard delivery takes 3-5 business days, while express shipping
-            ensures delivery within 1-2 business days.
+            Use clear headings and concise descriptions for each accordion item.
+            Keep content focused to help users scan sections quickly and find
+            relevant information.
           </p>
           <p class="mt-2">
-            All orders are carefully packaged and fully insured. Track your
-            shipment in real-time through our dedicated tracking portal.
+            Avoid overcrowding accordion panels, and reserve nested content for
+            supplementary details that enhance the main message.
           </p>
         </AccordionContent>
       </AccordionItem>
