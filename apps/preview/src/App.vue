@@ -5,7 +5,9 @@ import Body from '@/components/body.vue'
 </script>
 
 <template>
-  <div class="grid size-full grid-cols-1 grid-rows-[auto_1fr] place-items-center">
+  <div
+    class="grid size-full grid-cols-1 grid-rows-[auto_1fr] place-items-center"
+  >
     <Header />
 
     <Body>
