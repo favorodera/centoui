@@ -1,2 +1,6 @@
 @import "../../../packages/core/src/defaults/centoui.css";
 @source "../../../packages/core/src/**/*.{ts,vue}";
+
+#app {
+  @apply min-h-dvh w-full grid place-items-center grid-cols-1;
+}
