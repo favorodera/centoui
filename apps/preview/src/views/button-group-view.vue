@@ -1,7 +1,19 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-import { Button, buttonVariants } from '#centoui/components/button'
+import { Button } from '#centoui/components/button'
 import { ButtonGroup, ButtonGroupSeparator, buttonGroupVariants } from '#centoui/components/button-group'
+import {
+  SelectRoot,
+  SelectTrigger,
+  SelectValue,
+  SelectIcon,
+  SelectPortal,
+  SelectContent,
+  SelectViewport,
+  SelectItem,
+  SelectItemText,
+  SelectItemIndicator,
+} from '#centoui/components/select'
 import ViewContainer from '@/components/view-container.vue'
 import { useApp } from '@/composables/use-app'
 
@@ -12,18 +24,6 @@ const values = useApp().preview.initPreview('Button Group', {
     options: Object.keys(buttonGroupVariants.variants.orientation),
     default: buttonGroupVariants.defaultVariants.orientation,
   },
-  buttonVariant: {
-    type: 'array',
-    label: 'Button Variant',
-    options: Object.keys(buttonVariants.variants.variant),
-    default: buttonVariants.defaultVariants.variant,
-  },
-  buttonSize: {
-    type: 'array',
-    label: 'Button Size',
-    options: Object.keys(buttonVariants.variants.size),
-    default: buttonVariants.defaultVariants.size,
-  },
 })
 </script>
 
@@ -32,32 +32,28 @@ const values = useApp().preview.initPreview('Button Group', {
 
     <ButtonGroup :orientation="values.orientation">
       <template
-        v-for="n in 2"
-        :key="n"
+        v-for="index in 2"
+        :key="index"
       >
-        <Button
-          :variant="values.buttonVariant"
-          :size="values.buttonSize"
-        >
-          Button {{ n }}
+        <Button>
+          Button {{ index }}
         </Button>
-        <ButtonGroupSeparator v-if="n < 2 && values.buttonVariant !== 'outline'" />
+        <ButtonGroupSeparator v-if="index < 2" />
       </template>
     </ButtonGroup>
 
     <ButtonGroup :orientation="values.orientation">
       <ButtonGroup :orientation="values.orientation">
         <template
-          v-for="n in 5"
-          :key="n"
+          v-for="index in 5"
+          :key="index"
         >
           <Button
-            :variant="values.buttonVariant"
-            :size="values.buttonSize"
+            variant="secondary"
           >
-            {{ n }}
+            {{ index }}
           </Button>
-          <ButtonGroupSeparator v-if="n < 5 && values.buttonVariant !== 'outline'" />
+          <ButtonGroupSeparator v-if="index < 5 " />
         </template>
       </ButtonGroup>
 
@@ -66,19 +62,17 @@ const values = useApp().preview.initPreview('Button Group', {
         class="w-full"
       >
         <Button
-          :variant="values.buttonVariant"
-          :size="values.buttonSize"
+          variant="secondary"
           aria-label="Previous"
           square
         >
           <Icon icon="lucide:arrow-left" />
         </Button>
 
-        <ButtonGroupSeparator v-if="values.buttonVariant !== 'outline'" />
+        <ButtonGroupSeparator />
 
         <Button
-          :variant="values.buttonVariant"
-          :size="values.buttonSize"
+          variant="secondary"
           aria-label="Next"
           square
         >
@@ -89,22 +83,39 @@ const values = useApp().preview.initPreview('Button Group', {
 
     <ButtonGroup :orientation="values.orientation">
       <Button
-        class="pointer-events-none"
-        :variant="values.buttonVariant"
-        :size="values.buttonSize"
+        variant="outline"
         as="div"
       >
-        Text
+        Button
       </Button>
 
-      <ButtonGroupSeparator v-if="values.buttonVariant !== 'outline'" />
       
-      <Button
-        :variant="values.buttonVariant"
-        :size="values.buttonSize"
-      >
-        Button 2
-      </Button>
+      <SelectRoot>
+        <SelectTrigger>
+          <SelectValue placeholder="Select a fruit..." />
+          <SelectIcon />
+        </SelectTrigger>
+
+        <SelectPortal>
+          <SelectContent>
+            <SelectViewport>
+
+              <SelectItem
+                v-for="(fruit, index) in ['Apple', 'Banana', 'Blueberry', 'Grapes', 'Pineapple']"
+                :key="index"
+                :value="fruit"
+              >
+                <SelectItemText>
+                  {{ fruit }}
+                </SelectItemText>
+                <SelectItemIndicator />
+              </SelectItem>
+
+            </SelectViewport>
+
+          </SelectContent>
+        </SelectPortal>
+      </SelectRoot>
     </ButtonGroup>
 
   </ViewContainer>
