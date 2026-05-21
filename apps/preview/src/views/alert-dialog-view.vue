@@ -24,9 +24,7 @@ useApp().preview.initPreview('AlertDialog', {})
     <AlertDialogRoot>
 
       <AlertDialogTrigger as-child>
-        <Button>
-          Open Alert Dialog
-        </Button>
+        <Button>Delete project</Button>
       </AlertDialogTrigger>
 
       <AlertDialogPortal>
@@ -34,16 +32,13 @@ useApp().preview.initPreview('AlertDialog', {})
 
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-
-            <AlertDialogDescription>
-              This action cannot be undone. This will permanently delete your account and remove your data from our servers.
-            </AlertDialogDescription>
+            <AlertDialogTitle>Delete project?</AlertDialogTitle>
+            <AlertDialogDescription>Deleting a project is permanent and cannot be recovered.</AlertDialogDescription>
           </AlertDialogHeader>
 
           <AlertDialogFooter>
             <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction>Continue</AlertDialogAction>
+            <AlertDialogAction>Delete</AlertDialogAction>
           </AlertDialogFooter>
 
         </AlertDialogContent>
