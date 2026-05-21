@@ -10,24 +10,17 @@ export const kbdVariants = tv({
   },
   variants: {
     size: {
-      xs: {
-        root: 'h-4 min-w-4 rounded-sm text-[9px]',
-      },
       sm: {
-        root: 'h-5 min-w-5 rounded-sm text-[10px]',
+        root: 'h-5 min-w-5 rounded-sm text-xs',
       },
       md: {
-        root: 'h-6 min-w-6 rounded-md text-[11px]',
+        root: 'h-6 min-w-6 rounded-md text-xs',
       },
       lg: {
-        root: 'h-7 min-w-7 rounded-md text-xs',
-      },
-      xl: {
-        root: 'h-8 min-w-8 rounded-lg text-[13px]',
+        root: 'h-7 min-w-7 rounded-md text-sm',
       },
     },
   },
-
   defaultVariants: {
     size: 'md',
   },
