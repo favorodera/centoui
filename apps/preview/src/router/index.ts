@@ -1,31 +1,27 @@
 import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
 
-/**
- * Eagerly discovers all view modules matching the `*-view.vue` convention.
- * Each key is a relative path; each value is a dynamic import factory.
- *
- * @example
- * // "../views/dashboard-view.vue" → () => Promise<unknown>
- */
+/** Eagerly discovers all view modules matching the `*-view.vue` convention. */
 const viewModules = import.meta.glob('../views/*-view.vue')
 
 /**
  * Derives a route record from each discovered view module.
  *
- * Naming convention: `{name}-view.vue` → `{ path: "/{name}", name: "{name}" }`
+ * Naming convention: `{name}-view.vue` -> `{ path: "/{name}", name: "{name}" }`
  *
  * Files that don't match the pattern are silently skipped.
  *
  * @example
- * // "../views/button-view.vue" → { path: "/button", name: "button", component: ... }
+ * // "../views/button-view.vue" -> { path: "/button", name: "button", component: ... }
  */
 const generatedRoutes = Object
   .entries(viewModules)
   .reduce<RouteRecordRaw[]>((routes, [path, component]) => {
     const name = path.match(/\/([^/]+)-view\.vue$/)?.[1]
+
     if (name) {
       routes.push({ path: `/${name}`, name, component })
     }
+    
     return routes
   }, [])
 
