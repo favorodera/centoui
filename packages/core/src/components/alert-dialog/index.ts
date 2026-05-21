@@ -25,8 +25,8 @@ export const alertDialogVariants = tv({
     `,
     content: `
       fixed top-1/2 left-1/2 z-50 grid max-h-[90dvh] w-full
-      max-w-[calc(100%-3rem)] -translate-1/2 gap-5 overflow-hidden
-      overflow-y-auto rounded-xl bg-surface-raised py-5 shadow-lg
+      max-w-[calc(100%-3rem)] -translate-1/2 gap-6 overflow-hidden
+      overflow-y-auto rounded-xl bg-surface-raised py-6 shadow-lg
       data-[state=closed]:animate-out data-[state=closed]:fade-out-0
       data-[state=closed]:zoom-out-95
       data-[state=open]:animate-in data-[state=open]:fade-in-0
@@ -34,16 +34,16 @@ export const alertDialogVariants = tv({
       sm:max-w-md
     `,
     header: `
-      flex flex-col items-center gap-2 px-5 text-center
+      flex flex-col items-center gap-2 px-6 text-center
       sm:items-start sm:text-left
     `,
     title: `
       text-base font-medium
       sm:text-lg
     `,
-    description: 'text-sm/5 text-muted-foreground',
+    description: 'text-sm text-muted-foreground',
     footer: `
-      flex flex-col-reverse gap-2 px-5
+      flex flex-col-reverse gap-2 px-6
       sm:flex-row sm:justify-end
     `,
     cancel: '',
