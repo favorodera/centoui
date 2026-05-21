@@ -40,8 +40,7 @@ export const buttonVariants = tv({
       },
       outline: {
         root: `
-          ring ring-border
-          not-focus-visible:not-aria-invalid:ring-inset
+          border border-border
           hover:bg-accent hover:text-accent-foreground
         `,
       },
@@ -57,30 +56,30 @@ export const buttonVariants = tv({
       xs: {
         root: `
           gap-1 rounded-md px-2 py-1 text-xs
-          [&_svg]:size-3.5
+          [&_svg]:size-3
         `,
       },
       sm: {
         root: `
-          gap-1 rounded-md px-2.5 py-1.5 text-xs
+          gap-1 rounded-md px-3 py-1 text-sm
           [&_svg]:size-4
         `,
       },
       md: {
         root: `
-          gap-1.5 rounded-md px-3 py-1.5 text-sm
+          gap-2 rounded-md px-4 py-2 text-sm
           [&_svg]:size-4
         `,
       },
       lg: {
         root: `
-          gap-1.5 rounded-lg px-4 py-2 text-sm
-          [&_svg]:size-4.5
+          gap-2 rounded-lg px-5 py-2 text-base
+          [&_svg]:size-5
         `,
       },
       xl: {
         root: `
-          gap-2 rounded-lg px-5 py-2 text-base
+          gap-2 rounded-lg px-6 py-3 text-base
           [&_svg]:size-5
         `,
       },
@@ -91,30 +90,26 @@ export const buttonVariants = tv({
     },
   },
   compoundVariants: [
-    // SIZE X SQUARE
     {
       size: 'xs',
       square: true,
-      class: {
-        root: 'p-1',
-      },
+      class: { root: 'p-1' },
     },
     {
       size: ['sm', 'md'],
       square: true,
-      class: {
-        root: 'p-1.5',
-      },
+      class: { root: 'p-2' },
     },
     {
-      size: ['lg', 'xl'],
+      size: 'lg',
       square: true,
-      class: {
-        root: 'p-2',
-      },
+      class: { root: 'p-2' },
     },
-
-    // LINK
+    {
+      size: 'xl',
+      square: true,
+      class: { root: 'p-3' },
+    },
     {
       variant: 'link',
       class: {
