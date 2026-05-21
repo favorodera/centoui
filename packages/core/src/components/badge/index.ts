@@ -12,45 +12,29 @@ export const badgeVariants = tv({
   },
   variants: {
     variant: {
-      neutral: {
-        root: 'bg-neutral text-neutral-foreground',
-      },
-      success: {
-        root: 'bg-success/8 text-success',
-      },
-      warning: {
-        root: 'bg-warning/8 text-warning',
-      },
-      error: {
-        root: 'bg-error/8 text-error',
-      },
-      info: {
-        root: 'bg-info/8 text-info',
-      },
+      neutral: { root: 'bg-neutral text-neutral-foreground' },
+      success: { root: 'bg-success/8 text-success' },
+      warning: { root: 'bg-warning/8 text-warning' },
+      error: { root: 'bg-error/8 text-error' },
+      info: { root: 'bg-info/8 text-info' },
     },
     size: {
       sm: {
         root: `
-          gap-1 rounded-sm px-1.5 py-0.5 text-[10px] font-medium
+          gap-1 rounded-sm px-1.5 py-0.5 text-xs font-medium
           [&_svg]:size-3
         `,
       },
       md: {
         root: `
           gap-1 rounded-md px-2 py-0.5 text-xs font-medium
-          [&_svg]:size-3.5
+          [&_svg]:size-3
         `,
       },
       lg: {
         root: `
-          gap-1.5 rounded-md px-2.5 py-1 text-sm font-medium
+          gap-2 rounded-md px-2.5 py-1 text-sm font-medium
           [&_svg]:size-4
-        `,
-      },
-      xl: {
-        root: `
-          gap-1.5 rounded-lg px-3 py-1 text-sm font-medium
-          [&_svg]:size-4.5
         `,
       },
     },
