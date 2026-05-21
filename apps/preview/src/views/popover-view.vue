@@ -38,14 +38,11 @@ const values = useApp().preview.initPreview('Popover', {
 <template>
   <ViewContainer>
     <PopoverRoot>
-
       <PopoverAnchor>
         <PopoverTrigger as-child>
-          <Button
-            square
-          >
+          <Button square>
             <Icon icon="lucide:settings-2" />
-            Notifications Settings
+            Notifications
           </Button>
         </PopoverTrigger>
       </PopoverAnchor>
@@ -54,67 +51,28 @@ const values = useApp().preview.initPreview('Popover', {
         <PopoverContent
           :side="values.side as any"
           :align="values.align as any"
+          class="w-72"
         >
           <PopoverHeader>
-            <PopoverTitle>Notification settings</PopoverTitle>
+            <PopoverTitle>Notification preferences</PopoverTitle>
             <PopoverDescription>
-              Choose what you'd like to be notified about.
+              Quickly review your alert settings and close when done.
             </PopoverDescription>
-
-            <PopoverClose
-              class="absolute top-0 right-4"
-              as-child
-            >
-              <Button
-                aria-label="Close"
-                size="sm"
-                variant="link"
-              >
-                <Icon icon="lucide:x" />
-              </Button>
-             
-            </PopoverClose>
           </PopoverHeader>
 
-          <PopoverBody
-            class="
-              flex flex-col gap-2 text-sm
-              *:flex *:items-center *:justify-between *:gap-4
-            "
-          >
-            <label>
-              <span>New followers</span>
-              <input
-                type="checkbox"
-                checked
-              >
-            </label>
-            <label>
-              <span>Direct messages</span>
-              <input
-                type="checkbox"
-                checked
-              >
-            </label>
-            <label>
-              <span>Product updates</span>
-              <input type="checkbox">
-            </label>
+          <PopoverBody class="space-y-3 text-sm">
+            <p>Alerts for new followers and messages are enabled.</p>
+            <p>Updates are sent only when relevant.</p>
           </PopoverBody>
 
-          <PopoverFooter>
-            <Button
-              variant="secondary"
-              size="sm"
-            >
-              Reset to default
-            </Button>
-            <Button
-              variant="primary"
-              size="sm"
-            >
-              Save Changes
-            </Button>
+          <PopoverFooter class="flex justify-end gap-2">
+            <PopoverClose as-child>
+              <Button
+                variant="secondary"
+              >
+                Close
+              </Button>
+            </PopoverClose>
           </PopoverFooter>
 
           <PopoverArrow />
