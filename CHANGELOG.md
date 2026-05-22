@@ -1,5 +1,181 @@
 # Changelog
 
+## v1.0.0-alpha.24...v1.0.0-alpha.25
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.24...v1.0.0-alpha.25)
+
+### Added
+
+- **select:** Add multiple selection to preview - Add `multiple` prop to preview controls. - Integrate icons into trigger and items. - Update `SelectSeparator` conditions. - Adjust `SelectTrigger` width. - Extend preview groups to three. ([94b7d7f](https://github.com/favorodera/centoui/commit/94b7d7f))
+- **select:** Allow content in separator - Renders default slot between separator lines. - Falls back to a single line if no slot content. ([df8c327](https://github.com/favorodera/centoui/commit/df8c327))
+- **preview:** Update select view with real data ([a500723](https://github.com/favorodera/centoui/commit/a500723))
+
+  - Replace mock groups with fruit and vegetable lists
+  - Add SelectSeparator and SelectArrow components
+  - Improve SelectContent configuration
+
+- **pagination:** Add preview for pagination component ([9b6de27](https://github.com/favorodera/centoui/commit/9b6de27))
+- **pagination:** Add pagination component index ([4727b5e](https://github.com/favorodera/centoui/commit/4727b5e))
+
+  - Export pagination components and variants
+  - Define component props with tailwind-variants
+  - Export pagination utility types and slots
+
+- **pagination:** Add pagination ellipsis component ([4e858e6](https://github.com/favorodera/centoui/commit/4e858e6))
+
+  - implement pagination-ellipsis component
+  - integrate reka-ui pagination ellipsis
+  - add class variant support
+
+- **pagination:** Add first page button component ([4d5a12a](https://github.com/favorodera/centoui/commit/4d5a12a))
+- **pagination:** Add PaginationLast component ([019d7f6](https://github.com/favorodera/centoui/commit/019d7f6))
+- **pagination:** Add list item component ([c330a78](https://github.com/favorodera/centoui/commit/c330a78))
+- **pagination:** Add PaginationList component ([dc2b85e](https://github.com/favorodera/centoui/commit/dc2b85e))
+
+  - implement PaginationList using reka-ui
+  - add variant support for list styling
+  - include slot forwarding for custom content
+
+- **pagination:** Add PaginationNext component wrapper ([2e44701](https://github.com/favorodera/centoui/commit/2e44701))
+- **pagination:** Add prev button component ([033da80](https://github.com/favorodera/centoui/commit/033da80))
+- **pagination:** Add root component - Wraps reka-ui PaginationRoot - Forwards props and emits - Applies styling variants ([4f825f2](https://github.com/favorodera/centoui/commit/4f825f2))
+- **pagination:** Add pagination component ([cc02fff](https://github.com/favorodera/centoui/commit/cc02fff))
+- **preview:** Add controls to pagination view ([acfa3ac](https://github.com/favorodera/centoui/commit/acfa3ac))
+
+  - add variant and size controls to preview
+  - fix pagination active state and loop keys
+
+- **pagination:** Add style variants and context ([cb8261a](https://github.com/favorodera/centoui/commit/cb8261a))
+
+  - Add tailwind classes to pagination slots
+  - Implement root context for size and variants
+  - Update prop types to support button styling
+
+- **pagination:** Add default icon to ellipsis ([918cb7d](https://github.com/favorodera/centoui/commit/918cb7d))
+
+  - Use config ellipsis icon as default
+  - Add screen reader text for accessibility
+
+- **pagination:** Enhance PaginationFirst component with context and default props ([b0afe9e](https://github.com/favorodera/centoui/commit/b0afe9e))
+- **pagination:** Enhance pagination-last component ([313b59d](https://github.com/favorodera/centoui/commit/313b59d))
+
+  - Inherit size, variant and square from root
+  - Apply button styling to class names
+  - Add default slot with icon and sr-only text
+
+- **pagination:** Resolve variant and size ([f1cf811](https://github.com/favorodera/centoui/commit/f1cf811))
+
+  - Inject pagination root context
+  - Resolve variant and size dynamically
+  - Apply button variants to list item
+  - Omit non-delegated props correctly
+
+- **pagination:** Enhance pagination-next component ([948cf23](https://github.com/favorodera/centoui/commit/948cf23))
+
+  - Add variant, size, and square props support
+  - Inherit styles from root pagination context
+  - Provide default next icon and sr-only text
+
+- **pagination:** Enhance pagination-prev component ([d1cda52](https://github.com/favorodera/centoui/commit/d1cda52))
+
+  - Integrate with root pagination context
+  - Apply button variants and sizing
+  - Add default chevron icon and sr-only text
+
+- **pagination:** Enhance pagination-root component with context and default props ([5be3654](https://github.com/favorodera/centoui/commit/5be3654))
+- **icons:** Update icon configuration with additional chevron and ellipsis icons ([250c044](https://github.com/favorodera/centoui/commit/250c044))
+- **pagination:** Update pagination list gap and ellipsis styles ([3565fba](https://github.com/favorodera/centoui/commit/3565fba))
+- **preview:** Add Switch component preview view ([50d610d](https://github.com/favorodera/centoui/commit/50d610d))
+- **switch:** Add Switch component - Adds base component and variants - Includes SwitchRoot and SwitchThumb - Defines styling using tailwind-variants - Provides context and types ([3aa98d0](https://github.com/favorodera/centoui/commit/3aa98d0))
+- **switch:** Implement SwitchRoot component with context and props handling ([acaf5be](https://github.com/favorodera/centoui/commit/acaf5be))
+- **switch:** Add SwitchThumb component with context and props handling ([6ec2eeb](https://github.com/favorodera/centoui/commit/6ec2eeb))
+- **switch:** Add Switch component with schema, description, and file references ([3eb2df3](https://github.com/favorodera/centoui/commit/3eb2df3))
+- **switch:** Add switch.json for Switch component registration ([c2fa828](https://github.com/favorodera/centoui/commit/c2fa828))
+- **App:** Replace ComponentPreview with App component in main template ([bc19204](https://github.com/favorodera/centoui/commit/bc19204))
+- **app:** Create app component with header and body structure ([6423668](https://github.com/favorodera/centoui/commit/6423668))
+- **App:** Restructure App component to use Header and Body components ([d27e36e](https://github.com/favorodera/centoui/commit/d27e36e))
+- **styles:** Add styles for #app component in index.css ([7dd1cae](https://github.com/favorodera/centoui/commit/7dd1cae))
+- **alert-dialog:** Update content styles for improved layout and responsiveness ([755a671](https://github.com/favorodera/centoui/commit/755a671))
+- **app:** Remove app component and its associated template ([d70317a](https://github.com/favorodera/centoui/commit/d70317a))
+- **body:** Add new Body component with props panel and layout ([bb18afa](https://github.com/favorodera/centoui/commit/bb18afa))
+- **component-preview:** Remove ComponentPreview.vue file and its associated logic ([2970e99](https://github.com/favorodera/centoui/commit/2970e99))
+- **header:** Add new header component with navigation and theme editing features ([47d3ab2](https://github.com/favorodera/centoui/commit/47d3ab2))
+- **props-control:** Add PropsControl component for dynamic property management ([1d721f7](https://github.com/favorodera/centoui/commit/1d721f7))
+- **props-panel:** Remove PropsPanel component and associated logic ([d0690c3](https://github.com/favorodera/centoui/commit/d0690c3))
+- **view-container:** Update styling for improved layout and responsiveness ([a3a7512](https://github.com/favorodera/centoui/commit/a3a7512))
+- **use-app:** Implement main composable for application state and behavior management ([7d529ff](https://github.com/favorodera/centoui/commit/7d529ff))
+
+### Fixed
+
+- **select:** Remove default-open attribute ([6c86344](https://github.com/favorodera/centoui/commit/6c86344))
+- **pagination:** Format ellipsis styles for better readability ([a09b55b](https://github.com/favorodera/centoui/commit/a09b55b))
+- **progress:** Update root slot style to use rounded-xs for consistency ([c04bca7](https://github.com/favorodera/centoui/commit/c04bca7))
+- **main:** Reorder app.use calls for proper initialization ([d0b9f3d](https://github.com/favorodera/centoui/commit/d0b9f3d))
+- **App.vue:** Format div element for improved readability ([8dc01de](https://github.com/favorodera/centoui/commit/8dc01de))
+
+### Refactors
+
+- **components:** Streamline and refine component styles ([02c5ae2](https://github.com/favorodera/centoui/commit/02c5ae2))
+
+  - Remove Text component and its preview
+  - Unify SelectTrigger variant to `outline`
+  - Adjust spacing, padding, and font sizes
+
+- **select:** Improve component styling and variants ([79f4f17](https://github.com/favorodera/centoui/commit/79f4f17))
+- **select:** Improve item layout and sizing logic ([7a51b07](https://github.com/favorodera/centoui/commit/7a51b07))
+- **router:** Simplify comments and improve readability in index.ts ([8bbd0c1](https://github.com/favorodera/centoui/commit/8bbd0c1))
+- **types:** Simplify prop definitions and remove unused types ([89d0687](https://github.com/favorodera/centoui/commit/89d0687))
+- **preview:** Replace usePreview with useApp for preview initialization ([d3b00c6](https://github.com/favorodera/centoui/commit/d3b00c6))
+
+### Chores
+
+- **vite.config:** Add a blank line for improved readability ([52bfd4a](https://github.com/favorodera/centoui/commit/52bfd4a))
+
+### Styling
+
+- **progress:** Format indicator classes ([ab167e5](https://github.com/favorodera/centoui/commit/ab167e5))
+- **tooltip:** Reformat content styles for readability ([4eac1a0](https://github.com/favorodera/centoui/commit/4eac1a0))
+- **button:** Make outline ring-inset conditional ([f727167](https://github.com/favorodera/centoui/commit/f727167))
+- **button:** Improve outline variant readability ([43bec93](https://github.com/favorodera/centoui/commit/43bec93))
+- **select:** Format Tailwind utility classes ([01e6f02](https://github.com/favorodera/centoui/commit/01e6f02))
+- **alert-dialog:** Enhance content layout and improve styling consistency ([05cbd68](https://github.com/favorodera/centoui/commit/05cbd68))
+- **view-container:** Adjust max-width for improved layout consistency ([5f2785d](https://github.com/favorodera/centoui/commit/5f2785d))
+- **accordion-view:** Update accordion content for clarity and improved user guidance ([01cb68a](https://github.com/favorodera/centoui/commit/01cb68a))
+- **alert-dialog:** Update button text and dialog content for clarity and accuracy ([ca966b0](https://github.com/favorodera/centoui/commit/ca966b0))
+- **alert-view:** Update alert content and icon for clarity and relevance ([27f84c8](https://github.com/favorodera/centoui/commit/27f84c8))
+- **button-group-view:** Simplify button variant and size handling, enhance select component integration ([1484888](https://github.com/favorodera/centoui/commit/1484888))
+- **kbd-group-view:** Simplify keyboard size handling by removing unused size props ([f051299](https://github.com/favorodera/centoui/commit/f051299))
+- **popover-view:** Update notification settings for clarity and conciseness ([a2df942](https://github.com/favorodera/centoui/commit/a2df942))
+- **accordion:** Enhance layout and spacing for improved readability ([913c782](https://github.com/favorodera/centoui/commit/913c782))
+- **alert-view:** Refine content and description spacing for consistency ([51d90eb](https://github.com/favorodera/centoui/commit/51d90eb))
+- **alert-dialog:** Improve spacing and layout for content and header ([56432a2](https://github.com/favorodera/centoui/commit/56432a2))
+- **avatar:** Simplify size variants and adjust fallback text sizes for consistency ([5b1b206](https://github.com/favorodera/centoui/commit/5b1b206))
+- **badge:** Streamline variant definitions and adjust size styles for consistency ([6ff9d39](https://github.com/favorodera/centoui/commit/6ff9d39))
+- **button:** Refine padding and size variants for improved consistency ([968ac02](https://github.com/favorodera/centoui/commit/968ac02))
+- **collapsible:** Add animation duration to content for smoother transitions ([07aa738](https://github.com/favorodera/centoui/commit/07aa738))
+- **kbd:** Standardize text sizes and remove unused size variant ([3ec8d22](https://github.com/favorodera/centoui/commit/3ec8d22))
+- **popover:** Adjust spacing and padding for improved layout consistency ([117fe81](https://github.com/favorodera/centoui/commit/117fe81))
+- **body:** Add social media buttons with icons and links for GitHub and Twitter ([2c103f0](https://github.com/favorodera/centoui/commit/2c103f0))
+- **props-control:** Enhance layout structure and improve boolean switch implementation ([071f99e](https://github.com/favorodera/centoui/commit/071f99e))
+- **popover:** Refine button layout and remove redundant class from PopoverBody ([e063033](https://github.com/favorodera/centoui/commit/e063033))
+- **switch-view:** Add disabled and invalid props to SwitchRoot for enhanced functionality ([f22eec5](https://github.com/favorodera/centoui/commit/f22eec5))
+- **accordion:** Adjust trigger styles for improved transition effects ([63eb260](https://github.com/favorodera/centoui/commit/63eb260))
+- **alert-dialog:** Enhance overlay styles for improved animation effects ([ecdd9c7](https://github.com/favorodera/centoui/commit/ecdd9c7))
+- **button:** Increase transition duration for smoother animations ([a158c43](https://github.com/favorodera/centoui/commit/a158c43))
+- **popover:** Add animation duration to content for smoother transitions ([ff5b882](https://github.com/favorodera/centoui/commit/ff5b882))
+- **progress:** Increase transition duration for smoother animations ([702c563](https://github.com/favorodera/centoui/commit/702c563))
+- **select:** Update styles for improved layout and consistency ([a8759f7](https://github.com/favorodera/centoui/commit/a8759f7))
+- **select-separator:** Simplify slot handling and clean up unused code ([6664445](https://github.com/favorodera/centoui/commit/6664445))
+- **separator:** Remove unnecessary alignment class from root slot ([6d7d86b](https://github.com/favorodera/centoui/commit/6d7d86b))
+- **switch:** Update transition durations and improve disabled state opacity ([c3d7cba](https://github.com/favorodera/centoui/commit/c3d7cba))
+- **tooltip:** Update padding and transition duration for improved appearance ([1e73934](https://github.com/favorodera/centoui/commit/1e73934))
+- **popover-view:** Replace button with avatar for trigger and update content for personalization ([00f8b6a](https://github.com/favorodera/centoui/commit/00f8b6a))
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.23...v1.0.0-alpha.24
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.23...v1.0.0-alpha.24)
