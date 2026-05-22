@@ -5,14 +5,11 @@ import {
   injectCentouiSelectRootContext,
   selectVariants,
   type SelectSeparatorProps,
-  type SelectSeparatorSlots,
 } from '.'
 import { Separator } from '../separator'
 import { computed } from 'vue'
 
 const rootContext = injectCentouiSelectRootContext()
-
-const slots = defineSlots<SelectSeparatorSlots>()
 
 const props = withDefaults(defineProps<SelectSeparatorProps>(), {
   asChild: true,
@@ -33,19 +30,10 @@ const classNames = computed(() => {
   <SelectSeparator
     data-slot="select-separator"
     v-bind="forwardedProps"
+    :class="classNames"
   >
-    <!-- When slot content is provided, render flanking lines around it. -->
-    <Separator
-      v-if="slots.default"
-      :class="classNames"
-    >
-      <slot />
-    </Separator>
-
-    <!-- No content — render a single line. -->
-    <Separator
-      v-else
-      :class="classNames"
-    />
+    <slot>
+      <Separator />
+    </slot>
   </SelectSeparator>
 </template>
