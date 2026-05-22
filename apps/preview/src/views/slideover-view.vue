@@ -63,13 +63,13 @@ const release = [
             </SlideoverDescription>
           </SlideoverHeader>
 
-          <SlideoverBody class="flex  flex-col gap-4">
+          <SlideoverBody class="flex flex-col gap-4">
             <section class="space-y-2">
               <h3 class="text-sm font-medium">
                 Highlights
               </h3>
 
-              <p class="text-muted-foreground text-sm leading-relaxed">
+              <p class="text-sm/relaxed text-muted-foreground">
                 We redesigned the analytics overview to improve readability,
                 added faster page transitions, and reduced initial loading
                 times across the application.
@@ -81,7 +81,7 @@ const release = [
                 Included in this release
               </h3>
 
-              <ul class="text-muted-foreground space-y-2 text-sm">
+              <ul class="space-y-2 text-sm text-muted-foreground">
                 <li
                   v-for="item in release"
                   :key="item"
