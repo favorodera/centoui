@@ -6,9 +6,7 @@ import { computed } from 'vue'
 
 const rootContext = injectCentouiAlertRootContext()
 
-const props = withDefaults(defineProps<AlertContentProps>(), {
-  as: 'div',
-})
+const props = defineProps<AlertContentProps>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
 
