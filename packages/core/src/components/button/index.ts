@@ -6,8 +6,8 @@ export const buttonVariants = tv({
   slots: {
     root: `
       relative inline-flex shrink-0 cursor-default items-center justify-center
-      truncate font-medium whitespace-nowrap transition-all duration-300
-      outline-none select-none
+      truncate border border-transparent font-medium whitespace-nowrap
+      transition-all duration-300 outline-none select-none
       focus-visible:ring-2 focus-visible:ring-ring
       active:translate-y-px
       disabled:pointer-events-none disabled:opacity-60
@@ -40,7 +40,7 @@ export const buttonVariants = tv({
       },
       outline: {
         root: `
-          border border-border
+          border-border
           hover:bg-accent hover:text-accent-foreground
         `,
       },
