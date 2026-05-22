@@ -7,9 +7,7 @@ import {
 } from '.'
 import { computed } from 'vue'
 
-const props = withDefaults(defineProps<AlertDialogHeaderProps>(), {
-  as: 'div',
-})
+const props = defineProps<AlertDialogHeaderProps>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
 
