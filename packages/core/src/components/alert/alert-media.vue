@@ -6,9 +6,7 @@ import { computed } from 'vue'
 
 const rootContext = injectCentouiAlertRootContext()
 
-const props = withDefaults(defineProps<AlertMediaProps>(), {
-  as: 'div',
-})
+const props = defineProps<AlertMediaProps>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
 
