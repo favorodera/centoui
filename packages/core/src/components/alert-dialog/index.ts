@@ -39,7 +39,7 @@ export const alertDialogVariants = tv({
       sm:items-start sm:text-left
     `,
     title: `
-      text-base font-medium
+      text-base/tight font-medium
       sm:text-lg
     `,
     description: 'text-sm text-muted-foreground',
