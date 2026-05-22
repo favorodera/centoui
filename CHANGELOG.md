@@ -1,5 +1,131 @@
 # Changelog
 
+## v1.0.0-alpha.25...v1.0.0-alpha.26
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.25...v1.0.0-alpha.26)
+
+### Added
+
+- **preview:** Add card component preview ([99b7719](https://github.com/favorodera/centoui/commit/99b7719))
+
+  - Create card-view.vue with demo cards
+  - Showcase profile and product card examples
+
+- **card:** Add CardBody component ([f55d2eb](https://github.com/favorodera/centoui/commit/f55d2eb))
+
+  - Add card-body.vue using reka-ui Primitive
+
+- **card:** Add card-description component ([2b5f0c5](https://github.com/favorodera/centoui/commit/2b5f0c5))
+
+  - Implement card-description Vue component
+  - Use reka-ui Primitive and cardVariants
+
+- **card:** Add card-footer component ([441cb56](https://github.com/favorodera/centoui/commit/441cb56))
+
+  - Implement card-footer using reka-ui
+  - Integrate cardVariants for styling
+
+- **card:** Add CardHeader component ([5582f85](https://github.com/favorodera/centoui/commit/5582f85))
+- **card:** Add CardRoot component ([f60b834](https://github.com/favorodera/centoui/commit/f60b834))
+- **card:** Add card-title component ([ad89eb8](https://github.com/favorodera/centoui/commit/ad89eb8))
+
+  - Add CardTitle Vue component
+  - Use reka-ui Primitive and forward props
+
+- **card:** Add card component ([b252b61](https://github.com/favorodera/centoui/commit/b252b61))
+
+  - Define Tailwind variants for card slots
+  - Export sub-components and prop types
+
+- **registry:** Add card component ([081cdf4](https://github.com/favorodera/centoui/commit/081cdf4))
+
+  - Register card component files and metadata
+
+- **registry:** Add card component ([cbf8f4f](https://github.com/favorodera/centoui/commit/cbf8f4f))
+- **preview:** Add slideover view ([b7b95c1](https://github.com/favorodera/centoui/commit/b7b95c1))
+
+  - Add preview page for Slideover component
+  - Support interactive side variant options
+
+- **slideover:** Add slideover component ([45ccf87](https://github.com/favorodera/centoui/commit/45ccf87))
+- **slideover:** Add SlideoverBody component ([788e13a](https://github.com/favorodera/centoui/commit/788e13a))
+- **slideover:** Add SlideoverClose component ([c57a96a](https://github.com/favorodera/centoui/commit/c57a96a))
+- **slideover:** Add SlideoverContent component ([a2b5cb7](https://github.com/favorodera/centoui/commit/a2b5cb7))
+- **slideover:** Add description component ([5d7e4af](https://github.com/favorodera/centoui/commit/5d7e4af))
+- **slideover:** Add SlideoverFooter component - Add new component for slideover footer. - Integrates with slideover variants. - Utilizes reka-ui Primitive. ([1506700](https://github.com/favorodera/centoui/commit/1506700))
+- **slideover:** Add SlideoverHeader component ([ffe3935](https://github.com/favorodera/centoui/commit/ffe3935))
+- **slideover:** Add SlideoverPortal component ([dc3b665](https://github.com/favorodera/centoui/commit/dc3b665))
+- **slideover:** Add SlideoverRoot component ([a7eb6c7](https://github.com/favorodera/centoui/commit/a7eb6c7))
+- **slideover:** Add SlideoverTitle component ([c2aa348](https://github.com/favorodera/centoui/commit/c2aa348))
+- **slideover:** Add SlideoverTrigger component ([4ed7084](https://github.com/favorodera/centoui/commit/4ed7084))
+- **slideover:** Add Slideover component with related files and dependencies ([40d6ff3](https://github.com/favorodera/centoui/commit/40d6ff3))
+- **registry:** Add slideover component ([fbd8765](https://github.com/favorodera/centoui/commit/fbd8765))
+
+### Fixed
+
+- **accordion:** Fix icon size and alignment ([767fe9e](https://github.com/favorodera/centoui/commit/767fe9e))
+
+### Refactors
+
+- **alert:** Remove default for as prop ([2b6ea0e](https://github.com/favorodera/centoui/commit/2b6ea0e))
+- **alert:** Remove default props ([c44b6e2](https://github.com/favorodera/centoui/commit/c44b6e2))
+
+  - Remove default as prop in AlertContent
+
+- **alert:** Remove default as prop ([2b89ae6](https://github.com/favorodera/centoui/commit/2b89ae6))
+
+  - Remove withDefaults from alert description
+
+- **alert:** Remove default as prop ([62bb79d](https://github.com/favorodera/centoui/commit/62bb79d))
+- **alert:** Remove default as prop ([e7dfcb8](https://github.com/favorodera/centoui/commit/e7dfcb8))
+- **alert:** Remove default 'as' prop ([0a63c4c](https://github.com/favorodera/centoui/commit/0a63c4c))
+- **alert-dialog:** Simplify footer props ([cfb24cc](https://github.com/favorodera/centoui/commit/cfb24cc))
+- **alert-dialog:** Remove default props ([f3a6d2e](https://github.com/favorodera/centoui/commit/f3a6d2e))
+
+  - Remove withDefaults from header component
+
+- **popover:** Remove withDefaults from PopoverBody ([db13f1b](https://github.com/favorodera/centoui/commit/db13f1b))
+- **popover-footer:** Remove explicit 'as' prop default ([1b46a5c](https://github.com/favorodera/centoui/commit/1b46a5c))
+- **popover:** Simplify PopoverHeader props ([a75f466](https://github.com/favorodera/centoui/commit/a75f466))
+- **button:** Apply transparent border to root ([26af78c](https://github.com/favorodera/centoui/commit/26af78c))
+- **alert-dialog:** Simplify title styles ([1071e63](https://github.com/favorodera/centoui/commit/1071e63))
+
+### Chores
+
+- **pnpm:** Move peer rules to workspace ([8fc8c97](https://github.com/favorodera/centoui/commit/8fc8c97))
+
+  - Move peerDependencyRules to workspace config
+  - Standardize quotes in pnpm-workspace.yaml
+
+- **preview:** Update pagination props ([4109d72](https://github.com/favorodera/centoui/commit/4109d72))
+
+  - reduce total count to 50
+  - set sibling count to 0
+
+- **lint:** Update eslint-plugin-better-tailwindcss ([0483d6d](https://github.com/favorodera/centoui/commit/0483d6d))
+
+### Styling
+
+- **preview:** Use size-full in view container ([772a15b](https://github.com/favorodera/centoui/commit/772a15b))
+- **preview:** Reorder view-container classes ([744eed3](https://github.com/favorodera/centoui/commit/744eed3))
+- **alert:** Update svg size and title leading ([4f36584](https://github.com/favorodera/centoui/commit/4f36584))
+
+  - Use size-4 and translate-y-0.5 for svg
+  - Add leading-tight to title variant
+
+- **alert-dialog:** Adjust title line-height ([79c75cb](https://github.com/favorodera/centoui/commit/79c75cb))
+- **popover:** Use tight line-height ([d75a4bf](https://github.com/favorodera/centoui/commit/d75a4bf))
+- **slideover:** Standardize Tailwind class format ([9d664ab](https://github.com/favorodera/centoui/commit/9d664ab))
+- **card:** Remove sm:text-lg from title ([c3a6f50](https://github.com/favorodera/centoui/commit/c3a6f50))
+- **popover:** Adjust description line height ([baaa1d2](https://github.com/favorodera/centoui/commit/baaa1d2))
+- **slideover:** Reduce max width ([c4bb5bd](https://github.com/favorodera/centoui/commit/c4bb5bd))
+- **preview:** Add border to slideover footer ([2aa20c4](https://github.com/favorodera/centoui/commit/2aa20c4))
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.24...v1.0.0-alpha.25
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.24...v1.0.0-alpha.25)
