@@ -1,10 +1,24 @@
 <script setup lang="ts">
 import { Button } from '#centoui/components/button'
+import { ButtonGroup } from '#centoui/components/button-group'
+import PropsControl from '@/components/props-control.vue'
 import { useApp } from '@/composables/use-app'
 import { Icon } from '@iconify/vue'
-import PropsControl from '@/components/props-control.vue'
 
 const { preview, navigation, models } = useApp()
+
+const socials = [
+  {
+    name: 'GitHub',
+    icon: 'lucide:github',
+    href: 'https://github.com/favorodera/centoui',
+  },
+  {
+    name: 'Twitter',
+    icon: 'lucide:twitter',
+    href: 'https://x.com/favorodera',
+  },
+]
 </script>
 
 <template>
@@ -56,6 +70,34 @@ const { preview, navigation, models } = useApp()
           :values="preview.values.value"
           @update:values="preview.updateValues"
         />
+      </div>
+
+      <div
+        class="
+          flex h-11 shrink-0 items-center justify-between border-t border-border
+          px-3
+        "
+      >
+
+        <ButtonGroup class="w-full">
+          <Button
+            v-for="social in socials"
+            :key="social.name"
+            variant="outline"
+            size="sm"
+            as-child
+            class="flex-1"
+          >
+            <a
+              :href="social.href"
+              target="_blank"
+            >
+              <Icon :icon="social.icon" />
+              {{ social.name }}
+            </a>
+          </Button>
+        </ButtonGroup>
+         
       </div>
 
     </aside>
