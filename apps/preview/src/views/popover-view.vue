@@ -40,9 +40,11 @@ const values = useApp().preview.initPreview('Popover', {
     <PopoverRoot>
       <PopoverAnchor>
         <PopoverTrigger as-child>
-          <Button square>
+          <Button
+            square
+            variant="outline"
+          >
             <Icon icon="lucide:settings-2" />
-            Notifications
           </Button>
         </PopoverTrigger>
       </PopoverAnchor>
@@ -60,7 +62,7 @@ const values = useApp().preview.initPreview('Popover', {
             </PopoverDescription>
           </PopoverHeader>
 
-          <PopoverBody class="space-y-3 text-sm">
+          <PopoverBody class="text-sm">
             <p>Alerts for new followers and messages are enabled.</p>
             <p>Updates are sent only when relevant.</p>
           </PopoverBody>
