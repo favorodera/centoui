@@ -104,7 +104,7 @@ const release = [
             </AlertRoot>
           </SlideoverBody>
 
-          <SlideoverFooter class="justify-end">
+          <SlideoverFooter class="justify-end border-t border-border">
             <SlideoverClose as-child>
               <Button>
                 See full changelog
