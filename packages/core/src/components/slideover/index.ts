@@ -60,14 +60,14 @@ export const slideoverVariants = tv({
       },
       left: {
         content: `
-          inset-y-0 left-0 size-full max-w-md border-r
+          inset-y-0 left-0 size-full max-w-sm border-r
           data-[state=closed]:slide-out-to-left
           data-[state=open]:slide-in-from-left
         `,
       },
       right: {
         content: `
-          inset-y-0 right-0 size-full max-w-md border-l
+          inset-y-0 right-0 size-full max-w-sm border-l
           data-[state=closed]:slide-out-to-right
           data-[state=open]:slide-in-from-right
         `,
