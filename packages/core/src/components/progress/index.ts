@@ -10,7 +10,7 @@ export const progressVariants = tv({
     root: 'relative h-2 w-full overflow-hidden rounded-xs bg-muted',
     indicator: `
       size-full origin-left rounded-[inherit] bg-primary transition-transform
-      duration-200
+      duration-300
     `,
   },
 })
