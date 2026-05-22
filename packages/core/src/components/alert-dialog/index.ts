@@ -38,10 +38,7 @@ export const alertDialogVariants = tv({
       flex flex-col items-center gap-2 px-6 text-center
       sm:items-start sm:text-left
     `,
-    title: `
-      text-base/tight font-medium
-      sm:text-lg
-    `,
+    title: 'text-base/tight font-medium',
     description: 'text-sm text-muted-foreground',
     footer: `
       flex flex-col-reverse gap-2 px-6
