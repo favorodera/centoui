@@ -26,9 +26,8 @@ import { tv, type ClassProp, type VariantProps } from 'tailwind-variants'
 export const selectVariants = tv({
   slots: {
     trigger: `
-      relative inline-flex w-full items-center justify-between bg-transparent
-      ring ring-input transition-all outline-none
-      not-focus-visible:not-aria-invalid:ring-inset
+      relative inline-flex w-full items-center justify-between border
+      border-input bg-transparent transition-all outline-none
       hover:bg-input/15
       focus-visible:ring-2 focus-visible:ring-ring
       disabled:pointer-events-none disabled:opacity-60
@@ -37,11 +36,11 @@ export const selectVariants = tv({
       [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg]:text-muted-foreground
     `,
     value: 'flex-1 truncate text-start',
-    icon: 'opacity-60',
+    icon: 'text-muted-foreground',
     content: `
       relative z-50 max-h-(--reka-select-content-available-height)
-      scrollbar-none overflow-x-hidden overflow-y-auto rounded-lg
-      bg-surface-raised shadow-md ring ring-border ring-inset
+      scrollbar-none overflow-x-hidden overflow-y-auto rounded-lg border
+      border-border bg-surface-raised shadow-md animation-duration-300
       data-[side=bottom]:slide-in-from-top-2
       data-[side=left]:slide-in-from-right-2
       data-[side=right]:slide-in-from-left-2
@@ -53,7 +52,7 @@ export const selectVariants = tv({
     `,
     viewport: 'p-1',
     item: `
-      relative inline-flex w-full cursor-default items-center gap-2 rounded-md
+      relative inline-flex w-full cursor-default items-center rounded-md
       outline-none select-none
       focus:bg-accent focus:text-accent-foreground
       data-disabled:pointer-events-none data-disabled:opacity-60
@@ -75,32 +74,31 @@ export const selectVariants = tv({
     size: {
       sm: {
         trigger: `
-          gap-1 rounded-md px-2.5 py-1.5
+          gap-1 rounded-md px-3 py-1
           [&_svg]:size-4
         `,
         value: 'text-xs',
         icon: 'size-4',
-        label: 'px-1.5 py-1 text-[10px]/3',
+        label: 'px-2 py-1 text-xs',
         item: `
-          gap-1.5 px-2.5 py-1.5
+          gap-1 px-2 py-1
           [&_svg]:size-4
         `,
         itemText: 'text-xs',
         itemIndicator: '[&_svg]:size-4',
         scrollUpButton: '[&_svg]:size-4',
         scrollDownButton: '[&_svg]:size-4',
-        separator: '**:data-[slot=separator-content]:text-xs',
       },
       md: {
         trigger: `
-          gap-1.5 rounded-md px-3 py-1.5
+          gap-2 rounded-md px-4 py-2
           [&_svg]:size-4
         `,
         value: 'text-sm',
         icon: 'size-4',
         label: 'px-2 py-1 text-xs',
         item: `
-          gap-1.5 px-3 py-1.5
+          gap-2 px-3 py-1
           [&_svg]:size-4
         `,
         itemText: 'text-sm',
@@ -108,25 +106,7 @@ export const selectVariants = tv({
         scrollUpButton: '[&_svg]:size-4',
         scrollDownButton: '[&_svg]:size-4',
       },
-      lg: {
-        trigger: `
-          gap-1.5 rounded-lg px-4 py-2
-          [&_svg]:size-4.5
-        `,
-        value: 'text-sm',
-        icon: 'size-4.5',
-        label: 'px-2 py-1 text-xs',
-        item: `
-          gap-1.5 px-4 py-2
-          [&_svg]:size-4.5
-        `,
-        itemText: 'text-sm',
-        itemIndicator: '[&_svg]:size-4.5',
-        scrollUpButton: '[&_svg]:size-4.5',
-        scrollDownButton: '[&_svg]:size-4.5',
-      },
     },
-
     contentPosition: {
       'popper': {
         content: `
@@ -136,14 +116,11 @@ export const selectVariants = tv({
           data-[side=right]:translate-x-1
           data-[side=top]:-translate-y-1
         `,
-
         viewport: 'min-w-(--reka-select-trigger-width) scroll-my-1',
       },
-
       'item-aligned': {},
     },
   },
-
   defaultVariants: {
     size: 'md',
     contentPosition: 'popper',
@@ -254,8 +231,4 @@ export type SelectValueSlots = {
     /** Current selected label */
     selectedLabel: string[]
   }) => []
-}
-
-export type SelectSeparatorSlots = {
-  default: []
 }
