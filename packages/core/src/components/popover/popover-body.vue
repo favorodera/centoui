@@ -7,9 +7,7 @@ import {
 } from '.'
 import { computed } from 'vue'
 
-const props = withDefaults(defineProps<PopoverBodyProps>(), {
-  as: 'div',
-})
+const props = defineProps<PopoverBodyProps>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
 
