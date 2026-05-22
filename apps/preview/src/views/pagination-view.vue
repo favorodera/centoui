@@ -39,8 +39,8 @@ const values = useApp().preview.initPreview('Pagination', {
   <ViewContainer>
     <PaginationRoot
       v-slot="{page}"
-      :total="100"
-      :sibling-count="1"
+      :total="50"
+      :sibling-count="0"
       :items-per-page="5"
       show-edges
       :default-page="2"
