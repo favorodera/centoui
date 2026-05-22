@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Button } from '#centoui/components/button'
+import { AvatarRoot, AvatarImage, AvatarFallback } from '#centoui/components/avatar'
 import { Icon } from '@iconify/vue'
 import {
   PopoverAnchor,
@@ -40,12 +41,13 @@ const values = useApp().preview.initPreview('Popover', {
     <PopoverRoot>
       <PopoverAnchor>
         <PopoverTrigger as-child>
-          <Button
-            square
-            variant="outline"
-          >
-            <Icon icon="lucide:settings-2" />
-          </Button>
+          <AvatarRoot class="cursor-pointer">
+            <AvatarImage
+              src="https://github.com/favorodera.png"
+              alt="Favour Emeka"
+            />
+            <AvatarFallback>FE</AvatarFallback>
+          </AvatarRoot>
         </PopoverTrigger>
       </PopoverAnchor>
 
@@ -53,26 +55,27 @@ const values = useApp().preview.initPreview('Popover', {
         <PopoverContent
           :side="values.side as any"
           :align="values.align as any"
-          class="w-72"
+          class="w-64"
         >
           <PopoverHeader>
-            <PopoverTitle>Notification preferences</PopoverTitle>
-            <PopoverDescription>
-              Quickly review your alert settings and close when done.
-            </PopoverDescription>
+            <PopoverTitle>Favour Emeka</PopoverTitle>
+            <PopoverDescription>favorodera@gmail.com</PopoverDescription>
           </PopoverHeader>
 
-          <PopoverBody class="text-sm">
-            <p>Alerts for new followers and messages are enabled.</p>
-            <p>Updates are sent only when relevant.</p>
+          <PopoverBody>
+            <p class="text-sm text-muted-foreground">
+              Member since Jan 2024
+            </p>
           </PopoverBody>
 
-          <PopoverFooter class="flex justify-end gap-2">
+          <PopoverFooter class="">
             <PopoverClose as-child>
               <Button
                 variant="secondary"
+                class="w-full"
               >
-                Close
+                <Icon icon="lucide:user" />
+                View profile
               </Button>
             </PopoverClose>
           </PopoverFooter>
