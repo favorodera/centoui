@@ -11,6 +11,16 @@ const values = useApp().preview.initPreview('Switch', {
     options: Object.keys(switchVariants.variants.size),
     default: switchVariants.defaultVariants.size,
   },
+  disabled: {
+    type: 'boolean',
+    label: 'Disabled',
+    default: false,
+  },
+  invalid: {
+    type: 'boolean',
+    label: 'Invalid',
+    default: false,
+  },
 })
 
 const switchState = ref(false)
@@ -21,6 +31,8 @@ const switchState = ref(false)
     <SwitchRoot
       v-model="switchState"
       :size="values.size"
+      :disabled="values.disabled"
+      :aria-invalid="values.invalid"
     >
       <SwitchThumb />
     </SwitchRoot>
