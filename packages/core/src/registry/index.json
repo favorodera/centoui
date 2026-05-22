@@ -277,6 +277,29 @@
     },
     {
       "$schema": "../schemas/component.json",
+      "name": "slideover",
+      "description": "An overlay panel that slides in from the edge of the screen, typically used for navigation, forms, or details.",
+      "files": [
+        "components/slideover/slideover-body.vue",
+        "components/slideover/slideover-close.vue",
+        "components/slideover/slideover-content.vue",
+        "components/slideover/slideover-description.vue",
+        "components/slideover/slideover-footer.vue",
+        "components/slideover/slideover-header.vue",
+        "components/slideover/slideover-overlay.vue",
+        "components/slideover/slideover-portal.vue",
+        "components/slideover/slideover-root.vue",
+        "components/slideover/slideover-title.vue",
+        "components/slideover/slideover-trigger.vue",
+        "components/slideover/index.ts"
+      ],
+      "componentDeps": [
+        "button"
+      ],
+      "packageDeps": {}
+    },
+    {
+      "$schema": "../schemas/component.json",
       "name": "switch",
       "description": "A control that allows the user to toggle between two states.",
       "files": [
