@@ -25,7 +25,7 @@ export const accordionVariants = tv({
       data-disabled:pointer-events-none data-disabled:opacity-60
     `,
     triggerIcon: `
-      pointer-events-none h-lh w-4 shrink-0 text-muted-foreground
+      pointer-events-none size-4 shrink-0 translate-y-0.5 text-muted-foreground
       transition-transform duration-300
       group-data-[state=open]/trigger:rotate-180
     `,
