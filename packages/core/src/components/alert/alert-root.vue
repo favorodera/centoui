@@ -5,7 +5,6 @@ import { computed, reactive, toRef } from 'vue'
 import { type AlertRootProps, alertVariants, provideCentouiAlertRootContext } from '.'
 
 const props = withDefaults(defineProps<AlertRootProps>(), {
-  as: 'div',
   variant: 'neutral',
 })
 const delegatedProps = reactiveOmit(
