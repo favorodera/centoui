@@ -7,9 +7,7 @@ import {
 } from '.'
 import { computed } from 'vue'
 
-const props = withDefaults(defineProps<PopoverFooterProps>(), {
-  as: 'div',
-})
+const props = defineProps<PopoverFooterProps>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
 
