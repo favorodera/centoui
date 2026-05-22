@@ -6,7 +6,7 @@ export const buttonVariants = tv({
   slots: {
     root: `
       relative inline-flex shrink-0 cursor-default items-center justify-center
-      truncate font-medium whitespace-nowrap transition-all duration-200
+      truncate font-medium whitespace-nowrap transition-all duration-300
       outline-none select-none
       focus-visible:ring-2 focus-visible:ring-ring
       active:translate-y-px
