@@ -29,8 +29,8 @@ export const popoverVariants = tv({
       data-[state=open]:zoom-in-95
     `,
     header: 'relative flex flex-col gap-2 px-4 text-left',
-    title: 'text-sm font-medium',
-    description: 'text-sm text-muted-foreground',
+    title: 'text-sm/tight font-medium',
+    description: 'text-sm/tight text-muted-foreground',
     body: 'px-4',
     footer: 'relative flex items-center justify-end gap-2 px-4',
     arrow: 'z-50 fill-surface-raised',
