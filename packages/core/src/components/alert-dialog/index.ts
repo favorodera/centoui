@@ -19,7 +19,7 @@ export const alertDialogVariants = tv({
   slots: {
     trigger: '',
     overlay: `
-      fixed inset-0 z-50 bg-overlay
+      fixed inset-0 z-50 bg-overlay animation-duration-300
       data-[state=closed]:animate-out data-[state=closed]:fade-out-0
       data-[state=open]:animate-in data-[state=open]:fade-in-0
     `,
@@ -27,6 +27,7 @@ export const alertDialogVariants = tv({
       fixed top-1/2 left-1/2 z-50 grid max-h-[90dvh] w-full
       max-w-[calc(100%-3rem)] -translate-1/2 gap-6 overflow-hidden
       overflow-y-auto rounded-xl bg-surface-raised py-6 shadow-lg
+      animation-duration-300
       data-[state=closed]:animate-out data-[state=closed]:fade-out-0
       data-[state=closed]:zoom-out-95
       data-[state=open]:animate-in data-[state=open]:fade-in-0
