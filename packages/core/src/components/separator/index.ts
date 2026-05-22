@@ -3,7 +3,7 @@ import { tv, type ClassProp, type VariantProps } from 'tailwind-variants'
 
 export const separatorVariants = tv({
   slots: {
-    root: 'flex items-center gap-3 align-middle',
+    root: 'flex items-center gap-3',
     line: 'border-border',
     content: 'shrink-0 text-center text-sm text-muted-foreground',
   },
