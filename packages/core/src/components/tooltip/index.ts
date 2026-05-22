@@ -15,8 +15,8 @@ export const tooltipVariants = tv({
     trigger: '',
     content: `
       pointer-events-auto z-50 w-fit animate-in rounded-md bg-surface-raised
-      px-2.5 py-1 text-xs text-pretty text-foreground shadow-md fade-in-0
-      zoom-in-95
+      px-3 py-1 text-xs text-pretty text-foreground shadow-md
+      animation-duration-300 fade-in-0 zoom-in-95
       data-[side=bottom]:slide-in-from-top-1
       data-[side=left]:slide-in-from-right-1
       data-[side=right]:slide-in-from-left-1
