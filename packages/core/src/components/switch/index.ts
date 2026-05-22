@@ -10,40 +10,32 @@ export const switchVariants = tv({
   slots: {
     root: `
       peer relative inline-flex shrink-0 items-center rounded-sm transition-all
-      duration-200 outline-none
+      duration-300 outline-none
       focus-visible:ring-2 focus-visible:ring-ring
-      disabled:pointer-events-none disabled:opacity-50
+      disabled:pointer-events-none disabled:opacity-60
+      aria-invalid:ring-2 aria-invalid:ring-error
       data-[state=checked]:bg-primary
       data-[state=unchecked]:bg-input
     `,
-    
     thumb: `
       pointer-events-none block origin-left rounded-sm bg-background
-      transition-transform duration-200
-      data-[state=checked]:translate-x-[calc(100%+3px)]
+      transition-transform duration-300
+      data-[state=checked]:translate-x-[calc(100%+7px)]
       data-[state=unchecked]:translate-x-px
     `,
   },
-
   variants: {
     size: {
       sm: {
         root: 'h-4 w-8',
-        thumb: 'size-3.5',
+        thumb: 'size-3',
       },
-
       md: {
-        root: 'h-4.5 w-9',
-        thumb: 'size-4',
-      },
-
-      lg: {
         root: 'h-5 w-10',
-        thumb: 'size-4.5',
+        thumb: 'size-4',
       },
     },
   },
-
   defaultVariants: {
     size: 'md',
   },
