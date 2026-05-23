@@ -5,7 +5,7 @@ import {
 } from 'reka-ui'
 import { tv, type ClassProp } from 'tailwind-variants'
 
-export const progressVariants = tv({
+export const progressBarVariants = tv({
   slots: {
     root: 'relative h-2 w-full overflow-hidden rounded-xs bg-muted',
     indicator: `
@@ -18,25 +18,25 @@ export const progressVariants = tv({
 
 // COMPONENTS
 
-export { default as ProgressIndicator } from './progress-indicator.vue'
-export { default as ProgressRoot } from './progress-root.vue'
+export { default as ProgressBarIndicator } from './progress-bar-indicator.vue'
+export { default as ProgressBarRoot } from './progress-bar-root.vue'
 
 
 // TYPES — Props
 
-export type ProgressRootProps = RekaProgressRootProps & Pick<ClassProp, 'class'>
+export type ProgressBarRootProps = RekaProgressRootProps & Pick<ClassProp, 'class'>
 
-export type ProgressIndicatorProps = RekaProgressIndicatorProps & Pick<ClassProp, 'class'>
+export type ProgressBarIndicatorProps = RekaProgressIndicatorProps & Pick<ClassProp, 'class'>
 
 
 // TYPES — Emits
 
-export type ProgressRootEmits = RekaProgressRootEmits
+export type ProgressBarRootEmits = RekaProgressRootEmits
 
 
 // TYPES — Slots
 
-export type ProgressRootSlots = {
+export type ProgressBarRootSlots = {
   default: (props: {
     /** Current input values */
     modelValue?: number | null

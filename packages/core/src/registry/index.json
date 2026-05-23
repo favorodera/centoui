@@ -226,12 +226,12 @@
     },
     {
       "$schema": "../schemas/component.json",
-      "name": "progress",
-      "description": "A progress bar component.",
+      "name": "progress-bar",
+      "description": "A horizontal progress bar component representing progress towards a goal.",
       "files": [
-        "components/progress/progress-root.vue",
-        "components/progress/progress-indicator.vue",
-        "components/progress/index.ts"
+        "components/progress-bar/progress-bar-root.vue",
+        "components/progress-bar/progress-bar-indicator.vue",
+        "components/progress-bar/index.ts"
       ],
       "componentDeps": [],
       "packageDeps": {}

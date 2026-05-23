@@ -3,18 +3,18 @@ import { reactiveOmit } from '@vueuse/core'
 import { injectProgressRootContext, ProgressIndicator, useForwardProps } from 'reka-ui'
 import { computed, type CSSProperties } from 'vue'
 import {
-  type ProgressIndicatorProps,
-  progressVariants,
+  type ProgressBarIndicatorProps,
+  progressBarVariants,
 } from '.'
 
 const rootContext = injectProgressRootContext()
 
-const props = defineProps<ProgressIndicatorProps>()
+const props = defineProps<ProgressBarIndicatorProps>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
 
 const classNames = computed(() => {
-  const { indicator } = progressVariants()
+  const { indicator } = progressBarVariants()
   
   return indicator({ class: props.class })
 })
@@ -33,7 +33,7 @@ const styles = computed<CSSProperties>(() => {
 
 <template>
   <ProgressIndicator
-    data-slot="progress-indicator"
+    data-slot="progress-bar-indicator"
     v-bind="forwardedProps"
     :class="classNames"
     :style="styles"
