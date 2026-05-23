@@ -1,5 +1,108 @@
 # Changelog
 
+## v1.0.0-alpha.26...v1.0.0-alpha.27
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.26...v1.0.0-alpha.27)
+
+### Added
+
+- **preview:** Add showClose control to slideover ([2fa07c3](https://github.com/favorodera/centoui/commit/2fa07c3))
+
+  - add showClose option to preview controls
+  - pass show-close prop to SlideoverHeader
+
+- **slideover:** Update styles and add showClose ([fe64a7c](https://github.com/favorodera/centoui/commit/fe64a7c))
+
+  - Update content spacing, background, and borders
+  - Add showClose prop to SlideoverHeaderProps
+
+- **slideover:** Support custom close button ([f1e78d0](https://github.com/favorodera/centoui/commit/f1e78d0))
+
+  - Add showClose prop to header
+  - Add close slot for custom close button
+
+- **avatar-group:** Add avatar group component ([4411bfa](https://github.com/favorodera/centoui/commit/4411bfa))
+
+  - Add AvatarGroup component implementation
+  - Update card view to use new component
+  - Add preview page for avatar group
+  - Register new component in core
+
+- **preview:** Add breadcrumb view ([2298631](https://github.com/favorodera/centoui/commit/2298631))
+
+  - Add breadcrumb-view.vue to preview app
+  - Implement basic breadcrumb usage example
+
+- **breadcrumb:** Add ellipsis component ([98a2dbf](https://github.com/favorodera/centoui/commit/98a2dbf))
+
+  - Create breadcrumb-ellipsis.vue
+  - Use reka-ui Primitive and Icon
+
+- **breadcrumb:** Add breadcrumb-item component ([a0a7d9b](https://github.com/favorodera/centoui/commit/a0a7d9b))
+
+  - Implement BreadcrumbItem using Reka UI
+  - Support prop forwarding and custom classes
+
+- **breadcrumb:** Add breadcrumb-link component ([c3b9320](https://github.com/favorodera/centoui/commit/c3b9320))
+
+  - Create component using reka-ui Primitive
+
+- **breadcrumb:** Add breadcrumb-list component ([31ed872](https://github.com/favorodera/centoui/commit/31ed872))
+
+  - Implement breadcrumb-list using reka-ui
+
+- **breadcrumb:** Add breadcrumb-page component ([f24e126](https://github.com/favorodera/centoui/commit/f24e126))
+
+  - Create page component for breadcrumbs
+  - Use reka-ui Primitive and forward props
+
+- **breadcrumb:** Add breadcrumb-root component ([db89def](https://github.com/favorodera/centoui/commit/db89def))
+
+  - implement breadcrumb-root component
+  - use reka-ui primitive and forward props
+
+- **breadcrumb:** Add separator component ([f33e1b3](https://github.com/favorodera/centoui/commit/f33e1b3))
+- **breadcrumb:** Add Breadcrumb component ([1b5148e](https://github.com/favorodera/centoui/commit/1b5148e))
+- **breadcrumb:** Add breadcrumb component to registry ([d64f3d0](https://github.com/favorodera/centoui/commit/d64f3d0))
+
+### Fixed
+
+- **core:** Improve component overflow and scroll ([17d4063](https://github.com/favorodera/centoui/commit/17d4063))
+
+  - Move overflow scroll from content to body
+  - Add stroke border to select arrow
+  - Adjust slideover footer layout conditionally
+
+- **pagination:** Update first page icon ([24c2151](https://github.com/favorodera/centoui/commit/24c2151))
+
+### Refactors
+
+- **progress:** Rename component to progress-bar ([d39e3e1](https://github.com/favorodera/centoui/commit/d39e3e1))
+- **components:** Update previews and title styles ([ba0b810](https://github.com/favorodera/centoui/commit/ba0b810))
+
+  - Redesign card, popover, and slideover previews
+  - Remove tight line-height from component titles
+  - Add rich mock data
+
+- **preview:** Simplify footer class binding ([9a3deff](https://github.com/favorodera/centoui/commit/9a3deff))
+
+  - Use Array.includes for side check
+  - Clean up footer classes formatting
+
+- **pagination:** Update last page icon ([9c2f784](https://github.com/favorodera/centoui/commit/9c2f784))
+- **slideover:** Improve close button accessibility ([f84d09d](https://github.com/favorodera/centoui/commit/f84d09d))
+- **icons:** Standardize default icon names ([9ecc112](https://github.com/favorodera/centoui/commit/9ecc112))
+
+### Styling
+
+- **preview:** Remove scrollbar-thumb-rounded ([866d66e](https://github.com/favorodera/centoui/commit/866d66e))
+- **preview:** Format slideover footer class ([bb6d509](https://github.com/favorodera/centoui/commit/bb6d509))
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.25...v1.0.0-alpha.26
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.25...v1.0.0-alpha.26)
