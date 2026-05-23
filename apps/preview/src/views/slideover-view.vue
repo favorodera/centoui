@@ -30,6 +30,11 @@ const values = useApp().preview.initPreview('Slideover', {
     options: Object.keys(slideoverVariants.variants.side),
     default: slideoverVariants.defaultVariants.side,
   },
+  showClose: {
+    type: 'boolean',
+    label: 'Show Header Close Button',
+    default: true,
+  },
 })
 
 const release = [
@@ -53,7 +58,10 @@ const release = [
         <SlideoverOverlay />
 
         <SlideoverContent :side="values.side">
-          <SlideoverHeader class="border-b border-border">
+          <SlideoverHeader
+            class="border-b border-border"
+            :show-close="values.showClose"
+          >
             <SlideoverTitle>
               Product Update
             </SlideoverTitle>
