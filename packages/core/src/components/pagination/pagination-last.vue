@@ -47,7 +47,7 @@ const classNames = computed(() => {
     :class="classNames"
   >
     <slot>
-      <Icon :icon="config.icons.chevronsRight" />
+      <Icon :icon="config.icons.chevronDoubleRight" />
       <span class="sr-only">Last page</span>
     </slot>
   </PaginationLast>
