@@ -1,0 +1,17 @@
+{
+  "$schema": "../schemas/component.json",
+  "name": "breadcrumb",
+  "description": "Displays the path to the current resource as a hierarchy of links.",
+  "files": [
+    "components/breadcrumb/breadcrumb-ellipsis.vue",
+    "components/breadcrumb/breadcrumb-item.vue",
+    "components/breadcrumb/breadcrumb-link.vue",
+    "components/breadcrumb/breadcrumb-list.vue",
+    "components/breadcrumb/breadcrumb-page.vue",
+    "components/breadcrumb/breadcrumb-root.vue",
+    "components/breadcrumb/breadcrumb-separator.vue",
+    "components/breadcrumb/index.ts"
+  ],
+  "componentDeps": [],
+  "packageDeps": {}
+}
