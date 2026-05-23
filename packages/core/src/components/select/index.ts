@@ -39,8 +39,8 @@ export const selectVariants = tv({
     icon: 'text-muted-foreground',
     content: `
       relative z-50 max-h-(--reka-select-content-available-height)
-      scrollbar-none overflow-x-hidden overflow-y-auto rounded-lg border
-      border-border bg-surface-raised shadow-md animation-duration-300
+      scrollbar-none rounded-lg border border-border bg-surface-raised shadow-md
+      animation-duration-300
       data-[side=bottom]:slide-in-from-top-2
       data-[side=left]:slide-in-from-right-2
       data-[side=right]:slide-in-from-left-2
@@ -68,7 +68,7 @@ export const selectVariants = tv({
     group: 'p-1',
     label: 'font-medium text-muted-foreground',
     separator: 'my-1',
-    arrow: 'z-50 fill-surface-raised',
+    arrow: 'z-50 fill-surface-raised stroke-border',
   },
   variants: {
     size: {

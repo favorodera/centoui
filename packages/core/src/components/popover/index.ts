@@ -17,8 +17,8 @@ export const popoverVariants = tv({
     trigger: '',
     content: `
       relative z-50 grid w-xs origin-(--reka-popover-content-transform-origin)
-      gap-4 overflow-hidden rounded-xl bg-surface-raised py-4 shadow-lg
-      animation-duration-300 outline-none
+      gap-4 rounded-xl bg-surface-raised py-4 shadow-lg animation-duration-300
+      outline-none
       data-[side=bottom]:slide-in-from-top-2
       data-[side=left]:slide-in-from-right-2
       data-[side=right]:slide-in-from-left-2

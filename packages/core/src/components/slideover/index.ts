@@ -23,9 +23,8 @@ export const slideoverVariants = tv({
     `,
     content: `
       fixed z-50 m-2 flex max-h-[calc(100%-(--spacing(4)))]
-      w-[calc(100%-(--spacing(4)))] flex-col gap-6 overflow-y-auto rounded-xl
-      bg-surface-raised py-6 shadow-lg transition-all duration-300
-      animation-duration-300
+      w-[calc(100%-(--spacing(4)))] flex-col gap-6 rounded-xl bg-surface-raised
+      py-6 shadow-lg transition-all duration-300 animation-duration-300
       data-[state=closed]:animate-out
       data-[state=open]:animate-in
     `,
@@ -37,7 +36,10 @@ export const slideoverVariants = tv({
     title: 'text-base font-medium',
     description: 'text-sm text-muted-foreground',
     close: '',
-    body: 'flex-1 px-6',
+    body: `
+      flex-1 scrollbar-thin scrollbar-thumb-border scrollbar-track-transparent
+      overflow-y-auto px-6
+    `,
     footer: `
       mt-auto flex items-center px-6
       [&.border-t]:pt-6
