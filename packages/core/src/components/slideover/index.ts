@@ -22,8 +22,9 @@ export const slideoverVariants = tv({
       data-[state=open]:animate-in data-[state=open]:fade-in-0
     `,
     content: `
-      fixed z-50 flex flex-col gap-6 overflow-y-auto rounded-xl border-border
-      bg-background py-6 shadow-lg transition-all duration-300
+      fixed z-50 m-2 flex max-h-[calc(100%-(--spacing(4)))]
+      w-[calc(100%-(--spacing(4)))] flex-col gap-6 overflow-y-auto rounded-xl
+      bg-surface-raised py-6 shadow-lg transition-all duration-300
       animation-duration-300
       data-[state=closed]:animate-out
       data-[state=open]:animate-in
@@ -46,28 +47,28 @@ export const slideoverVariants = tv({
     side: {
       top: {
         content: `
-          inset-x-0 top-0 h-auto border-b
+          inset-x-0 top-0 h-auto
           data-[state=closed]:slide-out-to-top
           data-[state=open]:slide-in-from-top
         `,
       },
       bottom: {
         content: `
-          inset-x-0 bottom-0 h-auto border-t
+          inset-x-0 bottom-0 h-auto
           data-[state=closed]:slide-out-to-bottom
           data-[state=open]:slide-in-from-bottom
         `,
       },
       left: {
         content: `
-          inset-y-0 left-0 size-full max-w-sm border-r
+          inset-y-0 left-0 h-full max-w-sm
           data-[state=closed]:slide-out-to-left
           data-[state=open]:slide-in-from-left
         `,
       },
       right: {
         content: `
-          inset-y-0 right-0 size-full max-w-sm border-l
+          inset-y-0 right-0 h-full max-w-sm
           data-[state=closed]:slide-out-to-right
           data-[state=open]:slide-in-from-right
         `,
@@ -117,7 +118,13 @@ export type SlideoverContentProps = RekaDialogContentProps & Pick<ClassProp, 'cl
   side?: SlideoverVariants['side']
 }
 
-export type SlideoverHeaderProps = PrimitiveProps & Pick<ClassProp, 'class'>
+export type SlideoverHeaderProps = PrimitiveProps & Pick<ClassProp, 'class'> & {
+  /**
+   * Whether to show the close button inside the header
+   * @default true
+   */
+  showClose?: boolean
+}
 
 export type SlideoverTitleProps = RekaDialogTitleProps & Pick<ClassProp, 'class'>
 
