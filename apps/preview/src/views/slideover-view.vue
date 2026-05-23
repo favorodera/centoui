@@ -172,9 +172,7 @@ const stats = [
           </SlideoverBody>
 
           <SlideoverFooter
-            class="
-              gap-3 border-t border-border justify-end
-            "
+            class="justify-end gap-3 border-t border-border"
             :class="['right', 'left'].includes(values.side) && '*:flex-1'"
           >
             <SlideoverClose as-child>
