@@ -47,10 +47,10 @@ const classNames = computed(() => {
     >
       <SlideoverClose
         :class="classNames.close"
-        aria-label="Close slideover"
         data-slot="slideover-header-close"
       >
-        <Icon :icon="config.icons.x" />
+        <span class="sr-only">Close slideover</span>
+        <Icon :icon="config.icons.close" />
       </SlideoverClose>
     </slot>
   </Primitive>
