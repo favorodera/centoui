@@ -11,8 +11,10 @@ import config from '#centoui/config'
 import { Icon } from '@iconify/vue'
 import { buttonVariants } from '../button'
 
-const props = defineProps<SlideoverHeaderProps>()
-const delegatedProps = reactiveOmit(props, 'class')
+const props = withDefaults(defineProps<SlideoverHeaderProps>(), {
+  showClose: true,
+})
+const delegatedProps = reactiveOmit(props, 'class', 'showClose')
 const forwardedProps = useForwardProps(delegatedProps)
 
 const classNames = computed(() => {
@@ -39,11 +41,17 @@ const classNames = computed(() => {
   >
     <slot />
 
-    <SlideoverClose
-      :class="classNames.close"
-      aria-label="Close slideover"
+    <slot
+      v-if="props.showClose"
+      name="close"
     >
-      <Icon :icon="config.icons.x" />
-    </SlideoverClose>
+      <SlideoverClose
+        :class="classNames.close"
+        aria-label="Close slideover"
+        data-slot="slideover-header-close"
+      >
+        <Icon :icon="config.icons.x" />
+      </SlideoverClose>
+    </slot>
   </Primitive>
 </template>
