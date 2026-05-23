@@ -17,6 +17,9 @@ import {
   AvatarImage,
   AvatarFallback,
 } from '#centoui/components/avatar'
+import {
+  AvatarGroup,
+} from '#centoui/components/avatar-group'
 
 useApp().preview.initPreview('Card', {})
 
@@ -67,7 +70,7 @@ const attendees = [
         </div>
 
         <div class="flex items-end gap-2">
-          <div class="flex -space-x-2">
+          <AvatarGroup>
             <AvatarRoot
               v-for="attendee in attendees"
               :key="attendee.fallback"
@@ -76,8 +79,13 @@ const attendees = [
               <AvatarImage :src="attendee.src" />
               <AvatarFallback>{{ attendee.fallback }}</AvatarFallback>
             </AvatarRoot>
-          </div>
-          <span class="font-mono text-sm text-muted-foreground">+284 devs attending.</span>
+            <AvatarRoot
+              size="sm"
+            >
+              <AvatarFallback>+50</AvatarFallback>
+            </AvatarRoot>
+          </AvatarGroup>
+          <span class="font-mono text-sm text-muted-foreground">devs attending.</span>
         </div>
       </CardBody>
 

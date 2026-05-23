@@ -79,6 +79,19 @@
     },
     {
       "$schema": "../schemas/component.json",
+      "name": "avatar-group",
+      "description": "A wrapper component to group and stack multiple avatars together.",
+      "files": [
+        "components/avatar-group/avatar-group.vue",
+        "components/avatar-group/index.ts"
+      ],
+      "componentDeps": [
+        "avatar"
+      ],
+      "packageDeps": {}
+    },
+    {
+      "$schema": "../schemas/component.json",
       "name": "avatar",
       "description": "Component for displaying avatars with fallback support.",
       "files": [

@@ -158,9 +158,7 @@ const stats = [
                       {{ item.label }}
                     </p>
                     <p
-                      class="
-                        truncate font-mono text-xs text-muted-foreground
-                      "
+                      class="truncate font-mono text-xs text-muted-foreground"
                     >
                       {{ item.description }}
                     </p>
