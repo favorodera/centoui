@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Button } from '#centoui/components/button'
+import { Badge } from '#centoui/components/badge'
 import { Icon } from '@iconify/vue'
 import ViewContainer from '@/components/view-container.vue'
 import { useApp } from '@/composables/use-app'
@@ -18,70 +19,84 @@ import {
 } from '#centoui/components/avatar'
 
 useApp().preview.initPreview('Card', {})
+
+const attendees = [
+  { src: 'https://i.pravatar.cc/40?img=1', fallback: 'AM' },
+  { src: 'https://i.pravatar.cc/40?img=5', fallback: 'RK' },
+  { src: 'https://i.pravatar.cc/40?img=9', fallback: 'JL' },
+]
 </script>
 
 <template>
-  <ViewContainer class="max-w-full">
+  <ViewContainer>
+
     <CardRoot class="max-w-md">
-      <CardHeader class="flex-row">
-        <AvatarRoot>
-          <AvatarImage src="https://github.com/favorodera.png" />
-          <AvatarFallback>FE</AvatarFallback>
-        </AvatarRoot>
-
-        <div>
-          <CardTitle>Favour Emeka</CardTitle>
-          <CardDescription>UI Engineer at CentoUI</CardDescription>
-        </div>
-
-        <Button
-          size="sm"
-          class="ml-auto"
-        >
-          Connect
-        </Button>
-      </CardHeader>
-
-      <CardBody>
-        Currently working on reusable Vue components, accessibility improvements,
-        and documentation for our design system.
-      </CardBody>
-    </CardRoot>
-
-    <CardRoot class="max-w-sm pt-0">
-      <img
-        src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=80"
-        alt="Sneakers"
-      >
-
       <CardHeader>
-        <CardTitle>Nike Air Max 270</CardTitle>
+        <Badge
+          variant="success"
+        >
+          <Icon
+            icon="lucide:radio"
+          />
+          Live now
+        </Badge>
+
+        <CardTitle>
+          Vue 3 Composition API — deep dive into reactivity
+        </CardTitle>
 
         <CardDescription>
-          Everyday sneakers built for comfort, breathable support, and long city walks.
+          Hosted by Favour Emeka · CentoUI
         </CardDescription>
       </CardHeader>
 
-      <CardBody class="text-2xl font-bold tabular-nums">
-        $189
+      <CardBody class="space-y-4">
+        <div class="flex items-center gap-4 text-sm">
+          <div class="flex items-center gap-1.5 text-muted-foreground">
+            <Icon
+              icon="lucide:calendar"
+            />
+            <span>Fri, 23 May</span>
+          </div>
+          <div class="flex items-center gap-1.5 text-muted-foreground">
+            <Icon
+              icon="lucide:clock"
+            />
+            <span>4:00 PM WAT</span>
+          </div>
+        </div>
+
+        <div class="flex items-end gap-2">
+          <div class="flex -space-x-2">
+            <AvatarRoot
+              v-for="attendee in attendees"
+              :key="attendee.fallback"
+              size="sm"
+            >
+              <AvatarImage :src="attendee.src" />
+              <AvatarFallback>{{ attendee.fallback }}</AvatarFallback>
+            </AvatarRoot>
+          </div>
+          <span class="font-mono text-sm text-muted-foreground">+284 devs attending.</span>
+        </div>
       </CardBody>
 
       <CardFooter
         class="
-          w-full justify-between gap-4
+          gap-3 border-t border-border
           *:flex-1
         "
       >
         <Button variant="outline">
-          <Icon icon="lucide:heart" />
-          Add to Wishlist
+          <Icon icon="lucide:bookmark" />
+          Save
         </Button>
-
         <Button>
-          <Icon icon="lucide:shopping-cart" />
-          Buy Now
+          <Icon icon="lucide:arrow-right" />
+          Join event
         </Button>
       </CardFooter>
     </CardRoot>
+
   </ViewContainer>
 </template>

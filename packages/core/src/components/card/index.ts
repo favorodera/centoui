@@ -11,7 +11,7 @@ export const cardVariants = tv({
       flex flex-col items-start gap-2 px-6 text-left
       [&.border-b]:pb-6
     `,
-    title: 'text-base/tight font-medium',
+    title: 'text-base font-medium',
     description: 'text-sm text-muted-foreground',
     body: 'flex-1 px-6',
     footer: `

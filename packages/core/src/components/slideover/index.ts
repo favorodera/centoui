@@ -34,7 +34,7 @@ export const slideoverVariants = tv({
       [&.border-b]:pb-6
     `,
     headerClose: 'absolute top-6 right-6',
-    title: 'text-base/tight font-medium',
+    title: 'text-base font-medium',
     description: 'text-sm text-muted-foreground',
     close: '',
     body: 'flex-1 px-6',

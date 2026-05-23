@@ -9,7 +9,7 @@ export const alertVariants = tv({
       [&>svg]:size-4 [&>svg]:translate-y-0.5
     `,
     content: 'min-w-0 flex-1 text-sm',
-    title: 'min-w-0 leading-tight font-medium',
+    title: 'min-w-0 font-medium',
     description: 'mt-2 min-w-0 text-muted-foreground',
     actions: 'flex shrink-0 items-center gap-2',
   },
