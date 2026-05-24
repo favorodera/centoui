@@ -6,7 +6,7 @@ import {
   selectVariants,
   type SelectScrollUpButtonProps,
 } from '.'
-import { Icon } from '@iconify/vue'
+import { Icon } from '../icon'
 import config from '#centoui/config'
 import { computed } from 'vue'
 
@@ -32,6 +32,7 @@ const classNames = computed(() => {
     :class="classNames"
   >
     <slot>
+      <span class="sr-only">Scroll up</span>
       <Icon :icon="config.icons.chevronUp" />
     </slot>
   </SelectScrollUpButton>
