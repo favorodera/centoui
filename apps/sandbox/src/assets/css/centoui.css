@@ -1,85 +1,107 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+@custom-variant dark (&:is(.dark *));
+
 :root {
-  /* Base surface of the UI (page, canvas) */
-  --background: oklch(0.984 0.004 243);
-  --foreground: oklch(0.148 0.016 243);
+  /* Page canvas */
+  --background: oklch(0.98 0 0);
+  --foreground: oklch(0.13 0 0);
 
-  /* Elevated elements like cards, modals, drawers */
-  --surface: oklch(1.000 0.000 0);
-  --overlay: oklch(0 0 0 / 40%);
+  /* Cards, panels, sidebars */
+  --surface: oklch(1 0 0);
+  /* Dropdowns, popovers, modals — floats above surface */
+  --surface-raised: oklch(0.99 0 0);
 
-  /* Secondary text, placeholders, captions */
-  --muted: oklch(0.922 0.009 243);
-  --muted-foreground: oklch(0.495 0.012 243);
+  /* Backdrop scrim behind modals and drawers */
+  --overlay: oklch(0 0 0 / 0.4);
 
-  /* Main brand color — CTAs, key actions */
-  --primary: oklch(0.565 0.148 234);
-  --primary-foreground: oklch(0.985 0.002 234);
+  /* Focus ring */
+  --ring: oklch(0.55 0.22 258);
 
-  /* Supporting brand color — secondary actions */
-  --secondary: oklch(0.872 0.014 243);
-  --secondary-foreground: oklch(0.265 0.018 243);
+  /* Dividers and layout strokes */
+  --border: oklch(0.91 0 0);
+  /* Input field borders — distinct from general strokes */
+  --input: oklch(0.88 0 0);
 
-  /* Highlight color — decorative, hover states */
-  --accent: oklch(0.615 0.132 270);
-  --accent-foreground: oklch(0.985 0.002 270);
+  /* Subtle fills — input backgrounds, skeletons */
+  --muted: oklch(0.97 0 0);
+  /* Secondary text — placeholders, captions */
+  --muted-foreground: oklch(0.48 0 0);
 
-  /* Neutral color — subtle non-branded actions */
-  --neutral: oklch(0.552 0.006 243);
-  --neutral-foreground: oklch(0.985 0.000 0);
+  /* Semantic-free chrome — tags, chips, empty states */
+  --neutral: oklch(0.94 0 0);
+  --neutral-foreground: oklch(0.35 0 0);
 
-  /* Positive states — confirmations, completed tasks */
-  --success: oklch(0.548 0.124 158);
-  --success-foreground: oklch(0.985 0.002 158);
+  /* Hover/active highlight — ghost buttons, menu items */
+  --accent: oklch(0.95 0 0);
+  --accent-foreground: oklch(0.13 0 0);
 
-  /* Caution states — alerts, pending actions */
-  --warning: oklch(0.718 0.144 70);
-  --warning-foreground: oklch(0.162 0.020 70);
+  /* Main CTA — buttons, key actions */
+  --primary: oklch(0.09 0 0);
+  --primary-foreground: oklch(0.98 0 0);
 
-  /* Destructive states — failures, deletions */
-  --error: oklch(0.598 0.172 24);
-  --error-foreground: oklch(0.985 0.002 24);
+  /* Supporting actions */
+  --secondary: oklch(0.95 0 0);
+  --secondary-foreground: oklch(0.13 0 0);
+
+  /* Positive states — confirmations */
+  --success: oklch(0.72 0.17 150);
+  --success-foreground: oklch(0.98 0.01 150);
+
+  /* Caution states — pending, at-risk */
+  --warning: oklch(0.80 0.17 75);
+  --warning-foreground: oklch(0.22 0.04 75);
+
+  /* Destructive states — errors, deletions */
+  --error: oklch(0.62 0.22 28);
+  --error-foreground: oklch(0.98 0.01 28);
 
   /* Neutral informational messages */
-  --info: oklch(0.558 0.138 220);
-  --info-foreground: oklch(0.985 0.002 220);
+  --info: oklch(0.60 0.18 255);
+  --info-foreground: oklch(0.98 0.01 255);
 }
 
 .dark {
-  --background: oklch(0.148 0.016 243);
-  --foreground: oklch(0.942 0.006 243);
+  --background: oklch(0.08 0 0);
+  --foreground: oklch(0.93 0 0);
 
-  --surface: oklch(0.198 0.016 243);
-  --overlay: oklch(0 0 0 / 60%);
+  --surface: oklch(0.15 0 0);
+  --surface-raised: oklch(0.17 0 0);
 
-  --muted: oklch(0.278 0.018 243);
-  --muted-foreground: oklch(0.695 0.010 243);
+  --overlay: oklch(0 0 0 / 0.75);
 
-  --primary: oklch(0.628 0.148 234);
-  --primary-foreground: oklch(0.985 0.002 234);
+  --ring: oklch(0.65 0.18 258);
 
-  --secondary: oklch(0.338 0.018 243);
-  --secondary-foreground: oklch(0.878 0.008 243);
+  --border: oklch(0.27 0 0);
+  --input: oklch(0.23 0 0);
 
-  --accent: oklch(0.658 0.128 270);
-  --accent-foreground: oklch(0.985 0.002 270);
+  --muted: oklch(0.17 0 0);
+  --muted-foreground: oklch(0.58 0 0);
 
-  --neutral: oklch(0.498 0.006 243);
-  --neutral-foreground: oklch(0.985 0.000 0);
+  --neutral: oklch(0.22 0 0);
+  --neutral-foreground: oklch(0.63 0 0);
 
-  --success: oklch(0.578 0.124 158);
-  --success-foreground: oklch(0.985 0.002 158);
+  --accent: oklch(0.19 0 0);
+  --accent-foreground: oklch(0.93 0 0);
 
-  --warning: oklch(0.718 0.144 70);
-  --warning-foreground: oklch(0.958 0.010 70);
+  --primary: oklch(0.98 0 0);
+  --primary-foreground: oklch(0.08 0 0);
 
-  --error: oklch(0.638 0.165 24);
-  --error-foreground: oklch(0.985 0.002 24);
+  --secondary: oklch(0.19 0 0);
+  --secondary-foreground: oklch(0.93 0 0);
 
-  --info: oklch(0.598 0.132 220);
-  --info-foreground: oklch(0.985 0.002 220);
+  --success: oklch(0.76 0.17 150);
+  --success-foreground: oklch(0.14 0.02 150);
+
+  --warning: oklch(0.84 0.16 75);
+  --warning-foreground: oklch(0.18 0.04 75);
+
+  --error: oklch(0.62 0.22 28);
+  --error-foreground: oklch(0.98 0.01 28);
+
+  --info: oklch(0.68 0.16 255);
+  --info-foreground: oklch(0.14 0.02 255);
 }
 
 @theme {
@@ -87,22 +109,29 @@
   --color-foreground: var(--foreground);
 
   --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+
   --color-overlay: var(--overlay);
+
+  --color-ring: var(--ring);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
 
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
+
+  --color-neutral: var(--neutral);
+  --color-neutral-foreground: var(--neutral-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
 
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
 
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
-
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-
-  --color-neutral: var(--neutral);
-  --color-neutral-foreground: var(--neutral-foreground);
 
   --color-success: var(--success);
   --color-success-foreground: var(--success-foreground);
@@ -118,5 +147,5 @@
 }
 
 body {
-  @apply antialiased text-foreground bg-background scheme-light dark:scheme-dark;
+  @apply antialiased text-foreground bg-background;
 }
