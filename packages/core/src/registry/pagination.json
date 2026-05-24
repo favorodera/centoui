@@ -14,7 +14,8 @@
     "components/pagination/index.ts"
   ],
   "componentDeps": [
-    "button"
+    "button",
+    "icon"
   ],
   "packageDeps": {}
 }
