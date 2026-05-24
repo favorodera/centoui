@@ -6,7 +6,7 @@ import { CONFIG_FILE_NAME } from '../constants'
 import { confirmOverwriteIfExists } from '../utils/file-system-utils'
 import type { Registry } from '../types'
 import fsExtra from 'fs-extra'
-import { buildDefaultConfigFileContent } from '../utils/config-utils'
+import { buildUserDefaultConfigFileContent } from '../utils/config-utils'
 import { fetchFullRegistry, fetchThemeCSSContent } from '../utils/registry-utils'
 
 /**
@@ -78,15 +78,17 @@ export function init() {
 
         await tasks([
           {
-            title: `Writing ${CONFIG_FILE_NAME}`,
+            title: 'Fetching config defaults',
             task: async () => {
               if (!shouldWriteConfig) {
                 return `Skipped — "${CONFIG_FILE_NAME}" already exists`
               }
 
+              const userConfigContent = await buildUserDefaultConfigFileContent(directories.themeFilePath, directories.componentDir)
+
               await fsExtra.outputFile(
                 configPath,
-                buildDefaultConfigFileContent(directories.themeFilePath, directories.componentDir),
+                userConfigContent,
                 'utf-8',
               )
 
