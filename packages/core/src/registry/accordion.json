@@ -7,8 +7,9 @@
     "components/accordion/accordion-header.vue",
     "components/accordion/accordion-item.vue",
     "components/accordion/accordion-root.vue",
+    "components/accordion/accordion-trigger.vue",
     "components/accordion/index.ts"
   ],
-  "componentDeps": [ ],
+  "componentDeps": ["icon"],
   "packageDeps": { }
 }
