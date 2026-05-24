@@ -16,7 +16,7 @@ import {
   SelectItemIndicator,
   SelectScrollDownButton,
 } from '#centoui/components/select'
-import { Icon } from '@iconify/vue'
+import { Icon } from '#centoui/components/icon'
 
 const props = defineProps<{
   schema?: PropsSchema | null
