@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
 import { useForwardProps, SelectScrollDownButton } from 'reka-ui'
-import { Icon } from '@iconify/vue'
+import { Icon } from '../icon'
 import config from '#centoui/config'
 import {
   selectVariants,
@@ -32,6 +32,7 @@ const classNames = computed(() => {
     :class="classNames"
   >
     <slot>
+      <span class="sr-only">Scroll down</span>
       <Icon :icon="config.icons.chevronDown" />
     </slot>
   </SelectScrollDownButton>
