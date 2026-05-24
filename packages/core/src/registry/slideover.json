@@ -17,7 +17,8 @@
     "components/slideover/index.ts"
   ],
   "componentDeps": [
-    "button"
+    "button",
+    "icon"
   ],
   "packageDeps": {}
 }
