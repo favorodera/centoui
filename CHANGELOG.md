@@ -1,5 +1,126 @@
 # Changelog
 
+## v1.0.0-alpha.27...v1.0.0-alpha.28
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.27...v1.0.0-alpha.28)
+
+### Added
+
+- **preview:** Add icon preview page ([6b89520](https://github.com/favorodera/centoui/commit/6b89520))
+
+  - Add view to preview Icon component
+
+- **cli:** Add config defaults URL constant ([b149c11](https://github.com/favorodera/centoui/commit/b149c11))
+- **cli:** Fetch default config from GitHub ([7a9576e](https://github.com/favorodera/centoui/commit/7a9576e))
+
+  - Fetch raw default config from GitHub
+  - Extract inner properties from fetched config
+  - Generate user config with fetched defaults
+
+- **icon:** Add Icon component - Use @iconify/vue for icon rendering. - Apply styling with iconVariants. - Support prop forwarding via useForwardProps. - Manage aria-hidden attribute. ([3f15b1d](https://github.com/favorodera/centoui/commit/3f15b1d))
+- **icon:** Add Icon component ([28675e7](https://github.com/favorodera/centoui/commit/28675e7))
+
+  - Introduce new Icon component
+  - Define iconVariants for styling
+  - Export Icon.vue component
+  - Add IconProps type definition
+  - Allow ariaHidden control for accessibility
+
+- **select:** Add SR-only text to scroll up button` ([199d021](https://github.com/favorodera/centoui/commit/199d021))
+- **accordion:** Add trigger and icon dependency ([7e93c68](https://github.com/favorodera/centoui/commit/7e93c68))
+- **core:** Add icon dependency to breadcrumb ([b2ddada](https://github.com/favorodera/centoui/commit/b2ddada))
+- **core:** Add icon dependency to pagination ([8706597](https://github.com/favorodera/centoui/commit/8706597))
+- **core:** Add icon dependency to select ([a5cd7e5](https://github.com/favorodera/centoui/commit/a5cd7e5))
+- **core:** Add icon dependency to slideover ([105e36d](https://github.com/favorodera/centoui/commit/105e36d))
+- **props-control:** Add string type input control ([4b48878](https://github.com/favorodera/centoui/commit/4b48878))
+- **preview:** Add string prop definition and inference ([67f0c0d](https://github.com/favorodera/centoui/commit/67f0c0d))
+- **preview:** Make icon configurable ([e46bb83](https://github.com/favorodera/centoui/commit/e46bb83))
+
+### Fixed
+
+- **icon:** Correct NuxtIconProps type reference ([881856b](https://github.com/favorodera/centoui/commit/881856b))
+
+### Refactors
+
+- **preview:** Use internal Icon component ([1c33721](https://github.com/favorodera/centoui/commit/1c33721))
+- **preview:** Use internal Icon component ([f595b3e](https://github.com/favorodera/centoui/commit/f595b3e))
+- **preview:** Use centoui Icon component ([ca31bd9](https://github.com/favorodera/centoui/commit/ca31bd9))
+- **preview:** Use internal Icon component ([8d0e86d](https://github.com/favorodera/centoui/commit/8d0e86d))
+- **preview:** Use internal icon component ([d519f22](https://github.com/favorodera/centoui/commit/d519f22))
+- **preview:** Use local Icon component ([2ed22ab](https://github.com/favorodera/centoui/commit/2ed22ab))
+- **breadcrumb:** Use internal Icon component ([6d22193](https://github.com/favorodera/centoui/commit/6d22193))
+- **preview:** Use internal Icon component ([c915a99](https://github.com/favorodera/centoui/commit/c915a99))
+- **preview:** Use centoui icon component ([b016f21](https://github.com/favorodera/centoui/commit/b016f21))
+- **preview:** Import Icon from centoui ([c5cd051](https://github.com/favorodera/centoui/commit/c5cd051))
+- **preview:** Use internal Icon component ([b37e045](https://github.com/favorodera/centoui/commit/b37e045))
+- **preview:** Use internal Icon component ([09152c9](https://github.com/favorodera/centoui/commit/09152c9))
+
+  - Import Icon from centoui instead of iconify
+
+- **preview:** Use internal icon component ([79240ae](https://github.com/favorodera/centoui/commit/79240ae))
+- **preview:** Use internal Icon component ([6d9dd17](https://github.com/favorodera/centoui/commit/6d9dd17))
+- **sandbox:** Update theme colors and tokens ([d9921b8](https://github.com/favorodera/centoui/commit/d9921b8))
+
+  - Update OKLCH values for light and dark modes
+  - Add surface-raised, ring, and border tokens
+  - Map new variables in Tailwind
+
+- **button:** Remove button component ([5781225](https://github.com/favorodera/centoui/commit/5781225))
+
+  - Remove centoui button from sandbox
+  - Delete button.vue and index.ts definitions
+
+- **init:** Build user-specific default config ([6808e76](https://github.com/favorodera/centoui/commit/6808e76))
+- **accordion:** Use local Icon component ([b981ac8](https://github.com/favorodera/centoui/commit/b981ac8))
+- **core:** Update Icon import to internal path ([96fa6a7](https://github.com/favorodera/centoui/commit/96fa6a7))
+- **breadcrumb:** Use internal Icon component ([a0a7658](https://github.com/favorodera/centoui/commit/a0a7658))
+- **pagination:** Update Icon component import ([ced8a79](https://github.com/favorodera/centoui/commit/ced8a79))
+- **pagination:** Use internal Icon component ([bef96e0](https://github.com/favorodera/centoui/commit/bef96e0))
+- **icon:** Use local Icon component ([55e4b19](https://github.com/favorodera/centoui/commit/55e4b19))
+- **icon:** Use local Icon component ([305f98c](https://github.com/favorodera/centoui/commit/305f98c))
+- **icon:** Centralize Icon component import ([1a98d73](https://github.com/favorodera/centoui/commit/1a98d73))
+- **select:** Use internal Icon component ([2fb7672](https://github.com/favorodera/centoui/commit/2fb7672))
+- **select:** Use local Icon component ([1b022b8](https://github.com/favorodera/centoui/commit/1b022b8))
+- **select:** Improve scroll button accessibility ([b03e642](https://github.com/favorodera/centoui/commit/b03e642))
+- **icon:** Use internal component import ([b45f2a4](https://github.com/favorodera/centoui/commit/b45f2a4))
+
+### Chores
+
+- **sandbox:** Update icon mappings ([ccc6a07](https://github.com/favorodera/centoui/commit/ccc6a07))
+
+  - Remove deprecated version property
+  - Add chevron and ellipsis icons
+  - Remove menu icon mapping
+
+- **sandbox:** Update dependencies ([69f8e05](https://github.com/favorodera/centoui/commit/69f8e05))
+
+  - Add @iconify/vue dependency
+  - Upgrade reka-ui and tailwindcss packages
+
+- **core:** Update peer dependencies ([eca7f8f](https://github.com/favorodera/centoui/commit/eca7f8f))
+
+  - Update vue peer dependency to ^3.5.0
+  - Move core dependencies to peerDependencies
+  - Add @nuxt/icon to peer dependencies
+  - Mark icon packages as optional peers
+
+- **registry:** Update component dependencies ([ce43334](https://github.com/favorodera/centoui/commit/ce43334))
+
+### Tests
+
+- **cli:** Update config utility tests ([d313b8e](https://github.com/favorodera/centoui/commit/d313b8e))
+
+  - Add tests for extracting inner config content
+  - Mock fetch for user default config building
+  - Test fetch errors and empty configuration cases
+
+- **registry:** Simplify fetchFullRegistry test name ([0cc8211](https://github.com/favorodera/centoui/commit/0cc8211))
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.26...v1.0.0-alpha.27
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.26...v1.0.0-alpha.27)

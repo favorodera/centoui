@@ -1,5 +1,62 @@
 # Changelog
 
+## v1.0.0-alpha.27...v1.0.0-alpha.28
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.27...v1.0.0-alpha.28)
+
+### Added
+
+- **icon:** Add Icon component - Use @iconify/vue for icon rendering. - Apply styling with iconVariants. - Support prop forwarding via useForwardProps. - Manage aria-hidden attribute. ([3f15b1d](https://github.com/favorodera/centoui/commit/3f15b1d))
+- **icon:** Add Icon component ([28675e7](https://github.com/favorodera/centoui/commit/28675e7))
+
+  - Introduce new Icon component
+  - Define iconVariants for styling
+  - Export Icon.vue component
+  - Add IconProps type definition
+  - Allow ariaHidden control for accessibility
+
+- **select:** Add SR-only text to scroll up button` ([199d021](https://github.com/favorodera/centoui/commit/199d021))
+- **accordion:** Add trigger and icon dependency ([7e93c68](https://github.com/favorodera/centoui/commit/7e93c68))
+- **core:** Add icon dependency to breadcrumb ([b2ddada](https://github.com/favorodera/centoui/commit/b2ddada))
+- **core:** Add icon dependency to pagination ([8706597](https://github.com/favorodera/centoui/commit/8706597))
+- **core:** Add icon dependency to select ([a5cd7e5](https://github.com/favorodera/centoui/commit/a5cd7e5))
+- **core:** Add icon dependency to slideover ([105e36d](https://github.com/favorodera/centoui/commit/105e36d))
+
+### Fixed
+
+- **icon:** Correct NuxtIconProps type reference ([881856b](https://github.com/favorodera/centoui/commit/881856b))
+
+### Refactors
+
+- **accordion:** Use local Icon component ([b981ac8](https://github.com/favorodera/centoui/commit/b981ac8))
+- **core:** Update Icon import to internal path ([96fa6a7](https://github.com/favorodera/centoui/commit/96fa6a7))
+- **breadcrumb:** Use internal Icon component ([a0a7658](https://github.com/favorodera/centoui/commit/a0a7658))
+- **pagination:** Update Icon component import ([ced8a79](https://github.com/favorodera/centoui/commit/ced8a79))
+- **pagination:** Use internal Icon component ([bef96e0](https://github.com/favorodera/centoui/commit/bef96e0))
+- **icon:** Use local Icon component ([55e4b19](https://github.com/favorodera/centoui/commit/55e4b19))
+- **icon:** Use local Icon component ([305f98c](https://github.com/favorodera/centoui/commit/305f98c))
+- **icon:** Centralize Icon component import ([1a98d73](https://github.com/favorodera/centoui/commit/1a98d73))
+- **select:** Use internal Icon component ([2fb7672](https://github.com/favorodera/centoui/commit/2fb7672))
+- **select:** Use local Icon component ([1b022b8](https://github.com/favorodera/centoui/commit/1b022b8))
+- **select:** Improve scroll button accessibility ([b03e642](https://github.com/favorodera/centoui/commit/b03e642))
+- **icon:** Use internal component import ([b45f2a4](https://github.com/favorodera/centoui/commit/b45f2a4))
+
+### Chores
+
+- **core:** Update peer dependencies ([eca7f8f](https://github.com/favorodera/centoui/commit/eca7f8f))
+
+  - Update vue peer dependency to ^3.5.0
+  - Move core dependencies to peerDependencies
+  - Add @nuxt/icon to peer dependencies
+  - Mark icon packages as optional peers
+
+- **registry:** Update component dependencies ([ce43334](https://github.com/favorodera/centoui/commit/ce43334))
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.26...v1.0.0-alpha.27
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.26...v1.0.0-alpha.27)

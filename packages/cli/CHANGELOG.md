@@ -1,5 +1,38 @@
 # Changelog
 
+## v1.0.0-alpha.27...v1.0.0-alpha.28
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.27...v1.0.0-alpha.28)
+
+### Added
+
+- **cli:** Add config defaults URL constant ([b149c11](https://github.com/favorodera/centoui/commit/b149c11))
+- **cli:** Fetch default config from GitHub ([7a9576e](https://github.com/favorodera/centoui/commit/7a9576e))
+
+  - Fetch raw default config from GitHub
+  - Extract inner properties from fetched config
+  - Generate user config with fetched defaults
+
+
+### Refactors
+
+- **init:** Build user-specific default config ([6808e76](https://github.com/favorodera/centoui/commit/6808e76))
+
+### Tests
+
+- **cli:** Update config utility tests ([d313b8e](https://github.com/favorodera/centoui/commit/d313b8e))
+
+  - Add tests for extracting inner config content
+  - Mock fetch for user default config building
+  - Test fetch errors and empty configuration cases
+
+- **registry:** Simplify fetchFullRegistry test name ([0cc8211](https://github.com/favorodera/centoui/commit/0cc8211))
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.26...v1.0.0-alpha.27
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.26...v1.0.0-alpha.27)
