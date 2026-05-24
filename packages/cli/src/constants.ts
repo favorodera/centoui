@@ -31,6 +31,12 @@ export const REGISTRY_INDEX_URL = `${REGISTRY_DIR_URL}/index.json`
 export const THEME_CSS_URL = `${CORE_SRC_BASE_URL}/defaults/centoui.css`
 
 /**
+ * Full URL to the default values file for the CentoUI config.
+ * The contents of this file are written to the user's project during `centoui init`.
+ */
+export const CONFIG_DEFAULTS_URL = `${CORE_SRC_BASE_URL}/defaults/config.ts`
+
+/**
  * HTTP headers required when fetching raw content from the GitHub API.
  * These ensure we get the raw file bytes, not GitHub's HTML wrapper.
  */
