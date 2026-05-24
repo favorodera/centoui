@@ -30,7 +30,7 @@ import { Badge } from '#centoui/components/badge'
 import { Separator } from '#centoui/components/separator'
 import { ButtonGroup, ButtonGroupSeparator } from '#centoui/components/button-group'
 import { Button } from '#centoui/components/button'
-import { Icon } from '@iconify/vue'
+import { Icon } from '#centoui/components/icon'
 import { useApp } from '@/composables/use-app'
 import { watch } from 'vue'
 
