@@ -3,7 +3,7 @@ import { reactiveOmit } from '@vueuse/core'
 import { Primitive, useForwardProps } from 'reka-ui'
 import { computed } from 'vue'
 import { breadcrumbVariants, type BreadcrumbEllipsisProps } from '.'
-import { Icon } from '@iconify/vue'
+import { Icon } from '../icon'
 import config from '#centoui/config'
 
 const props = defineProps<BreadcrumbEllipsisProps>()
