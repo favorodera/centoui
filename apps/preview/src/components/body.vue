@@ -3,7 +3,7 @@ import { Button } from '#centoui/components/button'
 import { ButtonGroup } from '#centoui/components/button-group'
 import PropsControl from '@/components/props-control.vue'
 import { useApp } from '@/composables/use-app'
-import { Icon } from '@iconify/vue'
+import { Icon } from '#centoui/components/icon'
 
 const { preview, navigation, models } = useApp()
 
