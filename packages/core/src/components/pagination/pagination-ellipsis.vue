@@ -7,7 +7,7 @@ import {
 import { computed } from 'vue'
 import { reactiveOmit } from '@vueuse/core'
 import config from '#centoui/config'
-import { Icon } from '@iconify/vue'
+import { Icon } from '../icon'
 
 const props = defineProps<PaginationEllipsisProps>()
 const delegatedProps = reactiveOmit(props, 'class')
