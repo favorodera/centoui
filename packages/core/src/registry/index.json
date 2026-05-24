@@ -22,9 +22,12 @@
         "components/accordion/accordion-header.vue",
         "components/accordion/accordion-item.vue",
         "components/accordion/accordion-root.vue",
+        "components/accordion/accordion-trigger.vue",
         "components/accordion/index.ts"
       ],
-      "componentDeps": [],
+      "componentDeps": [
+        "icon"
+      ],
       "packageDeps": {}
     },
     {
@@ -129,7 +132,9 @@
         "components/breadcrumb/breadcrumb-separator.vue",
         "components/breadcrumb/index.ts"
       ],
-      "componentDeps": [],
+      "componentDeps": [
+        "icon"
+      ],
       "packageDeps": {}
     },
     {
@@ -226,7 +231,8 @@
         "components/pagination/index.ts"
       ],
       "componentDeps": [
-        "button"
+        "button",
+        "icon"
       ],
       "packageDeps": {}
     },
@@ -290,7 +296,8 @@
         "components/select/index.ts"
       ],
       "componentDeps": [
-        "separator"
+        "separator",
+        "icon"
       ],
       "packageDeps": {}
     },
@@ -324,7 +331,8 @@
         "components/slideover/index.ts"
       ],
       "componentDeps": [
-        "button"
+        "button",
+        "icon"
       ],
       "packageDeps": {}
     },
