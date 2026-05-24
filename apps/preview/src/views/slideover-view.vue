@@ -15,7 +15,7 @@ import {
 } from '#centoui/components/slideover'
 import { Button } from '#centoui/components/button'
 import { Badge } from '#centoui/components/badge'
-import { Icon } from '@iconify/vue'
+import { Icon } from '#centoui/components/icon'
 import {
   AvatarRoot,
   AvatarImage,
