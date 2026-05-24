@@ -136,6 +136,13 @@ function set(key: string, value: unknown) {
           @input="(event) => set(entry.key, String((event.target as HTMLInputElement).value))"
         >
 
+        <div
+          v-if="entry.hint"
+          class="text-xs -mt-0.5 text-muted-foreground"
+        >
+          {{ entry.hint }}
+        </div>
+
       </div>
     </template>
 
