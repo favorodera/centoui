@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { AlertRoot, AlertDescription, AlertActions, alertVariants, AlertMedia, AlertTitle, AlertContent } from '#centoui/components/alert'
 import { Button } from '#centoui/components/button'
-import { Icon } from '@iconify/vue'
+import { Icon } from '#centoui/components/icon'
 import ViewContainer from '@/components/view-container.vue'
 import { useApp } from '@/composables/use-app'
 
