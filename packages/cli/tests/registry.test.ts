@@ -13,7 +13,7 @@ const baseRegistry: Registry = {
   ],
 }
 
-describe('fetchFullRegistry — caching', () => {
+describe('fetchFullRegistry', () => {
   beforeEach(() => {
     // Reset the module so the in-process cache is cleared before each test
     vi.resetModules()
