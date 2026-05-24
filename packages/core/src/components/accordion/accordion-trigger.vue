@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
 import { AccordionTrigger, useForwardProps } from 'reka-ui'
-import { Icon } from '@iconify/vue'
+import { Icon } from '../icon'
 import {
   accordionVariants,
   type AccordionTriggerProps,
