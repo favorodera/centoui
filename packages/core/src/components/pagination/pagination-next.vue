@@ -2,7 +2,7 @@
 import { PaginationNext, useForwardProps } from 'reka-ui'
 import { computed } from 'vue'
 import { reactiveOmit } from '@vueuse/core'
-import { Icon } from '@iconify/vue'
+import { Icon } from '../icon'
 import config from '#centoui/config'
 import { buttonVariants } from '../button'
 import {
