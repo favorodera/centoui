@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Badge, badgeVariants } from '#centoui/components/badge'
-import { Icon } from '@iconify/vue'
+import { Icon } from '#centoui/components/icon'
 import ViewContainer from '@/components/view-container.vue'
 import { useApp } from '@/composables/use-app'
 
