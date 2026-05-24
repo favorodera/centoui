@@ -1,12 +1,17 @@
 import { defineConfig } from 'centoui'
 
 export default defineConfig({
-  version: '0.2.2',
   componentsDir: 'src/components/centoui',
   themeFilePath: 'src/assets/css/centoui.css',
   icons: {
     check: 'lucide:check',
+    chevronDoubleLeft: 'lucide:chevrons-left',
+    chevronDoubleRight: 'lucide:chevrons-right',
+    chevronDown: 'lucide:chevron-down',
+    chevronLeft: 'lucide:chevron-left',
+    chevronRight: 'lucide:chevron-right',
+    chevronUp: 'lucide:chevron-up',
     close: 'lucide:x',
-    menu: 'lucide:menu',
+    ellipsis: 'lucide:ellipsis',
   },
 })
