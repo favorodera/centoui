@@ -8,7 +8,7 @@ import {
   BreadcrumbSeparator,
   BreadcrumbEllipsis,
 } from '#centoui/components/breadcrumb'
-import { Icon } from '@iconify/vue'
+import { Icon } from '#centoui/components/icon'
 import ViewContainer from '@/components/view-container.vue'
 import { useApp } from '@/composables/use-app'
 
