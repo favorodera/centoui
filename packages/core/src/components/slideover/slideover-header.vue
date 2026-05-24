@@ -8,7 +8,7 @@ import {
 } from '.'
 import { computed } from 'vue'
 import config from '#centoui/config'
-import { Icon } from '@iconify/vue'
+import { Icon } from '../icon'
 import { buttonVariants } from '../button'
 
 const props = withDefaults(defineProps<SlideoverHeaderProps>(), {
