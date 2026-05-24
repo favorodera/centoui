@@ -6,7 +6,7 @@ import {
   injectCentouiSelectRootContext,
   selectVariants,
 } from '.'
-import { Icon } from '@iconify/vue'
+import { Icon } from '../icon'
 import config from '#centoui/config'
 import { computed } from 'vue'
 
