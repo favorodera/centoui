@@ -17,7 +17,7 @@ export { default as Icon } from './icon.vue'
 
 type IconifyIconProps = Omit<BaseIconifyIconProps, 'ariaHidden'>
 
-// type NuxtIconProps = Omit<InstanceType<typeof Icon>['$props'], 'name'> & {
+// type NuxtIconProps = Omit<InstanceType<typeof NuxtIcon>['$props'], 'name'> & {
 //   icon: string,
 // }
 
