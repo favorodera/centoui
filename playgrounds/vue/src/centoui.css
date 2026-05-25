@@ -1,0 +1,151 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Page canvas */
+  --background: oklch(0.98 0 0);
+  --foreground: oklch(0.13 0 0);
+
+  /* Cards, panels, sidebars */
+  --surface: oklch(1 0 0);
+  /* Dropdowns, popovers, modals — floats above surface */
+  --surface-raised: oklch(0.99 0 0);
+
+  /* Backdrop scrim behind modals and drawers */
+  --overlay: oklch(0 0 0 / 0.4);
+
+  /* Focus ring */
+  --ring: oklch(0.55 0.22 258);
+
+  /* Dividers and layout strokes */
+  --border: oklch(0.91 0 0);
+  /* Input field borders — distinct from general strokes */
+  --input: oklch(0.88 0 0);
+
+  /* Subtle fills — input backgrounds, skeletons */
+  --muted: oklch(0.97 0 0);
+  /* Secondary text — placeholders, captions */
+  --muted-foreground: oklch(0.48 0 0);
+
+  /* Semantic-free chrome — tags, chips, empty states */
+  --neutral: oklch(0.94 0 0);
+  --neutral-foreground: oklch(0.35 0 0);
+
+  /* Hover/active highlight — ghost buttons, menu items */
+  --accent: oklch(0.95 0 0);
+  --accent-foreground: oklch(0.13 0 0);
+
+  /* Main CTA — buttons, key actions */
+  --primary: oklch(0.09 0 0);
+  --primary-foreground: oklch(0.98 0 0);
+
+  /* Supporting actions */
+  --secondary: oklch(0.95 0 0);
+  --secondary-foreground: oklch(0.13 0 0);
+
+  /* Positive states — confirmations */
+  --success: oklch(0.72 0.17 150);
+  --success-foreground: oklch(0.98 0.01 150);
+
+  /* Caution states — pending, at-risk */
+  --warning: oklch(0.80 0.17 75);
+  --warning-foreground: oklch(0.22 0.04 75);
+
+  /* Destructive states — errors, deletions */
+  --error: oklch(0.62 0.22 28);
+  --error-foreground: oklch(0.98 0.01 28);
+
+  /* Neutral informational messages */
+  --info: oklch(0.60 0.18 255);
+  --info-foreground: oklch(0.98 0.01 255);
+}
+
+.dark {
+  --background: oklch(0.08 0 0);
+  --foreground: oklch(0.93 0 0);
+
+  --surface: oklch(0.15 0 0);
+  --surface-raised: oklch(0.17 0 0);
+
+  --overlay: oklch(0 0 0 / 0.75);
+
+  --ring: oklch(0.65 0.18 258);
+
+  --border: oklch(0.27 0 0);
+  --input: oklch(0.23 0 0);
+
+  --muted: oklch(0.17 0 0);
+  --muted-foreground: oklch(0.58 0 0);
+
+  --neutral: oklch(0.22 0 0);
+  --neutral-foreground: oklch(0.63 0 0);
+
+  --accent: oklch(0.19 0 0);
+  --accent-foreground: oklch(0.93 0 0);
+
+  --primary: oklch(0.98 0 0);
+  --primary-foreground: oklch(0.08 0 0);
+
+  --secondary: oklch(0.19 0 0);
+  --secondary-foreground: oklch(0.93 0 0);
+
+  --success: oklch(0.76 0.17 150);
+  --success-foreground: oklch(0.14 0.02 150);
+
+  --warning: oklch(0.84 0.16 75);
+  --warning-foreground: oklch(0.18 0.04 75);
+
+  --error: oklch(0.62 0.22 28);
+  --error-foreground: oklch(0.98 0.01 28);
+
+  --info: oklch(0.68 0.16 255);
+  --info-foreground: oklch(0.14 0.02 255);
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+
+  --color-overlay: var(--overlay);
+
+  --color-ring: var(--ring);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-neutral: var(--neutral);
+  --color-neutral-foreground: var(--neutral-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+
+  --color-error: var(--error);
+  --color-error-foreground: var(--error-foreground);
+
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+}
+
+body {
+  @apply antialiased text-foreground bg-background;
+}

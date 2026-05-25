@@ -1,14 +1,9 @@
-import fsExtra from 'fs-extra'
-import { pathToFileURL } from 'node:url'
-import { join } from 'pathe'
+import { loadConfig } from 'c12'
 import { CONFIG_DEFAULTS_URL, CONFIG_FILE_NAME, GITHUB_RAW_FETCH_HEADERS } from '../constants'
 import type { CentoUIConfig } from '../types'
 
 /**
- * Loads and returns the user's CentoUI configuration from `centoui.config.ts`.
- *
- * Uses a dynamic `import()` via a `file://` URL so that TypeScript config files
- * compiled by the user's build tooling are resolved correctly at runtime.
+ * Loads and returns the user's CentoUI configuration from `centoui.config.ts` using c12.
  *
  * @param cwd - Absolute path to the project root.
  * @returns The default export of `centoui.config.ts` cast as {@link CentoUIConfig}.
@@ -16,24 +11,18 @@ import type { CentoUIConfig } from '../types'
  * @throws If the file exists but cannot be imported or does not export a default value.
  */
 export async function loadCentoUIConfig(cwd: string) {
-  const configFilePath = join(cwd, CONFIG_FILE_NAME)
+  const { config, configFile } = await loadConfig<CentoUIConfig>({
+    name: 'centoui',
+    cwd,
+  })
 
-  try {
-    const configExists = await fsExtra.pathExists(configFilePath)
-    if (!configExists) {
-      throw new Error(
-        `[loadCentoUIConfig] "${CONFIG_FILE_NAME}" not found in "${cwd}". Run \`centoui init\` first.`,
-      )
-    }
- 
-    const fileUrl = pathToFileURL(configFilePath).href
-    const module: { default: CentoUIConfig } = await import(fileUrl)
-    return module.default
-  } catch (error) {
+  if (!configFile) {
     throw new Error(
-      `[loadCentoUIConfig] Failed to import "${configFilePath}": ${error}`,
+      `[loadCentoUIConfig] "${CONFIG_FILE_NAME}" not found in "${cwd}". Run \`centoui init\` first.`,
     )
   }
+ 
+  return config
 }
 
 

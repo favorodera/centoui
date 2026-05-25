@@ -42,12 +42,15 @@
   "dependencies": {
     "@nuxt/kit": "^4.4.6",
     "c12": "4.0.0-beta.5",
-    "centoui": "workspace:*",
     "pathe": "^2.0.3"
+  },
+  "peerDependencies": {
+    "centoui": "workspace:*"
   },
   "devDependencies": {
     "@nuxt/module-builder": "^1.0.2",
     "@nuxt/schema": "^4.4.6",
+    "centoui": "workspace:*",
     "nuxt": "^4.4.6",
     "vue-tsc": "^3.2.6"
   },

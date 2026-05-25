@@ -3,6 +3,8 @@ import { reactiveOmit } from '@vueuse/core'
 import { Primitive, useForwardProps } from 'reka-ui'
 import { computed } from 'vue'
 import { buttonVariants, type ButtonProps } from '.'
+import config from '#centoui/config'
+import { Icon } from '@iconify/vue'
 
 const props = withDefaults(defineProps<ButtonProps>(), {
   as: 'button',
@@ -33,12 +35,13 @@ const classNames = computed(() => {
 
 <template>
   <Primitive
-    data-slot="button"
-    :data-variant="variant"
-    :data-size="size"
+    data-centoui-slot="button"
+    :data-centoui-variant="variant"
+    :data-centoui-size="size"
     v-bind="forwardedProps"
     :class="classNames"
   >
     <slot />
+    <Icon :icon="config.icons.close" />
   </Primitive>
 </template>
