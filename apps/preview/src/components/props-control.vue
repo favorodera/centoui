@@ -138,7 +138,7 @@ function set(key: string, value: unknown) {
 
         <div
           v-if="entry.hint"
-          class="text-xs -mt-0.5 text-muted-foreground"
+          class="-mt-0.5 text-xs text-muted-foreground"
         >
           {{ entry.hint }}
         </div>
