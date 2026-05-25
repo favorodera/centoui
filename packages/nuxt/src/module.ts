@@ -112,6 +112,7 @@ export default defineNuxtModule<ModuleOptions>({
     // Alias so consumers and components import from "#centoui/config"
     nuxt.options.alias['#centoui/config'] = join(nuxt.options.buildDir, 'centoui/config.ts')
 
+    // Pre-bundle required Vite dependencies
     extendViteConfig((config) => {
       config.optimizeDeps ||= {}
       config.optimizeDeps.include ||= []
