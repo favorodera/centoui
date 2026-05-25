@@ -1,5 +1,32 @@
 # Changelog
 
+## v1.0.0-alpha.28...v1.0.0-alpha.29
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.28...v1.0.0-alpha.29)
+
+### Added
+
+- **nuxt:** Implement component auto-registration ([a7491f1](https://github.com/favorodera/centoui/commit/a7491f1))
+
+  - Use c12 to load configuration in CLI and Nuxt
+  - Add Nuxt module component registration logic
+
+
+### Chores
+
+- **playgrounds:** Restructure dev playgrounds ([f3aecc8](https://github.com/favorodera/centoui/commit/f3aecc8))
+
+  - Remove deprecated apps/sandbox
+  - Add Vue and Nuxt dev playgrounds
+  - Upgrade workspace pnpm engine to v11
+
+- **playground:** Clean up local components ([044c9c1](https://github.com/favorodera/centoui/commit/044c9c1))
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.27...v1.0.0-alpha.28
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.27...v1.0.0-alpha.28)
