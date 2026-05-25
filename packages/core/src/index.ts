@@ -8,3 +8,5 @@ import type { CentoUIConfig } from 'centoui-cli'
 export function defineConfig(config: CentoUIConfig) {
   return config
 }
+
+export type { CentoUIConfig } from 'centoui-cli'

@@ -33,7 +33,8 @@ This is a monorepo managed with `pnpm` and `turbo`.
 - [`packages/nuxt`](./packages/nuxt): Official Nuxt module (centoui-nuxt).
 - [`apps/docs`](./apps/docs): Documentation site built with Nuxt Content.
 - [`apps/preview`](./apps/preview): Component viewer and playground.
-- [`apps/sandbox`](./apps/sandbox): Vite dev playground.
+- [`playgrounds/vue`](./playgrounds/vue): Vue dev playground.
+- [`playgrounds/nuxt`](./playgrounds/nuxt): Nuxt dev playground.
 
 ## Development
 

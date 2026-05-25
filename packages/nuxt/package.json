@@ -40,16 +40,19 @@
     "prepublishOnly": "pnpm build"
   },
   "dependencies": {
-    "@nuxt/kit": "^4.4.2"
+    "@nuxt/kit": "^4.4.6",
+    "c12": "4.0.0-beta.5",
+    "centoui": "workspace:*",
+    "pathe": "^2.0.3"
   },
   "devDependencies": {
     "@nuxt/module-builder": "^1.0.2",
-    "@nuxt/schema": "^4.4.2",
-    "nuxt": "^4.4.2",
+    "@nuxt/schema": "^4.4.6",
+    "nuxt": "^4.4.6",
     "vue-tsc": "^3.2.6"
   },
   "engines": {
-    "node": ">=24.13.0"
-  },
-  "packageManager": "pnpm@10.32.1"
+    "node": ">=22.0.0",
+    "pnpm": ">=11.0.0"
+  }
 }
