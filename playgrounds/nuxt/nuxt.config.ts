@@ -13,4 +13,8 @@ export default defineNuxtConfig({
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     plugins: [tailwindcss() as any],
   },
+  icon: {
+    mode: 'svg',
+    componentName: 'NuxtIcon',
+  },
 })
