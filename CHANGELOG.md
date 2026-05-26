@@ -1,5 +1,28 @@
 # Changelog
 
+## v1.0.0-alpha.29...v1.0.0-alpha.30
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.29...v1.0.0-alpha.30)
+
+### Documentation
+
+- **nuxt:** Add comment for Vite pre-bundling ([b61d4b7](https://github.com/favorodera/centoui/commit/b61d4b7))
+- **readme:** Overhaul readmes across monorepo ([96ccaab](https://github.com/favorodera/centoui/commit/96ccaab))
+
+  - Rewrite all package and app README files
+  - Add detailed CLI usage and architecture docs
+  - Update package descriptions and keywords
+
+
+### Chores
+
+- **nuxt:** Add @iconify/vue to optimized deps ([c37fd79](https://github.com/favorodera/centoui/commit/c37fd79))
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.28...v1.0.0-alpha.29
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.28...v1.0.0-alpha.29)

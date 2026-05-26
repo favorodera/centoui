@@ -1,5 +1,22 @@
 # Changelog
 
+## v1.0.0-alpha.29...v1.0.0-alpha.30
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.29...v1.0.0-alpha.30)
+
+### Documentation
+
+- **readme:** Overhaul readmes across monorepo ([96ccaab](https://github.com/favorodera/centoui/commit/96ccaab))
+
+  - Rewrite all package and app README files
+  - Add detailed CLI usage and architecture docs
+  - Update package descriptions and keywords
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.28...v1.0.0-alpha.29
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.28...v1.0.0-alpha.29)
