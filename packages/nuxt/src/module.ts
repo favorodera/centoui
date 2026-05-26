@@ -121,6 +121,7 @@ export default defineNuxtModule<ModuleOptions>({
         '@vueuse/core',
         'reka-ui',
         'tailwind-variants',
+        '@iconify/vue',
       )
     })
   },
