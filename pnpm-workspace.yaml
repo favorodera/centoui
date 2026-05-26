@@ -22,3 +22,30 @@ allowBuilds:
   better-sqlite3: true
   sharp: true
 
+catalog:
+  "@iconify/vue": "^5.0.1"
+  "@tailwindcss/vite": "^4.3.0"
+  "@tsconfig/node24": "^24.0.4"
+  "@types/fs-extra": "^11.0.4"
+  "@types/node": "^25.6.0"
+  "@vitejs/plugin-vue": "^6.0.6"
+  "@vitest/ui": "^4.1.5"
+  "@vueuse/core": "^14.3.0"
+  c12: "4.0.0-beta.5"
+  eslint: "^10.2.1"
+  fs-extra: "^11.3.4"
+  nuxt: "^4.4.6"
+  pathe: "^2.0.3"
+  reka-ui: "^2.9.8"
+  tailwind-merge: "^3.6.0"
+  tailwind-variants: "^3.2.2"
+  tailwindcss: "^4.3.0"
+  tsdown: "^0.21.7"
+  tw-animate-css: "^1.4.0"
+  typescript: "^6.0.3"
+  vite: "^8.0.8"
+  vitest: "^4.1.2"
+  vue: "^3.5.34"
+  vue-router: "^5.0.7"
+  vue-tsc: "^3.2.6"
+

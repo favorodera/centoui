@@ -22,24 +22,24 @@
     "lint": "eslint . --fix"
   },
   "dependencies": {
-    "@tailwindcss/vite": "^4.3.0",
-    "@vueuse/core": "^14.2.1",
+    "@tailwindcss/vite": "catalog:",
+    "@vueuse/core": "catalog:",
     "pinia": "^3.0.4",
-    "reka-ui": "^2.9.2",
-    "tailwind-merge": "^3.5.0",
-    "tailwind-variants": "^3.2.2",
-    "tailwindcss": "^4.3.0",
-    "vue": "^3.5.30",
-    "vue-router": "^5.0.3",
+    "reka-ui": "catalog:",
+    "tailwind-merge": "catalog:",
+    "tailwind-variants": "catalog:",
+    "tailwindcss": "catalog:",
+    "vue": "catalog:",
+    "vue-router": "catalog:",
     "centoui": "workspace:*"
   },
   "devDependencies": {
-    "@iconify/vue": "^5.0.0",
-    "@tsconfig/node24": "^24.0.4",
-    "@vitejs/plugin-vue": "^6.0.4",
+    "@iconify/vue": "catalog:",
+    "@tsconfig/node24": "catalog:",
+    "@vitejs/plugin-vue": "catalog:",
     "@vue/tsconfig": "^0.9.0",
-    "vite": "^7.3.1",
-    "vue-tsc": "^3.2.5"
+    "vite": "catalog:",
+    "vue-tsc": "catalog:"
   },
   "engines": {
     "node": ">=22.0.0",

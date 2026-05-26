@@ -41,8 +41,8 @@
   },
   "dependencies": {
     "@nuxt/kit": "^4.4.6",
-    "c12": "4.0.0-beta.5",
-    "pathe": "^2.0.3"
+    "c12": "catalog:",
+    "pathe": "catalog:"
   },
   "peerDependencies": {
     "centoui": "workspace:*"
@@ -51,8 +51,8 @@
     "@nuxt/module-builder": "^1.0.2",
     "@nuxt/schema": "^4.4.6",
     "centoui": "workspace:*",
-    "nuxt": "^4.4.6",
-    "vue-tsc": "^3.2.6"
+    "nuxt": "catalog:",
+    "vue-tsc": "catalog:"
   },
   "engines": {
     "node": ">=22.0.0",
