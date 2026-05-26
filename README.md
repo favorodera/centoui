@@ -1,60 +1,80 @@
-# CentoUI
+<div align="center">
+  <h1>CentoUI</h1>
+  <p><strong>Vue components for elegant interfaces</strong></p>
+  <p>
+    <a href="https://github.com/favorodera/centoui/blob/main/LICENSE"><img src="https://img.shields.io/github/license/favorodera/centoui.svg?style=plastic&label=License&color=blue" alt="license"></a>
+    <a href="https://github.com/favorodera/centoui/stargazers"><img src="https://img.shields.io/github/stars/favorodera/centoui.svg?style=plastic&label=Stars&color=blue" alt="github stars"></a>
+    <a href="https://centoui.vercel.app/"><img src="https://img.shields.io/badge/-Documentation-blue?style=plastic" alt="Documentation"></a>
+  </p>
+  <p>
+    <a href="./packages/core"><img src="https://img.shields.io/badge/Core-blue?style=plastic&logo=vuedotjs&logoColor=white" alt="centoui core"></a>
+    <a href="./packages/cli"><img src="https://img.shields.io/badge/CLI-blue?style=plastic&logo=typescript&logoColor=white" alt="centoui cli"></a>
+    <a href="./packages/nuxt"><img src="https://img.shields.io/badge/Nuxt Module-blue?style=plastic&logo=nuxt&logoColor=white" alt="nuxt module"></a>
+  </p>
+</div>
 
-[![license](https://img.shields.io/github/license/favorodera/centoui.svg?style=plastic)](https://github.com/favorodera/centoui/blob/main/LICENSE)
-[![github stars](https://img.shields.io/github/stars/favorodera/centoui.svg?style=plastic)](https://github.com/favorodera/centoui/stargazers)
-[![documentation](https://img.shields.io/badge/-documentation-green?style=plastic)](https://centoui.vercel.app/)
-[![centoui core](https://img.shields.io/badge/core-%234FC08D?style=plastic&logo=vuedotjs)](./packages/core)
-[![centoui cli](https://img.shields.io/badge/cli-%234FC08D?style=plastic&logo=typescript)](./packages/cli)
-[![nuxt module](https://img.shields.io/badge/nuxt_module-%234FC08D?style=plastic&logo=nuxt)](./packages/nuxt)
+<br>
 
-**Vue components for modern interfaces**
+CentoUI is a copy-paste component library for Vue 3. You run a CLI command, the component source lands in your project, and you own every line. Styling is handled by a single CSS theme file powered by Tailwind CSS v4, so changing your entire look is one file edit away.
 
-CentoUI is a Vue component library designed for modern web applications. It provides a comprehensive set of accessible, customizable components built with Vue 3, RekaUI, TypeScript, and Tailwind CSS.
-
-## Documentation
-
-Full documentation and examples can be found at:
-**[centoui.vercel.app](https://centoui.vercel.app/)**
+Under the hood, components are built on [Reka UI](https://reka-ui.com/) for accessibility and behavior, [Tailwind Variants](https://www.tailwind-variants.org/) for variant-driven styling, and TypeScript for end-to-end type safety.
 
 ## Features
 
-- **Component-driven:** Copy components directly into your project — you own every line.
-- **Zero configuration:** One CSS file controls the entire theme.
-- **Type-safe:** Built with TypeScript from the ground up.
-- **CLI-powered:** Add components instantly with the CentoUI CLI.
-- **Nuxt Support:** Official Nuxt module for a first-class Nuxt experience.
+- **You own the code** — Components are copied into your project, not imported from `node_modules`. Customize freely.
+- **One CSS file, full control** — A single `centoui.css` theme file defines every color token. Light mode, dark mode, and custom palettes all live here.
+- **CLI-first workflow** — `centoui init` scaffolds your project. `centoui add button accordion` pulls components and installs their dependencies. `centoui remove` cleans up.
+- **Automatic dependency resolution** — Adding a component that depends on another component? The CLI resolves the full tree and installs everything.
+- **Version-locked assets** — The CLI always fetches component source files, the registry, and the theme CSS from the exact release of `centoui` that matches its own installed version. You never get components from a different release than what you installed.
+- **Nuxt-ready** — Drop in the [`centoui-nuxt`](./packages/nuxt) module for auto-registration, optional prefixing, and zero config.
 
-## Project Structure
+## Monorepo Structure
 
-This is a monorepo managed with `pnpm` and `turbo`.
+This monorepo is managed with [pnpm](https://pnpm.io/) workspaces and [Turborepo](https://turbo.build/repo).
 
-- [`packages/core`](./packages/core): Vue components and CSS (centoui).
-- [`packages/cli`](./packages/cli): CLI tool for component management (centoui-cli).
-- [`packages/nuxt`](./packages/nuxt): Official Nuxt module (centoui-nuxt).
-- [`apps/docs`](./apps/docs): Documentation site built with Nuxt Content.
-- [`apps/preview`](./apps/preview): Component viewer and playground.
-- [`playgrounds/vue`](./playgrounds/vue): Vue dev playground.
-- [`playgrounds/nuxt`](./playgrounds/nuxt): Nuxt dev playground.
+| Path | Package | Description |
+|------|---------|-------------|
+| [`packages/core`](./packages/core) | `centoui` | Component source, registry, and theme defaults |
+| [`packages/cli`](./packages/cli) | `centoui-cli` | CLI for initializing projects and managing components |
+| [`packages/nuxt`](./packages/nuxt) | `centoui-nuxt` | Official Nuxt module with auto-registration |
+| [`apps/preview`](./apps/preview) | `preview` | Component viewer for visual development |
+| [`playgrounds/vue`](./playgrounds/vue) | `vue-playground` | Vue development sandbox |
+| [`playgrounds/nuxt`](./playgrounds/nuxt) | `nuxt-playground` | Nuxt development sandbox |
 
 ## Development
 
 ### Prerequisites
 
-- [pnpm](https://pnpm.io/installation) (v10 or later)
-- Node.js (v22 or later)
+- [Node.js](https://nodejs.org/) v22 or later
+- [pnpm](https://pnpm.io/installation) v11 or later
 
-### Setup
+### Getting Started
 
 ```bash
-# Install dependencies
+# Install all dependencies
 pnpm install
 
-# Start development in watch mode
+# Start all packages in watch mode
 pnpm dev
 
-# Build all packages
+# Build everything
 pnpm build
 
-# Run tests
-pnpm test
+# Lint, typecheck, build, and test in one go
+pnpm ready
 ```
+
+### Useful Commands
+
+| Command | What it does |
+|---------|-------------|
+| `pnpm dev` | Starts all packages in watch/dev mode via Turborepo |
+| `pnpm build` | Production build of all packages |
+| `pnpm lint` | Lint all packages with ESLint |
+| `pnpm typecheck` | Type-check all packages with `vue-tsc` / `tsc` |
+| `pnpm test` | Run all test suites with Vitest |
+| `pnpm ready` | Full pipeline: install → lint → typecheck → build → test |
+
+## License
+
+[MIT](./LICENSE) &copy; [Favour Emeka](https://github.com/favorodera)

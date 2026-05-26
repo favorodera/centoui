@@ -4,6 +4,13 @@
   "version": "1.0.0-alpha.29",
   "private": false,
   "description": "Official CLI for CentoUI.",
+  "keywords": [
+    "cli",
+    "vue",
+    "ui",
+    "components",
+    "tailwindcss"
+  ],
   "author": "Favour Emeka <favorodera@gmail.com>",
   "license": "MIT",
   "homepage": "https://centoui.vercel.app",

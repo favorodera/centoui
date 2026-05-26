@@ -1,43 +1,53 @@
-# centoui-preview
+<div align="center">
+  <h1>👀 centoui-preview</h1>
+  <p><strong>Visual development environment for CentoUI components.</strong></p>
+</div>
 
-**Component Viewer for CentoUI.**
+<br>
 
-This is a Vite-based preview app for [CentoUI](../../packages/core) components. Use it to view, inspect, and preview components directly, similar to Histoire or Storybook.
+The preview app is a Vite-powered playground for developing and inspecting CentoUI components in isolation. It live-links to the `centoui` core package in this monorepo, so every saved change is reflected instantly.
 
-## Features
+## Tech Stack
 
-- **Vite 6:** Fast HMR for component development.
-- **Tailwind CSS v4:** Directly uses the same styling engine as CentoUI.
-- **Component Development:** Live-link to `centoui` package (monorepo).
-- **TypeScript:** Full type support for component development.
+- **Vite** — Fast HMR for component development
+- **Vue 3** + **Vue Router** — SPA with route-per-component views
+- **Pinia** — State management for preview-specific UI state
+- **Tailwind CSS v4** — Same styling engine used by CentoUI components
+- **CentoUI** — Linked via `workspace:*` for real-time development
 
 ## Development
 
-```bash
-# Install dependencies
-pnpm install
+From the monorepo root:
 
+```bash
 # Start the preview app on http://localhost:5173
+pnpm --filter preview dev
+```
+
+Or from this directory:
+
+```bash
 pnpm dev
 ```
 
-## Production
+## Build
 
 ```bash
-# Build the preview app for production
+# Production build
 pnpm build
 
-# Preview the production build
+# Preview the production build locally
 pnpm preview
 ```
 
-## CLI Usage
+## CLI Testing
 
-The preview app is pre-configured with a local CentoUI CLI command for development testing:
+This app is pre-configured with a `centoui.config.ts`, making it a convenient sandbox for testing CLI commands during development:
 
 ```bash
-# Run the local CentoUI CLI in the preview app
 pnpm centoui init
+pnpm centoui add button accordion
+pnpm centoui remove accordion
 ```
 
 ## License

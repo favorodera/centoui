@@ -1,7 +1,16 @@
 {
   "name": "centoui",
   "type": "module",
-  "description": "Vue components for modern interfaces",
+  "description": "Vue components for elegant interfaces",
+  "keywords": [
+    "vue",
+    "ui",
+    "components",
+    "tailwindcss",
+    "tailwind",
+    "design-system",
+    "accessibility"
+  ],
   "private": false,
   "version": "1.0.0-alpha.29",
   "author": "Favour Emeka <favorodera@gmail.com>",
