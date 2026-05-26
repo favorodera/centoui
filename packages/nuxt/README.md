@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>🚀 centoui-nuxt</h1>
+  <h1>centoui-nuxt</h1>
   <p><strong>CentoUI, seamlessly integrated with Nuxt.</strong></p>
   <p>
     <a href="https://npmx.dev/package/centoui-nuxt"><img src="https://img.shields.io/npm/v/centoui-nuxt.svg?style=plastic&label=NPM%20Version&color=blue" alt="NPM Version"></a>
