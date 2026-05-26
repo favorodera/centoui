@@ -2,14 +2,14 @@
   <h1>CentoUI</h1>
   <p><strong>Vue components for elegant interfaces</strong></p>
   <p>
-    <a href="https://github.com/favorodera/centoui/blob/main/LICENSE"><img src="https://img.shields.io/github/license/favorodera/centoui.svg?style=plastic&label=License&color=blue" alt="license"></a>
-    <a href="https://github.com/favorodera/centoui/stargazers"><img src="https://img.shields.io/github/stars/favorodera/centoui.svg?style=plastic&label=Stars&color=blue" alt="github stars"></a>
-    <a href="https://centoui.vercel.app/"><img src="https://img.shields.io/badge/-Documentation-blue?style=plastic" alt="Documentation"></a>
+    <a href="https://github.com/favorodera/centoui/blob/main/LICENSE"><img src="https://img.shields.io/github/license/favorodera/centoui.svg?style=plastic&label=License&color=blue" alt="License"></a>
+    <a href="https://github.com/favorodera/centoui/stargazers"><img src="https://img.shields.io/github/stars/favorodera/centoui.svg?style=plastic&label=Stars&color=blue" alt="GitHub Stars"></a>
+    <a href="https://centoui.vercel.app/"><img src="https://img.shields.io/badge/-Documentation-blue?style=plastic" alt="CentoUI Documentation"></a>
   </p>
   <p>
-    <a href="./packages/core"><img src="https://img.shields.io/badge/Core-blue?style=plastic&logo=vuedotjs&logoColor=white" alt="centoui core"></a>
-    <a href="./packages/cli"><img src="https://img.shields.io/badge/CLI-blue?style=plastic&logo=typescript&logoColor=white" alt="centoui cli"></a>
-    <a href="./packages/nuxt"><img src="https://img.shields.io/badge/Nuxt Module-blue?style=plastic&logo=nuxt&logoColor=white" alt="nuxt module"></a>
+    <a href="./packages/core"><img src="https://img.shields.io/badge/Core-blue?style=plastic&logo=vuedotjs&logoColor=white" alt="CentoUI Core"></a>
+    <a href="./packages/cli"><img src="https://img.shields.io/badge/CLI-blue?style=plastic&logo=typescript&logoColor=white" alt="CentoUI CLI"></a>
+    <a href="./packages/nuxt"><img src="https://img.shields.io/badge/Nuxt%20Module-blue?style=plastic&logo=nuxt&logoColor=white" alt="CentoUI Nuxt Module"></a>
   </p>
 </div>
 

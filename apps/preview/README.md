@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>👀 centoui-preview</h1>
+  <h1>centoui-preview</h1>
   <p><strong>Visual development environment for CentoUI components.</strong></p>
 </div>
 
@@ -38,16 +38,6 @@ pnpm build
 
 # Preview the production build locally
 pnpm preview
-```
-
-## CLI Testing
-
-This app is pre-configured with a `centoui.config.ts`, making it a convenient sandbox for testing CLI commands during development:
-
-```bash
-pnpm centoui init
-pnpm centoui add button accordion
-pnpm centoui remove accordion
 ```
 
 ## License

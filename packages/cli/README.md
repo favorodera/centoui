@@ -2,9 +2,9 @@
   <h1>centoui-cli</h1>
   <p><strong>Manage CentoUI components from the terminal.</strong></p>
   <p>
-    <a href="https://npmx.dev/package/centoui-cli"><img src="https://img.shields.io/npm/v/centoui-cli.svg?style=plastic&label=NPM Version&color=blue" alt="npm version"></a>
-    <a href="https://npmx.dev/package/centoui-cli"><img src="https://img.shields.io/npm/dw/centoui-cli.svg?style=plastic&label=NPM Downloads&color=blue" alt="npm downloads"></a>
-    <a href="https://npmx.dev/package/centoui-cli"><img src="https://img.shields.io/npm/unpacked-size/centoui-cli?style=plastic&label=NPM Unpacked Size&color=blue" alt="NPM Unpacked Size"></a>
+    <a href="https://npmx.dev/package/centoui-cli"><img src="https://img.shields.io/npm/v/centoui-cli.svg?style=plastic&label=NPM%20Version&color=blue" alt="NPM Version"></a>
+    <a href="https://npmx.dev/package/centoui-cli"><img src="https://img.shields.io/npm/dw/centoui-cli.svg?style=plastic&label=NPM%20Downloads&color=blue" alt="NPM Downloads"></a>
+    <a href="https://npmx.dev/package/centoui-cli"><img src="https://img.shields.io/npm/unpacked-size/centoui-cli?style=plastic&label=NPM%20Unpacked%20Size&color=blue" alt="NPM Unpacked Size"></a>
   </p>
 </div>
 

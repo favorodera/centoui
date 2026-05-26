@@ -2,9 +2,9 @@
   <h1>centoui</h1>
   <p><strong>Vue components for elegant interfaces</strong></p>
   <p>
-    <a href="https://npmx.dev/package/centoui"><img src="https://img.shields.io/npm/v/centoui.svg?style=plastic&label=NPM Version&color=blue" alt="npm version"></a>
-    <a href="https://npmx.dev/package/centoui"><img src="https://img.shields.io/npm/dw/centoui.svg?style=plastic&label=NPM Downloads&color=blue" alt="npm downloads"></a>
-    <a href="https://npmx.dev/package/centoui"><img src="https://img.shields.io/npm/unpacked-size/centoui?style=plastic&label=NPM Unpacked Size&color=blue" alt="NPM Unpacked Size"></a>
+    <a href="https://npmx.dev/package/centoui"><img src="https://img.shields.io/npm/v/centoui.svg?style=plastic&label=NPM%20Version&color=blue" alt="NPM Version"></a>
+    <a href="https://npmx.dev/package/centoui"><img src="https://img.shields.io/npm/dw/centoui.svg?style=plastic&label=NPM%20Downloads&color=blue" alt="NPM Downloads"></a>
+    <a href="https://npmx.dev/package/centoui"><img src="https://img.shields.io/npm/unpacked-size/centoui?style=plastic&label=NPM%20Unpacked%20Size&color=blue" alt="NPM Unpacked Size"></a>
   </p>
 </div>
 
