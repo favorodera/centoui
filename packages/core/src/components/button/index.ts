@@ -139,7 +139,7 @@ export type ButtonVariants = VariantProps<typeof buttonVariants>
 
 // TYPES — Props
 
-export type ButtonProps = PrimitiveProps & /* @vue-ignore */ ButtonHTMLAttributes & Pick<ClassProp, 'class'> & {
+export type ButtonProps = PrimitiveProps & /* @vue-ignore */ Omit<ButtonHTMLAttributes, 'class'> & Pick<ClassProp, 'class'> & {
   /**
    * The visual style of the button.
    * @default 'primary'
