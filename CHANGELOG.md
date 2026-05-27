@@ -1,5 +1,69 @@
 # Changelog
 
+## v1.0.0-alpha.30...v1.0.0-alpha.31
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.30...v1.0.0-alpha.31)
+
+### Added
+
+- **preview:** Add input preview view ([ebdd41a](https://github.com/favorodera/centoui/commit/ebdd41a))
+
+  - Add input-view.vue preview component
+  - Bind model value to display typed text
+  - Include size, disabled, and invalid states
+
+- **input:** Add input component variants and types ([108b22e](https://github.com/favorodera/centoui/commit/108b22e))
+
+  - Define Tailwind variants and sizes
+  - Export InputProps and InputEmits types
+  - Export Input Vue component
+
+- **input:** Add base input component ([0237227](https://github.com/favorodera/centoui/commit/0237227))
+
+  - Add Vue 3 input component with v-model support
+  - Integrate useVModel and variant classes
+
+- **registry:** Add input component ([92beb3c](https://github.com/favorodera/centoui/commit/92beb3c))
+
+  - Add input component configuration
+  - Register input component in index
+
+
+### Fixed
+
+- **button:** Omit class from ButtonHTMLAttributes ([2336ed6](https://github.com/favorodera/centoui/commit/2336ed6))
+
+  - Fix type conflict with class prop
+
+
+### Refactors
+
+- **preview:** Use Input component ([08a7bc8](https://github.com/favorodera/centoui/commit/08a7bc8))
+
+  - Replace native input with UI Input component
+  - Simplify event handling with update:value
+
+
+### Documentation
+
+- **readme:** Clean up and standardize readmes ([2ab5c6f](https://github.com/favorodera/centoui/commit/2ab5c6f))
+
+  - Fix badge URL encoding for spaces
+  - Capitalize and improve alt text descriptions
+  - Remove emoji from preview app header
+
+- **nuxt:** Remove rocket emoji from title ([f008fa0](https://github.com/favorodera/centoui/commit/f008fa0))
+
+### Styling
+
+- **input:** Reorder tailwind classes ([42adbd2](https://github.com/favorodera/centoui/commit/42adbd2))
+- **select:** Add trigger transition duration ([a8c6194](https://github.com/favorodera/centoui/commit/a8c6194))
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.29...v1.0.0-alpha.30
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.29...v1.0.0-alpha.30)

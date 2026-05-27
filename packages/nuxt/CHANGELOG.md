@@ -1,5 +1,24 @@
 # Changelog
 
+## v1.0.0-alpha.30...v1.0.0-alpha.31
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.30...v1.0.0-alpha.31)
+
+### Documentation
+
+- **readme:** Clean up and standardize readmes ([2ab5c6f](https://github.com/favorodera/centoui/commit/2ab5c6f))
+
+  - Fix badge URL encoding for spaces
+  - Capitalize and improve alt text descriptions
+  - Remove emoji from preview app header
+
+- **nuxt:** Remove rocket emoji from title ([f008fa0](https://github.com/favorodera/centoui/commit/f008fa0))
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.29...v1.0.0-alpha.30
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.29...v1.0.0-alpha.30)
