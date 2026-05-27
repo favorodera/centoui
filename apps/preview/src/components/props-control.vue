@@ -17,6 +17,7 @@ import {
   SelectScrollDownButton,
 } from '#centoui/components/select'
 import { Icon } from '#centoui/components/icon'
+import { Input } from '#centoui/components/input'
 
 const props = defineProps<{
   schema?: PropsSchema | null
@@ -122,19 +123,12 @@ function set(key: string, value: unknown) {
         </SelectRoot>
 
         <!-- String -->
-        <input
+        <Input
           v-else-if="entry.type === 'string'"
           :id="`prop-${entry.key}`"
           :value="String(get(entry.key))"
-          class="
-            relative inline-flex w-full items-center justify-between rounded-md
-            border border-input bg-transparent px-4 py-2 text-sm transition-all
-            outline-none
-            hover:bg-input/15
-            focus-visible:ring-2 focus-visible:ring-ring
-          "
-          @input="(event) => set(entry.key, String((event.target as HTMLInputElement).value))"
-        >
+          @update:value="(value) => set(entry.key, value)"
+        />
 
         <div
           v-if="entry.hint"
