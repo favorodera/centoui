@@ -205,6 +205,17 @@
     },
     {
       "$schema": "../schemas/component.json",
+      "name": "input",
+      "description": "A styled input element that accepts text-based user input.",
+      "files": [
+        "components/input/input.vue",
+        "components/input/index.ts"
+      ],
+      "componentDeps": [],
+      "packageDeps": {}
+    },
+    {
+      "$schema": "../schemas/component.json",
       "name": "kbd-group",
       "description": "Component for displaying a group of keyboard inputs.",
       "files": [
