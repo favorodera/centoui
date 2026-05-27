@@ -1,4 +1,5 @@
 import { tv, type ClassProp, type VariantProps } from 'tailwind-variants'
+import type { InputHTMLAttributes } from 'vue'
 
 export const inputVariants = tv({
   slots: {
@@ -41,7 +42,8 @@ export type InputVariants = VariantProps<typeof inputVariants>
 
 // TYPES — Props
 
-export type InputProps = Pick<ClassProp, 'class'> & {
+// Note: 'autocomplete' is omitted and defined with simpler types to avoid TS2590 union complexity issues
+export type InputProps = Pick<ClassProp, 'class'> & /** @vue-ignore */ Omit<InputHTMLAttributes, 'autocomplete' | 'size' | 'value' | 'class'> & {
   /**
    * The visual size of the input.
    * @default 'md'
@@ -57,6 +59,8 @@ export type InputProps = Pick<ClassProp, 'class'> & {
    * Can be binded as v-model:value
    */
   value?: string | number
+  /** Controls browser autocomplete suggestions. */
+  autocomplete?: 'on' | 'off' | (string & {})
 }
 
 
