@@ -3,8 +3,8 @@ import { tv, type ClassProp, type VariantProps } from 'tailwind-variants'
 export const inputVariants = tv({
   slots: {
     root: `
-      border border-input bg-transparent transition-all w-full
-      duration-300 outline-none
+      w-full border border-input bg-transparent transition-all duration-300
+      outline-none
       selection:bg-primary selection:text-primary-foreground
       placeholder:text-muted-foreground
       hover:bg-input/15
