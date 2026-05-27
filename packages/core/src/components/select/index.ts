@@ -27,7 +27,7 @@ export const selectVariants = tv({
   slots: {
     trigger: `
       relative inline-flex w-full items-center justify-between border
-      border-input bg-transparent transition-all outline-none
+      border-input bg-transparent transition-all duration-300 outline-none
       hover:bg-input/15
       focus-visible:ring-2 focus-visible:ring-ring
       disabled:pointer-events-none disabled:opacity-60
