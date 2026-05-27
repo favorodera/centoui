@@ -5,8 +5,6 @@ import { inputVariants, type InputEmits, type InputProps } from '.'
 
 const emits = defineEmits<InputEmits>()
 
-// Accepts all native HTML input attributes
-// See — https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input
 const props = withDefaults(defineProps<InputProps>(), {
   size: 'md',
 })
