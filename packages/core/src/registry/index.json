@@ -384,6 +384,20 @@
     },
     {
       "$schema": "../schemas/component.json",
+      "name": "slider",
+      "description": "An input control that allows a user to set or select a numeric value within a defined range.",
+      "files": [
+        "components/slider/slider-root.vue",
+        "components/slider/slider-track.vue",
+        "components/slider/slider-range.vue",
+        "components/slider/slider-thumb.vue",
+        "components/slider/index.ts"
+      ],
+      "componentDeps": [],
+      "packageDeps": {}
+    },
+    {
+      "$schema": "../schemas/component.json",
       "name": "switch",
       "description": "A control that allows the user to toggle between two states.",
       "files": [
