@@ -33,6 +33,7 @@ import { Button } from '#centoui/components/button'
 import { Icon } from '#centoui/components/icon'
 import { useApp } from '@/composables/use-app'
 import { watch } from 'vue'
+import { Textarea } from '#centoui/components/textarea'
 
 const { navigation, colorMode, models, theme, preview } = useApp()
 const route = useRoute()
@@ -193,20 +194,11 @@ watch(
               </PopoverHeader>
 
               <PopoverBody>
-                <textarea
-                  v-model="theme.customTheme.value"
+                <Textarea
+                  v-model:value="theme.customTheme.value"
                   spellcheck="false"
-                  rows="10"
-                  class="
-                    size-full resize-none scrollbar-none rounded-sm border
-                    border-input px-2.5 py-2 font-mono text-xs/relaxed
-                    text-foreground outline-none
-
-                    placeholder:text-muted-foreground
-
-                    focus-visible:ring-2 focus-visible:ring-ring
-                  "
                   placeholder="Enter CSS theme"
+                  class="max-h-40"
                 />
               </PopoverBody>
 
