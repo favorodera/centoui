@@ -1,5 +1,22 @@
 # Changelog
 
+## v1.0.0-alpha.32...v1.0.0-alpha.33
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.32...v1.0.0-alpha.33)
+
+### Added
+
+- **components:** Add select and separator ([7d33293](https://github.com/favorodera/centoui/commit/7d33293))
+
+  - Add Select component using reka-ui
+  - Add Separator component
+  - Remove default min-rows from textarea
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.31...v1.0.0-alpha.32
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.31...v1.0.0-alpha.32)

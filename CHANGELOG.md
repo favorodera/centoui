@@ -1,5 +1,38 @@
 # Changelog
 
+## v1.0.0-alpha.32...v1.0.0-alpha.33
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.32...v1.0.0-alpha.33)
+
+### Added
+
+- **components:** Add button and icon components ([b10135f](https://github.com/favorodera/centoui/commit/b10135f))
+
+  - Add Button component to playgrounds
+  - Add Icon component to playgrounds
+  - Implement dark mode toggle in app templates
+  - Configure @nuxtjs/color-mode in Nuxt playground
+
+- **components:** Add select and separator ([7d33293](https://github.com/favorodera/centoui/commit/7d33293))
+
+  - Add Select component using reka-ui
+  - Add Separator component
+  - Remove default min-rows from textarea
+
+
+### Chores
+
+- **eslint:** Configure for new playgrounds ([2b74205](https://github.com/favorodera/centoui/commit/2b74205))
+
+### Styling
+
+- **app:** Format utility classes for readability ([2b873b0](https://github.com/favorodera/centoui/commit/2b873b0))
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.31...v1.0.0-alpha.32
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.31...v1.0.0-alpha.32)
