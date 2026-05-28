@@ -316,7 +316,7 @@ importers:
   playgrounds/nuxt:
     dependencies:
       '@iconify/vue':
-        specifier: 'catalog:'
+        specifier: ^5.0.1
         version: 5.0.1(vue@3.5.34(typescript@6.0.3))
       '@tailwindcss/vite':
         specifier: 'catalog:'
@@ -357,6 +357,10 @@ importers:
       vue-tsc:
         specifier: 'catalog:'
         version: 3.3.1(typescript@6.0.3)
+    devDependencies:
+      '@nuxtjs/color-mode':
+        specifier: ^4.0.0
+        version: 4.0.0(magicast@0.5.3)
 
   playgrounds/vue:
     dependencies:
@@ -1468,6 +1472,9 @@ packages:
         optional: true
       rollup-plugin-visualizer:
         optional: true
+
+  '@nuxtjs/color-mode@4.0.0':
+    resolution: {integrity: sha512-xyaVR/TPLdMuRa2VOgH6b75jvmFEsn9QKL6ISldaAw38ooFJfWY1ts2F3ye43wcT/goCbcuvPuskF2f8yUZhlw==}
 
   '@one-ini/wasm@0.1.1':
     resolution: {integrity: sha512-XuySG1E38YScSJoMlqovLru4KTUNSjgVTIjyh7qMX6aNN5HY5Ct5LhRJdxO79JtTzKfzV/bnWpz+zquYrISsvw==}
@@ -7263,6 +7270,16 @@ snapshots:
       - vti
       - vue-tsc
       - yaml
+
+  '@nuxtjs/color-mode@4.0.0(magicast@0.5.3)':
+    dependencies:
+      '@nuxt/kit': 4.4.6(magicast@0.5.3)
+      exsolve: 1.0.8
+      pathe: 2.0.3
+      pkg-types: 2.3.1
+      semver: 7.8.1
+    transitivePeerDependencies:
+      - magicast
 
   '@one-ini/wasm@0.1.1': {}
 
