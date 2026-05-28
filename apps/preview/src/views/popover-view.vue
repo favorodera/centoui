@@ -109,7 +109,9 @@ const notifications = [
               :key="notification.fallback"
               class="
                 flex items-start gap-3 px-4 py-3
+
                 first:pt-0
+
                 last:pb-0
               "
             >
