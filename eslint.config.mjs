@@ -44,6 +44,7 @@ export default defineConfigWithVueTs(
     settings: {
       'better-tailwindcss': {
         entryPoint: fileURLToPath(new URL('./packages/core/src/defaults/centoui.css', import.meta.url)),
+        group: 'emptyLine',
       },
     },
     rules: {
