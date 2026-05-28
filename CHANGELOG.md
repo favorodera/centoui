@@ -1,5 +1,34 @@
 # Changelog
 
+## v1.0.0-alpha.33...v1.0.0-alpha.34
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.33...v1.0.0-alpha.34)
+
+### Added
+
+- **preview:** Add slider view ([aaba672](https://github.com/favorodera/centoui/commit/aaba672))
+
+  - Add slider-view.vue to preview app
+  - Support single and multiple values
+  - Integrate tooltips on slider thumbs
+
+- **slider:** Add Slider component - Define styling with tailwind-variants - Export sub-components (Root, Track, etc.) - Set up context for SliderRoot - Define types for props, emits, and slots ([ad53d39](https://github.com/favorodera/centoui/commit/ad53d39))
+- **slider:** Add slider range component ([e70cee8](https://github.com/favorodera/centoui/commit/e70cee8))
+- **slider:** Add SliderRoot component ([8a68989](https://github.com/favorodera/centoui/commit/8a68989))
+- **slider:** Add thumb component ([3d61c81](https://github.com/favorodera/centoui/commit/3d61c81))
+- **slider:** Add track component ([b8bbc58](https://github.com/favorodera/centoui/commit/b8bbc58))
+- **component:** Add slider component - Add `slider.json` component definition - Register slider in `index.json` ([94e2397](https://github.com/favorodera/centoui/commit/94e2397))
+
+### Styling
+
+- **progress-bar:** Update background to input ([6bf73a9](https://github.com/favorodera/centoui/commit/6bf73a9))
+- **switch:** Use inherited border-radius for thumb ([15ce9a0](https://github.com/favorodera/centoui/commit/15ce9a0))
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.32...v1.0.0-alpha.33
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.32...v1.0.0-alpha.33)
