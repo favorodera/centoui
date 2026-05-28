@@ -4,7 +4,7 @@ import { TooltipArrow, TooltipContent, TooltipPortal, TooltipProvider, TooltipRo
 import ViewContainer from '@/components/view-container.vue'
 import { useApp } from '@/composables/use-app'
 
-const values = useApp().preview.initPreview('Separator', {
+const values = useApp().preview.initPreview('Tooltip', {
   side: {
     type: 'array',
     label: 'Side',
@@ -28,7 +28,6 @@ const values = useApp().preview.initPreview('Separator', {
         <TooltipPortal>
           <TooltipContent
             :side="values.side as any"
-            class="flex gap-2"
           >
             <p>This is a tooltip</p>
             <TooltipArrow />
@@ -37,6 +36,5 @@ const values = useApp().preview.initPreview('Separator', {
 
       </TooltipRoot>
     </TooltipProvider>
-      
   </ViewContainer>
 </template>
