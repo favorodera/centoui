@@ -6,7 +6,9 @@ export const badgeVariants = tv({
     root: `
       relative inline-flex shrink-0 items-center justify-center truncate
       outline-none select-none
+
       focus-visible:ring-2 focus-visible:ring-ring
+
       [&_svg]:pointer-events-none [&_svg]:shrink-0
     `,
   },
@@ -22,18 +24,21 @@ export const badgeVariants = tv({
       sm: {
         root: `
           gap-1 rounded-sm px-1.5 py-0.5 text-xs font-medium
+
           [&_svg]:size-3
         `,
       },
       md: {
         root: `
           gap-1 rounded-md px-2 py-0.5 text-xs font-medium
+
           [&_svg]:size-3
         `,
       },
       lg: {
         root: `
           gap-2 rounded-md px-2.5 py-1 text-sm font-medium
+
           [&_svg]:size-4
         `,
       },
