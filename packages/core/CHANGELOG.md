@@ -1,5 +1,49 @@
 # Changelog
 
+## v1.0.0-alpha.31...v1.0.0-alpha.32
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.31...v1.0.0-alpha.32)
+
+### Added
+
+- **components:** Add InputGroup, Label, and Textarea components ([dc69186](https://github.com/favorodera/centoui/commit/dc69186))
+
+### Fixed
+
+- **input:** Resolve TS2590 union complexity ([e72e896](https://github.com/favorodera/centoui/commit/e72e896))
+
+  - Extend vue InputHTMLAttributes
+  - Omit autocomplete to avoid complexity
+  - Redefine autocomplete with simpler types
+
+- **avatar:** Omit src from delegated props ([dbd632f](https://github.com/favorodera/centoui/commit/dbd632f))
+- **avatar:** Omit class in AvatarImageProps ([402962d](https://github.com/favorodera/centoui/commit/402962d))
+
+  - Omit class from ImgHTMLAttributes
+  - Avoids type conflict with ClassProp
+
+
+### Refactors
+
+- **input:** Remove redundant comments ([7f96bdb](https://github.com/favorodera/centoui/commit/7f96bdb))
+
+### Chores
+
+- **core:** Add dom libs to tsconfig ([b9e95ff](https://github.com/favorodera/centoui/commit/b9e95ff))
+
+### Styling
+
+- **accordion:** Improve class readability ([67c4366](https://github.com/favorodera/centoui/commit/67c4366))
+- **alert:** Format media variant classes ([578a79c](https://github.com/favorodera/centoui/commit/578a79c))
+- **alert-dialog:** Format tailwind classes ([17a3023](https://github.com/favorodera/centoui/commit/17a3023))
+- **avatar-group:** Add blank line for readability ([29f0478](https://github.com/favorodera/centoui/commit/29f0478))
+- **badge:** Format Tailwind classes ([ce2d3f3](https://github.com/favorodera/centoui/commit/ce2d3f3))
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.30...v1.0.0-alpha.31
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.30...v1.0.0-alpha.31)
