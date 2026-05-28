@@ -201,7 +201,9 @@ watch(
                     size-full resize-none scrollbar-none rounded-sm border
                     border-input px-2.5 py-2 font-mono text-xs/relaxed
                     text-foreground outline-none
+
                     placeholder:text-muted-foreground
+
                     focus-visible:ring-2 focus-visible:ring-ring
                   "
                   placeholder="Enter CSS theme"
