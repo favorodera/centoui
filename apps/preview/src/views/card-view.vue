@@ -92,6 +92,7 @@ const attendees = [
       <CardFooter
         class="
           gap-3 border-t border-border
+
           *:flex-1
         "
       >
