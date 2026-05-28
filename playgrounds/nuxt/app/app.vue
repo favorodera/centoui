@@ -23,6 +23,43 @@ const colorMode = useColorMode()
 
     <div class="size-full flex items-center justify-center gap-8 flex-wrap">
       <Button>Hello</Button>
+
+      <SelectRoot>
+        <SelectTrigger
+          class="max-w-3xs"
+        >
+          <SelectValue placeholder="Select a fruit..." />
+          <SelectIcon />
+        </SelectTrigger>
+      
+        <SelectPortal>
+          <SelectContent :side-offset="5">
+            <SelectScrollUpButton />
+      
+            <SelectViewport>
+      
+              <SelectGroup>
+                <SelectItem
+                  v-for="(fruit, index) in ['Apple', 'Banana', 'Blueberry', 'Grapes', 'Pineapple']"
+                  :key="index"
+                  :value="fruit"
+                >
+                  <SelectItemText>
+                    {{ fruit }}
+                  </SelectItemText>
+                  <SelectItemIndicator />
+                </SelectItem>
+              </SelectGroup>
+      
+            </SelectViewport>
+      
+            <SelectScrollDownButton />
+      
+            <SelectArrow />
+      
+          </SelectContent>
+        </SelectPortal>
+      </SelectRoot>
     </div>
 
   </div>

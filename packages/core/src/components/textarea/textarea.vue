@@ -31,6 +31,5 @@ const classNames = computed(() => {
     data-slot="textarea"
     :data-size="size"
     :class="classNames"
-    :min-rows="10"
   />
 </template>
