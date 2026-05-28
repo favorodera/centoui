@@ -34,10 +34,12 @@ const socials = [
       class="
         fixed inset-y-0 right-0 z-50 flex w-72 shrink-0 flex-col border-l
         border-border bg-surface transition-transform
+
         md:relative md:inset-auto md:translate-x-0
       "
       :class="models.propsPanelModel.value ? 'translate-x-0' : `
         translate-x-full
+
         md:translate-x-0
       `"
     >
@@ -107,6 +109,7 @@ const socials = [
       v-if="preview.hasProps && models.propsPanelModel.value"
       class="
         fixed inset-0 z-20 bg-overlay
+
         md:hidden
       "
       @click="models.propsPanelModel.value = false"
