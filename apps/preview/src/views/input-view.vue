@@ -27,22 +27,19 @@ const modelValue = ref('')
 </script>
 
 <template>
-  <ViewContainer>
+  <ViewContainer class="flex-col flex-nowrap">
+    <Input
+      id="input-model"
+      v-model:value="modelValue"
+      :size="values.size"
+      :disabled="values.disabled"
+      :aria-invalid="values.invalid"
+      placeholder="Enter your name"
+      name="input-model"
+    />
 
-    <div class="flex flex-col gap-1">
-      <Input
-        id="input-model"
-        v-model:value="modelValue"
-        :size="values.size"
-        :disabled="values.disabled"
-        :aria-invalid="values.invalid"
-        placeholder="Enter your name"
-        name="input-model"
-      />
-      <p class="text-sm text-muted-foreground">
-        {{ modelValue }}
-      </p>
-    </div>
-
+    <p class="text-sm text-muted-foreground">
+      {{ modelValue }}
+    </p>
   </ViewContainer>
 </template>
