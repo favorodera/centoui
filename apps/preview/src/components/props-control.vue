@@ -18,6 +18,7 @@ import {
 } from '#centoui/components/select'
 import { Icon } from '#centoui/components/icon'
 import { Input } from '#centoui/components/input'
+import { Label } from '#centoui/components/label'
 
 const props = defineProps<{
   schema?: PropsSchema | null
@@ -57,12 +58,11 @@ function set(key: string, value: unknown) {
         class="space-y-1.5"
       >
   
-        <label
+        <Label
           :for="`prop-${entry.key}`"
-          class="block text-xs font-medium text-muted-foreground"
         >
           {{ entry.label }}
-        </label>
+        </Label>
 
         <!-- Boolean -->
         <div
