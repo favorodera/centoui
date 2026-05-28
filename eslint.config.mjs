@@ -38,7 +38,8 @@ export default defineConfigWithVueTs(
     files: [
       './packages/core/**/*.{vue,ts}',
       './apps/preview/**/*.{vue,ts}',
-      './apps/sandbox/**/*.{vue,ts}',
+      './playgrounds/vue/**/*.{vue,ts}',
+      './playgrounds/nuxt/**/*.{vue,ts}',
     ],
     plugins: { 'better-tailwindcss': betterTailwind },
     settings: {
