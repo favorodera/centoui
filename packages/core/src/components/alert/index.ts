@@ -6,6 +6,7 @@ export const alertVariants = tv({
     root: 'flex w-full items-start gap-3 rounded-lg px-4 py-3',
     media: `
       shrink-0
+
       [&>svg]:size-4 [&>svg]:translate-y-0.5
     `,
     content: 'min-w-0 flex-1 text-sm',
