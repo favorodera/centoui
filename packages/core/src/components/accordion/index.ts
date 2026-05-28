@@ -14,6 +14,7 @@ export const accordionVariants = tv({
     root: 'w-full',
     item: `
       border-b border-border
+
       last:border-b-0
     `,
     header: 'flex',
@@ -21,18 +22,24 @@ export const accordionVariants = tv({
       group/trigger flex flex-1 cursor-pointer items-start justify-between gap-4
       py-4 text-left font-medium text-foreground transition-colors duration-300
       outline-none
+
       focus-visible:ring-2 focus-visible:ring-ring
+
       data-disabled:pointer-events-none data-disabled:opacity-60
     `,
     triggerIcon: `
       pointer-events-none size-4 shrink-0 translate-y-0.5 text-muted-foreground
       transition-transform duration-300
+
       group-data-[state=open]/trigger:rotate-180
     `,
     content: `
       overflow-hidden text-sm text-muted-foreground animation-duration-300
+
       *:data-[slot="accordion-content-inner"]:pb-4
+
       data-[state=closed]:animate-accordion-up
+
       data-[state=open]:animate-accordion-down
     `,
   },
