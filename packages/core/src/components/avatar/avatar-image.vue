@@ -14,7 +14,7 @@ const rootContext = injectCentouiAvatarRootContext()
 const emits = defineEmits<AvatarImageEmits>()
 
 const props = defineProps<AvatarImageProps>()
-const delegatedProps = reactiveOmit(props, 'class')
+const delegatedProps = reactiveOmit(props, 'class', 'src')
 
 const forwardedPropsEmits = useForwardPropsEmits(delegatedProps, emits)
 
