@@ -20,7 +20,9 @@ export const alertDialogVariants = tv({
     trigger: '',
     overlay: `
       fixed inset-0 z-50 bg-overlay animation-duration-300
+
       data-[state=closed]:animate-out data-[state=closed]:fade-out-0
+
       data-[state=open]:animate-in data-[state=open]:fade-in-0
     `,
     content: `
@@ -28,20 +30,25 @@ export const alertDialogVariants = tv({
       max-w-[calc(100%-3rem)] -translate-1/2 gap-6 overflow-hidden
       overflow-y-auto rounded-xl bg-surface-raised py-6 shadow-lg
       animation-duration-300
+
       data-[state=closed]:animate-out data-[state=closed]:fade-out-0
       data-[state=closed]:zoom-out-95
+
       data-[state=open]:animate-in data-[state=open]:fade-in-0
       data-[state=open]:zoom-in-95
+
       sm:max-w-md
     `,
     header: `
       flex flex-col items-center gap-2 px-6 text-center
+
       sm:items-start sm:text-left
     `,
     title: 'text-base font-medium',
     description: 'text-sm text-muted-foreground',
     footer: `
       flex flex-col-reverse gap-2 px-6
+
       sm:flex-row sm:justify-end
     `,
     cancel: '',
