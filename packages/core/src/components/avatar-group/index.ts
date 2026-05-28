@@ -5,6 +5,7 @@ export const avatarGroupVariants = tv({
   slots: {
     root: `
       isolate flex -space-x-2
+
       *:data-[slot=avatar-root]:border-2 *:data-[slot=avatar-root]:border-border
     `,
   },
