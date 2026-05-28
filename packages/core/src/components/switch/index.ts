@@ -23,7 +23,7 @@ export const switchVariants = tv({
       data-[state=unchecked]:bg-input
     `,
     thumb: `
-      pointer-events-none block origin-left rounded-sm bg-background
+      pointer-events-none block origin-left rounded-[inherit] bg-background
       transition-transform duration-300
 
       data-[state=checked]:translate-x-[calc(100%+7px)]
