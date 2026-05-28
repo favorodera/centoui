@@ -3,12 +3,15 @@ const colorMode = useColorMode()
 </script>
 
 <template>
-  <div class="grid min-h-dvh w-full place-items-center p-4 grid-rows-[auto_1fr] grid-cols-1">
+  <div
+    class="
+      grid min-h-dvh w-full grid-cols-1 grid-rows-[auto_1fr] place-items-center
+      p-4
+    "
+  >
 
     <header
-      class="
-          flex w-full items-center justify-end
-        "
+      class="flex w-full items-center justify-end"
     >
       <Button
         variant="outline"
@@ -21,7 +24,7 @@ const colorMode = useColorMode()
     </header>
 
 
-    <div class="size-full flex items-center justify-center gap-8 flex-wrap">
+    <div class="flex size-full flex-wrap items-center justify-center gap-8">
       <Button>Hello</Button>
 
       <SelectRoot>
