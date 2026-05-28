@@ -17,6 +17,7 @@ export const avatarVariants = tv({
     image: 'size-full rounded-[inherit] object-cover',
     fallback: `
       truncate font-medium text-muted-foreground
+
       [&_svg]:pointer-events-none [&_svg]:shrink-0
     `,
   },
@@ -26,6 +27,7 @@ export const avatarVariants = tv({
         root: 'size-8',
         fallback: `
           text-xs
+
           [&_svg]:size-4
         `,
       },
@@ -33,6 +35,7 @@ export const avatarVariants = tv({
         root: 'size-10',
         fallback: `
           text-sm
+
           [&_svg]:size-5
         `,
       },
@@ -40,6 +43,7 @@ export const avatarVariants = tv({
         root: 'size-12',
         fallback: `
           text-base
+
           [&_svg]:size-6
         `,
       },
@@ -88,7 +92,7 @@ export type AvatarRootProps = RekaAvatarRootProps & Pick<ClassProp, 'class'> & {
   size?: AvatarVariants['size']
 }
 
-export type AvatarImageProps = RekaAvatarImageProps & /* @vue-ignore */ Omit<ImgHTMLAttributes, 'src' | 'crossorigin' | 'referrerpolicy'> & Pick<ClassProp, 'class'>
+export type AvatarImageProps = RekaAvatarImageProps & /* @vue-ignore */ Omit<ImgHTMLAttributes, 'src' | 'crossorigin' | 'referrerpolicy' | 'class'> & Pick<ClassProp, 'class'>
 
 export type AvatarFallbackProps = RekaAvatarFallbackProps & Pick<ClassProp, 'class'>
 
