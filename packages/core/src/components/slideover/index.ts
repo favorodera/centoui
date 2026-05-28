@@ -18,18 +18,23 @@ export const slideoverVariants = tv({
     trigger: '',
     overlay: `
       fixed inset-0 z-50 bg-overlay animation-duration-300
+
       data-[state=closed]:animate-out data-[state=closed]:fade-out-0
+
       data-[state=open]:animate-in data-[state=open]:fade-in-0
     `,
     content: `
       fixed z-50 m-2 flex max-h-[calc(100%-(--spacing(4)))]
       w-[calc(100%-(--spacing(4)))] flex-col gap-6 rounded-xl bg-surface-raised
       py-6 shadow-lg transition-all duration-300 animation-duration-300
+
       data-[state=closed]:animate-out
+
       data-[state=open]:animate-in
     `,
     header: `
       flex flex-col items-start gap-2 px-6 text-left
+
       [&.border-b]:pb-6
     `,
     headerClose: 'absolute top-6 right-6',
@@ -42,6 +47,7 @@ export const slideoverVariants = tv({
     `,
     footer: `
       mt-auto flex items-center px-6
+
       [&.border-t]:pt-6
     `,
   },
@@ -50,28 +56,36 @@ export const slideoverVariants = tv({
       top: {
         content: `
           inset-x-0 top-0 h-auto
+
           data-[state=closed]:slide-out-to-top
+
           data-[state=open]:slide-in-from-top
         `,
       },
       bottom: {
         content: `
           inset-x-0 bottom-0 h-auto
+
           data-[state=closed]:slide-out-to-bottom
+
           data-[state=open]:slide-in-from-bottom
         `,
       },
       left: {
         content: `
           inset-y-0 left-0 h-full max-w-sm
+
           data-[state=closed]:slide-out-to-left
+
           data-[state=open]:slide-in-from-left
         `,
       },
       right: {
         content: `
           inset-y-0 right-0 h-full max-w-sm
+
           data-[state=closed]:slide-out-to-right
+
           data-[state=open]:slide-in-from-right
         `,
       },

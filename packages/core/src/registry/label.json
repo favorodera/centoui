@@ -1,0 +1,11 @@
+{
+  "$schema": "../schemas/component.json",
+  "name": "label",
+  "description": "An associated label for form elements.",
+  "files": [
+    "components/label/label-root.vue",
+    "components/label/index.ts"
+  ],
+  "componentDeps": [],
+  "packageDeps": {}
+}

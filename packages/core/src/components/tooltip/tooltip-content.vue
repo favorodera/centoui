@@ -13,7 +13,7 @@ const emits = defineEmits<TooltipContentEmits>()
 const props = withDefaults(defineProps<TooltipContentProps>(), {
   sideOffset: 4,
 })
-const delegatedProps = reactiveOmit(props, 'class', 'variant')
+const delegatedProps = reactiveOmit(props, 'class')
 const forwardedPropsEmits = useForwardPropsEmits(delegatedProps, emits)
 
 const classNames = computed(() => {
@@ -26,7 +26,6 @@ const classNames = computed(() => {
 <template>
   <TooltipContent
     data-slot="tooltip-content"
-    :data-variant="props.variant"
     v-bind="forwardedPropsEmits"
     :class="classNames"
   >

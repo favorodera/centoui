@@ -10,20 +10,26 @@ export const breadcrumbVariants = tv({
     link: `
       inline-flex min-w-0 items-center gap-2 text-muted-foreground
       transition-colors duration-300 outline-none
+
       hover:text-foreground
+
       focus-visible:ring-2 focus-visible:ring-ring
+
       [&_svg]:size-4 [&_svg]:shrink-0
     `,
     page: `
       flex items-center justify-center gap-2 text-foreground
+
       [&>svg]:size-4
     `,
     separator: `
       flex items-center justify-center gap-2 text-muted-foreground
+
       [&>svg]:size-4
     `,
     ellipsis: `
       flex size-8 items-center justify-center gap-2 text-muted-foreground
+
       [&>svg]:size-4
     `,
   },

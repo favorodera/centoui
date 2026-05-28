@@ -11,16 +11,23 @@ export const switchVariants = tv({
     root: `
       peer relative inline-flex shrink-0 items-center rounded-sm transition-all
       duration-300 outline-none
+
       focus-visible:ring-2 focus-visible:ring-ring
+
       disabled:pointer-events-none disabled:opacity-60
+
       aria-invalid:ring-2 aria-invalid:ring-error
+
       data-[state=checked]:bg-primary
+
       data-[state=unchecked]:bg-input
     `,
     thumb: `
       pointer-events-none block origin-left rounded-sm bg-background
       transition-transform duration-300
+
       data-[state=checked]:translate-x-[calc(100%+7px)]
+
       data-[state=unchecked]:translate-x-px
     `,
   },

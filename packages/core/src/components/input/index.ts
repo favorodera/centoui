@@ -6,11 +6,17 @@ export const inputVariants = tv({
     root: `
       w-full border border-input bg-transparent transition-all duration-300
       outline-none
+
       selection:bg-primary selection:text-primary-foreground
+
       placeholder:text-muted-foreground
+
       hover:bg-input/15
+
       focus-visible:ring-2 focus-visible:ring-ring
+
       disabled:pointer-events-none disabled:opacity-60
+
       aria-invalid:ring-2 aria-invalid:ring-error
     `,
   },

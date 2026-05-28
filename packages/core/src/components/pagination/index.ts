@@ -20,6 +20,7 @@ export const paginationVariants = tv({
     listItem: 'shrink-0',
     ellipsis: `
       flex size-8 items-center justify-center text-muted-foreground
+
       [&>svg]:size-4
     `,
     first: '',

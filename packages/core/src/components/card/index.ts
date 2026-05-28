@@ -9,6 +9,7 @@ export const cardVariants = tv({
     ],
     header: `
       flex flex-col items-start gap-2 px-6 text-left
+
       [&.border-b]:pb-6
     `,
     title: 'text-base font-medium',
@@ -16,6 +17,7 @@ export const cardVariants = tv({
     body: 'flex-1 px-6',
     footer: `
       flex items-center px-6
+
       [&.border-t]:pt-6
     `,
   },

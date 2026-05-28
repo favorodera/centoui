@@ -28,7 +28,6 @@ const classNames = computed(() => {
     v-bind="forwardedProps"
     data-slot="select-trigger"
     :class="classNames"
-    :data-variant="props.variant"
   >
     <slot />
   </SelectTrigger>

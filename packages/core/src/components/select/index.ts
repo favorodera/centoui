@@ -28,11 +28,17 @@ export const selectVariants = tv({
     trigger: `
       relative inline-flex w-full items-center justify-between border
       border-input bg-transparent transition-all duration-300 outline-none
+
       hover:bg-input/15
+
       focus-visible:ring-2 focus-visible:ring-ring
+
       disabled:pointer-events-none disabled:opacity-60
+
       aria-invalid:ring-2 aria-invalid:ring-error
+
       data-placeholder:text-muted-foreground
+
       [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg]:text-muted-foreground
     `,
     value: 'flex-1 truncate text-start',
@@ -41,12 +47,18 @@ export const selectVariants = tv({
       relative z-50 max-h-(--reka-select-content-available-height)
       scrollbar-none rounded-lg border border-border bg-surface-raised shadow-md
       animation-duration-300
+
       data-[side=bottom]:slide-in-from-top-2
+
       data-[side=left]:slide-in-from-right-2
+
       data-[side=right]:slide-in-from-left-2
+
       data-[side=top]:slide-in-from-bottom-2
+
       data-[state=closed]:animate-out data-[state=closed]:fade-out-0
       data-[state=closed]:zoom-out-95
+
       data-[state=open]:animate-in data-[state=open]:fade-in-0
       data-[state=open]:zoom-in-95
     `,
@@ -54,7 +66,9 @@ export const selectVariants = tv({
     item: `
       relative inline-flex w-full cursor-default items-center rounded-md
       outline-none select-none
+
       focus:bg-accent focus:text-accent-foreground
+
       data-disabled:pointer-events-none data-disabled:opacity-60
     `,
     itemText: 'min-w-0 truncate',
@@ -75,6 +89,7 @@ export const selectVariants = tv({
       sm: {
         trigger: `
           gap-1 rounded-md px-3 py-1
+
           [&_svg]:size-4
         `,
         value: 'text-xs',
@@ -82,6 +97,7 @@ export const selectVariants = tv({
         label: 'px-2 py-1 text-xs',
         item: `
           gap-1 px-2 py-1
+
           [&_svg]:size-4
         `,
         itemText: 'text-xs',
@@ -92,6 +108,7 @@ export const selectVariants = tv({
       md: {
         trigger: `
           gap-2 rounded-md px-4 py-2
+
           [&_svg]:size-4
         `,
         value: 'text-sm',
@@ -99,6 +116,7 @@ export const selectVariants = tv({
         label: 'px-2 py-1 text-xs',
         item: `
           gap-2 px-3 py-1
+
           [&_svg]:size-4
         `,
         itemText: 'text-sm',
@@ -111,9 +129,13 @@ export const selectVariants = tv({
       'popper': {
         content: `
           w-(--reka-select-trigger-width)
+
           data-[side=bottom]:translate-y-1
+
           data-[side=left]:-translate-x-1
+
           data-[side=right]:translate-x-1
+
           data-[side=top]:-translate-y-1
         `,
         viewport: 'min-w-(--reka-select-trigger-width) scroll-my-1',

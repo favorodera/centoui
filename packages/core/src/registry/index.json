@@ -205,6 +205,18 @@
     },
     {
       "$schema": "../schemas/component.json",
+      "name": "input-group",
+      "description": "Groups inputs with addons",
+      "files": [
+        "components/input-group/input-group-addon.vue",
+        "components/input-group/input-group-root.vue",
+        "components/input-group/index.ts"
+      ],
+      "componentDeps": [],
+      "packageDeps": {}
+    },
+    {
+      "$schema": "../schemas/component.json",
       "name": "input",
       "description": "A styled input element that accepts text-based user input.",
       "files": [
@@ -234,6 +246,17 @@
       "files": [
         "components/kbd/kbd.vue",
         "components/kbd/index.ts"
+      ],
+      "componentDeps": [],
+      "packageDeps": {}
+    },
+    {
+      "$schema": "../schemas/component.json",
+      "name": "label",
+      "description": "An associated label for form elements.",
+      "files": [
+        "components/label/label-root.vue",
+        "components/label/index.ts"
       ],
       "componentDeps": [],
       "packageDeps": {}
@@ -367,6 +390,17 @@
         "components/switch/switch-root.vue",
         "components/switch/switch-thumb.vue",
         "components/switch/index.ts"
+      ],
+      "componentDeps": [],
+      "packageDeps": {}
+    },
+    {
+      "$schema": "../schemas/component.json",
+      "name": "textarea",
+      "description": "A multi-line input field.",
+      "files": [
+        "components/textarea/textarea-root.vue",
+        "components/textarea/index.ts"
       ],
       "componentDeps": [],
       "packageDeps": {}
