@@ -17,6 +17,7 @@
     "skipLibCheck": true,
     "paths": {
       "#centoui/config": [ "./src/defaults/config.ts" ],
+      "#centoui/utils": [ "./src/defaults/utils.ts" ]
     },
   },
   "include": [ "src", "augment.d.ts" ]
