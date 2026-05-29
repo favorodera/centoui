@@ -6,6 +6,7 @@
     "components/avatar/avatar-root.vue",
     "components/avatar/avatar-image.vue",
     "components/avatar/avatar-fallback.vue",
+    "components/avatar/avatar-group.vue",
     "components/avatar/avatar-utils.ts",
     "components/avatar/index.ts"
   ],
