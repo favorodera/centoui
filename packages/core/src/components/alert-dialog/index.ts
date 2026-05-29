@@ -107,11 +107,12 @@ export type AlertDialogContentEmits = RekaAlertDialogContentEmits
 // TYPES — Slots
 
 export type AlertDialogRootSlots = {
-  default: (props: {
+  default?: (props: {
     /** Current open state */
     open: boolean
     /** Close the dialog */
     close: () => void
-  }) => []
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  }) => any
 }
 
