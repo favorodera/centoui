@@ -10,6 +10,7 @@
     "paths": {
       "@/*": ["./src/*"],
       "#centoui/config": ["../../packages/core/src/defaults/config.ts"],
+      "#centoui/utils": ["../../packages/core/src/defaults/utils.ts"],
       "#centoui/components/*": ["../../packages/core/src/components/*"]
     },
 
