@@ -50,6 +50,13 @@ export function init() {
                 initialValue: 'src/assets/css/centoui.css',
                 validate: validateNonEmptyPath,
               }),
+
+            utilsFilePath: () =>
+              text({
+                message: 'Path for the utils file',
+                initialValue: 'src/utils/centoui-utils.ts',
+                validate: validateNonEmptyPath,
+              }),
           },
           {
             onCancel: () => {
@@ -63,14 +70,13 @@ export function init() {
         const configPath = join(cwd, CONFIG_FILE_NAME)
         const themePath = join(cwd, directories.themeFilePath)
         const componentsPath = join(cwd, directories.componentDir)
+        const utilsPath = join(cwd, directories.utilsFilePath)
 
         // Ask all overwrite questions before any file operations begin.
         const shouldWriteConfig = await confirmOverwriteIfExists(CONFIG_FILE_NAME, configPath)
         const shouldWriteTheme = await confirmOverwriteIfExists(directories.themeFilePath, themePath)
-        const shouldWriteComponentsDir = await confirmOverwriteIfExists(
-          directories.componentDir,
-          componentsPath,
-        )
+        const shouldWriteComponentsDir = await confirmOverwriteIfExists(directories.componentDir, componentsPath)
+        const shouldWriteUtils = await confirmOverwriteIfExists(directories.utilsFilePath, utilsPath)
 
         // `registry` is populated by the "Fetching registry" task and consumed
         // by the subsequent "Installing global dependencies" task via closure.
@@ -84,7 +90,7 @@ export function init() {
                 return `Skipped — "${CONFIG_FILE_NAME}" already exists`
               }
 
-              const userConfigContent = await buildUserDefaultConfigFileContent(directories.themeFilePath, directories.componentDir)
+              const userConfigContent = await buildUserDefaultConfigFileContent(directories.themeFilePath, directories.componentDir, directories.utilsFilePath)
 
               await fsExtra.outputFile(
                 configPath,
@@ -107,6 +113,18 @@ export function init() {
               await fsExtra.outputFile(themePath, themeContent, 'utf-8')
 
               return `${directories.themeFilePath} written`
+            },
+          },
+
+          {
+            title: 'Writing utils file',
+            task: async () => {
+              if (!shouldWriteUtils) {
+                return `Skipped — "${directories.utilsFilePath}" already exists`
+              }
+
+              await fsExtra.outputFile(utilsPath, '', 'utf-8')
+              return `${directories.utilsFilePath} written`
             },
           },
 
