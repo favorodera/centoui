@@ -15,7 +15,11 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
       '#centoui/config': fileURLToPath(new URL('../../packages/core/src/defaults/config.ts', import.meta.url)),
+      '#centoui/utils': fileURLToPath(new URL('../../packages/core/src/defaults/utils.ts', import.meta.url)),
       '#centoui/components': fileURLToPath(new URL('../../packages/core/src/components', import.meta.url)),
     },
+  },
+  server: {
+    port: 5173,
   },
 })
