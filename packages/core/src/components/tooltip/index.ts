@@ -85,9 +85,10 @@ export type TooltipContentEmits = RekaTooltipContentEmits
 // TYPES — Slots
 
 export type TooltipRootSlots = {
-  default: (props: {
+  default?: (props: {
     /** Current open state */
     open: boolean
-  }) => []
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  }) => any
 }
 
