@@ -49,8 +49,9 @@ export type CollapsibleContentEmits = RekaCollapsibleContentEmits
 // TYPES — Slots
 
 export type CollapsibleRootSlots = {
-  default: (props: {
+  default?: (props: {
     /** Current open state */
     open: boolean
-  }) => []
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  }) => any
 }
