@@ -4,6 +4,7 @@ import {
   REGISTRY_INDEX_URL,
   CORE_SRC_BASE_URL,
   THEME_CSS_URL,
+  UTILS_FILE_URL,
 } from '../constants'
 
 /** In-process cache so the registry is only fetched once per CLI invocation. */
@@ -168,6 +169,34 @@ export async function fetchThemeCSSContent() {
   if (!response.ok) {
     throw new Error(
       `[fetchThemeCSSContent] Server returned ${response.status} ${response.statusText} (URL: ${THEME_CSS_URL})`,
+    )
+  }
+
+  return response.text()
+}
+
+/**
+ * Fetches the raw content of the CentoUI utils file from GitHub.
+ *
+ * This is the file written to the user's project during `centoui init` and
+ * contains all global utils for every component.
+ *
+ * @returns Raw UTF-8 content of the utils file.
+ * @throws If the network request fails or the server returns a non-2xx status.
+ */
+export async function fetchUtilsFileContent() {
+  let response: Response
+  try {
+    response = await fetch(UTILS_FILE_URL, { headers: GITHUB_RAW_FETCH_HEADERS })
+  } catch (error) {
+    throw new Error(
+      `[fetchUtilsFileContent] Network request for utils file failed: ${error}`,
+    )
+  }
+
+  if (!response.ok) {
+    throw new Error(
+      `[fetchUtilsFileContent] Server returned ${response.status} ${response.statusText} (URL: ${UTILS_FILE_URL})`,
     )
   }
 
