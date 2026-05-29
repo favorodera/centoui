@@ -6,7 +6,7 @@ import { itemVariants, provideCentouiItemRootContext, type ItemRootProps } from 
 
 const props = withDefaults(defineProps<ItemRootProps>(), {
   size: 'md',
-  variant: 'naked',
+  variant: 'ghost',
   orientation: 'horizontal',
 })
 const delegatedProps = reactiveOmit(
