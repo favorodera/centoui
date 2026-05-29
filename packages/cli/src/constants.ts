@@ -31,6 +31,12 @@ export const REGISTRY_INDEX_URL = `${REGISTRY_DIR_URL}/index.json`
 export const THEME_CSS_URL = `${CORE_SRC_BASE_URL}/defaults/centoui.css`
 
 /**
+ * Full URL to the utils file.
+ * This file is written to the user's project during `centoui init`.
+ */
+export const UTILS_FILE_URL = `${CORE_SRC_BASE_URL}/defaults/utils.ts`
+
+/**
  * Full URL to the default values file for the CentoUI config.
  * The contents of this file are written to the user's project during `centoui init`.
  */
