@@ -36,7 +36,7 @@ export const itemVariants = tv({
 
 export { default as ItemRoot } from './item-root.vue'
 export { default as ItemMedia } from './item-media.vue'
-// export { default as ItemContent } from './item-content.vue'
+export { default as ItemContent } from './item-content.vue'
 // export { default as ItemHeader } from './item-header.vue'
 // export { default as ItemTitle } from './item-title.vue'
 // export { default as ItemDescription } from './item-description.vue'
