@@ -2,9 +2,9 @@
   <h1>centoui</h1>
   <p><strong>Vue components for elegant interfaces</strong></p>
   <p>
-    <a href="https://npmx.dev/package/centoui" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/npm/v/centoui.svg?style=plastic&label=NPM%20Version&color=blue" alt="NPM Version"></a>
-    <a href="https://npmx.dev/package/centoui" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/npm/dw/centoui.svg?style=plastic&label=NPM%20Downloads&color=blue" alt="NPM Downloads"></a>
-    <a href="https://npmx.dev/package/centoui" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/npm/unpacked-size/centoui?style=plastic&label=NPM%20Unpacked%20Size&color=blue" alt="NPM Unpacked Size"></a>
+    <a href="https://npmx.dev/package/centoui"><img src="https://img.shields.io/npm/v/centoui.svg?style=plastic&label=NPM%20Version&color=blue" alt="NPM Version"></a>
+    <a href="https://npmx.dev/package/centoui"><img src="https://img.shields.io/npm/dw/centoui.svg?style=plastic&label=NPM%20Downloads&color=blue" alt="NPM Downloads"></a>
+    <a href="https://npmx.dev/package/centoui"><img src="https://img.shields.io/npm/unpacked-size/centoui?style=plastic&label=NPM%20Unpacked%20Size&color=blue" alt="NPM Unpacked Size"></a>
   </p>
 </div>
 
@@ -26,8 +26,8 @@ CentoUI follows a **copy-paste** model. Components are not consumed as runtime i
 
 Each component consists of:
 
-- A **`.vue` file** — the template and script, built on <a href="https://reka-ui.com/" target="_blank" rel="noopener noreferrer">Reka UI</a> primitives for accessibility and behavior.
-- An **`index.ts` file** — variant definitions using <a href="https://www.tailwind-variants.org/" target="_blank" rel="noopener noreferrer">Tailwind Variants</a>, TypeScript prop types, and the component export.
+- A **`.vue` file** — the template and script, built on [Reka UI](https://reka-ui.com/) primitives for accessibility and behavior.
+- An **`index.ts` file** — variant definitions using [Tailwind Variants](https://www.tailwind-variants.org/), TypeScript prop types, and the component export.
 
 ### Version-Locked Fetching
 
@@ -75,15 +75,15 @@ export default defineConfig({
 
 CentoUI components rely on these runtime packages (automatically installed when you use the CLI):
 
-- <a href="https://vuejs.org/" target="_blank" rel="noopener noreferrer">Vue 3</a>
-- <a href="https://reka-ui.com/" target="_blank" rel="noopener noreferrer">Reka UI</a> — Accessible headless primitives
-- <a href="https://tailwindcss.com/" target="_blank" rel="noopener noreferrer">Tailwind CSS v4 + @tailwindcss/vite</a> — Styling engine
-- <a href="https://www.tailwind-variants.org/" target="_blank" rel="noopener noreferrer">Tailwind Variants</a> — Variant-driven class composition
-- <a href="https://github.com/dcastil/tailwind-merge" target="_blank" rel="noopener noreferrer">Tailwind Merge</a> — Class conflict resolution
-- <a href="https://vueuse.org/" target="_blank" rel="noopener noreferrer">VueUse Core</a> — Composition utilities
-- <a href="https://iconify.design/" target="_blank" rel="noopener noreferrer">Iconify Vue</a> — Icon rendering (optional)
-- <a href="https://github.com/Wombosvideo/tw-animate-css" target="_blank" rel="noopener noreferrer">tw-animate-css</a> — Animation utilities
+- [`vue`](https://vuejs.org/) — Vue 3
+- [`reka-ui`](https://reka-ui.com/) — Accessible headless primitives
+- [`tailwindcss` + `@tailwindcss/vite`](https://tailwindcss.com/) — Styling engine
+- [`tailwind-variants`](https://www.tailwind-variants.org/) — Variant-driven class composition
+- [`tailwind-merge`](https://github.com/dcastil/tailwind-merge) — Class conflict resolution
+- [`@vueuse/core`](https://vueuse.org/) — Composition utilities
+- [`@iconify/vue`](https://iconify.design/) — Icon rendering (optional)
+- [`tw-animate-css`](https://github.com/Wombosvideo/tw-animate-css) — Animation utilities
 
 ## License
 
-[MIT](../../LICENSE) &copy; <a href="https://github.com/favorodera" target="_blank" rel="noopener noreferrer">Favour Emeka</a>
+[MIT](../../LICENSE) &copy; [Favour Emeka](https://github.com/favorodera)

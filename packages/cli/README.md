@@ -2,9 +2,9 @@
   <h1>centoui-cli</h1>
   <p><strong>Manage CentoUI components from the terminal.</strong></p>
   <p>
-    <a href="https://npmx.dev/package/centoui-cli" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/npm/v/centoui-cli.svg?style=plastic&label=NPM%20Version&color=blue" alt="NPM Version"></a>
-    <a href="https://npmx.dev/package/centoui-cli" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/npm/dw/centoui-cli.svg?style=plastic&label=NPM%20Downloads&color=blue" alt="NPM Downloads"></a>
-    <a href="https://npmx.dev/package/centoui-cli" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/npm/unpacked-size/centoui-cli?style=plastic&label=NPM%20Unpacked%20Size&color=blue" alt="NPM Unpacked Size"></a>
+    <a href="https://npmx.dev/package/centoui-cli"><img src="https://img.shields.io/npm/v/centoui-cli.svg?style=plastic&label=NPM%20Version&color=blue" alt="NPM Version"></a>
+    <a href="https://npmx.dev/package/centoui-cli"><img src="https://img.shields.io/npm/dw/centoui-cli.svg?style=plastic&label=NPM%20Downloads&color=blue" alt="NPM Downloads"></a>
+    <a href="https://npmx.dev/package/centoui-cli"><img src="https://img.shields.io/npm/unpacked-size/centoui-cli?style=plastic&label=NPM%20Unpacked%20Size&color=blue" alt="NPM Unpacked Size"></a>
   </p>
 </div>
 
@@ -109,8 +109,8 @@ export default defineConfig({
 })
 ```
 
-The `icons` map lets you swap icon libraries without touching component code. Components reference icons by their slot name (e.g., `check`, `close`), and the config resolves them to <a href="https://iconify.design/" target="_blank" rel="noopener noreferrer">Iconify</a> IDs.
+The `icons` map lets you swap icon libraries without touching component code. Components reference icons by their slot name (e.g., `check`, `close`), and the config resolves them to [Iconify](https://iconify.design/) IDs.
 
 ## License
 
-[MIT](../../LICENSE) &copy; <a href="https://github.com/favorodera" target="_blank" rel="noopener noreferrer">Favour Emeka</a>
+[MIT](../../LICENSE) &copy; [Favour Emeka](https://github.com/favorodera)

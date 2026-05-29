@@ -64,4 +64,4 @@ The module reads from the component directory created by `centoui init`. Without
 
 ## License
 
-[MIT](../../LICENSE) &copy; <a href="https://github.com/favorodera" target="_blank" rel="noopener noreferrer">Favour Emeka</a>
+[MIT](../../LICENSE) &copy; [Favour Emeka](https://github.com/favorodera)
