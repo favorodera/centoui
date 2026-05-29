@@ -20,8 +20,9 @@ export type AspectRatioProps = RekaAspectRatioProps & Pick<ClassProp, 'class'>
 // TYPES — Slots
 
 export type AspectRatioSlots = {
-  default: (props: {
+  default?: (props: {
     /** Current aspect ratio (in %) */
     aspect: number
-  }) => []
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  }) => any
 }
