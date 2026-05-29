@@ -11,9 +11,7 @@ import { computed } from 'vue'
 
 const rootContext = injectCentouiSelectRootContext()
 
-const props = withDefaults(defineProps<SelectSeparatorProps>(), {
-  asChild: true,
-})
+const props = defineProps<SelectSeparatorProps>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
 
