@@ -12,9 +12,7 @@ import { computed } from 'vue'
 
 const rootContext = injectCentouiSelectRootContext()
 
-const props = withDefaults(defineProps<SelectIconProps>(), {
-  asChild: true,
-})
+const props = defineProps<SelectIconProps>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
 
