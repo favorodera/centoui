@@ -106,11 +106,14 @@ export default defineNuxtModule<ModuleOptions>({
     addTemplate({
       filename: 'centoui/config.ts',
       write: true,
-      getContents: () => `export default ${JSON.stringify(config, null, 2)} as const\n`,
+      getContents: () => `export default ${JSON.stringify(config, null, 2)}\n`,
     })
 
-    // Alias so consumers and components import from "#centoui/config"
+    // Alias the disk written config so consumers and components import from "#centoui/config"
     nuxt.options.alias['#centoui/config'] = join(nuxt.options.buildDir, 'centoui/config.ts')
+
+    // Alias the utils directory for consumers and components import from "#centoui/utils"
+    nuxt.options.alias['#centoui/utils'] = join(rootDir, config.utilsFilePath)
 
     // Pre-bundle required Vite dependencies
     extendViteConfig((config) => {
