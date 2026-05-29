@@ -118,11 +118,13 @@ export function extractInnerConfigContent(fileContent: string): string {
  *
  * @param themeFilePath - Relative path (from project root) where the CSS theme file lives.
  * @param componentsDir - Relative path (from project root) where components will be installed.
+ * @param utilsFilePath - Relative path (from project root) where the utils file lives.
  * @returns A string containing the complete TypeScript source for the config file.
  */
 export async function buildUserDefaultConfigFileContent(
   themeFilePath: string,
   componentsDir: string,
+  utilsFilePath: string,
 ): Promise<string> {
   // Fetch the latest defaults from GitHub (icon mappings, etc.)
   const defaultConfig = await fetchDefaultConfig()
@@ -133,6 +135,7 @@ export async function buildUserDefaultConfigFileContent(
 export default defineConfig({
   componentsDir: '${componentsDir}',
   themeFilePath: '${themeFilePath}',
+  utilsFilePath: '${utilsFilePath}',
 ${innerConfigContent}
 })
 `
