@@ -7,7 +7,7 @@ import { confirmOverwriteIfExists } from '../utils/file-system-utils'
 import type { Registry } from '../types'
 import fsExtra from 'fs-extra'
 import { buildUserDefaultConfigFileContent } from '../utils/config-utils'
-import { fetchFullRegistry, fetchThemeCSSContent } from '../utils/registry-utils'
+import { fetchFullRegistry, fetchThemeCSSContent, fetchUtilsFileContent } from '../utils/registry-utils'
 
 /**
  * Command: `centoui init`
@@ -123,7 +123,9 @@ export function init() {
                 return `Skipped — "${directories.utilsFilePath}" already exists`
               }
 
-              await fsExtra.outputFile(utilsPath, '', 'utf-8')
+              const utilsContent = await fetchUtilsFileContent()
+              await fsExtra.outputFile(utilsPath, utilsContent, 'utf-8')
+
               return `${directories.utilsFilePath} written`
             },
           },
