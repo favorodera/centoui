@@ -62,6 +62,7 @@ import { defineConfig } from "centoui"
 export default defineConfig({
   componentsDir: "./src/components/centoui",
   themeFilePath: "./src/assets/css/centoui.css",
+  utilsFilePath: "./src/utils/centoui-utils.ts",
   icons: {
     check: "lucide:check",
     close: "lucide:x",
