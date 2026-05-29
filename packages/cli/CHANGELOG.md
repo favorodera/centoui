@@ -1,5 +1,33 @@
 # Changelog
 
+## v1.0.0-alpha.35...v1.0.0-alpha.36
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.35...v1.0.0-alpha.36)
+
+### Added
+
+- **cli:** Add support for utils file configuration ([0e5ca7d](https://github.com/favorodera/centoui/commit/0e5ca7d))
+
+  - Update README with utils file path prompt
+  - Detail utils file creation process
+  - Add utilsFilePath to config documentation
+
+- **cli:** Fetch and write utils file content ([c7045e7](https://github.com/favorodera/centoui/commit/c7045e7))
+
+  - Import fetchUtilsFileContent from registry-utils
+  - Update init command to fetch utils file content
+  - Replace empty file creation with fetched content
+
+- **registry:** Add fetchUtilsFileContent utility ([81dfe22](https://github.com/favorodera/centoui/commit/81dfe22))
+
+  - Add fetchUtilsFileContent to fetch utils file
+  - Export utility for use in cli init command
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.34...v1.0.0-alpha.35
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.34...v1.0.0-alpha.35)

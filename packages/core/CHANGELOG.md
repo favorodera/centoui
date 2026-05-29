@@ -1,5 +1,20 @@
 # Changelog
 
+## v1.0.0-alpha.35...v1.0.0-alpha.36
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.35...v1.0.0-alpha.36)
+
+### Documentation
+
+- **core:** Add utilsFilePath property to README ([b7f322d](https://github.com/favorodera/centoui/commit/b7f322d))
+
+  - Document utilsFilePath configuration option
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.34...v1.0.0-alpha.35
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.34...v1.0.0-alpha.35)
