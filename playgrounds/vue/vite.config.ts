@@ -15,6 +15,8 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
+      '#centoui/config': fileURLToPath(new URL('./centoui.config.ts', import.meta.url)),
+      '#centoui/utils': fileURLToPath(new URL('./src/utils/centoui-utils.ts', import.meta.url)),
     },
   },
   server: {

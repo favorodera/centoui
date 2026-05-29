@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
-import { useForwardProps, SelectIcon } from 'reka-ui'
+import { useForwardProps, SelectScrollUpButton } from 'reka-ui'
 import {
-  type SelectIconProps,
   injectCentouiSelectRootContext,
   selectVariants,
+  type SelectScrollUpButtonProps,
 } from '.'
 import { Icon } from '../icon'
 import config from '#centoui/config'
@@ -12,27 +12,28 @@ import { computed } from 'vue'
 
 const rootContext = injectCentouiSelectRootContext()
 
-const props = defineProps<SelectIconProps>()
+const props = defineProps<SelectScrollUpButtonProps>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
 
 const classNames = computed(() => {
-  const { icon } = selectVariants({
+  const { scrollUpButton } = selectVariants({
     size: rootContext.size,
   })
   
-  return icon({ class: props.class })
+  return scrollUpButton({ class: props.class })
 })
 </script>
 
 <template>
-  <SelectIcon
-    data-slot="select-icon"
+  <SelectScrollUpButton
+    data-slot="select-scroll-up-button"
     v-bind="forwardedProps"
     :class="classNames"
   >
     <slot>
-      <Icon :icon="config.icons.chevronDown" />
+      <span class="sr-only">Scroll up</span>
+      <Icon :icon="config.icons.chevronUp" />
     </slot>
-  </SelectIcon>
+  </SelectScrollUpButton>
 </template>

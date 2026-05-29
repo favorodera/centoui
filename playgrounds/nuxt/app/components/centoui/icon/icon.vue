@@ -29,7 +29,6 @@ const classNames = computed(() => {
     data-slot="icon"
     :icon
     v-bind="forwardedProps"
-    ssr
     :class="classNames"
     :aria-hidden
   />

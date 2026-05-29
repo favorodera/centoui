@@ -2,6 +2,22 @@
 import { useDark, useToggle } from '@vueuse/core'
 import { Button } from './components/centoui/button'
 import { Icon } from './components/centoui/icon'
+import {
+  SelectRoot,
+  SelectTrigger,
+  SelectValue,
+  SelectIcon,
+  SelectPortal,
+  SelectContent,
+  SelectScrollUpButton,
+  SelectViewport,
+  SelectGroup,
+  SelectItem,
+  SelectItemText,
+  SelectItemIndicator,
+  SelectScrollDownButton,
+  SelectArrow,
+} from './components/centoui/select'
 
 const isDarkMode = useDark()
 const toggleColorMode = useToggle(isDarkMode)
@@ -31,6 +47,43 @@ const toggleColorMode = useToggle(isDarkMode)
 
     <div class="flex size-full flex-wrap items-center justify-center gap-8">
       <Button>Hello</Button>
+
+      <SelectRoot>
+        <SelectTrigger
+          class="max-w-3xs"
+        >
+          <SelectValue placeholder="Select a fruit..." />
+          <SelectIcon />
+        </SelectTrigger>
+      
+        <SelectPortal>
+          <SelectContent :side-offset="5">
+            <SelectScrollUpButton />
+      
+            <SelectViewport>
+      
+              <SelectGroup>
+                <SelectItem
+                  v-for="(fruit, index) in ['Apple', 'Banana', 'Blueberry', 'Grapes', 'Pineapple']"
+                  :key="index"
+                  :value="fruit"
+                >
+                  <SelectItemText>
+                    {{ fruit }}
+                  </SelectItemText>
+                  <SelectItemIndicator />
+                </SelectItem>
+              </SelectGroup>
+      
+            </SelectViewport>
+      
+            <SelectScrollDownButton />
+      
+            <SelectArrow />
+      
+          </SelectContent>
+        </SelectPortal>
+      </SelectRoot>
     </div>
 
   </div>

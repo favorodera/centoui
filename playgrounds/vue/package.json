@@ -10,12 +10,12 @@
     "lint": "eslint . --fix"
   },
   "dependencies": {
-    "@iconify/vue": "catalog:",
+    "@iconify/vue": "^5.0.1",
     "@tailwindcss/vite": "catalog:",
-    "@vueuse/core": "catalog:",
+    "@vueuse/core": "^14.3.0",
     "centoui": "workspace:*",
-    "reka-ui": "catalog:",
-    "tailwind-merge": "catalog:",
+    "reka-ui": "^2.9.8",
+    "tailwind-merge": "^3.6.0",
     "tailwind-variants": "catalog:",
     "tailwindcss": "catalog:",
     "tw-animate-css": "catalog:",

@@ -3,6 +3,7 @@ import { defineConfig } from 'centoui'
 export default defineConfig({
   componentsDir: 'app/components/centoui',
   themeFilePath: 'app/centoui.css',
+  utilsFilePath: 'app/utils/centoui-utils.ts',
   icons: {
     check: 'lucide:check',
     chevronDoubleLeft: 'lucide:chevrons-left',

@@ -12,7 +12,7 @@
     "lint": "eslint . --fix"
   },
   "dependencies": {
-    "@iconify/vue": "^5.0.1",
+    "@iconify/vue": "catalog:",
     "@tailwindcss/vite": "catalog:",
     "@vueuse/core": "catalog:",
     "centoui": "workspace:*",

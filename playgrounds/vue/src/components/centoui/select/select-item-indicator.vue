@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
-import { useForwardProps, SelectIcon } from 'reka-ui'
+import { SelectItemIndicator, useForwardProps } from 'reka-ui'
 import {
-  type SelectIconProps,
+  type SelectItemIndicatorProps,
   injectCentouiSelectRootContext,
   selectVariants,
 } from '.'
@@ -12,27 +12,27 @@ import { computed } from 'vue'
 
 const rootContext = injectCentouiSelectRootContext()
 
-const props = defineProps<SelectIconProps>()
+const props = defineProps<SelectItemIndicatorProps>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
 
 const classNames = computed(() => {
-  const { icon } = selectVariants({
+  const { itemIndicator } = selectVariants({
     size: rootContext.size,
   })
   
-  return icon({ class: props.class })
+  return itemIndicator({ class: props.class })
 })
 </script>
 
 <template>
-  <SelectIcon
-    data-slot="select-icon"
+  <SelectItemIndicator
+    data-slot="select-item-indicator"
     v-bind="forwardedProps"
     :class="classNames"
   >
     <slot>
-      <Icon :icon="config.icons.chevronDown" />
+      <Icon :icon="config.icons.check" />
     </slot>
-  </SelectIcon>
+  </SelectItemIndicator>
 </template>

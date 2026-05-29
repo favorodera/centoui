@@ -1,38 +1,39 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
-import { useForwardProps, SelectIcon } from 'reka-ui'
-import {
-  type SelectIconProps,
-  injectCentouiSelectRootContext,
-  selectVariants,
-} from '.'
+import { useForwardProps, SelectScrollDownButton } from 'reka-ui'
 import { Icon } from '../icon'
 import config from '#centoui/config'
+import {
+  selectVariants,
+  type SelectScrollDownButtonProps,
+  injectCentouiSelectRootContext,
+} from '.'
 import { computed } from 'vue'
 
 const rootContext = injectCentouiSelectRootContext()
 
-const props = defineProps<SelectIconProps>()
+const props = defineProps<SelectScrollDownButtonProps>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
 
 const classNames = computed(() => {
-  const { icon } = selectVariants({
+  const { scrollDownButton } = selectVariants({
     size: rootContext.size,
   })
   
-  return icon({ class: props.class })
+  return scrollDownButton({ class: props.class })
 })
 </script>
 
 <template>
-  <SelectIcon
-    data-slot="select-icon"
+  <SelectScrollDownButton
+    data-slot="select-scroll-down-button"
     v-bind="forwardedProps"
     :class="classNames"
   >
     <slot>
+      <span class="sr-only">Scroll down</span>
       <Icon :icon="config.icons.chevronDown" />
     </slot>
-  </SelectIcon>
+  </SelectScrollDownButton>
 </template>
