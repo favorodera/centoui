@@ -75,21 +75,25 @@ export type AccordionRootEmits = RekaAccordionRootEmits
 // TYPES — Slots
 
 export type AccordionRootSlots = {
-  default: (props: {
+  default?: (props: {
     /** Current active value of the accordion. */
     modelValue?: AcceptableValue | AcceptableValue[]
-  }) => []
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  }) => any
 }
 
 export type AccordionItemSlots = {
-  default: (props: {
+  default?: (props: {
     /** Current open state. */
     open: boolean
-  }) => []
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  }) => any
 }
 
 export type AccordionTriggerSlots = {
-  default: []
-  icon: []
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  default?: () => any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  icon?: () => any
 }
 
