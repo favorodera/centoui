@@ -1,5 +1,6 @@
 import {
   createContext,
+  type PrimitiveProps,
   type AvatarFallbackProps as RekaAvatarFallbackProps,
   type AvatarImageEmits as RekaAvatarImageEmits,
   type AvatarImageProps as RekaAvatarImageProps,
@@ -7,6 +8,8 @@ import {
 } from 'reka-ui'
 import { tv, type ClassProp, type VariantProps } from 'tailwind-variants'
 import type { ImgHTMLAttributes } from 'vue'
+
+// VARIANTS
 
 export const avatarVariants = tv({
   slots: {
@@ -54,12 +57,23 @@ export const avatarVariants = tv({
   },
 })
 
+export const avatarGroupVariants = tv({
+  slots: {
+    root: `
+      isolate flex -space-x-2
+
+      *:border-2 *:border-border
+    `,
+  },
+})
+
 
 // COMPONENTS
 
 export { default as AvatarFallback } from './avatar-fallback.vue'
 export { default as AvatarImage } from './avatar-image.vue'
 export { default as AvatarRoot } from './avatar-root.vue'
+export { default as AvatarGroup } from './avatar-group.vue'
 
 
 // COMPONENT UTILS
@@ -95,6 +109,8 @@ export type AvatarRootProps = RekaAvatarRootProps & Pick<ClassProp, 'class'> & {
 export type AvatarImageProps = RekaAvatarImageProps & /* @vue-ignore */ Omit<ImgHTMLAttributes, 'src' | 'crossorigin' | 'referrerpolicy' | 'class'> & Pick<ClassProp, 'class'>
 
 export type AvatarFallbackProps = RekaAvatarFallbackProps & Pick<ClassProp, 'class'>
+
+export type AvatarGroupProps = PrimitiveProps & Pick<ClassProp, 'class'>
 
 
 // TYPES — Emits
