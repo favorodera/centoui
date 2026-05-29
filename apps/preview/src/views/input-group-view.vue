@@ -6,7 +6,7 @@ import { Textarea } from '#centoui/components/textarea'
 import { Icon } from '#centoui/components/icon'
 import ViewContainer from '@/components/view-container.vue'
 import { useApp } from '@/composables/use-app'
-import { KbdGroup } from '#centoui/components/kbd-group'
+import { KbdGroup } from '#centoui/components/kbd'
 import { Kbd } from '#centoui/components/kbd'
 
 const values = useApp().preview.initPreview('Input Group', {
@@ -30,7 +30,7 @@ const values = useApp().preview.initPreview('Input Group', {
 </script>
 
 <template>
-  <ViewContainer class="max-w-lg">
+  <ViewContainer>
     <InputGroupRoot :size="values.size">
       <InputGroupAddon>
         <Icon icon="lucide:search" />
