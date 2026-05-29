@@ -10,12 +10,6 @@ export const buttonGroupVariants = tv({
       *:focus-visible:z-10
 
       has-[>[data-slot=button-group]]:gap-2
-
-      has-[select[aria-hidden=true]:last-child]:[&>[data-slot=select-trigger]:last-of-type]:rounded-r-md
-
-      [&>[data-slot=select-trigger]:not([class*=\'w-\'])]:w-fit
-
-      [&>input]:flex-1
     `,
     separator: 'm-0 shrink-0 self-stretch',
   },
