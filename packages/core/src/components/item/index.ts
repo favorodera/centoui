@@ -1,5 +1,5 @@
-import type { PrimitiveProps } from 'reka-ui'
-import { tv, type ClassProp } from 'tailwind-variants'
+import { createContext, type PrimitiveProps } from 'reka-ui'
+import { tv, type ClassProp, type VariantProps } from 'tailwind-variants'
 
 export const itemVariants = tv({
   slots: {
@@ -34,7 +34,7 @@ export const itemVariants = tv({
 
 // COMPONENTS
 
-// export { default as ItemRoot } from './item-root.vue'
+export { default as ItemRoot } from './item-root.vue'
 // export { default as ItemMedia } from './item-media.vue'
 // export { default as ItemContent } from './item-content.vue'
 // export { default as ItemHeader } from './item-header.vue'
@@ -45,9 +45,40 @@ export const itemVariants = tv({
 // export { default as ItemActions } from './item-actions.vue'
 
 
+// CONTEXT
+
+export const [injectCentouiItemRootContext, provideCentouiItemRootContext] = createContext<ItemRootContext>('ItemRoot', 'centoui:item-root:context')
+
+
+// TYPES — Variants
+
+export type ItemVariants = VariantProps<typeof itemVariants>
+
+
+// TYPES — Context
+
+export type ItemRootContext = Pick<ItemRootProps, 'size' | 'variant' | 'orientation'>
+
+
 // TYPES — PROPS
 
-export type ItemRootProps = PrimitiveProps & Pick<ClassProp, 'class'>
+export type ItemRootProps = PrimitiveProps & Pick<ClassProp, 'class'> & {
+  /**
+   * The visual size of the item.
+   * @default 'md'
+   */
+  size?: ItemVariants['size']
+  /**
+   * The visual style of the item.
+   * @default 'naked'
+   */
+  variant?: ItemVariants['variant']
+  /**
+   * The arrangement of the item.
+   * @default 'horizontal'
+   */
+  orientation?: ItemVariants['orientation']
+}
 
 export type ItemMediaProps = PrimitiveProps & Pick<ClassProp, 'class'>
 
