@@ -19,7 +19,7 @@ import {
 } from '#centoui/components/avatar'
 import {
   AvatarGroup,
-} from '#centoui/components/avatar-group'
+} from '#centoui/components/avatar'
 
 useApp().preview.initPreview('Card', {})
 
