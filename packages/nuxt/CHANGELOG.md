@@ -1,5 +1,12 @@
 # Changelog
 
+## v1.0.0-alpha.34...v1.0.0-alpha.35
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.34...v1.0.0-alpha.35)
+
+No relevant changes for this release
+
+
 ## v1.0.0-alpha.33...v1.0.0-alpha.34
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.33...v1.0.0-alpha.34)

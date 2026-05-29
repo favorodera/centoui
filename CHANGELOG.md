@@ -1,5 +1,173 @@
 # Changelog
 
+## v1.0.0-alpha.34...v1.0.0-alpha.35
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.34...v1.0.0-alpha.35)
+
+### Added
+
+- **avatar-preview:** Add AvatarGroup example ([1f875df](https://github.com/favorodera/centoui/commit/1f875df))
+- **button-group:** Add Input component example ([e58e85d](https://github.com/favorodera/centoui/commit/e58e85d))
+- **preview:** Add KbdGroup to kbd view ([3f9b7ab](https://github.com/favorodera/centoui/commit/3f9b7ab))
+- **preview:** Add pin-input view ([3abaa18](https://github.com/favorodera/centoui/commit/3abaa18))
+
+  - Create preview component for PinInput
+
+- **cli:** Add utils file URL constant ([b96dc48](https://github.com/favorodera/centoui/commit/b96dc48))
+
+  - Define UTILS_FILE_URL for centoui init
+
+- **cli:** Add utilsFilePath to CentoUIConfig ([ef8cc5e](https://github.com/favorodera/centoui/commit/ef8cc5e))
+- **cli:** Prompt and create utils file ([9bedc22](https://github.com/favorodera/centoui/commit/9bedc22))
+
+  - Add utilsFilePath prompt to init command
+  - Write empty utils file if confirmed
+  - Pass utils path to config builder
+
+- **config:** Add utilsFilePath to default user config ([c41d67f](https://github.com/favorodera/centoui/commit/c41d67f))
+- **avatar:** Add AvatarGroup component ([bf1831c](https://github.com/favorodera/centoui/commit/bf1831c))
+
+  - Groups multiple Avatar components
+  - Applies group-level styling
+  - Forwards props to the root element
+
+- **avatar:** Add AvatarGroup component ([36ab545](https://github.com/favorodera/centoui/commit/36ab545))
+- **kbd:** Add KbdGroup component ([08b4ba2](https://github.com/favorodera/centoui/commit/08b4ba2))
+- **kbd:** Add KbdGroup component ([2204cce](https://github.com/favorodera/centoui/commit/2204cce))
+- **kbd-group:** Remove KbdGroup component ([8c12848](https://github.com/favorodera/centoui/commit/8c12848))
+- **core:** Add pin-input component ([0381dd0](https://github.com/favorodera/centoui/commit/0381dd0))
+- **pin-input:** Add pin-input-group component ([f95e440](https://github.com/favorodera/centoui/commit/f95e440))
+- **pin-input:** Add pin input ([b87e4b1](https://github.com/favorodera/centoui/commit/b87e4b1))
+- **pin-input:** Add pin-input-root component ([142f2c8](https://github.com/favorodera/centoui/commit/142f2c8))
+- **pin-input:** Add pin-input-separator component ([af71a43](https://github.com/favorodera/centoui/commit/af71a43))
+- **core:** Add isSlotEmpty utility function ([dc04213](https://github.com/favorodera/centoui/commit/dc04213))
+
+  - Check if Vue slots contain meaningful content
+  - Ignore comments and whitespace-only text nodes
+  - Recursively validate fragment children
+
+- **avatar:** Add avatar-group component ([e4d1641](https://github.com/favorodera/centoui/commit/e4d1641))
+- **registry:** Add pin-input and refactor groups ([8018d65](https://github.com/favorodera/centoui/commit/8018d65))
+
+  - Add pin-input component
+  - Move avatar-group into avatar
+  - Move kbd-group into kbd
+
+- **kbd:** Add kbd-group component to registry ([c06c102](https://github.com/favorodera/centoui/commit/c06c102))
+- **registry:** Add pin-input component definition ([ead5c2f](https://github.com/favorodera/centoui/commit/ead5c2f))
+
+  - register pin-input component files
+  - add component dependencies for pin-input
+
+
+### Fixed
+
+- **preview:** Correct AvatarGroup import ([4ae32c6](https://github.com/favorodera/centoui/commit/4ae32c6))
+- **preview:** Correct kbd import and layout ([410038a](https://github.com/favorodera/centoui/commit/410038a))
+
+  - Update KbdGroup import path
+  - Remove max-w-lg class from ViewContainer
+
+- **accordion:** Update slot type definitions ([0aae2d9](https://github.com/favorodera/centoui/commit/0aae2d9))
+
+  - Make slot definitions optional
+  - Change slot return types from [] to any
+
+- **alert-dialog:** Make root default slot optional - Allow default slot to be omitted. - Change slot return type from `[]` to `any`. - Add eslint-disable for explicit any. ([7cb4357](https://github.com/favorodera/centoui/commit/7cb4357))
+- **aspect-ratio:** Make default slot optional and flexible ([df7843a](https://github.com/favorodera/centoui/commit/df7843a))
+- **collapsible:** Make root slot optional and flexible - Make default slot optional - Allow any return type for slot function ([3925882](https://github.com/favorodera/centoui/commit/3925882))
+- **progress-bar:** Make default slot optional ([80f475e](https://github.com/favorodera/centoui/commit/80f475e))
+
+  - Set default slot as optional
+  - Update return type to any for flexibility
+
+- **separator:** Check for empty slot using utility ([2930733](https://github.com/favorodera/centoui/commit/2930733))
+
+  - use isSlotEmpty to validate default slot content
+
+- **slider:** Make default slot optional and flexible ([4107376](https://github.com/favorodera/centoui/commit/4107376))
+
+  - Set default slot as optional
+  - Update return type to any for better compatibility
+
+- **switch:** Make default slot optional and flexible ([2c9f4cf](https://github.com/favorodera/centoui/commit/2c9f4cf))
+
+  - Set default slot as optional
+  - Update return type to any for better compatibility
+
+- **tooltip:** Make default slot optional ([88047c8](https://github.com/favorodera/centoui/commit/88047c8))
+
+  - update TooltipRootSlots default slot to optional
+  - change return type to any for flexibility
+
+
+### Refactors
+
+- **avatar-group:** Remove avatar-group component ([1b6377f](https://github.com/favorodera/centoui/commit/1b6377f))
+- **avatar-group:** Remove component ([fb6c93d](https://github.com/favorodera/centoui/commit/fb6c93d))
+- **button-group:** Remove redundant select styling ([e6a406b](https://github.com/favorodera/centoui/commit/e6a406b))
+- **pagination:** Improve slot type definitions ([470f157](https://github.com/favorodera/centoui/commit/470f157))
+- **select:** Make slot definitions optional ([531a23e](https://github.com/favorodera/centoui/commit/531a23e))
+
+  - Mark default slots as optional
+  - Update slot return types to any
+  - Improve flexibility for slot usage
+
+- **select:** Remove default asChild prop value ([eac836f](https://github.com/favorodera/centoui/commit/eac836f))
+
+  - remove default value for asChild in SelectIcon
+  - update prop definition to match base interface
+
+- **select:** Remove default asChild prop value ([70bd8e4](https://github.com/favorodera/centoui/commit/70bd8e4))
+
+  - remove default value for asChild prop
+  - update component props definition
+
+- **separator:** Adjust props and slot definition ([492f64b](https://github.com/favorodera/centoui/commit/492f64b))
+
+  - Omit orientation from RekaSeparatorProps
+  - Make default slot optional in SeparatorSlots
+
+
+### Chores
+
+- **preview:** Add #centoui/utils path alias ([3051e9d](https://github.com/favorodera/centoui/commit/3051e9d))
+
+  - Add path mapping for core utility defaults.
+
+- **preview:** Add utils alias and set port - Add alias for #centoui/utils - Set default server port to 5173 ([d84a2fe](https://github.com/favorodera/centoui/commit/d84a2fe))
+- **preview:** Remove avatar group view ([50512f9](https://github.com/favorodera/centoui/commit/50512f9))
+- **preview:** Remove kbd-group-view ([175d5c2](https://github.com/favorodera/centoui/commit/175d5c2))
+
+  - Delete unused Kbd Group preview component
+
+- **core:** Add path alias for utils ([c649459](https://github.com/favorodera/centoui/commit/c649459))
+- **core:** Add utils path alias ([5e30634](https://github.com/favorodera/centoui/commit/5e30634))
+- **registry:** Remove avatar-group component entry ([9fd8651](https://github.com/favorodera/centoui/commit/9fd8651))
+
+  - delete avatar-group.json registry file
+
+- **registry:** Remove kbd-group component definition ([53c394d](https://github.com/favorodera/centoui/commit/53c394d))
+- **nuxt:** Update devServer port to 3001 ([d17ee7d](https://github.com/favorodera/centoui/commit/d17ee7d))
+- **vue-playground:** Set dev server port to 5174 ([4c78c4f](https://github.com/favorodera/centoui/commit/4c78c4f))
+
+### Tests
+
+- **config:** Add test for utilsFilePath ([4b2108d](https://github.com/favorodera/centoui/commit/4b2108d))
+
+### Styling
+
+- **preview:** Reorder CSS classes in view container - Standardize utility class order - Replace `size-full` with `w-full` - Improve readability ([6f7233c](https://github.com/favorodera/centoui/commit/6f7233c))
+- **vue:** Format tailwind classes in App.vue ([c992e99](https://github.com/favorodera/centoui/commit/c992e99))
+
+  - Reorder and format tailwind utility classes
+  - Apply consistent indentation for class attributes
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.33...v1.0.0-alpha.34
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.33...v1.0.0-alpha.34)

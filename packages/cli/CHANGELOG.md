@@ -1,5 +1,33 @@
 # Changelog
 
+## v1.0.0-alpha.34...v1.0.0-alpha.35
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.34...v1.0.0-alpha.35)
+
+### Added
+
+- **cli:** Add utils file URL constant ([b96dc48](https://github.com/favorodera/centoui/commit/b96dc48))
+
+  - Define UTILS_FILE_URL for centoui init
+
+- **cli:** Add utilsFilePath to CentoUIConfig ([ef8cc5e](https://github.com/favorodera/centoui/commit/ef8cc5e))
+- **cli:** Prompt and create utils file ([9bedc22](https://github.com/favorodera/centoui/commit/9bedc22))
+
+  - Add utilsFilePath prompt to init command
+  - Write empty utils file if confirmed
+  - Pass utils path to config builder
+
+- **config:** Add utilsFilePath to default user config ([c41d67f](https://github.com/favorodera/centoui/commit/c41d67f))
+
+### Tests
+
+- **config:** Add test for utilsFilePath ([4b2108d](https://github.com/favorodera/centoui/commit/4b2108d))
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.33...v1.0.0-alpha.34
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.33...v1.0.0-alpha.34)
