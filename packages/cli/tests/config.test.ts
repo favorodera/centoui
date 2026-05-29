@@ -62,6 +62,11 @@ describe('buildUserDefaultConfigFileContent', () => {
     expect(result).toContain("themeFilePath: 'src/assets/css/centoui.css'")
   })
 
+  it('includes the provided utilsFilePath', async () => {
+    const result = await configUtils.buildUserDefaultConfigFileContent('src/assets/css/centoui.css', 'components', 'src/utils/index.ts')
+    expect(result).toContain("utilsFilePath: 'src/utils/index.ts'")
+  })
+
   it('includes defaults from the fetched config', async () => {
     const result = await configUtils.buildUserDefaultConfigFileContent('theme.css', 'components')
     expect(result).toContain("close: 'lucide:x'")
