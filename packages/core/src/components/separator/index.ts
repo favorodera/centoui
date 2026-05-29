@@ -37,7 +37,7 @@ export type SeparatorVariants = VariantProps<typeof separatorVariants>
 
 // TYPES — Props
 
-export type SeparatorProps = RekaSeparatorProps & Pick<ClassProp, 'class'> & {
+export type SeparatorProps = Omit<RekaSeparatorProps, 'orientation'> & Pick<ClassProp, 'class'> & {
   /**
    * The orientation of the separator.
    * @default 'horizontal'
@@ -48,5 +48,6 @@ export type SeparatorProps = RekaSeparatorProps & Pick<ClassProp, 'class'> & {
 // TYPES — Slots
 
 export type SeparatorSlots = {
-  default: []
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  default?: () => any
 }
