@@ -21,7 +21,7 @@ export const itemVariants = tv({
     },
     variant: {
       outline: {},
-      naked: {},
+      ghost: {},
       soft: {},
     },
     orientation: {
@@ -35,7 +35,7 @@ export const itemVariants = tv({
 // COMPONENTS
 
 export { default as ItemRoot } from './item-root.vue'
-// export { default as ItemMedia } from './item-media.vue'
+export { default as ItemMedia } from './item-media.vue'
 // export { default as ItemContent } from './item-content.vue'
 // export { default as ItemHeader } from './item-header.vue'
 // export { default as ItemTitle } from './item-title.vue'
@@ -70,7 +70,7 @@ export type ItemRootProps = PrimitiveProps & Pick<ClassProp, 'class'> & {
   size?: ItemVariants['size']
   /**
    * The visual style of the item.
-   * @default 'naked'
+   * @default 'ghost'
    */
   variant?: ItemVariants['variant']
   /**
