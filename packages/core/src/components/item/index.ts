@@ -41,7 +41,7 @@ export { default as ItemHeader } from './item-header.vue'
 export { default as ItemTitle } from './item-title.vue'
 export { default as ItemDescription } from './item-description.vue'
 export { default as ItemBody } from './item-body.vue'
-// export { default as ItemFooter } from './item-footer.vue'
+export { default as ItemFooter } from './item-footer.vue'
 // export { default as ItemActions } from './item-actions.vue'
 
 
