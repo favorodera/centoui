@@ -238,19 +238,21 @@ export type SelectItemEmits = RekaSelectItemEmits
 // TYPES — Slots
 
 export type SelectRootSlots = {
-  default: (props: {
+  default?: (props: {
     /** Current input values */
     modelValue?: AcceptableValue | AcceptableValue[]
     /** Current open state */
     open: boolean
-  }) => []
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  }) => any
 }
 
 export type SelectValueSlots = {
-  default: (props: {
+  default?: (props: {
     /** Current input values */
     modelValue?: AcceptableValue | AcceptableValue[]
     /** Current selected label */
     selectedLabel: string[]
-  }) => []
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  }) => any
 }
