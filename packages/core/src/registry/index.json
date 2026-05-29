@@ -81,25 +81,13 @@
     },
     {
       "$schema": "../schemas/component.json",
-      "name": "avatar-group",
-      "description": "A wrapper component to group and stack multiple avatars together.",
-      "files": [
-        "components/avatar-group/avatar-group.vue",
-        "components/avatar-group/index.ts"
-      ],
-      "componentDeps": [
-        "avatar"
-      ],
-      "packageDeps": {}
-    },
-    {
-      "$schema": "../schemas/component.json",
       "name": "avatar",
       "description": "Component for displaying avatars with fallback support.",
       "files": [
         "components/avatar/avatar-root.vue",
         "components/avatar/avatar-image.vue",
         "components/avatar/avatar-fallback.vue",
+        "components/avatar/avatar-group.vue",
         "components/avatar/avatar-utils.ts",
         "components/avatar/index.ts"
       ],
@@ -228,23 +216,11 @@
     },
     {
       "$schema": "../schemas/component.json",
-      "name": "kbd-group",
-      "description": "Component for displaying a group of keyboard inputs.",
-      "files": [
-        "components/kbd/kbd-group.vue",
-        "components/kbd/index.ts"
-      ],
-      "componentDeps": [
-        "kbd"
-      ],
-      "packageDeps": {}
-    },
-    {
-      "$schema": "../schemas/component.json",
       "name": "kbd",
       "description": "Component for displaying keyboard input.",
       "files": [
         "components/kbd/kbd.vue",
+        "components/kbd/kbd-group.vue",
         "components/kbd/index.ts"
       ],
       "componentDeps": [],
@@ -279,6 +255,22 @@
       "componentDeps": [
         "button",
         "icon"
+      ],
+      "packageDeps": {}
+    },
+    {
+      "$schema": "../schemas/component.json",
+      "name": "pin-input",
+      "description": "A sequence of one-character inputs for entering PIN codes or OTPs.",
+      "files": [
+        "components/pin-input/pin-input-root.vue",
+        "components/pin-input/pin-input-input.vue",
+        "components/pin-input/pin-input-separator.vue",
+        "components/pin-input/pin-input-group.vue",
+        "components/pin-input/index.ts"
+      ],
+      "componentDeps": [
+        "input"
       ],
       "packageDeps": {}
     },
