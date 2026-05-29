@@ -37,8 +37,9 @@ export type ProgressBarRootEmits = RekaProgressRootEmits
 // TYPES — Slots
 
 export type ProgressBarRootSlots = {
-  default: (props: {
+  default?: (props: {
     /** Current input values */
     modelValue?: number | null
-  }) => []
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  }) => any
 }
