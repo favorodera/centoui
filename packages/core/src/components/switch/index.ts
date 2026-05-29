@@ -88,10 +88,11 @@ export type SwitchRootEmits = RekaSwitchRootEmits
 // TYPES — Slots
 
 export type SwitchRootSlots = {
-  default: (props: {
+  default?: (props: {
     /** Current value */
     modelValue: unknown
     /** Whether the switch is checked */
     checked: boolean
-  }) => []
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  }) => any
 }
