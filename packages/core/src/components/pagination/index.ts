@@ -151,17 +151,19 @@ export type PaginationRootEmits = RekaPaginationRootEmits
 // TYPES — Slots
 
 export type PaginationRootSlots = {
-  default: (props: {
+  default?: (props: {
     /** Current page state */
     page: number
     /** Number of pages */
     pageCount: number
-  }) => []
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  }) => any
 }
 
 export type PaginationListSlots = {
-  default: (props: {
+  default?: (props: {
     /** Pages items */
     items: Array<{ type: 'ellipsis' } | { type: 'page', value: number }>
-  }) => []
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  }) => any
 }
