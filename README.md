@@ -7,6 +7,10 @@
     <a href="https://centoui.vercel.app/"><img src="https://img.shields.io/badge/-Documentation-blue?style=plastic" alt="CentoUI Documentation"></a>
   </p>
   <p>
+    <a href="https://codewiki.google/github.com/favorodera/centoui"><img src="https://img.shields.io/badge/-Ask%20Code%20Wiki-blue?style=plastic&logo=google-gemini&logoColor=white" alt="Ask Code Wiki"></a>
+    <a href="https://deepwiki.com/favorodera/centoui"><img src="https://img.shields.io/badge/-Ask%20Devin-blue?style=plastic&logo=windsurf&logoColor=white" alt="Ask Devin"></a>
+  </p>
+  <p>
     <a href="./packages/core"><img src="https://img.shields.io/badge/Core-blue?style=plastic&logo=vuedotjs&logoColor=white" alt="CentoUI Core"></a>
     <a href="./packages/cli"><img src="https://img.shields.io/badge/CLI-blue?style=plastic&logo=typescript&logoColor=white" alt="CentoUI CLI"></a>
     <a href="./packages/nuxt"><img src="https://img.shields.io/badge/Nuxt%20Module-blue?style=plastic&logo=nuxt&logoColor=white" alt="CentoUI Nuxt Module"></a>
