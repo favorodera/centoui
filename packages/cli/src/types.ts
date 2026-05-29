@@ -65,6 +65,9 @@ export type CentoUIConfig = {
   /** Relative path (from project root) to the CSS file that receives theme and component styles. */
   themeFilePath: string
 
+  /** Relative path (from project root) to the utils file. */
+  utilsFilePath: string
+
   /**
    * Maps internal CentoUI icon slot names to Iconify icon IDs.
    * Components reference icon slots by their internal name so you can swap icon libraries freely.
