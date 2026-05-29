@@ -2,13 +2,13 @@
   <h1>CentoUI</h1>
   <p><strong>Vue components for elegant interfaces</strong></p>
   <p>
-    <a href="https://github.com/favorodera/centoui/blob/main/LICENSE"><img src="https://img.shields.io/github/license/favorodera/centoui.svg?style=plastic&label=License&color=blue" alt="License"></a>
-    <a href="https://github.com/favorodera/centoui/stargazers"><img src="https://img.shields.io/github/stars/favorodera/centoui.svg?style=plastic&label=Stars&color=blue" alt="GitHub Stars"></a>
-    <a href="https://centoui.vercel.app/"><img src="https://img.shields.io/badge/-Documentation-blue?style=plastic" alt="CentoUI Documentation"></a>
+    <a href="https://github.com/favorodera/centoui/blob/main/LICENSE" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/github/license/favorodera/centoui.svg?style=plastic&label=License&color=blue" alt="License"></a>
+    <a href="https://github.com/favorodera/centoui/stargazers" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/github/stars/favorodera/centoui.svg?style=plastic&label=Stars&color=blue" alt="GitHub Stars"></a>
+    <a href="https://centoui.vercel.app/" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/-Documentation-blue?style=plastic" alt="CentoUI Documentation"></a>
   </p>
   <p>
-    <a href="https://codewiki.google/github.com/favorodera/centoui"><img src="https://img.shields.io/badge/-Ask%20Code%20Wiki-blue?style=plastic&logo=google-gemini&logoColor=white" alt="Ask Code Wiki"></a>
-    <a href="https://deepwiki.com/favorodera/centoui"><img src="https://img.shields.io/badge/-Ask%20Devin-blue?style=plastic&logo=windsurf&logoColor=white" alt="Ask Devin"></a>
+    <a href="https://codewiki.google/github.com/favorodera/centoui" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/-Ask%20Code%20Wiki-blue?style=plastic&logo=google-gemini&logoColor=white" alt="Ask Code Wiki" target="_blank" rel="noopener noreferrer"></a>
+    <a href="https://deepwiki.com/favorodera/centoui" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/-Ask%20Devin-blue?style=plastic&logo=windsurf&logoColor=white" alt="Ask Devin"></a>
   </p>
   <p>
     <a href="./packages/core"><img src="https://img.shields.io/badge/Core-blue?style=plastic&logo=vuedotjs&logoColor=white" alt="CentoUI Core"></a>
@@ -21,7 +21,7 @@
 
 CentoUI is a copy-paste component library for Vue 3. You run a CLI command, the component source lands in your project, and you own every line. Styling is handled by a single CSS theme file powered by Tailwind CSS v4, so changing your entire look is one file edit away.
 
-Under the hood, components are built on [Reka UI](https://reka-ui.com/) for accessibility and behavior, [Tailwind Variants](https://www.tailwind-variants.org/) for variant-driven styling, and TypeScript for end-to-end type safety.
+Under the hood, components are built on <a href="https://reka-ui.com/" target="_blank" rel="noopener noreferrer">Reka UI </a> for accessibility and behavior, <a href="https://www.tailwind-variants.org/" target="_blank" rel="noopener noreferrer">Tailwind Variants</a> for variant-driven styling, and TypeScript for end-to-end type safety.
 
 ## Features
 
@@ -34,7 +34,7 @@ Under the hood, components are built on [Reka UI](https://reka-ui.com/) for acce
 
 ## Monorepo Structure
 
-This monorepo is managed with [pnpm](https://pnpm.io/) workspaces and [Turborepo](https://turbo.build/repo).
+This monorepo is managed with <a href="https://pnpm.io/" target="_blank" rel="noopener noreferrer">pnpm</a> workspaces and <a href="https://turbo.build/repo" target="_blank" rel="noopener noreferrer">Turborepo</a>.
 
 | Path | Package | Description |
 |------|---------|-------------|
@@ -49,8 +49,8 @@ This monorepo is managed with [pnpm](https://pnpm.io/) workspaces and [Turborepo
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org/) v22 or later
-- [pnpm](https://pnpm.io/installation) v11 or later
+- <a href="https://nodejs.org/" target="_blank" rel="noopener noreferrer">Node.js</a> v22 or later
+- <a href="https://pnpm.io/installation" target="_blank" rel="noopener noreferrer">pnpm</a> v11 or later
 
 ### Getting Started
 
@@ -81,4 +81,4 @@ pnpm ready
 
 ## License
 
-[MIT](./LICENSE) &copy; [Favour Emeka](https://github.com/favorodera)
+[MIT](./LICENSE) &copy; <a href="https://github.com/favorodera" target="_blank" rel="noopener noreferrer">Favour Emeka</a>
