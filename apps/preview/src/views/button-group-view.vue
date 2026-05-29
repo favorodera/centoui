@@ -16,6 +16,7 @@ import {
 } from '#centoui/components/select'
 import ViewContainer from '@/components/view-container.vue'
 import { useApp } from '@/composables/use-app'
+import { Input } from '#centoui/components/input'
 
 const values = useApp().preview.initPreview('Button Group', {
   orientation: {
@@ -84,7 +85,6 @@ const values = useApp().preview.initPreview('Button Group', {
     <ButtonGroup :orientation="values.orientation">
       <Button
         variant="outline"
-        as="div"
       >
         Button
       </Button>
@@ -118,5 +118,22 @@ const values = useApp().preview.initPreview('Button Group', {
       </SelectRoot>
     </ButtonGroup>
 
+    <ButtonGroup :orientation="values.orientation">
+      <Input
+        default-value="8"
+      />
+
+      <Button
+        variant="outline"
+      >
+        <Icon icon="lucide:minus" />
+      </Button>
+
+      <Button
+        variant="outline"
+      >
+        <Icon icon="lucide:plus" />
+      </Button>
+    </ButtonGroup>
   </ViewContainer>
 </template>
