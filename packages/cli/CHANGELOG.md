@@ -1,5 +1,26 @@
 # Changelog
 
+## v1.0.0-alpha.36...v1.0.0-alpha.37
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.36...v1.0.0-alpha.37)
+
+### Documentation
+
+- **readme:** Refactor links to markdown syntax ([f7f4dc1](https://github.com/favorodera/centoui/commit/f7f4dc1))
+
+  - Convert HTML anchor tags to markdown links
+  - Improve documentation readability across project
+
+
+### Chores
+
+- **docs:** Add target="_blank" to external links ([8c817a7](https://github.com/favorodera/centoui/commit/8c817a7))
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.35...v1.0.0-alpha.36
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.35...v1.0.0-alpha.36)

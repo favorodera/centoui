@@ -1,5 +1,213 @@
 # Changelog
 
+## v1.0.0-alpha.36...v1.0.0-alpha.37
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.36...v1.0.0-alpha.37)
+
+### Added
+
+- **nuxt:** Add alias for centoui utils ([366eb44](https://github.com/favorodera/centoui/commit/366eb44))
+
+  - register #centoui/utils alias
+  - remove as const from generated config template
+
+- **playground:** Implement select component and utils ([fd9c2b8](https://github.com/favorodera/centoui/commit/fd9c2b8))
+
+  - add Select component with variants
+  - add isSlotEmpty utility to handle empty slots
+  - update Separator to use isSlotEmpty
+  - configure path aliases for utils and config
+
+- **item:** Add entry point for item component ([e49916f](https://github.com/favorodera/centoui/commit/e49916f))
+- **core:** Add item component variants ([6d95665](https://github.com/favorodera/centoui/commit/6d95665))
+
+  - define item component slots
+  - add size, variant, and orientation variants
+
+- **item:** Add prop types for item components ([02d410b](https://github.com/favorodera/centoui/commit/02d410b))
+
+  - define base prop types for item component sub-parts
+  - import PrimitiveProps and ClassProp types
+
+- **item:** Add context and variant props to ItemRoot ([30aa89a](https://github.com/favorodera/centoui/commit/30aa89a))
+
+  - Implement context provider for ItemRoot
+  - Add size, variant, and orientation props
+  - Export ItemRoot component
+
+- **item:** Add ItemRoot component ([a350861](https://github.com/favorodera/centoui/commit/a350861))
+
+  - implement ItemRoot using Primitive
+  - support size, variant, and orientation props
+  - provide context for child components
+
+- **item:** Rename naked variant to ghost and export ItemMedia ([1a88dab](https://github.com/favorodera/centoui/commit/1a88dab))
+- **item:** Add ItemMedia component ([0e7d3d2](https://github.com/favorodera/centoui/commit/0e7d3d2))
+- **item:** Add ItemContent component ([d260b2a](https://github.com/favorodera/centoui/commit/d260b2a))
+
+  - implement ItemContent component
+  - export ItemContent from item index
+
+- **item:** Implement ItemHeader component ([de96887](https://github.com/favorodera/centoui/commit/de96887))
+
+  - add ItemHeader component
+  - export ItemHeader from item entry point
+
+- **item:** Implement ItemTitle component ([bee1022](https://github.com/favorodera/centoui/commit/bee1022))
+
+  - add ItemTitle component
+  - export ItemTitle from item index
+
+- **item:** Add ItemDescription component ([1c70ab7](https://github.com/favorodera/centoui/commit/1c70ab7))
+- **item:** Add ItemBody component ([b64c3e0](https://github.com/favorodera/centoui/commit/b64c3e0))
+
+  - implement ItemBody component
+  - export ItemBody from index
+
+- **item:** Add ItemFooter component ([b3d2fd5](https://github.com/favorodera/centoui/commit/b3d2fd5))
+
+  - implement ItemFooter component
+  - export ItemFooter from index
+
+- **item:** Add ItemActions component ([c930e2d](https://github.com/favorodera/centoui/commit/c930e2d))
+
+  - implement ItemActions component
+  - export ItemActions from item index
+
+- **item:** Add preview view and remove orientation ([45f2c7a](https://github.com/favorodera/centoui/commit/45f2c7a))
+
+  - add item preview view
+  - remove orientation prop from item components
+
+- **item:** Add mediaType support to item-media ([b7a9e7a](https://github.com/favorodera/centoui/commit/b7a9e7a))
+
+  - pass mediaType to variant styles
+  - add data-type attribute to primitive component
+
+- **item:** Refactor variants and simplify components ([fa7a688](https://github.com/favorodera/centoui/commit/fa7a688))
+
+  - Update itemVariants with new styles and slots
+  - Add mediaType variant for icons and images
+  - Remove unused header, body, and footer components
+  - Clean up redundant props from ItemRootContext
+
+- **item:** Add ItemGroup and ItemSeparator components ([02191ed](https://github.com/favorodera/centoui/commit/02191ed))
+
+  - add ItemGroup component and types
+  - add ItemSeparator component and types
+  - update item variants with new slots
+
+- **item:** Add ItemGroup component ([8d27145](https://github.com/favorodera/centoui/commit/8d27145))
+
+  - implement ItemGroup using Primitive
+  - add variants for group styling
+  - forward props to the underlying component
+
+- **item:** Add item separator component ([16973b3](https://github.com/favorodera/centoui/commit/16973b3))
+
+  - implement ItemSeparator using Reka UI
+  - add variant support for styling
+  - expose component props for customization
+
+- **preview:** Add scrollable container to body ([8515cdb](https://github.com/favorodera/centoui/commit/8515cdb))
+
+  - add scrollbar styling to main content
+  - constrain height to viewport dimensions
+  - enable overflow for content scrolling
+
+- **preview:** Redesign collapsible view component ([b7b4d50](https://github.com/favorodera/centoui/commit/b7b4d50))
+
+  - Update collapsible UI layout
+  - Remove unused button component
+  - Add descriptive content and icon rotation
+
+- **preview:** Update item component examples ([51e4939](https://github.com/favorodera/centoui/commit/51e4939))
+
+  - Add varied Item component usage scenarios
+  - Integrate Avatar, Badge, and Group components
+  - Remove deprecated Item sub-components
+
+- **registry:** Add item component to registry ([2b45ead](https://github.com/favorodera/centoui/commit/2b45ead))
+
+  - add item component configuration
+  - register item in core index
+
+
+### Fixed
+
+- **item:** Update default variant to ghost ([b5ccb39](https://github.com/favorodera/centoui/commit/b5ccb39))
+
+### Refactors
+
+- **item:** Remove size variant from item component ([a23f6f5](https://github.com/favorodera/centoui/commit/a23f6f5))
+
+  - remove size prop from item root
+  - remove size from item variants and context
+  - update all sub-components to remove size usage
+
+- **item:** Remove unused item-body component ([93f1aff](https://github.com/favorodera/centoui/commit/93f1aff))
+- **item:** Remove unused ItemFooter component ([03e6937](https://github.com/favorodera/centoui/commit/03e6937))
+- **item:** Remove unused item-header component ([f6cf862](https://github.com/favorodera/centoui/commit/f6cf862))
+
+  - delete item-header.vue from core package
+
+- **avatar:** Consolidate group variants into avatarVariants ([0830d5b](https://github.com/favorodera/centoui/commit/0830d5b))
+
+  - move group styles into avatarVariants
+  - remove redundant avatarGroupVariants
+  - update avatar-group component to use new slots
+
+- **kbd:** Consolidate variants into kbdVariants ([a2d7774](https://github.com/favorodera/centoui/commit/a2d7774))
+
+  - Move group slot into kbdVariants
+  - Remove redundant kbdGroupVariants
+  - Update KbdGroup component to use merged variants
+
+
+### Documentation
+
+- **readme:** Add AI documentation assistant badges ([e665d15](https://github.com/favorodera/centoui/commit/e665d15))
+- **readme:** Refactor links to markdown syntax ([f7f4dc1](https://github.com/favorodera/centoui/commit/f7f4dc1))
+
+  - Convert HTML anchor tags to markdown links
+  - Improve documentation readability across project
+
+
+### Chores
+
+- **docs:** Add target="_blank" to external links ([8c817a7](https://github.com/favorodera/centoui/commit/8c817a7))
+
+### Styling
+
+- **alert:** Update icon sizing tokens ([1889ffa](https://github.com/favorodera/centoui/commit/1889ffa))
+
+  - change svg width to 4
+  - update svg height to lh
+
+- **preview:** Remove scrollbar classes from container ([44c6b87](https://github.com/favorodera/centoui/commit/44c6b87))
+
+  - simplify layout styles in view-container
+  - remove redundant scrollbar configuration
+
+- **alert:** Reorder tailwind classes for consistency ([0e7b8c5](https://github.com/favorodera/centoui/commit/0e7b8c5))
+- **item:** Update layout and styling for item component ([193bfa2](https://github.com/favorodera/centoui/commit/193bfa2))
+
+  - adjust padding and layout for item root
+  - apply rounded corners to first child images
+  - refactor media slot styles for better readability
+
+- **preview:** Adjust layout spacing and padding ([a92bbfb](https://github.com/favorodera/centoui/commit/a92bbfb))
+
+  - fix calculation syntax in body component
+  - update horizontal padding in view-container
+
+- **preview:** Fix syntax error in body layout class ([be7f764](https://github.com/favorodera/centoui/commit/be7f764))
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.35...v1.0.0-alpha.36
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.35...v1.0.0-alpha.36)
