@@ -14,7 +14,6 @@ const forwardedProps = useForwardProps(delegatedProps)
 
 const classNames = computed(() => {
   const { description } = itemVariants({
-    size: rootContext.size,
     variant: rootContext.variant,
     orientation: rootContext.orientation,
   })
