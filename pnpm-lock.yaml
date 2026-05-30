@@ -33,9 +33,6 @@ catalogs:
     c12:
       specifier: 4.0.0-beta.5
       version: 4.0.0-beta.5
-    eslint:
-      specifier: ^10.2.1
-      version: 10.4.0
     fs-extra:
       specifier: ^11.3.4
       version: 11.3.5
@@ -63,9 +60,6 @@ catalogs:
     tw-animate-css:
       specifier: ^1.4.0
       version: 1.4.0
-    typescript:
-      specifier: ^6.0.3
-      version: 6.0.3
     vite:
       specifier: ^8.0.8
       version: 8.0.14
@@ -99,7 +93,7 @@ importers:
         specifier: ^14.7.0
         version: 14.7.0(eslint-plugin-vue@10.9.1(@stylistic/eslint-plugin@5.10.0(eslint@10.4.0(jiti@2.7.0)))(@typescript-eslint/parser@8.59.4(eslint@10.4.0(jiti@2.7.0))(typescript@6.0.3))(eslint@10.4.0(jiti@2.7.0))(vue-eslint-parser@10.4.0(eslint@10.4.0(jiti@2.7.0))))(eslint@10.4.0(jiti@2.7.0))(typescript@6.0.3)
       eslint:
-        specifier: 'catalog:'
+        specifier: ^10.2.1
         version: 10.4.0(jiti@2.7.0)
       eslint-plugin-better-tailwindcss:
         specifier: ^4.5.0
@@ -114,7 +108,7 @@ importers:
         specifier: ^2.9.5
         version: 2.9.14
       typescript:
-        specifier: 'catalog:'
+        specifier: ^6.0.3
         version: 6.0.3
 
   apps/preview:
