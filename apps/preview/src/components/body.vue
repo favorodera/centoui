@@ -24,7 +24,13 @@ const socials = [
 <template>
   <div class="grid size-full grid-cols-[1fr_auto]">
 
-    <main class="grid size-full place-items-center">
+    <main
+      class="
+        grid size-full max-h-[calc(100dvh-(--spacing(11))-(--spacing(3)))]
+        scrollbar-thin scrollbar-thumb-border scrollbar-track-transparent
+        place-items-center overflow-auto
+      "
+    >
       <slot />
     </main>
    
