@@ -2,7 +2,7 @@
   <div
     class="
       flex w-full max-w-3xl flex-wrap items-center justify-center gap-8
-      bg-background p-3
+      bg-background px-3
     "
   >
     <slot />

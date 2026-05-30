@@ -26,7 +26,7 @@ const socials = [
 
     <main
       class="
-        grid size-full max-h-[calc(100dvh-(--spacing(11))-(--spacing(3)))]
+        grid size-full max-h-[calc(100dvh-(--spacing(11))))] py-3
         scrollbar-thin scrollbar-thumb-border scrollbar-track-transparent
         place-items-center overflow-auto
       "
