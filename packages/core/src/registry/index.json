@@ -216,6 +216,26 @@
     },
     {
       "$schema": "../schemas/component.json",
+      "name": "item",
+      "description": "A list item that can be used in a list.",
+      "files": [
+        "components/item/item-actions.vue",
+        "components/item/item-content.vue",
+        "components/item/item-description.vue",
+        "components/item/item-group.vue",
+        "components/item/item-media.vue",
+        "components/item/item-root.vue",
+        "components/item/item-separator.vue",
+        "components/item/item-title.vue",
+        "components/item/index.ts"
+      ],
+      "componentDeps": [
+        "separator"
+      ],
+      "packageDeps": {}
+    },
+    {
+      "$schema": "../schemas/component.json",
       "name": "kbd",
       "description": "Component for displaying keyboard input.",
       "files": [
