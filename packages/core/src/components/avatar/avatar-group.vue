@@ -3,7 +3,7 @@ import { reactiveOmit } from '@vueuse/core'
 import { Primitive, useForwardProps } from 'reka-ui'
 import {
   type AvatarGroupProps,
-  avatarGroupVariants,
+  avatarVariants,
 } from '.'
 import { computed } from 'vue'
 
@@ -12,9 +12,9 @@ const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
 
 const classNames = computed(() => {
-  const { root } = avatarGroupVariants()
+  const { group } = avatarVariants()
   
-  return root({ class: props.class })
+  return group({ class: props.class })
 })
 </script>
 

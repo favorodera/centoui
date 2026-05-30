@@ -9,8 +9,6 @@ import {
 import { tv, type ClassProp, type VariantProps } from 'tailwind-variants'
 import type { ImgHTMLAttributes } from 'vue'
 
-// VARIANTS
-
 export const avatarVariants = tv({
   slots: {
     root: `
@@ -22,6 +20,11 @@ export const avatarVariants = tv({
       truncate font-medium text-muted-foreground
 
       [&_svg]:pointer-events-none [&_svg]:shrink-0
+    `,
+    group: `
+      isolate flex -space-x-2
+
+      *:border-2 *:border-border
     `,
   },
   variants: {
@@ -54,16 +57,6 @@ export const avatarVariants = tv({
   },
   defaultVariants: {
     size: 'md',
-  },
-})
-
-export const avatarGroupVariants = tv({
-  slots: {
-    root: `
-      isolate flex -space-x-2
-
-      *:border-2 *:border-border
-    `,
   },
 })
 
