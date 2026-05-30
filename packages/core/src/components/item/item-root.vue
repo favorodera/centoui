@@ -12,14 +12,12 @@ const delegatedProps = reactiveOmit(
   props,
   'class',
   'variant',
-  'orientation',
 )
 const forwardedProps = useForwardProps(delegatedProps)
 
 const classNames = computed(() => {
   const { root } = itemVariants({
     variant: props.variant,
-    orientation: props.orientation,
   })
 
   return root({ class: props.class })
@@ -27,7 +25,6 @@ const classNames = computed(() => {
 
 provideCentouiItemRootContext(reactive({
   variant: toRef(props, 'variant'),
-  orientation: toRef(props, 'orientation'),
 }))
 </script>
 
@@ -35,7 +32,6 @@ provideCentouiItemRootContext(reactive({
   <Primitive
     data-slot="item-root"
     :data-variant="variant"
-    :data-orientation="orientation"
     v-bind="forwardedProps"
     :class="classNames"
   >

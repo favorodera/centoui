@@ -13,7 +13,6 @@ const forwardedProps = useForwardProps(delegatedProps)
 const classNames = computed(() => {
   const { actions } = itemVariants({
     variant: rootContext.variant,
-    orientation: rootContext.orientation,
   })
 
   return actions({ class: props.class })

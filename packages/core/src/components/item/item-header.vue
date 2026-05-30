@@ -13,7 +13,6 @@ const forwardedProps = useForwardProps(delegatedProps)
 const classNames = computed(() => {
   const { header } = itemVariants({
     variant: rootContext.variant,
-    orientation: rootContext.orientation,
   })
 
   return header({ class: props.class })

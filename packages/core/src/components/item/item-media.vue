@@ -13,7 +13,6 @@ const forwardedProps = useForwardProps(delegatedProps)
 const classNames = computed(() => {
   const { media } = itemVariants({
     variant: rootContext.variant,
-    orientation: rootContext.orientation,
   })
 
   return media({ class: props.class })
