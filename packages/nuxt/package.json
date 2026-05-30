@@ -53,7 +53,8 @@
     "pathe": "catalog:"
   },
   "peerDependencies": {
-    "centoui": "workspace:*"
+    "centoui": "workspace:*",
+    "nuxt": "^4.0.0"
   },
   "devDependencies": {
     "@nuxt/module-builder": "^1.0.2",
