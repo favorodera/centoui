@@ -100,7 +100,7 @@ export function remove() {
         }
 
         // Ask for explicit confirmation before doing anything destructive.
-        const confirmed = await confirm({ message: `Remove "${componentName}"?` })
+        const confirmed = await confirm({ message: `Remove "${componentName}"?`, initialValue: false })
         if (isCancel(confirmed) || !confirmed) {
           cancel('Removal cancelled.')
           process.exit(0)
