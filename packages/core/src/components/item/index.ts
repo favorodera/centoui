@@ -5,12 +5,14 @@ import type { SeparatorProps } from '../separator'
 export const itemVariants = tv({
   slots: {
     root: `
-      group/item-root flex w-full items-center gap-3 rounded-lg border border-transparent px-4
-      py-3 text-sm transition-colors duration-300 outline-none
+      group/item-root flex w-full flex-wrap items-center gap-3 rounded-lg border
+      border-transparent p-4 text-sm transition-colors duration-300 outline-none
 
       focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none
 
       [a]:hover:bg-accent
+
+      [&>img:first-child]:rounded-sm
     `,
     media: `
       grid shrink-0 place-items-center overflow-hidden
@@ -40,10 +42,18 @@ export const itemVariants = tv({
     },
     mediaType: {
       icon: {
-        media: 'size-10 p-2 border rounded-sm bg-muted [&_svg]:size-5 border-border',
+        media: `
+          size-10 rounded-sm border border-border bg-muted p-2
+
+          [&_svg]:size-5
+        `,
       },
       image: {
-        media: 'size-10 rounded-sm overflow-hidden bg-muted [&_img]:size-full [&_img]:object-cover',
+        media: `
+          size-10 overflow-hidden rounded-sm bg-muted
+
+          [&_img]:size-full [&_img]:object-cover
+        `,
       },
     },
   },
