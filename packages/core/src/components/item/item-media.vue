@@ -13,6 +13,7 @@ const forwardedProps = useForwardProps(delegatedProps)
 const classNames = computed(() => {
   const { media } = itemVariants({
     variant: rootContext.variant,
+    mediaType: props.type,
   })
 
   return media({ class: props.class })
@@ -22,6 +23,7 @@ const classNames = computed(() => {
 <template>
   <Primitive
     data-slot="item-media"
+    :data-type="type"
     v-bind="forwardedProps"
     :class="classNames"
   >
