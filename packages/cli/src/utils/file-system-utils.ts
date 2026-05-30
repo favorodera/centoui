@@ -71,7 +71,7 @@ export async function confirmOverwriteIfExists(label: string, path: string): Pro
   const exists = await fsExtra.pathExists(path)
   if (!exists) return true
 
-  const answer = await confirm({ message: `"${label}" already exists. Overwrite?` })
+  const answer = await confirm({ message: `"${label}" already exists. Overwrite?`, initialValue: false })
 
   if (isCancel(answer)) {
     cancel('Operation cancelled.')
