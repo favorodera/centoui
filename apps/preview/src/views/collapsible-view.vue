@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { CollapsibleContent, CollapsibleRoot, CollapsibleTrigger } from '#centoui/components/collapsible'
-import { Button } from '#centoui/components/button'
 import { Icon } from '#centoui/components/icon'
 import ViewContainer from '@/components/view-container.vue'
 import { useApp } from '@/composables/use-app'
@@ -15,42 +14,55 @@ const open = ref(false)
   <ViewContainer>
     <CollapsibleRoot
       v-model:open="open"
-      class="flex w-full max-w-xl flex-col gap-2"
+      class="w-full max-w-xl rounded-xl border border-border"
     >
+    
+      <CollapsibleTrigger
+        class="flex w-full items-center justify-between p-4 text-left"
+      >
+        <div>
+          <div class="font-medium">
+            Account Security
+          </div>
 
-      <div class="flex items-center justify-between gap-4">
-
-        <h4 class="text-sm font-semibold">
-          @favorodera starred 3 repositories
-        </h4>
-        
-        <CollapsibleTrigger as-child>
-          <Button
-            variant="ghost"
-            square
-            size="sm"
-            aria-label="Toggle"
-          >
-            <Icon :icon="open ?'lucide:x': 'lucide:chevrons-up-down'" />
-          </Button>
-        </CollapsibleTrigger>
-
-      </div>
-
-      <div class="rounded-lg border border-border px-4 py-2 font-mono text-sm">
-        notform
-      </div>
-
-      <CollapsibleContent class="flex flex-col gap-2">
-
-        <div class="rounded-lg border border-border px-4 py-2 font-mono text-sm">
-          notform-nuxt
-        </div>
-        
-        <div class="rounded-lg border border-border px-4 py-2 font-mono text-sm">
-          centoui
+          <div class="text-sm text-muted-foreground">
+            Last reviewed 2 days ago
+          </div>
         </div>
 
+        <Icon
+          icon="lucide:chevron-down"
+          :class="[
+            'transition-transform duration-300',
+            open && 'rotate-180'
+          ]"
+        />
+      </CollapsibleTrigger>
+
+      <CollapsibleContent>
+        <div class="border-t border-border p-4">
+          <p class="mb-4 text-sm text-muted-foreground">
+            Two-factor authentication is enabled for your account.
+          </p>
+
+          <ul class="space-y-2 text-sm">
+            <li
+              v-for="value in [
+                'Authenticator app connected',
+                'Recovery codes generated',
+                '3 trusted devices active'
+              ]"
+              :key="value"
+              class="flex items-center gap-2"
+            >
+              <Icon
+                icon="lucide:check"
+                class="shrink-0 text-success"
+              /> {{ value }}
+            </li>
+          </ul>
+          
+        </div>
       </CollapsibleContent>
 
     </CollapsibleRoot>
