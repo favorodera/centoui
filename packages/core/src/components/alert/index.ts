@@ -7,7 +7,7 @@ export const alertVariants = tv({
     media: `
       shrink-0
 
-      [&>svg]:w-4 [&>svg]:h-lh
+      [&>svg]:h-lh [&>svg]:w-4
     `,
     content: 'min-w-0 flex-1 text-sm',
     title: 'min-w-0 font-medium',
