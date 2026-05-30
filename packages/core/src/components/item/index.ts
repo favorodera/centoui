@@ -3,31 +3,50 @@ import { tv, type ClassProp, type VariantProps } from 'tailwind-variants'
 
 export const itemVariants = tv({
   slots: {
-    root: '',
-    media: '',
-    content: '',
-    header: '',
-    title: '',
-    description: '',
-    body: '',
-    footer: '',
-    actions: '',
+    root: `
+      group/item-root flex w-full items-center gap-3 rounded-lg border border-transparent px-4
+      py-3 text-sm transition-colors duration-300 outline-none
+
+      focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none
+
+      [a]:hover:bg-accent
+    `,
+    media: `
+      grid shrink-0 place-items-center overflow-hidden
+
+      group-has-data-[slot=item-description]/item-root:self-start
+
+      [&_svg]:pointer-events-none [&_svg]:shrink-0
+    `,
+    content: 'flex flex-1 flex-col gap-2',
+    title: 'truncate leading-none font-medium',
+    description: 'line-clamp-2 text-balance text-muted-foreground',
+    actions: 'flex shrink-0 items-center gap-2',
   },
   variants: {
-    size: {
-      sm: {},
-      md: {},
-      lg: {},
-    },
     variant: {
-      outline: {},
-      ghost: {},
-      soft: {},
+      outline: {
+        root: 'border-border bg-transparent',
+      },
+      ghost: {
+        root: 'bg-transparent',
+      },
+      soft: {
+        root: 'bg-surface',
+      },
     },
-    orientation: {
-      horizontal: {},
-      vertical: {},
+    mediaType: {
+      icon: {
+        media: 'size-10 p-2 border rounded-sm bg-muted [&_svg]:size-5 border-border',
+      },
+      image: {
+        media: 'size-10 rounded-sm overflow-hidden bg-muted [&_img]:size-full [&_img]:object-cover',
+      },
     },
+  },
+  defaultVariants: {
+    variant: 'ghost',
+    orientation: 'horizontal',
   },
 })
 
@@ -37,11 +56,8 @@ export const itemVariants = tv({
 export { default as ItemRoot } from './item-root.vue'
 export { default as ItemMedia } from './item-media.vue'
 export { default as ItemContent } from './item-content.vue'
-export { default as ItemHeader } from './item-header.vue'
 export { default as ItemTitle } from './item-title.vue'
 export { default as ItemDescription } from './item-description.vue'
-export { default as ItemBody } from './item-body.vue'
-export { default as ItemFooter } from './item-footer.vue'
 export { default as ItemActions } from './item-actions.vue'
 
 
@@ -57,42 +73,29 @@ export type ItemVariants = VariantProps<typeof itemVariants>
 
 // TYPES — Context
 
-export type ItemRootContext = Pick<ItemRootProps, 'size' | 'variant' | 'orientation'>
+export type ItemRootContext = Pick<ItemRootProps, 'variant'>
 
 
 // TYPES — PROPS
 
 export type ItemRootProps = PrimitiveProps & Pick<ClassProp, 'class'> & {
   /**
-   * The visual size of the item.
-   * @default 'md'
-   */
-  size?: ItemVariants['size']
-  /**
    * The visual style of the item.
    * @default 'ghost'
    */
   variant?: ItemVariants['variant']
-  /**
-   * The arrangement of the item.
-   * @default 'horizontal'
-   */
-  orientation?: ItemVariants['orientation']
 }
 
-export type ItemMediaProps = PrimitiveProps & Pick<ClassProp, 'class'>
+export type ItemMediaProps = PrimitiveProps & Pick<ClassProp, 'class'> & {
+  /** Controls whether the media slot is styled for an icon or an image. */
+  type?: ItemVariants['mediaType']
+}
 
 export type ItemContentProps = PrimitiveProps & Pick<ClassProp, 'class'>
-
-export type ItemHeaderProps = PrimitiveProps & Pick<ClassProp, 'class'>
 
 export type ItemTitleProps = PrimitiveProps & Pick<ClassProp, 'class'>
 
 export type ItemDescriptionProps = PrimitiveProps & Pick<ClassProp, 'class'>
-
-export type ItemBodyProps = PrimitiveProps & Pick<ClassProp, 'class'>
-
-export type ItemFooterProps = PrimitiveProps & Pick<ClassProp, 'class'>
 
 export type ItemActionsProps = PrimitiveProps & Pick<ClassProp, 'class'>
 
