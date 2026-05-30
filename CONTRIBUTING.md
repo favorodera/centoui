@@ -1,22 +1,23 @@
 # Contributing to CentoUI
 
-By participating you agree to the [Code of Conduct](./CODE_OF_CONDUCT.md).
+Thank you for your interest in contributing to CentoUI! We appreciate your time and effort in helping to improve this project.
 
 ---
 
-## Project Overview
+## Code of Conduct
 
-  CentoUI is a Vue 3 component library with a copy-paste model—components are copied into projects rather than imported from `node_modules`. This monorepo uses pnpm workspaces and Turborepo to manage three packages:
-
-  - **core** — Component source, registry, and theme defaults
-  - **cli** — CLI for initializing projects and managing components
-  - **nuxt** — Official Nuxt module with auto-registration
+By participating in this project, you agree to abide by the [Contributor Covenant Code of Conduct](https://www.contributor-covenant.org/version/2/1/code_of_conduct/).
 
 ---
 
-## Setup
+## Getting Started
 
-**Prerequisites:** Node.js v22+, pnpm v11+
+### Prerequisites
+
+  - [Node.js](https://nodejs.org/) (v20 or later)
+  - [pnpm](https://pnpm.io/installation) (v11 or later)
+
+### Setup
 
 ```bash
 git clone https://github.com/favorodera/centoui.git
@@ -29,40 +30,100 @@ pnpm dev
 
 ## Development Workflow
 
-  | Command | What it does |
-  |---------|-------------|
-  | `pnpm dev` | Starts all packages in watch mode |
-  | `pnpm build` | Production build of all packages |
-  | `pnpm lint` | Lint all packages with ESLint |
-  | `pnpm typecheck` | Type-check all packages |
-  | `pnpm test` | Run all test suites |
-  | `pnpm ready` | Full pipeline: install → lint → typecheck → build → test |
+### Branch Naming
+
+| Pattern | Use |
+|---------|-----|
+| `feat/<feature-name>` | New features |
+| `fix/<issue-description>` | Bug fixes |
+| `docs/<what-changed>` | Documentation changes |
+| `chore/<task>` | Maintenance tasks |
+
+### Commit Messages
+
+We follow [Conventional Commits](https://www.conventionalcommits.org/). `relizy` reads these to generate changelogs automatically.
+
+| Prefix | Use |
+|--------|-----|
+| `feat:` | A new feature |
+| `fix:` | A bug fix |
+| `docs:` | Documentation only |
+| `style:` | No logic change |
+| `refactor:` | Neither fix nor feature |
+| `perf:` | Performance improvement |
+| `test:` | Adding or correcting tests |
+| `chore:` | Build process or tooling |
+
+### Code Style
+
+```bash
+pnpm lint       # check linting errors
+pnpm typecheck  # verify TypeScript types
+pnpm test       # run all tests
+```
 
 ---
 
 ## Testing
+
+We use:
 
 - **Vitest** — Test runner
 - **happy-dom** — DOM environment
 - **Vue Test Utils** — Component testing utilities
 - **vitest-axe** — Accessibility testing
 
-Run tests with `pnpm test`.
+```bash
+pnpm test         # run all tests
+pnpm test:watch   # watch mode
+```
+
+  When adding new features or fixing bugs, please include tests as this helps us validate upcoming features before they are fully integrated.
 
 ---
 
-## Pull Request
+## Pull Request Process
 
-  1. `pnpm ready` — install → lint → typecheck → build → test.
-  2. [Conventional Commits](https://www.conventionalcommits.org/).
-  3. Update docs if behaviour changes.
+1. Ensure your code follows the project's coding standards
+2. Update documentation if you're changing functionality
+3. Add or update tests as appropriate
+4. Run the full validation suite:
+
+```bash
+pnpm ready
+```
+
+5. Commit using Conventional Commits and open a Pull Request.
+6. Push your branch and open a Pull Request.
 
 ---
 
-## References
+## Reporting Bugs
 
-- [Documentation](https://centoui.vercel.app/)
-- [Discussions](https://github.com/favorodera/centoui/discussions)
-- [Core Package](./packages/core)
-- [CLI Package](./packages/cli)
-- [Nuxt Module](./packages/nuxt)
+  Before filing a report, check existing issues. When you do file one, include:
+
+  - A clear, descriptive title
+  - Steps to reproduce
+  - Expected vs. actual behaviour
+  - Your environment (OS, Node.js version, pnpm version)
+
+---
+
+## Suggesting Features
+
+We welcome feature suggestions! Please open an issue describing:
+
+- The problem you're trying to solve
+- Your proposed solution
+- Any alternatives you've considered
+
+---
+
+## Questions?
+
+  If you have questions, feel free to:
+
+  - Open a [Discussion](https://github.com/favorodera/centoui/discussions)
+  - Check the [Documentation](https://centoui.vercel.app/)
+
+  Thank you for contributing! 🎉
