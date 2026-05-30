@@ -115,7 +115,7 @@ export default defineNuxtModule<ModuleOptions>({
     // Alias the utils directory for consumers and components import from "#centoui/utils"
     nuxt.options.alias['#centoui/utils'] = join(rootDir, config.utilsFilePath)
 
-    // Pre-bundle required Vite dependencies
+    // Pre-bundle required Vite dependencies for faster dev startup and better HMR
     extendViteConfig((config) => {
       config.optimizeDeps ||= {}
       config.optimizeDeps.include ||= []
