@@ -2,7 +2,7 @@
 import { reactiveOmit } from '@vueuse/core'
 import { Primitive, useForwardProps } from 'reka-ui'
 import { computed } from 'vue'
-import { kbdGroupVariants, type KbdGroupProps } from './index'
+import { kbdVariants, type KbdGroupProps } from './index'
 
 const props = withDefaults(defineProps<KbdGroupProps>(), {
   as: 'kbd',
@@ -11,8 +11,8 @@ const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
 
 const classNames = computed(() => {
-  const { root } = kbdGroupVariants()
-  return root({ class: props.class })
+  const { group } = kbdVariants()
+  return group({ class: props.class })
 })
 </script>
 

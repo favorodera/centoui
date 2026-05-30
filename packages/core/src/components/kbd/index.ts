@@ -1,14 +1,13 @@
 import type { PrimitiveProps } from 'reka-ui'
 import { tv, type ClassProp, type VariantProps } from 'tailwind-variants'
 
-// VARIANTS
-
 export const kbdVariants = tv({
   slots: {
     root: `
       pointer-events-none inline-flex w-fit items-center justify-center
       bg-neutral px-1.5 font-medium text-neutral-foreground select-none
     `,
+    group: 'inline-flex items-center gap-1 align-middle',
   },
   variants: {
     size: {
@@ -25,12 +24,6 @@ export const kbdVariants = tv({
   },
   defaultVariants: {
     size: 'md',
-  },
-})
-
-export const kbdGroupVariants = tv({
-  slots: {
-    root: 'inline-flex items-center gap-1 align-middle',
   },
 })
 
