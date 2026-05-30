@@ -1,10 +1,8 @@
 <template>
   <div
     class="
-      flex max-h-[calc(100dvh-(--spacing(11))-(--spacing(3)))] w-full max-w-3xl
-      scrollbar-thin scrollbar-thumb-border scrollbar-track-transparent
-      flex-wrap items-center justify-center gap-8 overflow-auto bg-background
-      p-3
+      flex w-full max-w-3xl flex-wrap items-center justify-center gap-8
+      bg-background p-3
     "
   >
     <slot />
