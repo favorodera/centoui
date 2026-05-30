@@ -1,5 +1,6 @@
 import { createContext, type PrimitiveProps } from 'reka-ui'
 import { tv, type ClassProp, type VariantProps } from 'tailwind-variants'
+import type { SeparatorProps } from '../separator'
 
 export const itemVariants = tv({
   slots: {
@@ -22,6 +23,8 @@ export const itemVariants = tv({
     title: 'truncate leading-none font-medium',
     description: 'line-clamp-2 text-balance text-muted-foreground',
     actions: 'flex shrink-0 items-center gap-2',
+    group: 'flex flex-col',
+    separator: 'my-0',
   },
   variants: {
     variant: {
@@ -59,6 +62,8 @@ export { default as ItemContent } from './item-content.vue'
 export { default as ItemTitle } from './item-title.vue'
 export { default as ItemDescription } from './item-description.vue'
 export { default as ItemActions } from './item-actions.vue'
+export { default as ItemGroup } from './item-group.vue'
+export { default as ItemSeparator } from './item-separator.vue'
 
 
 // CONTEXT
@@ -98,4 +103,9 @@ export type ItemTitleProps = PrimitiveProps & Pick<ClassProp, 'class'>
 export type ItemDescriptionProps = PrimitiveProps & Pick<ClassProp, 'class'>
 
 export type ItemActionsProps = PrimitiveProps & Pick<ClassProp, 'class'>
+
+export type ItemGroupProps = PrimitiveProps & Pick<ClassProp, 'class'>
+
+export type ItemSeparatorProps = SeparatorProps
+
 
