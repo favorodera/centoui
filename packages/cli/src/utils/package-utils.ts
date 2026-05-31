@@ -42,9 +42,9 @@ export async function installMissingPackages(
     ...packageJson.devDependencies,
   }
 
-  // Only install packages that are absent or whose listed version differs.
+  // Only install packages that are absent (check name only, not version)
   const packagesToInstall = Object.entries(requiredPackages)
-    .filter(([name, version]) => alreadyInstalled[name] !== version)
+    .filter(([name]) => !(name in alreadyInstalled))
     .map(([name, version]) => `${name}@${version}`)
 
   if (packagesToInstall.length === 0) {
