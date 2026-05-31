@@ -6,9 +6,8 @@ const baseRegistry: Registry = {
   components: [
     {
       name: 'button',
+      description: 'A button component',
       files: ['components/button/button.vue'],
-      componentDeps: [],
-      packageDeps: {},
     },
   ],
 }
