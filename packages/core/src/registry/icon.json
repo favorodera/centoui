@@ -6,7 +6,6 @@
     "components/icon/icon.vue",
     "components/icon/index.ts"
   ],
-  "componentDeps": [],
   "packageDeps": {
     "@iconify/vue": "^5.0.0"
   }

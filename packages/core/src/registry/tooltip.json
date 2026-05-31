@@ -10,7 +10,5 @@
     "components/tooltip/tooltip-portal.vue",
     "components/tooltip/tooltip-provider.vue",
     "components/tooltip/index.ts"
-  ],
-  "componentDeps": [ ],
-  "packageDeps": { }
+  ]
 }

@@ -5,7 +5,5 @@
   "files": [
     "components/textarea/textarea-root.vue",
     "components/textarea/index.ts"
-  ],
-  "componentDeps": [],
-  "packageDeps": {}
+  ]
 }

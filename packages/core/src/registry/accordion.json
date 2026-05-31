@@ -10,6 +10,5 @@
     "components/accordion/accordion-trigger.vue",
     "components/accordion/index.ts"
   ],
-  "componentDeps": ["icon"],
-  "packageDeps": { }
+  "componentDeps": [ "icon" ]
 }

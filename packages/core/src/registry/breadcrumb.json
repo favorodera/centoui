@@ -12,6 +12,5 @@
     "components/breadcrumb/breadcrumb-separator.vue",
     "components/breadcrumb/index.ts"
   ],
-  "componentDeps": ["icon"],
-  "packageDeps": {}
+  "componentDeps": [ "icon" ]
 }

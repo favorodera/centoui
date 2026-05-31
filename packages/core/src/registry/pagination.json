@@ -16,6 +16,5 @@
   "componentDeps": [
     "button",
     "icon"
-  ],
-  "packageDeps": {}
+  ]
 }

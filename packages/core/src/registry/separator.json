@@ -2,10 +2,9 @@
   "$schema": "../schemas/component.json",
   "name": "separator",
   "description": "Component for displaying a visual separator.",
+  "needsUtils": true,
   "files": [
     "components/separator/separator.vue",
     "components/separator/index.ts"
-  ],
-  "componentDeps": [ ],
-  "packageDeps": { }
+  ]
 }

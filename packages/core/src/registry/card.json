@@ -10,7 +10,5 @@
     "components/card/card-root.vue",
     "components/card/card-title.vue",
     "components/card/index.ts"
-  ],
-  "componentDeps": [ ],
-  "packageDeps": { }
+  ]
 }

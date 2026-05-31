@@ -26,8 +26,7 @@
       ],
       "componentDeps": [
         "icon"
-      ],
-      "packageDeps": {}
+      ]
     },
     {
       "$schema": "../schemas/component.json",
@@ -64,9 +63,7 @@
         "components/alert/alert-description.vue",
         "components/alert/alert-actions.vue",
         "components/alert/index.ts"
-      ],
-      "componentDeps": [],
-      "packageDeps": {}
+      ]
     },
     {
       "$schema": "../schemas/component.json",
@@ -75,9 +72,7 @@
       "files": [
         "components/aspect-ratio/aspect-ratio.vue",
         "components/aspect-ratio/index.ts"
-      ],
-      "componentDeps": [],
-      "packageDeps": {}
+      ]
     },
     {
       "$schema": "../schemas/component.json",
@@ -90,9 +85,7 @@
         "components/avatar/avatar-group.vue",
         "components/avatar/avatar-utils.ts",
         "components/avatar/index.ts"
-      ],
-      "componentDeps": [],
-      "packageDeps": {}
+      ]
     },
     {
       "$schema": "../schemas/component.json",
@@ -101,9 +94,7 @@
       "files": [
         "components/badge/badge.vue",
         "components/badge/index.ts"
-      ],
-      "componentDeps": [],
-      "packageDeps": {}
+      ]
     },
     {
       "$schema": "../schemas/component.json",
@@ -121,8 +112,7 @@
       ],
       "componentDeps": [
         "icon"
-      ],
-      "packageDeps": {}
+      ]
     },
     {
       "$schema": "../schemas/component.json",
@@ -135,8 +125,7 @@
       ],
       "componentDeps": [
         "separator"
-      ],
-      "packageDeps": {}
+      ]
     },
     {
       "$schema": "../schemas/component.json",
@@ -145,9 +134,7 @@
       "files": [
         "components/button/button.vue",
         "components/button/index.ts"
-      ],
-      "componentDeps": [],
-      "packageDeps": {}
+      ]
     },
     {
       "$schema": "../schemas/component.json",
@@ -161,9 +148,7 @@
         "components/card/card-root.vue",
         "components/card/card-title.vue",
         "components/card/index.ts"
-      ],
-      "componentDeps": [],
-      "packageDeps": {}
+      ]
     },
     {
       "$schema": "../schemas/component.json",
@@ -174,9 +159,7 @@
         "components/collapsible/collapsible-root.vue",
         "components/collapsible/collapsible-trigger.vue",
         "components/collapsible/index.ts"
-      ],
-      "componentDeps": [],
-      "packageDeps": {}
+      ]
     },
     {
       "$schema": "../schemas/component.json",
@@ -186,7 +169,6 @@
         "components/icon/icon.vue",
         "components/icon/index.ts"
       ],
-      "componentDeps": [],
       "packageDeps": {
         "@iconify/vue": "^5.0.0"
       }
@@ -199,9 +181,7 @@
         "components/input-group/input-group-addon.vue",
         "components/input-group/input-group-root.vue",
         "components/input-group/index.ts"
-      ],
-      "componentDeps": [],
-      "packageDeps": {}
+      ]
     },
     {
       "$schema": "../schemas/component.json",
@@ -210,9 +190,7 @@
       "files": [
         "components/input/input.vue",
         "components/input/index.ts"
-      ],
-      "componentDeps": [],
-      "packageDeps": {}
+      ]
     },
     {
       "$schema": "../schemas/component.json",
@@ -231,8 +209,7 @@
       ],
       "componentDeps": [
         "separator"
-      ],
-      "packageDeps": {}
+      ]
     },
     {
       "$schema": "../schemas/component.json",
@@ -242,9 +219,7 @@
         "components/kbd/kbd.vue",
         "components/kbd/kbd-group.vue",
         "components/kbd/index.ts"
-      ],
-      "componentDeps": [],
-      "packageDeps": {}
+      ]
     },
     {
       "$schema": "../schemas/component.json",
@@ -253,9 +228,7 @@
       "files": [
         "components/label/label-root.vue",
         "components/label/index.ts"
-      ],
-      "componentDeps": [],
-      "packageDeps": {}
+      ]
     },
     {
       "$schema": "../schemas/component.json",
@@ -275,8 +248,7 @@
       "componentDeps": [
         "button",
         "icon"
-      ],
-      "packageDeps": {}
+      ]
     },
     {
       "$schema": "../schemas/component.json",
@@ -291,8 +263,7 @@
       ],
       "componentDeps": [
         "input"
-      ],
-      "packageDeps": {}
+      ]
     },
     {
       "$schema": "../schemas/component.json",
@@ -315,8 +286,7 @@
       ],
       "componentDeps": [
         "button"
-      ],
-      "packageDeps": {}
+      ]
     },
     {
       "$schema": "../schemas/component.json",
@@ -326,9 +296,7 @@
         "components/progress-bar/progress-bar-root.vue",
         "components/progress-bar/progress-bar-indicator.vue",
         "components/progress-bar/index.ts"
-      ],
-      "componentDeps": [],
-      "packageDeps": {}
+      ]
     },
     {
       "$schema": "../schemas/component.json",
@@ -356,19 +324,17 @@
       "componentDeps": [
         "separator",
         "icon"
-      ],
-      "packageDeps": {}
+      ]
     },
     {
       "$schema": "../schemas/component.json",
       "name": "separator",
       "description": "Component for displaying a visual separator.",
+      "needsUtils": true,
       "files": [
         "components/separator/separator.vue",
         "components/separator/index.ts"
-      ],
-      "componentDeps": [],
-      "packageDeps": {}
+      ]
     },
     {
       "$schema": "../schemas/component.json",
@@ -391,8 +357,7 @@
       "componentDeps": [
         "button",
         "icon"
-      ],
-      "packageDeps": {}
+      ]
     },
     {
       "$schema": "../schemas/component.json",
@@ -404,9 +369,7 @@
         "components/slider/slider-range.vue",
         "components/slider/slider-thumb.vue",
         "components/slider/index.ts"
-      ],
-      "componentDeps": [],
-      "packageDeps": {}
+      ]
     },
     {
       "$schema": "../schemas/component.json",
@@ -416,9 +379,7 @@
         "components/switch/switch-root.vue",
         "components/switch/switch-thumb.vue",
         "components/switch/index.ts"
-      ],
-      "componentDeps": [],
-      "packageDeps": {}
+      ]
     },
     {
       "$schema": "../schemas/component.json",
@@ -427,9 +388,7 @@
       "files": [
         "components/textarea/textarea-root.vue",
         "components/textarea/index.ts"
-      ],
-      "componentDeps": [],
-      "packageDeps": {}
+      ]
     },
     {
       "$schema": "../schemas/component.json",
@@ -443,9 +402,7 @@
         "components/tooltip/tooltip-portal.vue",
         "components/tooltip/tooltip-provider.vue",
         "components/tooltip/index.ts"
-      ],
-      "componentDeps": [],
-      "packageDeps": {}
+      ]
     }
   ]
 }

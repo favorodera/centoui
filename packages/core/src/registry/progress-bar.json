@@ -6,7 +6,5 @@
     "components/progress-bar/progress-bar-root.vue",
     "components/progress-bar/progress-bar-indicator.vue",
     "components/progress-bar/index.ts"
-  ],
-  "componentDeps": [],
-  "packageDeps": {}
+  ]
 }

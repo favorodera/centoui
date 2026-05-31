@@ -5,7 +5,5 @@
   "files": [
     "components/button/button.vue",
     "components/button/index.ts"
-  ],
-  "componentDeps": [ ],
-  "packageDeps": { }
+  ]
 }

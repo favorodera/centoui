@@ -9,7 +9,5 @@
     "components/avatar/avatar-group.vue",
     "components/avatar/avatar-utils.ts",
     "components/avatar/index.ts"
-  ],
-  "componentDeps": [ ],
-  "packageDeps": { }
+  ]
 }

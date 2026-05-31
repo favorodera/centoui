@@ -10,7 +10,5 @@
     "components/alert/alert-description.vue",
     "components/alert/alert-actions.vue",
     "components/alert/index.ts"
-  ],
-  "componentDeps": [  ],
-  "packageDeps": {}
+  ]
 }

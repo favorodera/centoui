@@ -6,7 +6,5 @@
     "components/input-group/input-group-addon.vue",
     "components/input-group/input-group-root.vue",
     "components/input-group/index.ts"
-  ],
-  "componentDeps": [],
-  "packageDeps": {}
+  ]
 }

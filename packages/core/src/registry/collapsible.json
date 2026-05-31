@@ -7,7 +7,5 @@
     "components/collapsible/collapsible-root.vue",
     "components/collapsible/collapsible-trigger.vue",
     "components/collapsible/index.ts"
-  ],
-  "componentDeps": [],
-  "packageDeps": { }
+  ]
 }

@@ -8,7 +8,5 @@
     "components/slider/slider-range.vue",
     "components/slider/slider-thumb.vue",
     "components/slider/index.ts"
-  ],
-  "componentDeps": [ ],
-  "packageDeps": { }
+  ]
 }

@@ -5,7 +5,5 @@
   "files": [
     "components/badge/badge.vue",
     "components/badge/index.ts"
-  ],
-  "componentDeps": [ ],
-  "packageDeps": { }
+  ]
 }

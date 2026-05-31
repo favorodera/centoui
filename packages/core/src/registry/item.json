@@ -15,6 +15,5 @@
   ],
   "componentDeps": [
     "separator"
-  ],
-  "packageDeps": { }
+  ]
 }
