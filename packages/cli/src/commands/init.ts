@@ -7,7 +7,8 @@ import { confirmOverwriteIfExists } from '../utils/file-system-utils'
 import type { Registry } from '../types'
 import fsExtra from 'fs-extra'
 import { buildUserDefaultConfigFileContent } from '../utils/config-utils'
-import { fetchFullRegistry, fetchThemeCSSContent, fetchUtilsFileContent } from '../utils/registry-utils'
+import { fetchFullRegistry, fetchThemeCSSContent } from '../utils/registry-utils'
+import { writeFileWithDirs } from '../utils/file-system-utils'
 
 /**
  * Command: `centoui init`
@@ -15,9 +16,8 @@ import { fetchFullRegistry, fetchThemeCSSContent, fetchUtilsFileContent } from '
  * Bootstraps a new CentoUI project in the current working directory.
  *
  * Flow:
- *  1. Prompt the user for the components directory and theme CSS file path.
- *  2. Ask upfront whether to overwrite any of the three output paths
- *     (config file, theme CSS, components directory) if they already exist.
+ *  1. Prompt the user for the components directory, theme CSS file path, and utils file path.
+ *  2. Ask upfront whether to overwrite the config file, theme CSS, components directory paths if they already exist.
  *  3. Write the config file, fetch and write the theme CSS, prepare the
  *     components directory, and install global npm dependencies.
  */
@@ -53,7 +53,7 @@ export function init() {
 
             utilsFilePath: () =>
               text({
-                message: 'Path for the utils file',
+                message: 'Path for the utils file (written on demand)',
                 initialValue: 'src/utils/centoui-utils.ts',
                 validate: validateNonEmptyPath,
               }),
@@ -70,13 +70,11 @@ export function init() {
         const configPath = join(cwd, CONFIG_FILE_NAME)
         const themePath = join(cwd, directories.themeFilePath)
         const componentsPath = join(cwd, directories.componentDir)
-        const utilsPath = join(cwd, directories.utilsFilePath)
 
         // Ask all overwrite questions before any file operations begin.
         const shouldWriteConfig = await confirmOverwriteIfExists(CONFIG_FILE_NAME, configPath)
         const shouldWriteTheme = await confirmOverwriteIfExists(directories.themeFilePath, themePath)
         const shouldWriteComponentsDir = await confirmOverwriteIfExists(directories.componentDir, componentsPath)
-        const shouldWriteUtils = await confirmOverwriteIfExists(directories.utilsFilePath, utilsPath)
 
         // `registry` is populated by the "Fetching registry" task and consumed
         // by the subsequent "Installing global dependencies" task via closure.
@@ -92,11 +90,7 @@ export function init() {
 
               const userConfigContent = await buildUserDefaultConfigFileContent(directories.themeFilePath, directories.componentDir, directories.utilsFilePath)
 
-              await fsExtra.outputFile(
-                configPath,
-                userConfigContent,
-                'utf-8',
-              )
+              await writeFileWithDirs(configPath, userConfigContent)
 
               return `${CONFIG_FILE_NAME} written`
             },
@@ -110,23 +104,9 @@ export function init() {
               }
 
               const themeContent = await fetchThemeCSSContent()
-              await fsExtra.outputFile(themePath, themeContent, 'utf-8')
+              await writeFileWithDirs(themePath, themeContent)
 
               return `${directories.themeFilePath} written`
-            },
-          },
-
-          {
-            title: 'Writing utils file',
-            task: async () => {
-              if (!shouldWriteUtils) {
-                return `Skipped — "${directories.utilsFilePath}" already exists`
-              }
-
-              const utilsContent = await fetchUtilsFileContent()
-              await fsExtra.outputFile(utilsPath, utilsContent, 'utf-8')
-
-              return `${directories.utilsFilePath} written`
             },
           },
 
