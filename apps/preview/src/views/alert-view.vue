@@ -23,13 +23,18 @@ const values = useApp().preview.initPreview('Alert', {
       </AlertMedia>
 
       <AlertContent>
-        <AlertTitle>New version available</AlertTitle>
-        <AlertDescription>Install the update to improve performance and security.</AlertDescription>
+        <AlertTitle>Scheduled maintenance</AlertTitle>
+        <AlertDescription>
+          System maintenance is scheduled for Sunday, 2:00 AM - 4:00 AM UTC. Some features may be temporarily unavailable.
+        </AlertDescription>
       </AlertContent>
 
       <AlertActions>
-        <Button size="sm">
-          Update now
+        <Button
+          variant="outline"
+          size="sm"
+        >
+          Learn more
         </Button>
       </AlertActions>
     </AlertRoot>
