@@ -4,16 +4,16 @@ import fsExtra from 'fs-extra'
 import { confirm, isCancel, cancel } from '@clack/prompts'
 
 /**
- * Converts a registry-relative file path into the absolute destination path
+ * Converts a registry-relative component file path into the absolute destination path
  * inside the user's project.
  *
- * Registry file paths always begin with `components/` (e.g.
+ * Registry component file paths always begin with `components/` (e.g.
  * `"components/button/button.vue"`). This function strips that leading segment
  * and joins the remainder with the user's configured components directory so
  * that `"components/button/button.vue"` becomes, for example,
  * `"/home/user/my-app/src/components/centoui/button/button.vue"`.
  *
- * @param registryFilePath - Path as it appears in the component's registry entry
+ * @param registryComponentFilePath - Path as it appears in the component's registry entry
  *                           (always starts with `"components/"`).
  * @param config - The loaded CentoUI project configuration.
  * @param cwd - Absolute path to the project root.
@@ -21,17 +21,17 @@ import { confirm, isCancel, cancel } from '@clack/prompts'
  *
  * @example
  * // config.componentsDir = 'src/components/centoui', cwd = '/home/user/my-app'
- * mapRegistryPathToProjectDest('components/button/button.vue', config, cwd)
+ * mapComponentsRegistryPathToProjectDest('components/button/button.vue', config, cwd)
  * // → '/home/user/my-app/src/components/centoui/button/button.vue'
  */
-export function mapRegistryPathToProjectDest(
-  registryFilePath: string,
+export function mapComponentsRegistryPathToProjectDest(
+  registryComponentFilePath: string,
   config: CentoUIConfig,
   cwd: string,
 ) {
   // All registry paths are prefixed with "components/" by schema convention.
   // We strip that prefix before joining with the user's own components directory.
-  const pathWithoutRegistryPrefix = registryFilePath.replace(/^components\//, '')
+  const pathWithoutRegistryPrefix = registryComponentFilePath.replace(/^components\//, '')
   return join(cwd, config.componentsDir, pathWithoutRegistryPrefix)
 }
 
