@@ -19,9 +19,9 @@ export const accordionVariants = tv({
     `,
     header: 'flex',
     trigger: `
-      group/trigger flex flex-1 cursor-pointer items-start justify-between gap-4
-      py-4 text-left font-medium text-foreground transition-colors duration-300
-      outline-none
+      group/accordion-trigger flex flex-1 cursor-pointer items-start
+      justify-between gap-4 py-4 text-left font-medium text-foreground
+      transition-colors duration-300 outline-none
 
       focus-visible:ring-2 focus-visible:ring-ring
 
@@ -31,7 +31,7 @@ export const accordionVariants = tv({
       pointer-events-none size-4 shrink-0 translate-y-0.5 text-muted-foreground
       transition-transform duration-300
 
-      group-data-[state=open]/trigger:rotate-180
+      group-data-[state=open]/accordion-trigger:rotate-180
     `,
     content: `
       overflow-hidden text-sm text-muted-foreground animation-duration-300
