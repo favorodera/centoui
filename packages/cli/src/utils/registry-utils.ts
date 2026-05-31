@@ -104,7 +104,7 @@ export function resolveComponentWithDependencies(
 
   result.set(componentName, entry)
 
-  for (const dep of entry.componentDeps) {
+  for (const dep of entry?.componentDeps || []) {
     for (const [depName, depEntry] of resolveComponentWithDependencies(dep, registry, visited)) {
       result.set(depName, depEntry)
     }
