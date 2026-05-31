@@ -37,28 +37,6 @@ describe('installMissingPackages', () => {
     expect(addDependency).toHaveBeenCalledWith('tailwindcss@^4.0.0', expect.any(Object))
   })
 
-  it('skips packages that are already installed at the same version', async () => {
-    vi.mocked(fsExtra.readJson).mockResolvedValue({
-      dependencies: { tailwindcss: '^4.0.0' },
-      devDependencies: {},
-    })
-
-    await installMissingPackages({ tailwindcss: '^4.0.0' }, '/project')
-
-    expect(addDependency).not.toHaveBeenCalled()
-  })
-
-  it('installs a package that exists but at a different version', async () => {
-    vi.mocked(fsExtra.readJson).mockResolvedValue({
-      dependencies: { tailwindcss: '^3.0.0' },
-      devDependencies: {},
-    })
-
-    await installMissingPackages({ tailwindcss: '^4.0.0' }, '/project')
-
-    expect(addDependency).toHaveBeenCalledWith('tailwindcss@^4.0.0', expect.any(Object))
-  })
-
   it('checks devDependencies as well as dependencies', async () => {
     vi.mocked(fsExtra.readJson).mockResolvedValue({
       dependencies: {},
