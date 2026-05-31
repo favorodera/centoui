@@ -1,6 +1,7 @@
 import { cancel, confirm, intro, isCancel, log, note, outro, tasks } from '@clack/prompts'
 import { defineCommand } from 'citty'
 import fsExtra from 'fs-extra'
+import { join } from 'pathe'
 import { loadCentoUIConfig } from '../utils/config-utils'
 import { resolveComponentInstallDir, listInstalledComponentNames, checkIsComponentInstalled } from '../utils/components-utils'
 import { fetchFullRegistry } from '../utils/registry-utils'
@@ -19,6 +20,7 @@ import { removeOrphanedPackages } from '../utils/package-utils'
  *     know which of this component's packages become orphaned.
  *  4. Ask for confirmation, then delete the component directory and remove
  *     any newly orphaned npm packages.
+ *  5. Check if any utils file is no longer needed and remove it if so(with confirmation from the user).
  */
 export function remove() {
   return defineCommand({
@@ -81,11 +83,11 @@ export function remove() {
 
           if (!entry) continue
 
-          if (entry.componentDeps.includes(componentName)) {
+          if (entry.componentDeps?.includes(componentName)) {
             dependents.add(name)
           }
 
-          Object.assign(packagesStillNeeded, entry.packageDeps)
+          Object.assign(packagesStillNeeded, entry.packageDeps || {})
         }
 
         // Block removal if any installed component depends on this one.
@@ -118,12 +120,12 @@ export function remove() {
           {
             title: 'Removing orphaned packages',
             task: async message =>
-              removeOrphanedPackages(targetEntry.packageDeps, packagesStillNeeded, cwd, message),
+              removeOrphanedPackages(targetEntry.packageDeps || {}, packagesStillNeeded, cwd, message),
           },
         ])
 
         // Surface the removed packages so the user knows what changed in their lockfile.
-        const removedPackages = Object.keys(targetEntry.packageDeps).filter(
+        const removedPackages = Object.keys(targetEntry.packageDeps || {}).filter(
           pkg => !(pkg in packagesStillNeeded),
         )
 
@@ -132,6 +134,30 @@ export function remove() {
             removedPackages.map(pkg => `  · ${pkg}`).join('\n'),
             'Packages removed',
           )
+        }
+
+        // Check if any remaining installed components need utils
+        const remainingNeedUtils = remainingNames.some((name) => {
+          const entry = registry.components.find(c => c.name === name)
+          return entry?.needsUtils === true
+        })
+
+        // If no components need utils and utils file exists, prompt to delete
+        if (!remainingNeedUtils) {
+          const utilsPath = join(cwd, config.utilsFilePath)
+          const utilsFileExists = await fsExtra.pathExists(utilsPath)
+
+          if (utilsFileExists) {
+            const shouldDeleteUtils = await confirm({
+              message: 'Delete utils file? (no components require it anymore)',
+              initialValue: false,
+            })
+
+            if (!isCancel(shouldDeleteUtils) && shouldDeleteUtils) {
+              await fsExtra.remove(utilsPath)
+              note(`${config.utilsFilePath} deleted`, 'Utils file removed')
+            }
+          }
         }
 
         outro('All set!')
