@@ -7,27 +7,27 @@ const baseRegistry: Registry = {
   components: [
     {
       name: 'button',
+      description: 'A button component',
       files: ['components/button/button.vue'],
-      componentDeps: [],
-      packageDeps: {},
     },
     {
       name: 'dialog',
+      description: 'A dialog component',
       files: ['components/dialog/dialog.vue'],
       componentDeps: ['button'],
       packageDeps: { 'focus-trap': '^7.0.0' },
     },
     {
       name: 'tooltip',
+      description: 'A tooltip component',
       files: ['components/tooltip/tooltip.vue'],
       componentDeps: ['button'],
-      packageDeps: {},
     },
     {
       name: 'nested',
+      description: 'A nested component',
       files: ['components/nested/nested.vue'],
       componentDeps: ['dialog'], // dialog > button (transitive)
-      packageDeps: {},
     },
   ],
 }
@@ -63,6 +63,7 @@ describe('resolveComponentWithDependencies', () => {
         ...baseRegistry.components,
         {
           name: 'combo',
+          description: 'A combo component',
           files: ['components/combo/combo.vue'],
           componentDeps: ['dialog', 'tooltip'],
           packageDeps: {},
@@ -80,8 +81,20 @@ describe('resolveComponentWithDependencies', () => {
     const circular: Registry = {
       globals: { packageDeps: {} },
       components: [
-        { name: 'a', files: ['components/a/a.vue'], componentDeps: ['b'], packageDeps: {} },
-        { name: 'b', files: ['components/b/b.vue'], componentDeps: ['a'], packageDeps: {} },
+        {
+          name: 'a',
+          description: 'A component',
+          files: ['components/a/a.vue'],
+          componentDeps: ['b'],
+          packageDeps: {},
+        },
+        {
+          name: 'b',
+          description: 'B component',
+          files: ['components/b/b.vue'],
+          componentDeps: ['a'],
+          packageDeps: {},
+        },
       ],
     }
 
@@ -100,6 +113,7 @@ describe('resolveComponentWithDependencies', () => {
       components: [
         {
           name: 'widget',
+          description: 'A widget component',
           files: ['components/widget/widget.vue'],
           componentDeps: ['missing-dep'],
           packageDeps: {},
@@ -115,8 +129,8 @@ describe('resolveComponentWithDependencies', () => {
   it('returns registry entries with the correct shape', () => {
     const result = resolveComponentWithDependencies('dialog', baseRegistry)
 
-    const buttonEntry = result.get('button')!
-    expect(buttonEntry.name).toBe('button')
-    expect(buttonEntry.files).toContain('components/button/button.vue')
+    const buttonEntry = result.get('button')
+    expect(buttonEntry?.name).toBe('button')
+    expect(buttonEntry?.files).toContain('components/button/button.vue')
   })
 })
