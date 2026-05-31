@@ -19,7 +19,13 @@ export type ComponentRegistry = {
   name: string
 
   /** Short human-readable description shown in CLI output. */
-  description?: string
+  description: string
+
+  /**
+   * Whether this component requires the global utils file (e.g., isSlotEmpty).
+   * If true, the utils file will be written when this component is installed.
+   */
+  needsUtils?: boolean
 
   /**
    * Source file paths relative to `packages/core/src/`.
@@ -32,14 +38,14 @@ export type ComponentRegistry = {
    * Names of other CentoUI components that must be installed alongside this one.
    * The CLI resolves the full dependency tree automatically.
    */
-  componentDeps: string[]
+  componentDeps?: string[]
 
   /**
    * NPM packages required specifically by this component,
    * in addition to the global dependencies defined in `GlobalsRegistry`.
    * Keys are package names; values are semver version ranges.
    */
-  packageDeps: Record<string, string>
+  packageDeps?: Record<string, string>
 }
 
 /**
