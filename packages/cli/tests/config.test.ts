@@ -43,32 +43,32 @@ describe('buildUserDefaultConfigFileContent', () => {
   })
 
   it('includes the defineConfig import', async () => {
-    const result = await configUtils.buildUserDefaultConfigFileContent('theme.css', 'components')
+    const result = await configUtils.buildUserDefaultConfigFileContent('theme.css', 'components', 'centoui-utils.ts')
     expect(result).toContain("import { defineConfig } from 'centoui'")
   })
 
   it('wraps the config with defineConfig', async () => {
-    const result = await configUtils.buildUserDefaultConfigFileContent('theme.css', 'components')
+    const result = await configUtils.buildUserDefaultConfigFileContent('theme.css', 'components', 'centoui-utils.ts')
     expect(result).toContain('export default defineConfig({')
   })
 
   it('includes the provided componentsDir', async () => {
-    const result = await configUtils.buildUserDefaultConfigFileContent('theme.css', 'src/components/ui')
+    const result = await configUtils.buildUserDefaultConfigFileContent('theme.css', 'src/components/ui', 'centoui-utils.ts')
     expect(result).toContain("componentsDir: 'src/components/ui'")
   })
 
   it('includes the provided themeFilePath', async () => {
-    const result = await configUtils.buildUserDefaultConfigFileContent('src/assets/css/centoui.css', 'components')
+    const result = await configUtils.buildUserDefaultConfigFileContent('src/assets/css/centoui.css', 'components', 'centoui-utils.ts')
     expect(result).toContain("themeFilePath: 'src/assets/css/centoui.css'")
   })
 
   it('includes the provided utilsFilePath', async () => {
-    const result = await configUtils.buildUserDefaultConfigFileContent('src/assets/css/centoui.css', 'components', 'src/utils/index.ts')
-    expect(result).toContain("utilsFilePath: 'src/utils/index.ts'")
+    const result = await configUtils.buildUserDefaultConfigFileContent('src/assets/css/centoui.css', 'components', 'src/utils/centoui-utils.ts')
+    expect(result).toContain("utilsFilePath: 'src/utils/centoui-utils.ts'")
   })
 
   it('includes defaults from the fetched config', async () => {
-    const result = await configUtils.buildUserDefaultConfigFileContent('theme.css', 'components')
+    const result = await configUtils.buildUserDefaultConfigFileContent('theme.css', 'components', 'centoui-utils.ts')
     expect(result).toContain("close: 'lucide:x'")
     expect(result).toContain("foo: 'bar'")
   })
@@ -77,7 +77,7 @@ describe('buildUserDefaultConfigFileContent', () => {
     global.fetch = vi.fn().mockRejectedValue(new Error('Network failed'))
 
     await expect(
-      configUtils.buildUserDefaultConfigFileContent('theme.css', 'components'),
+      configUtils.buildUserDefaultConfigFileContent('theme.css', 'components', 'centoui-utils.ts'),
     ).rejects.toThrow('Network failed')
   })
 
@@ -85,7 +85,7 @@ describe('buildUserDefaultConfigFileContent', () => {
     global.fetch = vi.fn().mockResolvedValue({ ok: false, status: 404, statusText: 'Not Found' })
 
     await expect(
-      configUtils.buildUserDefaultConfigFileContent('theme.css', 'components'),
+      configUtils.buildUserDefaultConfigFileContent('theme.css', 'components', 'centoui-utils.ts'),
     ).rejects.toThrow('404')
   })
 
@@ -95,10 +95,11 @@ describe('buildUserDefaultConfigFileContent', () => {
       text: async () => 'export default {}',
     })
 
-    const result = await configUtils.buildUserDefaultConfigFileContent('theme.css', 'components')
+    const result = await configUtils.buildUserDefaultConfigFileContent('theme.css', 'components', 'centoui-utils.ts')
 
     expect(result).toContain('export default defineConfig({')
     expect(result).toContain("componentsDir: 'components'")
     expect(result).toContain("themeFilePath: 'theme.css'")
+    expect(result).toContain("utilsFilePath: 'centoui-utils.ts'")
   })
 })
