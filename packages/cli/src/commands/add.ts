@@ -4,16 +4,19 @@ import { intro, log, note, outro, tasks } from '@clack/prompts'
 import {
   fetchFullRegistry,
   fetchRegistryFileContent,
+  fetchUtilsFileContent,
   resolveComponentWithDependencies,
 } from '../utils/registry-utils'
 import type { ComponentRegistry } from '../types'
 import { resolveComponentInstallDir } from '../utils/components-utils'
 import {
   confirmOverwriteIfExists,
-  mapRegistryPathToProjectDest,
+  mapComponentsRegistryPathToProjectDest,
   writeFileWithDirs,
 } from '../utils/file-system-utils'
 import { installMissingPackages } from '../utils/package-utils'
+import { join } from 'pathe'
+import fsExtra from 'fs-extra'
 
 /**
  * Command: `centoui add <component> [component...]`
@@ -25,7 +28,8 @@ import { installMissingPackages } from '../utils/package-utils'
  *  1. Resolve the full dependency tree for every requested component.
  *  2. Ask the user upfront whether to overwrite any that already exist.
  *  3. Fetch and write the source files for components the user approved.
- *  4. Install any npm packages required by the components being written.
+ *  4. Fetch and write the utils file if it doesn't exist but is required by the components.
+ *  5. Install any npm packages required by the components being written.
  */
 export function add() {
   return defineCommand({
@@ -90,6 +94,15 @@ export function add() {
           ([name]) => writeDecisions.get(name),
         )
 
+        // Check if any approved component needs utils
+        const needsUtils = Array.from(approvedComponents).some(
+          ([, entry]) => entry.needsUtils === true,
+        )
+
+        // Check if utils file already exists
+        const utilsPath = join(cwd, config.utilsFilePath)
+        const utilsFileExists = await fsExtra.pathExists(utilsPath)
+
         await tasks([
           // One task per component — fetch its files from GitHub and write them.
           ...approvedComponents.map(([name, entry]) => ({
@@ -97,7 +110,7 @@ export function add() {
             task: async () => {
               for (const registryFilePath of entry.files) {
                 const content = await fetchRegistryFileContent(registryFilePath)
-                const destinationPath = mapRegistryPathToProjectDest(registryFilePath, config, cwd)
+                const destinationPath = mapComponentsRegistryPathToProjectDest(registryFilePath, config, cwd)
                 await writeFileWithDirs(destinationPath, content)
               }
               return `${name} installed (${entry.files.length} file(s))`
@@ -109,6 +122,22 @@ export function add() {
             title: 'Installing packages',
             task: async message => installMissingPackages(packageDepsToInstall, cwd, message),
           },
+
+          // Write utils file if needed and doesn't exist
+          ...(
+            needsUtils && !utilsFileExists
+              ? [
+                  {
+                    title: 'Writing utils file',
+                    task: async () => {
+                      const utilsContent = await fetchUtilsFileContent()
+                      await writeFileWithDirs(utilsPath, utilsContent)
+                      return `${config.utilsFilePath} written`
+                    },
+                  },
+                ]
+              : []
+          ),
         ])
 
         const skippedNames = Array.from(writeDecisions.entries())
