@@ -1,17 +1,18 @@
 import { describe, expect, it } from 'vitest'
 import type { CentoUIConfig } from '../src/types'
-import { mapRegistryPathToProjectDest } from '../src/utils/file-system-utils'
+import { mapComponentsRegistryPathToProjectDest } from '../src/utils/file-system-utils'
 import { validateNonEmptyPath } from '../src/utils/package-utils'
 
 const mockConfig: CentoUIConfig = {
   componentsDir: 'src/components/centoui',
   themeFilePath: 'src/assets/css/centoui.css',
+  utilsFilePath: 'src/utils/centoui-utils.ts',
   icons: {},
 }
 
-describe('mapRegistryPathToProjectDest', () => {
+describe('mapComponentsRegistryPathToProjectDest', () => {
   it('strips the leading components/ prefix', () => {
-    const result = mapRegistryPathToProjectDest(
+    const result = mapComponentsRegistryPathToProjectDest(
       'components/button/button.vue',
       mockConfig,
       '/project',
@@ -21,7 +22,7 @@ describe('mapRegistryPathToProjectDest', () => {
   })
 
   it('joins the remainder with cwd and componentsDir', () => {
-    const result = mapRegistryPathToProjectDest(
+    const result = mapComponentsRegistryPathToProjectDest(
       'components/button/button.vue',
       mockConfig,
       '/project',
@@ -31,7 +32,7 @@ describe('mapRegistryPathToProjectDest', () => {
   })
 
   it('preserves nested paths inside the component folder', () => {
-    const result = mapRegistryPathToProjectDest(
+    const result = mapComponentsRegistryPathToProjectDest(
       'components/button/utils/helpers.ts',
       mockConfig,
       '/project',
@@ -43,7 +44,7 @@ describe('mapRegistryPathToProjectDest', () => {
   it('works with different componentsDir values', () => {
     const config = { ...mockConfig, componentsDir: 'lib/ui' }
 
-    const result = mapRegistryPathToProjectDest(
+    const result = mapComponentsRegistryPathToProjectDest(
       'components/badge/badge.vue',
       config,
       '/project',
