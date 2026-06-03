@@ -70,16 +70,17 @@ const vegetables = ['Aubergine', 'Broccoli', 'Carrot', 'Courgette', 'Leek']
         :position="values.contentPosition"
         :show-arrow="values.showArrow"
       >
-        <SelectLabel>
-          Fruits
-        </SelectLabel>
         <SelectGroup>
+          <SelectLabel>
+            Fruits
+          </SelectLabel>
+
           <SelectItem
             v-for="(fruit, index) in fruits"
             :key="index"
             :value="fruit"
           >
-            {{ fruit }} eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+            {{ fruit }}
           </SelectItem>
         </SelectGroup>
 
