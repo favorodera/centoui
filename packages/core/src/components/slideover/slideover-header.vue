@@ -9,7 +9,7 @@ import {
 import { computed } from 'vue'
 import config from '#centoui/config'
 import { Icon } from '../icon'
-import { buttonVariants } from '../button'
+import { Button } from '../button'
 
 const props = withDefaults(defineProps<SlideoverHeaderProps>(), {
   showClose: true,
@@ -17,20 +17,11 @@ const props = withDefaults(defineProps<SlideoverHeaderProps>(), {
 const delegatedProps = reactiveOmit(props, 'class', 'showClose')
 const forwardedProps = useForwardProps(delegatedProps)
 
-const classNames = computed(() => {
-  const { header: slideoverHeader, headerClose: slideoverHeaderClose } = slideoverVariants()
-
-  const { root: buttonRoot } = buttonVariants({
-    variant: 'link',
-    size: 'sm',
-    square: true,
-  })
-  
-  return {
-    header: slideoverHeader({ class: props.class }),
-    close: buttonRoot({ class: slideoverHeaderClose() }),
-  }
-})
+const { header, headerClose } = slideoverVariants()
+const classNames = computed(() => ({
+  header: header({ class: props.class }),
+  close: headerClose(),
+}))
 </script>
 
 <template>
@@ -41,17 +32,20 @@ const classNames = computed(() => {
   >
     <slot />
 
-    <slot
+    <SlideoverClose
       v-if="props.showClose"
-      name="close"
+      :class="classNames.close"
+      data-slot="slideover-header-close"
+      as-child
     >
-      <SlideoverClose
-        :class="classNames.close"
-        data-slot="slideover-header-close"
+      <Button
+        variant="ghost"
+        size="sm"
+        square
       >
         <span class="sr-only">Close slideover</span>
         <Icon :icon="config.icons.close" />
-      </SlideoverClose>
-    </slot>
+      </Button>
+    </SlideoverClose>
   </Primitive>
 </template>
