@@ -11,11 +11,8 @@ const props = defineProps<SlideoverFooterProps>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
 
-const classNames = computed(() => {
-  const { footer } = slideoverVariants()
-  
-  return footer({ class: props.class })
-})
+const { footer } = slideoverVariants()
+const classNames = computed(() => footer({ class: props.class }))
 </script>
 
 <template>
