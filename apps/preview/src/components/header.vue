@@ -6,6 +6,7 @@ import {
   SelectValue,
   SelectContent,
   SelectItem,
+  SelectGroup,
 } from '#centoui/components/select'
 import {
   PopoverContent,
@@ -72,14 +73,16 @@ watch(
       </SelectTrigger>
 
       <SelectContent>
-        <SelectItem
-          v-for="component in navigation.components.value"
-          :key="component.path"
-          :value="component.path"
-        >
-          {{ component.label }}
+        <SelectGroup>
+          <SelectItem
+            v-for="component in navigation.components.value"
+            :key="component.path"
+            :value="component.path"
+          >
+            {{ component.label }}
 
-        </SelectItem>
+          </SelectItem>
+        </SelectGroup>
       </SelectContent>
     </SelectRoot>
 
