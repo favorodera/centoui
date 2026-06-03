@@ -11,11 +11,8 @@ const props = defineProps<SlideoverTitleProps>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
 
-const classNames = computed(() => {
-  const { title } = slideoverVariants()
-  
-  return title({ class: props.class })
-})
+const { title } = slideoverVariants()
+const classNames = computed(() => title({ class: props.class }))
 </script>
 
 <template>
