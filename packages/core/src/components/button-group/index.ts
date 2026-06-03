@@ -29,8 +29,6 @@ export const buttonGroupVariants = tv({
           *:not-first:rounded-l-none *:not-first:border-l-0
 
           *:not-last:rounded-r-none
-
-          **:data-[slot=separator]:h-auto
         `,
       },
     },
