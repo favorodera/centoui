@@ -1,27 +1,29 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
 import { Separator, useForwardProps } from 'reka-ui'
-import { computed } from 'vue'
-import { separatorVariants, type SeparatorProps, type SeparatorSlots } from './index'
+import { computed, useSlots } from 'vue'
+import { separatorVariants, type SeparatorProps } from './index'
 import { isSlotEmpty } from '#centoui/utils'
 
-const slots = defineSlots<SeparatorSlots>()
+const slots = useSlots()
 
 const props = defineProps<SeparatorProps>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
 
-const classNames = computed(() => {
-  const { root, line, content } = separatorVariants({
+const { root, line, content } = separatorVariants()
+const classNames = computed(() => ({
+  root: root({
     orientation: props.orientation,
-  })
-  
-  return {
-    root: root({ class: props.class }),
-    line: line(),
-    content: content(),
-  }
-})
+    class: props.class,
+  }),
+  line: line({
+    orientation: props.orientation,
+  }),
+  content: content({
+    orientation: props.orientation,
+  }),
+}))
 </script>
 
 <template>
