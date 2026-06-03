@@ -1,10 +1,8 @@
-import { tv, type ClassProp, type VariantProps } from 'tailwind-variants'
+import { tv, type VariantProps } from 'tailwind-variants'
 import {
   type DialogRootProps as RekaDialogRootProps,
   type DialogRootEmits as RekaDialogRootEmits,
   type DialogTriggerProps as RekaDialogTriggerProps,
-  type DialogPortalProps as RekaDialogPortalProps,
-  type DialogOverlayProps as RekaDialogOverlayProps,
   type DialogContentProps as RekaDialogContentProps,
   type DialogContentEmits as RekaDialogContentEmits,
   type DialogTitleProps as RekaDialogTitleProps,
@@ -17,45 +15,42 @@ export const slideoverVariants = tv({
   slots: {
     trigger: '',
     overlay: `
-      fixed inset-0 z-50 bg-overlay animation-duration-300
+      fixed inset-0 z-50 bg-overlay backdrop-blur-xs
 
       data-[state=closed]:animate-out data-[state=closed]:fade-out-0
 
       data-[state=open]:animate-in data-[state=open]:fade-in-0
     `,
     content: `
-      fixed z-50 m-2 flex max-h-[calc(100%-(--spacing(4)))]
-      w-[calc(100%-(--spacing(4)))] flex-col gap-6 rounded-xl bg-surface-raised
-      py-6 shadow-lg transition-all duration-300 animation-duration-300
+      fixed z-50 flex flex-col gap-4 border-border bg-surface-raised py-4
+      transition-all
+
+      has-data-[slot=slideover-footer]:pb-0
 
       data-[state=closed]:animate-out
 
       data-[state=open]:animate-in
     `,
     header: `
-      flex flex-col items-start gap-2 px-6 text-left
+      flex flex-col gap-1 border-border px-4
 
-      [&.border-b]:pb-6
+      [&.border-b]:pb-4
     `,
-    headerClose: 'absolute top-6 right-6',
+    headerClose: 'absolute top-4 right-4',
     title: 'text-base font-medium',
     description: 'text-sm text-muted-foreground',
     close: '',
     body: `
-      flex-1 scrollbar-thin scrollbar-thumb-border scrollbar-track-transparent
-      overflow-y-auto px-6
+      flex-1 scrollbar-thin scrollbar-thumb-accent scrollbar-track-transparent
+      scrollbar-gutter-auto overflow-y-auto px-4
     `,
-    footer: `
-      mt-auto flex items-center px-6
-
-      [&.border-t]:pt-6
-    `,
+    footer: 'mt-auto flex gap-2 border-border p-4',
   },
   variants: {
     side: {
       top: {
         content: `
-          inset-x-0 top-0 h-auto
+          inset-x-0 top-0 h-auto max-h-[50dvh]
 
           data-[state=closed]:slide-out-to-top
 
@@ -64,7 +59,7 @@ export const slideoverVariants = tv({
       },
       bottom: {
         content: `
-          inset-x-0 bottom-0 h-auto
+          inset-x-0 bottom-0 h-auto max-h-[50dvh] border-t
 
           data-[state=closed]:slide-out-to-bottom
 
@@ -73,7 +68,7 @@ export const slideoverVariants = tv({
       },
       left: {
         content: `
-          inset-y-0 left-0 h-full max-w-sm
+          inset-y-0 left-0 h-full max-w-sm border-r
 
           data-[state=closed]:slide-out-to-left
 
@@ -82,7 +77,7 @@ export const slideoverVariants = tv({
       },
       right: {
         content: `
-          inset-y-0 right-0 h-full max-w-sm
+          inset-y-0 right-0 h-full max-w-sm border-l
 
           data-[state=closed]:slide-out-to-right
 
@@ -98,11 +93,8 @@ export const slideoverVariants = tv({
 
 
 // COMPONENTS
-
 export { default as SlideoverRoot } from './slideover-root.vue'
 export { default as SlideoverTrigger } from './slideover-trigger.vue'
-export { default as SlideoverPortal } from './slideover-portal.vue'
-export { default as SlideoverOverlay } from './slideover-overlay.vue'
 export { default as SlideoverContent } from './slideover-content.vue'
 export { default as SlideoverHeader } from './slideover-header.vue'
 export { default as SlideoverTitle } from './slideover-title.vue'
@@ -112,61 +104,55 @@ export { default as SlideoverBody } from './slideover-body.vue'
 export { default as SlideoverFooter } from './slideover-footer.vue'
 
 
-// TYPES — Variants
+// VARIANTS
 export type SlideoverVariants = VariantProps<typeof slideoverVariants>
 
 
-// TYPES — Props
+// PROPS
+export type SlideoverRootProps = RekaDialogRootProps & { class?: any }
 
-export type SlideoverRootProps = RekaDialogRootProps & Pick<ClassProp, 'class'>
+export type SlideoverTriggerProps = RekaDialogTriggerProps & { class?: any }
 
-export type SlideoverTriggerProps = RekaDialogTriggerProps & Pick<ClassProp, 'class'>
-
-export type SlideoverPortalProps = RekaDialogPortalProps
-
-export type SlideoverOverlayProps = RekaDialogOverlayProps & Pick<ClassProp, 'class'>
-
-export type SlideoverContentProps = RekaDialogContentProps & Pick<ClassProp, 'class'> & {
+export type SlideoverContentProps = RekaDialogContentProps & {
   /**
    * The direction the slideover opens from
    * @default 'right'
    */
   side?: SlideoverVariants['side']
+  class?: any
 }
 
-export type SlideoverHeaderProps = PrimitiveProps & Pick<ClassProp, 'class'> & {
+export type SlideoverHeaderProps = PrimitiveProps & {
   /**
    * Whether to show the close button inside the header
    * @default true
    */
   showClose?: boolean
+  class?: any
 }
 
-export type SlideoverTitleProps = RekaDialogTitleProps & Pick<ClassProp, 'class'>
+export type SlideoverTitleProps = RekaDialogTitleProps & { class?: any }
 
-export type SlideoverDescriptionProps = RekaDialogDescriptionProps & Pick<ClassProp, 'class'>
+export type SlideoverDescriptionProps = RekaDialogDescriptionProps & { class?: any }
 
-export type SlideoverCloseProps = RekaDialogCloseProps & Pick<ClassProp, 'class'>
+export type SlideoverCloseProps = RekaDialogCloseProps & { class?: any }
 
-export type SlideoverBodyProps = PrimitiveProps & Pick<ClassProp, 'class'>
+export type SlideoverBodyProps = PrimitiveProps & { class?: any }
 
-export type SlideoverFooterProps = PrimitiveProps & Pick<ClassProp, 'class'>
+export type SlideoverFooterProps = PrimitiveProps & { class?: any }
 
 
-// TYPES — Emits
-
+// EMITS
 export type SlideoverRootEmits = RekaDialogRootEmits
-
 export type SlideoverContentEmits = RekaDialogContentEmits
 
 
-// TYPES — Slots
-
+// SLOTS
 export type SlideoverRootSlots = {
   default: (props: {
     /** Current open state */
     open: boolean
     /** Close the slideover */
     close: () => void
-  }) => []
+  }) => any
 }
