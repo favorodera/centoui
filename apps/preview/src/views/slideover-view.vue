@@ -92,13 +92,17 @@ const deployments = [
         </SlideoverHeader>
 
         <SlideoverBody
-          class="px-0 divide-y divide-border"
+          class="divide-y divide-border px-0"
           as="ul"
         >
           <li
             v-for="deployment in deployments"
             :key="deployment.id"
-            class="flex flex-col gap-3 px-4 py-4 first:pt-0"
+            class="
+              flex flex-col gap-3 p-4
+
+              first:pt-0
+            "
           >
             <div class="flex items-start justify-between gap-4">
               <div class="flex items-start gap-2">
@@ -119,7 +123,14 @@ const deployments = [
               {{ deployment.commit }}
             </p>
 
-            <div class="flex items-center gap-4 text-xs justify-between text-muted-foreground *:flex *:items-center *:gap-1">
+            <div
+              class="
+                flex items-center justify-between gap-4 text-xs
+                text-muted-foreground
+
+                *:flex *:items-center *:gap-1
+              "
+            >
               <span>
                 <Icon
                   icon="lucide:git-branch"
@@ -140,7 +151,9 @@ const deployments = [
 
         <SlideoverFooter
           class="justify-end gap-2 border-t border-border"
-          :class="['right', 'left'].includes(values.side as string) && 'flex-col'"
+          :class="['right', 'left'].includes(values.side as string) && `
+            flex-col
+          `"
         >
           <SlideoverClose as-child>
             <Button variant="outline">
