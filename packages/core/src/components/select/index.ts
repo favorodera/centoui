@@ -51,28 +51,28 @@ export const selectVariants = tv({
     `,
     scrollUpButton: `
       z-10 flex w-full cursor-default items-center justify-center
-      bg-surface-raised py-1 rounded-t-[inherit]
+      rounded-t-[inherit] bg-surface-raised py-1
 
       *:data-[slot=icon]:size-4
     `,
     scrollDownButton: `
       z-10 flex w-full cursor-default items-center justify-center
-      bg-surface-raised py-1 rounded-b-[inherit]
+      rounded-b-[inherit] bg-surface-raised py-1
 
       *:data-[slot=icon]:size-4
     `,
     viewport: '*:data-[slot=separator]:my-1',
     group: 'scroll-my-1 p-1',
     item: `
-      flex w-full cursor-default items-center gap-2 rounded-md pl-2 pr-8 py-1 text-sm
-      outline-none select-none relative
+      relative flex w-full cursor-default items-center gap-2 rounded-md py-1
+      pr-8 pl-2 text-sm outline-none select-none
 
       focus:bg-accent focus:text-accent-foreground
 
       data-disabled:pointer-events-none data-disabled:opacity-65
     `,
     itemText: 'min-w-0 truncate',
-    itemIndicator: 'absolute right-2 top-1/2 -translate-y-1/2',
+    itemIndicator: 'absolute top-1/2 right-2 -translate-y-1/2',
     label: 'px-2 py-1 text-xs text-muted-foreground',
     arrow: 'z-50 fill-surface-raised stroke-input',
   },
@@ -98,9 +98,8 @@ export const selectVariants = tv({
     contentPosition: {
       'popper': {
         content: `
-          max-h-(--reka-select-content-available-height)
-
-          min-w-(--reka-select-trigger-width) w-full
+          max-h-(--reka-select-content-available-height) w-full
+          min-w-(--reka-select-trigger-width)
 
           data-[side=bottom]:translate-y-1
 
