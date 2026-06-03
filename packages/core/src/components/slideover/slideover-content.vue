@@ -1,8 +1,14 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
-import { DialogContent, useForwardPropsEmits } from 'reka-ui'
-import { computed } from 'vue'
+import { DialogContent, DialogOverlay, DialogPortal, useForwardPropsEmits } from 'reka-ui'
+import { computed, useAttrs } from 'vue'
 import { slideoverVariants, type SlideoverContentProps, type SlideoverContentEmits } from '.'
+
+defineOptions({
+  inheritAttrs: false,
+})
+
+const attributes = useAttrs()
 
 const emits = defineEmits<SlideoverContentEmits>()
 
@@ -17,22 +23,32 @@ const delegatedProps = reactiveOmit(
 
 const forwardedPropsEmits = useForwardPropsEmits(delegatedProps, emits)
 
-const classNames = computed(() => {
-  const { content } = slideoverVariants({
+const { content, overlay } = slideoverVariants()
+const classNames = computed(() => ({
+  content: content({
     side: props.side,
-  })
-  
-  return content({ class: props.class })
-})
+    class: props.class,
+  }),
+  overlay: overlay(),
+}))
 </script>
 
 <template>
-  <DialogContent
-    data-slot="slideover-content"
-    :data-side="side"
-    v-bind="forwardedPropsEmits"
-    :class="classNames"
-  >
-    <slot />
-  </DialogContent>
+  <DialogPortal>
+    
+    <DialogOverlay
+      :class="classNames.overlay"
+      data-slot="slideover-overlay"
+    />
+
+    <DialogContent
+      data-slot="slideover-content"
+      :data-side="side"
+      v-bind="{...attributes,...forwardedPropsEmits}"
+      :class="classNames.content"
+    >
+      <slot />
+    </DialogContent>
+
+  </DialogPortal>
 </template>
