@@ -26,7 +26,9 @@ export const alertDialogVariants = tv({
     content: `
       fixed top-1/2 left-1/2 z-50 grid w-[calc(100%-2.5rem)] max-w-md
       -translate-1/2 gap-4 overflow-hidden rounded-lg border border-border
-      bg-surface-raised pt-4 transition-all
+      bg-surface-raised py-4 transition-all
+
+      has-data-[slot=alert-dialog-footer]:pb-0
 
       data-[state=closed]:animate-out data-[state=closed]:fade-out-0
       data-[state=closed]:zoom-out-98
