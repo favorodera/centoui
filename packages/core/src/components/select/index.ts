@@ -61,8 +61,8 @@ export const selectVariants = tv({
 
       *:data-[slot=icon]:size-4
     `,
-    viewport: '*:data-[slot=separator]:my-1 p-1',
-    group: 'scroll-my-1',
+    viewport: '*:data-[slot=separator]:my-1',
+    group: 'scroll-my-1 p-1',
     item: `
       flex w-full cursor-default items-center gap-2 rounded-md pl-2 pr-8 py-1 text-sm
       outline-none select-none relative
@@ -100,7 +100,7 @@ export const selectVariants = tv({
         content: `
           max-h-(--reka-select-content-available-height)
 
-          min-w-(--reka-select-trigger-width) max-w-(--reka-select-trigger-width)
+          min-w-(--reka-select-trigger-width) w-full
 
           data-[side=bottom]:translate-y-1
 
