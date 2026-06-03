@@ -1,43 +1,32 @@
+import { tv } from 'tailwind-variants'
 import type { PrimitiveProps } from 'reka-ui'
-import { tv, type ClassProp } from 'tailwind-variants'
 import type { AnchorHTMLAttributes } from 'vue'
 
 export const breadcrumbVariants = tv({
   slots: {
     root: 'relative min-w-0',
-    list: 'inline-flex items-center gap-2 text-sm',
+    list: 'flex items-center gap-2 text-sm',
     item: 'inline-flex min-w-0 gap-2',
     link: `
       inline-flex min-w-0 items-center gap-2 text-muted-foreground
-      transition-colors duration-300 outline-none
+      transition-colors outline-none
 
       hover:text-foreground
 
       focus-visible:ring-2 focus-visible:ring-ring
-
-      [&_svg]:size-4 [&_svg]:shrink-0
     `,
-    page: `
-      flex items-center justify-center gap-2 text-foreground
-
-      [&>svg]:size-4
-    `,
-    separator: `
-      flex items-center justify-center gap-2 text-muted-foreground
-
-      [&>svg]:size-4
-    `,
+    page: 'flex items-center gap-2 text-foreground',
+    separator: 'flex items-center justify-center gap-2 text-muted-foreground',
     ellipsis: `
-      flex size-8 items-center justify-center gap-2 text-muted-foreground
+      inline-flex items-center justify-center gap-2 text-muted-foreground
 
-      [&>svg]:size-4
+      focus-visible:ring-2 focus-visible:ring-ring
     `,
   },
 })
 
 
 // COMPONENTS
-
 export { default as BreadcrumbRoot } from './breadcrumb-root.vue'
 export { default as BreadcrumbList } from './breadcrumb-list.vue'
 export { default as BreadcrumbItem } from './breadcrumb-item.vue'
@@ -47,18 +36,17 @@ export { default as BreadcrumbSeparator } from './breadcrumb-separator.vue'
 export { default as BreadcrumbEllipsis } from './breadcrumb-ellipsis.vue'
 
 
-// TYPES — Props
+// PROPS
+export type BreadcrumbRootProps = PrimitiveProps & { class?: any }
 
-export type BreadcrumbRootProps = PrimitiveProps & Pick<ClassProp, 'class'>
+export type BreadcrumbListProps = PrimitiveProps & { class?: any }
 
-export type BreadcrumbListProps = PrimitiveProps & Pick<ClassProp, 'class'>
+export type BreadcrumbItemProps = PrimitiveProps & { class?: any }
 
-export type BreadcrumbItemProps = PrimitiveProps & Pick<ClassProp, 'class'>
+export type BreadcrumbLinkProps = PrimitiveProps & { class?: any } & /* @vue-ignore */ AnchorHTMLAttributes
 
-export type BreadcrumbLinkProps = PrimitiveProps & /* @vue-ignore */ AnchorHTMLAttributes & Pick<ClassProp, 'class'>
+export type BreadcrumbPageProps = PrimitiveProps & { class?: any }
 
-export type BreadcrumbPageProps = PrimitiveProps & Pick<ClassProp, 'class'>
+export type BreadcrumbSeparatorProps = PrimitiveProps & { class?: any }
 
-export type BreadcrumbSeparatorProps = PrimitiveProps & Pick<ClassProp, 'class'>
-
-export type BreadcrumbEllipsisProps = PrimitiveProps & Pick<ClassProp, 'class'>
+export type BreadcrumbEllipsisProps = PrimitiveProps & { class?: any }

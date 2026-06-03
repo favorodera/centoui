@@ -6,35 +6,44 @@ import {
   type AvatarImageProps as RekaAvatarImageProps,
   type AvatarRootProps as RekaAvatarRootProps,
 } from 'reka-ui'
-import { tv, type ClassProp, type VariantProps } from 'tailwind-variants'
+import { tv, type VariantProps } from 'tailwind-variants'
 import type { ImgHTMLAttributes } from 'vue'
 
 export const avatarVariants = tv({
   slots: {
     root: `
       relative inline-flex shrink-0 items-center justify-center overflow-hidden
-      rounded-full bg-surface align-middle select-none
+      rounded-full border border-border bg-muted align-middle select-none
     `,
     image: 'size-full rounded-[inherit] object-cover',
     fallback: `
-      truncate font-medium text-muted-foreground
-
-      [&_svg]:pointer-events-none [&_svg]:shrink-0
+      flex size-full items-center justify-center truncate font-medium
+      text-muted-foreground uppercase select-none
     `,
     group: `
-      isolate flex -space-x-2
+      isolate flex -space-x-2.5
 
-      *:border-2 *:border-border
+      *:border-background
+
+      *:data-[slot=avatar-root]:border-2
     `,
   },
   variants: {
     size: {
+      xs: {
+        root: 'size-6',
+        fallback: `
+          text-[10px]
+
+          *:data-[slot=icon]:size-3
+        `,
+      },
       sm: {
         root: 'size-8',
         fallback: `
           text-xs
 
-          [&_svg]:size-4
+          *:data-[slot=icon]:size-3.5
         `,
       },
       md: {
@@ -42,7 +51,7 @@ export const avatarVariants = tv({
         fallback: `
           text-sm
 
-          [&_svg]:size-5
+          *:data-[slot=icon]:size-4
         `,
       },
       lg: {
@@ -50,7 +59,7 @@ export const avatarVariants = tv({
         fallback: `
           text-base
 
-          [&_svg]:size-6
+          *:data-[slot=icon]:size-5
         `,
       },
     },
@@ -62,50 +71,48 @@ export const avatarVariants = tv({
 
 
 // COMPONENTS
-
 export { default as AvatarFallback } from './avatar-fallback.vue'
 export { default as AvatarImage } from './avatar-image.vue'
 export { default as AvatarRoot } from './avatar-root.vue'
 export { default as AvatarGroup } from './avatar-group.vue'
 
 
-// COMPONENT UTILS
-
-export { getInitials } from './avatar-utils'
-
-
 // CONTEXT
+export type AvatarRootContext = Pick<AvatarRootProps, 'size'>
 
-export const [injectCentouiAvatarRootContext, provideCentouiAvatarRootContext] = createContext<AvatarRootContext>('AvatarRoot', 'centoui:avatar-root:context')
+export const [
+  injectCentouiAvatarRootContext,
+  provideCentouiAvatarRootContext,
+] = createContext<AvatarRootContext>(
+  'AvatarRoot',
+  'centoui:avatar-root:context',
+)
 
 
-// TYPES — Variants
-
+// VARIANTS
 export type AvatarVariants = VariantProps<typeof avatarVariants>
 
 
-// TYPES — Context
+// UTILITIES
+export { getInitials } from './avatar-utils'
 
-export type AvatarRootContext = Pick<AvatarRootProps, 'size'>
 
-
-// TYPES — Props
-
-export type AvatarRootProps = RekaAvatarRootProps & Pick<ClassProp, 'class'> & {
+// PROPS
+export type AvatarRootProps = RekaAvatarRootProps & {
   /**
    * The size of the avatar.
    * @default 'md'
    */
   size?: AvatarVariants['size']
+  class?: any
 }
 
-export type AvatarImageProps = RekaAvatarImageProps & /* @vue-ignore */ Omit<ImgHTMLAttributes, 'src' | 'crossorigin' | 'referrerpolicy' | 'class'> & Pick<ClassProp, 'class'>
+export type AvatarImageProps = RekaAvatarImageProps & { class?: any } & /* @vue-ignore */ ImgHTMLAttributes
 
-export type AvatarFallbackProps = RekaAvatarFallbackProps & Pick<ClassProp, 'class'>
+export type AvatarFallbackProps = RekaAvatarFallbackProps & { class?: any }
 
-export type AvatarGroupProps = PrimitiveProps & Pick<ClassProp, 'class'>
+export type AvatarGroupProps = PrimitiveProps & { class?: any }
 
 
-// TYPES — Emits
-
+// EMITS
 export type AvatarImageEmits = RekaAvatarImageEmits

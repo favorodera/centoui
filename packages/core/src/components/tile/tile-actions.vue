@@ -2,28 +2,26 @@
 import { reactiveOmit } from '@vueuse/core'
 import { Primitive, useForwardProps } from 'reka-ui'
 import { computed } from 'vue'
-import { injectCentouiItemRootContext, itemVariants, type ItemMediaProps } from '.'
+import { injectCentouiTileRootContext, tileVariants, type TileActionsProps } from '.'
 
-const rootContext = injectCentouiItemRootContext()
+const rootContext = injectCentouiTileRootContext()
 
-const props = defineProps<ItemMediaProps>()
+const props = defineProps<TileActionsProps>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
 
 const classNames = computed(() => {
-  const { media } = itemVariants({
+  const { actions } = tileVariants({
     variant: rootContext.variant,
-    mediaType: props.type,
   })
 
-  return media({ class: props.class })
+  return actions({ class: props.class })
 })
 </script>
 
 <template>
   <Primitive
-    data-slot="item-media"
-    :data-type="type"
+    data-slot="tile-actions"
     v-bind="forwardedProps"
     :class="classNames"
   >

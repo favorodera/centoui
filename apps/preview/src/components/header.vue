@@ -4,23 +4,14 @@ import {
   SelectRoot,
   SelectTrigger,
   SelectValue,
-  SelectIcon,
-  SelectPortal,
   SelectContent,
-  SelectScrollUpButton,
-  SelectViewport,
   SelectItem,
-  SelectItemText,
-  SelectItemIndicator,
-  SelectScrollDownButton,
 } from '#centoui/components/select'
 import {
-  PopoverAnchor,
   PopoverContent,
   PopoverDescription,
   PopoverFooter,
   PopoverHeader,
-  PopoverPortal,
   PopoverRoot,
   PopoverTitle,
   PopoverTrigger,
@@ -28,7 +19,7 @@ import {
 } from '#centoui/components/popover'
 import { Badge } from '#centoui/components/badge'
 import { Separator } from '#centoui/components/separator'
-import { ButtonGroup, ButtonGroupSeparator } from '#centoui/components/button-group'
+import { ButtonGroup } from '#centoui/components/button-group'
 import { Button } from '#centoui/components/button'
 import { Icon } from '#centoui/components/icon'
 import { useApp } from '@/composables/use-app'
@@ -64,58 +55,42 @@ watch(
   <header
     class="
       flex h-11 w-full items-center justify-between gap-4 border-b border-border
-      bg-background px-3
+      bg-background p-3
     "
   >
 
     <!-- Component Selector -->
     <SelectRoot
-      size="sm"
       :model-value="route.path"
       @update:model-value="(value)=>navigation.goTo(value as string)"
     >
       <SelectTrigger
         class="max-w-3xs"
+        size="sm"
       >
         <SelectValue />
-        <SelectIcon />
       </SelectTrigger>
 
-      <SelectPortal>
-        <SelectContent class="min-w-40">
-          <SelectScrollUpButton />
+      <SelectContent>
+        <SelectItem
+          v-for="component in navigation.components.value"
+          :key="component.path"
+          :value="component.path"
+        >
+          {{ component.label }}
 
-          <SelectViewport>
-  
-            <SelectItem
-              v-for="component in navigation.components.value"
-              :key="component.path"
-              :value="component.path"
-            >
-              <SelectItemText>
-                {{ component.label }}
-              </SelectItemText>
-
-              <SelectItemIndicator />
-
-            </SelectItem>
-          </SelectViewport>
-
-          <SelectScrollDownButton />
-        </SelectContent>
-      </SelectPortal>
-
+        </SelectItem>
+      </SelectContent>
     </SelectRoot>
 
-    <div class="flex">
+    <div class="flex h-full items-center gap-2">
       <!-- Count Badge -->
-      <Badge size="sm">
+      <Badge variant="secondary">
         {{ navigation.activeComponentIndex.value + 1 }} / {{ navigation.components.value.length }}
       </Badge>
 
       <Separator
         orientation="vertical"
-        class="h-5"
       />
 
       <!-- Navigation Buttons -->
@@ -131,7 +106,7 @@ watch(
           <Icon icon="lucide:chevron-left" />
         </Button>
 
-        <ButtonGroupSeparator />
+        <Separator orientation="vertical" />
         
         <Button
           size="xs"
@@ -147,7 +122,6 @@ watch(
 
       <Separator
         orientation="vertical"
-        class="h-5"
       />
       
       <!-- Actions -->
@@ -165,76 +139,72 @@ watch(
 
         <!-- Theme Editor -->
         <PopoverRoot v-model:open="models.themePopoverModel.value">
-          <PopoverAnchor as-child>
-            <PopoverTrigger as-child>
-              <Button
-                size="xs"
-                variant="outline"
-                square
-                aria-label="Edit theme"
-                :class="theme.hasCustomTheme.value && 'border-warning'"
-              >
-                <Icon icon="lucide:swatch-book" />
-              </Button>
-            </PopoverTrigger>
-          </PopoverAnchor>
-
-          <PopoverPortal>
-            <PopoverContent
-              side="bottom"
-              align="end"
-              :side-offset="5"
+          <PopoverTrigger as-child>
+            <Button
+              size="xs"
+              variant="outline"
+              square
+              aria-label="Edit theme"
+              :class="theme.hasCustomTheme.value && 'border-warning'"
             >
+              <Icon icon="lucide:swatch-book" />
+            </Button>
+          </PopoverTrigger>
 
-              <PopoverHeader>
-                <PopoverTitle>Theme</PopoverTitle>
-                <PopoverDescription>
-                  Edit theme settings and preview changes.
-                </PopoverDescription>
-              </PopoverHeader>
+          <PopoverContent
+            side="bottom"
+            align="end"
+            :side-offset="5"
+          >
 
-              <PopoverBody>
-                <Textarea
-                  v-model:value="theme.customTheme.value"
-                  spellcheck="false"
-                  placeholder="Enter CSS theme"
-                  class="max-h-40"
-                />
-              </PopoverBody>
+            <PopoverHeader>
+              <PopoverTitle>Theme</PopoverTitle>
+              <PopoverDescription>
+                Edit theme settings and preview changes.
+              </PopoverDescription>
+            </PopoverHeader>
 
-              <PopoverFooter>
-                <ButtonGroup class="w-full">
-                  <Button
-                    v-if="theme.hasCustomTheme"
-                    size="xs"
-                    variant="error"
-                    class="flex-1"
-                    @click="theme.resetTheme"
-                  >
-                    <Icon
-                      icon="lucide:rotate-ccw"
-                    />
-                    Reset
-                  </Button>
+            <PopoverBody>
+              <Textarea
+                v-model:value="theme.customTheme.value"
+                spellcheck="false"
+                placeholder="Enter CSS theme"
+                class="max-h-40"
+              />
+            </PopoverBody>
 
-                  <ButtonGroupSeparator />
+            <PopoverFooter>
+              <ButtonGroup class="w-full">
+                <Button
+                  v-if="theme.hasCustomTheme"
+                  size="xs"
+                  variant="error"
+                  class="flex-1"
+                  @click="theme.resetTheme"
+                >
+                  <Icon
+                    icon="lucide:rotate-ccw"
+                  />
+                  Reset
+                </Button>
 
-                  <Button
-                    size="xs"
-                    variant="secondary"
-                    class="flex-1"
-                    @click="theme.copyTheme"
-                  >
-                    <Icon
-                      :icon="theme.isThemeCopied.value ? 'lucide:check' : 'lucide:copy'"
-                    />
-                    {{ theme.isThemeCopied.value ? 'Copied' : 'Copy theme' }}
-                  </Button>
-                </ButtonGroup>
-              </PopoverFooter>
+                <Separator orientation="vertical" />
 
-            </PopoverContent>
-          </PopoverPortal>
+                <Button
+                  size="xs"
+                  variant="secondary"
+                  class="flex-1"
+                  @click="theme.copyTheme"
+                >
+                  <Icon
+                    :icon="theme.isThemeCopied.value ? 'lucide:check' : 'lucide:copy'"
+                  />
+                  {{ theme.isThemeCopied.value ? 'Copied' : 'Copy theme' }}
+                </Button>
+              </ButtonGroup>
+            </PopoverFooter>
+
+          </PopoverContent>
         </PopoverRoot>
 
         <!-- Props Panel Toggle -->

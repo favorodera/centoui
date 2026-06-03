@@ -3,30 +3,28 @@ import {
   SelectRoot,
   SelectTrigger,
   SelectValue,
-  SelectIcon,
-  SelectPortal,
   SelectContent,
-  SelectScrollUpButton,
-  SelectViewport,
   SelectItem,
-  SelectItemText,
-  SelectItemIndicator,
   SelectGroup,
   SelectLabel,
-  SelectSeparator,
-  SelectScrollDownButton,
-  SelectArrow,
   selectVariants,
 } from '#centoui/components/select'
+import { Separator } from '#centoui/components/separator'
 import ViewContainer from '@/components/view-container.vue'
 import { useApp } from '@/composables/use-app'
 
 const values = useApp().preview.initPreview('Select', {
-  size: {
+  triggerSize: {
     type: 'array',
-    label: 'Size',
-    options: Object.keys(selectVariants.variants.size),
-    default: selectVariants.defaultVariants.size,
+    label: 'Trigger Size',
+    options: Object.keys(selectVariants.variants.triggerSize),
+    default: selectVariants.defaultVariants.triggerSize,
+  },
+  contentPosition: {
+    type: 'array',
+    label: 'Content Position',
+    options: Object.keys(selectVariants.variants.contentPosition),
+    default: selectVariants.defaultVariants.contentPosition,
   },
   disabled: {
     type: 'boolean',
@@ -43,6 +41,11 @@ const values = useApp().preview.initPreview('Select', {
     label: 'Multiple',
     default: false,
   },
+  showArrow: {
+    type: 'boolean',
+    label: 'Show arrow',
+    default: true,
+  },
 })
 
 const fruits = ['Apple', 'Banana', 'Blueberry', 'Grapes', 'Pineapple']
@@ -53,65 +56,48 @@ const vegetables = ['Aubergine', 'Broccoli', 'Carrot', 'Courgette', 'Leek']
   <ViewContainer>
     <SelectRoot
       :disabled="values.disabled"
-      :size="values.size"
       :multiple="values.multiple"
     >
       <SelectTrigger
+        :size="values.triggerSize"
         :aria-invalid="values.invalid"
         class="max-w-3xs"
       >
         <SelectValue placeholder="Select a fruit..." />
-        <SelectIcon />
       </SelectTrigger>
 
-      <SelectPortal>
-        <SelectContent :side-offset="5">
-          <SelectScrollUpButton />
+      <SelectContent
+        :position="values.contentPosition"
+        :show-arrow="values.showArrow"
+      >
+        <SelectLabel>
+          Fruits
+        </SelectLabel>
+        <SelectGroup>
+          <SelectItem
+            v-for="(fruit, index) in fruits"
+            :key="index"
+            :value="fruit"
+          >
+            {{ fruit }} eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+          </SelectItem>
+        </SelectGroup>
 
-          <SelectViewport>
+        <Separator />
 
-            <SelectLabel>
-              Fruits
-            </SelectLabel>
-            <SelectGroup>
-              <SelectItem
-                v-for="(fruit, index) in fruits"
-                :key="index"
-                :value="fruit"
-              >
-                <SelectItemText>
-                  {{ fruit }}
-                </SelectItemText>
-                <SelectItemIndicator />
-              </SelectItem>
-            </SelectGroup>
-
-            <SelectSeparator />
-
-            <SelectLabel>
-              Vegetables
-            </SelectLabel>
-            <SelectGroup>
-              <SelectItem
-                v-for="(vegetable, index) in vegetables"
-                :key="index"
-                :value="vegetable"
-              >
-                <SelectItemText>
-                  {{ vegetable }}
-                </SelectItemText>
-                <SelectItemIndicator />
-              </SelectItem>
-            </SelectGroup>
-
-          </SelectViewport>
-
-          <SelectScrollDownButton />
-
-          <SelectArrow />
-
-        </SelectContent>
-      </SelectPortal>
+        <SelectLabel>
+          Vegetables
+        </SelectLabel>
+        <SelectGroup>
+          <SelectItem
+            v-for="(vegetable, index) in vegetables"
+            :key="index"
+            :value="vegetable"
+          >
+            {{ vegetable }}
+          </SelectItem>
+        </SelectGroup>
+      </SelectContent>
     </SelectRoot>
   </ViewContainer>
 </template>

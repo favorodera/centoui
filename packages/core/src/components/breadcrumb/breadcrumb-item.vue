@@ -10,11 +10,8 @@ const props = withDefaults(defineProps<BreadcrumbItemProps>(), {
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
 
-const classNames = computed(() => {
-  const { item } = breadcrumbVariants()
-
-  return item({ class: props.class })
-})
+const { item } = breadcrumbVariants()
+const classNames = computed(() => item({ class: props.class }))
 </script>
 
 <template>

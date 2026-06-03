@@ -10,11 +10,11 @@ export const separatorVariants = tv({
   variants: {
     orientation: {
       horizontal: {
-        root: 'my-3 w-full',
+        root: 'w-full',
         line: 'w-full border-t',
       },
       vertical: {
-        root: 'mx-3 h-full flex-col',
+        root: 'h-full flex-col',
         line: 'h-full border-s',
       },
     },
@@ -48,6 +48,6 @@ export type SeparatorProps = Omit<RekaSeparatorProps, 'orientation'> & Pick<Clas
 // TYPES — Slots
 
 export type SeparatorSlots = {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+   
   default?: () => any
 }

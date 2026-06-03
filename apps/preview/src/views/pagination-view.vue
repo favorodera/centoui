@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { buttonVariants } from '#centoui/components/button'
 import {
   PaginationRoot,
   PaginationList,
@@ -13,26 +12,7 @@ import {
 import ViewContainer from '@/components/view-container.vue'
 import { useApp } from '@/composables/use-app'
 
-const values = useApp().preview.initPreview('Pagination', {
-  variant: {
-    type: 'array',
-    label: 'Variant',
-    options: Object.keys(buttonVariants.variants.variant),
-    default: 'ghost',
-  },
-  activeVariant: {
-    type: 'array',
-    label: 'Active variant',
-    options: Object.keys(buttonVariants.variants.variant),
-    default: 'outline',
-  },
-  size: {
-    type: 'array',
-    label: 'Size',
-    options: Object.keys(buttonVariants.variants.size),
-    default: 'md',
-  },
-})
+useApp().preview.initPreview('Pagination', {})
 </script>
 
 <template>
@@ -44,9 +24,6 @@ const values = useApp().preview.initPreview('Pagination', {
       :items-per-page="5"
       show-edges
       :default-page="2"
-      :variant="values.variant as any"
-      :active-variant="values.activeVariant as any"
-      :size="values.size as any"
     >
       <PaginationList
         v-slot="{ items }"
@@ -62,7 +39,7 @@ const values = useApp().preview.initPreview('Pagination', {
           <PaginationListItem
             v-if="item.type === 'page'"
             :value="item.value"
-            :active="item.value === page"
+            :variant="item.value === page ? 'outline' : undefined"
           >
             {{ item.value }}
           </PaginationListItem>

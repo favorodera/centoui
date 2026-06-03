@@ -1,138 +1,96 @@
 <script setup lang="ts">
-import { Icon } from '#centoui/components/icon'
 import { Button } from '#centoui/components/button'
-import { ButtonGroup, ButtonGroupSeparator, buttonGroupVariants } from '#centoui/components/button-group'
-import {
-  SelectRoot,
-  SelectTrigger,
-  SelectValue,
-  SelectIcon,
-  SelectPortal,
-  SelectContent,
-  SelectViewport,
-  SelectItem,
-  SelectItemText,
-  SelectItemIndicator,
-} from '#centoui/components/select'
+import { ButtonGroup } from '#centoui/components/button-group'
+import { Icon } from '#centoui/components/icon'
+import { Input } from '#centoui/components/input'
+import { Separator } from '#centoui/components/separator'
 import ViewContainer from '@/components/view-container.vue'
 import { useApp } from '@/composables/use-app'
-import { Input } from '#centoui/components/input'
 
-const values = useApp().preview.initPreview('Button Group', {
-  orientation: {
-    type: 'array',
-    label: 'Orientation',
-    options: Object.keys(buttonGroupVariants.variants.orientation),
-    default: buttonGroupVariants.defaultVariants.orientation,
-  },
-})
+useApp().preview.initPreview('Button Group', {})
+
 </script>
 
 <template>
   <ViewContainer>
-
-    <ButtonGroup :orientation="values.orientation">
-      <template
-        v-for="index in 2"
-        :key="index"
-      >
-        <Button>
-          Button {{ index }}
+    <ButtonGroup>
+      <ButtonGroup>
+        <Button variant="secondary">
+          1
         </Button>
-        <ButtonGroupSeparator v-if="index < 2" />
-      </template>
-    </ButtonGroup>
 
-    <ButtonGroup :orientation="values.orientation">
-      <ButtonGroup :orientation="values.orientation">
-        <template
-          v-for="index in 5"
-          :key="index"
-        >
-          <Button
-            variant="secondary"
-          >
-            {{ index }}
-          </Button>
-          <ButtonGroupSeparator v-if="index < 5 " />
-        </template>
+        <Separator orientation="vertical" />
+
+        <Button variant="secondary">
+          2
+        </Button>
       </ButtonGroup>
 
-      <ButtonGroup
-        :orientation="values.orientation"
-        class="w-full"
-      >
+      <ButtonGroup>
         <Button
           variant="secondary"
-          aria-label="Previous"
           square
         >
           <Icon icon="lucide:arrow-left" />
         </Button>
 
-        <ButtonGroupSeparator />
+        <Separator orientation="vertical" />
 
         <Button
           variant="secondary"
-          aria-label="Next"
           square
         >
           <Icon icon="lucide:arrow-right" />
         </Button>
+
       </ButtonGroup>
+
     </ButtonGroup>
 
-    <ButtonGroup :orientation="values.orientation">
-      <Button
-        variant="outline"
-      >
-        Button
+    <ButtonGroup>
+      <Button variant="secondary">
+        <Icon icon="lucide:layout-grid" />
       </Button>
 
-      
-      <SelectRoot>
-        <SelectTrigger>
-          <SelectValue placeholder="Select a fruit..." />
-          <SelectIcon />
-        </SelectTrigger>
+      <Separator orientation="vertical" />
 
-        <SelectPortal>
-          <SelectContent>
-            <SelectViewport>
+      <Button variant="secondary">
+        <Icon icon="lucide:list" />
+      </Button>
 
-              <SelectItem
-                v-for="(fruit, index) in ['Apple', 'Banana', 'Blueberry', 'Grapes', 'Pineapple']"
-                :key="index"
-                :value="fruit"
-              >
-                <SelectItemText>
-                  {{ fruit }}
-                </SelectItemText>
-                <SelectItemIndicator />
-              </SelectItem>
+      <Separator orientation="vertical" />
 
-            </SelectViewport>
+      <Button variant="secondary">
+        <Icon icon="lucide:table" />
+      </Button>
 
-          </SelectContent>
-        </SelectPortal>
-      </SelectRoot>
     </ButtonGroup>
 
-    <ButtonGroup :orientation="values.orientation">
-      <Input
-        default-value="8"
-      />
+    <ButtonGroup orientation="vertical">
+      <Button
+        variant="secondary"
+        square
+      >
+        <Icon icon="lucide:plus" />
+      </Button>
+
+      <Separator />
 
       <Button
-        variant="outline"
+        variant="secondary"
+        square
       >
         <Icon icon="lucide:minus" />
       </Button>
+    </ButtonGroup>
 
+    <ButtonGroup>
+      <Input placeholder="Search..." />
       <Button
         variant="outline"
+        aria-label="Search"
       >
-        <Icon icon="lucide:plus" />
+        <Icon icon="lucide:search" />
       </Button>
     </ButtonGroup>
   </ViewContainer>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
-import { AlertDialogAction, useForwardPropsEmits } from 'reka-ui'
+import { AlertDialogAction, useForwardProps } from 'reka-ui'
 import {
   type AlertDialogActionProps,
   alertDialogVariants,
@@ -8,30 +8,18 @@ import {
 import { computed } from 'vue'
 import { buttonVariants } from '../button'
 
-const props = withDefaults(defineProps<AlertDialogActionProps>(), {
-  variant: 'primary',
-})
-const delegatedProps = reactiveOmit(
-  props, 'class',
-  'variant',
-  'size',
-  'square',
-)
-const forwardedProps = useForwardPropsEmits(delegatedProps)
+const props = defineProps<AlertDialogActionProps>()
+const delegatedProps = reactiveOmit(props, 'class', 'size', 'variant', 'square')
+const forwardedProps = useForwardProps(delegatedProps)
 
-const classNames = computed(() => {
-  const { root: buttonRoot } = buttonVariants({
-    variant: props.variant,
-    size: props.size,
-    square: props.square,
-  })
-
-  const { action: alertDialogAction } = alertDialogVariants()
-  
-  return buttonRoot({
-    class: alertDialogAction({ class: props.class }),
-  })
-})
+const { action } = alertDialogVariants()
+const { root } = buttonVariants()
+const classNames = computed(() => root({
+  size: props.size,
+  variant: props.variant,
+  square: props.square,
+  class: action({ class: props.class }),
+}))
 </script>
 
 <template>

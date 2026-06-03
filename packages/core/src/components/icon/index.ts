@@ -1,25 +1,24 @@
 import { type IconifyIconProps } from '@iconify/vue'
-import { tv, type ClassProp } from 'tailwind-variants'
+import { tv } from 'tailwind-variants'
 
 export const iconVariants = tv({
   slots: {
-    root: '',
+    root: 'pointer-events-none size-4 shrink-0',
   },
 })
 
 
-// COMPONENTS
-
+// COMPONENT
 export { default as Icon } from './icon.vue'
 
 
-// TYPES — Props
-
-export type IconProps = Pick<ClassProp, 'class'> & Omit<IconifyIconProps, 'ariaHidden'> & {
+// PROPS
+export type IconProps = Omit<IconifyIconProps, 'ariaHidden'> & {
   /**
    * Controls exposure to assistive technologies.
    * Set to `false` and provide an accessible label for meaningful icons.
    * @default true
    */
   ariaHidden?: boolean | 'true' | 'false'
+  class?: any
 }

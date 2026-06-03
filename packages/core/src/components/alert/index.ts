@@ -1,50 +1,53 @@
 import { type PrimitiveProps, createContext } from 'reka-ui'
-import { tv, type VariantProps, type ClassProp } from 'tailwind-variants'
+import { tv, type VariantProps } from 'tailwind-variants'
 
 export const alertVariants = tv({
   slots: {
-    root: 'flex w-full items-start gap-3 rounded-lg px-4 py-3',
-    media: `
-      shrink-0
+    root: `
+      flex w-full flex-wrap items-start gap-4 rounded-md border px-4 py-3
 
-      [&>svg]:h-lh [&>svg]:w-4
+      *:data-[slot=icon]:first:h-lh *:data-[slot=icon]:first:w-4
     `,
-    content: 'min-w-0 flex-1 text-sm',
-    title: 'min-w-0 font-medium',
-    description: 'mt-2 min-w-0 text-muted-foreground',
-    actions: 'flex shrink-0 items-center gap-2',
+    body: 'min-w-0 flex-1 text-sm',
+    title: 'font-medium text-foreground',
+    description: 'mt-1 text-foreground/80',
   },
   variants: {
     variant: {
       neutral: {
-        root: 'bg-neutral',
-        title: 'text-foreground',
-        description: 'text-foreground/80',
-        media: 'text-foreground',
+        root: `
+          border-border bg-background
+
+          *:data-[slot=icon]:first:text-foreground
+        `,
       },
       success: {
-        root: 'bg-success/8',
-        title: 'text-success',
-        description: 'text-success/80',
-        media: 'text-success',
-      },
-      warning: {
-        root: 'bg-warning/8',
-        title: 'text-warning',
-        description: 'text-warning/80',
-        media: 'text-warning',
+        root: `
+          border-success/15 bg-success/10
+
+          *:data-[slot=icon]:first:text-success
+        `,
       },
       error: {
-        root: 'bg-error/8',
-        title: 'text-error',
-        description: 'text-error/80',
-        media: 'text-error',
+        root: `
+          border-error/15 bg-error/10
+
+          *:data-[slot=icon]:first:text-error
+        `,
+      },
+      warning: {
+        root: `
+          border-warning/15 bg-warning/10
+
+          *:data-[slot=icon]:first:text-warning
+        `,
       },
       info: {
-        root: 'bg-info/8',
-        title: 'text-info',
-        description: 'text-info/80',
-        media: 'text-info',
+        root: `
+          border-info/15 bg-info/10
+
+          *:data-[slot=icon]:first:text-info
+        `,
       },
     },
   },
@@ -55,46 +58,40 @@ export const alertVariants = tv({
 
 
 // COMPONENTS
-
 export { default as AlertRoot } from './alert-root.vue'
-export { default as AlertMedia } from './alert-media.vue'
-export { default as AlertContent } from './alert-content.vue'
+export { default as AlertBody } from './alert-body.vue'
 export { default as AlertTitle } from './alert-title.vue'
 export { default as AlertDescription } from './alert-description.vue'
-export { default as AlertActions } from './alert-actions.vue'
 
 
 // CONTEXT
+export type AlertRootContext = Pick<AlertRootProps, 'variant'>
 
-export const [injectCentouiAlertRootContext, provideCentouiAlertRootContext] = createContext<AlertRootContext>('AlertRoot', 'centoui:alert-root:context')
+export const [
+  injectCentouiAlertRootContext,
+  provideCentouiAlertRootContext,
+] = createContext<AlertRootContext>(
+  'AlertRoot',
+  'centoui:alert-root:context',
+)
 
 
-// TYPES — Variants
-
+// VARIANTS
 export type AlertVariants = VariantProps<typeof alertVariants>
 
 
-// TYPES — Context
-
-export type AlertRootContext = Pick<AlertRootProps, 'variant'>
-
-
-// TYPES — Props
-
-export type AlertRootProps = PrimitiveProps & Pick<ClassProp, 'class'> & {
+// PROPS
+export type AlertRootProps = PrimitiveProps & {
   /**
      * The variant of the alert.
      * @default 'neutral'
      */
   variant?: AlertVariants['variant']
+  class?: any
 }
 
-export type AlertMediaProps = PrimitiveProps & Pick<ClassProp, 'class'>
+export type AlertBodyProps = PrimitiveProps & { class?: any }
 
-export type AlertContentProps = PrimitiveProps & Pick<ClassProp, 'class'>
+export type AlertTitleProps = PrimitiveProps & { class?: any }
 
-export type AlertTitleProps = PrimitiveProps & Pick<ClassProp, 'class'>
-
-export type AlertDescriptionProps = PrimitiveProps & Pick<ClassProp, 'class'>
-
-export type AlertActionsProps = PrimitiveProps & Pick<ClassProp, 'class'>
+export type AlertDescriptionProps = PrimitiveProps & { class?: any }

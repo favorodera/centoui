@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
-import { PopoverContent, useForwardPropsEmits } from 'reka-ui'
+import { PopoverArrow, PopoverContent, PopoverPortal, useForwardPropsEmits } from 'reka-ui'
 import {
   type PopoverContentEmits,
   type PopoverContentProps,
@@ -10,24 +10,34 @@ import { computed } from 'vue'
 
 const emits = defineEmits<PopoverContentEmits>()
 
-const props = defineProps<PopoverContentProps>()
-const delegatedProps = reactiveOmit(props, 'class')
+const props = withDefaults(defineProps<PopoverContentProps>(), {
+  sideOffset: 4,
+  showArrow: false,
+})
+const delegatedProps = reactiveOmit(props, 'class', 'showArrow')
 
 const forwardedPropsEmits = useForwardPropsEmits(delegatedProps, emits)
 
-const classNames = computed(() => {
-  const { content } = popoverVariants()
-  
-  return content({ class: props.class })
-})
+const { content, arrow } = popoverVariants()
+const classNames = computed(() => ({
+  content: content({ class: props.class }),
+  arrow: arrow(),
+}))
 </script>
 
 <template>
-  <PopoverContent
-    data-slot="popover-content"
-    v-bind="forwardedPropsEmits"
-    :class="classNames"
-  >
-    <slot />
-  </PopoverContent>
+  <PopoverPortal>
+    <PopoverContent
+      data-slot="popover-content"
+      v-bind="forwardedPropsEmits"
+      :class="classNames.content"
+    >
+      <slot />
+      <PopoverArrow
+        v-if="showArrow"
+        data-slot="popover-arrow"
+        :class="classNames.arrow"
+      />
+    </PopoverContent>
+  </PopoverPortal>
 </template>

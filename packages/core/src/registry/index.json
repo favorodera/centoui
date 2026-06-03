@@ -39,8 +39,6 @@
         "components/alert-dialog/alert-dialog-description.vue",
         "components/alert-dialog/alert-dialog-footer.vue",
         "components/alert-dialog/alert-dialog-header.vue",
-        "components/alert-dialog/alert-dialog-overlay.vue",
-        "components/alert-dialog/alert-dialog-portal.vue",
         "components/alert-dialog/alert-dialog-root.vue",
         "components/alert-dialog/alert-dialog-title.vue",
         "components/alert-dialog/alert-dialog-trigger.vue",
@@ -48,8 +46,7 @@
       ],
       "componentDeps": [
         "button"
-      ],
-      "packageDeps": {}
+      ]
     },
     {
       "$schema": "../schemas/component.json",
@@ -120,11 +117,7 @@
       "description": "Container for grouping related button-like elements together.",
       "files": [
         "components/button-group/button-group.vue",
-        "components/button-group/button-group-separator.vue",
         "components/button-group/index.ts"
-      ],
-      "componentDeps": [
-        "separator"
       ]
     },
     {
@@ -190,25 +183,6 @@
       "files": [
         "components/input/input.vue",
         "components/input/index.ts"
-      ]
-    },
-    {
-      "$schema": "../schemas/component.json",
-      "name": "item",
-      "description": "A list item that can be used in a list.",
-      "files": [
-        "components/item/item-actions.vue",
-        "components/item/item-content.vue",
-        "components/item/item-description.vue",
-        "components/item/item-group.vue",
-        "components/item/item-media.vue",
-        "components/item/item-root.vue",
-        "components/item/item-separator.vue",
-        "components/item/item-title.vue",
-        "components/item/index.ts"
-      ],
-      "componentDeps": [
-        "separator"
       ]
     },
     {
@@ -388,6 +362,20 @@
       "files": [
         "components/textarea/textarea-root.vue",
         "components/textarea/index.ts"
+      ]
+    },
+    {
+      "$schema": "../schemas/component.json",
+      "name": "tile",
+      "description": "A flexible container for displaying content with media, title, description, and actions.",
+      "files": [
+        "components/tile/tile-actions.vue",
+        "components/tile/tile-content.vue",
+        "components/tile/tile-description.vue",
+        "components/tile/tile-media.vue",
+        "components/tile/tile-root.vue",
+        "components/tile/tile-title.vue",
+        "components/tile/index.ts"
       ]
     },
     {

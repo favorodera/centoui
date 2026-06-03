@@ -5,14 +5,14 @@ import {
   type CollapsibleRootProps as RekaCollapsibleRootProps,
   type CollapsibleTriggerProps as RekaCollapsibleTriggerProps,
 } from 'reka-ui'
-import { tv, type ClassProp } from 'tailwind-variants'
+import { tv } from 'tailwind-variants'
 
 export const collapsibleVariants = tv({
   slots: {
     root: '',
     trigger: '',
     content: `
-      overflow-hidden animation-duration-300
+      overflow-hidden
 
       data-[state=closed]:animate-collapsible-up
 
@@ -23,35 +23,30 @@ export const collapsibleVariants = tv({
 
 
 // COMPONENTS
-
 export { default as CollapsibleContent } from './collapsible-content.vue'
 export { default as CollapsibleRoot } from './collapsible-root.vue'
 export { default as CollapsibleTrigger } from './collapsible-trigger.vue'
 
 
-// TYPES — Props
+// PROPS
+export type CollapsibleRootProps = RekaCollapsibleRootProps & { class?: any }
 
-export type CollapsibleRootProps = RekaCollapsibleRootProps & Pick<ClassProp, 'class'>
-
-export type CollapsibleTriggerProps = RekaCollapsibleTriggerProps & Pick<ClassProp, 'class'>
-
-
-export type CollapsibleContentProps = RekaCollapsibleContentProps & Pick<ClassProp, 'class'>
+export type CollapsibleTriggerProps = RekaCollapsibleTriggerProps & { class?: any }
 
 
-// TYPES — Emits
+export type CollapsibleContentProps = RekaCollapsibleContentProps & { class?: any }
 
+
+// EMITS
 export type CollapsibleRootEmits = RekaCollapsibleRootEmits
 
 export type CollapsibleContentEmits = RekaCollapsibleContentEmits
 
 
-// TYPES — Slots
-
+// SLOTS
 export type CollapsibleRootSlots = {
   default?: (props: {
     /** Current open state */
     open: boolean
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   }) => any
 }

@@ -36,6 +36,7 @@ const modelValue = ref('')
       :aria-invalid="values.invalid"
       placeholder="Enter your name"
       name="input-model"
+      class="max-w-md"
     />
 
     <p class="text-sm text-muted-foreground">

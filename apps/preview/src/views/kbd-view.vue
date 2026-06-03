@@ -1,5 +1,15 @@
 <script setup lang="ts">
 import { Kbd, kbdVariants, KbdGroup } from '#centoui/components/kbd'
+import { Button } from '#centoui/components/button'
+import { Icon } from '#centoui/components/icon'
+import {
+  TooltipProvider,
+  TooltipRoot,
+  TooltipTrigger,
+  TooltipPortal,
+  TooltipContent,
+  TooltipArrow,
+} from '#centoui/components/tooltip'
 import ViewContainer from '@/components/view-container.vue'
 import { useApp } from '@/composables/use-app'
 
@@ -15,26 +25,46 @@ const values = useApp().preview.initPreview('Kbd', {
 
 <template>
   <ViewContainer>
-    <Kbd
-      :size="values.size"
-    >
-      ⌘
-    </Kbd>
-
-    <Kbd
-      :size="values.size"
-    >
-      Ctrl
-    </Kbd>
-
+    <Kbd :size="values.size">⌘</Kbd>
+  
     <KbdGroup>
-      <Kbd :size="values.size">
-        Ctrl
-      </Kbd>
-
-      <Kbd :size="values.size">
-        C
-      </Kbd>
+      <Kbd :size="values.size">Ctrl</Kbd>
+      <Kbd :size="values.size">Alt</Kbd>
+      <Kbd :size="values.size">Del</Kbd>
     </KbdGroup>
+
+    <Button
+      variant="outline"
+    >
+      <Icon icon="lucide:search" />
+      Search documentation
+      <KbdGroup>
+        <Kbd :size="values.size">⌘</Kbd>
+        <Kbd :size="values.size">K</Kbd>
+      </KbdGroup>
+    </Button>
+
+    <TooltipProvider>
+      <TooltipRoot>
+        <TooltipTrigger as-child>
+          <Button
+            variant="outline"
+            square
+          >
+            <Icon icon="lucide:bold" />
+          </Button>
+        </TooltipTrigger>
+        <TooltipPortal>
+          <TooltipContent>
+            Bold
+            <KbdGroup>
+              <Kbd :size="values.size">⌘</Kbd>
+              <Kbd :size="values.size">B</Kbd>
+            </KbdGroup>
+            <TooltipArrow />
+          </TooltipContent>
+        </TooltipPortal>
+      </TooltipRoot>
+    </TooltipProvider>
   </ViewContainer>
 </template>

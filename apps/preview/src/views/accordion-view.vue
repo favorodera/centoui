@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { AccordionRoot, AccordionItem, AccordionHeader, AccordionTrigger, AccordionContent } from '#centoui/components/accordion'
+import { AccordionRoot, AccordionItem, AccordionTrigger, AccordionContent } from '#centoui/components/accordion'
+import { Icon } from '#centoui/components/icon'
+import { Separator } from '#centoui/components/separator'
 import ViewContainer from '@/components/view-container.vue'
 import { useApp } from '@/composables/use-app'
 
@@ -21,9 +23,18 @@ const values = useApp().preview.initPreview('Accordion', {
       default-value="item-1"
     >
       <AccordionItem value="item-1">
-        <AccordionHeader>
-          <AccordionTrigger>Getting Started</AccordionTrigger>
-        </AccordionHeader>
+        <AccordionTrigger>
+          Getting Started
+
+          <Icon
+            icon="lucide:chevron-down"
+            class="
+              transition-transform
+
+              group-data-[state=open]/accordion-item:rotate-180
+            "
+          />
+        </AccordionTrigger>
         <AccordionContent>
           <p>
             Start by installing the package with your preferred package manager.
@@ -38,10 +49,20 @@ const values = useApp().preview.initPreview('Accordion', {
         </AccordionContent>
       </AccordionItem>
 
+      <Separator />
+
       <AccordionItem value="item-2">
-        <AccordionHeader>
-          <AccordionTrigger>Best Practices</AccordionTrigger>
-        </AccordionHeader>
+        <AccordionTrigger>
+          Best Practices
+          <Icon
+            icon="lucide:chevron-down"
+            class="
+              transition-transform
+
+              group-data-[state=open]/accordion-item:rotate-180
+            "
+          />
+        </AccordionTrigger>
         <AccordionContent>
           <p>
             Use clear headings and concise descriptions for each accordion item.

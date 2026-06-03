@@ -1,5 +1,5 @@
 import { type AspectRatioProps as RekaAspectRatioProps } from 'reka-ui'
-import { tv, type ClassProp } from 'tailwind-variants'
+import { tv } from 'tailwind-variants'
 
 export const aspectRatioVariants = tv({
   slots: {
@@ -7,22 +7,19 @@ export const aspectRatioVariants = tv({
   },
 })
 
-// COMPONENTS
 
+// COMPONENT
 export { default as AspectRatio } from './aspect-ratio.vue'
 
 
-// TYPES — Props
+// PROPS
+export type AspectRatioProps = RekaAspectRatioProps & { class?: any }
 
-export type AspectRatioProps = RekaAspectRatioProps & Pick<ClassProp, 'class'>
 
-
-// TYPES — Slots
-
+// SLOTS
 export type AspectRatioSlots = {
   default?: (props: {
     /** Current aspect ratio (in %) */
     aspect: number
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   }) => any
 }

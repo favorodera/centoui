@@ -1,21 +1,19 @@
-import { tv, type ClassProp, type VariantProps } from 'tailwind-variants'
+import { tv, type VariantProps } from 'tailwind-variants'
 import type { InputHTMLAttributes } from 'vue'
 
 export const inputVariants = tv({
   slots: {
     root: `
-      w-full border border-input bg-transparent transition-all duration-300
+      w-full min-w-0 border border-input bg-transparent transition-all
       outline-none
 
       selection:bg-primary selection:text-primary-foreground
 
       placeholder:text-muted-foreground
 
-      hover:bg-input/15
-
       focus-visible:ring-2 focus-visible:ring-ring
 
-      disabled:pointer-events-none disabled:opacity-60
+      disabled:pointer-events-none disabled:bg-input/60 disabled:opacity-65
 
       aria-invalid:ring-2 aria-invalid:ring-error
     `,
@@ -23,10 +21,10 @@ export const inputVariants = tv({
   variants: {
     size: {
       sm: {
-        root: 'rounded-md px-3 py-1 text-xs',
+        root: 'h-7 rounded-md px-3 py-1 text-sm',
       },
       md: {
-        root: 'rounded-md px-4 py-2 text-sm',
+        root: 'h-8 rounded-md px-3 py-1 text-sm',
       },
     },
   },
@@ -37,19 +35,16 @@ export const inputVariants = tv({
 
 
 // COMPONENT
-
 export { default as Input } from './input.vue'
 
 
-// TYPES — Variants
-
+// VARIANTS
 export type InputVariants = VariantProps<typeof inputVariants>
 
 
-// TYPES — Props
-
-// Note: 'autocomplete' is omitted and defined with simpler types to avoid TS2590 union complexity issues
-export type InputProps = Pick<ClassProp, 'class'> & /** @vue-ignore */ Omit<InputHTMLAttributes, 'autocomplete' | 'size' | 'value' | 'class'> & {
+// PROPS
+// Note: 'autocomplete' is defined with simpler types to avoid TS2590 union complexity issues
+export type InputProps = {
   /**
    * The visual size of the input.
    * @default 'md'
@@ -67,11 +62,11 @@ export type InputProps = Pick<ClassProp, 'class'> & /** @vue-ignore */ Omit<Inpu
   value?: string | number
   /** Controls browser autocomplete suggestions. */
   autocomplete?: 'on' | 'off' | (string & {})
-}
+  class?: any
+} & /** @vue-ignore */ InputHTMLAttributes
 
 
-// TYPES — Emits
-
+// EMITS
 export type InputEmits = {
   /**
    * Event handler for when the value of the input changes.

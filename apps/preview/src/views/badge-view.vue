@@ -11,12 +11,6 @@ const values = useApp().preview.initPreview('Badge', {
     options: Object.keys(badgeVariants.variants.variant),
     default: badgeVariants.defaultVariants.variant,
   },
-  size: {
-    type: 'array',
-    label: 'Size',
-    options: Object.keys(badgeVariants.variants.size),
-    default: badgeVariants.defaultVariants.size,
-  },
 })
 </script>
 
@@ -25,14 +19,12 @@ const values = useApp().preview.initPreview('Badge', {
 
     <Badge
       :variant="values.variant"
-      :size="values.size"
     >
       Badge
     </Badge>
 
     <Badge
       :variant="values.variant"
-      :size="values.size"
     >
       <Icon
         icon="lucide:plus"
@@ -43,11 +35,15 @@ const values = useApp().preview.initPreview('Badge', {
       
     <Badge
       :variant="values.variant"
-      :size="values.size"
+      as-child
     >
-      <Icon
-        icon="lucide:plus"
-      />
+      <a
+        href="#"
+      >
+        <Icon
+          icon="lucide:plus"
+        />
+      </a>
     </Badge>
 
   </ViewContainer>

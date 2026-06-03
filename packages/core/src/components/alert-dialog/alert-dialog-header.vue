@@ -11,11 +11,8 @@ const props = defineProps<AlertDialogHeaderProps>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
 
-const classNames = computed(() => {
-  const { header } = alertDialogVariants()
-  
-  return header({ class: props.class })
-})
+const { header } = alertDialogVariants()
+const classNames = computed(() => header({ class: props.class }))
 </script>
 
 <template>

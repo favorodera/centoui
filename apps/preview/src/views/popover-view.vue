@@ -1,21 +1,18 @@
 <script setup lang="ts">
 import { Button } from '#centoui/components/button'
-import { Badge } from '#centoui/components/badge'
 import { Icon } from '#centoui/components/icon'
+import { Input } from '#centoui/components/input'
+import { Label } from '#centoui/components/label'
 import {
   AvatarRoot,
   AvatarImage,
   AvatarFallback,
 } from '#centoui/components/avatar'
 import {
-  PopoverAnchor,
-  PopoverArrow,
-  PopoverClose,
   PopoverContent,
   PopoverDescription,
   PopoverFooter,
   PopoverHeader,
-  PopoverPortal,
   PopoverRoot,
   PopoverTitle,
   PopoverTrigger,
@@ -37,122 +34,122 @@ const values = useApp().preview.initPreview('Popover', {
     options: ['start', 'center', 'end'],
     default: 'center',
   },
+  showArrow: {
+    type: 'boolean',
+    label: 'Show Arrow',
+    default: true,
+  },
 })
-
-const notifications = [
-  {
-    src: 'https://i.pravatar.cc/40?img=1',
-    fallback: 'AM',
-    text: 'Amara merged your pull request.',
-    time: '2m ago',
-    unread: true,
-  },
-  {
-    src: 'https://i.pravatar.cc/40?img=5',
-    fallback: 'RK',
-    text: 'Ravi left a comment on Badge.',
-    time: '1h ago',
-    unread: true,
-  },
-  {
-    src: 'https://i.pravatar.cc/40?img=9',
-    fallback: 'JL',
-    text: 'Jade starred CentoUI.',
-    time: '3h ago',
-    unread: false,
-  },
-]
 </script>
 
 <template>
   <ViewContainer>
     <PopoverRoot>
-      <PopoverAnchor>
-        <PopoverTrigger as-child>
+      <PopoverTrigger as-child>
+        <Button
+          variant="outline"
+          square
+        >
+          <Icon icon="lucide:settings-2" />
+        </Button>
+      </PopoverTrigger>
+
+      <PopoverContent
+        :side="values.side as any"
+        :align="values.align as any"
+        :show-arrow="values.showArrow"
+      >
+        <PopoverHeader>
+          <PopoverTitle>Dimensions</PopoverTitle>
+          <PopoverDescription>Set the dimensions for the layer.</PopoverDescription>
+        </PopoverHeader>
+        <PopoverBody
+          class="
+            grid gap-4
+
+            *:grid *:grid-cols-3 *:items-center *:gap-4
+          "
+        >
+          <div>
+            <Label for="width">Width</Label>
+            <Input
+              id="width"
+              value="100%"
+              class="col-span-2 h-8"
+            />
+          </div>
+          <div>
+            <Label for="height">Height</Label>
+            <Input
+              id="height"
+              value="25px"
+              class="col-span-2 h-8"
+            />
+          </div>
+        </PopoverBody>
+        <PopoverFooter class="flex justify-end gap-2">
           <Button
             variant="outline"
-            square
-            class="overflow-visible"
+            size="sm"
           >
-            <Icon icon="lucide:bell" />
-            <div
-              class="absolute -top-1 -right-1 size-2 rounded-full bg-foreground"
-            />
+            Cancel
           </Button>
-        </PopoverTrigger>
-      </PopoverAnchor>
+          <Button size="sm">
+            Save
+          </Button>
+        </PopoverFooter>
+      </PopoverContent>
+    </PopoverRoot>
 
-      <PopoverPortal>
-        <PopoverContent
-          :side="values.side as any"
-          :align="values.align as any"
-          class="w-full"
+    <PopoverRoot>
+      <PopoverTrigger as-child>
+        <Button
+          variant="outline"
+          class="rounded-full"
+          square
         >
-          <PopoverHeader class="border-b border-border">
-            <div class="flex items-center justify-between">
-              <PopoverTitle>Notifications</PopoverTitle>
-              <Badge
-                variant="success"
-                class="font-mono"
-              >
-                2 new
-              </Badge>
+          <AvatarRoot>
+            <AvatarImage src="https://i.pravatar.cc/40?img=4" />
+            <AvatarFallback>JD</AvatarFallback>
+          </AvatarRoot>
+        </Button>
+      </PopoverTrigger>
+
+      <PopoverContent
+        :side="values.side as any"
+        :align="values.align as any"
+      >
+        <PopoverHeader>
+          <div class="flex gap-4">
+            <AvatarRoot size="lg">
+              <AvatarImage src="https://i.pravatar.cc/40?img=4" />
+              <AvatarFallback>JD</AvatarFallback>
+            </AvatarRoot>
+            <div class="space-y-1 text-left">
+              <PopoverTitle>Jane Doe</PopoverTitle>
+              <PopoverDescription>@janedoe</PopoverDescription>
             </div>
-            <PopoverDescription>
-              Recent activity across your repositories.
-            </PopoverDescription>
-          </PopoverHeader>
+          </div>
+        </PopoverHeader>
 
-          <PopoverBody class="divide-y divide-border p-0">
-            <div
-              v-for="notification in notifications"
-              :key="notification.fallback"
-              class="
-                flex items-start gap-3 px-4 py-3
-
-                first:pt-0
-
-                last:pb-0
-              "
-            >
-              <AvatarRoot
-                size="sm"
-              >
-                <AvatarImage :src="notification.src" />
-                <AvatarFallback>{{ notification.fallback }}</AvatarFallback>
-              </AvatarRoot>
-
-              <div class="min-w-0 flex-1 space-y-0.5">
-                <p class="text-sm">
-                  {{ notification.text }}
-                </p>
-                <p class="font-mono text-xs text-muted-foreground">
-                  {{ notification.time }}
-                </p>
-              </div>
-
-              <div
-                v-if="notification.unread"
-                class="size-2 shrink-0 rounded-full bg-foreground"
+        <PopoverBody>
+          <div class="text-sm">
+            Frontend engineer focusing on design systems and accessibility.
+          </div>
+          <div class="flex gap-4 pt-4 text-sm text-muted-foreground">
+            <div class="flex items-center gap-1">
+              <Icon
+                icon="lucide:users"
+                class="size-4"
               />
+              <span class="font-medium text-foreground">240</span> followers
             </div>
-          </PopoverBody>
-
-          <PopoverFooter class="border-t border-border">
-            <PopoverClose as-child>
-              <Button
-                variant="ghost"
-                size="sm"
-                class="w-full"
-              >
-                Mark all as read
-              </Button>
-            </PopoverClose>
-          </PopoverFooter>
-
-          <PopoverArrow />
-        </PopoverContent>
-      </PopoverPortal>
+            <div class="flex items-center gap-1">
+              <span class="font-medium text-foreground">12</span> following
+            </div>
+          </div>
+        </PopoverBody>
+      </PopoverContent>
     </PopoverRoot>
   </ViewContainer>
 </template>

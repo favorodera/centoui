@@ -1,26 +1,19 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
 import { Primitive, useForwardProps } from 'reka-ui'
-import { computed, reactive, toRef } from 'vue'
-import { buttonGroupVariants, provideCentouiButtonGroupContext, type ButtonGroupProps } from '.'
+import { computed } from 'vue'
+import { buttonGroupVariants, type ButtonGroupProps } from '.'
 
 const props = withDefaults(defineProps<ButtonGroupProps>(), {
-  as: 'div',
   orientation: 'horizontal',
 })
 const delegatedProps = reactiveOmit(props, 'class', 'orientation')
 const forwardedProps = useForwardProps(delegatedProps)
 
-const classNames = computed(() => {
-  const { root } = buttonGroupVariants({
-    orientation: props.orientation,
-  })
-
-  return root({ class: props.class })
-})
-
-provideCentouiButtonGroupContext(reactive({
-  orientation: toRef(props, 'orientation'),
+const { root } = buttonGroupVariants()
+const classNames = computed(() => root({
+  orientation: props.orientation,
+  class: props.class,
 }))
 </script>
 

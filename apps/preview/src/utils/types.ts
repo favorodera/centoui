@@ -32,7 +32,7 @@ type InferValueFromDefinition<TDefinition extends PropDefinition>
   = TDefinition extends ArrayPropDefinition ? NonNullable<TDefinition['default']>
     : TDefinition extends BooleanPropDefinition ? boolean
       : TDefinition extends StringPropDefinition ? string
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+         
         : any
 
 export type InferValuesFromSchema<TSchema extends PropsSchema> = {

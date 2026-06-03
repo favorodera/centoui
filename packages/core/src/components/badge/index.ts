@@ -1,46 +1,40 @@
 import type { PrimitiveProps } from 'reka-ui'
-import { tv, type ClassProp, type VariantProps } from 'tailwind-variants'
+import { tv, type VariantProps } from 'tailwind-variants'
 
 export const badgeVariants = tv({
   slots: {
     root: `
-      relative inline-flex shrink-0 items-center justify-center truncate
-      outline-none select-none
+      relative inline-flex shrink-0 items-center justify-center gap-1 truncate
+      rounded-sm border px-2 py-0.5 text-xs font-medium whitespace-nowrap
+      transition-all outline-none select-none
 
       focus-visible:ring-2 focus-visible:ring-ring
 
-      [&_svg]:pointer-events-none [&_svg]:shrink-0
+      *:data-[slot=icon]:size-3
     `,
   },
   variants: {
     variant: {
-      neutral: { root: 'bg-neutral text-neutral-foreground' },
-      success: { root: 'bg-success/8 text-success' },
-      warning: { root: 'bg-warning/8 text-warning' },
-      error: { root: 'bg-error/8 text-error' },
-      info: { root: 'bg-info/8 text-info' },
-    },
-    size: {
-      sm: {
-        root: `
-          gap-1 rounded-sm px-1.5 py-0.5 text-xs font-medium
-
-          [&_svg]:size-3
-        `,
+      primary: {
+        root: 'border-primary bg-primary text-primary-foreground',
       },
-      md: {
-        root: `
-          gap-1 rounded-md px-2 py-0.5 text-xs font-medium
-
-          [&_svg]:size-3
-        `,
+      secondary: {
+        root: 'border-secondary bg-secondary text-secondary-foreground',
       },
-      lg: {
-        root: `
-          gap-2 rounded-md px-2.5 py-1 text-sm font-medium
-
-          [&_svg]:size-4
-        `,
+      neutral: {
+        root: 'border-border bg-background text-foreground',
+      },
+      success: {
+        root: 'border-success/15 bg-success/10 text-success',
+      },
+      warning: {
+        root: 'border-warning/15 bg-warning/10 text-warning',
+      },
+      error: {
+        root: 'border-error/15 bg-error/10 text-error',
+      },
+      info: {
+        root: 'border-info/15 bg-info/10 text-info',
       },
     },
   },
@@ -52,25 +46,20 @@ export const badgeVariants = tv({
 
 
 // COMPONENT
-
 export { default as Badge } from './badge.vue'
 
 
-// TYPES — Variants
+// VARIANTS
 export type BadgeVariants = VariantProps<typeof badgeVariants>
 
 
-// TYPES — Props
-export type BadgeProps = PrimitiveProps & Pick<ClassProp, 'class'> & {
+// PROPS
+export type BadgeProps = PrimitiveProps & {
   /**
    * The visual style of the badge.
    * @default 'neutral'
    */
   variant?: BadgeVariants['variant']
-  /**
-   * The size of the badge.
-   * @default 'md'
-   */
-  size?: BadgeVariants['size']
+  class?: any
 }
 

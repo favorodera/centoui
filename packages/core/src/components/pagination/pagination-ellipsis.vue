@@ -13,11 +13,8 @@ const props = defineProps<PaginationEllipsisProps>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
 
-const classNames = computed(() => {
-  const { ellipsis } = paginationVariants()
-
-  return ellipsis({ class: props.class })
-})
+const { ellipsis } = paginationVariants()
+const classNames = computed(() => ellipsis({ class: props.class }))
 </script>
 
 <template>

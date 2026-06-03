@@ -11,11 +11,8 @@ const props = defineProps<PopoverHeaderProps>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
 
-const classNames = computed(() => {
-  const { header } = popoverVariants()
-  
-  return header({ class: props.class })
-})
+const { header } = popoverVariants()
+const classNames = computed(() => header({ class: props.class }))
 </script>
 
 <template>

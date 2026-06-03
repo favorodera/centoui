@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { AlertRoot, AlertDescription, AlertActions, alertVariants, AlertMedia, AlertTitle, AlertContent } from '#centoui/components/alert'
+import { AlertRoot, AlertDescription, alertVariants, AlertTitle, AlertBody } from '#centoui/components/alert'
 import { Button } from '#centoui/components/button'
 import { Icon } from '#centoui/components/icon'
 import ViewContainer from '@/components/view-container.vue'
@@ -18,25 +18,21 @@ const values = useApp().preview.initPreview('Alert', {
 <template>
   <ViewContainer>
     <AlertRoot :variant="values.variant">
-      <AlertMedia>
-        <Icon icon="lucide:info" />
-      </AlertMedia>
+      <Icon icon="lucide:info" />
 
-      <AlertContent>
+      <AlertBody>
         <AlertTitle>Scheduled maintenance</AlertTitle>
         <AlertDescription>
           System maintenance is scheduled for Sunday, 2:00 AM - 4:00 AM UTC. Some features may be temporarily unavailable.
         </AlertDescription>
-      </AlertContent>
+      </AlertBody>
 
-      <AlertActions>
-        <Button
-          variant="outline"
-          size="sm"
-        >
-          Learn more
-        </Button>
-      </AlertActions>
+      <Button
+        variant="outline"
+        size="sm"
+      >
+        Learn more
+      </Button>
     </AlertRoot>
   </ViewContainer>
 </template>

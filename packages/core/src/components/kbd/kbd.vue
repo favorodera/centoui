@@ -8,17 +8,14 @@ const props = withDefaults(defineProps<KbdProps>(), {
   as: 'kbd',
   size: 'md',
 })
-
 const delegatedProps = reactiveOmit(props, 'class', 'size')
 const forwardedProps = useForwardProps(delegatedProps)
 
-const classNames = computed(() => {
-  const { root } = kbdVariants({
-    size: props.size,
-  })
-
-  return root({ class: props.class })
-})
+const { root } = kbdVariants()
+const classNames = computed(() => root({
+  size: props.size,
+  class: props.class,
+}))
 </script>
 
 <template>

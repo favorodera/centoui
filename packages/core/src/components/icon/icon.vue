@@ -17,11 +17,8 @@ const ariaHidden = computed(() => {
     : undefined
 })
 
-const classNames = computed(() => {
-  const { root } = iconVariants()
-
-  return root({ class: props.class })
-})
+const { root } = iconVariants()
+const classNames = computed(() => root({ class: props.class }))
 </script>
 
 <template>

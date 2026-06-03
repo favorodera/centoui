@@ -10,25 +10,16 @@ const props = withDefaults(defineProps<ButtonProps>(), {
   size: 'md',
   square: false,
 })
-
-const delegatedProps = reactiveOmit(
-  props,
-  'class',
-  'variant',
-  'size',
-  'square',
-)
+const delegatedProps = reactiveOmit(props, 'class', 'variant', 'size', 'square')
 const forwardedProps = useForwardProps(delegatedProps)
 
-const classNames = computed(() => {
-  const { root } = buttonVariants({
-    variant: props.variant,
-    size: props.size,
-    square: props.square,
-  })
-
-  return root({ class: props.class })
-})
+const { root } = buttonVariants()
+const classNames = computed(() => root({
+  variant: props.variant,
+  size: props.size,
+  square: props.square,
+  class: props.class,
+}))
 </script>
 
 <template>

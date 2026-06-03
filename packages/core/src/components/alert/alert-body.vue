@@ -1,24 +1,25 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
 import { Primitive, useForwardProps } from 'reka-ui'
+import { alertVariants, type AlertBodyProps, injectCentouiAlertRootContext } from '.'
 import { computed } from 'vue'
-import { itemVariants, type ItemGroupProps } from '.'
 
-const props = defineProps<ItemGroupProps>()
+const rootContext = injectCentouiAlertRootContext()
+
+const props = defineProps<AlertBodyProps>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
 
-const classNames = computed(() => {
-  const { group } = itemVariants()
-
-  return group({ class: props.class })
-})
+const { body } = alertVariants()
+const classNames = computed(() => body({
+  variant: rootContext?.variant,
+  class: props.class,
+}))
 </script>
 
 <template>
   <Primitive
-    data-slot="item-group"
-    role="list"
+    data-slot="alert-body"
     v-bind="forwardedProps"
     :class="classNames"
   >

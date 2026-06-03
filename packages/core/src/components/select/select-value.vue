@@ -4,12 +4,9 @@ import { useForwardProps, SelectValue } from 'reka-ui'
 import {
   type SelectValueProps,
   type SelectValueSlots,
-  injectCentouiSelectRootContext,
   selectVariants,
 } from '.'
 import { computed } from 'vue'
-
-const rootContext = injectCentouiSelectRootContext()
 
 defineSlots<SelectValueSlots>()
 
@@ -17,13 +14,8 @@ const props = defineProps<SelectValueProps>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
 
-const classNames = computed(() => {
-  const { value } = selectVariants({
-    size: rootContext.size,
-  })
-  
-  return value({ class: props.class })
-})
+const { value } = selectVariants()
+const classNames = computed(() => value({ class: props.class }))
 </script>
 
 <template>

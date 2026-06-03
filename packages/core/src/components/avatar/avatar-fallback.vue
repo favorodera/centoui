@@ -14,13 +14,11 @@ const props = defineProps<AvatarFallbackProps>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
 
-const classNames = computed(() => {
-  const { fallback } = avatarVariants({
-    size: rootContext.size,
-  })
-  
-  return fallback({ class: props.class })
-})
+const { fallback } = avatarVariants()
+const classNames = computed(() => fallback({
+  size: rootContext?.size,
+  class: props.class,
+}))
 </script>
 
 <template>

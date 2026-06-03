@@ -11,11 +11,8 @@ const props = defineProps<AlertDialogFooterProps>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
 
-const classNames = computed(() => {
-  const { footer } = alertDialogVariants()
-  
-  return footer({ class: props.class })
-})
+const { footer } = alertDialogVariants()
+const classNames = computed(() => footer({ class: props.class }))
 </script>
 
 <template>

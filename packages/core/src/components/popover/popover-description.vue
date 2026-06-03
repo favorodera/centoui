@@ -13,11 +13,8 @@ const props = withDefaults(defineProps<PopoverDescriptionProps>(), {
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
 
-const classNames = computed(() => {
-  const { description } = popoverVariants()
-  
-  return description({ class: props.class })
-})
+const { description } = popoverVariants()
+const classNames = computed(() => description({ class: props.class }))
 </script>
 
 <template>

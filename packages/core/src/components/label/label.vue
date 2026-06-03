@@ -8,11 +8,8 @@ const props = defineProps<LabelProps>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
 
-const classNames = computed(() => {
-  const { root } = labelVariants()
-
-  return root({ class: props.class })
-})
+const { root } = labelVariants()
+const classNames = computed(() => root({ class: props.class }))
 </script>
 
 <template>

@@ -14,23 +14,20 @@ const rootContext = injectCentouiAvatarRootContext()
 const emits = defineEmits<AvatarImageEmits>()
 
 const props = defineProps<AvatarImageProps>()
-const delegatedProps = reactiveOmit(props, 'class', 'src')
+const delegatedProps = reactiveOmit(props, 'class')
 
 const forwardedPropsEmits = useForwardPropsEmits(delegatedProps, emits)
 
-const classNames = computed(() => {
-  const { image } = avatarVariants({
-    size: rootContext.size,
-  })
-  
-  return image({ class: props.class })
-})
+const { image } = avatarVariants()
+const classNames = computed(() => image({
+  size: rootContext?.size,
+  class: props.class,
+}))
 </script>
 
 <template>
   <AvatarImage
     data-slot="avatar-image"
-    :src
     v-bind="forwardedPropsEmits"
     :class="classNames"
   />

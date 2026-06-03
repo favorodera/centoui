@@ -1,52 +1,39 @@
 import {
-  createContext,
   type AcceptableValue,
-  type SelectArrowProps as RekaSelectArrowProps,
   type SelectContentEmits as RekaSelectContentEmits,
   type SelectContentProps as RekaSelectContentProps,
   type SelectGroupProps as RekaSelectGroupProps,
-  type SelectIconProps as RekaSelectIconProps,
   type SelectItemEmits as RekaSelectItemEmits,
-  type SelectItemIndicatorProps as RekaSelectItemIndicatorProps,
   type SelectItemProps as RekaSelectItemProps,
-  type SelectItemTextProps as RekaSelectItemTextProps,
   type SelectLabelProps as RekaSelectLabelProps,
-  type SelectPortalProps as RekaSelectPortalProps,
   type SelectRootEmits as RekaSelectRootEmits,
   type SelectRootProps as RekaSelectRootProps,
-  type SelectScrollDownButtonProps as RekaSelectScrollDownButtonProps,
-  type SelectScrollUpButtonProps as RekaSelectScrollUpButtonProps,
-  type SelectSeparatorProps as RekaSelectSeparatorProps,
   type SelectTriggerProps as RekaSelectTriggerProps,
   type SelectValueProps as RekaSelectValueProps,
-  type SelectViewportProps as RekaSelectViewportProps,
 } from 'reka-ui'
-import { tv, type ClassProp, type VariantProps } from 'tailwind-variants'
+import { tv, type VariantProps } from 'tailwind-variants'
 
 export const selectVariants = tv({
   slots: {
     trigger: `
-      relative inline-flex w-full items-center justify-between border
-      border-input bg-transparent transition-all duration-300 outline-none
+      flex w-full items-center border border-input bg-transparent transition-all
+      outline-none
 
-      hover:bg-input/15
+      selection:bg-primary selection:text-primary-foreground
 
       focus-visible:ring-2 focus-visible:ring-ring
 
-      disabled:pointer-events-none disabled:opacity-60
+      disabled:pointer-events-none disabled:bg-input/60 disabled:opacity-65
 
       aria-invalid:ring-2 aria-invalid:ring-error
 
       data-placeholder:text-muted-foreground
-
-      [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg]:text-muted-foreground
     `,
-    value: 'flex-1 truncate text-start',
+    value: 'flex flex-1 items-center truncate',
     icon: 'text-muted-foreground',
     content: `
-      relative z-50 max-h-(--reka-select-content-available-height)
-      scrollbar-none rounded-lg border border-border bg-surface-raised shadow-md
-      animation-duration-300
+      relative z-50 min-w-3xs scrollbar-none rounded-lg border border-input
+      bg-surface-raised
 
       data-[side=bottom]:slide-in-from-top-2
 
@@ -62,73 +49,58 @@ export const selectVariants = tv({
       data-[state=open]:animate-in data-[state=open]:fade-in-0
       data-[state=open]:zoom-in-95
     `,
-    viewport: 'p-1',
+    scrollUpButton: `
+      z-10 flex w-full cursor-default items-center justify-center
+      bg-surface-raised py-1 rounded-t-[inherit]
+
+      *:data-[slot=icon]:size-4
+    `,
+    scrollDownButton: `
+      z-10 flex w-full cursor-default items-center justify-center
+      bg-surface-raised py-1 rounded-b-[inherit]
+
+      *:data-[slot=icon]:size-4
+    `,
+    viewport: '*:data-[slot=separator]:my-1 p-1',
+    group: 'scroll-my-1',
     item: `
-      relative inline-flex w-full cursor-default items-center rounded-md
-      outline-none select-none
+      flex w-full cursor-default items-center gap-2 rounded-md pl-2 pr-8 py-1 text-sm
+      outline-none select-none relative
 
       focus:bg-accent focus:text-accent-foreground
 
-      data-disabled:pointer-events-none data-disabled:opacity-60
+      data-disabled:pointer-events-none data-disabled:opacity-65
     `,
     itemText: 'min-w-0 truncate',
-    itemIndicator: 'ml-auto inline-flex items-center justify-center',
-    scrollUpButton: `
-      inline-flex items-center justify-center py-1 text-muted-foreground
-    `,
-    scrollDownButton: `
-      inline-flex items-center justify-center py-1 text-muted-foreground
-    `,
-    group: 'p-1',
-    label: 'font-medium text-muted-foreground',
-    separator: 'my-1',
-    arrow: 'z-50 fill-surface-raised stroke-border',
+    itemIndicator: 'absolute right-2 top-1/2 -translate-y-1/2',
+    label: 'px-2 py-1 text-xs text-muted-foreground',
+    arrow: 'z-50 fill-surface-raised stroke-input',
   },
   variants: {
-    size: {
+    triggerSize: {
       sm: {
         trigger: `
-          gap-1 rounded-md px-3 py-1
+          h-7 gap-1 rounded-md px-3 py-1 text-sm
 
-          [&_svg]:size-4
+          *:data-[slot=select-value]:gap-1
         `,
-        value: 'text-xs',
         icon: 'size-4',
-        label: 'px-2 py-1 text-xs',
-        item: `
-          gap-1 px-2 py-1
-
-          [&_svg]:size-4
-        `,
-        itemText: 'text-xs',
-        itemIndicator: '[&_svg]:size-4',
-        scrollUpButton: '[&_svg]:size-4',
-        scrollDownButton: '[&_svg]:size-4',
       },
       md: {
         trigger: `
-          gap-2 rounded-md px-4 py-2
+          h-8 gap-2 rounded-md px-3 py-1 text-sm
 
-          [&_svg]:size-4
+          *:data-[slot=select-value]:gap-2
         `,
-        value: 'text-sm',
         icon: 'size-4',
-        label: 'px-2 py-1 text-xs',
-        item: `
-          gap-2 px-3 py-1
-
-          [&_svg]:size-4
-        `,
-        itemText: 'text-sm',
-        itemIndicator: '[&_svg]:size-4',
-        scrollUpButton: '[&_svg]:size-4',
-        scrollDownButton: '[&_svg]:size-4',
       },
     },
     contentPosition: {
       'popper': {
         content: `
-          w-(--reka-select-trigger-width)
+          max-h-(--reka-select-content-available-height)
+
+          min-w-(--reka-select-trigger-width) max-w-(--reka-select-trigger-width)
 
           data-[side=bottom]:translate-y-1
 
@@ -138,96 +110,64 @@ export const selectVariants = tv({
 
           data-[side=top]:-translate-y-1
         `,
-        viewport: 'min-w-(--reka-select-trigger-width) scroll-my-1',
+        viewport: 'w-full',
       },
       'item-aligned': {},
     },
   },
   defaultVariants: {
-    size: 'md',
+    triggerSize: 'md',
     contentPosition: 'popper',
   },
 })
 
 
 // COMPONENTS
-
-export { default as SelectArrow } from './select-arrow.vue'
-export { default as SelectContent } from './select-content.vue'
-export { default as SelectGroup } from './select-group.vue'
-export { default as SelectIcon } from './select-icon.vue'
-export { default as SelectItemIndicator } from './select-item-indicator.vue'
-export { default as SelectItemText } from './select-item-text.vue'
-export { default as SelectItem } from './select-item.vue'
-export { default as SelectLabel } from './select-label.vue'
-export { default as SelectPortal } from './select-portal.vue'
 export { default as SelectRoot } from './select-root.vue'
-export { default as SelectScrollDownButton } from './select-scroll-down-button.vue'
-export { default as SelectScrollUpButton } from './select-scroll-up-button.vue'
-export { default as SelectSeparator } from './select-separator.vue'
 export { default as SelectTrigger } from './select-trigger.vue'
 export { default as SelectValue } from './select-value.vue'
-export { default as SelectViewport } from './select-viewport.vue'
+export { default as SelectContent } from './select-content.vue'
+export { default as SelectGroup } from './select-group.vue'
+export { default as SelectItem } from './select-item.vue'
+export { default as SelectLabel } from './select-label.vue'
 
 
-// CONTEXT
-
-export const [injectCentouiSelectRootContext, provideCentouiSelectRootContext] = createContext<SelectRootContext>('SelectRoot', 'centoui:select-root:context')
-
-
-// TYPES — Variants
-
+// VARIANTS
 export type SelectVariants = VariantProps<typeof selectVariants>
 
 
-// TYPES — Context
+// PROPS
+export type SelectRootProps = RekaSelectRootProps
 
-export type SelectRootContext = Pick<SelectRootProps, 'size'>
-
-
-// TYPES — Props
-
-export type SelectRootProps = RekaSelectRootProps & {
+export type SelectTriggerProps = RekaSelectTriggerProps & {
   /**
-   * The visual size of the select.
+   * The visual size of the trigger.
    * @default 'md'
    */
-  size?: SelectVariants['size']
+  size?: SelectVariants['triggerSize']
+  class?: any
 }
 
-export type SelectTriggerProps = RekaSelectTriggerProps & Pick<ClassProp, 'class'>
+export type SelectValueProps = RekaSelectValueProps & { class?: any }
 
-export type SelectValueProps = RekaSelectValueProps & Pick<ClassProp, 'class'>
+export type SelectContentProps = RekaSelectContentProps & {
+  /**
+   * Whether to show an arrow alongside the content.\
+   * Only available when `position` is set to `popper`.
+   * @default false
+   */
+  showArrow?: boolean
+  class?: any
+}
 
-export type SelectIconProps = RekaSelectIconProps & Pick<ClassProp, 'class'>
+export type SelectItemProps = RekaSelectItemProps & { class?: any }
 
-export type SelectPortalProps = RekaSelectPortalProps
+export type SelectGroupProps = RekaSelectGroupProps & { class?: any }
 
-export type SelectContentProps = RekaSelectContentProps & Pick<ClassProp, 'class'>
-
-export type SelectViewportProps = RekaSelectViewportProps & Pick<ClassProp, 'class'>
-
-export type SelectItemProps = RekaSelectItemProps & Pick<ClassProp, 'class'>
-
-export type SelectItemTextProps = RekaSelectItemTextProps & Pick<ClassProp, 'class'>
-
-export type SelectItemIndicatorProps = RekaSelectItemIndicatorProps & Pick<ClassProp, 'class'>
-
-export type SelectScrollUpButtonProps = RekaSelectScrollUpButtonProps & Pick<ClassProp, 'class'>
-
-export type SelectScrollDownButtonProps = RekaSelectScrollDownButtonProps & Pick<ClassProp, 'class'>
-
-export type SelectGroupProps = RekaSelectGroupProps & Pick<ClassProp, 'class'>
-
-export type SelectLabelProps = RekaSelectLabelProps & Pick<ClassProp, 'class'>
-
-export type SelectSeparatorProps = RekaSelectSeparatorProps & Pick<ClassProp, 'class'>
-
-export type SelectArrowProps = RekaSelectArrowProps & Pick<ClassProp, 'class'>
+export type SelectLabelProps = RekaSelectLabelProps & { class?: any }
 
 
-// TYPES — Emits
-
+// EMITS
 export type SelectRootEmits = RekaSelectRootEmits
 
 export type SelectContentEmits = RekaSelectContentEmits
@@ -235,15 +175,13 @@ export type SelectContentEmits = RekaSelectContentEmits
 export type SelectItemEmits = RekaSelectItemEmits
 
 
-// TYPES — Slots
-
+// SLOTS
 export type SelectRootSlots = {
   default?: (props: {
     /** Current input values */
     modelValue?: AcceptableValue | AcceptableValue[]
     /** Current open state */
     open: boolean
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   }) => any
 }
 
@@ -253,6 +191,5 @@ export type SelectValueSlots = {
     modelValue?: AcceptableValue | AcceptableValue[]
     /** Current selected label */
     selectedLabel: string[]
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   }) => any
 }

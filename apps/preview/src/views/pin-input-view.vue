@@ -1,15 +1,10 @@
 <script setup lang="ts">
-import { PinInputInput, PinInputRoot, PinInputSeparator, pinInputVariants, PinInputGroup } from '#centoui/components/pin-input'
+import { Icon } from '#centoui/components/icon'
+import { PinInputInput, PinInputRoot, PinInputGroup } from '#centoui/components/pin-input'
 import ViewContainer from '@/components/view-container.vue'
 import { useApp } from '@/composables/use-app'
 
 const values = useApp().preview.initPreview('Pin Input', {
-  inputSize: {
-    type: 'array',
-    label: 'Size',
-    options: Object.keys(pinInputVariants.variants.inputSize),
-    default: pinInputVariants.defaultVariants.inputSize,
-  },
   disabled: {
     type: 'boolean',
     label: 'Disabled',
@@ -34,19 +29,20 @@ const values = useApp().preview.initPreview('Pin Input', {
           v-for="(_, index) in 3"
           :key="index"
           :index="index"
-          :size="values.inputSize"
           :aria-invalid="values.invalid"
         />
       </PinInputGroup>
 
-      <PinInputSeparator />
+      <Icon
+        icon="lucide:minus"
+        class="text-muted-foreground"
+      />
 
       <PinInputGroup>
         <PinInputInput
           v-for="(_, index) in 3"
           :key="index + 3"
           :index="index + 3"
-          :size="values.inputSize"
           :aria-invalid="values.invalid"
         />
       </PinInputGroup>
@@ -60,7 +56,6 @@ const values = useApp().preview.initPreview('Pin Input', {
         v-for="(_, index) in 6"
         :key="index"
         :index="index"
-        :size="values.inputSize"
         :aria-invalid="values.invalid"
       />
     </PinInputRoot>

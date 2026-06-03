@@ -6,15 +6,8 @@ import {
   SelectRoot,
   SelectTrigger,
   SelectValue,
-  SelectIcon,
-  SelectPortal,
   SelectContent,
-  SelectScrollUpButton,
-  SelectViewport,
   SelectItem,
-  SelectItemText,
-  SelectItemIndicator,
-  SelectScrollDownButton,
 } from '#centoui/components/select'
 import { Icon } from '#centoui/components/icon'
 import { Input } from '#centoui/components/input'
@@ -94,32 +87,17 @@ function set(key: string, value: unknown) {
             :id="`prop-${entry.key}`"
           >
             <SelectValue />
-            <SelectIcon />
           </SelectTrigger>
 
-          <SelectPortal>
-            <SelectContent>
-              <SelectScrollUpButton />
-
-              <SelectViewport>
-                <SelectItem
-                  v-for="option in entry.options"
-                  :key="String(option)"
-                  :value="option as any"
-                >
-                  <SelectItemText>
-                    {{ option }}
-                  </SelectItemText>
-
-                  <SelectItemIndicator />
-
-                </SelectItem>
-              </SelectViewport>
-
-              <SelectScrollDownButton />
-            </SelectContent>
-          </SelectPortal>
-
+          <SelectContent>
+            <SelectItem
+              v-for="option in entry.options"
+              :key="String(option)"
+              :value="option as any"
+            >
+              {{ option }}
+            </SelectItem>
+          </SelectContent>
         </SelectRoot>
 
         <!-- String -->

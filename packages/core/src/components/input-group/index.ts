@@ -1,36 +1,47 @@
-import { createContext, type PrimitiveProps } from 'reka-ui'
-import { tv, type ClassProp, type VariantProps } from 'tailwind-variants'
+import { type PrimitiveProps } from 'reka-ui'
+import { tv, type VariantProps } from 'tailwind-variants'
 
 export const inputGroupVariants = tv({
   slots: {
     root: `
-      relative flex w-full min-w-0 items-stretch overflow-hidden border
-      border-input
+      group/input-group-root relative flex w-full min-w-0 items-stretch
+      overflow-hidden rounded-md border border-input bg-transparent
+      transition-all
 
-      has-[[data-slot][aria-invalid=true]]:ring-2
-      has-[[data-slot][aria-invalid=true]]:ring-error
+      has-[[data-slot=input-group-addon]:is([data-position=bottom],[data-position=top])]:h-auto
+      has-[[data-slot=input-group-addon]:is([data-position=bottom],[data-position=top])]:flex-col
+
+      has-[[data-slot=input-group-addon]:is([data-position=right],[data-position=left])]:gap-1
+      has-[[data-slot=input-group-addon]:is([data-position=right],[data-position=left])]:px-3
+      has-[[data-slot=input-group-addon]:is([data-position=right],[data-position=left])]:py-1
 
       has-[[input-group-control]:disabled]:pointer-events-none
-      has-[[input-group-control]:disabled]:opacity-60
+      has-[[input-group-control]:disabled]:bg-input/60
+      has-[[input-group-control]:disabled]:opacity-65
 
       has-[[input-group-control]:focus-visible]:ring-2
       has-[[input-group-control]:focus-visible]:ring-ring
 
-      has-[>[data-slot=input-group-addon]:is([data-position=bottom],[data-position=top])]:h-auto
-      has-[>[data-slot=input-group-addon]:is([data-position=bottom],[data-position=top])]:flex-col
+      has-[[input-group-control][aria-invalid=true]]:ring-2
+      has-[[input-group-control][aria-invalid=true]]:ring-error
 
-      *:[[input-group-control]]:min-w-0 *:[[input-group-control]]:flex-1
+      dark:bg-input/40
+
+      *:[[input-group-control]]:h-auto *:[[input-group-control]]:flex-1
       *:[[input-group-control]]:rounded-none *:[[input-group-control]]:border-0
-      *:[[input-group-control]]:bg-transparent *:[[input-group-control]]:p-0
+      *:[[input-group-control]]:p-0
 
-      [&>[input-group-control]:focus-visible]:ring-0
+      has-[[data-slot=input-group-addon]:is([data-position=top],[data-position=bottom])]:*:[[input-group-control]]:px-3
+      has-[[data-slot=input-group-addon]:is([data-position=top],[data-position=bottom])]:*:[[input-group-control]]:py-2
 
-      [&>[input-group-control][aria-invalid=true]]:ring-0
+      *:[[input-group-control]:disabled]:bg-transparent
+
+      *:[[input-group-control]:focus-visible]:ring-0
+
+      *:[[input-group-control][aria-invalid=true]]:ring-0
     `,
     addon: `
-      flex shrink-0 items-center font-medium text-muted-foreground
-
-      [&_svg]:pointer-events-none [&_svg]:shrink-0
+      flex shrink-0 items-center text-sm font-medium text-muted-foreground
     `,
   },
   variants: {
@@ -42,82 +53,35 @@ export const inputGroupVariants = tv({
         addon: 'order-last',
       },
       top: {
-        addon: 'w-full',
+        addon: 'w-full border-input px-3 py-2',
       },
       bottom: {
-        addon: 'order-last w-full',
-      },
-    },
-    size: {
-      sm: {
-        root: 'gap-1 rounded-md px-3 py-1',
-        addon: `
-          text-xs
-
-          [&_svg]:size-4
-
-          data-[position=top]:[.border-b]:pb-3
-
-          data-[position=bottom]:[.border-t]:pt-3
-        `,
-      },
-      md: {
-        root: 'gap-2 rounded-md px-4 py-2',
-        addon: `
-          text-sm
-
-          [&_svg]:size-4
-
-          data-[position=top]:[.border-b]:pb-4
-
-          data-[position=bottom]:[.border-t]:pt-4
-        `,
+        addon: 'order-last w-full border-input px-3 py-2',
       },
     },
   },
   defaultVariants: {
     addonPosition: 'left',
-    size: 'md',
   },
 })
 
 
-// COMPONENT
-
+// COMPONENTS
 export { default as InputGroupRoot } from './input-group-root.vue'
 export { default as InputGroupAddon } from './input-group-addon.vue'
 
-
-// CONTEXT
-
-export const [injectCentouiInputGroupRootContext, provideCentouiInputGroupRootContext] = createContext<InputGroupRootContext>('InputGroupRoot', 'centoui:input-group-root:context')
-
-
-// TYPES — Variants
-
+// VARIANTS
 export type InputGroupVariants = VariantProps<typeof inputGroupVariants>
 
 
-// TYPES — Context
+// PROPS
+export type InputGroupRootProps = PrimitiveProps & { class?: any }
 
-export type InputGroupRootContext = Pick<InputGroupRootProps, 'size'>
-
-
-// TYPES — Props
-
-export type InputGroupRootProps = PrimitiveProps & Pick<ClassProp, 'class'> & {
-  /**
-   * The visual size of the input group.
-   * Matches the padding and text size of its contained inputs.
-   * @default 'md'
-   */
-  size?: InputGroupVariants['size']
-}
-
-export type InputGroupAddonProps = PrimitiveProps & Pick<ClassProp, 'class'> & {
+export type InputGroupAddonProps = PrimitiveProps & {
   /**
    * The position of the addon relative to the input.
    * @default 'left'
    */
   position?: InputGroupVariants['addonPosition']
+  class?: any
 }

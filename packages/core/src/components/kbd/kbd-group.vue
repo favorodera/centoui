@@ -10,10 +10,8 @@ const props = withDefaults(defineProps<KbdGroupProps>(), {
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
 
-const classNames = computed(() => {
-  const { group } = kbdVariants()
-  return group({ class: props.class })
-})
+const { group } = kbdVariants()
+const classNames = computed(() => group({ class: props.class }))
 </script>
 
 <template>

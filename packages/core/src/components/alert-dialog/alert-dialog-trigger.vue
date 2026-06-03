@@ -11,11 +11,8 @@ const props = defineProps<AlertDialogTriggerProps>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
 
-const classNames = computed(() => {
-  const { trigger } = alertDialogVariants()
-  
-  return trigger({ class: props.class })
-})
+const { trigger } = alertDialogVariants()
+const classNames = computed(() => trigger({ class: props.class }))
 </script>
 
 <template>

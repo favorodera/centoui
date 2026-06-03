@@ -10,11 +10,8 @@ const props = defineProps<AspectRatioProps>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
 
-const classNames = computed(() => {
-  const { root } = aspectRatioVariants()
-
-  return root({ class: props.class })
-})
+const { root } = aspectRatioVariants()
+const classNames = computed(() => root({ class: props.class }))
 </script>
 
 <template>

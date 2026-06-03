@@ -2,25 +2,19 @@
 import { reactiveOmit } from '@vueuse/core'
 import { Primitive, useForwardProps } from 'reka-ui'
 import { computed } from 'vue'
-import { injectCentouiInputGroupRootContext, inputGroupVariants, type InputGroupAddonProps } from '.'
-
-const rootContext = injectCentouiInputGroupRootContext()
+import { inputGroupVariants, type InputGroupAddonProps } from '.'
 
 const props = withDefaults(defineProps<InputGroupAddonProps>(), {
-  as: 'div',
   position: 'left',
 })
 const delegatedProps = reactiveOmit(props, 'class', 'position')
 const forwardedProps = useForwardProps(delegatedProps)
 
-const classNames = computed(() => {
-  const { addon } = inputGroupVariants({
-    addonPosition: props.position,
-    size: rootContext.size,
-  })
-
-  return addon({ class: props.class })
-})
+const { addon } = inputGroupVariants()
+const classNames = computed(() => addon({
+  addonPosition: props.position,
+  class: props.class,
+}))
 </script>
 
 <template>

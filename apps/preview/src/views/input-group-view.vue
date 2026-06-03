@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { InputGroupRoot, InputGroupAddon, inputGroupVariants } from '#centoui/components/input-group'
+import { InputGroupRoot, InputGroupAddon } from '#centoui/components/input-group'
 import { Input } from '#centoui/components/input'
 import { Button } from '#centoui/components/button'
 import { Textarea } from '#centoui/components/textarea'
@@ -10,12 +10,6 @@ import { KbdGroup } from '#centoui/components/kbd'
 import { Kbd } from '#centoui/components/kbd'
 
 const values = useApp().preview.initPreview('Input Group', {
-  size: {
-    type: 'array',
-    label: 'Size',
-    options: Object.keys(inputGroupVariants.variants.size),
-    default: inputGroupVariants.defaultVariants.size,
-  },
   disabled: {
     type: 'boolean',
     label: 'Disabled',
@@ -31,7 +25,24 @@ const values = useApp().preview.initPreview('Input Group', {
 
 <template>
   <ViewContainer>
-    <InputGroupRoot :size="values.size">
+    <InputGroupRoot>
+      <InputGroupAddon>
+        <Icon icon="lucide:dollar-sign" />
+      </InputGroupAddon>
+
+      <Input
+        input-group-control
+        placeholder="0.00"
+        :disabled="values.disabled"
+        :aria-invalid="values.invalid"
+      />
+
+      <InputGroupAddon position="right">
+        <span>USD</span>
+      </InputGroupAddon>
+    </InputGroupRoot>
+
+    <InputGroupRoot>
       <InputGroupAddon>
         <Icon icon="lucide:search" />
       </InputGroupAddon>
@@ -51,34 +62,14 @@ const values = useApp().preview.initPreview('Input Group', {
       </InputGroupAddon>
     </InputGroupRoot>
 
-    <InputGroupRoot :size="values.size">
-      <InputGroupAddon>
-        <Icon icon="lucide:credit-card" />
-      </InputGroupAddon>
-
-      <Input
-        input-group-control
-        placeholder="1234 5678 9012 3456"
-        :disabled="values.disabled"
-        :aria-invalid="values.invalid"
-      />
-
-      <InputGroupAddon position="right">
-        <Icon
-          icon="lucide:shield-check"
-          class="text-success"
-        />
-      </InputGroupAddon>
-    </InputGroupRoot>
-
-    <InputGroupRoot :size="values.size">
+    <InputGroupRoot>
       <InputGroupAddon>
         https://
       </InputGroupAddon>
 
       <Input
         input-group-control
-        placeholder="company.com/invite/john"
+        placeholder="company.com/invite"
         :disabled="values.disabled"
         :aria-invalid="values.invalid"
       />
@@ -94,7 +85,7 @@ const values = useApp().preview.initPreview('Input Group', {
       </InputGroupAddon>
     </InputGroupRoot>
 
-    <InputGroupRoot :size="values.size">
+    <InputGroupRoot>
       <Textarea
         input-group-control
         placeholder="Tell us what happened..."
@@ -111,5 +102,53 @@ const values = useApp().preview.initPreview('Input Group', {
       </InputGroupAddon>
     </InputGroupRoot>
 
+    <InputGroupRoot>
+      <InputGroupAddon
+        position="top"
+        class="border-b"
+      >
+        <div class="flex items-center gap-1 font-mono font-medium">
+          <Icon icon="tabler:brand-javascript" />
+          script.js
+        </div>
+
+        <Button
+          class="ml-auto"
+          variant="ghost"
+          size="xs"
+          square
+        >
+          <Icon icon="lucide:refresh-ccw" />
+        </Button>
+
+        <Button
+          variant="ghost"
+          size="xs"
+          square
+        >
+          <Icon icon="lucide:copy" />
+        </Button>
+      </InputGroupAddon>
+
+      <Textarea
+        input-group-control
+        placeholder="console.log('Hello, world!');"
+        :disabled="values.disabled"
+        :aria-invalid="values.invalid"
+      />
+
+      <InputGroupAddon
+        position="bottom"
+        class="border-t"
+      >
+        <span>Line 1, Column 1</span>
+        <Button
+          size="sm"
+          class="ml-auto"
+        >
+          Run <Icon icon="lucide:corner-down-left" />
+        </Button>
+      </InputGroupAddon>
+    </InputGroupRoot>
   </ViewContainer>
 </template>

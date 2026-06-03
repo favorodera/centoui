@@ -89,6 +89,6 @@ export type SliderRootSlots = {
   default?: (props: {
     /** Current slider values */
     modelValue: number[] | null
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+   
   }) => any
 }

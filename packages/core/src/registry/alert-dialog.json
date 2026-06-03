@@ -9,8 +9,6 @@
     "components/alert-dialog/alert-dialog-description.vue",
     "components/alert-dialog/alert-dialog-footer.vue",
     "components/alert-dialog/alert-dialog-header.vue",
-    "components/alert-dialog/alert-dialog-overlay.vue",
-    "components/alert-dialog/alert-dialog-portal.vue",
     "components/alert-dialog/alert-dialog-root.vue",
     "components/alert-dialog/alert-dialog-title.vue",
     "components/alert-dialog/alert-dialog-trigger.vue",
@@ -18,6 +16,5 @@
   ],
   "componentDeps": [
     "button"
-  ],
-  "packageDeps": { }
+  ]
 }

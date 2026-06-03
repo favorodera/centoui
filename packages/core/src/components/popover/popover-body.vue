@@ -11,11 +11,8 @@ const props = defineProps<PopoverBodyProps>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
 
-const classNames = computed(() => {
-  const { body } = popoverVariants()
-  
-  return body({ class: props.class })
-})
+const { body } = popoverVariants()
+const classNames = computed(() => body({ class: props.class }))
 </script>
 
 <template>

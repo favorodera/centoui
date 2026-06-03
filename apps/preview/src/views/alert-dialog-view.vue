@@ -2,8 +2,6 @@
 import {
   AlertDialogRoot,
   AlertDialogTrigger,
-  AlertDialogPortal,
-  AlertDialogOverlay,
   AlertDialogContent,
   AlertDialogHeader,
   AlertDialogTitle,
@@ -27,23 +25,19 @@ useApp().preview.initPreview('AlertDialog', {})
         <Button>Delete project</Button>
       </AlertDialogTrigger>
 
-      <AlertDialogPortal>
-        <AlertDialogOverlay />
+      <AlertDialogContent>
+        <AlertDialogHeader>
+          <AlertDialogTitle>Delete project?</AlertDialogTitle>
+          <AlertDialogDescription>Deleting a project is permanent and cannot be recovered.</AlertDialogDescription>
+        </AlertDialogHeader>
 
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>Delete project?</AlertDialogTitle>
-            <AlertDialogDescription>Deleting a project is permanent and cannot be recovered.</AlertDialogDescription>
-          </AlertDialogHeader>
+        <AlertDialogFooter>
+          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogAction>Delete</AlertDialogAction>
+        </AlertDialogFooter>
 
-          <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction>Delete</AlertDialogAction>
-          </AlertDialogFooter>
+      </AlertDialogContent>
 
-        </AlertDialogContent>
-
-      </AlertDialogPortal>
     </AlertDialogRoot>
   </ViewContainer>
 </template>

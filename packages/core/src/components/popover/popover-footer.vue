@@ -11,11 +11,8 @@ const props = defineProps<PopoverFooterProps>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
 
-const classNames = computed(() => {
-  const { footer } = popoverVariants()
-  
-  return footer({ class: props.class })
-})
+const { footer } = popoverVariants()
+const classNames = computed(() => footer({ class: props.class }))
 </script>
 
 <template>

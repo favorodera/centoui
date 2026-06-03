@@ -73,6 +73,7 @@ export default defineConfigWithVueTs(
       'vue/block-tag-newline': ['error', { multiline: 'ignore', singleline: 'ignore' }],
       'vue/multiline-html-element-content-newline': ['error', { allowEmptyLines: true, ignores: ['pre', 'textarea'] }],
       '@typescript-eslint/no-empty-object-type': ['error', { allowInterfaces: 'with-single-extends' }],
+      '@typescript-eslint/no-explicit-any': 'off',
     },
   },
 )

@@ -11,11 +11,8 @@ const props = defineProps<AvatarGroupProps>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
 
-const classNames = computed(() => {
-  const { group } = avatarVariants()
-  
-  return group({ class: props.class })
-})
+const { group } = avatarVariants()
+const classNames = computed(() => group({ class: props.class }))
 </script>
 
 <template>

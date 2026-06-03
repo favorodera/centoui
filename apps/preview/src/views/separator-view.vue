@@ -15,7 +15,7 @@ const values = useApp().preview.initPreview('Separator', {
 </script>
 
 <template>
-  <ViewContainer>
+  <ViewContainer class="h-full">
     <Separator
       :orientation="values.orientation"
     />

@@ -93,6 +93,6 @@ export type SwitchRootSlots = {
     modelValue: unknown
     /** Whether the switch is checked */
     checked: boolean
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+   
   }) => any
 }

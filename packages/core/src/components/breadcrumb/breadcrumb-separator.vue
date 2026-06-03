@@ -10,11 +10,8 @@ const props = defineProps<BreadcrumbSeparatorProps>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
 
-const classNames = computed(() => {
-  const { separator } = breadcrumbVariants()
-
-  return separator({ class: props.class })
-})
+const { separator } = breadcrumbVariants()
+const classNames = computed(() => separator({ class: props.class }))
 </script>
 
 <template>

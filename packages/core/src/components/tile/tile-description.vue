@@ -1,27 +1,29 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
 import { Primitive, useForwardProps } from 'reka-ui'
-import { alertVariants, type AlertActionsProps, injectCentouiAlertRootContext } from '.'
 import { computed } from 'vue'
+import { injectCentouiTileRootContext, tileVariants, type TileDescriptionProps } from '.'
 
-const rootContext = injectCentouiAlertRootContext()
+const rootContext = injectCentouiTileRootContext()
 
-const props = defineProps<AlertActionsProps>()
+const props = withDefaults(defineProps<TileDescriptionProps>(), {
+  as: 'p',
+})
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
 
 const classNames = computed(() => {
-  const { actions } = alertVariants({
+  const { description } = tileVariants({
     variant: rootContext.variant,
   })
-  
-  return actions({ class: props.class })
+
+  return description({ class: props.class })
 })
 </script>
 
 <template>
   <Primitive
-    data-slot="alert-actions"
+    data-slot="tile-description"
     v-bind="forwardedProps"
     :class="classNames"
   >

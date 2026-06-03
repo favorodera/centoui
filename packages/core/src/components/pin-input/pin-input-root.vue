@@ -13,11 +13,8 @@ const delegatedProps = reactiveOmit(props, 'class')
 
 const forwardedPropsEmits = useForwardPropsEmits(delegatedProps, emits)
 
-const classNames = computed(() => {
-  const { root } = pinInputVariants()
-
-  return root({ class: props.class })
-})
+const { root } = pinInputVariants()
+const classNames = computed(() => root({ class: props.class }))
 </script>
 
 <template>

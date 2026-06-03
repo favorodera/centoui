@@ -2,25 +2,17 @@
 import { reactiveOmit } from '@vueuse/core'
 import { useForwardProps, SelectLabel } from 'reka-ui'
 import {
-  injectCentouiSelectRootContext,
   selectVariants,
   type SelectLabelProps,
 } from '.'
 import { computed } from 'vue'
 
-const rootContext = injectCentouiSelectRootContext()
-
 const props = defineProps<SelectLabelProps>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
 
-const classNames = computed(() => {
-  const { label } = selectVariants({
-    size: rootContext.size,
-  })
-  
-  return label({ class: props.class })
-})
+const { label } = selectVariants()
+const classNames = computed(() => label({ class: props.class }))
 </script>
 
 <template>

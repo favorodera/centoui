@@ -15,11 +15,8 @@ const delegatedProps = reactiveOmit(props, 'class')
 
 const forwardedPropsEmits = useForwardPropsEmits(delegatedProps, emits)
 
-const classNames = computed(() => {
-  const { content } = collapsibleVariants()
-  
-  return content({ class: props.class })
-})
+const { content } = collapsibleVariants()
+const classNames = computed(() => content({ class: props.class }))
 </script>
 
 <template>

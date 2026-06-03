@@ -4,10 +4,6 @@
   "description": "Container for grouping related button-like elements together.",
   "files": [
     "components/button-group/button-group.vue",
-    "components/button-group/button-group-separator.vue",
     "components/button-group/index.ts"
-  ],
-  "componentDeps": [
-    "separator"
   ]
 }

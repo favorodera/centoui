@@ -10,11 +10,8 @@ const props = defineProps<BreadcrumbEllipsisProps>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
 
-const classNames = computed(() => {
-  const { ellipsis } = breadcrumbVariants()
-
-  return ellipsis({ class: props.class })
-})
+const { ellipsis } = breadcrumbVariants()
+const classNames = computed(() => ellipsis({ class: props.class }))
 </script>
 
 <template>

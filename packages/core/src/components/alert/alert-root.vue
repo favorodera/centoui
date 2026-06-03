@@ -7,20 +7,14 @@ import { type AlertRootProps, alertVariants, provideCentouiAlertRootContext } fr
 const props = withDefaults(defineProps<AlertRootProps>(), {
   variant: 'neutral',
 })
-const delegatedProps = reactiveOmit(
-  props,
-  'class',
-  'variant',
-)
+const delegatedProps = reactiveOmit(props, 'class', 'variant')
 const forwardedProps = useForwardProps(delegatedProps)
 
-const classNames = computed(() => {
-  const { root } = alertVariants({
-    variant: props.variant,
-  })
-  
-  return root({ class: props.class })
-})
+const { root } = alertVariants()
+const classNames = computed(() => root({
+  variant: props.variant,
+  class: props.class,
+}))
 
 provideCentouiAlertRootContext(reactive({
   variant: toRef(props, 'variant'),

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
-import { Primitive, useForwardPropsEmits } from 'reka-ui'
+import { Primitive, useForwardProps } from 'reka-ui'
 import {
   type CardBodyProps,
   cardVariants,
@@ -9,13 +9,10 @@ import { computed } from 'vue'
 
 const props = defineProps<CardBodyProps>()
 const delegatedProps = reactiveOmit(props, 'class')
-const forwardedProps = useForwardPropsEmits(delegatedProps)
+const forwardedProps = useForwardProps(delegatedProps)
 
-const classNames = computed(() => {
-  const { body } = cardVariants()
-  
-  return body({ class: props.class })
-})
+const { body } = cardVariants()
+const classNames = computed(() => body({ class: props.class }))
 </script>
 
 <template>

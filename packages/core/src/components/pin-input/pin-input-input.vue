@@ -11,19 +11,12 @@ const props = withDefaults(defineProps<PinInputInputProps>(), {
 const delegatedProps = reactiveOmit(props, 'class', 'size')
 const forwardedProps = useForwardProps(delegatedProps)
 
-const classNames = computed(() => {
-  const { root: inputRoot } = inputVariants({
-    size: props.size,
-  })
-
-  const { input: pinInputInput } = pinInputVariants({
-    inputSize: props.size,
-  })
-
-  return inputRoot({
-    class: pinInputInput({ class: props.class }),
-  })
-})
+const { root } = inputVariants()
+const { input } = pinInputVariants()
+const classNames = computed(() => root({
+  size: props.size,
+  class: input({ class: props.class }),
+}))
 </script>
 
 <template>

@@ -1,17 +1,15 @@
-import { createContext, type PrimitiveProps } from 'reka-ui'
-import { tv, type ClassProp, type VariantProps } from 'tailwind-variants'
-import type { SeparatorProps } from '../separator'
+import { type PrimitiveProps } from 'reka-ui'
+import { tv, type VariantProps } from 'tailwind-variants'
 
 export const buttonGroupVariants = tv({
   slots: {
     root: `
-      relative flex w-fit items-stretch
+      isolate flex w-fit items-stretch
 
       *:focus-visible:z-10
 
-      has-[>[data-slot=button-group]]:gap-2
+      has-data-[slot=button-group]:gap-2
     `,
-    separator: 'm-0 shrink-0 self-stretch',
   },
   variants: {
     orientation: {
@@ -19,21 +17,21 @@ export const buttonGroupVariants = tv({
         root: `
           flex-col
 
-          [&>*:not(:first-child)]:rounded-t-none
-          [&>*:not(:first-child)]:border-t-0
+          *:not-first:rounded-t-none *:not-first:border-t-0
 
-          [&>*:not(:last-child)]:rounded-b-none
+          *:not-last:rounded-b-none
         `,
-        separator: 'w-full',
       },
       horizontal: {
         root: `
-          [&>*:not(:first-child)]:rounded-l-none
-          [&>*:not(:first-child)]:border-l-0
+          flex-row
 
-          [&>*:not(:last-child)]:rounded-r-none
+          *:not-first:rounded-l-none *:not-first:border-l-0
+
+          *:not-last:rounded-r-none
+
+          **:data-[slot=separator]:h-auto
         `,
-        separator: 'h-auto',
       },
     },
   },
@@ -43,35 +41,20 @@ export const buttonGroupVariants = tv({
 })
 
 
-// COMPONENTS
-
-export { default as ButtonGroupSeparator } from './button-group-separator.vue'
+// COMPONENT
 export { default as ButtonGroup } from './button-group.vue'
 
 
-// CONTEXT
-
-export const [injectCentouiButtonGroupContext, provideCentouiButtonGroupContext] = createContext<ButtonGroupContext>('ButtonGroup', 'centoui:button-group:context')
-
-
-// TYPES — Variants
-
+// VARIANTS
 export type ButtonGroupVariants = VariantProps<typeof buttonGroupVariants>
 
 
-// TYPES — Context
-
-export type ButtonGroupContext = Pick<ButtonGroupProps, 'orientation'>
-
-
-// TYPES — Props
-
-export type ButtonGroupProps = PrimitiveProps & Pick<ClassProp, 'class'> & {
+// PROPS
+export type ButtonGroupProps = PrimitiveProps & {
   /**
    * The orientation of the button group.
    * @default 'horizontal'
    */
   orientation?: ButtonGroupVariants['orientation']
+  class?: any
 }
-
-export type ButtonGroupSeparatorProps = SeparatorProps

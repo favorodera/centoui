@@ -39,7 +39,7 @@ useApp().preview.initPreview('Breadcrumb', {})
         <BreadcrumbSeparator />
 
         <BreadcrumbItem>
-          <BreadcrumbLink href="#">
+          <BreadcrumbLink>
             <Icon
               icon="lucide:folder-open"
               class="text-warning"

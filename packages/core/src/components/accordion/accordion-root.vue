@@ -17,11 +17,8 @@ const props = defineProps<AccordionRootProps>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedPropsEmits = useForwardPropsEmits(delegatedProps, emits)
 
-const classNames = computed(() => {
-  const { root } = accordionVariants()
-  
-  return root({ class: props.class })
-})
+const { root } = accordionVariants()
+const classNames = computed(() => root({ class: props.class }))
 </script>
 
 <template>

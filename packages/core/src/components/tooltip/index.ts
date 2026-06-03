@@ -88,7 +88,7 @@ export type TooltipRootSlots = {
   default?: (props: {
     /** Current open state */
     open: boolean
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+   
   }) => any
 }
 

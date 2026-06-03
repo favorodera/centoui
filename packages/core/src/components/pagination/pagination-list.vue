@@ -14,11 +14,8 @@ const props = defineProps<PaginationListProps>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
 
-const classNames = computed(() => {
-  const { list } = paginationVariants()
-
-  return list({ class: props.class })
-})
+const { list } = paginationVariants()
+const classNames = computed(() => list({ class: props.class }))
 </script>
 
 <template>

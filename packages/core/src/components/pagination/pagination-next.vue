@@ -8,42 +8,29 @@ import { buttonVariants } from '../button'
 import {
   type PaginationNextProps,
   paginationVariants,
-  injectCentouiPaginationRootContext,
 } from '.'
 
-const rootContext = injectCentouiPaginationRootContext()
-
 const props = withDefaults(defineProps<PaginationNextProps>(), {
-  square: undefined,
+  square: true,
+  variant: 'ghost',
 })
-const delegatedProps = reactiveOmit(props, 'class', 'size', 'variant', 'square')
+const delegatedProps = reactiveOmit(props, 'class', 'square', 'variant', 'size')
 const forwardedProps = useForwardProps(delegatedProps)
 
-const resolvedVariant = computed(() => props.variant ?? rootContext.variant)
-const resolvedSize = computed(() => props.size ?? rootContext.size)
-const resolvedSquare = computed(() => props.square ?? rootContext.square)
-
-const classNames = computed(() => {
-  const { root: buttonRoot } = buttonVariants({
-    variant: resolvedVariant.value,
-    size: resolvedSize.value,
-    square: resolvedSquare.value,
-  })
-
-  const { next: paginationNext } = paginationVariants()
-
-  return buttonRoot({
-    class: paginationNext({ class: props.class }),
-  })
-})
+const { next } = paginationVariants()
+const { root } = buttonVariants()
+const classNames = computed(() => root({
+  variant: props.variant,
+  size: props.size,
+  square: props.square,
+  class: next({ class: props.class }),
+}))
 </script>
 
 <template>
   <PaginationNext
     data-slot="pagination-next"
     v-bind="forwardedProps"
-    :data-variant="resolvedVariant"
-    :data-size="resolvedSize"
     :class="classNames"
   >
     <slot>

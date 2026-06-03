@@ -10,13 +10,11 @@ const props = defineProps<AlertTitleProps>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
 
-const classNames = computed(() => {
-  const { title } = alertVariants({
-    variant: rootContext.variant,
-  })
-  
-  return title({ class: props.class })
-})
+const { title } = alertVariants()
+const classNames = computed(() => title({
+  variant: rootContext?.variant,
+  class: props.class,
+}))
 </script>
 
 <template>

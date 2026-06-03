@@ -16,13 +16,11 @@ const modelValue = useVModel(
   { defaultValue: props.defaultValue },
 )
 
-const classNames = computed(() => {
-  const { root } = inputVariants({
-    size: props.size,
-  })
-
-  return root({ class: props.class })
-})
+const { root } = inputVariants()
+const classNames = computed(() => root({
+  size: props.size,
+  class: props.class,
+}))
 </script>
 
 <template>

@@ -1,5 +1,5 @@
 import type { PrimitiveProps } from 'reka-ui'
-import { tv, type ClassProp, type VariantProps } from 'tailwind-variants'
+import { tv, type VariantProps } from 'tailwind-variants'
 import type { ButtonHTMLAttributes } from 'vue'
 
 export const buttonVariants = tv({
@@ -7,17 +7,15 @@ export const buttonVariants = tv({
     root: `
       relative inline-flex shrink-0 cursor-default items-center justify-center
       truncate border border-transparent font-medium whitespace-nowrap
-      transition-all duration-300 outline-none select-none
+      transition-all outline-none select-none
 
       focus-visible:ring-2 focus-visible:ring-ring
 
       active:translate-y-px
 
-      disabled:pointer-events-none disabled:opacity-60
+      disabled:pointer-events-none disabled:opacity-65
 
       aria-invalid:ring-2 aria-invalid:ring-error
-
-      [&_svg]:pointer-events-none [&_svg]:shrink-0
     `,
   },
   variants: {
@@ -44,11 +42,15 @@ export const buttonVariants = tv({
         `,
       },
       ghost: {
-        root: 'hover:bg-accent hover:text-accent-foreground',
+        root: `
+          text-foreground
+
+          hover:bg-accent hover:text-accent-foreground
+        `,
       },
       outline: {
         root: `
-          border-border
+          border-border bg-transparent text-foreground
 
           hover:bg-accent hover:text-accent-foreground
         `,
@@ -65,77 +67,42 @@ export const buttonVariants = tv({
     size: {
       xs: {
         root: `
-          gap-1 rounded-md px-2 py-1 text-xs
+          size-6 gap-1 rounded-md px-2 text-xs
 
-          [&_svg]:size-3
+          *:data-[slot=icon]:size-3
         `,
       },
       sm: {
         root: `
-          gap-1 rounded-md px-3 py-1 text-sm
+          size-7 gap-1 rounded-md px-3 text-sm
 
-          [&_svg]:size-4
+          *:data-[slot=icon]:size-4
         `,
       },
       md: {
         root: `
-          gap-2 rounded-md px-4 py-2 text-sm
+          size-8 gap-2 rounded-md px-3 text-sm
 
-          [&_svg]:size-4
+          *:data-[slot=icon]:size-4
         `,
       },
       lg: {
         root: `
-          gap-2 rounded-lg px-5 py-2 text-base
+          size-9 gap-2 rounded-lg px-4 text-base
 
-          [&_svg]:size-5
-        `,
-      },
-      xl: {
-        root: `
-          gap-2 rounded-lg px-6 py-3 text-base
-
-          [&_svg]:size-5
+          *:data-[slot=icon]:size-5
         `,
       },
     },
     square: {
-      true: {},
-      false: {},
-    },
-  },
-  compoundVariants: [
-    {
-      size: 'xs',
-      square: true,
-      class: { root: 'p-1' },
-    },
-    {
-      size: ['sm', 'md'],
-      square: true,
-      class: { root: 'p-2' },
-    },
-    {
-      size: 'lg',
-      square: true,
-      class: { root: 'p-2' },
-    },
-    {
-      size: 'xl',
-      square: true,
-      class: { root: 'p-3' },
-    },
-    {
-      variant: 'link',
-      class: {
-        root: `
-          h-auto rounded-none p-0
-
-          active:translate-y-0
-        `,
+      true: {
+        root: 'px-0',
+      },
+      false: {
+        root: 'w-auto',
       },
     },
-  ],
+  },
   defaultVariants: {
     variant: 'primary',
     size: 'md',
@@ -145,17 +112,15 @@ export const buttonVariants = tv({
 
 
 // COMPONENT
-
 export { default as Button } from './button.vue'
 
 
-// TYPES — Variants
-
+// VARIANTS
 export type ButtonVariants = VariantProps<typeof buttonVariants>
 
-// TYPES — Props
 
-export type ButtonProps = PrimitiveProps & /* @vue-ignore */ Omit<ButtonHTMLAttributes, 'class'> & Pick<ClassProp, 'class'> & {
+// PROPS
+export type ButtonProps = PrimitiveProps & {
   /**
    * The visual style of the button.
    * @default 'primary'
@@ -167,8 +132,9 @@ export type ButtonProps = PrimitiveProps & /* @vue-ignore */ Omit<ButtonHTMLAttr
    */
   size?: ButtonVariants['size']
   /**
-   * Render the button with equal padding on all sides..
+   * Render the button with equal dimensions.
    * @default false
    */
   square?: boolean
-}
+  class?: any
+} & /* @vue-ignore */ ButtonHTMLAttributes

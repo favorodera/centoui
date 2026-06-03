@@ -11,11 +11,8 @@ const props = defineProps<PopoverTriggerProps>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
 
-const classNames = computed(() => {
-  const { trigger } = popoverVariants()
-  
-  return trigger({ class: props.class })
-})
+const { trigger } = popoverVariants()
+const classNames = computed(() => trigger({ class: props.class }))
 </script>
 
 <template>

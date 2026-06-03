@@ -1,45 +1,34 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
-import { AccordionTrigger, useForwardProps } from 'reka-ui'
-import { Icon } from '../icon'
+import { AccordionHeader, AccordionTrigger, useForwardProps } from 'reka-ui'
 import {
   accordionVariants,
   type AccordionTriggerProps,
-  type AccordionTriggerSlots,
 } from '.'
-import config from '#centoui/config'
-import { computed } from 'vue'
+import { computed, useAttrs } from 'vue'
 
-defineSlots<AccordionTriggerSlots>()
+defineOptions({
+  inheritAttrs: false,
+})
+
+const attributes = useAttrs()
 
 const props = defineProps<AccordionTriggerProps>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
 
-const classNames = computed(() => {
-  const { trigger, triggerIcon } = accordionVariants()
-  
-  return {
-    trigger: trigger({ class: props.class }),
-    triggerIcon: triggerIcon(),
-  }
-})
+const { trigger } = accordionVariants()
+const classNames = computed(() => trigger({ class: props.class }))
 </script>
 
 <template>
-  <AccordionTrigger
-    data-slot="accordion-trigger"
-    v-bind="forwardedProps"
-    :class="classNames.trigger"
-  >
-    <slot />
-
-    <slot name="icon">
-      <Icon
-        data-slot="accordion-trigger-icon"
-        :icon="config.icons.chevronDown"
-        :class="classNames.triggerIcon"
-      />
-    </slot>
-  </AccordionTrigger>
+  <AccordionHeader data-slot="accordion-header">
+    <AccordionTrigger
+      data-slot="accordion-trigger"
+      v-bind="{...attributes,...forwardedProps}"
+      :class="classNames"
+    >
+      <slot />
+    </AccordionTrigger>
+  </AccordionHeader>
 </template>

@@ -1,24 +1,22 @@
 import {
   type PrimitiveProps,
   type PopoverAnchorProps as RekaPopoverAnchorProps,
-  type PopoverArrowProps as RekaPopoverArrowProps,
-  type PopoverCloseProps as RekaPopoverCloseProps,
   type PopoverContentEmits as RekaPopoverContentEmits,
   type PopoverContentProps as RekaPopoverContentProps,
-  type PopoverPortalProps as RekaPopoverPortalProps,
   type PopoverRootEmits as RekaPopoverRootEmits,
   type PopoverRootProps as RekaPopoverRootProps,
   type PopoverTriggerProps as RekaPopoverTriggerProps,
 } from 'reka-ui'
-import { tv, type ClassProp } from 'tailwind-variants'
+import { tv } from 'tailwind-variants'
 
 export const popoverVariants = tv({
   slots: {
     trigger: '',
     content: `
       relative z-50 grid w-xs origin-(--reka-popover-content-transform-origin)
-      gap-4 rounded-xl bg-surface-raised py-4 shadow-lg animation-duration-300
-      outline-none
+      gap-4 rounded-lg border border-border bg-surface-raised py-4 outline-none
+
+      has-data-[slot=popover-footer]:pb-0
 
       data-[side=bottom]:slide-in-from-top-2
 
@@ -35,80 +33,71 @@ export const popoverVariants = tv({
       data-[state=open]:zoom-in-95
     `,
     header: `
-      relative flex flex-col gap-2 px-4 text-left
+      relative flex flex-col gap-1 border-border px-4 text-sm
 
       [&.border-b]:pb-4
     `,
-    title: 'text-sm font-medium',
-    description: 'text-sm text-muted-foreground',
+    title: 'font-medium',
+    description: 'text-muted-foreground',
     body: 'px-4',
-    footer: `
-      relative flex items-center justify-end gap-2 px-4
-
-      [&.border-t]:pt-4
-    `,
-    arrow: 'z-50 fill-surface-raised',
-    close: '',
+    footer: 'rounded-b-[inherit] bg-neutral p-4',
+    arrow: 'z-50 fill-surface stroke-border',
   },
 })
 
 
 // COMPONENTS
-
 export { default as PopoverAnchor } from './popover-anchor.vue'
-export { default as PopoverArrow } from './popover-arrow.vue'
 export { default as PopoverBody } from './popover-body.vue'
-export { default as PopoverClose } from './popover-close.vue'
 export { default as PopoverContent } from './popover-content.vue'
 export { default as PopoverDescription } from './popover-description.vue'
 export { default as PopoverFooter } from './popover-footer.vue'
 export { default as PopoverHeader } from './popover-header.vue'
-export { default as PopoverPortal } from './popover-portal.vue'
 export { default as PopoverRoot } from './popover-root.vue'
 export { default as PopoverTitle } from './popover-title.vue'
 export { default as PopoverTrigger } from './popover-trigger.vue'
 
 
-// TYPES — Props
-
+// PROPS
 export type PopoverRootProps = RekaPopoverRootProps
 
-export type PopoverTriggerProps = RekaPopoverTriggerProps & Pick<ClassProp, 'class'>
+export type PopoverTriggerProps = RekaPopoverTriggerProps & { class?: any }
 
 export type PopoverAnchorProps = RekaPopoverAnchorProps
 
-export type PopoverPortalProps = RekaPopoverPortalProps
+export type PopoverContentProps = RekaPopoverContentProps & {
+  /**
+   * Whether to show an arrow alongside the content.
+   * @default false
+   */
+  showArrow?: boolean
+  class?: any
+}
 
-export type PopoverContentProps = RekaPopoverContentProps & Pick<ClassProp, 'class'>
+export type PopoverHeaderProps = PrimitiveProps & { class?: any }
 
-export type PopoverHeaderProps = PrimitiveProps & Pick<ClassProp, 'class'>
+export type PopoverTitleProps = PrimitiveProps & { class?: any }
 
-export type PopoverTitleProps = PrimitiveProps & Pick<ClassProp, 'class'>
+export type PopoverDescriptionProps = PrimitiveProps & { class?: any }
 
-export type PopoverDescriptionProps = PrimitiveProps & Pick<ClassProp, 'class'>
+export type PopoverBodyProps = PrimitiveProps & { class?: any }
 
-export type PopoverBodyProps = PrimitiveProps & Pick<ClassProp, 'class'>
-
-export type PopoverFooterProps = PrimitiveProps & Pick<ClassProp, 'class'>
-
-export type PopoverArrowProps = RekaPopoverArrowProps & Pick<ClassProp, 'class'>
-
-export type PopoverCloseProps = RekaPopoverCloseProps & Pick<ClassProp, 'class'>
+export type PopoverFooterProps = PrimitiveProps & { class?: any }
 
 
-// TYPES — Emits
+// EMITS
 export type PopoverRootEmits = RekaPopoverRootEmits
 
 export type PopoverContentEmits = RekaPopoverContentEmits
 
 
-// TYPES — Slots
+// SLOTS
 export type PopoverRootSlots = {
-  default: (props: {
+  default?: (props: {
     /** Current open state */
     open: boolean
     /** Close the popover */
     close: () => void
-  }) => []
+  }) => any
 }
 

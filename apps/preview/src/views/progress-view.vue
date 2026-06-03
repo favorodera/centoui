@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { ProgressBarRoot, ProgressBarIndicator } from '#centoui/components/progress-bar'
+import { Progress } from '#centoui/components/progress'
 import ViewContainer from '@/components/view-container.vue'
 import { useApp } from '@/composables/use-app'
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 
-useApp().preview.initPreview('ProgressBar', {})
+useApp().preview.initPreview('Progress', {})
 
 const progressValue = ref(10)
 const timer = ref()
@@ -27,8 +27,6 @@ onBeforeUnmount(() => {
 
 <template>
   <ViewContainer>
-    <ProgressBarRoot v-model="progressValue">
-      <ProgressBarIndicator />
-    </ProgressBarRoot>
+    <Progress v-model="progressValue" />
   </ViewContainer>
 </template>

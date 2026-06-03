@@ -10,13 +10,11 @@ const props = withDefaults(defineProps<AvatarRootProps>(), {
 const delegatedProps = reactiveOmit(props, 'class', 'size')
 const forwardedProps = useForwardProps(delegatedProps)
 
-const classNames = computed(() => {
-  const { root } = avatarVariants({
-    size: props.size,
-  })
-
-  return root({ class: props.class })
-})
+const { root } = avatarVariants()
+const classNames = computed(() => root({
+  size: props.size,
+  class: props.class,
+}))
 
 provideCentouiAvatarRootContext(reactive({
   size: toRef(props, 'size'),
