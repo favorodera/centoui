@@ -11,11 +11,8 @@ const props = defineProps<SlideoverTriggerProps>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
 
-const classNames = computed(() => {
-  const { trigger } = slideoverVariants()
-  
-  return trigger({ class: props.class })
-})
+const { trigger } = slideoverVariants()
+const classNames = computed(() => trigger({ class: props.class }))
 </script>
 
 <template>
