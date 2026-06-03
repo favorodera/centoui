@@ -56,7 +56,7 @@ watch(
   <header
     class="
       flex h-11 w-full items-center justify-between gap-4 border-b border-border
-      bg-background p-3
+      bg-background px-3
     "
   >
 
@@ -86,7 +86,7 @@ watch(
       </SelectContent>
     </SelectRoot>
 
-    <div class="flex h-full items-center gap-2">
+    <div class="flex items-center gap-2">
       <!-- Count Badge -->
       <Badge variant="secondary">
         {{ navigation.activeComponentIndex.value + 1 }} / {{ navigation.components.value.length }}
