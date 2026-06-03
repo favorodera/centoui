@@ -68,7 +68,7 @@ export const slideoverVariants = tv({
       },
       left: {
         content: `
-          inset-y-0 left-0 h-full max-w-sm border-r
+          inset-y-0 left-0 h-full max-w-sm w-full border-r
 
           data-[state=closed]:slide-out-to-left
 
@@ -77,7 +77,7 @@ export const slideoverVariants = tv({
       },
       right: {
         content: `
-          inset-y-0 right-0 h-full max-w-sm border-l
+          inset-y-0 right-0 h-full w-full max-w-sm border-l
 
           data-[state=closed]:slide-out-to-right
 
