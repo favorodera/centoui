@@ -1,21 +1,21 @@
 import { type SeparatorProps as RekaSeparatorProps } from 'reka-ui'
-import { tv, type ClassProp, type VariantProps } from 'tailwind-variants'
+import { tv } from 'tailwind-variants'
 
 export const separatorVariants = tv({
   slots: {
-    root: 'flex items-center gap-3',
-    line: 'border-border',
+    root: 'flex items-center gap-2',
+    line: 'flex-1 border-border',
     content: 'shrink-0 text-center text-sm text-muted-foreground',
   },
   variants: {
     orientation: {
       horizontal: {
         root: 'w-full',
-        line: 'w-full border-t',
+        line: 'border-t',
       },
       vertical: {
-        root: 'h-full flex-col',
-        line: 'h-full border-s',
+        root: 'flex-col self-stretch',
+        line: 'border-s',
       },
     },
   },
@@ -26,28 +26,8 @@ export const separatorVariants = tv({
 
 
 // COMPONENT
-
 export { default as Separator } from './separator.vue'
 
 
-// TYPES — Variants
-
-export type SeparatorVariants = VariantProps<typeof separatorVariants>
-
-
-// TYPES — Props
-
-export type SeparatorProps = Omit<RekaSeparatorProps, 'orientation'> & Pick<ClassProp, 'class'> & {
-  /**
-   * The orientation of the separator.
-   * @default 'horizontal'
-   */
-  orientation?: SeparatorVariants['orientation']
-}
-
-// TYPES — Slots
-
-export type SeparatorSlots = {
-   
-  default?: () => any
-}
+// PROPS
+export type SeparatorProps = RekaSeparatorProps & { class?: any }
