@@ -11,11 +11,8 @@ const props = defineProps<SlideoverCloseProps>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
 
-const classNames = computed(() => {
-  const { close } = slideoverVariants()
-  
-  return close({ class: props.class })
-})
+const { close } = slideoverVariants()
+const classNames = computed(() => close({ class: props.class }))
 </script>
 
 <template>
