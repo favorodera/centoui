@@ -1,45 +1,41 @@
-import { tv, type ClassProp } from 'tailwind-variants'
+import { tv } from 'tailwind-variants'
 import {
-  type SliderRangeProps as RekaSliderRangeProps,
-  type SliderRootProps as RekaSliderRootProps,
-  type SliderRootEmits as RekaSliderRootEmits,
-  type SliderThumbProps as RekaSliderThumbProps,
-  type SliderTrackProps as RekaSliderTrackProps,
-  createContext,
+  type SliderRootProps,
+  type SliderRootEmits,
 } from 'reka-ui'
 
 export const sliderVariants = tv({
   slots: {
     root: `
-      relative flex w-full touch-none items-center select-none
-
-      data-disabled:opacity-60
+      relative flex touch-none items-center select-none
+      data-disabled:opacity-65 group/slider-root
     `,
     track: 'relative grow overflow-hidden rounded-xs bg-input',
     range: 'absolute rounded-[inherit] bg-primary',
     thumb: `
-      block size-4.5 shrink-0 rounded-full border border-primary bg-primary
-      shadow-sm transition-[color,box-shadow] duration-300
+      relative block size-3 shrink-0 rounded-full border border-ring bg-primary
+      transition-[color,box-shadow] select-none
 
-      hover:ring-2 hover:ring-primary
+      hover:ring-2 ring-ring
 
-      focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none
+      focus-visible:ring-2 focus-visible:outline-none
 
-      disabled:pointer-events-none disabled:opacity-60
+      disabled:pointer-events-none disabled:opacity-65
 
-      aria-invalid:ring-2 aria-invalid:ring-error
+      group-aria-invalid/slider-root:ring-2 group-aria-invalid/slider-root:ring-error group-aria-invalid/slider-root:border-error
     `,
   },
   variants: {
     orientation: {
-      vertical: {
-        root: 'h-full min-h-32 w-auto flex-col',
-        track: 'h-full w-2',
-        range: 'w-full',
-      },
       horizontal: {
-        track: 'h-2 w-full',
+        root: 'w-full',
+        track: 'h-1.5 w-full',
         range: 'h-full',
+      },
+      vertical: {
+        root: 'min-h-32 w-auto flex-col self-stretch',
+        track: 'h-full w-1.5',
+        range: 'w-full',
       },
     },
   },
@@ -49,46 +45,13 @@ export const sliderVariants = tv({
 })
 
 
-// COMPONENTS
-
-export { default as SliderRoot } from './slider-root.vue'
-export { default as SliderTrack } from './slider-track.vue'
-export { default as SliderRange } from './slider-range.vue'
-export { default as SliderThumb } from './slider-thumb.vue'
+// COMPONENT
+export { default as Slider } from './slider.vue'
 
 
-// CONTEXT
-
-export const [injectCentouiSliderRootContext, provideCentouiSliderRootContext] = createContext<SliderRootContext>('SliderRoot', 'centoui:slider-root:context')
-
-
-// TYPES — Context
-
-export type SliderRootContext = Pick<SliderRootProps, 'orientation'>
+// PROPS
+export type SliderProps = SliderRootProps & { class?: any }
 
 
-// TYPES — Props
-
-export type SliderRootProps = RekaSliderRootProps & Pick<ClassProp, 'class'>
-
-export type SliderTrackProps = RekaSliderTrackProps & Pick<ClassProp, 'class'>
-
-export type SliderRangeProps = RekaSliderRangeProps & Pick<ClassProp, 'class'>
-
-export type SliderThumbProps = RekaSliderThumbProps & Pick<ClassProp, 'class'>
-
-
-// TYPES — Emits
-
-export type SliderRootEmits = RekaSliderRootEmits
-
-
-// TYPES — Slots
-
-export type SliderRootSlots = {
-  default?: (props: {
-    /** Current slider values */
-    modelValue: number[] | null
-   
-  }) => any
-}
+// EMITS
+export type SliderEmits = SliderRootEmits
