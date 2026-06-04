@@ -1,11 +1,9 @@
-import { tv, type ClassProp, type VariantProps } from 'tailwind-variants'
+import { tv } from 'tailwind-variants'
 import {
   type TooltipProviderProps as RekaTooltipProviderProps,
   type TooltipRootProps as RekaTooltipRootProps,
   type TooltipTriggerProps as RekaTooltipTriggerProps,
-  type TooltipPortalProps as RekaTooltipPortalProps,
   type TooltipContentProps as RekaTooltipContentProps,
-  type TooltipArrowProps as RekaTooltipArrowProps,
   type TooltipContentEmits as RekaTooltipContentEmits,
   type TooltipRootEmits as RekaTooltipRootEmits,
 } from 'reka-ui'
@@ -14,9 +12,9 @@ export const tooltipVariants = tv({
   slots: {
     trigger: '',
     content: `
-      pointer-events-auto z-50 w-fit animate-in rounded-md bg-surface-raised
-      px-3 py-1 text-xs text-pretty text-foreground shadow-md
-      animation-duration-300 fade-in-0 zoom-in-95
+      pointer-events-auto z-50 w-fit animate-in rounded-md bg-foreground
+      px-3 py-1 text-xs text-background 
+       fade-in-0 zoom-in-95 origin-(--reka-tooltip-content-transform-origin)
 
       data-[side=bottom]:slide-in-from-top-1
 
@@ -24,71 +22,50 @@ export const tooltipVariants = tv({
 
       data-[side=right]:slide-in-from-left-1
 
-      data-[side=top]:slide-in-from-bottom-1
+      data-[side=top]:slide-in-from-bottom-1 
 
       data-[state=closed]:animate-out data-[state=closed]:fade-out-0
-      data-[state=closed]:zoom-out-95
+      data-[state=closed]:zoom-out-95 relative
     `,
-    arrow: 'z-50 fill-surface-raised',
+    arrow: 'z-50 fill-foreground',
   },
 })
 
 
 // COMPONENTS
-
 export { default as TooltipProvider } from './tooltip-provider.vue'
 export { default as TooltipRoot } from './tooltip-root.vue'
 export { default as TooltipTrigger } from './tooltip-trigger.vue'
-export { default as TooltipPortal } from './tooltip-portal.vue'
 export { default as TooltipContent } from './tooltip-content.vue'
-export { default as TooltipArrow } from './tooltip-arrow.vue'
 
 
-// TYPES — Variants
-
-export type TooltipVariants = VariantProps<typeof tooltipVariants>
-
-
-// TYPES — Props
-
-export type TooltipProviderProps = Omit<RekaTooltipProviderProps, 'delayDuration'> & {
-  /**
-   * The duration from when the pointer enters the trigger until the tooltip gets opened.
-   * @defaultValue 0
-   */
-  delayDuration?: number
-}
+// PROPS
+export type TooltipProviderProps = RekaTooltipProviderProps
 
 export type TooltipRootProps = RekaTooltipRootProps
 
-export type TooltipTriggerProps = RekaTooltipTriggerProps & Pick<ClassProp, 'class'>
+export type TooltipTriggerProps = RekaTooltipTriggerProps & { class?: any }
 
-export type TooltipPortalProps = RekaTooltipPortalProps
-
-export type TooltipContentProps = Omit<RekaTooltipContentProps, 'sideOffset'> & Pick<ClassProp, 'class'> & {
+export type TooltipContentProps = RekaTooltipContentProps & {
   /**
-   * The distance in pixels from the trigger.
-   * @default 4
+   * Whether to show an arrow alongside the content.\
+   * @default true
    */
-  sideOffset?: number
+  showArrow?: boolean
+  class?: any
 }
 
-export type TooltipArrowProps = RekaTooltipArrowProps & Pick<ClassProp, 'class'>
-
-// TYPES — Emits
-
+// EMITS
 export type TooltipRootEmits = RekaTooltipRootEmits
 
 export type TooltipContentEmits = RekaTooltipContentEmits
 
 
-// TYPES — Slots
-
+// SLOTS
 export type TooltipRootSlots = {
   default?: (props: {
     /** Current open state */
     open: boolean
-   
   }) => any
 }
 

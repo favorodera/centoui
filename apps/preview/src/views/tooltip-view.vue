@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Button } from '#centoui/components/button'
-import { TooltipArrow, TooltipContent, TooltipPortal, TooltipProvider, TooltipRoot, TooltipTrigger } from '#centoui/components/tooltip'
+import { TooltipContent, TooltipRoot, TooltipProvider, TooltipTrigger } from '#centoui/components/tooltip'
 import ViewContainer from '@/components/view-container.vue'
 import { useApp } from '@/composables/use-app'
 
@@ -11,12 +11,18 @@ const values = useApp().preview.initPreview('Tooltip', {
     options: ['top', 'bottom', 'left', 'right'],
     default: 'top',
   },
+  showArrow: {
+    type: 'boolean',
+    label: 'Show Arrow',
+    default: true,
+  },
 })
 </script>
 
 <template>
   <ViewContainer>
     <TooltipProvider>
+
       <TooltipRoot>
 
         <TooltipTrigger as-child>
@@ -25,14 +31,12 @@ const values = useApp().preview.initPreview('Tooltip', {
           </Button>
         </TooltipTrigger>
 
-        <TooltipPortal>
-          <TooltipContent
-            :side="values.side as any"
-          >
-            <p>This is a tooltip</p>
-            <TooltipArrow />
-          </TooltipContent>
-        </TooltipPortal>
+        <TooltipContent
+          :side="values.side as any"
+          :show-arrow="values.showArrow"
+        >
+          <p>This is a tooltip</p>
+        </TooltipContent>
 
       </TooltipRoot>
     </TooltipProvider>

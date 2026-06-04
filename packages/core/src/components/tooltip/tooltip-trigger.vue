@@ -8,11 +8,8 @@ const props = defineProps<TooltipTriggerProps>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
 
-const classNames = computed(() => {
-  const { trigger } = tooltipVariants()
-  
-  return trigger({ class: props.class })
-})
+const { trigger } = tooltipVariants()
+const classNames = computed(() => trigger({ class: props.class }))
 </script>
 
 <template>
