@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SwitchRoot, SwitchThumb, switchVariants } from '#centoui/components/switch'
+import { Switch, switchVariants } from '#centoui/components/switch'
 import ViewContainer from '@/components/view-container.vue'
 import { useApp } from '@/composables/use-app'
 import { ref } from 'vue'
@@ -28,14 +28,12 @@ const switchState = ref(false)
 
 <template>
   <ViewContainer>
-    <SwitchRoot
+    <Switch
       v-model="switchState"
       :size="values.size"
       :disabled="values.disabled"
       :aria-invalid="values.invalid"
-    >
-      <SwitchThumb />
-    </SwitchRoot>
+    />
   </ViewContainer>
 </template>
 
