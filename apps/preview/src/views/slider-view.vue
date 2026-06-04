@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { SliderRoot, SliderRange, SliderThumb, SliderTrack, sliderVariants } from '#centoui/components/slider'
-import { TooltipArrow, TooltipContent, TooltipPortal, TooltipProvider, TooltipRoot, TooltipTrigger } from '#centoui/components/tooltip'
+import { Slider, sliderVariants } from '#centoui/components/slider'
+import { Label } from '#centoui/components/label'
+import { Icon } from '#centoui/components/icon'
 import ViewContainer from '@/components/view-container.vue'
 import { useApp } from '@/composables/use-app'
 import { ref } from 'vue'
@@ -24,113 +25,92 @@ const values = useApp().preview.initPreview('Slider', {
   },
 })
 
-const singleModelValue = ref([50])
-const multipleModelValue = ref([25, 75])
+const volumeModelValue = ref([50])
+const priceRangeModelValue = ref([250, 750])
 </script>
 
 <template>
   <ViewContainer>
-    <TooltipProvider :delay-duration="0">
-
-      <SliderRoot
-        v-model="singleModelValue"
-        :max="100"
-        :step="1"
-        :orientation="values.orientation"
-        :disabled="values.disabled"
+    <div
+      class="flex flex-1"
+      :class="values.orientation === 'vertical' ? 'flex-col items-center gap-4' : 'flex-col gap-4'"
+    >
+      <div
+        class="flex w-full"
+        :class="values.orientation === 'vertical' ? 'flex-col items-center gap-1 text-center' : 'items-center justify-between'"
       >
+        <Label
+          for="volume"
+          class="font-medium"
+        >
+          Volume
+        </Label>
+        <span class="text-sm text-muted-foreground">{{ volumeModelValue[0] }}%</span>
+      </div>
+      <div
+        class="flex"
+        :class="values.orientation === 'vertical' ? 'h-full flex-col items-center gap-4' : 'w-full items-center gap-4'"
+      >
+        <Icon
+          v-if="values.orientation === 'vertical'"
+          icon="lucide:volume-2"
+          class="text-muted-foreground"
+        />
+        <Icon
+          v-else
+          icon="lucide:volume-1"
+          class=" text-muted-foreground"
+        />
+        <Slider
+          id="volume"
+          v-model="volumeModelValue"
+          :max="100"
+          :step="1"
+          :orientation="values.orientation as any"
+          :disabled="values.disabled"
+          :aria-invalid="values.invalid"
+        />
+        <Icon
+          v-if="values.orientation === 'vertical'"
+          icon="lucide:volume-1"
+          class="text-muted-foreground"
+        />
+        <Icon
+          v-else
+          icon="lucide:volume-2"
+          class="text-muted-foreground"
+        />
+      </div>
+    </div>
 
-        <SliderTrack>
-          <SliderRange />
-        </SliderTrack>
-
-
-        <TooltipRoot disable-closing-trigger>
-
-          <TooltipTrigger as-child>
-            <SliderThumb
-              aria-label="Volume"
-              :aria-invalid="values.invalid"
-            />
-          </TooltipTrigger>
-
-          <TooltipPortal>
-            <TooltipContent
-              :side-offset="6"
-            >
-              {{ singleModelValue[0] }}
-
-              <TooltipArrow />
-            </TooltipContent>
-
-          </TooltipPortal>
-
-        </TooltipRoot>
-
-      </SliderRoot>
-    </TooltipProvider>
-
-    <TooltipProvider :delay-duration="0">
-
-      <SliderRoot
-        v-model="multipleModelValue"
-        :max="100"
-        :step="1"
-        :orientation="values.orientation"
+    <div
+      class="flex flex-1"
+      :class="values.orientation === 'vertical' ? 'flex-col items-center gap-4' : 'flex-col gap-4'"
+    >
+      <div
+        class="flex w-full"
+        :class="values.orientation === 'vertical' ? 'flex-col items-center gap-1 text-center' : 'items-center justify-between'"
+      >
+        <Label
+          for="price-range"
+          class="font-medium"
+        >
+          Price Range
+        </Label>
+        <span class="text-sm text-muted-foreground">
+          ${{ priceRangeModelValue[0] }} - ${{ priceRangeModelValue[1] }}
+        </span>
+      </div>
+      <Slider
+        id="price-range"
+        v-model="priceRangeModelValue"
+        :max="1000"
+        :step="10"
+        :orientation="values.orientation as any"
         :disabled="values.disabled"
         :min-steps-between-thumbs="1"
-      >
-
-        <SliderTrack>
-          <SliderRange />
-        </SliderTrack>
-
-
-        <TooltipRoot disable-closing-trigger>
-
-          <TooltipTrigger as-child>
-            <SliderThumb
-              aria-label="Volume"
-              :aria-invalid="values.invalid"
-            />
-          </TooltipTrigger>
-
-          <TooltipPortal>
-            <TooltipContent
-              :side-offset="6"
-            >
-              {{ multipleModelValue[0] }}
-
-              <TooltipArrow />
-            </TooltipContent>
-
-          </TooltipPortal>
-
-        </TooltipRoot>
-
-        <TooltipRoot disable-closing-trigger>
-
-          <TooltipTrigger as-child>
-            <SliderThumb
-              aria-label="Volume"
-              :aria-invalid="values.invalid"
-            />
-          </TooltipTrigger>
-
-          <TooltipPortal>
-            <TooltipContent
-              :side-offset="6"
-            >
-              {{ multipleModelValue[1] }}
-
-              <TooltipArrow />
-            </TooltipContent>
-
-          </TooltipPortal>
-
-        </TooltipRoot>
-
-      </SliderRoot>
-    </TooltipProvider>
+        :aria-invalid="values.invalid"
+      />
+    </div>
   </ViewContainer>
 </template>
