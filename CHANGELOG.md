@@ -1,5 +1,370 @@
 # Changelog
 
+## v1.0.0-alpha.37...v1.0.0-alpha.38
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.37...v1.0.0-alpha.38)
+
+### Added
+
+- **cli:** Set default overwrite confirmation to false ([f3a9e04](https://github.com/favorodera/centoui/commit/f3a9e04))
+
+  - set initialValue to false in confirm prompt
+  - prevent accidental file overwrites
+
+- **cli:** Add automatic utils file installation ([9b5d047](https://github.com/favorodera/centoui/commit/9b5d047))
+
+  - Fetch and write utils file if required
+  - Skip writing if utils file already exists
+  - Update file mapping function naming
+  - Add conditional task for utils generation
+
+- **cli:** Make utils file generation on-demand ([925aeb2](https://github.com/favorodera/centoui/commit/925aeb2))
+
+  - Remove automatic utils file installation
+  - Update init flow to write files via helper
+  - Update utils path prompt description
+
+- **cli:** Add cleanup prompt for unused utils file ([3e946cb](https://github.com/favorodera/centoui/commit/3e946cb))
+
+  - prompt user to delete utils file if no longer needed
+  - fix potential undefined errors in dependency checks
+
+- **preview:** Update alert content for maintenance ([b20909f](https://github.com/favorodera/centoui/commit/b20909f))
+
+  - Change alert title to scheduled maintenance
+  - Update description with maintenance window
+  - Change action button to learn more
+
+- **header:** Wrap select items in SelectGroup ([2c55818](https://github.com/favorodera/centoui/commit/2c55818))
+
+  - Add SelectGroup component import
+  - Wrap component list in SelectGroup for accessibility
+
+- **alert-dialog:** Add footer padding handling ([34134c1](https://github.com/favorodera/centoui/commit/34134c1))
+
+  - Update content vertical padding
+  - Add conditional padding for footer slot
+
+- **preview:** Update slideover view to display deployments ([1caa2f8](https://github.com/favorodera/centoui/commit/1caa2f8))
+
+  - Replace static profile data with deployment list
+  - Add deployment details with hash and branch info
+  - Update Slideover content layout and design
+  - Remove unused avatar and badge components
+
+- **slideover:** Add overlay and portal support ([214e0d7](https://github.com/favorodera/centoui/commit/214e0d7))
+
+  - add DialogPortal and DialogOverlay to content
+  - update component to support inherited attributes
+  - refactor class definitions for overlay support
+
+- **preview:** Add detailed examples to progress view ([7e96f5a](https://github.com/favorodera/centoui/commit/7e96f5a))
+
+  - add file upload preview component
+  - add storage usage display example
+  - update progress animation logic
+
+- **slider:** Implement slider component ([70530e9](https://github.com/favorodera/centoui/commit/70530e9))
+
+  - add slider component using reka-ui
+  - support reactive props and orientation variants
+
+
+### Fixed
+
+- **cli:** Set default confirmation to false for remove ([262e6dd](https://github.com/favorodera/centoui/commit/262e6dd))
+
+  - prevent accidental deletion by defaulting to no
+
+- **cli:** Ignore version mismatch during installation ([12b3f3e](https://github.com/favorodera/centoui/commit/12b3f3e))
+
+  - Only check package presence by name
+  - Skip version comparison for installed dependencies
+
+- **cli:** Handle undefined component dependencies ([54168c2](https://github.com/favorodera/centoui/commit/54168c2))
+
+  - add optional chaining to componentDeps iteration
+  - prevent runtime errors when dependencies are missing
+
+- **preview:** Remove placeholder text in select view ([5ab3910](https://github.com/favorodera/centoui/commit/5ab3910))
+
+  - move SelectLabel into SelectGroup
+  - remove filler text from SelectItem
+
+- **slideover:** Ensure full width for side variants ([47aa3a2](https://github.com/favorodera/centoui/commit/47aa3a2))
+
+  - add w-full to left and right slideover variants
+
+
+### Refactors
+
+- **cli:** Update component registry type schema ([9d9d7ad](https://github.com/favorodera/centoui/commit/9d9d7ad))
+
+  - make description a required field
+  - add needsUtils flag
+  - make componentDeps optional
+  - make packageDeps optional
+
+- **cli:** Rename registry path mapping function ([cb93e2e](https://github.com/favorodera/centoui/commit/cb93e2e))
+
+  - Rename function to mapComponentsRegistryPathToProjectDest
+  - Update parameter names for clarity
+  - Update JSDoc documentation to reflect changes
+
+- **cli:** Rename mapRegistryPathToProjectDest ([0f942e9](https://github.com/favorodera/centoui/commit/0f942e9))
+
+  - rename function to mapComponentsRegistryPathToProjectDest
+  - update tests to use new function name
+  - add utilsFilePath to mock config in tests
+
+- **core:** Simplify component registry schema ([b05e8ac](https://github.com/favorodera/centoui/commit/b05e8ac))
+
+  - Remove mandatory componentDeps and packageDeps
+  - Add optional needsUtils flag to component schema
+  - Clean up registry files by removing empty fields
+
+- **accordion:** Rename trigger group scope ([84da055](https://github.com/favorodera/centoui/commit/84da055))
+
+  - Rename group/trigger to group/accordion-trigger
+  - Update state selectors for consistency
+
+- **core:** Simplify component structure and API ([1fcfa26](https://github.com/favorodera/centoui/commit/1fcfa26))
+
+  - remove unused components and registry items
+  - streamline component internal logic and slots
+  - replace item with tile component
+  - add progress component
+  - standardize component variant implementations
+
+- **button-group:** Remove separator slot style ([73de666](https://github.com/favorodera/centoui/commit/73de666))
+- **separator:** Simplify styles and props ([a01971e](https://github.com/favorodera/centoui/commit/a01971e))
+
+  - Update root and line layout classes
+  - Optimize separator orientation variants
+  - Simplify component props definition
+
+- **separator:** Optimize variant handling ([def3a99](https://github.com/favorodera/centoui/commit/def3a99))
+
+  - update variant logic for orientation support
+  - replace defineSlots with useSlots
+  - simplify classNames computed property
+
+- **slideover:** Simplify style variant mapping ([0dd4651](https://github.com/favorodera/centoui/commit/0dd4651))
+
+  - inline slideover variant destructuring
+  - optimize computed class derivation
+
+- **slideover:** Redesign component styles and types ([530b7f8](https://github.com/favorodera/centoui/commit/530b7f8))
+
+  - Update slideover variants and layout styles
+  - Add backdrop blur and refined spacing
+  - Remove redundant portal and overlay exports
+  - Simplify component prop type definitions
+
+- **slideover:** Use size-full utility for variants ([41edac9](https://github.com/favorodera/centoui/commit/41edac9))
+
+  - replace h-full and w-full with size-full
+  - simplify slideover layout styling
+
+- **slideover:** Simplify style computation ([4c051fd](https://github.com/favorodera/centoui/commit/4c051fd))
+
+  - inline slideover variants call
+  - streamline classNames computed property
+
+- **slideover:** Simplify classNames computation ([087a196](https://github.com/favorodera/centoui/commit/087a196))
+
+  - inline slideoverVariants call
+  - improve code readability
+
+- **slideover:** Simplify footer style calculation ([50326a8](https://github.com/favorodera/centoui/commit/50326a8))
+
+  - inline slideover variants call
+  - simplify computed property logic
+
+- **slideover:** Update header close button implementation ([0276d4c](https://github.com/favorodera/centoui/commit/0276d4c))
+
+  - replace manual button styles with Button component
+  - simplify computed class logic for slideover header
+  - update close button structure for better consistency
+
+- **slideover:** Remove unused overlay and portal components ([6561b30](https://github.com/favorodera/centoui/commit/6561b30))
+
+  - delete slideover-overlay component
+  - delete slideover-portal component
+
+- **slideover:** Simplify variant computation ([6f4ec70](https://github.com/favorodera/centoui/commit/6f4ec70))
+
+  - inline slideover variant destructuring
+  - simplify computed property return statement
+
+- **slideover:** Simplify class names computation ([491b463](https://github.com/favorodera/centoui/commit/491b463))
+
+  - inline slideoverVariants call
+  - simplify computed property logic
+
+- **preview:** Update slider view implementation ([ca9858d](https://github.com/favorodera/centoui/commit/ca9858d))
+
+  - Replace manual slider composition with Slider component
+  - Add labels and icons to slider preview
+  - Simplify slider model state management
+
+- **progress:** Rename variants and clean up styles ([6c58737](https://github.com/favorodera/centoui/commit/6c58737))
+
+  - rename progressBarVariants to progressVariants
+  - remove unnecessary whitespace from indicator style
+
+- **progress:** Update component variant usage ([acaa124](https://github.com/favorodera/centoui/commit/acaa124))
+
+  - rename progressBarVariants to progressVariants
+  - update root variant call to accept class object
+
+- **slider:** Simplify component and update styles ([fd70d70](https://github.com/favorodera/centoui/commit/fd70d70))
+
+  - Refactor slider to use a unified component
+  - Update variants and slot styles
+  - Apply group-based state management
+  - Clean up redundant type definitions
+
+- **slider:** Remove slider component files ([3d7f911](https://github.com/favorodera/centoui/commit/3d7f911))
+
+  - delete slider-range, root, thumb, and track files
+
+- **preview:** Simplify switch component usage ([700b89a](https://github.com/favorodera/centoui/commit/700b89a))
+
+  - replace SwitchRoot and SwitchThumb with Switch
+  - update component implementation in props-control
+
+- **preview:** Simplify switch component usage ([80abe09](https://github.com/favorodera/centoui/commit/80abe09))
+
+  - replace SwitchRoot and SwitchThumb with Switch
+  - update template structure for cleaner syntax
+
+- **switch:** Simplify component and update styles ([b433fe9](https://github.com/favorodera/centoui/commit/b433fe9))
+
+  - Consolidate switch components into a single file
+  - Update switch sizing and spacing constants
+  - Refactor variant props and type exports
+
+- **switch:** Consolidate root and thumb components ([2dbbfb2](https://github.com/favorodera/centoui/commit/2dbbfb2))
+
+  - merge switch-root and switch-thumb into switch.vue
+  - simplify component structure
+  - remove redundant context injection
+
+- **preview:** Remove size prop from textarea view ([3c5384b](https://github.com/favorodera/centoui/commit/3c5384b))
+
+  - remove size configuration from preview
+  - clean up unused textareaVariants import
+
+- **textarea:** Simplify variants and props ([65135d9](https://github.com/favorodera/centoui/commit/65135d9))
+
+  - Remove size variants and simplify styles
+  - Update scrollbar and disabled state styling
+  - Refactor TextareaProps type definition
+  - Clean up unused exports and types
+
+- **textarea:** Simplify component props and styles ([39dfadb](https://github.com/favorodera/centoui/commit/39dfadb))
+
+  - remove default size prop
+  - simplify classNames computed property
+  - remove data-size attribute from textarea element
+
+- **tooltip:** Simplify component implementation ([ffcb0c5](https://github.com/favorodera/centoui/commit/ffcb0c5))
+
+  - Integrate portal and arrow into TooltipContent
+  - Add showArrow prop to TooltipContent
+  - Remove redundant wrapper components
+  - Simplify variant and class logic
+
+- **core:** Simplify component structure and registry ([8622eaf](https://github.com/favorodera/centoui/commit/8622eaf))
+
+  - refactor component registry and file structure
+  - simplify tailwind-variants slot definitions
+  - remove redundant portal and arrow wrappers
+  - replace composite components with single files
+  - remove deprecated progress-bar and tile components
+
+
+### Documentation
+
+- **CONTRIBUTING:** Update project documentation ([286f28c](https://github.com/favorodera/centoui/commit/286f28c))
+
+  - Add project overview and architecture details
+  - Update pnpm version requirement to v11
+  - Include development workflow command table
+  - Expand testing environment details
+  - Add references section for packages and docs
+
+- **CONTRIBUTING:** Update contribution guidelines ([7655833](https://github.com/favorodera/centoui/commit/7655833))
+
+  - Improve structure and readability
+  - Add detailed branch and commit conventions
+  - Clarify testing and PR workflows
+  - Include instructions for bug reports and features
+
+
+### Chores
+
+- **nuxt:** Update comment for pre-bundle dependencies ([25ed19b](https://github.com/favorodera/centoui/commit/25ed19b))
+
+  - Clarify purpose of pre-bundling Vite dependencies
+  - Improve developer experience documentation
+
+- **tile:** Remove Tile component and preview view ([eb7e0c9](https://github.com/favorodera/centoui/commit/eb7e0c9))
+
+  - Remove Tile component implementation
+  - Delete Tile component preview demo
+
+
+### Tests
+
+- **cli:** Update component registry schema in tests ([65ca54b](https://github.com/favorodera/centoui/commit/65ca54b))
+
+  - add description field to component mocks
+  - update component dependency test data
+  - fix optional chaining in test assertions
+
+- **cli:** Update config generation tests ([015b72b](https://github.com/favorodera/centoui/commit/015b72b))
+
+  - update buildUserDefaultConfigFileContent arguments
+  - add validation for utilsFilePath in config content
+
+- **cli:** Remove redundant version check tests ([bb92400](https://github.com/favorodera/centoui/commit/bb92400))
+
+  - delete test cases for existing package versions
+  - simplify test suite for installMissingPackages
+
+- **registry:** Update button component schema ([9355565](https://github.com/favorodera/centoui/commit/9355565))
+
+  - add description field to button component
+  - remove unused dependency fields
+
+
+### Styling
+
+- **select:** Adjust layout and sizing styles ([761b27f](https://github.com/favorodera/centoui/commit/761b27f))
+
+  - Fix viewport and group padding alignment
+  - Update content width to use full width instead
+
+- **select:** Reorder tailwind classes for consistency ([84feb8c](https://github.com/favorodera/centoui/commit/84feb8c))
+- **header:** Adjust layout spacing and alignment ([7d51fdf](https://github.com/favorodera/centoui/commit/7d51fdf))
+
+  - update padding in header container
+  - remove fixed height from action container
+
+- **preview:** Reformat slideover view classes ([a6c0d54](https://github.com/favorodera/centoui/commit/a6c0d54))
+
+  - Reorder class attributes
+  - Apply consistent multi-line formatting
+
+- **progress:** Reduce root height to 1.5 units ([1bd89df](https://github.com/favorodera/centoui/commit/1bd89df))
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.36...v1.0.0-alpha.37
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.36...v1.0.0-alpha.37)

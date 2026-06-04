@@ -1,5 +1,102 @@
 # Changelog
 
+## v1.0.0-alpha.37...v1.0.0-alpha.38
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.37...v1.0.0-alpha.38)
+
+### Added
+
+- **cli:** Set default overwrite confirmation to false ([f3a9e04](https://github.com/favorodera/centoui/commit/f3a9e04))
+
+  - set initialValue to false in confirm prompt
+  - prevent accidental file overwrites
+
+- **cli:** Add automatic utils file installation ([9b5d047](https://github.com/favorodera/centoui/commit/9b5d047))
+
+  - Fetch and write utils file if required
+  - Skip writing if utils file already exists
+  - Update file mapping function naming
+  - Add conditional task for utils generation
+
+- **cli:** Make utils file generation on-demand ([925aeb2](https://github.com/favorodera/centoui/commit/925aeb2))
+
+  - Remove automatic utils file installation
+  - Update init flow to write files via helper
+  - Update utils path prompt description
+
+- **cli:** Add cleanup prompt for unused utils file ([3e946cb](https://github.com/favorodera/centoui/commit/3e946cb))
+
+  - prompt user to delete utils file if no longer needed
+  - fix potential undefined errors in dependency checks
+
+
+### Fixed
+
+- **cli:** Set default confirmation to false for remove ([262e6dd](https://github.com/favorodera/centoui/commit/262e6dd))
+
+  - prevent accidental deletion by defaulting to no
+
+- **cli:** Ignore version mismatch during installation ([12b3f3e](https://github.com/favorodera/centoui/commit/12b3f3e))
+
+  - Only check package presence by name
+  - Skip version comparison for installed dependencies
+
+- **cli:** Handle undefined component dependencies ([54168c2](https://github.com/favorodera/centoui/commit/54168c2))
+
+  - add optional chaining to componentDeps iteration
+  - prevent runtime errors when dependencies are missing
+
+
+### Refactors
+
+- **cli:** Update component registry type schema ([9d9d7ad](https://github.com/favorodera/centoui/commit/9d9d7ad))
+
+  - make description a required field
+  - add needsUtils flag
+  - make componentDeps optional
+  - make packageDeps optional
+
+- **cli:** Rename registry path mapping function ([cb93e2e](https://github.com/favorodera/centoui/commit/cb93e2e))
+
+  - Rename function to mapComponentsRegistryPathToProjectDest
+  - Update parameter names for clarity
+  - Update JSDoc documentation to reflect changes
+
+- **cli:** Rename mapRegistryPathToProjectDest ([0f942e9](https://github.com/favorodera/centoui/commit/0f942e9))
+
+  - rename function to mapComponentsRegistryPathToProjectDest
+  - update tests to use new function name
+  - add utilsFilePath to mock config in tests
+
+
+### Tests
+
+- **cli:** Update component registry schema in tests ([65ca54b](https://github.com/favorodera/centoui/commit/65ca54b))
+
+  - add description field to component mocks
+  - update component dependency test data
+  - fix optional chaining in test assertions
+
+- **cli:** Update config generation tests ([015b72b](https://github.com/favorodera/centoui/commit/015b72b))
+
+  - update buildUserDefaultConfigFileContent arguments
+  - add validation for utilsFilePath in config content
+
+- **cli:** Remove redundant version check tests ([bb92400](https://github.com/favorodera/centoui/commit/bb92400))
+
+  - delete test cases for existing package versions
+  - simplify test suite for installMissingPackages
+
+- **registry:** Update button component schema ([9355565](https://github.com/favorodera/centoui/commit/9355565))
+
+  - add description field to button component
+  - remove unused dependency fields
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.36...v1.0.0-alpha.37
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.36...v1.0.0-alpha.37)

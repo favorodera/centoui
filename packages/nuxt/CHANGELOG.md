@@ -1,5 +1,21 @@
 # Changelog
 
+## v1.0.0-alpha.37...v1.0.0-alpha.38
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.37...v1.0.0-alpha.38)
+
+### Chores
+
+- **nuxt:** Update comment for pre-bundle dependencies ([25ed19b](https://github.com/favorodera/centoui/commit/25ed19b))
+
+  - Clarify purpose of pre-bundling Vite dependencies
+  - Improve developer experience documentation
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.36...v1.0.0-alpha.37
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.36...v1.0.0-alpha.37)
