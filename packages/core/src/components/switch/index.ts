@@ -1,20 +1,18 @@
-import { tv, type ClassProp, type VariantProps } from 'tailwind-variants'
+import { tv, type VariantProps } from 'tailwind-variants'
 import {
-  type SwitchRootProps as RekaSwitchRootProps,
-  type SwitchRootEmits as RekaSwitchRootEmits,
-  type SwitchThumbProps as RekaSwitchThumbProps,
-  createContext,
+  type SwitchRootProps,
+  type SwitchRootEmits,
 } from 'reka-ui'
 
 export const switchVariants = tv({
   slots: {
     root: `
-      peer relative inline-flex shrink-0 items-center rounded-sm transition-all
-      duration-300 outline-none
+      peer relative inline-flex shrink-0 items-center transition-all
+      outline-none border border-transparent
 
       focus-visible:ring-2 focus-visible:ring-ring
 
-      disabled:pointer-events-none disabled:opacity-60
+      disabled:pointer-events-none disabled:opacity-65
 
       aria-invalid:ring-2 aria-invalid:ring-error
 
@@ -24,9 +22,9 @@ export const switchVariants = tv({
     `,
     thumb: `
       pointer-events-none block origin-left rounded-[inherit] bg-background
-      transition-transform duration-300
+      transition-transform
 
-      data-[state=checked]:translate-x-[calc(100%+7px)]
+      data-[state=checked]:translate-x-[calc(100%+(--spacing(1.25)))]
 
       data-[state=unchecked]:translate-x-px
     `,
@@ -34,12 +32,12 @@ export const switchVariants = tv({
   variants: {
     size: {
       sm: {
-        root: 'h-4 w-8',
+        root: 'h-4 w-8 rounded-xs',
         thumb: 'size-3',
       },
       md: {
-        root: 'h-5 w-10',
-        thumb: 'size-4',
+        root: 'h-4.5 w-9 rounded-xs',
+        thumb: 'size-3.5',
       },
     },
   },
@@ -51,48 +49,23 @@ export const switchVariants = tv({
 
 // COMPONENTS
 
-export { default as SwitchRoot } from './switch-root.vue'
-export { default as SwitchThumb } from './switch-thumb.vue'
-
-// CONTEXT
-
-export const [injectCentouiSwitchRootContext, provideCentouiSwitchRootContext] = createContext<SwitchRootContext>('SwitchRoot', 'centoui:switch-root:context')
+export { default as Switch } from './switch.vue'
 
 
-// TYPES — Variants
-
+// VARIANTS
 export type SwitchVariants = VariantProps<typeof switchVariants>
 
 
-// TYPES — Context
-
-export type SwitchRootContext = Pick<SwitchRootProps, 'size'>
-
-// TYPES — Props
-
-export type SwitchRootProps = RekaSwitchRootProps & Pick<ClassProp, 'class'> & {
+// PROPS
+export type SwitchProps = SwitchRootProps & {
   /**
-   *  Size of the switch
+   * Visual size of the switch
    * @default 'md'
   */
   size?: SwitchVariants['size']
+  class?: any
 }
 
-export type SwitchThumbProps = RekaSwitchThumbProps & Pick<ClassProp, 'class'>
 
-
-// TYPES — Emits
-
-export type SwitchRootEmits = RekaSwitchRootEmits
-
-// TYPES — Slots
-
-export type SwitchRootSlots = {
-  default?: (props: {
-    /** Current value */
-    modelValue: unknown
-    /** Whether the switch is checked */
-    checked: boolean
-   
-  }) => any
-}
+// EMITS
+export type SwitchEmits = SwitchRootEmits
