@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { PropsSchema } from '@/utils/types'
-import { SwitchRoot, SwitchThumb } from '#centoui/components/switch'
+import { Switch } from '#centoui/components/switch'
 import { computed } from 'vue'
 import {
   SelectRoot,
@@ -68,13 +68,11 @@ function set(key: string, value: unknown) {
           <span class="text-xs text-muted-foreground">
             {{ get(entry.key) ? 'ON' : 'OFF' }}
           </span>
-          <SwitchRoot
+          <Switch
             :id="`prop-${entry.key}`"
             :model-value="!!get(entry.key)"
             @update:model-value="(payload) => set(entry.key, payload)"
-          >
-            <SwitchThumb />
-          </SwitchRoot>
+          />
         </div>
 
         <!-- Array -->
