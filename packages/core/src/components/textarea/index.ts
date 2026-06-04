@@ -1,59 +1,33 @@
-import { tv, type ClassProp, type VariantProps } from 'tailwind-variants'
+import { tv } from 'tailwind-variants'
 import type { TextareaHTMLAttributes } from 'vue'
 
 export const textareaVariants = tv({
   slots: {
     root: `
-      field-sizing-content min-h-16 w-full resize-none scrollbar-thin
-      scrollbar-thumb-input border border-input bg-transparent transition-all
-      duration-300 outline-none
+      field-sizing-content min-h-16 w-full resize-none overflow-y-auto border-input bg-transparent transition-all
+      outline-none scrollbar-thin scrollbar-thumb-accent scrollbar-track-transparent scrollbar-gutter-auto border
 
       selection:bg-primary selection:text-primary-foreground
 
       placeholder:text-muted-foreground
 
-      hover:bg-input/15
-
       focus-visible:ring-2 focus-visible:ring-ring
 
-      disabled:pointer-events-none disabled:opacity-60
+      disabled:pointer-events-none disabled:bg-input/60 disabled:opacity-65
 
-      aria-invalid:ring-2 aria-invalid:ring-error
+      aria-invalid:ring-2 aria-invalid:ring-error rounded-md px-3 py-1 text-sm
     `,
-  },
-  variants: {
-    size: {
-      sm: {
-        root: 'rounded-md px-3 py-1.5 text-xs',
-      },
-      md: {
-        root: 'rounded-md px-4 py-2 text-sm',
-      },
-    },
-  },
-  defaultVariants: {
-    size: 'md',
   },
 })
 
 
 // COMPONENT
-
 export { default as Textarea } from './textarea.vue'
 
-// TYPES — Variants
 
-export type TextareaVariants = VariantProps<typeof textareaVariants>
-
-
-// TYPES — Props
-
-export type TextareaProps = Pick<ClassProp, 'class'> & /** @vue-ignore */ Omit<TextareaHTMLAttributes, 'autocomplete' | 'size' | 'value' | 'class'> & {
-  /**
-     * The visual size of the textarea.
-     * @default 'md'
-     */
-  size?: TextareaVariants['size']
+// PROPS
+// Note: 'autocomplete' is defined with simpler types to avoid TS2590 union complexity issues
+export type TextareaProps = {
   /**
      * The value of the textarea when it is initially rendered.\
      * Use when you do not need to control its value.
@@ -66,11 +40,11 @@ export type TextareaProps = Pick<ClassProp, 'class'> & /** @vue-ignore */ Omit<T
   value?: string | number
   /** Controls browser autocomplete suggestions. */
   autocomplete?: 'on' | 'off' | (string & {})
-}
+  class?: any
+} & /** @vue-ignore */ TextareaHTMLAttributes
 
 
-// TYPES — Emits
-
+// EMITS
 export type TextareaEmits = {
   /**
    * Event handler for when the value of the textarea changes.
