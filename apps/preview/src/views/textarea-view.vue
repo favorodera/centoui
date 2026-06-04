@@ -1,16 +1,10 @@
 <script setup lang="ts">
-import { Textarea, textareaVariants } from '#centoui/components/textarea'
+import { Textarea } from '#centoui/components/textarea'
 import ViewContainer from '@/components/view-container.vue'
 import { useApp } from '@/composables/use-app'
 import { ref } from 'vue'
 
 const values = useApp().preview.initPreview('Textarea', {
-  size: {
-    type: 'array',
-    label: 'Size',
-    options: Object.keys(textareaVariants.variants.size),
-    default: textareaVariants.defaultVariants.size,
-  },
   disabled: {
     type: 'boolean',
     label: 'Disabled',
@@ -31,7 +25,6 @@ const modelValue = ref('')
     <Textarea
       id="textarea-model"
       v-model:value="modelValue"
-      :size="values.size"
       :disabled="values.disabled"
       :aria-invalid="values.invalid"
       placeholder="Type your message here."
