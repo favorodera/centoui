@@ -5,9 +5,7 @@ import { textareaVariants, type TextareaEmits, type TextareaProps } from '.'
 
 const emits = defineEmits<TextareaEmits>()
 
-const props = withDefaults(defineProps<TextareaProps>(), {
-  size: 'md',
-})
+const props = defineProps<TextareaProps>()
 
 const modelValue = useVModel(
   props,
@@ -16,20 +14,14 @@ const modelValue = useVModel(
   { defaultValue: props.defaultValue },
 )
 
-const classNames = computed(() => {
-  const { root } = textareaVariants({
-    size: props.size,
-  })
-
-  return root({ class: props.class })
-})
+const { root } = textareaVariants()
+const classNames = computed(() => root({ class: props.class }))
 </script>
 
 <template>
   <textarea
     v-model="modelValue"
     data-slot="textarea"
-    :data-size="size"
     :class="classNames"
   />
 </template>
