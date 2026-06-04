@@ -3,8 +3,8 @@
   "name": "kbd",
   "description": "Component for displaying keyboard input.",
   "files": [
-    "components/kbd/kbd.vue",
+    "components/kbd/index.ts",
     "components/kbd/kbd-group.vue",
-    "components/kbd/index.ts"
+    "components/kbd/kbd.vue"
   ]
 }

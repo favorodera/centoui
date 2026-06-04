@@ -18,14 +18,10 @@
       "description": "Stacked set of interactive headings that reveals a section of content.",
       "files": [
         "components/accordion/accordion-content.vue",
-        "components/accordion/accordion-header.vue",
         "components/accordion/accordion-item.vue",
         "components/accordion/accordion-root.vue",
         "components/accordion/accordion-trigger.vue",
         "components/accordion/index.ts"
-      ],
-      "componentDeps": [
-        "icon"
       ]
     },
     {
@@ -53,12 +49,10 @@
       "name": "alert",
       "description": "Displays a short, important message with optional severity styling and actions.",
       "files": [
-        "components/alert/alert-root.vue",
-        "components/alert/alert-content.vue",
-        "components/alert/alert-media.vue",
-        "components/alert/alert-title.vue",
+        "components/alert/alert-body.vue",
         "components/alert/alert-description.vue",
-        "components/alert/alert-actions.vue",
+        "components/alert/alert-root.vue",
+        "components/alert/alert-title.vue",
         "components/alert/index.ts"
       ]
     },
@@ -76,10 +70,10 @@
       "name": "avatar",
       "description": "Component for displaying avatars with fallback support.",
       "files": [
-        "components/avatar/avatar-root.vue",
-        "components/avatar/avatar-image.vue",
         "components/avatar/avatar-fallback.vue",
         "components/avatar/avatar-group.vue",
+        "components/avatar/avatar-image.vue",
+        "components/avatar/avatar-root.vue",
         "components/avatar/avatar-utils.ts",
         "components/avatar/index.ts"
       ]
@@ -171,9 +165,9 @@
       "name": "input-group",
       "description": "Groups inputs with addons",
       "files": [
+        "components/input-group/index.ts",
         "components/input-group/input-group-addon.vue",
-        "components/input-group/input-group-root.vue",
-        "components/input-group/index.ts"
+        "components/input-group/input-group-root.vue"
       ]
     },
     {
@@ -181,8 +175,8 @@
       "name": "input",
       "description": "A styled input element that accepts text-based user input.",
       "files": [
-        "components/input/input.vue",
-        "components/input/index.ts"
+        "components/input/index.ts",
+        "components/input/input.vue"
       ]
     },
     {
@@ -190,9 +184,9 @@
       "name": "kbd",
       "description": "Component for displaying keyboard input.",
       "files": [
-        "components/kbd/kbd.vue",
+        "components/kbd/index.ts",
         "components/kbd/kbd-group.vue",
-        "components/kbd/index.ts"
+        "components/kbd/kbd.vue"
       ]
     },
     {
@@ -200,8 +194,8 @@
       "name": "label",
       "description": "An associated label for form elements.",
       "files": [
-        "components/label/label-root.vue",
-        "components/label/index.ts"
+        "components/label/index.ts",
+        "components/label/label.vue"
       ]
     },
     {
@@ -209,6 +203,7 @@
       "name": "pagination",
       "description": "Displays pagination navigation.",
       "files": [
+        "components/pagination/index.ts",
         "components/pagination/pagination-ellipsis.vue",
         "components/pagination/pagination-first.vue",
         "components/pagination/pagination-last.vue",
@@ -216,8 +211,7 @@
         "components/pagination/pagination-list.vue",
         "components/pagination/pagination-next.vue",
         "components/pagination/pagination-prev.vue",
-        "components/pagination/pagination-root.vue",
-        "components/pagination/index.ts"
+        "components/pagination/pagination-root.vue"
       ],
       "componentDeps": [
         "button",
@@ -229,11 +223,10 @@
       "name": "pin-input",
       "description": "A sequence of one-character inputs for entering PIN codes or OTPs.",
       "files": [
-        "components/pin-input/pin-input-root.vue",
-        "components/pin-input/pin-input-input.vue",
-        "components/pin-input/pin-input-separator.vue",
+        "components/pin-input/index.ts",
         "components/pin-input/pin-input-group.vue",
-        "components/pin-input/index.ts"
+        "components/pin-input/pin-input-input.vue",
+        "components/pin-input/pin-input-root.vue"
       ],
       "componentDeps": [
         "input"
@@ -246,30 +239,23 @@
       "files": [
         "components/popover/index.ts",
         "components/popover/popover-anchor.vue",
-        "components/popover/popover-arrow.vue",
-        "components/popover/popover-close.vue",
+        "components/popover/popover-body.vue",
         "components/popover/popover-content.vue",
         "components/popover/popover-description.vue",
-        "components/popover/popover-body.vue",
         "components/popover/popover-footer.vue",
         "components/popover/popover-header.vue",
-        "components/popover/popover-portal.vue",
         "components/popover/popover-root.vue",
         "components/popover/popover-title.vue",
         "components/popover/popover-trigger.vue"
-      ],
-      "componentDeps": [
-        "button"
       ]
     },
     {
       "$schema": "../schemas/component.json",
-      "name": "progress-bar",
-      "description": "A horizontal progress bar component representing progress towards a goal.",
+      "name": "progress",
+      "description": "",
       "files": [
-        "components/progress-bar/progress-bar-root.vue",
-        "components/progress-bar/progress-bar-indicator.vue",
-        "components/progress-bar/index.ts"
+        "components/progress/index.ts",
+        "components/progress/progress.vue"
       ]
     },
     {
@@ -277,26 +263,16 @@
       "name": "select",
       "description": "Displays a list of options for the user to pick from—triggered by a button.",
       "files": [
-        "components/select/select-arrow.vue",
+        "components/select/index.ts",
         "components/select/select-content.vue",
         "components/select/select-group.vue",
-        "components/select/select-icon.vue",
-        "components/select/select-item-indicator.vue",
-        "components/select/select-item-text.vue",
         "components/select/select-item.vue",
         "components/select/select-label.vue",
-        "components/select/select-portal.vue",
         "components/select/select-root.vue",
-        "components/select/select-scroll-down-button.vue",
-        "components/select/select-scroll-up-button.vue",
-        "components/select/select-separator.vue",
         "components/select/select-trigger.vue",
-        "components/select/select-value.vue",
-        "components/select/select-viewport.vue",
-        "components/select/index.ts"
+        "components/select/select-value.vue"
       ],
       "componentDeps": [
-        "separator",
         "icon"
       ]
     },
@@ -304,29 +280,27 @@
       "$schema": "../schemas/component.json",
       "name": "separator",
       "description": "Component for displaying a visual separator.",
-      "needsUtils": true,
       "files": [
-        "components/separator/separator.vue",
-        "components/separator/index.ts"
-      ]
+        "components/separator/index.ts",
+        "components/separator/separator.vue"
+      ],
+      "needsUtils": true
     },
     {
       "$schema": "../schemas/component.json",
       "name": "slideover",
       "description": "An overlay panel that slides in from the edge of the screen, typically used for navigation, forms, or details.",
       "files": [
+        "components/slideover/index.ts",
         "components/slideover/slideover-body.vue",
         "components/slideover/slideover-close.vue",
         "components/slideover/slideover-content.vue",
         "components/slideover/slideover-description.vue",
         "components/slideover/slideover-footer.vue",
         "components/slideover/slideover-header.vue",
-        "components/slideover/slideover-overlay.vue",
-        "components/slideover/slideover-portal.vue",
         "components/slideover/slideover-root.vue",
         "components/slideover/slideover-title.vue",
-        "components/slideover/slideover-trigger.vue",
-        "components/slideover/index.ts"
+        "components/slideover/slideover-trigger.vue"
       ],
       "componentDeps": [
         "button",
@@ -338,11 +312,8 @@
       "name": "slider",
       "description": "An input control that allows a user to set or select a numeric value within a defined range.",
       "files": [
-        "components/slider/slider-root.vue",
-        "components/slider/slider-track.vue",
-        "components/slider/slider-range.vue",
-        "components/slider/slider-thumb.vue",
-        "components/slider/index.ts"
+        "components/slider/index.ts",
+        "components/slider/slider.vue"
       ]
     },
     {
@@ -350,9 +321,8 @@
       "name": "switch",
       "description": "A control that allows the user to toggle between two states.",
       "files": [
-        "components/switch/switch-root.vue",
-        "components/switch/switch-thumb.vue",
-        "components/switch/index.ts"
+        "components/switch/index.ts",
+        "components/switch/switch.vue"
       ]
     },
     {
@@ -360,22 +330,8 @@
       "name": "textarea",
       "description": "A multi-line input field.",
       "files": [
-        "components/textarea/textarea-root.vue",
-        "components/textarea/index.ts"
-      ]
-    },
-    {
-      "$schema": "../schemas/component.json",
-      "name": "tile",
-      "description": "A flexible container for displaying content with media, title, description, and actions.",
-      "files": [
-        "components/tile/tile-actions.vue",
-        "components/tile/tile-content.vue",
-        "components/tile/tile-description.vue",
-        "components/tile/tile-media.vue",
-        "components/tile/tile-root.vue",
-        "components/tile/tile-title.vue",
-        "components/tile/index.ts"
+        "components/textarea/index.ts",
+        "components/textarea/textarea.vue"
       ]
     },
     {
@@ -383,13 +339,11 @@
       "name": "tooltip",
       "description": "A popup that appears when a user hovers over or focuses on an element.",
       "files": [
-        "components/tooltip/tooltip-root.vue",
-        "components/tooltip/tooltip-trigger.vue",
+        "components/tooltip/index.ts",
         "components/tooltip/tooltip-content.vue",
-        "components/tooltip/tooltip-arrow.vue",
-        "components/tooltip/tooltip-portal.vue",
         "components/tooltip/tooltip-provider.vue",
-        "components/tooltip/index.ts"
+        "components/tooltip/tooltip-root.vue",
+        "components/tooltip/tooltip-trigger.vue"
       ]
     }
   ]

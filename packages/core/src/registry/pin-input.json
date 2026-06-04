@@ -3,11 +3,10 @@
   "name": "pin-input",
   "description": "A sequence of one-character inputs for entering PIN codes or OTPs.",
   "files": [
-    "components/pin-input/pin-input-root.vue",
-    "components/pin-input/pin-input-input.vue",
-    "components/pin-input/pin-input-separator.vue",
+    "components/pin-input/index.ts",
     "components/pin-input/pin-input-group.vue",
-    "components/pin-input/index.ts"
+    "components/pin-input/pin-input-input.vue",
+    "components/pin-input/pin-input-root.vue"
   ],
   "componentDeps": [
     "input"

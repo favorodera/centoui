@@ -3,18 +3,16 @@
   "name": "slideover",
   "description": "An overlay panel that slides in from the edge of the screen, typically used for navigation, forms, or details.",
   "files": [
+    "components/slideover/index.ts",
     "components/slideover/slideover-body.vue",
     "components/slideover/slideover-close.vue",
     "components/slideover/slideover-content.vue",
     "components/slideover/slideover-description.vue",
     "components/slideover/slideover-footer.vue",
     "components/slideover/slideover-header.vue",
-    "components/slideover/slideover-overlay.vue",
-    "components/slideover/slideover-portal.vue",
     "components/slideover/slideover-root.vue",
     "components/slideover/slideover-title.vue",
-    "components/slideover/slideover-trigger.vue",
-    "components/slideover/index.ts"
+    "components/slideover/slideover-trigger.vue"
   ],
   "componentDeps": [
     "button",

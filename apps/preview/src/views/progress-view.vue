@@ -36,7 +36,12 @@ const uploadedSize = computed(() => {
       <!-- Example 1: File Upload -->
       <div class="flex w-full flex-col gap-3">
         <div class="flex items-center gap-3">
-          <div class="flex size-10 shrink-0 items-center justify-center rounded-lg border border-border bg-surface">
+          <div
+            class="
+              flex size-10 shrink-0 items-center justify-center rounded-lg
+              border border-border bg-surface
+            "
+          >
             <Icon
               icon="lucide:image"
               class="size-5 text-muted-foreground"
@@ -47,7 +52,12 @@ const uploadedSize = computed(() => {
               <span class="text-sm font-medium">avatar-update.jpg</span>
               <span class="text-xs text-muted-foreground">{{ progressValue }}%</span>
             </div>
-            <div class="flex items-center justify-between leading-none text-xs text-muted-foreground">
+            <div
+              class="
+                flex items-center justify-between text-xs leading-none
+                text-muted-foreground
+              "
+            >
               <span>{{ uploadedSize }} MB of 2.4 MB</span>
               <span>Uploading...</span>
             </div>
@@ -73,7 +83,11 @@ const uploadedSize = computed(() => {
 
         <Progress :model-value="82" />
 
-        <div class="flex items-center justify-between text-xs text-muted-foreground">
+        <div
+          class="
+            flex items-center justify-between text-xs text-muted-foreground
+          "
+        >
           <span>205 GB used</span>
           <span>250 GB total</span>
         </div>

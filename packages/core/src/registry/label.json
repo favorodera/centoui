@@ -3,7 +3,7 @@
   "name": "label",
   "description": "An associated label for form elements.",
   "files": [
-    "components/label/label-root.vue",
-    "components/label/index.ts"
+    "components/label/index.ts",
+    "components/label/label.vue"
   ]
 }

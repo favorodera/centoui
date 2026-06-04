@@ -4,8 +4,10 @@ import type { TextareaHTMLAttributes } from 'vue'
 export const textareaVariants = tv({
   slots: {
     root: `
-      field-sizing-content min-h-16 w-full resize-none overflow-y-auto border-input bg-transparent transition-all
-      outline-none scrollbar-thin scrollbar-thumb-accent scrollbar-track-transparent scrollbar-gutter-auto border
+      field-sizing-content min-h-16 w-full resize-none scrollbar-thin
+      scrollbar-thumb-accent scrollbar-track-transparent scrollbar-gutter-auto
+      overflow-y-auto rounded-md border border-input bg-transparent px-3 py-1
+      text-sm transition-all outline-none
 
       selection:bg-primary selection:text-primary-foreground
 
@@ -15,7 +17,7 @@ export const textareaVariants = tv({
 
       disabled:pointer-events-none disabled:bg-input/60 disabled:opacity-65
 
-      aria-invalid:ring-2 aria-invalid:ring-error rounded-md px-3 py-1 text-sm
+      aria-invalid:ring-2 aria-invalid:ring-error
     `,
   },
 })

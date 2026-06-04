@@ -7,22 +7,25 @@ import {
 export const sliderVariants = tv({
   slots: {
     root: `
-      relative flex touch-none items-center select-none
-      data-disabled:opacity-65 group/slider-root
+      group/slider-root relative flex touch-none items-center select-none
+
+      data-disabled:opacity-65
     `,
     track: 'relative grow overflow-hidden rounded-xs bg-input',
     range: 'absolute rounded-[inherit] bg-primary',
     thumb: `
       relative block size-3 shrink-0 rounded-full border border-ring bg-primary
-      transition-[color,box-shadow] select-none
+      ring-ring transition-[color,box-shadow] select-none
 
-      hover:ring-2 ring-ring
+      group-aria-invalid/slider-root:border-error
+      group-aria-invalid/slider-root:ring-2
+      group-aria-invalid/slider-root:ring-error
+
+      hover:ring-2
 
       focus-visible:ring-2 focus-visible:outline-none
 
       disabled:pointer-events-none disabled:opacity-65
-
-      group-aria-invalid/slider-root:ring-2 group-aria-invalid/slider-root:ring-error group-aria-invalid/slider-root:border-error
     `,
   },
   variants: {

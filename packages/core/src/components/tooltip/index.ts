@@ -12,9 +12,9 @@ export const tooltipVariants = tv({
   slots: {
     trigger: '',
     content: `
-      pointer-events-auto z-50 w-fit animate-in rounded-md bg-foreground
-      px-3 py-1 text-xs text-background 
-       fade-in-0 zoom-in-95 origin-(--reka-tooltip-content-transform-origin)
+      pointer-events-auto relative z-50 w-fit
+      origin-(--reka-tooltip-content-transform-origin) animate-in rounded-md
+      bg-foreground px-3 py-1 text-xs text-background fade-in-0 zoom-in-95
 
       data-[side=bottom]:slide-in-from-top-1
 
@@ -22,10 +22,10 @@ export const tooltipVariants = tv({
 
       data-[side=right]:slide-in-from-left-1
 
-      data-[side=top]:slide-in-from-bottom-1 
+      data-[side=top]:slide-in-from-bottom-1
 
       data-[state=closed]:animate-out data-[state=closed]:fade-out-0
-      data-[state=closed]:zoom-out-95 relative
+      data-[state=closed]:zoom-out-95
     `,
     arrow: 'z-50 fill-foreground',
   },

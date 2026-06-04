@@ -3,7 +3,7 @@
   "name": "textarea",
   "description": "A multi-line input field.",
   "files": [
-    "components/textarea/textarea-root.vue",
-    "components/textarea/index.ts"
+    "components/textarea/index.ts",
+    "components/textarea/textarea.vue"
   ]
 }

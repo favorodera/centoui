@@ -3,8 +3,8 @@
   "name": "input-group",
   "description": "Groups inputs with addons",
   "files": [
+    "components/input-group/index.ts",
     "components/input-group/input-group-addon.vue",
-    "components/input-group/input-group-root.vue",
-    "components/input-group/index.ts"
+    "components/input-group/input-group-root.vue"
   ]
 }

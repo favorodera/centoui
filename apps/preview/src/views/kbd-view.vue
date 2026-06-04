@@ -6,9 +6,7 @@ import {
   TooltipProvider,
   TooltipRoot,
   TooltipTrigger,
-  TooltipPortal,
   TooltipContent,
-  TooltipArrow,
 } from '#centoui/components/tooltip'
 import ViewContainer from '@/components/view-container.vue'
 import { useApp } from '@/composables/use-app'
@@ -54,16 +52,13 @@ const values = useApp().preview.initPreview('Kbd', {
             <Icon icon="lucide:bold" />
           </Button>
         </TooltipTrigger>
-        <TooltipPortal>
-          <TooltipContent>
-            Bold
-            <KbdGroup>
-              <Kbd :size="values.size">⌘</Kbd>
-              <Kbd :size="values.size">B</Kbd>
-            </KbdGroup>
-            <TooltipArrow />
-          </TooltipContent>
-        </TooltipPortal>
+        <TooltipContent>
+          Bold
+          <KbdGroup>
+            <Kbd :size="values.size">⌘</Kbd>
+            <Kbd :size="values.size">B</Kbd>
+          </KbdGroup>
+        </TooltipContent>
       </TooltipRoot>
     </TooltipProvider>
   </ViewContainer>

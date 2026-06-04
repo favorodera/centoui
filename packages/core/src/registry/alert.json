@@ -3,12 +3,10 @@
   "name": "alert",
   "description": "Displays a short, important message with optional severity styling and actions.",
   "files": [
-    "components/alert/alert-root.vue",
-    "components/alert/alert-content.vue",
-    "components/alert/alert-media.vue",
-    "components/alert/alert-title.vue",
+    "components/alert/alert-body.vue",
     "components/alert/alert-description.vue",
-    "components/alert/alert-actions.vue",
+    "components/alert/alert-root.vue",
+    "components/alert/alert-title.vue",
     "components/alert/index.ts"
   ]
 }

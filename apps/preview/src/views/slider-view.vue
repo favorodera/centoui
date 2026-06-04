@@ -33,11 +33,15 @@ const priceRangeModelValue = ref([250, 750])
   <ViewContainer>
     <div
       class="flex flex-1"
-      :class="values.orientation === 'vertical' ? 'flex-col items-center gap-4' : 'flex-col gap-4'"
+      :class="values.orientation === 'vertical' ? 'flex-col items-center gap-4' : `
+        flex-col gap-4
+      `"
     >
       <div
         class="flex w-full"
-        :class="values.orientation === 'vertical' ? 'flex-col items-center gap-1 text-center' : 'items-center justify-between'"
+        :class="values.orientation === 'vertical' ? `
+          flex-col items-center gap-1 text-center
+        ` : `items-center justify-between`"
       >
         <Label
           for="volume"
@@ -49,7 +53,9 @@ const priceRangeModelValue = ref([250, 750])
       </div>
       <div
         class="flex"
-        :class="values.orientation === 'vertical' ? 'h-full flex-col items-center gap-4' : 'w-full items-center gap-4'"
+        :class="values.orientation === 'vertical' ? `
+          h-full flex-col items-center gap-4
+        ` : `w-full items-center gap-4`"
       >
         <Icon
           v-if="values.orientation === 'vertical'"
@@ -59,7 +65,7 @@ const priceRangeModelValue = ref([250, 750])
         <Icon
           v-else
           icon="lucide:volume-1"
-          class=" text-muted-foreground"
+          class="text-muted-foreground"
         />
         <Slider
           id="volume"
@@ -85,11 +91,15 @@ const priceRangeModelValue = ref([250, 750])
 
     <div
       class="flex flex-1"
-      :class="values.orientation === 'vertical' ? 'flex-col items-center gap-4' : 'flex-col gap-4'"
+      :class="values.orientation === 'vertical' ? 'flex-col items-center gap-4' : `
+        flex-col gap-4
+      `"
     >
       <div
         class="flex w-full"
-        :class="values.orientation === 'vertical' ? 'flex-col items-center gap-1 text-center' : 'items-center justify-between'"
+        :class="values.orientation === 'vertical' ? `
+          flex-col items-center gap-1 text-center
+        ` : `items-center justify-between`"
       >
         <Label
           for="price-range"

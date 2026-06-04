@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SwitchRoot, SwitchThumb } from '#centoui/components/switch'
+import { Switch } from '#centoui/components/switch'
 import { Label } from '#centoui/components/label'
 import ViewContainer from '@/components/view-container.vue'
 import { useApp } from '@/composables/use-app'
@@ -18,12 +18,10 @@ const switchState = ref(false)
       Click on Switch label
     </Label>
 
-    <SwitchRoot
+    <Switch
       id="switch"
       v-model="switchState"
-    >
-      <SwitchThumb />
-    </SwitchRoot>
+    />
   </ViewContainer>
 </template>
 

@@ -7,8 +7,8 @@ import {
 export const switchVariants = tv({
   slots: {
     root: `
-      peer relative inline-flex shrink-0 items-center transition-all
-      outline-none border border-transparent
+      peer relative inline-flex shrink-0 items-center border border-transparent
+      transition-all outline-none
 
       focus-visible:ring-2 focus-visible:ring-ring
 

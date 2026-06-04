@@ -3,26 +3,16 @@
   "name": "select",
   "description": "Displays a list of options for the user to pick from—triggered by a button.",
   "files": [
-    "components/select/select-arrow.vue",
+    "components/select/index.ts",
     "components/select/select-content.vue",
     "components/select/select-group.vue",
-    "components/select/select-icon.vue",
-    "components/select/select-item-indicator.vue",
-    "components/select/select-item-text.vue",
     "components/select/select-item.vue",
     "components/select/select-label.vue",
-    "components/select/select-portal.vue",
     "components/select/select-root.vue",
-    "components/select/select-scroll-down-button.vue",
-    "components/select/select-scroll-up-button.vue",
-    "components/select/select-separator.vue",
     "components/select/select-trigger.vue",
-    "components/select/select-value.vue",
-    "components/select/select-viewport.vue",
-    "components/select/index.ts"
+    "components/select/select-value.vue"
   ],
   "componentDeps": [
-    "separator",
     "icon"
   ]
 }
