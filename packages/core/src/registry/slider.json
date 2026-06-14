@@ -1,9 +1,0 @@
-{
-  "$schema": "../schemas/component.json",
-  "name": "slider",
-  "description": "An input control that allows a user to set or select a numeric value within a defined range.",
-  "files": [
-    "components/slider/index.ts",
-    "components/slider/slider.vue"
-  ]
-}

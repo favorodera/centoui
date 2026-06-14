@@ -1,9 +1,0 @@
-{
-  "$schema": "../schemas/component.json",
-  "name": "label",
-  "description": "An associated label for form elements.",
-  "files": [
-    "components/label/index.ts",
-    "components/label/label.vue"
-  ]
-}

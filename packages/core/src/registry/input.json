@@ -1,9 +1,0 @@
-{
-  "$schema": "../schemas/component.json",
-  "name": "input",
-  "description": "A styled input element that accepts text-based user input.",
-  "files": [
-    "components/input/index.ts",
-    "components/input/input.vue"
-  ]
-}

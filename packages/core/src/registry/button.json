@@ -1,9 +1,0 @@
-{
-  "$schema": "../schemas/component.json",
-  "name": "button",
-  "description": "Interactive element for triggering actions.",
-  "files": [
-    "components/button/button.vue",
-    "components/button/index.ts"
-  ]
-}

@@ -1,48 +1,49 @@
-packages:
-  - "apps/*"
-  - "playgrounds/*"
-  - "packages/*"
-
-nodeOptions: "--max_old_space_size=4096"
+minimumReleaseAgeExclude:
+  - '@favorodera/eslint-config@0.0.15'
 shellEmulator: true
 
-peerDependencyRules:
-  allowedVersions:
-    vite: "8"
-    typescript: "6"
+trustPolicy: no-downgrade
 
+packages:
+  # - 'apps/*'
+  # - 'playgrounds/*'
+  - 'packages/*'
+
+nodeOptions: --max_old_space_size=4096
 verifyDepsBeforeRun: false
 
 allowBuilds:
-  "@parcel/watcher": true
-  "@tailwindcss/oxide": true
-  esbuild: true
-  unrs-resolver: true
-  vue-demi: true
+  '@parcel/watcher': true
+  '@tailwindcss/oxide': true
   better-sqlite3: true
+  esbuild: true
   sharp: true
 
-catalog:
-  "@iconify/vue": "^5.0.1"
-  "@tailwindcss/vite": "^4.3.0"
-  "@tsconfig/node24": "^24.0.4"
-  "@types/fs-extra": "^11.0.4"
-  "@types/node": "^25.6.0"
-  "@vitejs/plugin-vue": "^6.0.6"
-  "@vitest/ui": "^4.1.5"
-  "@vueuse/core": "^14.3.0"
-  c12: "4.0.0-beta.5"
-  fs-extra: "^11.3.4"
-  nuxt: "^4.4.6"
-  pathe: "^2.0.3"
-  reka-ui: "^2.9.8"
-  tailwind-merge: "^3.6.0"
-  tailwind-variants: "^3.2.2"
-  tailwindcss: "^4.3.0"
-  tsdown: "^0.21.7"
-  tw-animate-css: "^1.4.0"
-  vite: "^8.0.8"
-  vitest: "^4.1.2"
-  vue: "^3.5.34"
-  vue-router: "^5.0.7"
-  vue-tsc: "^3.2.6"
+  unrs-resolver: true
+  vue-demi: true
+catalogs:
+  tools:
+    '@favorodera/eslint-config': ^0.0.15
+    '@types/fs-extra': ^11.0.4
+    '@types/node': ^25.9.3
+    '@vitest/ui': ^4.1.8
+    eslint: ^10.5.0
+    relizy: ^1.4.8
+    tsdown: ^0.22.2
+    turbo: ^2.9.18
+    type-fest: ^5.7.0
+    typescript: ^6.0.3
+    vitest: ^4.1.8
+  vendor:
+    '@clack/prompts': ^1.5.1
+    c12: ^4.0.0-beta.5
+    citty: ^0.2.2
+    fs-extra: ^11.3.5
+    nypm: ^0.6.7
+    pathe: ^2.0.3
+
+peerDependencyRules:
+  allowedVersions:
+    typescript: '6'
+
+    vite: '8'
