@@ -1,9 +1,10 @@
-import { intro, log, tasks } from '@clack/prompts'
+import { box, confirm, intro, isCancel, log, outro, tasks } from '@clack/prompts'
 import { defineCommand } from 'citty'
 import fsExtra from 'fs-extra'
 import { join } from 'pathe'
 import { getInstalledComponents } from '../utils/components'
 import { loadConfig } from '../utils/config'
+import { uninstallDependency } from '../utils/package'
 import { fetchRegistry } from '../utils/registry'
 
 /**
@@ -38,7 +39,7 @@ export function remove() {
       log.step('Resolving workspace.')
       const installedComponents = await getInstalledComponents(config, cwd)
 
-      if (installedComponents.includes(component)) {
+      if (!installedComponents.includes(component)) {
         throw new Error(`${component} is not installed.`)
       }
 
@@ -48,7 +49,7 @@ export function remove() {
       log.step('Resolving components.')
       // Look up the component in the registry to get its metadata
       const componentEntry = registry.components
-      // eslint-disable-next-line unicorn/prefer-array-some
+
         .find(entry => entry.name === component)
 
       if (!componentEntry) {
@@ -82,11 +83,53 @@ export function remove() {
         {
           task: async () => {
             await fsExtra.remove(componentDir)
-            return `${component} removed.`
+            return `${component} removed!`
           },
-          title: `Removing ${component}!`,
+          title: `Removing ${component}.`,
+        },
+
+        {
+          task: async (message) => {
+            const dependenciesToUninstall = Object
+              .keys(componentEntry?.packageDeps || {})
+              .filter(name => !neededDependencies.has(name))
+
+            for (const name of dependenciesToUninstall) {
+              message(`Uninstalling ${name}.`)
+              await uninstallDependency(name, cwd)
+            }
+
+            return 'Orphaned dependencies removed!'
+          },
+          title: `Removing orphaned dependencies`,
         },
       ])
+
+      log.step('Running extra diagnostics.')
+      // Check if any remaining installed components need utils
+      const remainingNeedUtils = registry.components
+        .filter(entry => entry.needsUtils === true)
+        .some(entry => installedComponents.includes(entry.name))
+
+      // If no components need utils and utils file exists, prompt to delete
+      const utilsPath = join(cwd, config.utilsFilePath)
+      const utilsExists = await fsExtra.pathExists(utilsPath)
+
+      if (remainingNeedUtils && utilsExists) {
+        const shouldDelete = await confirm({
+          initialValue: false,
+          message: 'Delete utils file? (no components require it anymore)',
+        })
+
+        if (!isCancel(shouldDelete) && shouldDelete) {
+          await fsExtra.remove(utilsPath)
+          log.step('Utils file removed.')
+        }
+      }
+
+      box(`${component} removed from your project.`, 'Removal Complete.')
+
+      outro('You\'re all set!')
     },
   })
 }
