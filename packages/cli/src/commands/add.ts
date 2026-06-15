@@ -27,7 +27,7 @@ export async function add() {
     run: async ({ args }) => {
       const cwd = process.cwd()
 
-      intro('✨ CentoUI — Add components!')
+      intro('CentoUI — Add components!')
 
       const requestedComponents = args._ as Array<string>
 
@@ -144,7 +144,7 @@ export async function add() {
 
       box('Import components from your components directory to use them.', 'Installation Complete.')
 
-      outro('You\'re all set! 🎉')
+      outro('You\'re all set!')
     },
   })
 }

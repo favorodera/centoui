@@ -23,7 +23,7 @@ export function init() {
     run: async () => {
       const cwd = process.cwd()
 
-      intro('✨ CentoUI — Initialize project!')
+      intro('CentoUI — Initialize project!')
 
       // Collect all user choices so they aren't prompted again
       const choices = await group(
@@ -133,7 +133,7 @@ export function init() {
 
       box('Run \'centoui add button\' to install your first component.', 'Initialization Complete.')
 
-      outro('You\'re all set! 🎉')
+      outro('You\'re all set!')
     },
   })
 }
