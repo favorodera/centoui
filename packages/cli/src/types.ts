@@ -38,14 +38,14 @@ export interface ComponentRegistry {
    * Names of other CentoUI components that must be installed alongside this one.
    * The CLI resolves the full dependency tree automatically.
    */
-  componentDependencies?: Array<string>
+  componentDeps?: Array<string>
 
   /**
    * NPM packages required specifically by this component,
    * in addition to the global dependencies defined in `GlobalsRegistry`.
    * Keys are package names; values are semver version ranges.
    */
-  packageDependencies?: Record<string, string>
+  packageDeps?: Record<string, string>
 }
 
 /**
@@ -66,7 +66,7 @@ export interface Registry {
  */
 export interface CentoUIConfig {
   /** Relative path (from project root) to the directory where components are installed. */
-  componentsDirectoryPath: string
+  componentsDir: string
 
   /** Relative path (from project root) to the CSS file that receives theme and component styles. */
   themeFilePath: string
@@ -80,4 +80,13 @@ export interface CentoUIConfig {
    * @example { menu: 'lucide:menu', close: 'lucide:x' }
    */
   icons: Record<string, string>
+}
+
+/**
+ * Package.json file type used by the CLI.
+ * Only includes the properties needed by the CLI.
+ */
+export interface PackageJson {
+  dependencies?: Record<string, string>
+  devDependencies?: Record<string, string>
 }

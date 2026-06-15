@@ -1,21 +1,16 @@
-import { cancel, group, intro, note, outro, tasks, text } from '@clack/prompts'
+import { box, cancel, group, intro, outro, tasks, text } from '@clack/prompts'
 import { defineCommand } from 'citty'
-import fsExtra from 'fs-extra/esm'
 import { join } from 'pathe'
 import type { Registry } from '../types'
 import { CONFIG_FILE_NAME } from '../constants'
-import { buildUserDefaultConfigFileContent } from '../utils/config'
-import { confirmOverwriteIfExists, writeFileWithDirectories } from '../utils/file-system'
-import { installMissingPackages, validateNonEmptyPath } from '../utils/package'
-import { fetchFullRegistry, fetchThemeCSSContent } from '../utils/registry'
+import { buildUserConfig } from '../utils/config'
+import { confirmOverwrite, createDirectory, writeToFile } from '../utils/file-system'
+import { sendNetworkRequest } from '../utils/network'
+import { installDependency } from '../utils/package'
+import { fetchRegistry } from '../utils/registry'
 
 /**
  * Bootstraps a new CentoUI project in the current working directory.
- *
- * Flow:
- * 1. Prompts the user for their desired structural paths (components, theme, utils).
- * 2. Checks for existing files and explicitly asks for overwrite permissions upfront.
- * 3. Executes a sequential task list to write configs, fetch CSS, and install packages.
  * @returns The Citty command definition that executes the 'init' CLI process.
  */
 export function init() {
@@ -24,124 +19,119 @@ export function init() {
       description: 'Initialize a new CentoUI project',
       name: 'init',
     },
-    async run() {
+
+    run: async () => {
       const cwd = process.cwd()
 
-      intro('✨ CentoUI — Initialize project')
+      intro('✨ CentoUI — Initialize project!')
 
-      // Collect all path inputs upfront so the user isn't prompted again
-      const directories = await group(
+      // Collect all user choices so they aren't prompted again
+      const choices = await group(
         {
-          componentDir: () => text({
+          componentsDir: () => text({
             initialValue: 'src/components/centoui',
-            message: 'Directory to store components',
-            validate: validateNonEmptyPath,
+            message: 'Directory to store components.',
           }),
 
           themeFilePath: () => text({
             initialValue: 'src/assets/css/centoui.css',
-            message: 'Path for the theme CSS file',
-            validate: validateNonEmptyPath,
+            message: 'Path for the theme CSS file.',
           }),
 
           utilsFilePath: () => text({
             initialValue: 'src/utils/centoui-utils.ts',
-            message: 'Path for the utils file (written on demand)',
-            validate: validateNonEmptyPath,
+            message: 'Path for the utils file (written on demand).',
           }),
+
         },
         {
           onCancel: () => {
-            cancel('Initialization cancelled.')
+            cancel('Project initialization cancelled.')
             process.exit(0)
           },
         },
       )
 
-      // Resolve absolute paths for overwrite checks and task operations.
+      // Resolve absolute paths from choices for overwrite checks and task operations.
       const configPath = join(cwd, CONFIG_FILE_NAME)
-      const themePath = join(cwd, directories.themeFilePath)
-      const componentsPath = join(cwd, directories.componentDir)
+      const themePath = join(cwd, choices.themeFilePath)
+      const componentsPath = join(cwd, choices.componentsDir)
 
       // Ask all overwrite questions before any file operations begin.
-      const shouldWriteConfig = await confirmOverwriteIfExists(CONFIG_FILE_NAME, configPath)
-      const shouldWriteTheme = await confirmOverwriteIfExists(directories.themeFilePath, themePath)
-      const shouldWriteComponentsDirectory = await confirmOverwriteIfExists(directories.componentDir, componentsPath)
+      const shouldWriteConfig = await confirmOverwrite(CONFIG_FILE_NAME)
+      const shouldWriteTheme = await confirmOverwrite(choices.themeFilePath)
+      const shouldWriteComponentsDir = await confirmOverwrite(choices.componentsDir)
 
-      // `registry` is populated by the "Fetching registry" task and consumed
-      // by the subsequent "Installing global dependencies" task via closure.
+      // Store for the registry populated by the registry fetch task
       let registry: Registry
 
       await tasks([
         {
-          task: async () => {
-            if (!shouldWriteConfig) {
-              return `Skipped — "${CONFIG_FILE_NAME}" already exists`
-            }
-
-            const userConfigContent = await buildUserDefaultConfigFileContent(
-              directories.themeFilePath,
-              directories.componentDir,
-              directories.utilsFilePath,
-            )
-
-            await writeFileWithDirectories(configPath, userConfigContent)
-            return `Config written to ${CONFIG_FILE_NAME}`
-          },
-          title: 'Fetching config defaults',
-        },
-
-        {
-          task: async () => {
-            if (!shouldWriteTheme) {
-              return `Skipped — "${directories.themeFilePath}" already exists`
-            }
-
-            const themeContent = await fetchThemeCSSContent()
-            await writeFileWithDirectories(themePath, themeContent)
-            return `Theme CSS written to ${directories.themeFilePath}`
-          },
-          title: 'Fetching theme CSS',
-        },
-
-        {
-          task: async () => {
-            if (!shouldWriteComponentsDirectory) {
-              return `Skipped — "${directories.componentDir}" already exists`
-            }
-
-            await fsExtra.emptyDir(componentsPath)
-            return `Component directory prepared at ${directories.componentDir}`
-          },
-          title: 'Preparing components directory',
-        },
-
-        {
-          task: async () => {
-            registry = await fetchFullRegistry()
-            return 'Component registry loaded'
-          },
-          title: 'Fetching registry',
-        },
-
-        {
+          enabled: shouldWriteConfig,
           task: async (message) => {
-            await installMissingPackages(registry.globals.packageDeps, cwd, message)
-            return 'Global dependencies installed successfully'
+            message('Building config content.')
+            const userConfigContent = await buildUserConfig(choices)
+
+            message('Writing to disk.')
+            await writeToFile(configPath, userConfigContent)
+
+            return 'Config created!'
           },
-          title: 'Installing global dependencies',
+          title: 'Creating config.',
         },
+
+        {
+          enabled: shouldWriteTheme,
+          task: async (message) => {
+            message('Fetching theme from registry.')
+            const themeFileContent = await sendNetworkRequest('/defaults/centoui.css')
+
+            message('Writing to disk.')
+            await writeToFile(themePath, themeFileContent)
+
+            return 'Theme created!'
+          },
+          title: 'Creating theme.',
+        },
+
+        {
+          enabled: shouldWriteComponentsDir,
+          task: async (message) => {
+            message('Writing to disk.')
+            await createDirectory(componentsPath)
+
+            return 'Components directory ready!'
+          },
+          title: 'Preparing components directory.',
+        },
+
+        {
+          task: async () => {
+            registry = await fetchRegistry()
+            return 'Registry loaded!'
+          },
+          title: 'Loading registry.',
+        },
+
+        {
+
+          task: async (message) => {
+            for (const [
+              name,
+              version,
+            ] of Object.entries(registry.globals.packageDeps)) {
+              message(`Installing ${name}.`)
+              await installDependency(name, version, cwd)
+            }
+
+            return 'Dependencies installed!'
+          },
+          title: 'Installing dependencies.',
+        },
+
       ])
 
-      const summaryText = [
-        `Config     > ${directories.componentDir}`,
-        `Theme      > ${directories.themeFilePath}`,
-        `Components > ${directories.componentDir}`,
-        '',
-        'Run \'centoui add button\' to install your first component.',
-      ].join('\n')
-
-      note(summaryText, 'Initialization Complete')
+      box('Run \'centoui add button\' to install your first component.', 'Initialization Complete.')
 
       outro('You\'re all set! 🎉')
     },

@@ -1,5 +1,7 @@
 minimumReleaseAgeExclude:
   - '@favorodera/eslint-config@0.0.15'
+  - '@favorodera/eslint-config@0.0.17'
+  - '@favorodera/eslint-config@0.0.18'
 shellEmulator: true
 
 trustPolicy: no-downgrade
@@ -23,7 +25,7 @@ allowBuilds:
   vue-demi: true
 catalogs:
   tools:
-    '@favorodera/eslint-config': ^0.0.15
+    '@favorodera/eslint-config': ^0.0.18
     '@types/fs-extra': ^11.0.4
     '@types/node': ^25.9.3
     '@vitest/ui': ^4.1.8
@@ -31,7 +33,6 @@ catalogs:
     relizy: ^1.4.8
     tsdown: ^0.22.2
     turbo: ^2.9.18
-    type-fest: ^5.7.0
     typescript: ^6.0.3
     vitest: ^4.1.8
   vendor:

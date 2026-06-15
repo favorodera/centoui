@@ -1,70 +1,53 @@
 import { cancel, confirm, isCancel } from '@clack/prompts'
 import fsExtra from 'fs-extra'
-import { join } from 'pathe'
-import type { CentoUIConfig } from '../types'
 
 /**
- * Converts a registry-relative component file path into the absolute destination path
- * inside the user's project.
- *
- * Registry component file paths always begin with `components/` (e.g.
- * `"components/button/button.vue"`). This function strips that leading segment
- * and joins the remainder with the user's configured components directory so
- * that `"components/button/button.vue"` becomes, for example,
- * `"/home/user/my-app/src/components/centoui/button/button.vue"`.
- * @param registryComponentFilePath Path as it appears in the component's registry entry (always starts with `"components/"`).
- * @param config The loaded CentoUI project configuration.
- * @param cwd Absolute path to the project root.
- * @returns Absolute destination path for the file in the user's project.
+ * Writes content to a file, creating parent directories if they don't exist.
+ * @param path The file path to write to.
+ * @param content The content to write to the file.
+ * @throws If the file cannot be written to.
  */
-export function mapComponentsRegistryPathToProjectDestination(
-  registryComponentFilePath: string,
-  config: CentoUIConfig,
-  cwd: string,
-) {
-  // All registry paths are prefixed with "components/" by schema convention.
-  // We strip that prefix before joining with the user's own components directory.
-  const pathWithoutRegistryPrefix = registryComponentFilePath.replace(/^components\//, '')
-  return join(cwd, config.componentsDirectoryPath, pathWithoutRegistryPrefix)
+export async function writeToFile(path: string, content: string) {
+  try {
+    await fsExtra.outputFile(path, content, 'utf8')
+  } catch (error) {
+    throw new Error(`Failed to write ${path}`, { cause: error })
+  }
 }
 
 /**
- * Writes `content` to `filePath`, creating every missing parent directory first.
- *
- * This is the standard way to write any file in the CLI — it ensures the
- * target directory tree exists so callers don't have to `mkdir` manually.
- * @param filePath Absolute path where the file should be written.
- * @param content UTF-8 string content to write.
- * @throws If the directory cannot be created or the file cannot be written.
+ * Creates a directory and any necessary parent directories.
+ * @param path The directory path to create.
+ * @throws If the directory cannot be created.
  */
-export async function writeFileWithDirectories(filePath: string, content: string) {
+export async function createDirectory(path: string) {
   try {
-    await fsExtra.outputFile(filePath, content, 'utf8')
+    await fsExtra.ensureDir(path)
   } catch (error) {
-    throw new Error(`[writeFileWithDirectories] Failed to write "${filePath}": ${error}`, { cause: error })
+    throw new Error(`Failed to create directory ${path}`, { cause: error })
   }
 }
 
 /**
  * Prompts the user to confirm before overwriting an existing path.
- *
- * If `path` does not yet exist, returns `true` immediately without showing
- * any prompt — nothing to overwrite, safe to proceed.
- *
- * If the user cancels the prompt (e.g. Ctrl+C), the process exits cleanly
- * with a cancellation message rather than throwing.
- * @param label Human-readable name shown in the prompt (e.g. `"centoui.config.ts"`).
- * @param path Absolute path to the file or directory to potentially overwrite.
- * @returns `true` if the caller should write/overwrite, `false` if the user declined.
+ * @param path The absolute path to the file or directory to potentially overwrite.
+ * @returns Whether the user wants to overwrite the file.
  */
-export async function confirmOverwriteIfExists(label: string, path: string): Promise<boolean> {
-  const exists = await fsExtra.pathExists(path)
-  if (!exists) return true
+export async function confirmOverwrite(path: string) {
+  const fileExists = await fsExtra.pathExists(path)
 
-  const answer = await confirm({ initialValue: false, message: `"${label}" already exists. Overwrite?` })
+  // If file doesn't exist, return true as there is nothing to overwrite
+  if (!fileExists) {
+    return true
+  }
+
+  const answer = await confirm({
+    initialValue: false,
+    message: `${path} already exists. Overwrite?`,
+  })
 
   if (isCancel(answer)) {
-    cancel('Operation cancelled.')
+    cancel('Operation cancelled by user.')
     process.exit(0)
   }
 

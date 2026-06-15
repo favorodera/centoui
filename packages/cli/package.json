@@ -55,11 +55,9 @@
     "pathe": "catalog:vendor"
   },
   "devDependencies": {
-    "@favorodera/eslint-config": "catalog:tools",
     "@types/fs-extra": "catalog:tools",
     "@vitest/ui": "catalog:tools",
     "tsdown": "catalog:tools",
-    "type-fest": "catalog:tools",
     "vitest": "catalog:tools"
   }
 }

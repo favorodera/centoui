@@ -1,135 +1,72 @@
 import type { ComponentRegistry, Registry } from '../types'
-import {
-  CORE_SRC_BASE_URL,
-  REGISTRY_INDEX_URL,
-  THEME_CSS_URL,
-  UTILS_FILE_URL,
-} from '../constants'
 import { sendNetworkRequest } from './network'
 
 /** In-process cache so the registry is only fetched once per CLI invocation. */
 let cachedRegistry: Registry | undefined
 
 /**
- * Fetches the complete component registry (`index.json`) from GitHub, caching
- * the result in memory for the lifetime of the process.
- *
- * Every other registry utility calls this internally, so the network round-trip
- * only happens once regardless of how many components are being installed.
+ * Fetches the complete component registry (`index.json`) from GitHub
+ * It caches the result in memory for the lifetime of the CLI process.
  * @returns The full registry object including globals and all component entries.
- * @throws If the network request fails or the server returns a non-2xx status.
  */
-export async function fetchFullRegistry() {
+export async function fetchRegistry() {
   if (cachedRegistry) return cachedRegistry
 
-  const response = await sendNetworkRequest(REGISTRY_INDEX_URL, 'fetchFullRegistry')
-  cachedRegistry = (await response.json()) as Registry
-  return cachedRegistry
+  const registry = await sendNetworkRequest<Registry>('/registry/index.json', 'json')
+  cachedRegistry = registry
+
+  return registry
 }
 
 /**
  * Fetches the registry entry for a single component by name.
- *
- * Internally calls {@link fetchFullRegistry} so the registry is only
- * downloaded once even if multiple components are requested.
- * @param componentName The component name to look up (e.g. `"button"`).
- * @returns The matching {@link ComponentRegistry} entry.
+ * @param name The component kebab-case name to look up (e.g. `"button"`).
+ * @returns The matching entry.
  * @throws If the component name is not found in the registry.
  */
-export async function fetchRegistryComponentEntry(componentName: string) {
-  const registry = await fetchFullRegistry()
-  const entry = registry.components.find(component => component.name === componentName)
+export async function fetchComponentRegistryEntry(name: string) {
+  const registry = await fetchRegistry()
+
+  const entry = registry
+    .components
+    .find(component => component.name === name)
 
   if (!entry) {
-    throw new Error(`[fetchRegistryComponentEntry] Component "${componentName}" not found in registry.`)
+    throw new Error(`Component ${name} not found in registry.`)
   }
 
   return entry
 }
 
 /**
- * Recursively resolves a component and every one of its transitive
- * `componentDeps` into a flat map of `componentName → registry entry`.
+ * Recursively resolves a component and all of its transitive dependencies
+ * into a flat map of component names to their registry entries.
  *
- * The traversal is depth-first and guards against circular dependencies via
- * the `visited` set, so each component appears in the result exactly once.
- * @param componentName Root component name to start resolving from.
- * @param registry Pre-fetched registry (pass the result of {@link fetchFullRegistry}).
- * @param visited Internal visited set used to prevent infinite loops;
- * callers should omit this — it defaults to an empty set.
- * @returns A `Map<componentName, ComponentRegistry>` covering the full tree.
- * @throws If any component in the tree is not found in the registry.
+ * The `result` map serves as both the accumulator and a circular-dependency
+ * guard, ensuring each component appears in the output exactly once.
+ * @param name The root component name to start resolving from.
+ * @param registry The component registry to search within.
+ * @param result **Internal.** Accumulator and circular-dependency guard used during recursion;
+ * Callers should always omit this parameter.
+ * @returns A map of every resolved component name to its registry entry.
+ * @throws If the root component or any transitive dependency is not found in the registry.
  */
-export function resolveComponentWithDependencies(
-  componentName: string,
-  registry: Registry,
-  visited = new Set<string>(),
-) {
-  const result = new Map<string, ComponentRegistry>()
-
-  if (visited.has(componentName)) return result
-  visited.add(componentName)
-
-  const entry = registry.components.find(component => component.name === componentName)
-
-  if (!entry) {
-    throw new Error(`[resolveComponentWithDependencies] Component "${componentName}" not found in registry.`)
+export function resolveComponent(name: string, registry: Registry, result = new Map<string, ComponentRegistry>()) {
+  if (result.has(name)) {
+    return result
   }
 
-  result.set(componentName, entry)
+  const entry = registry.components.find(component => component.name === name)
 
-  for (const dependency of entry.componentDependencies || []) {
-    const dependencyMap = resolveComponentWithDependencies(dependency, registry, visited)
-    for (const [
-      dependencyName,
-      dependencyEntry,
-    ] of dependencyMap) {
-      result.set(dependencyName, dependencyEntry)
-    }
+  if (!entry) {
+    throw new Error(`Component ${name} not found in registry.`)
+  }
+
+  result.set(name, entry)
+
+  for (const component of entry.componentDeps || []) {
+    resolveComponent(component, registry, result)
   }
 
   return result
-}
-
-/**
- * Fetches the raw source content of a file referenced in a component's
- * registry entry.
- *
- * Registry file paths (e.g. `"components/button/button.vue"`) are relative
- * to `packages/core/src/`, which is already the base of {@link CORE_SRC_BASE_URL}.
- * This function simply appends the path and downloads the content.
- * @param registryFilePath Path as it appears in the component's `files` array (e.g. `"components/button/button.vue"`).
- * @returns Raw UTF-8 content of the file.
- * @throws If the network request fails or the server returns a non-2xx status.
- */
-export async function fetchRegistryFileContent(registryFilePath: string) {
-  const url = `${CORE_SRC_BASE_URL}/${registryFilePath}`
-  const response = await sendNetworkRequest(url, 'fetchRegistryFileContent')
-  return response.text()
-}
-
-/**
- * Fetches the raw content of the CentoUI CSS theme file from GitHub.
- *
- * This is the file written to the user's project during `centoui init` and
- * contains all CSS custom properties and base styles for every component.
- * @returns Raw UTF-8 content of the theme CSS file.
- * @throws If the network request fails or the server returns a non-2xx status.
- */
-export async function fetchThemeCSSContent() {
-  const response = await sendNetworkRequest(THEME_CSS_URL, 'fetchThemeCSSContent')
-  return response.text()
-}
-
-/**
- * Fetches the raw content of the CentoUI utils file from GitHub.
- *
- * This is the file written to the user's project during `centoui init` and
- * contains all global utils for every component.
- * @returns Raw UTF-8 content of the utils file.
- * @throws If the network request fails or the server returns a non-2xx status.
- */
-export async function fetchUtilsFileContent() {
-  const response = await sendNetworkRequest(UTILS_FILE_URL, 'fetchUtilsFileContent')
-  return response.text()
 }
