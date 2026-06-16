@@ -2,6 +2,7 @@ minimumReleaseAgeExclude:
   - '@favorodera/eslint-config@0.0.15'
   - '@favorodera/eslint-config@0.0.17'
   - '@favorodera/eslint-config@0.0.18'
+  - '@favorodera/eslint-config@0.0.19'
 shellEmulator: true
 
 trustPolicy: no-downgrade

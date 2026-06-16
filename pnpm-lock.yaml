@@ -7,8 +7,8 @@ settings:
 catalogs:
   tools:
     '@favorodera/eslint-config':
-      specifier: ^0.0.18
-      version: 0.0.18
+      specifier: ^0.0.19
+      version: 0.0.19
     '@types/fs-extra':
       specifier: ^11.0.4
       version: 11.0.4
@@ -99,7 +99,7 @@ importers:
     dependencies:
       '@favorodera/eslint-config':
         specifier: catalog:tools
-        version: 0.0.18(@typescript-eslint/eslint-plugin@8.61.0(@typescript-eslint/parser@8.61.0(eslint@10.5.0(jiti@2.7.0))(typescript@6.0.3))(eslint@10.5.0(jiti@2.7.0))(typescript@6.0.3))(@typescript-eslint/parser@8.61.0(eslint@10.5.0(jiti@2.7.0))(typescript@6.0.3))(@vue/compiler-sfc@3.5.38)(eslint@10.5.0(jiti@2.7.0))(tailwindcss@4.3.1)(typescript@6.0.3)(vitest@4.1.8)
+        version: 0.0.19(@typescript-eslint/eslint-plugin@8.61.0(@typescript-eslint/parser@8.61.0(eslint@10.5.0(jiti@2.7.0))(typescript@6.0.3))(eslint@10.5.0(jiti@2.7.0))(typescript@6.0.3))(@typescript-eslint/parser@8.61.0(eslint@10.5.0(jiti@2.7.0))(typescript@6.0.3))(@vue/compiler-sfc@3.5.38)(eslint@10.5.0(jiti@2.7.0))(tailwindcss@4.3.1)(typescript@6.0.3)(vitest@4.1.8)
       '@types/node':
         specifier: catalog:tools
         version: 25.9.3
@@ -161,7 +161,7 @@ importers:
         version: 1.5.1
       '@favorodera/eslint-config':
         specifier: catalog:tools
-        version: 0.0.18(@typescript-eslint/eslint-plugin@8.61.0(@typescript-eslint/parser@8.61.0(eslint@10.5.0(jiti@2.7.0))(typescript@6.0.3))(eslint@10.5.0(jiti@2.7.0))(typescript@6.0.3))(@typescript-eslint/parser@8.61.0(eslint@10.5.0(jiti@2.7.0))(typescript@6.0.3))(@vue/compiler-sfc@3.5.38)(eslint@10.5.0(jiti@2.7.0))(tailwindcss@4.3.1)(typescript@6.0.3)(vitest@4.1.8)
+        version: 0.0.19(@typescript-eslint/eslint-plugin@8.61.0(@typescript-eslint/parser@8.61.0(eslint@10.5.0(jiti@2.7.0))(typescript@6.0.3))(eslint@10.5.0(jiti@2.7.0))(typescript@6.0.3))(@typescript-eslint/parser@8.61.0(eslint@10.5.0(jiti@2.7.0))(typescript@6.0.3))(@vue/compiler-sfc@3.5.38)(eslint@10.5.0(jiti@2.7.0))(tailwindcss@4.3.1)(typescript@6.0.3)(vitest@4.1.8)
       '@iconify/vue':
         specifier: catalog:vendor
         version: 5.0.1(vue@3.5.38(typescript@6.0.3))
@@ -342,8 +342,8 @@ packages:
     resolution: {integrity: sha512-+CNAzxglkrpNf/kKywqQfk74QjtceuOE7Qm+AF8miRvPF/wmmK5+OJOgVh3AVTT3RP2mH3+FOaxlE5v72owk0A==}
     engines: {node: ^20.19.0 || ^22.13.0 || >=24}
 
-  '@favorodera/eslint-config@0.0.18':
-    resolution: {integrity: sha512-zOWeOkbhgcmXRb8qkbjEz2a3zKrTocM1q9RFFlh9Y6TQ2xTWqbqvzGerUwvyL/OwBZ1/74PAKPbZE0F4ynVdkw==}
+  '@favorodera/eslint-config@0.0.19':
+    resolution: {integrity: sha512-I7D4t3fE4+fliplr+Isz6P1leDTGhNVMYobwi1nr3Wj86P9W17ahLLfrBV+ogYA9yr19YuJRMmjSWKP1SL+FIw==}
     engines: {node: '>=22.0.0', pnpm: '>=11.0.0'}
     peerDependencies:
       eslint: ^10.0.0
@@ -2896,7 +2896,7 @@ snapshots:
       '@eslint/core': 1.2.1
       levn: 0.4.1
 
-  '@favorodera/eslint-config@0.0.18(@typescript-eslint/eslint-plugin@8.61.0(@typescript-eslint/parser@8.61.0(eslint@10.5.0(jiti@2.7.0))(typescript@6.0.3))(eslint@10.5.0(jiti@2.7.0))(typescript@6.0.3))(@typescript-eslint/parser@8.61.0(eslint@10.5.0(jiti@2.7.0))(typescript@6.0.3))(@vue/compiler-sfc@3.5.38)(eslint@10.5.0(jiti@2.7.0))(tailwindcss@4.3.1)(typescript@6.0.3)(vitest@4.1.8)':
+  '@favorodera/eslint-config@0.0.19(@typescript-eslint/eslint-plugin@8.61.0(@typescript-eslint/parser@8.61.0(eslint@10.5.0(jiti@2.7.0))(typescript@6.0.3))(eslint@10.5.0(jiti@2.7.0))(typescript@6.0.3))(@typescript-eslint/parser@8.61.0(eslint@10.5.0(jiti@2.7.0))(typescript@6.0.3))(@vue/compiler-sfc@3.5.38)(eslint@10.5.0(jiti@2.7.0))(tailwindcss@4.3.1)(typescript@6.0.3)(vitest@4.1.8)':
     dependencies:
       '@eslint/js': 10.0.1(eslint@10.5.0(jiti@2.7.0))
       '@eslint/markdown': 8.0.2
