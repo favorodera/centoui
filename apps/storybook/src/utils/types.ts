@@ -1,4 +1,4 @@
-type BasePropDefinition = {
+interface BasePropDefinition {
   /** Human-readable label. Falls back to formatted key name if omitted. */
   label?: string
   /** Optional contextual help text. */
@@ -6,19 +6,19 @@ type BasePropDefinition = {
 }
 
 type ArrayPropDefinition = BasePropDefinition & {
-  type: 'array'
-  options?: unknown[]
   default?: unknown
+  options?: Array<unknown>
+  type: 'array'
 }
 
 type BooleanPropDefinition = BasePropDefinition & {
-  type: 'boolean'
   default?: boolean
+  type: 'boolean'
 }
 
 type StringPropDefinition = BasePropDefinition & {
-  type: 'string'
   default?: string
+  type: 'string'
 }
 
 type PropDefinition
@@ -32,7 +32,7 @@ type InferValueFromDefinition<TDefinition extends PropDefinition>
   = TDefinition extends ArrayPropDefinition ? NonNullable<TDefinition['default']>
     : TDefinition extends BooleanPropDefinition ? boolean
       : TDefinition extends StringPropDefinition ? string
-         
+
         : any
 
 export type InferValuesFromSchema<TSchema extends PropsSchema> = {

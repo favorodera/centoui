@@ -1,56 +1,62 @@
 <script setup lang="ts">
-import type { PropsSchema } from '@/utils/types'
-import { Switch } from '#centoui/components/switch'
 import { computed } from 'vue'
-import {
-  SelectRoot,
-  SelectTrigger,
-  SelectValue,
-  SelectContent,
-  SelectItem,
-} from '#centoui/components/select'
+import type { PropsSchema } from '@/utils/types'
 import { Icon } from '#centoui/components/icon'
 import { Input } from '#centoui/components/input'
 import { Label } from '#centoui/components/label'
-
-const props = defineProps<{
-  schema?: PropsSchema | null
-  values: Record<string, unknown>
-}>()
+import {
+  SelectContent,
+  SelectItem,
+  SelectRoot,
+  SelectTrigger,
+  SelectValue,
+} from '#centoui/components/select'
+import { Switch } from '#centoui/components/switch'
 
 const emit = defineEmits<{
   'update:values': [values: Record<string, unknown>]
 }>()
 
-const entries = computed(() =>
-  Object
-    .entries(props.schema ?? {})
-    .map(([key, definition]) => ({
-      key,
-      label: definition.label,
-      ...definition,
-    })),
-)
+const props = defineProps<{
+  schema?: null | PropsSchema
+  values: Record<string, unknown>
+}>()
 
+const entries = computed(() => Object
+  .entries(props.schema ?? {})
+  .map(([
+    key,
+    definition,
+  ]) => ({
+    key,
+    label: definition.label,
+    ...definition,
+  })))
+
+/**
+ * @param key
+ */
 function get(key: string): unknown {
   return props.values?.[key] ?? props.schema?.[key]?.default
 }
 
+/**
+ * @param key
+ * @param value
+ */
 function set(key: string, value: unknown) {
   emit('update:values', { ...props.values, [key]: value })
 }
 </script>
 
 <template>
-  <div class="flex size-full flex-col space-y-4">
-
-    <template v-if="entries.length">
+  <div class="flex block-full inline-full flex-col space-y-4">
+    <template v-if="entries.length > 0">
       <div
         v-for="entry in entries"
         :key="entry.key"
         class="space-y-1.5"
       >
-  
         <Label
           :for="`prop-${entry.key}`"
         >
@@ -68,6 +74,7 @@ function set(key: string, value: unknown) {
           <span class="text-xs text-muted-foreground">
             {{ get(entry.key) ? 'ON' : 'OFF' }}
           </span>
+
           <Switch
             :id="`prop-${entry.key}`"
             :model-value="!!get(entry.key)"
@@ -108,11 +115,10 @@ function set(key: string, value: unknown) {
 
         <div
           v-if="entry.hint"
-          class="-mt-0.5 text-xs text-muted-foreground"
+          class="-mbs-0.5 text-xs text-muted-foreground"
         >
           {{ entry.hint }}
         </div>
-
       </div>
     </template>
 
@@ -120,13 +126,12 @@ function set(key: string, value: unknown) {
       v-else
       class="m-auto space-y-1 text-center text-xs text-muted-foreground"
     >
-
       <Icon
         icon="lucide:octagon-alert"
-        class="mx-auto size-4 text-muted-foreground"
+        class="mx-auto block-4 inline-4 text-muted-foreground"
       />
+
       <div>No props found</div>
     </div>
-
   </div>
 </template>

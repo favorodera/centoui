@@ -55,8 +55,8 @@ watch(
 <template>
   <header
     class="
-      flex h-11 w-full items-center justify-between gap-4 border-b border-border
-      bg-background px-3
+      flex block-11 inline-full items-center justify-between gap-4 border-be
+      border-border bg-background px-3
     "
   >
     <!-- Component Selector -->
@@ -65,7 +65,7 @@ watch(
       @update:model-value="(value)=>navigation.goTo(value as string)"
     >
       <SelectTrigger
-        class="max-w-3xs"
+        class="max-inline-3xs"
         size="sm"
       >
         <SelectValue />
@@ -170,12 +170,12 @@ watch(
                 v-model:value="theme.customTheme.value"
                 spellcheck="false"
                 placeholder="Enter CSS theme"
-                class="max-h-40"
+                class="max-block-40"
               />
             </PopoverBody>
 
             <PopoverFooter>
-              <ButtonGroup class="w-full">
+              <ButtonGroup class="inline-full">
                 <Button
                   v-if="theme.hasCustomTheme"
                   size="xs"

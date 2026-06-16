@@ -6,7 +6,10 @@ import Header from '@/components/header.vue'
 
 <template>
   <div
-    class="grid size-full grid-cols-1 grid-rows-[auto_1fr] place-items-center"
+    class="
+      grid block-full inline-full grid-cols-1 grid-rows-[auto_1fr]
+      place-items-center
+    "
   >
     <Header />
 

@@ -43,7 +43,7 @@ const values = useApp().preview.initPreview('Accordion', {
             application layout.
           </p>
 
-          <p class="mt-2">
+          <p class="mbs-2">
             Once installed, you can customize the accordion behavior and styles
             to fit your design system while keeping interactions accessible and
             responsive.
@@ -73,7 +73,7 @@ const values = useApp().preview.initPreview('Accordion', {
             relevant information.
           </p>
 
-          <p class="mt-2">
+          <p class="mbs-2">
             Avoid overcrowding accordion panels, and reserve nested content for
             supplementary details that enhance the main message.
           </p>

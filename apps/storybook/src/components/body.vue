@@ -22,12 +22,12 @@ const socials = [
 </script>
 
 <template>
-  <div class="grid size-full grid-cols-[1fr_auto]">
+  <div class="grid block-full inline-full grid-cols-[1fr_auto]">
     <main
       class="
-        grid size-full max-h-[calc(100dvh-(--spacing(11)))] scrollbar-thin
-        scrollbar-thumb-border scrollbar-track-transparent place-items-center
-        overflow-auto py-3
+        grid block-full inline-full max-block-[calc(100dvh-(--spacing(11)))]
+        scrollbar-thin scrollbar-thumb-border scrollbar-track-transparent
+        place-items-center overflow-auto py-3
       "
     >
       <slot />
@@ -37,7 +37,7 @@ const socials = [
     <aside
       v-if="preview.hasProps && preview.schema"
       class="
-        fixed inset-y-0 right-0 z-50 flex w-72 shrink-0 flex-col border-l
+        fixed inset-y-0 inset-e-0 z-50 flex inline-72 shrink-0 flex-col border-s
         border-border bg-surface transition-transform
 
         md:relative md:inset-auto md:translate-x-0
@@ -50,8 +50,8 @@ const socials = [
     >
       <div
         class="
-          flex h-11 shrink-0 items-center justify-between border-b border-border
-          px-3
+          flex block-11 shrink-0 items-center justify-between border-be
+          border-border px-3
         "
       >
         <h2 class="text-xs font-semibold">
@@ -80,11 +80,11 @@ const socials = [
 
       <div
         class="
-          flex h-11 shrink-0 items-center justify-between border-t border-border
-          px-3
+          flex block-11 shrink-0 items-center justify-between border-bs
+          border-border px-3
         "
       >
-        <ButtonGroup class="w-full">
+        <ButtonGroup class="inline-full">
           <Button
             v-for="social in socials"
             :key="social.name"
