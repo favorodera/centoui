@@ -1,4 +1,4 @@
-import { box, confirm, intro, isCancel, log, outro, tasks } from '@clack/prompts'
+import { confirm, intro, isCancel, log, outro, tasks } from '@clack/prompts'
 import { defineCommand } from 'citty'
 import fsExtra from 'fs-extra'
 import { join } from 'pathe'
@@ -79,6 +79,10 @@ export function remove() {
 
       const componentDir = join(cwd, config.componentsDir, component)
 
+      const dependenciesToUninstall = Object
+        .keys(componentEntry?.packageDeps || {})
+        .filter(name => !neededDependencies.has(name))
+
       await tasks([
         {
           task: async () => {
@@ -89,11 +93,8 @@ export function remove() {
         },
 
         {
+          enabled: dependenciesToUninstall.length > 0,
           task: async (message) => {
-            const dependenciesToUninstall = Object
-              .keys(componentEntry?.packageDeps || {})
-              .filter(name => !neededDependencies.has(name))
-
             for (const name of dependenciesToUninstall) {
               message(`Uninstalling ${name}.`)
               await uninstallDependency(name, cwd)
@@ -127,9 +128,7 @@ export function remove() {
         }
       }
 
-      box(`${component} removed from your project.`, 'Removal Complete.')
-
-      outro('You\'re all set!')
+      outro(`${component} removed from your project!`)
     },
   })
 }

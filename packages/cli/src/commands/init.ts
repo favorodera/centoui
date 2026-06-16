@@ -1,4 +1,4 @@
-import { box, cancel, group, intro, outro, tasks, text } from '@clack/prompts'
+import { cancel, group, intro, outro, tasks, text } from '@clack/prompts'
 import { defineCommand } from 'citty'
 import { join } from 'pathe'
 import type { Registry } from '../types'
@@ -131,9 +131,7 @@ export function init() {
 
       ])
 
-      box('Run \'centoui add button\' to install your first component.', 'Initialization Complete.')
-
-      outro('You\'re all set!')
+      outro('Initialization Complete!')
     },
   })
 }

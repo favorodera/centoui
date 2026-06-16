@@ -1,4 +1,4 @@
-import { box, intro, log, outro, tasks } from '@clack/prompts'
+import { intro, log, outro, tasks } from '@clack/prompts'
 import { defineCommand } from 'citty'
 import fsExtra from 'fs-extra'
 import { join } from 'pathe'
@@ -142,9 +142,7 @@ export async function add() {
         },
       ])
 
-      box('Import components from your components directory to use them.', 'Installation Complete.')
-
-      outro('You\'re all set!')
+      outro('Installation Complete!')
     },
   })
 }
