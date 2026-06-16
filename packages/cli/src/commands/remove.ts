@@ -1,4 +1,4 @@
-import { confirm, intro, isCancel, log, outro, tasks } from '@clack/prompts'
+import { cancel, confirm, intro, isCancel, log, outro, tasks } from '@clack/prompts'
 import { defineCommand } from 'citty'
 import fsExtra from 'fs-extra'
 import { join } from 'pathe'
@@ -122,7 +122,12 @@ export function remove() {
           message: 'Delete utils file? (no components require it anymore)',
         })
 
-        if (!isCancel(shouldDelete) && shouldDelete) {
+        if (isCancel(shouldDelete)) {
+          cancel('Operation cancelled by user.')
+          process.exit(0)
+        }
+
+        if (shouldDelete) {
           await fsExtra.remove(utilsPath)
           log.step('Utils file removed.')
         }
