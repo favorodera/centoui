@@ -61,7 +61,7 @@
     "@iconify/vue": "catalog:vendor",
     "@tailwindcss/vite": "catalog:vendor",
     "@types/fs-extra": "catalog:tools",
-    "@vitejs/plugin-vue": "catalog:vue",
+    "@vitejs/plugin-vue": "catalog:tools",
     "@vitest/ui": "catalog:tools",
     "@vueuse/core": "catalog:vendor",
     "fs-extra": "catalog:vendor",
@@ -74,7 +74,7 @@
     "tw-animate-css": "catalog:vendor",
     "vite": "catalog:tools",
     "vitest": "catalog:tools",
-    "vue": "catalog:vue",
-    "vue-tsc": "catalog:vue"
+    "vue": "catalog:vendor",
+    "vue-tsc": "catalog:tools"
   }
 }

@@ -11,6 +11,11 @@ export default factory({
       ],
     },
   },
+  tailwind: {
+    settings: {
+      entryPoint: 'src/theme.css',
+    },
+  },
   typescript: {
     overrides: {
       'ts/no-explicit-any': 'off',
