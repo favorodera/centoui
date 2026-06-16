@@ -27,6 +27,7 @@ allowBuilds:
 catalogs:
   peer:
     vue: ^3.0.0
+    nuxt: ^4.0.0
 
   tools:
     '@favorodera/eslint-config': ^0.0.19
@@ -44,6 +45,8 @@ catalogs:
     vitest: ^4.1.8
     vue-tsc: ^3.3.5
     '@vitejs/plugin-vue': ^6.0.7
+    "@nuxt/schema": ^4.4.8
+    "@nuxt/module-builder": ^1.0.2
   vendor:
     '@clack/prompts': ^1.5.1
     '@iconify/vue': ^5.0.1
@@ -62,6 +65,8 @@ catalogs:
     tw-animate-css: ^1.4.0
     vue: ^3.5.38
     vue-router: ^5.0.7
+    nuxt: ^4.4.8
+    "@nuxt/kit": ^4.4.8
 peerDependencyRules:
   allowedVersions:
     typescript: '6'
