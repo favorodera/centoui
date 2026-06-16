@@ -30,7 +30,9 @@
   "bin": {
     "centoui": "./bin/centoui.js"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "publishConfig": {
     "access": "public"
   },
@@ -40,7 +42,6 @@
   },
   "scripts": {
     "build:registry": "tsx scripts/build-registry.ts",
-    "prebuild": "pnpm run build:registry",
     "build": "tsdown",
     "dev": "tsdown --watch",
     "test": "vitest run",
@@ -71,6 +72,7 @@
     "tailwind-variants": "catalog:vendor",
     "tailwindcss": "catalog:vendor",
     "tsdown": "catalog:tools",
+    "tsx": "catalog:tools",
     "tw-animate-css": "catalog:vendor",
     "vite": "catalog:tools",
     "vitest": "catalog:tools",

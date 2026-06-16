@@ -6,7 +6,8 @@ minimumReleaseAgeExclude:
 shellEmulator: true
 
 trustPolicy: no-downgrade
-
+trustPolicyExclude:
+  - semver@6.3.1
 packages:
   - 'apps/*'
   # - 'playgrounds/*'
@@ -47,6 +48,7 @@ catalogs:
     '@vitejs/plugin-vue': ^6.0.7
     "@nuxt/schema": ^4.4.8
     "@nuxt/module-builder": ^1.0.2
+    tsx: ^4.22.4
   vendor:
     '@clack/prompts': ^1.5.1
     '@iconify/vue': ^5.0.1
