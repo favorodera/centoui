@@ -1,13 +1,12 @@
-import type { ComponentRegistry, Registry } from '../types'
+import type { ComponentRegistryEntry, Registry } from '../types'
 import { sendNetworkRequest } from './network'
 
 /** In-process cache so the registry is only fetched once per CLI invocation. */
 let cachedRegistry: Registry | undefined
 
 /**
- * Fetches the complete component registry (`index.json`) from GitHub
- * It caches the result in memory for the lifetime of the CLI process.
- * @returns The full registry object including globals and all component entries.
+ * Fetches the component registry (`index.json`) from GitHub and caches it.
+ * @returns The registry including npm dependencies and components.
  */
 export async function fetchRegistry() {
   if (cachedRegistry) return cachedRegistry
@@ -19,10 +18,10 @@ export async function fetchRegistry() {
 }
 
 /**
- * Fetches the registry entry for a single component by name.
- * @param name The component kebab-case name to look up (e.g. `"button"`).
- * @returns The matching entry.
- * @throws If the component name is not found in the registry.
+ * Fetches a component entry by name.
+ * @param name Component name.
+ * @returns The component entry.
+ * @throws If not found.
  */
 export async function fetchComponentRegistryEntry(name: string) {
   const registry = await fetchRegistry()
@@ -39,19 +38,14 @@ export async function fetchComponentRegistryEntry(name: string) {
 }
 
 /**
- * Recursively resolves a component and all of its transitive dependencies
- * into a flat map of component names to their registry entries.
- *
- * The `result` map serves as both the accumulator and a circular-dependency
- * guard, ensuring each component appears in the output exactly once.
- * @param name The root component name to start resolving from.
- * @param registry The component registry to search within.
- * @param result **Internal.** Accumulator and circular-dependency guard used during recursion;
- * Callers should always omit this parameter.
- * @returns A map of every resolved component name to its registry entry.
- * @throws If the root component or any transitive dependency is not found in the registry.
+ * Recursively resolves a component and its dependencies into a map.
+ * @param name Component name.
+ * @param registry The component registry.
+ * @param result Internal accumulator map.
+ * @returns Map of resolved component names to their entries.
+ * @throws If any component is not found.
  */
-export function resolveComponent(name: string, registry: Registry, result = new Map<string, ComponentRegistry>()) {
+export function resolveComponent(name: string, registry: Registry, result = new Map<string, ComponentRegistryEntry>()) {
   if (result.has(name)) {
     return result
   }
@@ -64,7 +58,7 @@ export function resolveComponent(name: string, registry: Registry, result = new 
 
   result.set(name, entry)
 
-  for (const component of entry.componentDeps || []) {
+  for (const component of entry.componentDependencies || []) {
     resolveComponent(component, registry, result)
   }
 

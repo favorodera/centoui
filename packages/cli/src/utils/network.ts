@@ -6,7 +6,7 @@ import { BASE_URL, GITHUB_RAW_FETCH_HEADERS } from '../constants'
  * @param responseFormat The format of the response.
  * @param init The request options.
  * @returns The response from the server.
- * @throws An Error if the network request fails or the server returns a non-2xx status.
+ * @throws If the network request fails or the server returns a non-2xx status.
  */
 export async function sendNetworkRequest<TResponse = string>(path: string, responseFormat: 'json' | 'text' = 'text', init?: RequestInit) {
   const url = `${BASE_URL}${path}`

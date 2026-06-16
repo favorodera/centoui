@@ -5,10 +5,10 @@ import type { PackageJson } from '../types'
 
 /**
  * Installs a dependency using nypm.
- * @param name Dependency name to install.
- * @param version Dependency semver version to install.
+ * @param name Dependency name.
+ * @param version Dependency semver version.
  * @param cwd Current working directory.
- * @returns String indicating whether the package was installed successfully or not.
+ * @returns Status message.
  */
 export async function installDependency(name: string, version: string, cwd: string) {
   try {
@@ -36,9 +36,9 @@ export async function installDependency(name: string, version: string, cwd: stri
 
 /**
  * Uninstalls a dependency using nypm.
- * @param name Dependency name to uninstall.
+ * @param name Dependency name.
  * @param cwd Current working directory.
- * @returns String indicating whether the package was uninstalled successfully or not.
+ * @returns Status message.
  */
 export async function uninstallDependency(name: string, cwd: string) {
   try {

@@ -4,10 +4,10 @@ import { CONFIG_FILE_NAME } from '../constants'
 import { sendNetworkRequest } from './network'
 
 /**
- * Loads and returns the user's CentoUI configuration from `centoui.config.ts` using c12.
+ * Loads the user's CentoUI configuration from `centoui.config.ts`.
  * @param cwd Absolute path to the project root.
- * @returns The default export of `centoui.config.ts`.
- * @throws If `centoui.config.ts` is not resolved
+ * @returns The user's configuration.
+ * @throws If `centoui.config.ts` is not found.
  */
 export async function loadConfig(cwd: string) {
   const { config, configFile } = await loadConfigC12<CentoUIConfig>({
@@ -23,14 +23,14 @@ export async function loadConfig(cwd: string) {
 }
 
 /**
- * Builds the user's CentoUI configuration file.
+ * Builds the user's CentoUI configuration file content.
  * @param choices The user's configuration choices.
- * @returns The user's configuration file.
- * @throws If the user's configuration file cannot be built.
+ * @returns The file content.
+ * @throws If building fails.
  */
 export async function buildUserConfig(choices: Omit<CentoUIConfig, 'icons'>) {
   try {
-    const defaultConfig = await sendNetworkRequest('/defaults/config.ts')
+    const defaultConfig = await sendNetworkRequest('/config.ts')
 
     // Cleanup and extract only runnable code
     let cleanedContent = defaultConfig
@@ -59,7 +59,6 @@ export async function buildUserConfig(choices: Omit<CentoUIConfig, 'icons'>) {
 export default defineConfig({
   componentsDir: '${choices.componentsDir}',
   themeFilePath: '${choices.themeFilePath}',
-  utilsFilePath: '${choices.utilsFilePath}',
 ${cleanedContent}
 })`
   } catch (error) {

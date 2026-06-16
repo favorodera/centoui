@@ -1,8 +1,7 @@
 import { intro, log, outro, tasks } from '@clack/prompts'
 import { defineCommand } from 'citty'
-import fsExtra from 'fs-extra'
 import { join } from 'pathe'
-import type { ComponentRegistry } from '../types'
+import type { ComponentRegistryEntry } from '../types'
 import { loadConfig } from '../utils/config'
 import { confirmOverwrite, writeToFile } from '../utils/file-system'
 import { sendNetworkRequest } from '../utils/network'
@@ -43,7 +42,7 @@ export async function add() {
 
       log.step('Resolving components')
       // Resolve component(s) transitive dependencies tree
-      const resolvedComponents = new Map<string, ComponentRegistry>()
+      const resolvedComponents = new Map<string, ComponentRegistryEntry>()
       for (const requested of requestedComponents) {
         const resolvedTree = resolveComponent(requested, registry)
 
@@ -65,25 +64,18 @@ export async function add() {
       }
 
       // Collect npm packages only for components we're actually going to write.
-      const packageDepsToInstall: Record<string, string> = {}
+      const npmDependenciesToInstall: Record<string, string> = {}
       for (const [
         name,
         entry,
       ] of resolvedComponents) {
         if (writeDecisions.get(name)) {
-          Object.assign(packageDepsToInstall, entry.packageDeps)
+          Object.assign(npmDependenciesToInstall, entry.npmDependencies)
         }
       }
 
       const approvedComponents = [...resolvedComponents.entries()]
         .filter(([name]) => writeDecisions.get(name))
-
-      // Check if utils file is needed and doesn't already exist
-      const needsUtils = approvedComponents
-        .some(([, entry]) => entry.needsUtils === true)
-
-      const utilsPath = join(cwd, config.utilsFilePath)
-      const utilsExists = await fsExtra.pathExists(utilsPath)
 
       await tasks([
         ...approvedComponents.map(([
@@ -96,7 +88,7 @@ export async function add() {
 
               for (const path of entry.files) {
                 message(`Fetching contents from registry.`)
-                const content = await sendNetworkRequest(`/${path}`)
+                const content = await sendNetworkRequest(`/components/${path}`)
                 const destination = join(cwd, config.componentsDir, path)
 
                 message('Writing to disk.')
@@ -110,12 +102,12 @@ export async function add() {
         }),
 
         {
-          enabled: Object.keys(packageDepsToInstall).length > 0,
+          enabled: Object.keys(npmDependenciesToInstall).length > 0,
           task: async (message) => {
             for (const [
               name,
               version,
-            ] of Object.entries(packageDepsToInstall)) {
+            ] of Object.entries(npmDependenciesToInstall)) {
               message(`Installing ${name}.`)
               await installDependency(name, version, cwd)
             }
@@ -123,22 +115,6 @@ export async function add() {
             return 'Dependencies installed!'
           },
           title: 'Installing dependencies',
-        },
-
-        {
-          enabled: needsUtils && !utilsExists,
-          task: async (message) => {
-            message('Fetching contents from registry.')
-            const content = await sendNetworkRequest(`/defaults/utils.ts`)
-
-            const destination = join(cwd, config.utilsFilePath)
-
-            message('Writing to disk.')
-            await writeToFile(destination, content)
-
-            return 'Utils created!'
-          },
-          title: 'Creating utils.',
         },
       ])
 

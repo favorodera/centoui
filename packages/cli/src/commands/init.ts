@@ -37,12 +37,6 @@ export function init() {
             initialValue: 'src/assets/css/centoui.css',
             message: 'Path for the theme CSS file.',
           }),
-
-          utilsFilePath: () => text({
-            initialValue: 'src/utils/centoui-utils.ts',
-            message: 'Path for the utils file (written on demand).',
-          }),
-
         },
         {
           onCancel: () => {
@@ -84,7 +78,7 @@ export function init() {
           enabled: shouldWriteTheme,
           task: async (message) => {
             message('Fetching theme from registry.')
-            const themeFileContent = await sendNetworkRequest('/defaults/centoui.css')
+            const themeFileContent = await sendNetworkRequest('/theme.css')
 
             message('Writing to disk.')
             await writeToFile(themePath, themeFileContent)
@@ -119,7 +113,7 @@ export function init() {
             for (const [
               name,
               version,
-            ] of Object.entries(registry.globals.packageDeps)) {
+            ] of Object.entries(registry.npmDependencies)) {
               message(`Installing ${name}.`)
               await installDependency(name, version, cwd)
             }

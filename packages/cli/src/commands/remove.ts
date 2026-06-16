@@ -1,4 +1,4 @@
-import { cancel, confirm, intro, isCancel, log, outro, tasks } from '@clack/prompts'
+import { intro, log, outro, tasks } from '@clack/prompts'
 import { defineCommand } from 'citty'
 import fsExtra from 'fs-extra'
 import { join } from 'pathe'
@@ -66,11 +66,11 @@ export function remove() {
         const entry = registry.components
           .find(entry => entry.name === name)
 
-        if (entry?.componentDeps?.includes(component)) {
+        if (entry?.componentDependencies?.includes(component)) {
           componentDependents.add(name)
         }
 
-        neededDependencies.set(name, entry?.packageDeps || {})
+        neededDependencies.set(name, entry?.npmDependencies || {})
       }
 
       if (componentDependents.size > 0) {
@@ -80,7 +80,7 @@ export function remove() {
       const componentDir = join(cwd, config.componentsDir, component)
 
       const dependenciesToUninstall = Object
-        .keys(componentEntry?.packageDeps || {})
+        .keys(componentEntry?.npmDependencies || {})
         .filter(name => !neededDependencies.has(name))
 
       await tasks([
@@ -105,33 +105,6 @@ export function remove() {
           title: `Removing orphaned dependencies`,
         },
       ])
-
-      log.step('Running extra diagnostics.')
-      // Check if any remaining installed components need utils
-      const remainingNeedUtils = registry.components
-        .filter(entry => entry.needsUtils === true)
-        .some(entry => installedComponents.includes(entry.name))
-
-      // If no components need utils and utils file exists, prompt to delete
-      const utilsPath = join(cwd, config.utilsFilePath)
-      const utilsExists = await fsExtra.pathExists(utilsPath)
-
-      if (remainingNeedUtils && utilsExists) {
-        const shouldDelete = await confirm({
-          initialValue: false,
-          message: 'Delete utils file? (no components require it anymore)',
-        })
-
-        if (isCancel(shouldDelete)) {
-          cancel('Operation cancelled by user.')
-          process.exit(0)
-        }
-
-        if (shouldDelete) {
-          await fsExtra.remove(utilsPath)
-          log.step('Utils file removed.')
-        }
-      }
 
       outro(`${component} removed from your project!`)
     },
