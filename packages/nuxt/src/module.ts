@@ -1,8 +1,8 @@
-import { existsSync, readdirSync } from 'node:fs'
+import type { CentoUIConfig } from 'centoui'
 import { addComponent, addComponentsDir, addTemplate, defineNuxtModule, extendViteConfig } from '@nuxt/kit'
 import { loadConfig } from 'c12'
+import { existsSync, readdirSync } from 'node:fs'
 import { basename, join } from 'pathe'
-import type { CentoUIConfig } from 'centoui'
 
 export interface ModuleOptions {
   /**
@@ -12,10 +12,12 @@ export interface ModuleOptions {
   prefix?: string
 }
 
-
 // UTILITIES
 
-/** Converts a string (e.g., 'alert-root' or 'CENTO') to PascalCase. */
+/**
+ * Converts a string (e.g., 'alert-root' or 'CENTO') to PascalCase.
+ * @param kebabString
+ */
 function kebabToPascalCase(kebabString: string): string {
   return kebabString
     .toLowerCase()
@@ -24,7 +26,11 @@ function kebabToPascalCase(kebabString: string): string {
     .join('')
 }
 
-/** Builds the component name by combining and normalizing an optional prefix and base name. */
+/**
+ * Builds the component name by combining and normalizing an optional prefix and base name.
+ * @param prefix
+ * @param base
+ */
 function buildComponentName(prefix: string | undefined, base: string): string {
   const pascalBase = kebabToPascalCase(base)
 
@@ -39,20 +45,20 @@ function buildComponentName(prefix: string | undefined, base: string): string {
 // MODULE
 
 export default defineNuxtModule<ModuleOptions>({
-  meta: {
-    name: 'centoui-nuxt',
-    configKey: 'centoui',
-  },
   defaults: {
     prefix: '',
+  },
+  meta: {
+    configKey: 'centoui',
+    name: 'centoui-nuxt',
   },
   async setup(options, nuxt) {
     const rootDir = nuxt.options.rootDir
 
     // Load centoui.config.ts from the project root
     const { config } = await loadConfig<CentoUIConfig>({
-      name: 'centoui',
       cwd: rootDir,
+      name: 'centoui',
     })
 
     const componentsDir = join(rootDir, config.componentsDir!)
@@ -66,15 +72,19 @@ export default defineNuxtModule<ModuleOptions>({
     // 'prepend: true' ensures this suppression wins over default '~/components' scanning.
     addComponentsDir(
       {
-        path: componentsDir,
         extensions: [],
         ignore: ['**/*'],
+        path: componentsDir,
       },
       { prepend: true },
     )
 
     // Manually register components, converting kebab-case files (e.g., 'alert-root.vue')
     // to PascalCase (e.g., 'CentoAlertRoot' or 'AlertRoot' based on prefix) to match exports.
+
+    /**
+     * @param componentsDir
+     */
     function registerComponents(componentsDir: string): void {
       // Iterate through component group folders (e.g., /alert, /button)
       for (const group of readdirSync(componentsDir, { withFileTypes: true })) {
@@ -84,19 +94,14 @@ export default defineNuxtModule<ModuleOptions>({
 
         // Register each .vue file (e.g., alert-root.vue)
         for (const file of readdirSync(groupPath, { withFileTypes: true })) {
-
           if (file.isFile() && file.name.endsWith('.vue')) {
-
             addComponent({
-              name: buildComponentName(options.prefix, basename(file.name, '.vue')),
               filePath: join(groupPath, file.name),
+              name: buildComponentName(options.prefix, basename(file.name, '.vue')),
               priority: 1, // Override default user components
             })
-
           }
-
         }
-
       }
     }
 
@@ -105,8 +110,8 @@ export default defineNuxtModule<ModuleOptions>({
     // Write config to .nuxt/centoui/config.mjs
     addTemplate({
       filename: 'centoui/config.ts',
-      write: true,
       getContents: () => `export default ${JSON.stringify(config, null, 2)}\n`,
+      write: true,
     })
 
     // Alias the disk written config so consumers and components import from "#centoui/config"

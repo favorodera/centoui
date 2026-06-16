@@ -38,6 +38,7 @@
     "vue-router": "catalog:vendor"
   },
   "devDependencies": {
+    "@favorodera/eslint-config": "catalog:tools",
     "@tsconfig/node24": "catalog:tools",
     "@vitejs/plugin-vue": "catalog:tools",
     "@vue/tsconfig": "catalog:tools",

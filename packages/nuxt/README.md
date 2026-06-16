@@ -25,13 +25,11 @@ Add `centoui-nuxt` to the `modules` section of your `nuxt.config.ts`:
 
 ```ts
 export default defineNuxtConfig({
-  modules: [
-    'centoui-nuxt'
-  ],
   centoui: {
     // Optional: prefix all component names
-    prefix: "Cento",
-  }
+    prefix: 'Cento',
+  },
+  modules: ['centoui-nuxt'],
 })
 ```
 

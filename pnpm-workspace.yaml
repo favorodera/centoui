@@ -27,39 +27,41 @@ allowBuilds:
   vue-demi: true
 catalogs:
   peer:
-    vue: ^3.0.0
     nuxt: ^4.0.0
 
+    vue: ^3.0.0
   tools:
     '@favorodera/eslint-config': ^0.0.19
+    '@nuxt/module-builder': ^1.0.2
+    '@nuxt/schema': ^4.4.8
     '@tsconfig/node24': ^24.0.4
     '@types/fs-extra': ^11.0.4
     '@types/node': ^25.9.3
+    '@vitejs/plugin-vue': ^6.0.7
     '@vitest/ui': ^4.1.8
     '@vue/tsconfig': ^0.9.0
     eslint: ^10.5.0
     relizy: ^1.4.8
     tsdown: ^0.22.2
+    tsx: ^4.22.4
     turbo: ^2.9.18
     typescript: ^6.0.3
     vite: ^8.0.16
     vitest: ^4.1.8
     vue-tsc: ^3.3.5
-    '@vitejs/plugin-vue': ^6.0.7
-    "@nuxt/schema": ^4.4.8
-    "@nuxt/module-builder": ^1.0.2
-    tsx: ^4.22.4
   vendor:
     '@clack/prompts': ^1.5.1
     '@iconify/vue': ^5.0.1
+    '@nuxt/kit': ^4.4.8
     '@tailwindcss/vite': ^4.3.1
     '@vueuse/core': ^14.3.0
-    pinia: ^3.0.4
     c12: ^4.0.0-beta.5
     citty: ^0.2.2
     fs-extra: ^11.3.5
+    nuxt: ^4.4.8
     nypm: ^0.6.7
     pathe: ^2.0.3
+    pinia: ^3.0.4
     reka-ui: ^2.9.10
     tailwind-merge: ^3.6.0
     tailwind-variants: ^3.2.2
@@ -67,8 +69,6 @@ catalogs:
     tw-animate-css: ^1.4.0
     vue: ^3.5.38
     vue-router: ^5.0.7
-    nuxt: ^4.4.8
-    "@nuxt/kit": ^4.4.8
 peerDependencyRules:
   allowedVersions:
     typescript: '6'
