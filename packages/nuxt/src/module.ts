@@ -1,4 +1,3 @@
-
 import type { CentoUIConfig } from 'centoui'
 import { addComponent, addComponentsDir, addTemplate, defineNuxtModule, extendViteConfig } from '@nuxt/kit'
 import { loadConfig } from 'c12'
@@ -63,20 +62,20 @@ export default defineNuxtModule<ModuleOptions>({
     // Resolve the vue files in component folders and register them
     const pascalPrefix = options.prefix ? kebabToPascalCase(options.prefix) : ''
 
-    const componentFolders = readdirSync(componentsDir,{withFileTypes:true})
-    .filter(entry=>entry.isDirectory())
+    const componentFolders = readdirSync(componentsDir, { withFileTypes: true })
+      .filter(entry => entry.isDirectory())
 
     for (const folder of componentFolders) {
       const folderPath = join(componentsDir, folder.name)
 
-      const componentVueFiles = readdirSync(folderPath,{withFileTypes:true})
-      .filter(entry=>entry.isFile() && entry.name.endsWith('.vue'))
+      const componentVueFiles = readdirSync(folderPath, { withFileTypes: true })
+        .filter(entry => entry.isFile() && entry.name.endsWith('.vue'))
 
       for (const file of componentVueFiles) {
         addComponent({
           filePath: join(folderPath, file.name),
           name: `${pascalPrefix}${kebabToPascalCase(basename(file.name, '.vue'))}`,
-          priority: 1, 
+          priority: 1,
         })
       }
     }

@@ -22,17 +22,19 @@ const values = useApp().preview.initPreview('Accordion', {
       :disabled="values.disabled"
       default-value="item-1"
     >
-      <AccordionItem value="item-1">
+      <AccordionItem
+        v-slot="{open}"
+        value="item-1"
+      >
         <AccordionTrigger>
           Getting Started
 
           <Icon
             icon="lucide:chevron-down"
-            class="
-              transition-transform
-
-              group-data-[state=open]/accordion-item:rotate-180
-            "
+            class="transition-transform"
+            :class="{
+              'rotate-180':open
+            }"
           />
         </AccordionTrigger>
 
@@ -53,16 +55,18 @@ const values = useApp().preview.initPreview('Accordion', {
 
       <Separator />
 
-      <AccordionItem value="item-2">
+      <AccordionItem
+        v-slot="{open}"
+        value="item-2"
+      >
         <AccordionTrigger>
           Best Practices
           <Icon
             icon="lucide:chevron-down"
-            class="
-              transition-transform
-
-              group-data-[state=open]/accordion-item:rotate-180
-            "
+            class="transition-transform"
+            :class="{
+              'rotate-180':open
+            }"
           />
         </AccordionTrigger>
 
