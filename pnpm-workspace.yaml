@@ -24,8 +24,11 @@ allowBuilds:
   unrs-resolver: true
   vue-demi: true
 catalogs:
+  peer:
+    vue: ^3.0.0
+
   tools:
-    '@favorodera/eslint-config': ^0.0.18
+    '@favorodera/eslint-config': ^0.0.19
     '@types/fs-extra': ^11.0.4
     '@types/node': ^25.9.3
     '@vitest/ui': ^4.1.8
@@ -34,15 +37,27 @@ catalogs:
     tsdown: ^0.22.2
     turbo: ^2.9.18
     typescript: ^6.0.3
+    vite: ^8.0.16
     vitest: ^4.1.8
   vendor:
     '@clack/prompts': ^1.5.1
+    '@iconify/vue': ^5.0.1
+    '@tailwindcss/vite': ^4.3.1
+    '@vueuse/core': ^14.3.0
     c12: ^4.0.0-beta.5
     citty: ^0.2.2
     fs-extra: ^11.3.5
     nypm: ^0.6.7
     pathe: ^2.0.3
-
+    reka-ui: ^2.9.10
+    tailwind-merge: ^3.6.0
+    tailwind-variants: ^3.2.2
+    tailwindcss: ^4.3.1
+    tw-animate-css: ^1.4.0
+  vue:
+    '@vitejs/plugin-vue': ^6.0.7
+    vue: ^3.5.38
+    vue-tsc: ^3.3.5
 peerDependencyRules:
   allowedVersions:
     typescript: '6'

@@ -1,0 +1,80 @@
+{
+  "name": "centoui",
+  "type": "module",
+  "version": "1.0.0-alpha.38",
+  "private": false,
+  "description": "Vue components for elegant interfaces",
+  "author": "Favour Emeka <favorodera@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://centoui.vercel.app",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/favorodera/centoui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/favorodera/centoui/issues"
+  },
+  "keywords": [
+    "vue",
+    "ui",
+    "components",
+    "tailwindcss",
+    "tailwind",
+    "design-system",
+    "accessibility"
+  ],
+  "exports": {
+    ".": "./dist/index.js",
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "centoui": "./bin/centoui.js"
+  },
+  "files": ["dist"],
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=22.0.0",
+    "pnpm": ">=11.0.0"
+  },
+  "scripts": {
+    "build:registry": "tsx scripts/build-registry.ts",
+    "prebuild": "pnpm run build:registry",
+    "build": "tsdown",
+    "dev": "tsdown --watch",
+    "test": "vitest run",
+    "test:watch": "vitest watch --ui",
+    "typecheck": "vue-tsc --noEmit",
+    "lint": "eslint . --fix",
+    "prepublishOnly": "pnpm run build"
+  },
+  "peerDependencies": {
+    "vue": "catalog:peer"
+  },
+  "dependencies": {
+    "centoui-cli": "workspace:*"
+  },
+  "devDependencies": {
+    "@clack/prompts": "catalog:vendor",
+    "@favorodera/eslint-config": "catalog:tools",
+    "@iconify/vue": "catalog:vendor",
+    "@tailwindcss/vite": "catalog:vendor",
+    "@types/fs-extra": "catalog:tools",
+    "@vitejs/plugin-vue": "catalog:vue",
+    "@vitest/ui": "catalog:tools",
+    "@vueuse/core": "catalog:vendor",
+    "fs-extra": "catalog:vendor",
+    "pathe": "catalog:vendor",
+    "reka-ui": "catalog:vendor",
+    "tailwind-merge": "catalog:vendor",
+    "tailwind-variants": "catalog:vendor",
+    "tailwindcss": "catalog:vendor",
+    "tsdown": "catalog:tools",
+    "tw-animate-css": "catalog:vendor",
+    "vite": "catalog:tools",
+    "vitest": "catalog:tools",
+    "vue": "catalog:vue",
+    "vue-tsc": "catalog:vue"
+  }
+}
