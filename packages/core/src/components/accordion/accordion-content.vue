@@ -21,8 +21,6 @@ const classNames = computed(() => content({ class: props.class }))
     v-bind="forwardedProps"
     :class="classNames"
   >
-    <div data-slot="accordion-content-inner">
-      <slot />
-    </div>
+    <slot />
   </AccordionContent>
 </template>
