@@ -134,7 +134,7 @@ function set(key: string, value: unknown) {
         class="mx-auto block-4 inline-4 text-muted-foreground"
       />
 
-      <div>No props found</div>
+      <div>No controls found</div>
     </div>
   </div>
 </template>

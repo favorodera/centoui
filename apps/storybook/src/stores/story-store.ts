@@ -2,7 +2,7 @@ import { acceptHMRUpdate, defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 import type { PropsSchema } from '../utils/types'
 
-export const usePreviewStore = defineStore('preview', () => {
+export const useStoryStore = defineStore('story', () => {
   const componentName = ref('')
   const schema = ref<PropsSchema>()
   const values = ref<Record<string, unknown>>({})
@@ -12,11 +12,11 @@ export const usePreviewStore = defineStore('preview', () => {
   const hasProps = computed(() => !!schema.value && Object.keys(schema.value).length > 0)
 
   /**
-   * Initialize preview state for a component. This should be called once per component when it is mounted.
+   * Initialize story state for a component. This should be called once per component when it is mounted.
    * @param name The name of the component.
    * @param nextSchema The schema for the component's props.
    */
-  function setPreviewState(name: string, nextSchema: PropsSchema) {
+  function setStoryState(name: string, nextSchema: PropsSchema) {
     componentName.value = name
     schema.value = nextSchema
     activeKey.value = name
@@ -34,7 +34,7 @@ export const usePreviewStore = defineStore('preview', () => {
   }
 
   /**
-   * Update the preview values for the active component.
+   * Update the story values for the active component.
    * @param next The next values for the active component.
    */
   function updateValues(next: Record<string, unknown>) {
@@ -48,12 +48,12 @@ export const usePreviewStore = defineStore('preview', () => {
     componentName,
     hasProps,
     schema,
-    setPreviewState,
+    setStoryState,
     updateValues,
     values,
   }
 })
 
 if (import.meta.hot) {
-  import.meta.hot.accept(acceptHMRUpdate(usePreviewStore, import.meta.hot))
+  import.meta.hot.accept(acceptHMRUpdate(useStoryStore, import.meta.hot))
 }

@@ -2,9 +2,9 @@
 import { AccordionContent, AccordionItem, AccordionRoot, AccordionTrigger } from '#centoui/components/accordion'
 import { Icon } from '#centoui/components/icon'
 import { Separator } from '#centoui/components/separator'
-import { useApp } from '@/composables/use-app'
+import { useStory } from '@/composables/use-story'
 
-const values = useApp().preview.initPreview('Accordion', {
+const values = useStory('Accordion', {
   disabled: {
     default: false,
     label: 'Disabled',

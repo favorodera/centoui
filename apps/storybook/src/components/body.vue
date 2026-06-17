@@ -2,10 +2,10 @@
 import { Button } from '#centoui/components/button'
 import { ButtonGroup } from '#centoui/components/button-group'
 import { Icon } from '#centoui/components/icon'
-import PropsControl from '@/components/props-control.vue'
+import Control from '@/components/control.vue'
 import { useApp } from '@/composables/use-app'
 
-const { models, navigation, preview } = useApp()
+const { models, story } = useApp()
 
 const socials = [
   {
@@ -42,14 +42,14 @@ const socials = [
 
     <!-- Props Panel (mobile: overlay, desktop: sidebar)-->
     <aside
-      v-if="preview.hasProps && preview.schema"
+      v-if="story.hasProps && story.schema"
       class="
         fixed inset-y-0 inset-e-0 z-50 flex inline-72 shrink-0 flex-col border-s
         border-border bg-surface transition-transform
 
         md:relative md:inset-auto md:translate-x-0
       "
-      :class="models.propsPanelModel.value ? 'translate-x-0' : `
+      :class="models.controlPanelModel.value ? 'translate-x-0' : `
         translate-x-full
 
         md:translate-x-0
@@ -62,7 +62,7 @@ const socials = [
         "
       >
         <h2 class="text-xs font-semibold">
-          {{ navigation.activeComponentLabel }} Props
+          Control
         </h2>
 
         <Button
@@ -71,17 +71,17 @@ const socials = [
           square
           class="md:hidden"
           aria-label="Close props panel"
-          @click="models.propsPanelModel.value = false"
+          @click="models.controlPanelModel.value = false"
         >
           <Icon icon="lucide:x" />
         </Button>
       </div>
 
       <div class="flex-1 overflow-auto p-3">
-        <PropsControl
-          :schema="preview.schema.value"
-          :values="preview.values.value"
-          @update:values="preview.updateValues"
+        <Control
+          :schema="story.schema.value"
+          :values="story.values.value"
+          @update:values="story.updateValues"
         />
       </div>
 
@@ -115,13 +115,13 @@ const socials = [
 
     <!-- Mobile overlay backdrop -->
     <div
-      v-if="preview.hasProps && models.propsPanelModel.value"
+      v-if="story.hasProps && models.controlPanelModel.value"
       class="
         fixed inset-0 z-20 bg-overlay
 
         md:hidden
       "
-      @click="models.propsPanelModel.value = false"
+      @click="models.controlPanelModel.value = false"
     />
   </div>
 </template>

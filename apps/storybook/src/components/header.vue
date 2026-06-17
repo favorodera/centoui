@@ -27,7 +27,7 @@ import { Separator } from '#centoui/components/separator'
 import { Textarea } from '#centoui/components/textarea'
 import { useApp } from '@/composables/use-app'
 
-const { colorMode, models, navigation, preview, theme } = useApp()
+const { colorMode, models, navigation, story, theme } = useApp()
 const route = useRoute()
 
 watch(
@@ -209,15 +209,15 @@ watch(
 
         <!-- Props Panel Toggle -->
         <Button
-          v-if="preview.hasProps"
+          v-if="story.hasProps"
           size="xs"
           variant="outline"
           square
           aria-label="Toggle props panel"
           class="md:hidden"
-          @click="models.propsPanelModel.value = !models.propsPanelModel.value"
+          @click="models.controlPanelModel.value = !models.controlPanelModel.value"
         >
-          <Icon :icon="models.propsPanelModel.value ? 'lucide:panel-right-close' : 'lucide:panel-right-open'" />
+          <Icon :icon="models.controlPanelModel.value ? 'lucide:panel-right-close' : 'lucide:panel-right-open'" />
         </Button>
       </div>
     </div>

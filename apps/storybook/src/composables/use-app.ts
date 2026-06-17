@@ -1,13 +1,12 @@
 import { useClipboard, useDark, useStorage, useToggle } from '@vueuse/core'
 import { storeToRefs } from 'pinia'
-import { computed, ref, type Ref } from 'vue'
+import { computed, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import type { InferValuesFromSchema, PropsSchema } from '@/utils/types'
-import { usePreviewStore } from '@/stores/preview-store'
+import { useStoryStore } from '@/stores/story-store'
 import rawDefaultTheme from '../../../../packages/core/src/theme.css?raw'
 
-/** Determines whether the props panel is visible. */
-const propsPanelModel = ref(false)
+/** Determines whether the control panel is visible. */
+const controlPanelModel = ref(false)
 
 /** Controls visibility of the theme selection popover. */
 const themePopoverModel = ref(false)
@@ -20,7 +19,7 @@ const toggleColorMode = useToggle(isDarkMode)
 
 /**
  * Main composable for application-wide state and behavior.
- * @returns Application helper object with color mode, navigation, and preview utilities.
+ * @returns Application helper object with color mode, navigation, and story utilities.
  */
 export function useApp() {
   return {
@@ -29,11 +28,11 @@ export function useApp() {
       toggleColorMode,
     },
     models: {
-      propsPanelModel,
+      controlPanelModel,
       themePopoverModel,
     },
     navigation: navigation(),
-    preview: preview(),
+    story: story(),
     theme: theme(),
   }
 }
@@ -120,30 +119,17 @@ function navigation() {
 }
 
 /**
- * Provides preview store helpers for component prop previews.
- * @returns Preview store and initialization helper.
+ * Provides story store helpers for component story controls.
+ * @returns Story store helper.
  */
-function preview() {
-  const store = usePreviewStore()
+function story() {
+  const store = useStoryStore()
   const { hasProps, schema, values } = storeToRefs(store)
-
-  /**
-   * Initialize preview state for a component with a schema.
-   * @template TSchema - The type of the props schema.
-   * @param name The preview state name.
-   * @param schema The props schema used to infer preview values.
-   * @returns Reactive reference to the preview values inferred from the schema.
-   */
-  function initPreview<TSchema extends PropsSchema>(name: string, schema: TSchema) {
-    store.setPreviewState(name, schema)
-    return values as unknown as Ref<InferValuesFromSchema<TSchema>>
-  }
 
   return {
     hasProps,
-    initPreview,
     schema,
-    setPreviewState: store.setPreviewState,
+    setStoryState: store.setStoryState,
     updateValues: store.updateValues,
     values,
   }
