@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
-import { useForwardProps, SelectValue } from 'reka-ui'
+import { SelectValue, useForwardProps } from 'reka-ui'
+import { computed } from 'vue'
 import {
   type SelectValueProps,
   type SelectValueSlots,
   selectVariants,
 } from '.'
-import { computed } from 'vue'
 
 defineSlots<SelectValueSlots>()
 

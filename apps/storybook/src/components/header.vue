@@ -34,11 +34,11 @@ watch(
   () => theme.customTheme.value,
   (value) => {
     if (value.trim() === theme.rawDefaultTheme.trim()) {
-      document.getElementById(theme.customThemeStyleId)?.remove()
+      document.querySelector(`#${theme.customThemeStyleId}`)?.remove()
       return
     }
 
-    let tag = document.getElementById(theme.customThemeStyleId)
+    let tag = document.querySelector(`#${theme.customThemeStyleId}`)
 
     if (!tag) {
       tag = document.createElement('style')

@@ -62,7 +62,7 @@ function navigation() {
       })
 
     return result
-      .sort((componentA, componentB) => componentA.label.localeCompare(componentB.label))
+      .toSorted((componentA, componentB) => componentA.label.localeCompare(componentB.label))
   })
 
   /** Index of the currently active component. */
@@ -168,19 +168,16 @@ function theme() {
   /** Reset the custom theme back to the default theme and remove the injected style element. */
   function resetTheme() {
     customTheme.value = rawDefaultTheme
-    document.getElementById(customThemeStyleId)?.remove()
+    document.querySelector(`#${customThemeStyleId}`)?.remove()
   }
 
   return {
+    copyTheme: () => copy(customTheme.value),
     customTheme,
     customThemeStyleId,
     hasCustomTheme,
-    /** Copy the current custom theme CSS to the clipboard. */
-    copyTheme: () => copy(customTheme.value),
-    /** Reactive state indicating whether the theme CSS has been copied. */
     isThemeCopied: copied,
-    resetTheme,
-    /** The default theme CSS content. */
     rawDefaultTheme,
+    resetTheme,
   }
 }

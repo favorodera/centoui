@@ -1,21 +1,21 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
 import {
+  SelectArrow,
   SelectContent,
   SelectPortal,
   SelectScrollDownButton,
   SelectScrollUpButton,
   SelectViewport,
   useForwardPropsEmits,
-  SelectArrow,
 } from 'reka-ui'
 import { computed } from 'vue'
+import config from '#centoui/config'
 import {
   type SelectContentEmits,
   type SelectContentProps,
   selectVariants,
 } from '.'
-import config from '#centoui/config'
 import { Icon } from '../icon'
 
 const emits = defineEmits<SelectContentEmits>()
@@ -28,15 +28,15 @@ const delegatedProps = reactiveOmit(props, 'class', 'showArrow')
 
 const forwardedPropsEmits = useForwardPropsEmits(delegatedProps, emits)
 
-const { content, scrollUpButton, scrollDownButton, viewport, arrow } = selectVariants()
+const { arrow, content, scrollDownButton, scrollUpButton, viewport } = selectVariants()
 const classNames = computed(() => ({
-  content: content({
-    contentPosition: props.position,
-    class: props.class,
-  }),
   arrow: arrow(),
-  scrollUpButton: scrollUpButton(),
+  content: content({
+    class: props.class,
+    contentPosition: props.position,
+  }),
   scrollDownButton: scrollDownButton(),
+  scrollUpButton: scrollUpButton(),
   viewport: viewport(),
 }))
 </script>

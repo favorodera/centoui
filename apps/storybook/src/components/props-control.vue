@@ -34,15 +34,18 @@ const entries = computed(() => Object
   })))
 
 /**
- * @param key
+ * Get prop value
+ * @param key Prop key
+ * @returns Prop value
  */
 function get(key: string): unknown {
   return props.values?.[key] ?? props.schema?.[key]?.default
 }
 
 /**
- * @param key
- * @param value
+ * Set prop value
+ * @param key Prop key
+ * @param value Prop value
  */
 function set(key: string, value: unknown) {
   emit('update:values', { ...props.values, [key]: value })

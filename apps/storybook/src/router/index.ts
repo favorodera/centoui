@@ -14,18 +14,13 @@ const storyModules = import.meta.glob('../stories/*.story.vue')
  */
 const generatedRoutes = Object
   .entries(storyModules)
-  .reduce<Array<RouteRecordRaw>>((routes, [
+  .flatMap(([
     path,
     component,
   ]) => {
     const name = path.match(/\/([^/]+)\.story\.vue$/)?.[1]
-
-    if (name) {
-      routes.push({ component, name, path: `/${name}` })
-    }
-
-    return routes
-  }, [])
+    return name ? [{ component, name, path: `/${name}` }] : []
+  })
 
 /**
  * Full route table consumed by Vue Router.

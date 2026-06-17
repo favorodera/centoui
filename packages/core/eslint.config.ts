@@ -9,6 +9,12 @@ export default factory({
           definedTags: ['vue-ignore'],
         },
       ],
+      'jsdoc/no-bad-blocks': [
+        'error',
+        {
+          ignore: ['vue-ignore'],
+        },
+      ],
     },
   },
   tailwind: {

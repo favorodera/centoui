@@ -30,7 +30,14 @@ const socials = [
         place-items-center overflow-auto py-3
       "
     >
-      <slot />
+      <div
+        class="
+          flex inline-full max-inline-3xl flex-wrap items-center justify-center
+          gap-8 bg-background px-3
+        "
+      >
+        <slot />
+      </div>
     </main>
 
     <!-- Props Panel (mobile: overlay, desktop: sidebar)-->
@@ -96,6 +103,7 @@ const socials = [
             <a
               :href="social.href"
               target="_blank"
+              rel="noopener noreferrer"
             >
               <Icon :icon="social.icon" />
               {{ social.name }}

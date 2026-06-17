@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
-import { useForwardProps, SelectLabel } from 'reka-ui'
-import {
-  selectVariants,
-  type SelectLabelProps,
-} from '.'
+import { SelectLabel, useForwardProps } from 'reka-ui'
 import { computed } from 'vue'
+import {
+  type SelectLabelProps,
+  selectVariants,
+} from '.'
 
 const props = defineProps<SelectLabelProps>()
 const delegatedProps = reactiveOmit(props, 'class')

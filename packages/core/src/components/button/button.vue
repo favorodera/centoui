@@ -2,23 +2,23 @@
 import { reactiveOmit } from '@vueuse/core'
 import { Primitive, useForwardProps } from 'reka-ui'
 import { computed } from 'vue'
-import { buttonVariants, type ButtonProps } from '.'
+import { type ButtonProps, buttonVariants } from '.'
 
 const props = withDefaults(defineProps<ButtonProps>(), {
   as: 'button',
-  variant: 'primary',
   size: 'md',
   square: false,
+  variant: 'primary',
 })
 const delegatedProps = reactiveOmit(props, 'class', 'variant', 'size', 'square')
 const forwardedProps = useForwardProps(delegatedProps)
 
 const { root } = buttonVariants()
 const classNames = computed(() => root({
-  variant: props.variant,
+  class: props.class,
   size: props.size,
   square: props.square,
-  class: props.class,
+  variant: props.variant,
 }))
 </script>
 

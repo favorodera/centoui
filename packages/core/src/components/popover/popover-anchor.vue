@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useForwardProps, PopoverAnchor } from 'reka-ui'
-import { type PopoverAnchorProps } from '.'
+import { PopoverAnchor, useForwardProps } from 'reka-ui'
+import type { PopoverAnchorProps } from '.'
 
 const props = defineProps<PopoverAnchorProps>()
 const forwardedProps = useForwardProps(props)

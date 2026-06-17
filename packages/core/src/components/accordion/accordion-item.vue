@@ -2,7 +2,7 @@
 import { reactiveOmit } from '@vueuse/core'
 import { AccordionItem, useForwardProps } from 'reka-ui'
 import { computed } from 'vue'
-import {type AccordionItemProps,type AccordionItemSlots,accordionVariants,} from '.'
+import { type AccordionItemProps, type AccordionItemSlots, accordionVariants } from '.'
 
 defineSlots<AccordionItemSlots>()
 

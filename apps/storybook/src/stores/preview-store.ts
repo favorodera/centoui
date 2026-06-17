@@ -4,7 +4,7 @@ import type { PropsSchema } from '../utils/types'
 
 export const usePreviewStore = defineStore('preview', () => {
   const componentName = ref('')
-  const schema = ref<null | PropsSchema>(null)
+  const schema = ref<PropsSchema>()
   const values = ref<Record<string, unknown>>({})
   const activeKey = ref('')
   const valuesByComponent = ref<Record<string, Record<string, unknown>>>({})
@@ -12,8 +12,9 @@ export const usePreviewStore = defineStore('preview', () => {
   const hasProps = computed(() => !!schema.value && Object.keys(schema.value).length > 0)
 
   /**
-   * @param name
-   * @param nextSchema
+   * Initialize preview state for a component. This should be called once per component when it is mounted.
+   * @param name The name of the component.
+   * @param nextSchema The schema for the component's props.
    */
   function setPreviewState(name: string, nextSchema: PropsSchema) {
     componentName.value = name
@@ -33,7 +34,8 @@ export const usePreviewStore = defineStore('preview', () => {
   }
 
   /**
-   * @param next
+   * Update the preview values for the active component.
+   * @param next The next values for the active component.
    */
   function updateValues(next: Record<string, unknown>) {
     values.value = next
