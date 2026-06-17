@@ -1,4 +1,3 @@
-import type { TextareaHTMLAttributes } from 'vue'
 import { tv } from 'tailwind-variants'
 
 export const textareaVariants = tv({
@@ -27,7 +26,7 @@ export { default as Textarea } from './textarea.vue'
 
 // PROPS
 // Note: 'autocomplete' is defined with simpler types to avoid TS2590 union complexity issues
-export type TextareaProps = TextareaHTMLAttributes & {
+export interface TextareaProps {
   /**
    * The value of the textarea when it is initially rendered.\
    * Use when you do not need to control its value.
@@ -43,7 +42,6 @@ export type TextareaProps = TextareaHTMLAttributes & {
   autocomplete?: 'off' | 'on' | (string & {})
   class?: any
 }
-/** @vue-ignore */ & TextareaHTMLAttributes
 
 // EMITS
 

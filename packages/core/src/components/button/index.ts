@@ -1,5 +1,4 @@
 import type { PrimitiveProps } from 'reka-ui'
-import type { ButtonHTMLAttributes } from 'vue'
 import { tv, type VariantProps } from 'tailwind-variants'
 
 export const buttonVariants = tv({
@@ -137,4 +136,3 @@ export type ButtonProps = PrimitiveProps & {
   class?: any
   square?: boolean
 }
-/* @vue-ignore */ & ButtonHTMLAttributes

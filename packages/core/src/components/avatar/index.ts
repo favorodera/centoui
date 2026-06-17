@@ -1,4 +1,3 @@
-import type { ImgHTMLAttributes } from 'vue'
 import {
   createContext,
   type PrimitiveProps,
@@ -90,7 +89,7 @@ export const [
 export type AvatarVariants = VariantProps<typeof avatarVariants>
 
 // UTILITIES
-export { getInitials } from './avatar-utils'
+export { getInitials } from './utils.js'
 
 // PROPS
 export type AvatarRootProps = RekaAvatarRootProps & {
@@ -102,7 +101,7 @@ export type AvatarRootProps = RekaAvatarRootProps & {
   size?: AvatarVariants['size']
 }
 
-export type AvatarImageProps = ImgHTMLAttributes & RekaAvatarImageProps & /** @vue-ignore */ { class?: any }
+export type AvatarImageProps = & RekaAvatarImageProps & { class?: any }
 
 export type AvatarFallbackProps = RekaAvatarFallbackProps & { class?: any }
 

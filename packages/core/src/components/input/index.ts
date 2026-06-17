@@ -1,4 +1,3 @@
-import type { InputHTMLAttributes } from 'vue'
 import { tv, type VariantProps } from 'tailwind-variants'
 
 export const inputVariants = tv({
@@ -41,7 +40,7 @@ export type InputVariants = VariantProps<typeof inputVariants>
 
 // PROPS
 // Note: 'autocomplete' is defined with simpler types to avoid TS2590 union complexity issues
-export type InputProps = InputHTMLAttributes & {
+export interface InputProps {
   /**
    * The visual size of the input.
    * @default 'md'
@@ -63,7 +62,6 @@ export type InputProps = InputHTMLAttributes & {
   autocomplete?: 'off' | 'on' | (string & {})
   class?: any
 }
-/** @vue-ignore */ & InputHTMLAttributes
 
 // EMITS
 

@@ -1,5 +1,4 @@
 import type { LabelProps as RekaLabelProps } from 'reka-ui'
-import type { LabelHTMLAttributes } from 'vue'
 import { tv } from 'tailwind-variants'
 
 export const labelVariants = tv({
@@ -22,4 +21,3 @@ export { default as Label } from './label.vue'
 export type LabelProps = RekaLabelProps & {
   class?: any
 }
-/* @vue-ignore */ & LabelHTMLAttributes
