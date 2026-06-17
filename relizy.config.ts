@@ -1,33 +1,32 @@
 import { defineConfig } from 'relizy'
 
 export default defineConfig({
-  projectName: 'centoui-monorepo',
-  monorepo: {
-    versionMode: 'unified',
-    packages: ['packages/*'],
-  },
   excludeAuthors: [
     'dependabot[bot]',
     'renovate[bot]',
     'github-actions[bot]',
   ],
-  publish: {
-    packageManager: 'pnpm',
-    registry: 'https://registry.npmjs.org',
-    access: 'public',
+  monorepo: {
     packages: ['packages/*'],
+    versionMode: 'unified',
+  },
+  projectName: 'centoui-monorepo',
+  publish: {
+    access: 'public',
     buildCmd: 'pnpm build',
+    packageManager: 'pnpm',
+    packages: ['packages/*'],
+    registry: 'https://registry.npmjs.org',
   },
   types: {
-    feat: { title: 'Added', semver: 'minor' },
-    fix: { title: 'Fixed', semver: 'patch' },
-    perf: { title: 'Performance', semver: 'patch' },
-    docs: { title: 'Documentation', semver: 'patch' },
-    style: { title: 'Styling', semver: 'patch' },
-    refactor: { title: 'Refactors', semver: 'patch' },
-    test: { title: 'Tests', semver: 'patch' },
-    build: { title: 'Builds', semver: 'patch' },
-    ci: { title: 'Continuous Integrations', semver: 'patch' },
-    chore: { title: 'Chores', semver: 'patch' },
+    build: false,
+    chore: { semver: 'patch', title: 'Chores' },
+    ci: false,
+    docs: { semver: 'patch', title: 'Documentation' },
+    feat: { semver: 'patch', title: 'Added' },
+    fix: { semver: 'patch', title: 'Fixed' },
+    refactor: { semver: 'patch', title: 'Refactors' },
+    style: { semver: 'patch', title: 'Styling' },
+    test: false,
   },
 })

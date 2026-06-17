@@ -1,350 +1,37 @@
 {
-  "globals": {
-    "$schema": "../schemas/globals.json",
-    "packageDeps": {
-      "tailwindcss": "^4.3.0",
-      "@tailwindcss/vite": "^4.3.0",
-      "reka-ui": "^2.9.6",
-      "tailwind-variants": "^3.2.2",
-      "tailwind-merge": "^3.5.0",
-      "tw-animate-css": "^1.4.0",
-      "@vueuse/core": "^14.2.1"
-    }
-  },
+  "$schema": "./schemas/registry.schema.json",
   "components": [
     {
-      "$schema": "../schemas/component.json",
+      "$schema": "./schemas/component.json",
       "name": "accordion",
-      "description": "Stacked set of interactive headings that reveals a section of content.",
       "files": [
-        "components/accordion/accordion-content.vue",
-        "components/accordion/accordion-item.vue",
-        "components/accordion/accordion-root.vue",
-        "components/accordion/accordion-trigger.vue",
-        "components/accordion/index.ts"
+        "accordion/accordion-content.vue",
+        "accordion/accordion-item.vue",
+        "accordion/accordion-root.vue",
+        "accordion/accordion-trigger.vue",
+        "accordion/index.ts"
       ]
     },
     {
-      "$schema": "../schemas/component.json",
-      "name": "alert-dialog",
-      "description": "A modal dialog that interrupts the user with important content and expects a response.",
-      "files": [
-        "components/alert-dialog/alert-dialog-action.vue",
-        "components/alert-dialog/alert-dialog-cancel.vue",
-        "components/alert-dialog/alert-dialog-content.vue",
-        "components/alert-dialog/alert-dialog-description.vue",
-        "components/alert-dialog/alert-dialog-footer.vue",
-        "components/alert-dialog/alert-dialog-header.vue",
-        "components/alert-dialog/alert-dialog-root.vue",
-        "components/alert-dialog/alert-dialog-title.vue",
-        "components/alert-dialog/alert-dialog-trigger.vue",
-        "components/alert-dialog/index.ts"
-      ],
-      "componentDeps": [
-        "button"
-      ]
-    },
-    {
-      "$schema": "../schemas/component.json",
-      "name": "alert",
-      "description": "Displays a short, important message with optional severity styling and actions.",
-      "files": [
-        "components/alert/alert-body.vue",
-        "components/alert/alert-description.vue",
-        "components/alert/alert-root.vue",
-        "components/alert/alert-title.vue",
-        "components/alert/index.ts"
-      ]
-    },
-    {
-      "$schema": "../schemas/component.json",
-      "name": "aspect-ratio",
-      "description": "Displays content within a desired ratio.",
-      "files": [
-        "components/aspect-ratio/aspect-ratio.vue",
-        "components/aspect-ratio/index.ts"
-      ]
-    },
-    {
-      "$schema": "../schemas/component.json",
+      "$schema": "./schemas/component.json",
       "name": "avatar",
-      "description": "Component for displaying avatars with fallback support.",
       "files": [
-        "components/avatar/avatar-fallback.vue",
-        "components/avatar/avatar-group.vue",
-        "components/avatar/avatar-image.vue",
-        "components/avatar/avatar-root.vue",
-        "components/avatar/avatar-utils.ts",
-        "components/avatar/index.ts"
-      ]
-    },
-    {
-      "$schema": "../schemas/component.json",
-      "name": "badge",
-      "description": "A small label or indicator for displaying status, count, or notifications.",
-      "files": [
-        "components/badge/badge.vue",
-        "components/badge/index.ts"
-      ]
-    },
-    {
-      "$schema": "../schemas/component.json",
-      "name": "breadcrumb",
-      "description": "Displays the path to the current resource as a hierarchy of links.",
-      "files": [
-        "components/breadcrumb/breadcrumb-ellipsis.vue",
-        "components/breadcrumb/breadcrumb-item.vue",
-        "components/breadcrumb/breadcrumb-link.vue",
-        "components/breadcrumb/breadcrumb-list.vue",
-        "components/breadcrumb/breadcrumb-page.vue",
-        "components/breadcrumb/breadcrumb-root.vue",
-        "components/breadcrumb/breadcrumb-separator.vue",
-        "components/breadcrumb/index.ts"
-      ],
-      "componentDeps": [
-        "icon"
-      ]
-    },
-    {
-      "$schema": "../schemas/component.json",
-      "name": "button-group",
-      "description": "Container for grouping related button-like elements together.",
-      "files": [
-        "components/button-group/button-group.vue",
-        "components/button-group/index.ts"
-      ]
-    },
-    {
-      "$schema": "../schemas/component.json",
-      "name": "button",
-      "description": "Interactive element for triggering actions.",
-      "files": [
-        "components/button/button.vue",
-        "components/button/index.ts"
-      ]
-    },
-    {
-      "$schema": "../schemas/component.json",
-      "name": "card",
-      "description": "A container for grouping and displaying related content.",
-      "files": [
-        "components/card/card-body.vue",
-        "components/card/card-description.vue",
-        "components/card/card-footer.vue",
-        "components/card/card-header.vue",
-        "components/card/card-root.vue",
-        "components/card/card-title.vue",
-        "components/card/index.ts"
-      ]
-    },
-    {
-      "$schema": "../schemas/component.json",
-      "name": "collapsible",
-      "description": "An interactive component that expands or collapses content sections.",
-      "files": [
-        "components/collapsible/collapsible-content.vue",
-        "components/collapsible/collapsible-root.vue",
-        "components/collapsible/collapsible-trigger.vue",
-        "components/collapsible/index.ts"
-      ]
-    },
-    {
-      "$schema": "../schemas/component.json",
-      "name": "icon",
-      "description": "Component for rendering icons via Iconify.",
-      "files": [
-        "components/icon/icon.vue",
-        "components/icon/index.ts"
-      ],
-      "packageDeps": {
-        "@iconify/vue": "^5.0.0"
-      }
-    },
-    {
-      "$schema": "../schemas/component.json",
-      "name": "input-group",
-      "description": "Groups inputs with addons",
-      "files": [
-        "components/input-group/index.ts",
-        "components/input-group/input-group-addon.vue",
-        "components/input-group/input-group-root.vue"
-      ]
-    },
-    {
-      "$schema": "../schemas/component.json",
-      "name": "input",
-      "description": "A styled input element that accepts text-based user input.",
-      "files": [
-        "components/input/index.ts",
-        "components/input/input.vue"
-      ]
-    },
-    {
-      "$schema": "../schemas/component.json",
-      "name": "kbd",
-      "description": "Component for displaying keyboard input.",
-      "files": [
-        "components/kbd/index.ts",
-        "components/kbd/kbd-group.vue",
-        "components/kbd/kbd.vue"
-      ]
-    },
-    {
-      "$schema": "../schemas/component.json",
-      "name": "label",
-      "description": "An associated label for form elements.",
-      "files": [
-        "components/label/index.ts",
-        "components/label/label.vue"
-      ]
-    },
-    {
-      "$schema": "../schemas/component.json",
-      "name": "pagination",
-      "description": "Displays pagination navigation.",
-      "files": [
-        "components/pagination/index.ts",
-        "components/pagination/pagination-ellipsis.vue",
-        "components/pagination/pagination-first.vue",
-        "components/pagination/pagination-last.vue",
-        "components/pagination/pagination-list-item.vue",
-        "components/pagination/pagination-list.vue",
-        "components/pagination/pagination-next.vue",
-        "components/pagination/pagination-prev.vue",
-        "components/pagination/pagination-root.vue"
-      ],
-      "componentDeps": [
-        "button",
-        "icon"
-      ]
-    },
-    {
-      "$schema": "../schemas/component.json",
-      "name": "pin-input",
-      "description": "A sequence of one-character inputs for entering PIN codes or OTPs.",
-      "files": [
-        "components/pin-input/index.ts",
-        "components/pin-input/pin-input-group.vue",
-        "components/pin-input/pin-input-input.vue",
-        "components/pin-input/pin-input-root.vue"
-      ],
-      "componentDeps": [
-        "input"
-      ]
-    },
-    {
-      "$schema": "../schemas/component.json",
-      "name": "popover",
-      "description": "Displays rich content in a portal, triggered by a button.",
-      "files": [
-        "components/popover/index.ts",
-        "components/popover/popover-anchor.vue",
-        "components/popover/popover-body.vue",
-        "components/popover/popover-content.vue",
-        "components/popover/popover-description.vue",
-        "components/popover/popover-footer.vue",
-        "components/popover/popover-header.vue",
-        "components/popover/popover-root.vue",
-        "components/popover/popover-title.vue",
-        "components/popover/popover-trigger.vue"
-      ]
-    },
-    {
-      "$schema": "../schemas/component.json",
-      "name": "progress",
-      "description": "",
-      "files": [
-        "components/progress/index.ts",
-        "components/progress/progress.vue"
-      ]
-    },
-    {
-      "$schema": "../schemas/component.json",
-      "name": "select",
-      "description": "Displays a list of options for the user to pick from—triggered by a button.",
-      "files": [
-        "components/select/index.ts",
-        "components/select/select-content.vue",
-        "components/select/select-group.vue",
-        "components/select/select-item.vue",
-        "components/select/select-label.vue",
-        "components/select/select-root.vue",
-        "components/select/select-trigger.vue",
-        "components/select/select-value.vue"
-      ],
-      "componentDeps": [
-        "icon"
-      ]
-    },
-    {
-      "$schema": "../schemas/component.json",
-      "name": "separator",
-      "description": "Component for displaying a visual separator.",
-      "files": [
-        "components/separator/index.ts",
-        "components/separator/separator.vue"
-      ],
-      "needsUtils": true
-    },
-    {
-      "$schema": "../schemas/component.json",
-      "name": "slideover",
-      "description": "An overlay panel that slides in from the edge of the screen, typically used for navigation, forms, or details.",
-      "files": [
-        "components/slideover/index.ts",
-        "components/slideover/slideover-body.vue",
-        "components/slideover/slideover-close.vue",
-        "components/slideover/slideover-content.vue",
-        "components/slideover/slideover-description.vue",
-        "components/slideover/slideover-footer.vue",
-        "components/slideover/slideover-header.vue",
-        "components/slideover/slideover-root.vue",
-        "components/slideover/slideover-title.vue",
-        "components/slideover/slideover-trigger.vue"
-      ],
-      "componentDeps": [
-        "button",
-        "icon"
-      ]
-    },
-    {
-      "$schema": "../schemas/component.json",
-      "name": "slider",
-      "description": "An input control that allows a user to set or select a numeric value within a defined range.",
-      "files": [
-        "components/slider/index.ts",
-        "components/slider/slider.vue"
-      ]
-    },
-    {
-      "$schema": "../schemas/component.json",
-      "name": "switch",
-      "description": "A control that allows the user to toggle between two states.",
-      "files": [
-        "components/switch/index.ts",
-        "components/switch/switch.vue"
-      ]
-    },
-    {
-      "$schema": "../schemas/component.json",
-      "name": "textarea",
-      "description": "A multi-line input field.",
-      "files": [
-        "components/textarea/index.ts",
-        "components/textarea/textarea.vue"
-      ]
-    },
-    {
-      "$schema": "../schemas/component.json",
-      "name": "tooltip",
-      "description": "A popup that appears when a user hovers over or focuses on an element.",
-      "files": [
-        "components/tooltip/index.ts",
-        "components/tooltip/tooltip-content.vue",
-        "components/tooltip/tooltip-provider.vue",
-        "components/tooltip/tooltip-root.vue",
-        "components/tooltip/tooltip-trigger.vue"
+        "avatar/avatar-group.vue",
+        "avatar/avatar-image.vue",
+        "avatar/avatar-fallback.vue",
+        "avatar/avatar-root.vue",
+        "avatar/index.ts",
+        "avatar/utils.ts"
       ]
     }
-  ]
+  ],
+  "npmDependencies": {
+    "@tailwindcss/vite": "^4.3.1",
+    "@vueuse/core": "^14.3.0",
+    "reka-ui": "^2.9.10",
+    "tailwind-merge": "^3.6.0",
+    "tailwind-variants": "^3.2.2",
+    "tailwindcss": "^4.3.1",
+    "tw-animate-css": "^1.4.0"
+  }
 }

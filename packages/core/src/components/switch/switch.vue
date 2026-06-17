@@ -2,7 +2,7 @@
 import { reactiveOmit } from '@vueuse/core'
 import { SwitchRoot, SwitchThumb, useForwardPropsEmits } from 'reka-ui'
 import { computed } from 'vue'
-import { switchVariants, type SwitchEmits, type SwitchProps } from '.'
+import { type SwitchEmits, type SwitchProps, switchVariants } from '.'
 
 const emits = defineEmits<SwitchEmits>()
 
@@ -16,8 +16,8 @@ const forwardedPropsEmits = useForwardPropsEmits(delegatedProps, emits)
 const { root, thumb } = switchVariants()
 const classNames = computed(() => ({
   root: root({
-    size: props.size,
     class: props.class,
+    size: props.size,
   }),
   thumb: thumb({
     size: props.size,

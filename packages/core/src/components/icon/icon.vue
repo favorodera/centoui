@@ -1,9 +1,9 @@
 <script setup lang="ts">
+import { Icon } from '@iconify/vue'
 import { reactiveOmit } from '@vueuse/core'
 import { useForwardProps } from 'reka-ui'
-import { type IconProps, iconVariants } from '.'
 import { computed } from 'vue'
-import { Icon } from '@iconify/vue'
+import { type IconProps, iconVariants } from '.'
 
 const props = withDefaults(defineProps<IconProps>(), {
   ariaHidden: true,

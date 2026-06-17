@@ -89,23 +89,23 @@ This design eliminates an entire class of version mismatch bugs where the CLI an
 After running `centoui init`, your project root will contain a `centoui.config.ts`:
 
 ```ts
-import { defineConfig } from "centoui"
+import { defineConfig } from 'centoui'
 
 export default defineConfig({
-  componentsDir: "./src/components/centoui",
-  themeFilePath: "./src/assets/css/centoui.css",
-  utilsFilePath: "./src/utils/centoui-utils.ts",
+  componentsDir: './src/components/centoui',
   icons: {
-    check: "lucide:check",
-    close: "lucide:x",
-    chevronDown: "lucide:chevron-down",
-    chevronUp: "lucide:chevron-up",
-    chevronLeft: "lucide:chevron-left",
-    chevronRight: "lucide:chevron-right",
-    chevronDoubleLeft: "lucide:chevrons-left",
-    chevronDoubleRight: "lucide:chevrons-right",
-    ellipsis: "lucide:ellipsis",
+    check: 'lucide:check',
+    chevronDoubleLeft: 'lucide:chevrons-left',
+    chevronDoubleRight: 'lucide:chevrons-right',
+    chevronDown: 'lucide:chevron-down',
+    chevronLeft: 'lucide:chevron-left',
+    chevronRight: 'lucide:chevron-right',
+    chevronUp: 'lucide:chevron-up',
+    close: 'lucide:x',
+    ellipsis: 'lucide:ellipsis',
   },
+  themeFilePath: './src/assets/css/centoui.css',
+  utilsFilePath: './src/utils/centoui-utils.ts',
 })
 ```
 

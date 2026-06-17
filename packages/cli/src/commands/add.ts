@@ -1,168 +1,124 @@
+import { intro, log, outro, tasks } from '@clack/prompts'
 import { defineCommand } from 'citty'
-import { loadCentoUIConfig } from '../utils/config-utils'
-import { intro, log, note, outro, tasks } from '@clack/prompts'
-import {
-  fetchFullRegistry,
-  fetchRegistryFileContent,
-  fetchUtilsFileContent,
-  resolveComponentWithDependencies,
-} from '../utils/registry-utils'
-import type { ComponentRegistry } from '../types'
-import { resolveComponentInstallDir } from '../utils/components-utils'
-import {
-  confirmOverwriteIfExists,
-  mapComponentsRegistryPathToProjectDest,
-  writeFileWithDirs,
-} from '../utils/file-system-utils'
-import { installMissingPackages } from '../utils/package-utils'
 import { join } from 'pathe'
-import fsExtra from 'fs-extra'
+import type { ComponentRegistryEntry } from '../types'
+import { loadConfig } from '../utils/config'
+import { confirmOverwrite, writeToFile } from '../utils/file-system'
+import { sendNetworkRequest } from '../utils/network'
+import { installDependency } from '../utils/package'
+import { fetchRegistry, resolveComponent } from '../utils/registry'
 
 /**
- * Command: `centoui add <component> [component...]`
- *
- * Installs one or more components — and their full transitive dependency trees
- * — from the registry into the user's project.
- *
- * Flow:
- *  1. Resolve the full dependency tree for every requested component.
- *  2. Ask the user upfront whether to overwrite any that already exist.
- *  3. Fetch and write the source files for components the user approved.
- *  4. Fetch and write the utils file if it doesn't exist but is required by the components.
- *  5. Install any npm packages required by the components being written.
+ * Installs one or more components and their full transitive dependency trees from the registry into the user's project.
+ * @returns The Citty command definition that executes the 'add' CLI process.
  */
-export function add() {
+export async function add() {
   return defineCommand({
     meta: {
-      name: 'add',
       description: 'Add one or more components to your project',
+      name: 'add',
     },
 
     args: {
       // Positional component names are captured via `args._` (citty convention).
-      // Named flags are intentionally omitted here to keep the surface minimal.
     },
 
-    async run({ args }) {
-      try {
-        const cwd = process.cwd()
-        const requestedNames = args._ as string[]
+    run: async ({ args }) => {
+      const cwd = process.cwd()
 
-        intro('CentoUI — Add components')
+      intro('CentoUI — Add components!')
 
-        if (requestedNames.length === 0) {
-          throw new Error('No components specified. Usage: centoui add <component> [component...]')
-        }
+      const requestedComponents = args._ as Array<string>
 
-        const config = await loadCentoUIConfig(cwd)
-
-        // Fetch the registry once and resolve the full dependency tree for
-        // every requested component before showing any prompts.
-        const registry = await fetchFullRegistry()
-
-        const allComponents = new Map<string, ComponentRegistry>()
-
-        for (const name of requestedNames) {
-          try {
-            const tree = resolveComponentWithDependencies(name, registry)
-            for (const [depName, depEntry] of tree) {
-              allComponents.set(depName, depEntry)
-            }
-          } catch (error) {
-            throw new Error(`Failed to resolve "${name}": ${error}`)
-          }
-        }
-
-        // Ask every overwrite question before any file operations begin so
-        // the user can answer them all at once rather than being interrupted
-        const writeDecisions = new Map<string, boolean>()
-        for (const [name] of allComponents) {
-          const installDir = resolveComponentInstallDir(name, config, cwd)
-          const shouldWrite = await confirmOverwriteIfExists(name, installDir)
-          writeDecisions.set(name, shouldWrite)
-        }
-
-        // Collect npm packages only for components we're actually going to write.
-        const packageDepsToInstall: Record<string, string> = {}
-        for (const [name, entry] of allComponents) {
-          if (writeDecisions.get(name)) {
-            Object.assign(packageDepsToInstall, entry.packageDeps)
-          }
-        }
-
-        const approvedComponents = Array.from(allComponents.entries()).filter(
-          ([name]) => writeDecisions.get(name),
-        )
-
-        // Check if any approved component needs utils
-        const needsUtils = Array.from(approvedComponents).some(
-          ([, entry]) => entry.needsUtils === true,
-        )
-
-        // Check if utils file already exists
-        const utilsPath = join(cwd, config.utilsFilePath)
-        const utilsFileExists = await fsExtra.pathExists(utilsPath)
-
-        await tasks([
-          // One task per component — fetch its files from GitHub and write them.
-          ...approvedComponents.map(([name, entry]) => ({
-            title: `Installing ${name}`,
-            task: async () => {
-              for (const registryFilePath of entry.files) {
-                const content = await fetchRegistryFileContent(registryFilePath)
-                const destinationPath = mapComponentsRegistryPathToProjectDest(registryFilePath, config, cwd)
-                await writeFileWithDirs(destinationPath, content)
-              }
-              return `${name} installed (${entry.files.length} file(s))`
-            },
-          })),
-
-          // Single shared task that installs all collected npm dependencies.
-          {
-            title: 'Installing packages',
-            task: async message => installMissingPackages(packageDepsToInstall, cwd, message),
-          },
-
-          // Write utils file if needed and doesn't exist
-          ...(
-            needsUtils && !utilsFileExists
-              ? [
-                  {
-                    title: 'Writing utils file',
-                    task: async () => {
-                      const utilsContent = await fetchUtilsFileContent()
-                      await writeFileWithDirs(utilsPath, utilsContent)
-                      return `${config.utilsFilePath} written`
-                    },
-                  },
-                ]
-              : []
-          ),
-        ])
-
-        const skippedNames = Array.from(writeDecisions.entries())
-          .filter(([, shouldWrite]) => !shouldWrite)
-          .map(([name]) => name)
-
-        const installedNames = approvedComponents.map(([name]) => name)
-
-        note(
-          [
-            `Installed  > ${installedNames.join(', ') || 'none'}`,
-            skippedNames.length > 0 ? `Skipped    > ${skippedNames.join(', ')}` : '',
-            '',
-            'Import components from your components directory to use them.',
-          ]
-            .filter(Boolean)
-            .join('\n'),
-          'Component(s) added',
-        )
-
-        outro('All set!')
-      } catch (error) {
-        log.error(`Failed to add component(s): ${error}`)
-        process.exit(1)
+      if (requestedComponents.length === 0) {
+        throw new Error('No components specified. Usage: centoui add <component> [component...]')
       }
+
+      log.step('Loading config.')
+      const config = await loadConfig(cwd)
+
+      log.step('Fetching registry.')
+      const registry = await fetchRegistry()
+
+      log.step('Resolving components')
+      // Resolve component(s) transitive dependencies tree
+      const resolvedComponents = new Map<string, ComponentRegistryEntry>()
+      for (const requested of requestedComponents) {
+        const resolvedTree = resolveComponent(requested, registry)
+
+        for (const [
+          name,
+          entry,
+        ] of resolvedTree) {
+          resolvedComponents.set(name, entry)
+        }
+      }
+
+      // Ask every overwrite question before any file operations begin.
+      const writeDecisions = new Map<string, boolean>()
+      for (const [name] of resolvedComponents) {
+        const componentDir = join(cwd, config.componentsDir, name)
+        const shouldWrite = await confirmOverwrite(componentDir)
+
+        writeDecisions.set(name, shouldWrite)
+      }
+
+      // Collect npm packages only for components we're actually going to write.
+      const npmDependenciesToInstall: Record<string, string> = {}
+      for (const [
+        name,
+        entry,
+      ] of resolvedComponents) {
+        if (writeDecisions.get(name)) {
+          Object.assign(npmDependenciesToInstall, entry.npmDependencies)
+        }
+      }
+
+      const approvedComponents = [...resolvedComponents.entries()]
+        .filter(([name]) => writeDecisions.get(name))
+
+      await tasks([
+        ...approvedComponents.map(([
+          name,
+          entry,
+        ]) => {
+          return {
+            task: async (message: (string: string) => void) => {
+              message(`Installing ${name}.`)
+
+              for (const path of entry.files) {
+                message(`Fetching contents from registry.`)
+                const content = await sendNetworkRequest(`/components/${path}`)
+                const destination = join(cwd, config.componentsDir, path)
+
+                message('Writing to disk.')
+                await writeToFile(destination, content)
+              }
+
+              return `${name} component installed!`
+            },
+            title: `Installing ${name}`,
+          }
+        }),
+
+        {
+          enabled: Object.keys(npmDependenciesToInstall).length > 0,
+          task: async (message) => {
+            for (const [
+              name,
+              version,
+            ] of Object.entries(npmDependenciesToInstall)) {
+              message(`Installing ${name}.`)
+              await installDependency(name, version, cwd)
+            }
+
+            return 'Dependencies installed!'
+          },
+          title: 'Installing dependencies',
+        },
+      ])
+
+      outro('Installation Complete!')
     },
   })
 }

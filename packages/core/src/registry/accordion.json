@@ -1,12 +1,11 @@
 {
-  "$schema": "../schemas/component.json",
+  "$schema": "./schemas/component.json",
   "name": "accordion",
-  "description": "Stacked set of interactive headings that reveals a section of content.",
   "files": [
-    "components/accordion/accordion-content.vue",
-    "components/accordion/accordion-item.vue",
-    "components/accordion/accordion-root.vue",
-    "components/accordion/accordion-trigger.vue",
-    "components/accordion/index.ts"
+    "accordion/accordion-content.vue",
+    "accordion/accordion-item.vue",
+    "accordion/accordion-root.vue",
+    "accordion/accordion-trigger.vue",
+    "accordion/index.ts"
   ]
 }

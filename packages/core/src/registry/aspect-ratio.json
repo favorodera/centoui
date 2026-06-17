@@ -1,9 +1,0 @@
-{
-  "$schema": "../schemas/component.json",
-  "name": "aspect-ratio",
-  "description": "Displays content within a desired ratio.",
-  "files": [
-    "components/aspect-ratio/aspect-ratio.vue",
-    "components/aspect-ratio/index.ts"
-  ]
-}

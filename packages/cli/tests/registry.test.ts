@@ -1,67 +1,89 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import type { Registry } from '../src/types'
+import { resolveComponent } from '../src/utils/registry'
 
-const baseRegistry: Registry = {
-  globals: { packageDeps: {} },
-  components: [
-    {
-      name: 'button',
-      description: 'A button component',
-      files: ['components/button/button.vue'],
-    },
-  ],
-}
+describe('resolveComponent', () => {
+  const baseRegistry: Registry = {
+    components: [
+      { files: ['button.vue'], name: 'button' },
+      { componentDependencies: ['button'], files: ['dialog.vue'], name: 'dialog' },
+      { componentDependencies: ['button'], files: ['tooltip.vue'], name: 'tooltip' },
+      { componentDependencies: ['dialog'], files: ['nested.vue'], name: 'nested' },
+    ],
+    npmDependencies: {},
+  }
 
-describe('fetchFullRegistry', () => {
-  beforeEach(() => {
-    // Reset the module so the in-process cache is cleared before each test
-    vi.resetModules()
-    global.fetch = vi.fn().mockResolvedValue({
-      ok: true,
-      json: async () => baseRegistry,
-    })
+  it('returns just the component itself when it has no dependencies', () => {
+    const result = resolveComponent('button', baseRegistry)
+
+    expect([...result.keys()]).toStrictEqual(['button'])
   })
 
-  afterEach(() => {
-    vi.restoreAllMocks()
+  it('includes direct component dependencies', () => {
+    const result = resolveComponent('dialog', baseRegistry)
+
+    expect(result.has('dialog')).toBe(true)
+    expect(result.has('button')).toBe(true)
   })
 
-  it('calls fetch exactly once even when invoked multiple times', async () => {
-    const { fetchFullRegistry } = await import('../src/utils/registry-utils')
+  it('resolves transitive dependencies', () => {
+    const result = resolveComponent('nested', baseRegistry)
 
-    await fetchFullRegistry()
-    await fetchFullRegistry()
-    await fetchFullRegistry()
-
-    expect(global.fetch).toHaveBeenCalledOnce()
+    expect([...result.keys()]).toStrictEqual([
+      'nested',
+      'dialog',
+      'button',
+    ])
   })
 
-  it('returns the same object on every call', async () => {
-    const { fetchFullRegistry } = await import('../src/utils/registry-utils')
+  it('deduplicates shared dependencies', () => {
+    const registry: Registry = {
+      ...baseRegistry,
+      components: [
+        ...baseRegistry.components,
+        { componentDependencies: [
+          'dialog',
+          'tooltip',
+        ], files: ['combo.vue'], name: 'combo' },
+      ],
+    }
 
-    const first = await fetchFullRegistry()
-    const second = await fetchFullRegistry()
+    const result = resolveComponent('combo', registry)
+    const keys = [...result.keys()]
 
-    expect(first).toBe(second)
+    expect(keys.filter(k => k === 'button')).toHaveLength(1)
   })
 
-  it('throws with a descriptive message when fetch returns a non-ok status', async () => {
-    global.fetch = vi.fn().mockResolvedValue({
-      ok: false,
-      status: 404,
-      statusText: 'Not Found',
-    })
+  it('does not infinitely loop on circular dependencies', () => {
+    const circular: Registry = {
+      components: [
+        { componentDependencies: ['b'], files: ['a.vue'], name: 'a' },
+        { componentDependencies: ['a'], files: ['b.vue'], name: 'b' },
+      ],
+      npmDependencies: {},
+    }
 
-    const { fetchFullRegistry } = await import('../src/utils/registry-utils')
-
-    await expect(fetchFullRegistry()).rejects.toThrow('404')
+    expect(() => resolveComponent('a', circular)).not.toThrow()
   })
 
-  it('throws with a descriptive message when the network call itself fails', async () => {
-    global.fetch = vi.fn().mockRejectedValue(new Error('ECONNREFUSED'))
+  it('throws when the requested component is not in the registry', () => {
+    expect(() => resolveComponent('nonexistent', baseRegistry)).toThrow('Component nonexistent not found in registry')
+  })
 
-    const { fetchFullRegistry } = await import('../src/utils/registry-utils')
+  it('throws when a dependency is missing from the registry', () => {
+    const broken = {
+      components: [{ componentDependencies: ['missing-dep'], files: ['widget.vue'], name: 'widget' }],
+      npmDependencies: {},
+    }
 
-    await expect(fetchFullRegistry()).rejects.toThrow('ECONNREFUSED')
+    expect(() => resolveComponent('widget', broken)).toThrow('Component missing-dep not found in registry')
+  })
+
+  it('returns entries with the correct shape', () => {
+    const result = resolveComponent('dialog', baseRegistry)
+    const buttonEntry = result.get('button')
+
+    expect(buttonEntry?.name).toBe('button')
+    expect(buttonEntry?.files).toContain('button.vue')
   })
 })

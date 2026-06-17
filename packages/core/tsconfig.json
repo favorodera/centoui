@@ -1,12 +1,19 @@
 {
   "compilerOptions": {
     "target": "esnext",
-    "lib": ["es2023", "dom", "dom.iterable"],
+    "lib": [
+      "es2023",
+      "dom",
+      "dom.iterable"
+    ],
     "moduleDetection": "force",
     "module": "preserve",
     "moduleResolution": "bundler",
+    "paths": {
+      "#centoui/config": ["./src/config.ts"]
+    },
     "resolveJsonModule": true,
-    "types": [ "node" ],
+    "types": ["node"],
     "strict": true,
     "noUnusedLocals": true,
     "declaration": true,
@@ -14,11 +21,7 @@
     "esModuleInterop": true,
     "isolatedModules": true,
     "verbatimModuleSyntax": true,
-    "skipLibCheck": true,
-    "paths": {
-      "#centoui/config": [ "./src/defaults/config.ts" ],
-      "#centoui/utils": [ "./src/defaults/utils.ts" ]
-    },
+    "skipLibCheck": true
   },
-  "include": [ "src", "augment.d.ts" ]
+  "include": ["src"]
 }

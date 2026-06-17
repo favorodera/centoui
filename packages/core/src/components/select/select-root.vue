@@ -1,10 +1,6 @@
 <script setup lang="ts">
 import { SelectRoot, useForwardPropsEmits } from 'reka-ui'
-import {
-  type SelectRootEmits,
-  type SelectRootProps,
-  type SelectRootSlots,
-} from '.'
+import type { SelectRootEmits, SelectRootProps, SelectRootSlots } from '.'
 
 defineSlots<SelectRootSlots>()
 

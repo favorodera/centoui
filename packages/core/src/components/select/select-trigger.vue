@@ -2,11 +2,11 @@
 import { reactiveOmit } from '@vueuse/core'
 import { SelectIcon, SelectTrigger, useForwardProps } from 'reka-ui'
 import { computed } from 'vue'
+import config from '#centoui/config'
 import {
   type SelectTriggerProps,
   selectVariants,
 } from '.'
-import config from '#centoui/config'
 import { Icon } from '../icon'
 
 const props = withDefaults(defineProps<SelectTriggerProps>(), {
@@ -15,13 +15,13 @@ const props = withDefaults(defineProps<SelectTriggerProps>(), {
 const delegatedProps = reactiveOmit(props, 'class', 'size')
 const forwardedProps = useForwardProps(delegatedProps)
 
-const { trigger, icon } = selectVariants()
+const { icon, trigger } = selectVariants()
 const classNames = computed(() => ({
-  trigger: trigger({
-    triggerSize: props.size,
-    class: props.class,
-  }),
   icon: icon({
+    triggerSize: props.size,
+  }),
+  trigger: trigger({
+    class: props.class,
     triggerSize: props.size,
   }),
 }))

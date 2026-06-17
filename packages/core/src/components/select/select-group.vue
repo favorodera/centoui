@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
-import { useForwardProps, SelectGroup } from 'reka-ui'
-import {
-  selectVariants,
-  type SelectGroupProps,
-} from '.'
+import { SelectGroup, useForwardProps } from 'reka-ui'
 import { computed } from 'vue'
+import {
+  type SelectGroupProps,
+  selectVariants,
+} from '.'
 
 const props = defineProps<SelectGroupProps>()
 const delegatedProps = reactiveOmit(props, 'class')

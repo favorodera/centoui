@@ -1,15 +1,22 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
 import { AccordionContent, useForwardProps } from 'reka-ui'
-import { accordionVariants, type AccordionContentProps } from '.'
 import { computed } from 'vue'
+import { type AccordionContentProps, accordionVariants } from '.'
 
 const props = defineProps<AccordionContentProps>()
+
 const delegatedProps = reactiveOmit(props, 'class')
+
 const forwardedProps = useForwardProps(delegatedProps)
 
 const { content } = accordionVariants()
-const classNames = computed(() => content({ class: props.class }))
+
+const classNames = computed(() => {
+  return content({
+    class: props.class,
+  })
+})
 </script>
 
 <template>
@@ -18,8 +25,6 @@ const classNames = computed(() => content({ class: props.class }))
     v-bind="forwardedProps"
     :class="classNames"
   >
-    <div data-slot="accordion-content-inner">
-      <slot />
-    </div>
+    <slot />
   </AccordionContent>
 </template>

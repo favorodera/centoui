@@ -1,10 +1,10 @@
+import type { SwitchRootEmits, SwitchRootProps } from 'reka-ui'
 import { tv, type VariantProps } from 'tailwind-variants'
-import {
-  type SwitchRootProps,
-  type SwitchRootEmits,
-} from 'reka-ui'
 
 export const switchVariants = tv({
+  defaultVariants: {
+    size: 'md',
+  },
   slots: {
     root: `
       peer relative inline-flex shrink-0 items-center border border-transparent
@@ -31,41 +31,34 @@ export const switchVariants = tv({
   },
   variants: {
     size: {
-      sm: {
-        root: 'h-4 w-8 rounded-xs',
-        thumb: 'size-3',
-      },
       md: {
-        root: 'h-4.5 w-9 rounded-xs',
-        thumb: 'size-3.5',
+        root: 'block-4.5 inline-9 rounded-xs',
+        thumb: 'block-3.5 inline-3.5',
+      },
+      sm: {
+        root: 'block-4 inline-8 rounded-xs',
+        thumb: 'block-3 inline-3',
       },
     },
   },
-  defaultVariants: {
-    size: 'md',
-  },
 })
-
 
 // COMPONENTS
 
 export { default as Switch } from './switch.vue'
 
-
 // VARIANTS
 export type SwitchVariants = VariantProps<typeof switchVariants>
-
 
 // PROPS
 export type SwitchProps = SwitchRootProps & {
   /**
    * Visual size of the switch
    * @default 'md'
-  */
-  size?: SwitchVariants['size']
+   */
   class?: any
+  size?: SwitchVariants['size']
 }
-
 
 // EMITS
 export type SwitchEmits = SwitchRootEmits

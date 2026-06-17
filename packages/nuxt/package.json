@@ -2,16 +2,9 @@
   "name": "centoui-nuxt",
   "version": "1.0.0-alpha.38",
   "description": "Official Nuxt module for CentoUI",
-  "keywords": [
-    "nuxt",
-    "nuxt-module",
-    "vue",
-    "ui",
-    "components",
-    "tailwindcss"
-  ],
   "author": "Favour Emeka <favorodera@gmail.com>",
   "license": "MIT",
+  "funding": "https://github.com/sponsors/favorodera",
   "homepage": "https://centoui.vercel.app",
   "repository": {
     "type": "git",
@@ -20,6 +13,14 @@
   "bugs": {
     "url": "https://github.com/favorodera/centoui/issues"
   },
+  "keywords": [
+    "nuxt",
+    "nuxt-module",
+    "vue",
+    "ui",
+    "components",
+    "tailwindcss"
+  ],
   "exports": {
     ".": {
       "types": "./dist/types.d.mts",
@@ -29,42 +30,38 @@
   "main": "./dist/module.mjs",
   "typesVersions": {
     "*": {
-      ".": [
-        "./dist/types.d.mts"
-      ]
+      ".": ["./dist/types.d.mts"]
     }
   },
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "publishConfig": {
     "access": "public"
-  },
-  "scripts": {
-    "dev": "nuxt prepare && nuxt-module-build build --stub",
-    "build": "nuxt prepare && nuxt-module-build build",
-    "typecheck": "nuxt prepare && vue-tsc --noEmit",
-    "lint": "eslint . --fix",
-    "prepublishOnly": "pnpm build"
-  },
-  "dependencies": {
-    "@nuxt/kit": "^4.4.6",
-    "c12": "catalog:",
-    "pathe": "catalog:"
-  },
-  "peerDependencies": {
-    "centoui": "workspace:*",
-    "nuxt": "^4.0.0"
-  },
-  "devDependencies": {
-    "@nuxt/module-builder": "^1.0.2",
-    "@nuxt/schema": "^4.4.6",
-    "centoui": "workspace:*",
-    "nuxt": "catalog:",
-    "vue-tsc": "catalog:"
   },
   "engines": {
     "node": ">=22.0.0",
     "pnpm": ">=11.0.0"
+  },
+  "scripts": {
+    "dev": "nuxt prepare && nuxt-module-build build --stub",
+    "build": "nuxt prepare && nuxt-module-build build",
+    "typecheck": "nuxt prepare && nuxt typecheck",
+    "lint": "nuxt prepare && eslint . --fix",
+    "prepublishOnly": "pnpm build"
+  },
+  "peerDependencies": {
+    "centoui": "workspace:*",
+    "nuxt": "catalog:peer"
+  },
+  "dependencies": {
+    "@nuxt/kit": "catalog:vendor",
+    "c12": "catalog:vendor",
+    "pathe": "catalog:vendor"
+  },
+  "devDependencies": {
+    "@nuxt/module-builder": "catalog:tools",
+    "@nuxt/schema": "catalog:tools",
+    "centoui": "workspace:*",
+    "nuxt": "catalog:vendor",
+    "vue-tsc": "catalog:tools"
   }
 }

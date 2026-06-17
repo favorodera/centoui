@@ -1,21 +1,22 @@
-import { existsSync, readdirSync } from 'node:fs'
+import type { CentoUIConfig } from 'centoui'
 import { addComponent, addComponentsDir, addTemplate, defineNuxtModule, extendViteConfig } from '@nuxt/kit'
 import { loadConfig } from 'c12'
+import { existsSync, readdirSync } from 'node:fs'
 import { basename, join } from 'pathe'
-import type { CentoUIConfig } from 'centoui'
 
 export interface ModuleOptions {
   /**
-   * Prefix for all registered components (normalized to PascalCase internally).
+   * Prefix prepended to every registered component name (converted to PascalCase).
    * @default ""
    */
   prefix?: string
 }
 
-
-// UTILITIES
-
-/** Converts a string (e.g., 'alert-root' or 'CENTO') to PascalCase. */
+/**
+ * Converts kebab-case to PascalCase (e.g. 'alert-root' -> 'AlertRoot').
+ * @param kebabString The kebab-case string to convert
+ * @returns The string in PascalCase
+ */
 function kebabToPascalCase(kebabString: string): string {
   return kebabString
     .toLowerCase()
@@ -24,98 +25,70 @@ function kebabToPascalCase(kebabString: string): string {
     .join('')
 }
 
-/** Builds the component name by combining and normalizing an optional prefix and base name. */
-function buildComponentName(prefix: string | undefined, base: string): string {
-  const pascalBase = kebabToPascalCase(base)
-
-  if (!prefix) {
-    return pascalBase
-  }
-
-  const pascalPrefix = kebabToPascalCase(prefix)
-  return `${pascalPrefix}${pascalBase}`
-}
-
-// MODULE
-
 export default defineNuxtModule<ModuleOptions>({
-  meta: {
-    name: 'centoui-nuxt',
-    configKey: 'centoui',
-  },
   defaults: {
     prefix: '',
+  },
+  meta: {
+    configKey: 'centoui',
+    name: 'centoui-nuxt',
   },
   async setup(options, nuxt) {
     const rootDir = nuxt.options.rootDir
 
-    // Load centoui.config.ts from the project root
     const { config } = await loadConfig<CentoUIConfig>({
-      name: 'centoui',
       cwd: rootDir,
+      name: 'centoui',
     })
 
-    const componentsDir = join(rootDir, config.componentsDir!)
+    const componentsDir = join(rootDir, config.componentsDir)
 
     if (!existsSync(componentsDir)) {
       console.warn(`[centoui-nuxt] Component directory not found: ${componentsDir}`)
       return
     }
 
-    // Register the directory with Nuxt's resolver but suppress its auto-scan.
-    // 'prepend: true' ensures this suppression wins over default '~/components' scanning.
+    // Register the dir without auto-scanning it (components are added manually below);
+    // prepend: true makes this rule win over the default '~/components' scan.
     addComponentsDir(
       {
-        path: componentsDir,
         extensions: [],
         ignore: ['**/*'],
+        path: componentsDir,
       },
       { prepend: true },
     )
 
-    // Manually register components, converting kebab-case files (e.g., 'alert-root.vue')
-    // to PascalCase (e.g., 'CentoAlertRoot' or 'AlertRoot' based on prefix) to match exports.
-    function registerComponents(componentsDir: string): void {
-      // Iterate through component group folders (e.g., /alert, /button)
-      for (const group of readdirSync(componentsDir, { withFileTypes: true })) {
-        if (!group.isDirectory()) continue
+    // Resolve the vue files in component folders and register them
+    const pascalPrefix = options.prefix ? kebabToPascalCase(options.prefix) : ''
 
-        const groupPath = join(componentsDir, group.name)
+    const componentFolders = readdirSync(componentsDir, { withFileTypes: true })
+      .filter(entry => entry.isDirectory())
 
-        // Register each .vue file (e.g., alert-root.vue)
-        for (const file of readdirSync(groupPath, { withFileTypes: true })) {
+    for (const folder of componentFolders) {
+      const folderPath = join(componentsDir, folder.name)
 
-          if (file.isFile() && file.name.endsWith('.vue')) {
+      const componentVueFiles = readdirSync(folderPath, { withFileTypes: true })
+        .filter(entry => entry.isFile() && entry.name.endsWith('.vue'))
 
-            addComponent({
-              name: buildComponentName(options.prefix, basename(file.name, '.vue')),
-              filePath: join(groupPath, file.name),
-              priority: 1, // Override default user components
-            })
-
-          }
-
-        }
-
+      for (const file of componentVueFiles) {
+        addComponent({
+          filePath: join(folderPath, file.name),
+          name: `${pascalPrefix}${kebabToPascalCase(basename(file.name, '.vue'))}`,
+          priority: 1,
+        })
       }
     }
 
-    registerComponents(componentsDir)
-
-    // Write config to .nuxt/centoui/config.mjs
+    // Persist the resolved config in the build dir, then alias it so consumers can `import config from '#centoui/config'`.
     addTemplate({
       filename: 'centoui/config.ts',
+      getContents: () => `export default ${JSON.stringify(config, undefined, 2)}\n`,
       write: true,
-      getContents: () => `export default ${JSON.stringify(config, null, 2)}\n`,
     })
-
-    // Alias the disk written config so consumers and components import from "#centoui/config"
     nuxt.options.alias['#centoui/config'] = join(nuxt.options.buildDir, 'centoui/config.ts')
 
-    // Alias the utils directory for consumers and components import from "#centoui/utils"
-    nuxt.options.alias['#centoui/utils'] = join(rootDir, config.utilsFilePath)
-
-    // Pre-bundle required Vite dependencies for faster dev startup and better HMR
+    // Pre-bundle these so dev startup and HMR stay fast.
     extendViteConfig((config) => {
       config.optimizeDeps ||= {}
       config.optimizeDeps.include ||= []

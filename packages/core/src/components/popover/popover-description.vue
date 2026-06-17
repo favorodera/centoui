@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
-import { useForwardProps, Primitive } from 'reka-ui'
+import { Primitive, useForwardProps } from 'reka-ui'
+import { computed } from 'vue'
 import {
   type PopoverDescriptionProps,
   popoverVariants,
 } from '.'
-import { computed } from 'vue'
 
 const props = withDefaults(defineProps<PopoverDescriptionProps>(), {
   as: 'p',

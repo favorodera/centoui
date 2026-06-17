@@ -6,13 +6,13 @@ import {
   SelectItemText,
   useForwardPropsEmits,
 } from 'reka-ui'
-import {
-  type SelectItemProps,
-  type SelectItemEmits,
-  selectVariants,
-} from '.'
 import { computed } from 'vue'
 import config from '#centoui/config'
+import {
+  type SelectItemEmits,
+  type SelectItemProps,
+  selectVariants,
+} from '.'
 import { Icon } from '../icon'
 
 const emits = defineEmits<SelectItemEmits>()
@@ -22,11 +22,11 @@ const delegatedProps = reactiveOmit(props, 'class')
 
 const forwardedPropsEmits = useForwardPropsEmits(delegatedProps, emits)
 
-const { item, itemText, itemIndicator } = selectVariants()
+const { item, itemIndicator, itemText } = selectVariants()
 const classNames = computed(() => ({
   item: item({ class: props.class }),
-  itemText: itemText(),
   itemIndicator: itemIndicator(),
+  itemText: itemText(),
 }))
 </script>
 

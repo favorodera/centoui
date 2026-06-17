@@ -7,112 +7,105 @@ import {
   type AvatarRootProps as RekaAvatarRootProps,
 } from 'reka-ui'
 import { tv, type VariantProps } from 'tailwind-variants'
-import type { ImgHTMLAttributes } from 'vue'
 
 export const avatarVariants = tv({
+  defaultVariants: {
+    size: 'md',
+  },
   slots: {
+    fallback: `
+      flex block-full inline-full items-center justify-center truncate
+      font-medium text-muted-foreground uppercase
+    `,
+    group: `isolate inline-flex -space-x-2.5`,
+    image: 'block-full inline-full rounded-[inherit] object-cover',
     root: `
       relative inline-flex shrink-0 items-center justify-center overflow-hidden
-      rounded-full border border-border bg-muted align-middle select-none
-    `,
-    image: 'size-full rounded-[inherit] object-cover',
-    fallback: `
-      flex size-full items-center justify-center truncate font-medium
-      text-muted-foreground uppercase select-none
-    `,
-    group: `
-      isolate flex -space-x-2.5
-
-      *:border-background
-
-      *:data-[slot=avatar-root]:border-2
+      rounded-full border border-border align-middle bg-muted select-none
     `,
   },
   variants: {
     size: {
-      xs: {
-        root: 'size-6',
-        fallback: `
-          text-[10px]
-
-          *:data-[slot=icon]:size-3
-        `,
-      },
-      sm: {
-        root: 'size-8',
-        fallback: `
-          text-xs
-
-          *:data-[slot=icon]:size-3.5
-        `,
-      },
-      md: {
-        root: 'size-10',
+      lg: {
         fallback: `
           text-sm
 
-          *:data-[slot=icon]:size-4
+          *:data-[slot=icon]:block-4.5 *:data-[slot=icon]:inline-4.5
         `,
+        root: 'block-9 inline-9',
       },
-      lg: {
-        root: 'size-12',
+      md: {
+        fallback: `
+          text-sm
+
+          *:data-[slot=icon]:block-4 *:data-[slot=icon]:inline-4
+        `,
+        root: 'block-8 inline-8',
+      },
+      sm: {
+        fallback: `
+          text-xs
+
+          *:data-[slot=icon]:block-3.5 *:data-[slot=icon]:inline-3.5
+        `,
+        root: 'block-7 inline-7',
+      },
+      xl: {
         fallback: `
           text-base
 
-          *:data-[slot=icon]:size-5
+          *:data-[slot=icon]:block-5 *:data-[slot=icon]:inline-5
         `,
+        root: 'block-10 inline-10',
+      },
+      xs: {
+        fallback: `
+          text-xs
+
+          *:data-[slot=icon]:block-3 *:data-[slot=icon]:inline-3
+        `,
+        root: 'block-6 inline-6',
       },
     },
   },
-  defaultVariants: {
-    size: 'md',
-  },
 })
-
 
 // COMPONENTS
 export { default as AvatarFallback } from './avatar-fallback.vue'
+export { default as AvatarGroup } from './avatar-group.vue'
 export { default as AvatarImage } from './avatar-image.vue'
 export { default as AvatarRoot } from './avatar-root.vue'
-export { default as AvatarGroup } from './avatar-group.vue'
-
 
 // CONTEXT
 export type AvatarRootContext = Pick<AvatarRootProps, 'size'>
 
 export const [
-  injectCentouiAvatarRootContext,
-  provideCentouiAvatarRootContext,
-] = createContext<AvatarRootContext>(
-  'AvatarRoot',
-  'centoui:avatar-root:context',
-)
-
+  injectRootContext,
+  provideRootContext,
+] = createContext<AvatarRootContext>('AvatarRoot', 'centoui:avatar-root:context')
 
 // VARIANTS
 export type AvatarVariants = VariantProps<typeof avatarVariants>
 
-
 // UTILITIES
-export { getInitials } from './avatar-utils'
-
+export { getInitials } from './utils.js'
 
 // PROPS
 export type AvatarRootProps = RekaAvatarRootProps & {
+  class?: any
+
   /**
    * The size of the avatar.
    * @default 'md'
    */
   size?: AvatarVariants['size']
-  class?: any
 }
 
-export type AvatarImageProps = RekaAvatarImageProps & { class?: any } & /* @vue-ignore */ ImgHTMLAttributes
+export type AvatarImageProps = & RekaAvatarImageProps & { class?: any }
 
 export type AvatarFallbackProps = RekaAvatarFallbackProps & { class?: any }
 
 export type AvatarGroupProps = PrimitiveProps & { class?: any }
-
 
 // EMITS
 export type AvatarImageEmits = RekaAvatarImageEmits

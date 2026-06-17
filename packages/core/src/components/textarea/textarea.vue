@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useVModel } from '@vueuse/core'
 import { computed } from 'vue'
-import { textareaVariants, type TextareaEmits, type TextareaProps } from '.'
+import { type TextareaEmits, type TextareaProps, textareaVariants } from '.'
 
 const emits = defineEmits<TextareaEmits>()
 

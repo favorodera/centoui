@@ -1,105 +1,75 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import * as configUtils from '../src/utils/config-utils'
+import { describe, expect, it, vi } from 'vitest'
+import { buildUserConfig } from '../src/utils/config'
 
-const MOCK_DEFAULT_CONFIG = `
+describe('buildUserConfig', () => {
+  it('builds a config file merging user choices with fetched defaults', async () => {
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue({
+      ok: true,
+      text: async () => `
 export default {
   icons: {
     close: 'lucide:x',
   },
   foo: 'bar',
 } satisfies Pick<CentoUIConfig, 'icons'>
-`
+`,
+    }))
 
-describe('extractInnerConfigContent', () => {
-  it('extracts only the inner object content', () => {
-    const result = configUtils.extractInnerConfigContent(MOCK_DEFAULT_CONFIG)
-    const parsed = Function(`return ({${result}})`)()
-
-    expect(parsed).toEqual({
-      icons: { close: 'lucide:x' },
-      foo: 'bar',
+    const result = await buildUserConfig({
+      componentsDir: 'src/components/ui',
+      themeFilePath: 'src/assets/css/centoui.css',
     })
-  })
 
-  it('returns empty string when no valid object exists', () => {
-    expect(configUtils.extractInnerConfigContent('hello world')).toBe('')
-  })
-
-  it('returns empty string for an empty object', () => {
-    expect(configUtils.extractInnerConfigContent('export default {}')).toBe('')
-  })
-})
-
-describe('buildUserDefaultConfigFileContent', () => {
-  beforeEach(() => {
-    global.fetch = vi.fn().mockResolvedValue({
-      ok: true,
-      text: async () => MOCK_DEFAULT_CONFIG,
-    })
-  })
-
-  afterEach(() => {
-    vi.restoreAllMocks()
-  })
-
-  it('includes the defineConfig import', async () => {
-    const result = await configUtils.buildUserDefaultConfigFileContent('theme.css', 'components', 'centoui-utils.ts')
-    expect(result).toContain("import { defineConfig } from 'centoui'")
-  })
-
-  it('wraps the config with defineConfig', async () => {
-    const result = await configUtils.buildUserDefaultConfigFileContent('theme.css', 'components', 'centoui-utils.ts')
+    expect(result).toContain('import { defineConfig } from \'centoui\'')
     expect(result).toContain('export default defineConfig({')
+    expect(result).toContain('componentsDir: \'src/components/ui\'')
+    expect(result).toContain('themeFilePath: \'src/assets/css/centoui.css\'')
+    expect(result).toContain('close: \'lucide:x\'')
+
+    vi.unstubAllGlobals()
   })
 
-  it('includes the provided componentsDir', async () => {
-    const result = await configUtils.buildUserDefaultConfigFileContent('theme.css', 'src/components/ui', 'centoui-utils.ts')
-    expect(result).toContain("componentsDir: 'src/components/ui'")
-  })
+  it('throws when the network request fails', async () => {
+    vi.stubGlobal('fetch', vi.fn().mockRejectedValue(new Error('Network failed')))
 
-  it('includes the provided themeFilePath', async () => {
-    const result = await configUtils.buildUserDefaultConfigFileContent('src/assets/css/centoui.css', 'components', 'centoui-utils.ts')
-    expect(result).toContain("themeFilePath: 'src/assets/css/centoui.css'")
-  })
+    await expect(buildUserConfig({
+      componentsDir: 'components',
+      themeFilePath: 'theme.css',
+    })).rejects.toThrow('Failed to build user config')
 
-  it('includes the provided utilsFilePath', async () => {
-    const result = await configUtils.buildUserDefaultConfigFileContent('src/assets/css/centoui.css', 'components', 'src/utils/centoui-utils.ts')
-    expect(result).toContain("utilsFilePath: 'src/utils/centoui-utils.ts'")
-  })
-
-  it('includes defaults from the fetched config', async () => {
-    const result = await configUtils.buildUserDefaultConfigFileContent('theme.css', 'components', 'centoui-utils.ts')
-    expect(result).toContain("close: 'lucide:x'")
-    expect(result).toContain("foo: 'bar'")
-  })
-
-  it('throws when the network call fails', async () => {
-    global.fetch = vi.fn().mockRejectedValue(new Error('Network failed'))
-
-    await expect(
-      configUtils.buildUserDefaultConfigFileContent('theme.css', 'components', 'centoui-utils.ts'),
-    ).rejects.toThrow('Network failed')
+    vi.unstubAllGlobals()
   })
 
   it('throws when the server returns a non-ok status', async () => {
-    global.fetch = vi.fn().mockResolvedValue({ ok: false, status: 404, statusText: 'Not Found' })
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue({
+      ok: false,
+      status: 404,
+      statusText: 'Not Found',
+    }))
 
-    await expect(
-      configUtils.buildUserDefaultConfigFileContent('theme.css', 'components', 'centoui-utils.ts'),
-    ).rejects.toThrow('404')
+    await expect(buildUserConfig({
+      componentsDir: 'components',
+      themeFilePath: 'theme.css',
+    })).rejects.toThrow('Failed to build user config')
+
+    vi.unstubAllGlobals()
   })
 
-  it('generates a valid config when defaults are empty', async () => {
-    global.fetch = vi.fn().mockResolvedValue({
+  it('generates a valid config when fetched defaults are empty', async () => {
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue({
       ok: true,
       text: async () => 'export default {}',
+    }))
+
+    const result = await buildUserConfig({
+      componentsDir: 'components',
+      themeFilePath: 'theme.css',
     })
 
-    const result = await configUtils.buildUserDefaultConfigFileContent('theme.css', 'components', 'centoui-utils.ts')
-
     expect(result).toContain('export default defineConfig({')
-    expect(result).toContain("componentsDir: 'components'")
-    expect(result).toContain("themeFilePath: 'theme.css'")
-    expect(result).toContain("utilsFilePath: 'centoui-utils.ts'")
+    expect(result).toContain('componentsDir: \'components\'')
+    expect(result).toContain('themeFilePath: \'theme.css\'')
+
+    vi.unstubAllGlobals()
   })
 })

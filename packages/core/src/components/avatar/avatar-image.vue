@@ -1,28 +1,27 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
 import { AvatarImage, useForwardPropsEmits } from 'reka-ui'
-import {
-  type AvatarImageEmits,
-  type AvatarImageProps,
-  avatarVariants,
-  injectCentouiAvatarRootContext,
-} from '.'
 import { computed } from 'vue'
-
-const rootContext = injectCentouiAvatarRootContext()
+import { type AvatarImageEmits, type AvatarImageProps, avatarVariants, injectRootContext } from '.'
 
 const emits = defineEmits<AvatarImageEmits>()
 
 const props = defineProps<AvatarImageProps>()
+
+const rootContext = injectRootContext()
+
 const delegatedProps = reactiveOmit(props, 'class')
 
 const forwardedPropsEmits = useForwardPropsEmits(delegatedProps, emits)
 
 const { image } = avatarVariants()
-const classNames = computed(() => image({
-  size: rootContext?.size,
-  class: props.class,
-}))
+
+const classNames = computed(() => {
+  return image({
+    class: props.class,
+    size: rootContext?.size,
+  })
+})
 </script>
 
 <template>

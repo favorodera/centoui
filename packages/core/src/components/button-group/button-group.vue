@@ -2,7 +2,7 @@
 import { reactiveOmit } from '@vueuse/core'
 import { Primitive, useForwardProps } from 'reka-ui'
 import { computed } from 'vue'
-import { buttonGroupVariants, type ButtonGroupProps } from '.'
+import { type ButtonGroupProps, buttonGroupVariants } from '.'
 
 const props = withDefaults(defineProps<ButtonGroupProps>(), {
   orientation: 'horizontal',
@@ -12,8 +12,8 @@ const forwardedProps = useForwardProps(delegatedProps)
 
 const { root } = buttonGroupVariants()
 const classNames = computed(() => root({
-  orientation: props.orientation,
   class: props.class,
+  orientation: props.orientation,
 }))
 </script>
 

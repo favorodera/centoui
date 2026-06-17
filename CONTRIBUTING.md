@@ -69,9 +69,6 @@ pnpm test       # run all tests
 We use:
 
 - **Vitest** — Test runner
-- **happy-dom** — DOM environment
-- **Vue Test Utils** — Component testing utilities
-- **vitest-axe** — Accessibility testing
 
 ```bash
 pnpm test         # run all tests

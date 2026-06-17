@@ -1,112 +1,86 @@
+import type { ComponentRegistryEntry } from 'centoui-cli'
+import { intro, note, outro, tasks } from '@clack/prompts'
 import fsExtra from 'fs-extra'
-import {
-  resolve, join, extname,
-} from 'pathe'
-import {
-  intro, outro, tasks, log, note,
-} from '@clack/prompts'
+import { fileURLToPath } from 'node:url'
+import { dirname, extname, join } from 'pathe'
 
-const REGISTRY_DIR = resolve(import.meta.dirname, '../src/registry')
+const __dirname = dirname(fileURLToPath(import.meta.url))
+const REGISTRY_DIR = join(__dirname, '../src/registry')
 const REGISTRY_OUTPUT = join(REGISTRY_DIR, 'index.json')
 
-let globalsFilePath = ''
-let componentFiles: string[] = []
-let globalsFileContent: Record<string, unknown> = {}
-let componentsFileContent: Record<string, unknown>[] = []
+/** Static list of core dependencies required in every CentoUI project. */
+const ROOT_NPM_DEPENDENCIES: Record<string, string> = {
+  '@tailwindcss/vite': '^4.3.1',
+  '@vueuse/core': '^14.3.0',
+  'reka-ui': '^2.9.10',
+  'tailwind-merge': '^3.6.0',
+  'tailwind-variants': '^3.2.2',
+  'tailwindcss': '^4.3.1',
+  'tw-animate-css': '^1.4.0',
+}
+
+let entryFiles: Array<string> = []
+let entries: Array<ComponentRegistryEntry> = []
 
 intro('CentoUI Registry Builder')
 
-try {
-  await tasks([
-    {
-      title: 'Locating globals.json',
-      task: async () => {
-        globalsFilePath = join(REGISTRY_DIR, 'globals.json')
+await tasks([
+  {
+    task: async () => {
+      const allFiles = await fsExtra.readdir(REGISTRY_DIR)
 
-        const fileExists = await fsExtra.pathExists(globalsFilePath)
-        if (!fileExists) {
-          throw new Error(`globals.json not found in ${REGISTRY_DIR}`)
-        }
+      entryFiles = allFiles.filter(file => extname(file) === '.json' && file !== 'index.json')
 
-        return 'Found globals.json'
-      },
+      if (entryFiles.length === 0) {
+        throw new Error('No component entries found')
+      }
+
+      return `Found ${entryFiles.length} component entries`
     },
+    title: 'Discovering component entries',
+  },
 
-    {
-      title: 'Locating component files',
-      task: async () => {
-        const allFiles = await fsExtra.readdir(REGISTRY_DIR)
+  {
+    task: async (message) => {
+      const loaded: Array<ComponentRegistryEntry> = []
 
-        componentFiles = allFiles.filter(
-          (file) => {
-            return extname(file) === '.json'
-              && file !== 'index.json'
-              && file !== 'globals.json'
-          },
-        )
+      for (const [
+        index,
+        file,
+      ] of entryFiles.entries()) {
+        const filePath = join(REGISTRY_DIR, file)
+        message(`[${index + 1}/${entryFiles.length}] ${file}`)
 
-        if (!componentFiles.length) {
-          throw new Error('No component files found')
-        }
+        loaded.push(await fsExtra.readJSON(filePath))
+      }
 
-        return `Found ${componentFiles.length} component files`
-      },
+      entries = loaded
+      return `Loaded ${entries.length} components`
     },
+    title: 'Loading component metadata',
+  },
 
-    {
-      title: 'Reading globals',
-      task: async () => {
-        globalsFileContent = await fsExtra.readJSON(globalsFilePath)
-        return 'Loaded globals.json'
-      },
+  {
+    task: async () => {
+      await fsExtra.writeJSON(
+        REGISTRY_OUTPUT,
+        {
+          $schema: './schemas/registry.schema.json',
+          components: entries,
+          npmDependencies: ROOT_NPM_DEPENDENCIES,
+        },
+        { spaces: 2 },
+      )
+
+      return `Emitted ${REGISTRY_OUTPUT}`
     },
+    title: 'Emitting registry index',
+  },
+])
 
-    {
-      title: 'Reading components',
-      task: async (message) => {
-        const resolved: Record<string, unknown>[] = []
+note(
+  entries.map(entry => `  ${entry.name}`).join('\n'),
+  `${entries.length} components registered`,
+)
 
-        for (const [
-          index,
-          file,
-        ] of componentFiles.entries()) {
-          const filePath = join(REGISTRY_DIR, file)
-
-          message(`[${index + 1}/${componentFiles.length}] ${file}`)
-          resolved.push(await fsExtra.readJSON(filePath))
-        }
-
-        componentsFileContent = resolved
-        return `Read ${componentsFileContent.length} components`
-      },
-    },
-
-    {
-      title: 'Writing registry index',
-      task: async () => {
-        await fsExtra.writeJSON(
-          REGISTRY_OUTPUT,
-          {
-            globals: globalsFileContent,
-            components: componentsFileContent,
-          },
-          {
-            spaces: 2,
-          },
-        )
-        return `Written: ${REGISTRY_OUTPUT}`
-      },
-    },
-  ])
-
-  note(
-    componentFiles.map(file => `  ${file}`).join('\n'),
-    `${componentsFileContent.length} components registered`,
-  )
-
-  outro('Registry built successfully')
-}
-catch (error) {
-  log.error(`Failed to build registry: ${error}`)
-  process.exit(1)
-}
+outro('Registry built successfully')

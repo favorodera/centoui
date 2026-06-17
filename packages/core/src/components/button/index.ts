@@ -1,8 +1,12 @@
 import type { PrimitiveProps } from 'reka-ui'
 import { tv, type VariantProps } from 'tailwind-variants'
-import type { ButtonHTMLAttributes } from 'vue'
 
 export const buttonVariants = tv({
+  defaultVariants: {
+    size: 'md',
+    square: false,
+    variant: 'primary',
+  },
   slots: {
     root: `
       relative inline-flex shrink-0 cursor-default items-center justify-center
@@ -19,21 +23,45 @@ export const buttonVariants = tv({
     `,
   },
   variants: {
+    size: {
+      lg: {
+        root: `
+          block-9 inline-9 gap-2 rounded-lg px-4 text-base
+
+          *:data-[slot=icon]:block-5 *:data-[slot=icon]:inline-5
+        `,
+      },
+      md: {
+        root: `
+          block-8 inline-8 gap-2 rounded-md px-3 text-sm
+
+          *:data-[slot=icon]:block-4 *:data-[slot=icon]:inline-4
+        `,
+      },
+      sm: {
+        root: `
+          block-7 inline-7 gap-1 rounded-md px-3 text-sm
+
+          *:data-[slot=icon]:block-4 *:data-[slot=icon]:inline-4
+        `,
+      },
+      xs: {
+        root: `
+          block-6 inline-6 gap-1 rounded-md px-2 text-xs
+
+          *:data-[slot=icon]:block-3 *:data-[slot=icon]:inline-3
+        `,
+      },
+    },
+    square: {
+      false: {
+        root: 'inline-auto',
+      },
+      true: {
+        root: 'px-0',
+      },
+    },
     variant: {
-      primary: {
-        root: `
-          bg-primary text-primary-foreground
-
-          hover:bg-primary/90
-        `,
-      },
-      secondary: {
-        root: `
-          bg-secondary text-secondary-foreground
-
-          hover:bg-secondary/90
-        `,
-      },
       error: {
         root: `
           bg-error text-error-foreground
@@ -48,13 +76,6 @@ export const buttonVariants = tv({
           hover:bg-accent hover:text-accent-foreground
         `,
       },
-      outline: {
-        root: `
-          border-border bg-transparent text-foreground
-
-          hover:bg-accent hover:text-accent-foreground
-        `,
-      },
       link: {
         root: `
           text-foreground underline decoration-muted-foreground/40 decoration-1
@@ -63,61 +84,36 @@ export const buttonVariants = tv({
           hover:text-primary hover:decoration-primary
         `,
       },
-    },
-    size: {
-      xs: {
+      outline: {
         root: `
-          size-6 gap-1 rounded-md px-2 text-xs
+          border-border bg-transparent text-foreground
 
-          *:data-[slot=icon]:size-3
+          hover:bg-accent hover:text-accent-foreground
         `,
       },
-      sm: {
+      primary: {
         root: `
-          size-7 gap-1 rounded-md px-3 text-sm
+          bg-primary text-primary-foreground
 
-          *:data-[slot=icon]:size-4
+          hover:bg-primary/90
         `,
       },
-      md: {
+      secondary: {
         root: `
-          size-8 gap-2 rounded-md px-3 text-sm
+          bg-secondary text-secondary-foreground
 
-          *:data-[slot=icon]:size-4
-        `,
-      },
-      lg: {
-        root: `
-          size-9 gap-2 rounded-lg px-4 text-base
-
-          *:data-[slot=icon]:size-5
+          hover:bg-secondary/90
         `,
       },
     },
-    square: {
-      true: {
-        root: 'px-0',
-      },
-      false: {
-        root: 'w-auto',
-      },
-    },
-  },
-  defaultVariants: {
-    variant: 'primary',
-    size: 'md',
-    square: false,
   },
 })
-
 
 // COMPONENT
 export { default as Button } from './button.vue'
 
-
 // VARIANTS
 export type ButtonVariants = VariantProps<typeof buttonVariants>
-
 
 // PROPS
 export type ButtonProps = PrimitiveProps & {
@@ -126,15 +122,17 @@ export type ButtonProps = PrimitiveProps & {
    * @default 'primary'
    */
   variant?: ButtonVariants['variant']
+
   /**
    * The size of the button.
    * @default 'md'
    */
   size?: ButtonVariants['size']
+
   /**
    * Render the button with equal dimensions.
    * @default false
    */
-  square?: boolean
   class?: any
-} & /* @vue-ignore */ ButtonHTMLAttributes
+  square?: boolean
+}

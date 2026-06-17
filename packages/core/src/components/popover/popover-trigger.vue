@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
-import { useForwardProps, PopoverTrigger } from 'reka-ui'
+import { PopoverTrigger, useForwardProps } from 'reka-ui'
+import { computed } from 'vue'
 import {
   type PopoverTriggerProps,
   popoverVariants,
 } from '.'
-import { computed } from 'vue'
 
 const props = defineProps<PopoverTriggerProps>()
 const delegatedProps = reactiveOmit(props, 'class')

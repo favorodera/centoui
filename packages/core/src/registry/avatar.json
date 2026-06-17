@@ -1,13 +1,12 @@
 {
-  "$schema": "../schemas/component.json",
+  "$schema": "./schemas/component.json",
   "name": "avatar",
-  "description": "Component for displaying avatars with fallback support.",
   "files": [
-    "components/avatar/avatar-fallback.vue",
-    "components/avatar/avatar-group.vue",
-    "components/avatar/avatar-image.vue",
-    "components/avatar/avatar-root.vue",
-    "components/avatar/avatar-utils.ts",
-    "components/avatar/index.ts"
+    "avatar/avatar-group.vue",
+    "avatar/avatar-image.vue",
+    "avatar/avatar-fallback.vue",
+    "avatar/avatar-root.vue",
+    "avatar/index.ts",
+    "avatar/utils.ts"
   ]
 }

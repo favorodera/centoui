@@ -1,28 +1,28 @@
-import { describe, expect, test } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import { getInitials } from '../src/components/avatar'
 
 describe('getInitials', () => {
-  test('returns two initials for full name', () => {
+  it('returns two initials for full name', () => {
     expect(getInitials('John Doe')).toBe('JD')
   })
 
-  test('returns one initial for single word', () => {
+  it('returns one initial for single word', () => {
     expect(getInitials('Alice')).toBe('A')
   })
 
-  test('handles consecutive separators', () => {
+  it('handles consecutive separators', () => {
     expect(getInitials('John  Doe')).toBe('JD')
   })
 
-  test('handles custom separator', () => {
+  it('handles custom separator', () => {
     expect(getInitials('john-doe', '-')).toBe('JD')
   })
 
-  test('returns empty string for blank input', () => {
+  it('returns empty string for blank input', () => {
     expect(getInitials('  ')).toBe('')
   })
 
-  test('is unicode safe', () => {
+  it('is unicode safe', () => {
     expect(getInitials('Ñoño Álvarez')).toBe('ÑÁ')
   })
 })

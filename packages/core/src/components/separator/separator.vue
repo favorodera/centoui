@@ -2,25 +2,25 @@
 import { reactiveOmit } from '@vueuse/core'
 import { Separator, useForwardProps } from 'reka-ui'
 import { computed, useSlots } from 'vue'
-import { separatorVariants, type SeparatorProps } from './index'
-import { isSlotEmpty } from '#centoui/utils'
+import { type SeparatorProps, separatorVariants } from './index'
+
+const props = defineProps<SeparatorProps>()
 
 const slots = useSlots()
 
-const props = defineProps<SeparatorProps>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
 
-const { root, line, content } = separatorVariants()
+const { content, line, root } = separatorVariants()
 const classNames = computed(() => ({
-  root: root({
+  content: content({
     orientation: props.orientation,
-    class: props.class,
   }),
   line: line({
     orientation: props.orientation,
   }),
-  content: content({
+  root: root({
+    class: props.class,
     orientation: props.orientation,
   }),
 }))
@@ -33,7 +33,7 @@ const classNames = computed(() => ({
     :class="classNames.root"
   >
     <!-- When slot content is provided, render flanking lines around it. -->
-    <template v-if="!isSlotEmpty(slots.default)">
+    <template v-if="slots.default">
       <div
         :class="classNames.line"
         data-slot="separator-line-1"

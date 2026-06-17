@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useVModel } from '@vueuse/core'
 import { computed } from 'vue'
-import { inputVariants, type InputEmits, type InputProps } from '.'
+import { type InputEmits, type InputProps, inputVariants } from '.'
 
 const emits = defineEmits<InputEmits>()
 
@@ -18,8 +18,8 @@ const modelValue = useVModel(
 
 const { root } = inputVariants()
 const classNames = computed(() => root({
-  size: props.size,
   class: props.class,
+  size: props.size,
 }))
 </script>
 

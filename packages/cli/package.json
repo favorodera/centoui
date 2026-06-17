@@ -4,15 +4,9 @@
   "version": "1.0.0-alpha.38",
   "private": false,
   "description": "Official CLI for CentoUI.",
-  "keywords": [
-    "cli",
-    "vue",
-    "ui",
-    "components",
-    "tailwindcss"
-  ],
   "author": "Favour Emeka <favorodera@gmail.com>",
   "license": "MIT",
+  "funding": "https://github.com/sponsors/favorodera",
   "homepage": "https://centoui.vercel.app",
   "repository": {
     "type": "git",
@@ -21,6 +15,13 @@
   "bugs": {
     "url": "https://github.com/favorodera/centoui/issues"
   },
+  "keywords": [
+    "cli",
+    "vue",
+    "ui",
+    "components",
+    "tailwindcss"
+  ],
   "publishConfig": {
     "access": "public"
   },
@@ -29,38 +30,35 @@
     "./package.json": "./package.json"
   },
   "types": "./dist/types.d.mts",
-  "files": [
-    "dist"
-  ],
   "bin": {
     "centoui": "./dist/index.mjs"
+  },
+  "files": ["dist"],
+  "engines": {
+    "node": ">=22.0.0",
+    "pnpm": ">=11.0.0"
   },
   "scripts": {
     "build": "tsdown",
     "dev": "tsdown --watch",
-    "test": "vitest",
+    "test": "vitest run",
     "test:watch": "vitest watch --ui",
     "typecheck": "tsc --noEmit",
     "lint": "eslint . --fix",
-    "prepublishOnly": "pnpm run build"
-  },
-  "devDependencies": {
-    "@types/fs-extra": "catalog:",
-    "@vitest/ui": "catalog:",
-    "tsdown": "catalog:",
-    "type-fest": "^5.6.0",
-    "vitest": "catalog:"
+    "prepublishOnly": "pnpm build"
   },
   "dependencies": {
-    "@clack/prompts": "^1.2.0",
-    "c12": "catalog:",
-    "citty": "^0.2.2",
-    "fs-extra": "catalog:",
-    "nypm": "^0.6.6",
-    "pathe": "catalog:"
+    "@clack/prompts": "catalog:vendor",
+    "c12": "catalog:vendor",
+    "citty": "catalog:vendor",
+    "fs-extra": "catalog:vendor",
+    "nypm": "catalog:vendor",
+    "pathe": "catalog:vendor"
   },
-  "engines": {
-    "node": ">=22.0.0",
-    "pnpm": ">=11.0.0"
+  "devDependencies": {
+    "@types/fs-extra": "catalog:tools",
+    "@vitest/ui": "catalog:tools",
+    "tsdown": "catalog:tools",
+    "vitest": "catalog:tools"
   }
 }
