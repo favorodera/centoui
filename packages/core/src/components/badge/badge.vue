@@ -6,22 +6,27 @@ import { type BadgeProps, badgeVariants } from '.'
 
 const props = withDefaults(defineProps<BadgeProps>(), {
   as: 'span',
-  variant: 'neutral',
+  status: 'neutral',
 })
-const delegatedProps = reactiveOmit(props, 'class', 'variant')
+
+const delegatedProps = reactiveOmit(props, 'class', 'status')
+
 const forwardedProps = useForwardProps(delegatedProps)
 
 const { root } = badgeVariants()
-const classNames = computed(() => root({
-  class: props.class,
-  variant: props.variant,
-}))
+
+const classNames = computed(() => {
+  return root({
+    class: props.class,
+    status: props.status,
+  })
+})
 </script>
 
 <template>
   <Primitive
     data-slot="badge"
-    :data-variant="variant"
+    :data-status="status"
     v-bind="forwardedProps"
     :class="classNames"
   >
