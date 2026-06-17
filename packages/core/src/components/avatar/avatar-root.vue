@@ -14,12 +14,10 @@ const forwardedProps = useForwardProps(delegatedProps)
 
 const { root } = avatarVariants()
 
-const classNames = computed(() => {
-  return root({
-    class: props.class,
-    size: props.size,
-  })
-})
+const classNames = computed(() => root({
+  class: props.class,
+  size: props.size,
+}))
 
 provideRootContext(reactive({
   size: toRef(props, 'size'),

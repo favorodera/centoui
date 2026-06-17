@@ -50,5 +50,5 @@ export type BadgeProps = PrimitiveProps & {
    * Semantic color status.
    * @default 'neutral'
    */
-  status: BadgeVariants['status']
+  status?: BadgeVariants['status']
 }

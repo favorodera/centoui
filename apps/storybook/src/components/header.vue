@@ -86,7 +86,7 @@ watch(
 
     <div class="flex items-center gap-2">
       <!-- Count Badge -->
-      <Badge variant="secondary">
+      <Badge status="neutral">
         {{ navigation.activeComponentIndex.value + 1 }} / {{ navigation.components.value.length }}
       </Badge>
 

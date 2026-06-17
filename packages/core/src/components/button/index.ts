@@ -9,45 +9,45 @@ export const buttonVariants = tv({
   },
   slots: {
     root: `
-      relative inline-flex shrink-0 cursor-default items-center justify-center
-      truncate border border-transparent font-medium whitespace-nowrap
-      transition-all outline-none select-none
-
-      focus-visible:ring-2 focus-visible:ring-ring
-
-      active:translate-y-px
+      relative inline-flex items-center shrink-0 cursor-default truncate border
+      border-transparent font-medium outline-none select-none transition-all
+      rounded-md justify-center
 
       disabled:pointer-events-none disabled:opacity-65
 
       aria-invalid:ring-2 aria-invalid:ring-error
+
+      active:translate-y-px
+
+      focus-visible:ring-2 focus-visible:ring-ring
     `,
   },
   variants: {
     size: {
       lg: {
         root: `
-          block-9 inline-9 gap-2 rounded-lg px-4 text-base
+          block-9 inline-9 px-3.5 text-sm gap-1.5
 
-          *:data-[slot=icon]:block-5 *:data-[slot=icon]:inline-5
+          *:data-[slot=icon]:block-4.5 *:data-[slot=icon]:inline-4.5
         `,
       },
       md: {
         root: `
-          block-8 inline-8 gap-2 rounded-md px-3 text-sm
+          block-8 inline-8 px-3 text-sm gap-1.5
 
           *:data-[slot=icon]:block-4 *:data-[slot=icon]:inline-4
         `,
       },
       sm: {
         root: `
-          block-7 inline-7 gap-1 rounded-md px-3 text-sm
+          block-7 inline-7 px-2.5 text-xs gap-1
 
-          *:data-[slot=icon]:block-4 *:data-[slot=icon]:inline-4
+          *:data-[slot=icon]:block-3.5 *:data-[slot=icon]:inline-3.5
         `,
       },
       xs: {
         root: `
-          block-6 inline-6 gap-1 rounded-md px-2 text-xs
+          block-6 inline-6 px-2 text-xs gap-1
 
           *:data-[slot=icon]:block-3 *:data-[slot=icon]:inline-3
         `,
@@ -71,24 +71,26 @@ export const buttonVariants = tv({
       },
       ghost: {
         root: `
-          text-foreground
+          bg-transparent
 
-          hover:bg-accent hover:text-accent-foreground
+          hover:bg-accent
         `,
       },
       link: {
         root: `
-          text-foreground underline decoration-muted-foreground/40 decoration-1
-          underline-offset-3
+          underline underline-offset-1 px-0 bg-transparent decoration-1
+          [text-underline-position:under]
 
-          hover:text-primary hover:decoration-primary
+          hover:text-primary
+
+          active:translate-y-0
         `,
       },
       outline: {
         root: `
-          border-border bg-transparent text-foreground
+          border-border bg-transparent
 
-          hover:bg-accent hover:text-accent-foreground
+          hover:bg-accent
         `,
       },
       primary: {
@@ -118,21 +120,22 @@ export type ButtonVariants = VariantProps<typeof buttonVariants>
 // PROPS
 export type ButtonProps = PrimitiveProps & {
   /**
-   * The visual style of the button.
+   * Visual style variant.
    * @default 'primary'
    */
   variant?: ButtonVariants['variant']
 
   /**
-   * The size of the button.
+   * Visual size scale.
    * @default 'md'
    */
   size?: ButtonVariants['size']
+
+  class?: any
 
   /**
    * Render the button with equal dimensions.
    * @default false
    */
-  class?: any
   square?: boolean
 }

@@ -14,12 +14,10 @@ const forwardedProps = useForwardProps(delegatedProps)
 
 const { fallback } = avatarVariants()
 
-const classNames = computed(() => {
-  return fallback({
-    class: props.class,
-    size: rootContext?.size,
-  })
-})
+const classNames = computed(() => fallback({
+  class: props.class,
+  size: rootContext?.size,
+}))
 </script>
 
 <template>

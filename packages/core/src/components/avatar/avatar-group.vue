@@ -12,11 +12,9 @@ const forwardedProps = useForwardProps(delegatedProps)
 
 const { group } = avatarVariants()
 
-const classNames = computed(() => {
-  return group({
-    class: props.class,
-  })
-})
+const classNames = computed(() => group({
+  class: props.class,
+}))
 </script>
 
 <template>

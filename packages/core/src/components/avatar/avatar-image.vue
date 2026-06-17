@@ -16,12 +16,10 @@ const forwardedPropsEmits = useForwardPropsEmits(delegatedProps, emits)
 
 const { image } = avatarVariants()
 
-const classNames = computed(() => {
-  return image({
-    class: props.class,
-    size: rootContext?.size,
-  })
-})
+const classNames = computed(() => image({
+  class: props.class,
+  size: rootContext?.size,
+}))
 </script>
 
 <template>

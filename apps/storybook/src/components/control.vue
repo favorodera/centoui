@@ -29,7 +29,6 @@ const entries = computed(() => Object
     definition,
   ]) => ({
     key,
-    label: definition.label,
     ...definition,
   })))
 
@@ -62,8 +61,9 @@ function set(key: string, value: unknown) {
       >
         <Label
           :for="`prop-${entry.key}`"
+          class="capitalize"
         >
-          {{ entry.label }}
+          {{ entry.key }}
         </Label>
 
         <!-- Boolean -->

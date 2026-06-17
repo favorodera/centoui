@@ -31,6 +31,14 @@
         "badge/badge.vue",
         "badge/index.ts"
       ]
+    },
+    {
+      "$schema": "./schemas/component.json",
+      "name": "button",
+      "files": [
+        "button/button.vue",
+        "button/index.ts"
+      ]
     }
   ],
   "npmDependencies": {

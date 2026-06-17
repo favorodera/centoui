@@ -12,11 +12,9 @@ const forwardedProps = useForwardProps(delegatedProps)
 
 const { content } = accordionVariants()
 
-const classNames = computed(() => {
-  return content({
-    class: props.class,
-  })
-})
+const classNames = computed(() => content({
+  class: props.class,
+}))
 </script>
 
 <template>

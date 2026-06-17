@@ -1,6 +1,4 @@
 interface BasePropDefinition {
-  /** Human-readable label. Falls back to formatted key name if omitted. */
-  label?: string
   /** Optional contextual help text. */
   hint?: string
 }

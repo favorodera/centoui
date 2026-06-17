@@ -15,12 +15,10 @@ const forwardedProps = useForwardProps(delegatedProps)
 
 const { root } = badgeVariants()
 
-const classNames = computed(() => {
-  return root({
-    class: props.class,
-    status: props.status,
-  })
-})
+const classNames = computed(() => root({
+  class: props.class,
+  status: props.status,
+}))
 </script>
 
 <template>

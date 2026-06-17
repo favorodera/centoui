@@ -18,11 +18,9 @@ const forwardedProps = useForwardProps(delegatedProps)
 
 const { trigger } = accordionVariants()
 
-const classNames = computed(() => {
-  return trigger({
-    class: props.class,
-  })
-})
+const classNames = computed(() => trigger({
+  class: props.class,
+}))
 </script>
 
 <template>

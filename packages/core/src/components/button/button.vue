@@ -10,10 +10,13 @@ const props = withDefaults(defineProps<ButtonProps>(), {
   square: false,
   variant: 'primary',
 })
+
 const delegatedProps = reactiveOmit(props, 'class', 'variant', 'size', 'square')
+
 const forwardedProps = useForwardProps(delegatedProps)
 
 const { root } = buttonVariants()
+
 const classNames = computed(() => root({
   class: props.class,
   size: props.size,
