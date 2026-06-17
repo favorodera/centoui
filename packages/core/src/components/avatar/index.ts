@@ -95,7 +95,7 @@ export type AvatarRootProps = RekaAvatarRootProps & {
   class?: any
 
   /**
-   * The size of the avatar.
+   * Visual size scale.
    * @default 'md'
    */
   size?: AvatarVariants['size']
