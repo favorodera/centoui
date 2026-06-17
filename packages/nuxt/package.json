@@ -44,8 +44,8 @@
   "scripts": {
     "dev": "nuxt prepare && nuxt-module-build build --stub",
     "build": "nuxt prepare && nuxt-module-build build",
-    "typecheck": "nuxt prepare && vue-tsc --noEmit",
-    "lint": "eslint . --fix",
+    "typecheck": "nuxt prepare && nuxt typecheck",
+    "lint": "nuxt prepare && eslint . --fix",
     "prepublishOnly": "pnpm build"
   },
   "peerDependencies": {
