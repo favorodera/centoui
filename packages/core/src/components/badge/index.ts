@@ -3,14 +3,12 @@ import { tv, type VariantProps } from 'tailwind-variants'
 
 export const badgeVariants = tv({
   defaultVariants: {
-    size: 'md',
-    variant: 'neutral',
+    status: 'neutral',
   },
   slots: {
     root: `
-      relative inline-flex shrink-0 items-center justify-center gap-1 truncate
-      rounded-sm border px-2 py-0.5 text-xs font-medium whitespace-nowrap
-      transition-all outline-none select-none
+      relative inline-flex align-middle shrink-0 items-center block-6 gap-1 px-2
+      truncate rounded-sm border select-none text-xs outline-none
 
       focus-visible:ring-2 focus-visible:ring-ring
 
@@ -18,27 +16,21 @@ export const badgeVariants = tv({
     `,
   },
   variants: {
-    variant: {
+    status: {
       error: {
-        root: 'border-error/15 bg-error/10 text-error',
+        root: 'border-error/20 bg-error/8 text-error',
       },
       info: {
-        root: 'border-info/15 bg-info/10 text-info',
+        root: 'border-info/20 bg-info/8 text-info',
       },
       neutral: {
-        root: 'border-border bg-background text-foreground',
-      },
-      primary: {
-        root: 'border-primary bg-primary text-primary-foreground',
-      },
-      secondary: {
-        root: 'border-secondary bg-secondary text-secondary-foreground',
+        root: 'border-border bg-neutral text-neutral-foreground',
       },
       success: {
-        root: 'border-success/15 bg-success/10 text-success',
+        root: 'border-success/20 bg-success/8 text-success',
       },
       warning: {
-        root: 'border-warning/15 bg-warning/10 text-warning',
+        root: 'border-warning/20 bg-warning/8 text-warning',
       },
     },
   },
@@ -52,10 +44,11 @@ export type BadgeVariants = VariantProps<typeof badgeVariants>
 
 // PROPS
 export type BadgeProps = PrimitiveProps & {
+  class?: any
+
   /**
-   * The visual style of the badge.
+   * Semantic color status.
    * @default 'neutral'
    */
-  class?: any
-  variant?: BadgeVariants['variant']
+  status: BadgeVariants['status']
 }
