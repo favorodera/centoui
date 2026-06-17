@@ -6,6 +6,7 @@
   "description": "Vue components for elegant interfaces",
   "author": "Favour Emeka <favorodera@gmail.com>",
   "license": "MIT",
+  "funding": "https://github.com/sponsors/favorodera",
   "homepage": "https://centoui.vercel.app",
   "repository": {
     "type": "git",
@@ -40,6 +41,7 @@
   },
   "scripts": {
     "build:registry": "tsx scripts/build-registry.ts",
+    "prebuild": "pnpm run build:registry",
     "build": "tsdown",
     "dev": "tsdown --watch",
     "test": "vitest run",

@@ -4,6 +4,7 @@
   "description": "Official Nuxt module for CentoUI",
   "author": "Favour Emeka <favorodera@gmail.com>",
   "license": "MIT",
+  "funding": "https://github.com/sponsors/favorodera",
   "homepage": "https://centoui.vercel.app",
   "repository": {
     "type": "git",

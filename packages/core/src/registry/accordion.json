@@ -1,0 +1,11 @@
+{
+  "$schema": "./schemas/component.json",
+  "name": "accordion",
+  "files": [
+    "accordion/accordion-content.vue",
+    "accordion/accordion-item.vue",
+    "accordion/accordion-root.vue",
+    "accordion/accordion-trigger.vue",
+    "accordion/index.ts"
+  ]
+}

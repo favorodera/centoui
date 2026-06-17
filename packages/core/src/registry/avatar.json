@@ -1,0 +1,12 @@
+{
+  "$schema": "./schemas/component.json",
+  "name": "avatar",
+  "files": [
+    "avatar/avatar-group.vue",
+    "avatar/avatar-image.vue",
+    "avatar/avatar-fallback.vue",
+    "avatar/avatar-root.vue",
+    "avatar/index.ts",
+    "avatar/utils.ts"
+  ]
+}
