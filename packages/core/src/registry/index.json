@@ -23,6 +23,14 @@
         "avatar/index.ts",
         "avatar/utils.ts"
       ]
+    },
+    {
+      "$schema": "./schemas/component.json",
+      "name": "badge",
+      "files": [
+        "badge/badge.vue",
+        "badge/index.ts"
+      ]
     }
   ],
   "npmDependencies": {
