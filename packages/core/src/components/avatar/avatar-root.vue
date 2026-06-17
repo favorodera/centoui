@@ -2,21 +2,26 @@
 import { reactiveOmit } from '@vueuse/core'
 import { AvatarRoot, useForwardProps } from 'reka-ui'
 import { computed, reactive, toRef } from 'vue'
-import { type AvatarRootProps, avatarVariants, provideCentouiAvatarRootContext } from '.'
+import { type AvatarRootProps, avatarVariants, provideRootContext } from '.'
 
 const props = withDefaults(defineProps<AvatarRootProps>(), {
   size: 'md',
 })
+
 const delegatedProps = reactiveOmit(props, 'class', 'size')
+
 const forwardedProps = useForwardProps(delegatedProps)
 
 const { root } = avatarVariants()
-const classNames = computed(() => root({
-  class: props.class,
-  size: props.size,
-}))
 
-provideCentouiAvatarRootContext(reactive({
+const classNames = computed(() => {
+  return root({
+    class: props.class,
+    size: props.size,
+  })
+})
+
+provideRootContext(reactive({
   size: toRef(props, 'size'),
 }))
 </script>

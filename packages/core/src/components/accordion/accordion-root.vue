@@ -16,7 +16,11 @@ const forwardedPropsEmits = useForwardPropsEmits(delegatedProps, emits)
 
 const { root } = accordionVariants()
 
-const classNames = computed(() => root({ class: props.class }))
+const classNames = computed(() => {
+  return root({
+    class: props.class,
+  })
+})
 </script>
 
 <template>

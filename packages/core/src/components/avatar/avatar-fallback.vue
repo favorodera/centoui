@@ -2,24 +2,24 @@
 import { reactiveOmit } from '@vueuse/core'
 import { AvatarFallback, useForwardProps } from 'reka-ui'
 import { computed } from 'vue'
-import {
-  type AvatarFallbackProps,
-  avatarVariants,
-  injectCentouiAvatarRootContext,
-} from '.'
+import { type AvatarFallbackProps, avatarVariants, injectRootContext } from '.'
 
 const props = defineProps<AvatarFallbackProps>()
 
-const rootContext = injectCentouiAvatarRootContext()
+const rootContext = injectRootContext()
 
 const delegatedProps = reactiveOmit(props, 'class')
+
 const forwardedProps = useForwardProps(delegatedProps)
 
 const { fallback } = avatarVariants()
-const classNames = computed(() => fallback({
-  class: props.class,
-  size: rootContext?.size,
-}))
+
+const classNames = computed(() => {
+  return fallback({
+    class: props.class,
+    size: rootContext?.size,
+  })
+})
 </script>
 
 <template>

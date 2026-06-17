@@ -15,30 +15,24 @@ export const avatarVariants = tv({
   slots: {
     fallback: `
       flex block-full inline-full items-center justify-center truncate
-      font-medium text-muted-foreground uppercase select-none
+      font-medium text-muted-foreground uppercase
     `,
-    group: `
-      isolate flex -space-x-2.5
-
-      *:border-background
-
-      *:data-[slot=avatar-root]:border-2
-    `,
+    group: `isolate inline-flex -space-x-2.5`,
     image: 'block-full inline-full rounded-[inherit] object-cover',
     root: `
       relative inline-flex shrink-0 items-center justify-center overflow-hidden
-      rounded-full border border-border bg-muted align-middle select-none
+      rounded-full border border-border align-middle bg-muted select-none
     `,
   },
   variants: {
     size: {
       lg: {
         fallback: `
-          text-base
+          text-sm
 
-          *:data-[slot=icon]:block-5 *:data-[slot=icon]:inline-5
+          *:data-[slot=icon]:block-4.5 *:data-[slot=icon]:inline-4.5
         `,
-        root: 'block-12 inline-12',
+        root: 'block-9 inline-9',
       },
       md: {
         fallback: `
@@ -46,7 +40,7 @@ export const avatarVariants = tv({
 
           *:data-[slot=icon]:block-4 *:data-[slot=icon]:inline-4
         `,
-        root: 'block-10 inline-10',
+        root: 'block-8 inline-8',
       },
       sm: {
         fallback: `
@@ -54,11 +48,19 @@ export const avatarVariants = tv({
 
           *:data-[slot=icon]:block-3.5 *:data-[slot=icon]:inline-3.5
         `,
-        root: 'block-8 inline-8',
+        root: 'block-7 inline-7',
+      },
+      xl: {
+        fallback: `
+          text-base
+
+          *:data-[slot=icon]:block-5 *:data-[slot=icon]:inline-5
+        `,
+        root: 'block-10 inline-10',
       },
       xs: {
         fallback: `
-          text-[10px]
+          text-xs
 
           *:data-[slot=icon]:block-3 *:data-[slot=icon]:inline-3
         `,
@@ -78,12 +80,9 @@ export { default as AvatarRoot } from './avatar-root.vue'
 export type AvatarRootContext = Pick<AvatarRootProps, 'size'>
 
 export const [
-  injectCentouiAvatarRootContext,
-  provideCentouiAvatarRootContext,
-] = createContext<AvatarRootContext>(
-  'AvatarRoot',
-  'centoui:avatar-root:context',
-)
+  injectRootContext,
+  provideRootContext,
+] = createContext<AvatarRootContext>('AvatarRoot', 'centoui:avatar-root:context')
 
 // VARIANTS
 export type AvatarVariants = VariantProps<typeof avatarVariants>
@@ -93,11 +92,12 @@ export { getInitials } from './utils.js'
 
 // PROPS
 export type AvatarRootProps = RekaAvatarRootProps & {
+  class?: any
+
   /**
    * The size of the avatar.
    * @default 'md'
    */
-  class?: any
   size?: AvatarVariants['size']
 }
 
