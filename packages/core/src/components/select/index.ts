@@ -162,6 +162,7 @@ export interface SelectRootSlots {
   default?: (props: {
     /** Current input values */
     modelValue?: AcceptableValue | Array<AcceptableValue>
+
     /** Current open state */
     open: boolean
   }) => any
@@ -171,6 +172,7 @@ export interface SelectValueSlots {
   default?: (props: {
     /** Current input values */
     modelValue?: AcceptableValue | Array<AcceptableValue>
+
     /** Current selected label */
     selectedLabel: Array<string>
   }) => any

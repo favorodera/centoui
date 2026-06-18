@@ -85,6 +85,7 @@ export interface PopoverRootSlots {
   default?: (props: {
     /** Current open state */
     open: boolean
+
     /** Close the popover */
     close: () => void
   }) => any

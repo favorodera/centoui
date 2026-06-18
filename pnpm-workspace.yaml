@@ -1,5 +1,6 @@
 minimumReleaseAgeExclude:
   - '@favorodera/eslint-config@0.1.1'
+  - '@favorodera/eslint-config@0.1.2'
 shellEmulator: true
 
 trustPolicy: no-downgrade
@@ -28,7 +29,7 @@ catalogs:
 
     vue: ^3.0.0
   tools:
-    '@favorodera/eslint-config': ^0.1.1
+    '@favorodera/eslint-config': ^0.1.2
     '@nuxt/module-builder': ^1.0.2
     '@nuxt/schema': ^4.4.8
     '@tsconfig/node24': ^24.0.4

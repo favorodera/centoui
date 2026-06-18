@@ -58,6 +58,7 @@ export interface InputProps {
    * Can be binded as v-model:value
    */
   value?: number | string
+
   /** Controls browser autocomplete suggestions. */
   autocomplete?: 'off' | 'on' | (string & {})
   class?: any
