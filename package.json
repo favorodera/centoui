@@ -31,15 +31,12 @@
     "prepublishOnly": "turbo prepublishOnly",
     "ready": "pnpm install && pnpm lint && pnpm typecheck && pnpm build && pnpm test"
   },
-  "dependencies": {
+  "devDependencies": {
     "@favorodera/eslint-config": "catalog:tools",
     "@types/node": "catalog:tools",
     "eslint": "catalog:tools",
     "relizy": "catalog:tools",
     "turbo": "catalog:tools",
     "typescript": "catalog:tools"
-  },
-  "devDependencies": {
-    "@favorodera/eslint-config": "catalog:tools"
   }
 }
