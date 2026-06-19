@@ -4,11 +4,13 @@ import { tv } from 'tailwind-variants'
 export const accordionVariants = tv({
   slots: {
     content: `
-      overflow-hidden text-sm pbe-2 text-muted-foreground grid gap-2
+      overflow-hidden text-sm pbe-2 grid gap-2
 
-      data-[state=closed]:animate-accordion-up
+      data-[state=closed]:animate-accordion-up data-[state=closed]:ease-in
+      data-[state=closed]:duration-150
 
-      data-[state=open]:animate-accordion-down
+      data-[state=open]:animate-accordion-down data-[state=open]:ease-out
+      data-[state=open]:duration-200
     `,
     item: 'inline-full',
     root: 'inline-full',

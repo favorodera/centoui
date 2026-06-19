@@ -11,7 +11,7 @@ export const buttonVariants = tv({
     root: `
       relative inline-flex items-center shrink-0 cursor-default truncate border
       border-transparent font-medium outline-none select-none transition-all
-      rounded-md justify-center
+      justify-center duration-150 ease-in-out
 
       disabled:pointer-events-none disabled:opacity-65
 
@@ -26,28 +26,28 @@ export const buttonVariants = tv({
     size: {
       lg: {
         root: `
-          block-9 inline-9 px-3.5 text-sm gap-1.5
+          block-9 inline-9 px-3.5 text-sm gap-1.5 rounded-md
 
           *:data-[slot=icon]:block-4.5 *:data-[slot=icon]:inline-4.5
         `,
       },
       md: {
         root: `
-          block-8 inline-8 px-3 text-sm gap-1.5
+          block-8 inline-8 px-3 text-sm gap-1.5 rounded-md
 
           *:data-[slot=icon]:block-4 *:data-[slot=icon]:inline-4
         `,
       },
       sm: {
         root: `
-          block-7 inline-7 px-2.5 text-xs gap-1
+          block-7 inline-7 px-2.5 text-xs gap-1 rounded-sm
 
           *:data-[slot=icon]:block-3.5 *:data-[slot=icon]:inline-3.5
         `,
       },
       xs: {
         root: `
-          block-6 inline-6 px-2 text-xs gap-1
+          block-6 inline-6 px-2 text-xs gap-1 rounded-sm
 
           *:data-[slot=icon]:block-3 *:data-[slot=icon]:inline-3
         `,
@@ -62,7 +62,7 @@ export const buttonVariants = tv({
       },
     },
     variant: {
-      error: {
+      destructive: {
         root: `
           bg-error text-error-foreground
 

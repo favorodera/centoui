@@ -3,7 +3,7 @@ import { tv, type VariantProps } from 'tailwind-variants'
 
 export const badgeVariants = tv({
   defaultVariants: {
-    status: 'neutral',
+    color: 'neutral',
   },
   slots: {
     root: `
@@ -16,7 +16,7 @@ export const badgeVariants = tv({
     `,
   },
   variants: {
-    status: {
+    color: {
       error: {
         root: 'border-error/20 bg-error/8 text-error',
       },
@@ -47,8 +47,8 @@ export type BadgeProps = PrimitiveProps & {
   class?: any
 
   /**
-   * Semantic color status.
+   * Semantic color.
    * @default 'neutral'
    */
-  status?: BadgeVariants['status']
+  color?: BadgeVariants['color']
 }
