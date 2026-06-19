@@ -6,8 +6,8 @@ export const inputVariants = tv({
   },
   slots: {
     root: `
-      inline-full min-inline-0 border border-input bg-transparent transition-all
-      outline-none
+      inline-full min-inline-0 border border-input bg-transparent
+      transition-shadow outline-none duration-150 ease-in-out
 
       selection:bg-primary selection:text-primary-foreground
 
@@ -15,18 +15,21 @@ export const inputVariants = tv({
 
       focus-visible:ring-2 focus-visible:ring-ring
 
-      disabled:pointer-events-none disabled:bg-input/60 disabled:opacity-65
+      disabled:pointer-events-none disabled:opacity-65
 
       aria-invalid:ring-2 aria-invalid:ring-error
     `,
   },
   variants: {
     size: {
+      lg: {
+        root: 'block-9 rounded-md px-3.5 text-sm',
+      },
       md: {
-        root: 'block-8 rounded-md px-3 py-1 text-sm',
+        root: 'block-8 rounded-md px-3 text-sm',
       },
       sm: {
-        root: 'block-7 rounded-md px-3 py-1 text-sm',
+        root: 'block-7 rounded-md px-2.5 text-xs',
       },
     },
   },
@@ -42,20 +45,22 @@ export type InputVariants = VariantProps<typeof inputVariants>
 // Note: 'autocomplete' is defined with simpler types to avoid TS2590 union complexity issues
 export interface InputProps {
   /**
-   * The visual size of the input.
+   * Visual size scale.
    * @default 'md'
    */
   size?: InputVariants['size']
 
   /**
-   * The value of the input when it is initially rendered.\
+   * Value of the input when it is initially rendered.
+   *
    * Use when you do not need to control its value.
    */
   defaultValue?: number | string
 
   /**
-   * The controlled value of the input.\
-   * Can be binded as v-model:value
+   * The controlled value of the input.
+   *
+   * Can be binded as v-model:value.
    */
   value?: number | string
 
