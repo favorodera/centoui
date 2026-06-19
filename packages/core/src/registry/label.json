@@ -1,0 +1,8 @@
+{
+  "$schema": "./schemas/component.json",
+  "name": "label",
+  "files": [
+    "label/label.vue",
+    "label/index.ts"
+  ]
+}
