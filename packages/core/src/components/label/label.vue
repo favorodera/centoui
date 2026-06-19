@@ -5,11 +5,16 @@ import { computed } from 'vue'
 import { type LabelProps, labelVariants } from '.'
 
 const props = defineProps<LabelProps>()
+
 const delegatedProps = reactiveOmit(props, 'class')
+
 const forwardedProps = useForwardProps(delegatedProps)
 
 const { root } = labelVariants()
-const classNames = computed(() => root({ class: props.class }))
+
+const classNames = computed(() => root({
+  class: props.class
+}))
 </script>
 
 <template>
