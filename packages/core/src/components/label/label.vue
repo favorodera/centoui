@@ -13,7 +13,7 @@ const forwardedProps = useForwardProps(delegatedProps)
 const { root } = labelVariants()
 
 const classNames = computed(() => root({
-  class: props.class
+  class: props.class,
 }))
 </script>
 
