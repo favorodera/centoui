@@ -8,9 +8,11 @@ const props = withDefaults(defineProps<ButtonGroupProps>(), {
   orientation: 'horizontal',
 })
 const delegatedProps = reactiveOmit(props, 'class', 'orientation')
+
 const forwardedProps = useForwardProps(delegatedProps)
 
 const { root } = buttonGroupVariants()
+
 const classNames = computed(() => root({
   class: props.class,
   orientation: props.orientation,

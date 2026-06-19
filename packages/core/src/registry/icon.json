@@ -1,0 +1,8 @@
+{
+  "$schema": "./schemas/component.json",
+  "name": "icon",
+  "files": [
+    "icon/icon.vue",
+    "icon/index.ts"
+  ]
+}

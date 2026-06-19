@@ -46,10 +46,11 @@ export type ButtonGroupVariants = VariantProps<typeof buttonGroupVariants>
 
 // PROPS
 export type ButtonGroupProps = PrimitiveProps & {
+  class?: any
+
   /**
    * The orientation of the button group.
    * @default 'horizontal'
    */
-  class?: any
   orientation?: ButtonGroupVariants['orientation']
 }

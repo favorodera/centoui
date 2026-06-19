@@ -3,7 +3,7 @@ import { tv } from 'tailwind-variants'
 
 export const iconVariants = tv({
   slots: {
-    root: 'pointer-events-none block-4 inline-4 shrink-0',
+    root: 'pointer-events-none block-4 inline-4 shrink-0 align-middle',
   },
 })
 
@@ -18,5 +18,6 @@ export type IconProps = Omit<IconifyIconProps, 'ariaHidden'> & {
    * @default true
    */
   ariaHidden?: 'false' | 'true' | boolean
+
   class?: any
 }
