@@ -1,4 +1,4 @@
-import type { ComponentRegistryEntry } from 'centoui-cli'
+import type { ComponentRegistryEntry, PackageJson } from 'centoui-cli'
 import { intro, note, outro, tasks } from '@clack/prompts'
 import fsExtra from 'fs-extra'
 import { fileURLToPath } from 'node:url'
@@ -9,7 +9,7 @@ const REGISTRY_DIR = join(__dirname, '../src/registry')
 const REGISTRY_OUTPUT = join(REGISTRY_DIR, 'index.json')
 
 /** Static list of core dependencies required in every CentoUI project. */
-const ROOT_NPM_DEPENDENCIES: Record<string, string> = {
+const ROOT_NPM_DEPENDENCIES: PackageJson['dependencies'] = {
   '@tailwindcss/vite': '^4.3.1',
   '@vueuse/core': '^14.3.0',
   'reka-ui': '^2.9.10',
@@ -65,7 +65,7 @@ await tasks([
       await fsExtra.writeJSON(
         REGISTRY_OUTPUT,
         {
-          $schema: './schemas/registry.schema.json',
+          $schema: './schemas/registry.json',
           components: entries,
           npmDependencies: ROOT_NPM_DEPENDENCIES,
         },
