@@ -17,6 +17,7 @@ const modelValue = useVModel(
 )
 
 const { root } = inputVariants()
+
 const classNames = computed(() => root({
   class: props.class,
   size: props.size,
