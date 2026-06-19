@@ -86,7 +86,7 @@ watch(
 
     <div class="flex items-center gap-2">
       <!-- Count Badge -->
-      <Badge status="neutral">
+      <Badge color="neutral">
         {{ navigation.activeComponentIndex.value + 1 }} / {{ navigation.components.value.length }}
       </Badge>
 
@@ -179,7 +179,7 @@ watch(
                 <Button
                   v-if="theme.hasCustomTheme"
                   size="xs"
-                  variant="error"
+                  variant="destructive"
                   class="flex-1"
                   @click="theme.resetTheme"
                 >

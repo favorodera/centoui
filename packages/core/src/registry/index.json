@@ -34,10 +34,26 @@
     },
     {
       "$schema": "./schemas/component.json",
+      "name": "button-group",
+      "files": [
+        "button-group/button-group.vue",
+        "button-group/index.ts"
+      ]
+    },
+    {
+      "$schema": "./schemas/component.json",
       "name": "button",
       "files": [
         "button/button.vue",
         "button/index.ts"
+      ]
+    },
+    {
+      "$schema": "./schemas/component.json",
+      "name": "icon",
+      "files": [
+        "icon/icon.vue",
+        "icon/index.ts"
       ]
     }
   ],
