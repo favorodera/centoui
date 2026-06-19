@@ -26,4 +26,30 @@ useStory('Button Group', {})
       <Icon icon="lucide:minus" />
     </Button>
   </ButtonGroup>
+
+  <ButtonGroup>
+    <ButtonGroup>
+    <Button variant="secondary">
+      <Icon icon="lucide:italic" />
+    </Button>
+
+    <Separator orientation="vertical" />
+
+    <Button variant="secondary">
+      <Icon icon="lucide:underline" />
+    </Button>
+  </ButtonGroup>
+
+   <ButtonGroup>
+    <Button variant="secondary">
+      <Icon icon="lucide:bold" />
+    </Button>
+
+    <Separator orientation="vertical" />
+
+    <Button variant="secondary">
+      <Icon icon="lucide:strikethrough" />
+    </Button>
+  </ButtonGroup>
+  </ButtonGroup>
 </template>
