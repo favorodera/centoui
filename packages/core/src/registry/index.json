@@ -63,6 +63,14 @@
         "input/input.vue",
         "input/index.ts"
       ]
+    },
+    {
+      "$schema": "./schemas/component.json",
+      "name": "label",
+      "files": [
+        "label/label.vue",
+        "label/index.ts"
+      ]
     }
   ],
   "npmDependencies": {
