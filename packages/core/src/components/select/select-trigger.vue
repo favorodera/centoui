@@ -4,25 +4,29 @@ import { SelectIcon, SelectTrigger, useForwardProps } from 'reka-ui'
 import { computed } from 'vue'
 import config from '#centoui/config'
 import {
+  injectRootContext,
   type SelectTriggerProps,
   selectVariants,
 } from '.'
 import { Icon } from '../icon'
 
-const props = withDefaults(defineProps<SelectTriggerProps>(), {
-  size: 'md',
-})
-const delegatedProps = reactiveOmit(props, 'class', 'size')
+const props = defineProps<SelectTriggerProps>()
+
+const rootContext = injectRootContext()
+
+const delegatedProps = reactiveOmit(props, 'class')
+
 const forwardedProps = useForwardProps(delegatedProps)
 
 const { icon, trigger } = selectVariants()
+
 const classNames = computed(() => ({
   icon: icon({
-    triggerSize: props.size,
+    size: rootContext?.size,
   }),
   trigger: trigger({
     class: props.class,
-    triggerSize: props.size,
+    size: rootContext?.size,
   }),
 }))
 </script>
@@ -32,7 +36,6 @@ const classNames = computed(() => ({
     v-bind="forwardedProps"
     data-slot="select-trigger"
     :class="classNames.trigger"
-    :data-size="props.size"
   >
     <slot />
 
