@@ -9,6 +9,7 @@ import {
 import { computed } from 'vue'
 import config from '#centoui/config'
 import {
+  injectRootContext,
   type SelectItemEmits,
   type SelectItemProps,
   selectVariants,
@@ -18,15 +19,26 @@ import { Icon } from '../icon'
 const emits = defineEmits<SelectItemEmits>()
 
 const props = defineProps<SelectItemProps>()
+
+const rootContext = injectRootContext()
+
 const delegatedProps = reactiveOmit(props, 'class')
 
 const forwardedPropsEmits = useForwardPropsEmits(delegatedProps, emits)
 
 const { item, itemIndicator, itemText } = selectVariants()
+
 const classNames = computed(() => ({
-  item: item({ class: props.class }),
-  itemIndicator: itemIndicator(),
-  itemText: itemText(),
+  item: item({
+    class: props.class,
+    size: rootContext.size,
+  }),
+  itemIndicator: itemIndicator({
+    size: rootContext.size,
+  }),
+  itemText: itemText({
+    size: rootContext.size,
+  }),
 }))
 </script>
 
