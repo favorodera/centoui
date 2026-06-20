@@ -3,16 +3,25 @@ import { reactiveOmit } from '@vueuse/core'
 import { SelectLabel, useForwardProps } from 'reka-ui'
 import { computed } from 'vue'
 import {
+  injectRootContext,
   type SelectLabelProps,
   selectVariants,
 } from '.'
 
 const props = defineProps<SelectLabelProps>()
+
+const rootContext = injectRootContext()
+
 const delegatedProps = reactiveOmit(props, 'class')
+
 const forwardedProps = useForwardProps(delegatedProps)
 
 const { label } = selectVariants()
-const classNames = computed(() => label({ class: props.class }))
+
+const classNames = computed(() => label({
+  class: props.class,
+  size: rootContext?.size,
+}))
 </script>
 
 <template>
