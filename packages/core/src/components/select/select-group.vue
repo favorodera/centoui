@@ -8,11 +8,16 @@ import {
 } from '.'
 
 const props = defineProps<SelectGroupProps>()
+
 const delegatedProps = reactiveOmit(props, 'class')
+
 const forwardedProps = useForwardProps(delegatedProps)
 
 const { group } = selectVariants()
-const classNames = computed(() => group({ class: props.class }))
+
+const classNames = computed(() => group({
+  class: props.class,
+}))
 </script>
 
 <template>
