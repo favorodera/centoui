@@ -1,16 +1,28 @@
-import type { AcceptableValue, SelectContentEmits as RekaSelectContentEmits, SelectContentProps as RekaSelectContentProps, SelectGroupProps as RekaSelectGroupProps, SelectItemEmits as RekaSelectItemEmits, SelectItemProps as RekaSelectItemProps, SelectLabelProps as RekaSelectLabelProps, SelectRootEmits as RekaSelectRootEmits, SelectRootProps as RekaSelectRootProps, SelectTriggerProps as RekaSelectTriggerProps, SelectValueProps as RekaSelectValueProps } from 'reka-ui'
+import {
+  type AcceptableValue,
+  createContext,
+  type SelectContentEmits as RekaSelectContentEmits,
+  type SelectContentProps as RekaSelectContentProps,
+  type SelectGroupProps as RekaSelectGroupProps,
+  type SelectItemEmits as RekaSelectItemEmits,
+  type SelectItemProps as RekaSelectItemProps,
+  type SelectLabelProps as RekaSelectLabelProps,
+  type SelectRootEmits as RekaSelectRootEmits,
+  type SelectRootProps as RekaSelectRootProps,
+  type SelectTriggerProps as RekaSelectTriggerProps,
+  type SelectValueProps as RekaSelectValueProps,
+} from 'reka-ui'
 import { tv, type VariantProps } from 'tailwind-variants'
 
 export const selectVariants = tv({
   defaultVariants: {
     contentPosition: 'popper',
-    triggerSize: 'md',
+    size: 'md',
   },
   slots: {
     arrow: 'z-50 fill-surface-raised stroke-input',
     content: `
-      relative z-50 min-inline-3xs scrollbar-none rounded-lg border border-input
-      bg-surface-raised
+      bg-surface-raised border border-input z-50 relative rounded-md space-y-0.5
 
       data-[side=bottom]:slide-in-from-top-2
 
@@ -21,52 +33,51 @@ export const selectVariants = tv({
       data-[side=top]:slide-in-from-bottom-2
 
       data-[state=closed]:animate-out data-[state=closed]:fade-out-0
-      data-[state=closed]:zoom-out-95
+      data-[state=closed]:zoom-out-95 data-[state=closed]:duration-100
+      data-[state=closed]:ease-in
 
       data-[state=open]:animate-in data-[state=open]:fade-in-0
-      data-[state=open]:zoom-in-95
+      data-[state=open]:zoom-in-95 data-[state=open]:duration-200
+      data-[state=open]:ease-out
     `,
-    group: 'scroll-my-1 p-1',
+    group: 'scroll-my-1 p-1 space-y-0.5',
     icon: 'text-muted-foreground',
     item: `
-      relative flex inline-full cursor-default items-center gap-2 rounded-md
-      py-1 pe-8 ps-2 text-sm outline-none select-none
+      relative flex inline-full cursor-default items-center outline-none
+      select-none
 
       focus:bg-accent focus:text-accent-foreground
 
       data-disabled:pointer-events-none data-disabled:opacity-65
     `,
-    itemIndicator: 'absolute inset-bs-1/2 inset-e-2 -translate-y-1/2',
+    itemIndicator: 'absolute inset-bs-1/2 -translate-y-1/2',
     itemText: 'min-inline-0 truncate',
-    label: 'px-2 py-1 text-xs text-muted-foreground',
+    label: 'text-muted-foreground',
     scrollDownButton: `
-      z-10 flex inline-full cursor-default items-center justify-center
-      rounded-b-[inherit] bg-surface-raised py-1
-
-      *:data-[slot=icon]:block-4 *:data-[slot=icon]:inline-4
+      flex inline-full cursor-default items-center justify-center
+      rounded-b-[inherit] bg-surface-raised mbe-0
     `,
     scrollUpButton: `
-      z-10 flex inline-full cursor-default items-center justify-center
-      rounded-t-[inherit] bg-surface-raised py-1
-
-      *:data-[slot=icon]:block-4 *:data-[slot=icon]:inline-4
+      flex inline-full cursor-default items-center justify-center
+      rounded-t-[inherit] bg-surface-raised
     `,
     trigger: `
-      flex inline-full items-center border border-input bg-transparent
-      transition-all outline-none
+      relative flex items-center shrink-0 inline-full min-inline-0 border
+      border-input bg-transparent outline-none transition-colors duration-150
+      ease-in-out
 
-      selection:bg-primary selection:text-primary-foreground
+      hover:bg-accent
 
       focus-visible:ring-2 focus-visible:ring-ring
 
-      disabled:pointer-events-none disabled:bg-input/60 disabled:opacity-65
+      disabled:opacity-65 disabled:pointer-events-none
 
       aria-invalid:ring-2 aria-invalid:ring-error
 
       data-placeholder:text-muted-foreground
     `,
     value: 'flex flex-1 items-center truncate',
-    viewport: '*:data-[slot=separator]:my-1',
+    viewport: 'inline-full rounded-[inherit]',
   },
   variants: {
     contentPosition: {
@@ -75,34 +86,51 @@ export const selectVariants = tv({
         content: `
           max-block-(--reka-select-content-available-height) inline-full
           min-inline-(--reka-select-trigger-width)
-
-          data-[side=bottom]:translate-y-1
-
-          data-[side=left]:-translate-x-1
-
-          data-[side=right]:translate-x-1
-
-          data-[side=top]:-translate-y-1
         `,
-        viewport: 'inline-full',
       },
     },
-    triggerSize: {
+    size: {
+      lg: {
+        icon: 'block-4.5 inline-4.5',
+        item: 'block-9 rounded-md ps-2.5 pe-8.5 text-sm gap-1.5',
+        itemIndicator: 'inset-e-2.5 block-4.5 inline-4.5',
+        label: 'text-xs px-2.5',
+        scrollDownButton: 'block-9 px-2.5',
+        scrollUpButton: `
+          block-9 px-2.5
+
+          *:data-[slot=icon]:block-4.5 *:data-[slot=icon]:inline-4.5
+        `,
+        trigger: 'block-9 rounded-md px-3.5 text-sm gap-1.5',
+        value: 'gap-1.5',
+      },
       md: {
         icon: 'block-4 inline-4',
-        trigger: `
-          block-8 gap-2 rounded-md px-3 py-1 text-sm
+        item: 'block-8 rounded-md ps-2 pe-7.5 text-sm gap-1.5',
+        itemIndicator: 'inset-e-2 block-4 inline-4',
+        label: 'text-xs px-2',
+        scrollDownButton: 'block-8 px-2',
+        scrollUpButton: `
+          block-8 px-2
 
-          *:data-[slot=select-value]:gap-2
+          *:data-[slot=icon]:block-4 *:data-[slot=icon]:inline-4
         `,
+        trigger: 'block-8 rounded-md px-3 text-sm gap-1.5',
+        value: 'gap-1.5',
       },
       sm: {
-        icon: 'block-4 inline-4',
-        trigger: `
-          block-7 gap-1 rounded-md px-3 py-1 text-sm
+        icon: 'block-3.5 inline-3.5',
+        item: 'block-7 rounded-sm ps-1.5 pe-6 text-xs gap-1',
+        itemIndicator: 'inset-e-1.5 block-3.5 inline-3.5',
+        label: 'text-xs px-1.5',
+        scrollDownButton: 'block-7 px-2.5',
+        scrollUpButton: `
+          block-7 px-2.5
 
-          *:data-[slot=select-value]:gap-1
+          *:data-[slot=icon]:block-3.5 *:data-[slot=icon]:inline-3.5
         `,
+        trigger: 'block-7 rounded-sm px-2.5 text-xs gap-1',
+        value: 'gap-1',
       },
     },
   },
@@ -117,30 +145,38 @@ export { default as SelectRoot } from './select-root.vue'
 export { default as SelectTrigger } from './select-trigger.vue'
 export { default as SelectValue } from './select-value.vue'
 
+// CONTEXT
+export type SelectRootContext = Pick<SelectRootProps, 'size'>
+
+export const [
+  injectRootContext,
+  provideRootContext,
+] = createContext<SelectRootContext>('SelectRoot', 'centoui:select-root:context')
+
 // VARIANTS
 export type SelectVariants = VariantProps<typeof selectVariants>
 
 // PROPS
-export type SelectRootProps = RekaSelectRootProps
-
-export type SelectTriggerProps = RekaSelectTriggerProps & {
+export type SelectRootProps = RekaSelectRootProps & {
   /**
-   * The visual size of the trigger.
+   * Visual size scale.
    * @default 'md'
    */
-  class?: any
-  size?: SelectVariants['triggerSize']
+  size?: SelectVariants['size']
 }
+
+export type SelectTriggerProps = RekaSelectTriggerProps & { class?: any }
 
 export type SelectValueProps = RekaSelectValueProps & { class?: any }
 
 export type SelectContentProps = RekaSelectContentProps & {
+  class?: any
+
   /**
    * Whether to show an arrow alongside the content.\
    * Only available when `position` is set to `popper`.
    * @default false
    */
-  class?: any
   showArrow?: boolean
 }
 
