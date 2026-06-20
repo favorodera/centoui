@@ -1,14 +1,24 @@
 <script setup lang="ts">
+import { reactiveOmit } from '@vueuse/core'
 import { SelectRoot, useForwardPropsEmits } from 'reka-ui'
-import type { SelectRootEmits, SelectRootProps, SelectRootSlots } from '.'
+import { reactive, toRef } from 'vue'
+import { provideRootContext, type SelectRootEmits, type SelectRootProps, type SelectRootSlots } from '.'
 
 defineSlots<SelectRootSlots>()
 
 const emits = defineEmits<SelectRootEmits>()
 
-const props = defineProps<SelectRootProps>()
+const props = withDefaults(defineProps<SelectRootProps>(), {
+  size: 'md',
+})
 
-const forwardedPropsEmits = useForwardPropsEmits(props, emits)
+const delegatedProps = reactiveOmit(props, 'size')
+
+const forwardedPropsEmits = useForwardPropsEmits(delegatedProps, emits)
+
+provideRootContext(reactive({
+  size: toRef(props, 'size'),
+}))
 </script>
 
 <template>
@@ -16,6 +26,7 @@ const forwardedPropsEmits = useForwardPropsEmits(props, emits)
     v-slot="slotProps"
     v-bind="forwardedPropsEmits"
     data-slot="select-root"
+    :data-size="props.size"
   >
     <slot v-bind="slotProps" />
   </SelectRoot>
