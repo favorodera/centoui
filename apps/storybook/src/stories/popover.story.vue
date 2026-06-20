@@ -66,7 +66,7 @@ const controls = useStory('Input', {
 
       <PopoverFooter class="flex items-center justify-end">
         <Button
-          variant="destructive"
+          variant="error"
           size="sm"
         >
           Sign out

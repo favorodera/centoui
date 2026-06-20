@@ -35,6 +35,7 @@
     "@favorodera/eslint-config": "catalog:tools",
     "@types/node": "catalog:tools",
     "eslint": "catalog:tools",
+    "libphonenumber-js": "catalog:tools",
     "relizy": "catalog:tools",
     "turbo": "catalog:tools",
     "typescript": "catalog:tools"

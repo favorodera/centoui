@@ -62,9 +62,8 @@ export const selectVariants = tv({
       rounded-t-[inherit] bg-surface-raised
     `,
     trigger: `
-      relative flex items-center shrink-0 inline-full min-inline-0 border
-      border-input bg-transparent outline-none transition-colors duration-150
-      ease-in-out
+      relative flex items-center inline-full min-inline-0 border border-input
+      bg-transparent outline-none transition-colors duration-150 ease-in-out
 
       hover:bg-accent
 
