@@ -3,7 +3,7 @@ import { Badge, badgeVariants } from '#centoui/components/badge'
 import { Icon } from '#centoui/components/icon'
 import { useStory } from '@/composables/use-story'
 
-const values = useStory('Badge', {
+const controls = useStory('Badge', {
   color: {
     default: badgeVariants.defaultVariants.color,
     options: Object.keys(badgeVariants.variants.color),
@@ -13,16 +13,16 @@ const values = useStory('Badge', {
 </script>
 
 <template>
-  <Badge :color="values.color">
+  <Badge :color="controls.color">
     Badge
   </Badge>
 
-  <Badge :color="values.color">
+  <Badge :color="controls.color">
     <Icon icon="lucide:user" />
     User
   </Badge>
 
-  <Badge :color="values.color">
+  <Badge :color="controls.color">
     Loading...
     <Icon icon="svg-spinners:180-ring" />
   </Badge>

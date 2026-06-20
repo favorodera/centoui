@@ -4,7 +4,7 @@ import { Icon } from '#centoui/components/icon'
 import { Separator } from '#centoui/components/separator'
 import { useStory } from '@/composables/use-story'
 
-const values = useStory('Accordion', {
+const controls = useStory('Accordion', {
   disabled: {
     default: false,
     label: 'Disabled',
@@ -17,7 +17,7 @@ const values = useStory('Accordion', {
   <AccordionRoot
     type="single"
     collapsible
-    :disabled="values.disabled"
+    :disabled="controls.disabled"
     default-value="item-1"
   >
     <AccordionItem

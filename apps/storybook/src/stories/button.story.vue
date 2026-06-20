@@ -3,7 +3,7 @@ import { Button, buttonVariants } from '#centoui/components/button'
 import { Icon } from '#centoui/components/icon'
 import { useStory } from '@/composables/use-story'
 
-const values = useStory('Button', {
+const controls = useStory('Button', {
   disabled: {
     default: false,
     type: 'boolean',
@@ -24,26 +24,26 @@ const values = useStory('Button', {
 
 <template>
   <Button
-    :size="values.size"
-    :variant="values.variant"
-    :disabled="values.disabled"
+    :size="controls.size"
+    :variant="controls.variant"
+    :disabled="controls.disabled"
   >
     Button
   </Button>
 
   <Button
-    :size="values.size"
-    :variant="values.variant"
+    :size="controls.size"
+    :variant="controls.variant"
     square
-    :disabled="values.disabled"
+    :disabled="controls.disabled"
   >
     <Icon icon="lucide:user" />
   </Button>
 
   <Button
-    :size="values.size"
-    :variant="values.variant"
-    :disabled="values.disabled"
+    :size="controls.size"
+    :variant="controls.variant"
+    :disabled="controls.disabled"
   >
     Loading...
     <Icon icon="svg-spinners:180-ring" />

@@ -6,8 +6,7 @@ export const inputVariants = tv({
   },
   slots: {
     root: `
-      inline-full min-inline-0 border border-input bg-transparent
-      transition-shadow outline-none duration-150 ease-in-out
+      inline-full min-inline-0 border border-input bg-transparent outline-none
 
       selection:bg-primary selection:text-primary-foreground
 

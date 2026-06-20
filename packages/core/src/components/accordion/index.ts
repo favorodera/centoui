@@ -1,4 +1,12 @@
-import type { AcceptableValue, AccordionContentProps as RekaAccordionContentProps, AccordionHeaderProps as RekaAccordionHeaderProps, AccordionItemProps as RekaAccordionItemProps, AccordionRootEmits as RekaAccordionRootEmits, AccordionRootProps as RekaAccordionRootProps, AccordionTriggerProps as RekaAccordionTriggerProps } from 'reka-ui'
+import type {
+  AcceptableValue,
+  AccordionContentProps as RekaAccordionContentProps,
+  AccordionHeaderProps as RekaAccordionHeaderProps,
+  AccordionItemProps as RekaAccordionItemProps,
+  AccordionRootEmits as RekaAccordionRootEmits,
+  AccordionRootProps as RekaAccordionRootProps,
+  AccordionTriggerProps as RekaAccordionTriggerProps,
+} from 'reka-ui'
 import { tv } from 'tailwind-variants'
 
 export const accordionVariants = tv({
@@ -6,11 +14,9 @@ export const accordionVariants = tv({
     content: `
       overflow-hidden text-sm pbe-2 grid gap-2
 
-      data-[state=closed]:animate-accordion-up data-[state=closed]:ease-in
-      data-[state=closed]:duration-150
+      data-[state=closed]:animate-[accordion-up_150ms_ease-in]
 
-      data-[state=open]:animate-accordion-down data-[state=open]:ease-out
-      data-[state=open]:duration-200
+      data-[state=open]:animate-[accordion-down_200ms_ease-out]
     `,
     item: 'inline-full',
     root: 'inline-full',

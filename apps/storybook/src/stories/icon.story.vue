@@ -2,7 +2,7 @@
 import { Icon } from '#centoui/components/icon'
 import { useStory } from '@/composables/use-story'
 
-const values = useStory('Icon', {
+const controls = useStory('Icon', {
   icon: {
     default: 'lucide:user',
     hint: 'Iconify icon IDs',
@@ -12,5 +12,5 @@ const values = useStory('Icon', {
 </script>
 
 <template>
-  <Icon :icon="values.icon" />
+  <Icon :icon="controls.icon" />
 </template>

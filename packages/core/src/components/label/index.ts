@@ -4,7 +4,7 @@ import { tv } from 'tailwind-variants'
 export const labelVariants = tv({
   slots: {
     root: `
-      text-sm font-medium select-none transition-colors duration-150 ease-in-out
+      text-sm font-medium select-none
 
       peer-disabled:pointer-events-none peer-disabled:opacity-65
 

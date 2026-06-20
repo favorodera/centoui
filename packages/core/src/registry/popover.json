@@ -1,0 +1,13 @@
+{
+  "$schema": "./schemas/component.json",
+  "name": "popover",
+  "files": [
+    "popover/popover-anchor.vue",
+    "popover/popover-content.vue",
+    "popover/popover-footer.vue",
+    "popover/popover-header.vue",
+    "popover/popover-root.vue",
+    "popover/popover-trigger.vue",
+    "popover/index.ts"
+  ]
+}

@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import { Input, inputVariants } from '#centoui/components/input'
 import { useStory } from '@/composables/use-story'
 
-const values = useStory('Input', {
+const controls = useStory('Input', {
   disabled: {
     default: false,
     type: 'boolean',
@@ -23,8 +23,8 @@ const inputModel = ref('')
     <Input
       id="input"
       v-model:value="inputModel"
-      :size="values.size"
-      :disabled="values.disabled"
+      :size="controls.size"
+      :disabled="controls.disabled"
       placeholder="Enter your text here..."
       name="input"
     />

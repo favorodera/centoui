@@ -3,7 +3,7 @@ import { Label } from '#centoui/components/label'
 import { Switch } from '#centoui/components/switch'
 import { useStory } from '@/composables/use-story'
 
-const values = useStory('Input', {
+const controls = useStory('Input', {
   disabled: {
     default: false,
     type: 'boolean',
@@ -16,7 +16,7 @@ const values = useStory('Input', {
     Toggle notifications
     <Switch
       id="switch"
-      :disabled="values.disabled"
+      :disabled="controls.disabled"
       name="switch"
     />
   </Label>

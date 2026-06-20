@@ -6,13 +6,10 @@ import { Button } from '#centoui/components/button'
 import { ButtonGroup } from '#centoui/components/button-group'
 import { Icon } from '#centoui/components/icon'
 import {
-  PopoverBody,
   PopoverContent,
-  PopoverDescription,
   PopoverFooter,
   PopoverHeader,
   PopoverRoot,
-  PopoverTitle,
   PopoverTrigger,
 } from '#centoui/components/popover'
 import {
@@ -158,27 +155,27 @@ watch(
             :side-offset="5"
           >
             <PopoverHeader>
-              <PopoverTitle>Theme</PopoverTitle>
+              <p class="font-medium">
+                Theme
+              </p>
 
-              <PopoverDescription>
+              <p class="text-muted-foreground">
                 Edit theme settings and preview changes.
-              </PopoverDescription>
+              </p>
             </PopoverHeader>
 
-            <PopoverBody>
-              <Textarea
-                v-model:value="theme.customTheme.value"
-                spellcheck="false"
-                placeholder="Enter CSS theme"
-                class="max-block-40"
-              />
-            </PopoverBody>
+            <Textarea
+              v-model:value="theme.customTheme.value"
+              spellcheck="false"
+              placeholder="Enter CSS theme"
+              class="max-block-40"
+            />
 
             <PopoverFooter>
               <ButtonGroup class="inline-full">
                 <Button
                   v-if="theme.hasCustomTheme"
-                  size="xs"
+                  size="sm"
                   variant="destructive"
                   class="flex-1"
                   @click="theme.resetTheme"
@@ -192,7 +189,7 @@ watch(
                 <Separator orientation="vertical" />
 
                 <Button
-                  size="xs"
+                  size="sm"
                   variant="secondary"
                   class="flex-1"
                   @click="theme.copyTheme"

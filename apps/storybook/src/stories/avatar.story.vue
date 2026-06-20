@@ -3,7 +3,7 @@ import { AvatarFallback, AvatarGroup, AvatarImage, AvatarRoot, avatarVariants, g
 import { Icon } from '#centoui/components/icon'
 import { useStory } from '@/composables/use-story'
 
-const values = useStory('Avatar', {
+const controls = useStory('Avatar', {
   size: {
     default: avatarVariants.defaultVariants.size,
     options: Object.keys(avatarVariants.variants.size),
@@ -28,16 +28,16 @@ const users = [
 </script>
 
 <template>
-  <AvatarRoot :size="values.size">
+  <AvatarRoot :size="controls.size">
     <AvatarImage :src="users[0].image" />
     <AvatarFallback>{{ getInitials(users[0].name) }}</AvatarFallback>
   </AvatarRoot>
 
-  <AvatarRoot :size="values.size">
+  <AvatarRoot :size="controls.size">
     <AvatarFallback>{{ getInitials(users[0].name) }}</AvatarFallback>
   </AvatarRoot>
 
-  <AvatarRoot :size="values.size">
+  <AvatarRoot :size="controls.size">
     <AvatarFallback>
       <Icon icon="lucide:user" />
     </AvatarFallback>
@@ -47,7 +47,7 @@ const users = [
     <AvatarRoot
       v-for="user in users"
       :key="user.name"
-      :size="values.size"
+      :size="controls.size"
     >
       <AvatarImage :src="user.image" />
       <AvatarFallback>{{ getInitials(user.name) }}</AvatarFallback>
