@@ -62,7 +62,7 @@ export const buttonVariants = tv({
       },
     },
     variant: {
-      destructive: {
+      error: {
         root: `
           bg-error text-error-foreground
 
