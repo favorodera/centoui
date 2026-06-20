@@ -1,0 +1,14 @@
+{
+  "$schema": "./schemas/component.json",
+  "name": "select",
+  "files": [
+    "select/select-content.vue",
+    "select/select-group.vue",
+    "select/select-item.vue",
+    "select/select-label.vue",
+    "select/select-root.vue",
+    "select/select-trigger.vue",
+    "select/select-value.vue",
+    "select/index.ts"
+  ]
+}
