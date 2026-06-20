@@ -12,6 +12,7 @@ import {
 import { computed } from 'vue'
 import config from '#centoui/config'
 import {
+  injectRootContext,
   type SelectContentEmits,
   type SelectContentProps,
   selectVariants,
@@ -23,21 +24,35 @@ const emits = defineEmits<SelectContentEmits>()
 const props = withDefaults(defineProps<SelectContentProps>(), {
   position: 'popper',
   showArrow: false,
+  sideOffset: 4,
 })
+
+const rootContext = injectRootContext()
+
 const delegatedProps = reactiveOmit(props, 'class', 'showArrow')
 
 const forwardedPropsEmits = useForwardPropsEmits(delegatedProps, emits)
 
 const { arrow, content, scrollDownButton, scrollUpButton, viewport } = selectVariants()
+
 const classNames = computed(() => ({
-  arrow: arrow(),
+  arrow: arrow({
+    size: rootContext.size,
+  }),
   content: content({
     class: props.class,
     contentPosition: props.position,
+    size: rootContext?.size,
   }),
-  scrollDownButton: scrollDownButton(),
-  scrollUpButton: scrollUpButton(),
-  viewport: viewport(),
+  scrollDownButton: scrollDownButton({
+    size: rootContext?.size,
+  }),
+  scrollUpButton: scrollUpButton({
+    size: rootContext?.size,
+  }),
+  viewport: viewport({
+    size: rootContext?.size,
+  }),
 }))
 </script>
 
