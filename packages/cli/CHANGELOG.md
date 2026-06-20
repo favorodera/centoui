@@ -1,5 +1,79 @@
 # Changelog
 
+## v1.0.0-alpha.38...v1.0.0-alpha.39
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.38...v1.0.0-alpha.39)
+
+### Added
+
+- **cli:** Implement add command and refactor internals ([84e2f81](https://github.com/favorodera/centoui/commit/84e2f81))
+
+  - Implement add command for component installation
+  - Refactor init command and network utilities
+  - Remove project-specific eslint configuration
+  - Update dependencies and registry utility logic
+
+- **cli:** Add remove command and clean up UI strings ([c33c615](https://github.com/favorodera/centoui/commit/c33c615))
+
+  - Add remove command to uninstall components
+  - Register remove command in main CLI
+  - Remove emojis from CLI intro and outro messages
+
+- **cli:** Enhance component removal process ([58e827a](https://github.com/favorodera/centoui/commit/58e827a))
+
+  - Uninstall orphaned dependencies
+  - Add prompt to remove utils file if unused
+  - Improve removal progress feedback
+  - Add completion summary box
+
+
+### Fixed
+
+- **cli:** Handle cancellation in remove command ([fda5e42](https://github.com/favorodera/centoui/commit/fda5e42))
+
+  - add cancel import from clack prompts
+  - exit process if user cancels removal flow
+
+
+### Refactors
+
+- **cli:** Simplify command output and flow ([2207db9](https://github.com/favorodera/centoui/commit/2207db9))
+
+  - remove box components from command completion
+  - update outro messages for consistency
+  - optimize dependency uninstallation logic
+
+- **cli:** Remove utils file support ([e3d5f63](https://github.com/favorodera/centoui/commit/e3d5f63))
+
+  - remove utils file creation and configuration
+  - rename packageDeps to npmDependencies
+  - rename componentDeps to componentDependencies
+  - update types and registry logic
+
+
+### Chores
+
+- Remove preview app and unused packages ([b79a23d](https://github.com/favorodera/centoui/commit/b79a23d))
+
+  - remove apps/preview and related configurations
+  - delete packages/core, packages/nuxt, and playgrounds
+  - clean up obsolete CI and issue templates
+  - consolidate and update ESLint configuration
+  - restructure cli utility modules
+
+- **repo:** Add project infrastructure and registry ([7763941](https://github.com/favorodera/centoui/commit/7763941))
+
+  - add github issue and pull request templates
+  - setup ci and release workflows
+  - add funding configuration
+  - implement registry schema and build script
+  - add initial registry components
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.37...v1.0.0-alpha.38
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.37...v1.0.0-alpha.38)

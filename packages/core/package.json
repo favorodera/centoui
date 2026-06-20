@@ -1,7 +1,7 @@
 {
   "name": "centoui",
   "type": "module",
-  "version": "1.0.0-alpha.38",
+  "version": "1.0.0-alpha.39",
   "private": false,
   "description": "Vue components for elegant interfaces",
   "author": "Favour Emeka <favorodera@gmail.com>",
@@ -31,7 +31,9 @@
   "bin": {
     "centoui": "./bin/centoui.js"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "publishConfig": {
     "access": "public"
   },

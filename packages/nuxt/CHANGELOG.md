@@ -1,5 +1,77 @@
 # Changelog
 
+## v1.0.0-alpha.38...v1.0.0-alpha.39
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.38...v1.0.0-alpha.39)
+
+### Added
+
+- **nuxt:** Implement official nuxt module ([d2c3dbe](https://github.com/favorodera/centoui/commit/d2c3dbe))
+
+  - add nuxt module for component auto-registration
+  - include project configuration and utility aliases
+  - optimize vite dependencies for development
+  - add module documentation and scaffolding files
+
+
+### Refactors
+
+- **nuxt:** Improve component registration logic ([e5d42f6](https://github.com/favorodera/centoui/commit/e5d42f6))
+
+  - Add JSDoc comments to internal functions
+  - Fix type safety for component directory path
+  - Simplify component registration loop
+  - Remove unused alias for utils directory
+
+- **nuxt:** Simplify component registration logic ([19c7de5](https://github.com/favorodera/centoui/commit/19c7de5))
+
+  - refactor component registration to use filter
+  - remove redundant buildComponentName helper
+  - update eslint-config to 0.1.1
+  - improve code comments for clarity
+
+- **accordion:** Update styles and component logic ([9d14951](https://github.com/favorodera/centoui/commit/9d14951))
+
+  - refactor accordion variants and styles
+  - switch to class-based rotation for icons
+  - update component slot types
+  - clean up component code formatting
+  - add dummy css for tailwind intellisense
+
+
+### Chores
+
+- Remove preview app and unused packages ([b79a23d](https://github.com/favorodera/centoui/commit/b79a23d))
+
+  - remove apps/preview and related configurations
+  - delete packages/core, packages/nuxt, and playgrounds
+  - clean up obsolete CI and issue templates
+  - consolidate and update ESLint configuration
+  - restructure cli utility modules
+
+- **storybook:** Add eslint configuration ([96e5919](https://github.com/favorodera/centoui/commit/96e5919))
+
+  - install @favorodera/eslint-config
+  - add eslint.config.ts for storybook app
+
+- **repo:** Add project infrastructure and registry ([7763941](https://github.com/favorodera/centoui/commit/7763941))
+
+  - add github issue and pull request templates
+  - setup ci and release workflows
+  - add funding configuration
+  - implement registry schema and build script
+  - add initial registry components
+
+- **nuxt:** Update build and lint scripts ([d56d0ce](https://github.com/favorodera/centoui/commit/d56d0ce))
+
+  - update typecheck to use nuxt cli
+  - ensure nuxt prepare runs before linting
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.37...v1.0.0-alpha.38
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.37...v1.0.0-alpha.38)

@@ -1,5 +1,366 @@
 # Changelog
 
+## v1.0.0-alpha.38...v1.0.0-alpha.39
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.38...v1.0.0-alpha.39)
+
+### Added
+
+- **cli:** Implement add command and refactor internals ([84e2f81](https://github.com/favorodera/centoui/commit/84e2f81))
+
+  - Implement add command for component installation
+  - Refactor init command and network utilities
+  - Remove project-specific eslint configuration
+  - Update dependencies and registry utility logic
+
+- **cli:** Add remove command and clean up UI strings ([c33c615](https://github.com/favorodera/centoui/commit/c33c615))
+
+  - Add remove command to uninstall components
+  - Register remove command in main CLI
+  - Remove emojis from CLI intro and outro messages
+
+- **cli:** Enhance component removal process ([58e827a](https://github.com/favorodera/centoui/commit/58e827a))
+
+  - Uninstall orphaned dependencies
+  - Add prompt to remove utils file if unused
+  - Improve removal progress feedback
+  - Add completion summary box
+
+- **core:** Initialize core package and avatar component ([1a0328d](https://github.com/favorodera/centoui/commit/1a0328d))
+
+  - Setup core package structure and configuration
+  - Implement Avatar component with sub-parts
+  - Add registry build script and test suite
+  - Configure build tools and linting rules
+
+- **storybook:** Add component preview app and core components ([86e7f80](https://github.com/favorodera/centoui/commit/86e7f80))
+
+  - Initialize storybook app with Vite and Vue
+  - Add component library primitives to core
+  - Implement theme customization and props control
+  - Add accordion, badge, button, and input components
+  - Add popover, select, and switch components
+
+- **nuxt:** Implement official nuxt module ([d2c3dbe](https://github.com/favorodera/centoui/commit/d2c3dbe))
+
+  - add nuxt module for component auto-registration
+  - include project configuration and utility aliases
+  - optimize vite dependencies for development
+  - add module documentation and scaffolding files
+
+- **avatar:** Add storybook and update component logic ([5944ae6](https://github.com/favorodera/centoui/commit/5944ae6))
+
+  - add avatar storybook component
+  - update avatar component variants and sizes
+  - refactor context injection naming
+  - standardize computed style formatting
+
+- **storybook:** Add badge component story ([faf3bd8](https://github.com/favorodera/centoui/commit/faf3bd8))
+
+  - create new story for badge component
+  - implement dynamic status variants
+  - add examples with icons and loading state
+
+- **registry:** Add badge component definition ([bf27edb](https://github.com/favorodera/centoui/commit/bf27edb))
+
+  - register badge component files
+
+- **registry:** Add badge component to registry ([235bf5e](https://github.com/favorodera/centoui/commit/235bf5e))
+- **button:** Update button component and registry ([799191c](https://github.com/favorodera/centoui/commit/799191c))
+
+  - refactor button variants and styling
+  - add button storybook and registry entry
+  - make badge status optional
+  - clean up component style code
+  - fix label display in storybook controls
+
+- **components:** Add button-group story and registry ([601ad16](https://github.com/favorodera/centoui/commit/601ad16))
+
+  - add button-group storybook documentation
+  - register button-group and icon components
+  - improve icon alignment and prop forwarding
+  - fix button-group prop order and typing
+
+- **storybook:** Add nested button group examples ([ed14de0](https://github.com/favorodera/centoui/commit/ed14de0))
+
+  - add nested ButtonGroup component stories
+  - include vertical separators in examples
+
+- **storybook:** Add icon component story ([d15b5de](https://github.com/favorodera/centoui/commit/d15b5de))
+
+  - create icon.story.vue
+  - integrate with useStory composable
+  - support icon property customization
+
+- **storybook:** Add input component story ([7a6d1c7](https://github.com/favorodera/centoui/commit/7a6d1c7))
+
+  - add story for input component
+  - include knobs for size and disabled state
+
+- **input:** Add lg size and update component styles ([61bfc0f](https://github.com/favorodera/centoui/commit/61bfc0f))
+
+  - add lg variant to input component
+  - update spacing and transition properties
+  - refine component documentation comments
+
+- **registry:** Add input component configuration ([3008bac](https://github.com/favorodera/centoui/commit/3008bac))
+
+  - register input component files
+  - define schema for input component metadata
+
+- **registry:** Add input component and update schema path ([b44832a](https://github.com/favorodera/centoui/commit/b44832a))
+
+  - register input component
+  - update global registry schema path
+
+- **storybook:** Add label component story ([54dab21](https://github.com/favorodera/centoui/commit/54dab21))
+
+  - create new label story file
+  - include switch component integration
+  - add storybook controls for disabled state
+
+- **label:** Update disabled state styles ([9bcb8fa](https://github.com/favorodera/centoui/commit/9bcb8fa))
+
+  - add transition to label root
+  - update disabled state selectors
+  - standardize opacity for disabled states
+
+- **registry:** Add label component definition ([4e8ff90](https://github.com/favorodera/centoui/commit/4e8ff90))
+
+  - register label component files
+  - link to component schema
+
+- **registry:** Add label component to registry ([58a66c5](https://github.com/favorodera/centoui/commit/58a66c5))
+- **storybook:** Add select component story ([2f5244c](https://github.com/favorodera/centoui/commit/2f5244c))
+
+  - add interactive select component story
+  - include variant and state controls
+
+- **storybook:** Add separator component story ([292b561](https://github.com/favorodera/centoui/commit/292b561))
+- **select:** Inject root context for size variants ([0cd60ba](https://github.com/favorodera/centoui/commit/0cd60ba))
+
+  - inject root context into select content
+  - apply size variant to all content slots
+  - add default sideOffset to props
+
+- **select:** Implement size support for select items ([42cce68](https://github.com/favorodera/centoui/commit/42cce68))
+
+  - inject root context in select-item
+  - apply size variant to item, indicator, and text
+
+- **select:** Apply size variant to select label ([ecb0c15](https://github.com/favorodera/centoui/commit/ecb0c15))
+
+  - inject root context in select-label
+  - pass size prop from root context to label variant
+
+- **select:** Add size support to select-root ([5aaeb24](https://github.com/favorodera/centoui/commit/5aaeb24))
+
+  - add size prop with default value
+  - provide size context to child components
+  - bind data-size attribute to root element
+
+- **select:** Apply root size to select value ([b0e1173](https://github.com/favorodera/centoui/commit/b0e1173))
+
+  - inject root context into select-value
+  - update classNames to include root size variant
+
+- **registry:** Add select and separator components ([b7e80d4](https://github.com/favorodera/centoui/commit/b7e80d4))
+
+  - Register select component files
+  - Register separator component files
+
+- **registry:** Add select and separator components ([ffdb202](https://github.com/favorodera/centoui/commit/ffdb202))
+
+### Fixed
+
+- **cli:** Handle cancellation in remove command ([fda5e42](https://github.com/favorodera/centoui/commit/fda5e42))
+
+  - add cancel import from clack prompts
+  - exit process if user cancels removal flow
+
+
+### Refactors
+
+- **cli:** Simplify command output and flow ([2207db9](https://github.com/favorodera/centoui/commit/2207db9))
+
+  - remove box components from command completion
+  - update outro messages for consistency
+  - optimize dependency uninstallation logic
+
+- **cli:** Remove utils file support ([e3d5f63](https://github.com/favorodera/centoui/commit/e3d5f63))
+
+  - remove utils file creation and configuration
+  - rename packageDeps to npmDependencies
+  - rename componentDeps to componentDependencies
+  - update types and registry logic
+
+- **nuxt:** Improve component registration logic ([e5d42f6](https://github.com/favorodera/centoui/commit/e5d42f6))
+
+  - Add JSDoc comments to internal functions
+  - Fix type safety for component directory path
+  - Simplify component registration loop
+  - Remove unused alias for utils directory
+
+- **nuxt:** Simplify component registration logic ([19c7de5](https://github.com/favorodera/centoui/commit/19c7de5))
+
+  - refactor component registration to use filter
+  - remove redundant buildComponentName helper
+  - update eslint-config to 0.1.1
+  - improve code comments for clarity
+
+- **accordion:** Update styles and component logic ([9d14951](https://github.com/favorodera/centoui/commit/9d14951))
+
+  - refactor accordion variants and styles
+  - switch to class-based rotation for icons
+  - update component slot types
+  - clean up component code formatting
+  - add dummy css for tailwind intellisense
+
+- **storybook:** Consolidate layout and code cleanup ([eaa5090](https://github.com/favorodera/centoui/commit/eaa5090))
+
+  - Inline view container into body component
+  - Improve DOM query and array processing methods
+  - Update tsconfig to support es2023
+  - Enhance documentation for preview store methods
+
+- **core:** Remove unused HTML attribute types ([3452d80](https://github.com/favorodera/centoui/commit/3452d80))
+
+  - clean up redundant Vue HTML attribute imports
+  - move avatar utility logic to dedicated file
+
+- **accordion:** Simplify DOM structure and styles ([866165b](https://github.com/favorodera/centoui/commit/866165b))
+
+  - remove redundant inner div from accordion content
+  - update accordion content variants
+  - clean up accordion trigger styles
+  - remove unnecessary margins in storybook docs
+
+- **storybook:** Rename preview to story and add control component ([233d5ef](https://github.com/favorodera/centoui/commit/233d5ef))
+
+  - Rename preview store and composables to story
+  - Replace PropsControl with generic Control component
+  - Add useStory composable for cleaner API
+  - Update UI to use new story terminology
+
+- **badge:** Rename variant prop to status ([ce713bb](https://github.com/favorodera/centoui/commit/ce713bb))
+
+  - rename variant prop to status
+  - update component logic and data attribute
+  - update class computation to use status
+
+- **badge:** Rename variant to status ([93c4b1e](https://github.com/favorodera/centoui/commit/93c4b1e))
+
+  - rename variant prop to status
+  - update status styles and default values
+  - update BadgeProps type definition
+
+- **components:** Standardize variants and animations ([fbb3dd0](https://github.com/favorodera/centoui/commit/fbb3dd0))
+
+  - rename badge status to color
+  - update accordion animation timing
+  - refine button sizing and transitions
+  - rename button error variant to destructive
+
+- **components:** Rename badge status to color ([fbe3eb0](https://github.com/favorodera/centoui/commit/fbe3eb0))
+
+  - rename status prop to color in badge component
+  - update variant naming for button components
+  - register button-group and icon components
+
+- **scripts:** Update registry build types and schema ([14e0de3](https://github.com/favorodera/centoui/commit/14e0de3))
+
+  - Import PackageJson type for dependencies
+  - Use PackageJson type for ROOT_NPM_DEPENDENCIES
+  - Update registry schema reference path
+
+- **popover:** Simplify component structure ([9dee5ba](https://github.com/favorodera/centoui/commit/9dee5ba))
+
+  - Remove Title, Description, and Body components
+  - Simplify Popover style variants and layout
+  - Add Popover story for documentation
+  - Update registry configuration
+
+- **storybook:** Rename color prop to variant ([541cac1](https://github.com/favorodera/centoui/commit/541cac1))
+
+  - update badge story controls
+  - sync badge component props
+
+- **badge:** Rename color prop to variant ([7713d22](https://github.com/favorodera/centoui/commit/7713d22))
+
+  - rename color prop to variant in Badge component
+  - update variant mapping and data attribute
+
+- **badge:** Rename color prop to variant ([7f81a8e](https://github.com/favorodera/centoui/commit/7f81a8e))
+
+  - update badgeVariants default variant
+  - rename color variant to variant
+  - update BadgeProps interface
+
+- **select:** Refactor variants and add context ([3556bbf](https://github.com/favorodera/centoui/commit/3556bbf))
+
+  - Rename triggerSize to size variant
+  - Update component slots for consistency
+  - Implement root context for size propagation
+  - Refine styling for all size variants
+
+- **header:** Update button variant to error ([32f9b49](https://github.com/favorodera/centoui/commit/32f9b49))
+- **button:** Rename destructive variant to error ([3b1be9b](https://github.com/favorodera/centoui/commit/3b1be9b))
+- **select:** Sync trigger size with root context ([28ec3c4](https://github.com/favorodera/centoui/commit/28ec3c4))
+
+  - remove size prop from SelectTrigger
+  - inject root context for size configuration
+  - update trigger styles to use root context size
+
+
+### Documentation
+
+- **avatar:** Update size property description ([a819a6f](https://github.com/favorodera/centoui/commit/a819a6f))
+
+### Chores
+
+- Remove preview app and unused packages ([b79a23d](https://github.com/favorodera/centoui/commit/b79a23d))
+
+  - remove apps/preview and related configurations
+  - delete packages/core, packages/nuxt, and playgrounds
+  - clean up obsolete CI and issue templates
+  - consolidate and update ESLint configuration
+  - restructure cli utility modules
+
+- **storybook:** Add eslint configuration ([96e5919](https://github.com/favorodera/centoui/commit/96e5919))
+
+  - install @favorodera/eslint-config
+  - add eslint.config.ts for storybook app
+
+- **repo:** Add project infrastructure and registry ([7763941](https://github.com/favorodera/centoui/commit/7763941))
+
+  - add github issue and pull request templates
+  - setup ci and release workflows
+  - add funding configuration
+  - implement registry schema and build script
+  - add initial registry components
+
+- **nuxt:** Update build and lint scripts ([d56d0ce](https://github.com/favorodera/centoui/commit/d56d0ce))
+
+  - update typecheck to use nuxt cli
+  - ensure nuxt prepare runs before linting
+
+
+### Styling
+
+- **input:** Add missing newline in component script ([d839ec4](https://github.com/favorodera/centoui/commit/d839ec4))
+- **storybook:** Fix indentation in button-group story ([c7fcf54](https://github.com/favorodera/centoui/commit/c7fcf54))
+- **label:** Format classNames computed property ([ffdd4ac](https://github.com/favorodera/centoui/commit/ffdd4ac))
+- **label:** Add missing comma in classNames computed ([4720297](https://github.com/favorodera/centoui/commit/4720297))
+- **storybook:** Add block-full class to body component ([1b7d751](https://github.com/favorodera/centoui/commit/1b7d751))
+- **select:** Reformat classNames definition ([a916760](https://github.com/favorodera/centoui/commit/a916760))
+- **separator:** Update content font size to xs ([1450d3d](https://github.com/favorodera/centoui/commit/1450d3d))
+- **separator:** Add missing newline for readability ([d52bc22](https://github.com/favorodera/centoui/commit/d52bc22))
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.37...v1.0.0-alpha.38
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.37...v1.0.0-alpha.38)
