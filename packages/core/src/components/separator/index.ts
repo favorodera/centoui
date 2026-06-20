@@ -6,7 +6,7 @@ export const separatorVariants = tv({
     orientation: 'horizontal',
   },
   slots: {
-    content: 'shrink-0 text-center text-sm text-muted-foreground',
+    content: 'shrink-0 text-center text-xs text-muted-foreground',
     line: 'flex-1 border-border',
     root: 'flex items-center gap-2',
   },
