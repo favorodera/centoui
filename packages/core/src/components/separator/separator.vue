@@ -9,6 +9,7 @@ const props = defineProps<SeparatorProps>()
 const slots = useSlots()
 
 const delegatedProps = reactiveOmit(props, 'class')
+
 const forwardedProps = useForwardProps(delegatedProps)
 
 const { content, line, root } = separatorVariants()
