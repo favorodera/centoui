@@ -176,7 +176,7 @@ watch(
                 <Button
                   v-if="theme.hasCustomTheme"
                   size="sm"
-                  variant="destructive"
+                  variant="error"
                   class="flex-1"
                   @click="theme.resetTheme"
                 >
