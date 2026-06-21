@@ -26,5 +26,5 @@ const controls = useStory('Switch', {
     :disabled="controls.disabled"
     :size="controls.size"
     name="switch"
-  >Hello</Switch>
+  />
 </template>
