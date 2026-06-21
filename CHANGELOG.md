@@ -1,5 +1,41 @@
 # Changelog
 
+## v1.0.0-alpha.40...v1.0.0-alpha.41
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.40...v1.0.0-alpha.41)
+
+### Added
+
+- **switch:** Add component and update styles ([b6853fc](https://github.com/favorodera/centoui/commit/b6853fc))
+
+  - Add new Switch component with variants
+  - Improve switch root and thumb styling
+  - Update Badge component font weight
+  - Add invalid state support to Input and Switch
+  - Fix storybook component naming and props
+
+- **registry:** Add switch component definition ([68ba7e4](https://github.com/favorodera/centoui/commit/68ba7e4))
+
+  - register switch component files
+
+- **textarea:** Add size variants and storybook story ([f96981d](https://github.com/favorodera/centoui/commit/f96981d))
+
+  - Add size variants to Textarea component
+  - Update Textarea to support size prop
+  - Add Textarea story to Storybook
+
+- **registry:** Add textarea component definition ([6bf897c](https://github.com/favorodera/centoui/commit/6bf897c))
+- **registry:** Add switch and textarea components ([d158245](https://github.com/favorodera/centoui/commit/d158245))
+
+### Chores
+
+- **repo:** Add dependabot config and reformat files ([5d32e0b](https://github.com/favorodera/centoui/commit/5d32e0b))
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.39...v1.0.0-alpha.40
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.39...v1.0.0-alpha.40)
