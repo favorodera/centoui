@@ -6,6 +6,7 @@ updates:
       - /packages/core
       - /packages/cli
       - /packages/nuxt
+      - /apps/storybook
     schedule:
       interval: weekly
     ignore:
