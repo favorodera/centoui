@@ -106,6 +106,22 @@
         "separator/separator.vue",
         "separator/index.ts"
       ]
+    },
+    {
+      "$schema": "./schemas/component.json",
+      "name": "switch",
+      "files": [
+        "switch/switch.vue",
+        "switch/index.ts"
+      ]
+    },
+    {
+      "$schema": "./schemas/component.json",
+      "name": "textarea",
+      "files": [
+        "textarea/textarea.vue",
+        "textarea/index.ts"
+      ]
     }
   ],
   "npmDependencies": {
