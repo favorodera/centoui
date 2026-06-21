@@ -6,6 +6,10 @@ shellEmulator: true
 
 trustPolicy: no-downgrade
 
+trustPolicyExclude:
+  - semver@6.3.1
+  - nanoid@3.3.14
+
 packages:
   - 'apps/*'
   - 'packages/*'
@@ -38,7 +42,6 @@ catalogs:
     '@vitest/ui': ^4.1.8
     '@vue/tsconfig': ^0.9.0
     eslint: ^10.5.0
-    libphonenumber-js: ^0.0.0
     relizy: ^1.4.9
     tsdown: ^0.22.2
     tsx: ^4.22.4
