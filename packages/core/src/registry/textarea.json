@@ -1,0 +1,8 @@
+{
+  "$schema": "./schemas/component.json",
+  "name": "textarea",
+  "files": [
+    "textarea/textarea.vue",
+    "textarea/index.ts"
+  ]
+}
