@@ -22,7 +22,7 @@ const controls = useStory('Badge', {
     User
   </Badge>
 
-  <Badge :color="controls.variant">
+  <Badge :variant="controls.variant">
     Loading...
     <Icon icon="svg-spinners:180-ring" />
   </Badge>

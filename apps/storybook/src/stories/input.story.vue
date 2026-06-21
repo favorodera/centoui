@@ -8,6 +8,10 @@ const controls = useStory('Input', {
     default: false,
     type: 'boolean',
   },
+  invalid: {
+    default: false,
+    type: 'boolean',
+  },
   size: {
     default: inputVariants.defaultVariants.size,
     options: Object.keys(inputVariants.variants.size),
@@ -25,6 +29,7 @@ const inputModel = ref('')
       v-model:value="inputModel"
       :size="controls.size"
       :disabled="controls.disabled"
+      :aria-invalid="controls.invalid"
       placeholder="Enter your text here..."
       name="input"
     />

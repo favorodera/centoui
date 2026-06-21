@@ -8,7 +8,7 @@ export const badgeVariants = tv({
   slots: {
     root: `
       relative inline-flex align-middle shrink-0 items-center block-6 gap-1 px-2
-      truncate rounded-sm border select-none text-xs outline-none
+      truncate rounded-sm border font-medium select-none text-xs outline-none
 
       focus-visible:ring-2 focus-visible:ring-ring
 

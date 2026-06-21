@@ -3,7 +3,7 @@ import { Button } from '#centoui/components/button'
 import { PopoverContent, PopoverFooter, PopoverHeader, PopoverRoot, PopoverTrigger } from '#centoui/components/popover'
 import { useStory } from '@/composables/use-story'
 
-const controls = useStory('Input', {
+const controls = useStory('Popover', {
   align: {
     default: 'center' as any,
     options: [

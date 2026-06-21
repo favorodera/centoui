@@ -9,11 +9,13 @@ const emits = defineEmits<SwitchEmits>()
 const props = withDefaults(defineProps<SwitchProps>(), {
   size: 'md',
 })
+
 const delegatedProps = reactiveOmit(props, 'class', 'size')
 
 const forwardedPropsEmits = useForwardPropsEmits(delegatedProps, emits)
 
 const { root, thumb } = switchVariants()
+
 const classNames = computed(() => ({
   root: root({
     class: props.class,
