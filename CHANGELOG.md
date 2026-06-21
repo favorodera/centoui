@@ -1,5 +1,21 @@
 # Changelog
 
+## v1.0.0-alpha.39...v1.0.0-alpha.40
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.39...v1.0.0-alpha.40)
+
+### Chores
+
+- **workspace:** Update dependency trust policy and catalogs ([a886ccd](https://github.com/favorodera/centoui/commit/a886ccd))
+
+  - Add semver and nanoid to trustPolicyExclude
+  - Remove libphonenumber-js from catalogs
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.38...v1.0.0-alpha.39
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.38...v1.0.0-alpha.39)
