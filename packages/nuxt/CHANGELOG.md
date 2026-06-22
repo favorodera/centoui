@@ -1,5 +1,22 @@
 # Changelog
 
+## v1.0.0-alpha.41...v1.0.0-alpha.42
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.41...v1.0.0-alpha.42)
+
+### Added
+
+- **core:** Add alert component ([9bca1c5](https://github.com/favorodera/centoui/commit/9bca1c5))
+
+  - implement alert root, body, title, and description
+  - include storybook documentation for alert
+  - add alert to component registry
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.40...v1.0.0-alpha.41
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.40...v1.0.0-alpha.41)

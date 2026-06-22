@@ -1,5 +1,88 @@
 # Changelog
 
+## v1.0.0-alpha.41...v1.0.0-alpha.42
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.41...v1.0.0-alpha.42)
+
+### Added
+
+- **core:** Add alert component ([9bca1c5](https://github.com/favorodera/centoui/commit/9bca1c5))
+
+  - implement alert root, body, title, and description
+  - include storybook documentation for alert
+  - add alert to component registry
+
+- **components:** Implement Alert Dialog component ([f4db552](https://github.com/favorodera/centoui/commit/f4db552))
+
+  - Add Alert Dialog components and variants
+  - Add Alert Dialog storybook documentation
+
+- **popover:** Add title and description components ([eb53942](https://github.com/favorodera/centoui/commit/eb53942))
+
+  - Add PopoverTitle and PopoverDescription components
+  - Update popover variants and styles
+  - Refactor storybook header and popover stories
+  - Improve alert dialog animation timings
+
+- **registry:** Add alert-dialog and update popover ([606aeb2](https://github.com/favorodera/centoui/commit/606aeb2))
+
+  - add alert-dialog component registry
+  - add description and title files to popover
+
+- **core:** Add aspect-ratio component ([e757f53](https://github.com/favorodera/centoui/commit/e757f53))
+
+  - implement aspect-ratio component
+  - update popover registry and components
+  - fix code style across components
+
+- **aspect-ratio:** Add aspect-ratio component and story ([f89db9e](https://github.com/favorodera/centoui/commit/f89db9e))
+
+  - add aspect-ratio component to registry
+  - create aspect-ratio storybook documentation
+  - update avatar story with new image source
+
+- **breadcrumb:** Add breadcrumb component ([b7976f6](https://github.com/favorodera/centoui/commit/b7976f6))
+
+  - implement breadcrumb core components
+  - add breadcrumb storybook documentation
+
+- **registry:** Add breadcrumb component to registry ([901cb43](https://github.com/favorodera/centoui/commit/901cb43))
+
+  - register breadcrumb component files
+  - update index registry with breadcrumb entry
+
+- **card:** Implement card component and story ([982ff40](https://github.com/favorodera/centoui/commit/982ff40))
+
+  - add card component with sub-components
+  - add storybook preview for card component
+  - refactor popover content structure
+  - update alert-dialog styles
+
+- **registry:** Add card component to registry ([de14de7](https://github.com/favorodera/centoui/commit/de14de7))
+
+  - register card component files
+  - update index registry configuration
+
+
+### Refactors
+
+- **storybook:** Improve control component layout ([36a6d44](https://github.com/favorodera/centoui/commit/36a6d44))
+
+  - Wrap select items in SelectGroup
+  - Update container spacing to flex layout
+  - Clean up icon classes
+
+- **breadcrumb:** Improve formatting and style ([526434c](https://github.com/favorodera/centoui/commit/526434c))
+
+  - standardize component script formatting
+  - update link transition properties
+  - fix breadcrumb story link attribute
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.40...v1.0.0-alpha.41
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.40...v1.0.0-alpha.41)
