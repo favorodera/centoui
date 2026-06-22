@@ -1,0 +1,8 @@
+{
+  "$schema": "./schemas/component.json",
+  "name": "aspect-ratio",
+  "files": [
+    "aspect-ratio/aspect-ratio.vue",
+    "aspect-ratio/index.ts"
+  ]
+}

@@ -13,15 +13,15 @@ const controls = useStory('Avatar', {
 
 const users = [
   {
-    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+    image: 'https://avatars.githubusercontent.com/favorodera?v=4',
     name: 'John Doe',
   },
   {
-    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+    image: 'https://avatars.githubusercontent.com/favorodera?v=4',
     name: 'Jane Doe',
   },
   {
-    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+    image: 'https://avatars.githubusercontent.com/favorodera?v=4',
     name: 'Sam Smith',
   },
 ] as const

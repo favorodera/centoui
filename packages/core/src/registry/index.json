@@ -41,6 +41,14 @@
     },
     {
       "$schema": "./schemas/component.json",
+      "name": "aspect-ratio",
+      "files": [
+        "aspect-ratio/aspect-ratio.vue",
+        "aspect-ratio/index.ts"
+      ]
+    },
+    {
+      "$schema": "./schemas/component.json",
       "name": "avatar",
       "files": [
         "avatar/avatar-group.vue",
