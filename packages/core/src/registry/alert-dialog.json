@@ -1,0 +1,16 @@
+{
+  "$schema": "./schemas/component.json",
+  "name": "alert-dialog",
+  "files": [
+    "alert-dialog/alert-dialog-action.vue",
+    "alert-dialog/alert-dialog-cancel.vue",
+    "alert-dialog/alert-dialog-content.vue",
+    "alert-dialog/alert-dialog-description.vue",
+    "alert-dialog/alert-dialog-footer.vue",
+    "alert-dialog/alert-dialog-header.vue",
+    "alert-dialog/alert-dialog-root.vue",
+    "alert-dialog/alert-dialog-title.vue",
+    "alert-dialog/alert-dialog-trigger.vue",
+    "alert-dialog/index.ts"
+  ]
+}
