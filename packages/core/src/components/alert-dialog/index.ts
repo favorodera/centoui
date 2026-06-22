@@ -20,6 +20,7 @@ export const alertDialogVariants = tv({
     content: `
       fixed inset-bs-1/2 inset-s-1/2 z-50 grid inline-[90dvw] max-inline-md
       -translate-1/2 gap-4 rounded-lg border border-border bg-surface-raised p-6
+      overflow-hidden
 
       data-[state=closed]:animate-out data-[state=closed]:fade-out-0
       data-[state=closed]:zoom-out-98 data-[state=closed]:duration-150
@@ -31,14 +32,12 @@ export const alertDialogVariants = tv({
     `,
     description: 'text-sm text-muted-foreground',
     footer: `
-      flex flex-col-reverse gap-2 p-6 -mx-6 -mbe-6 rounded-b-[inherit]
-      bg-neutral
+      flex flex-col-reverse gap-2 p-6 -mx-6 -mbe-6 bg-neutral
 
       sm:flex-row sm:justify-end
     `,
     header: `
       flex flex-col gap-1 px-6 pbs-6 text-center -mx-6 -mbs-6
-      rounded-t-[inherit]
 
       sm:text-start
     `,

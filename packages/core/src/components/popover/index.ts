@@ -11,11 +11,9 @@ import { tv } from 'tailwind-variants'
 
 export const popoverVariants = tv({
   slots: {
-    arrow: 'z-50 fill-surface stroke-border',
+    arrow: 'z-50 fill-surface-raised stroke-border',
     content: `
-      relative z-50 grid inline-xs
-      origin-(--reka-popover-content-transform-origin) gap-4 rounded-lg border
-      border-border bg-surface-raised p-4
+      relative z-50 inline-xs origin-(--reka-popover-content-transform-origin)
 
       data-[side=bottom]:slide-in-from-top-2
 
@@ -33,13 +31,13 @@ export const popoverVariants = tv({
       data-[state=open]:zoom-in-95 data-[state=open]:duration-200
       data-[state=open]:ease-out
     `,
+    contentWrapper: `
+      gap-4 rounded-md border grid border-border bg-surface-raised p-4
+      overflow-hidden relative
+    `,
     description: 'text-muted-foreground',
-    footer: `
-      -mx-4 -mbe-4 rounded-b-[inherit] bg-neutral p-4 flex items-center gap-2
-    `,
-    header: `
-      -mx-4 -mbs-4 rounded-t-[inherit] px-4 pbs-4 text-sm flex flex-col gap-1
-    `,
+    footer: `-mx-4 -mbe-4 bg-neutral p-4 flex items-center gap-2`,
+    header: `-mx-4 -mbs-4 px-4 pbs-4 text-sm flex flex-col gap-1`,
     title: 'font-medium',
     trigger: '',
   },

@@ -19,13 +19,14 @@ const delegatedProps = reactiveOmit(props, 'class', 'showArrow')
 
 const forwardedPropsEmits = useForwardPropsEmits(delegatedProps, emits)
 
-const { arrow, content } = popoverVariants()
+const { arrow, content, contentWrapper } = popoverVariants()
 
 const classNames = computed(() => ({
   arrow: arrow(),
   content: content({
     class: props.class,
   }),
+  contentWrapper: contentWrapper(),
 }))
 </script>
 
@@ -36,7 +37,12 @@ const classNames = computed(() => ({
       v-bind="forwardedPropsEmits"
       :class="classNames.content"
     >
-      <slot />
+      <div
+        :class="classNames.contentWrapper"
+        data-slot="popover-content-wrapper"
+      >
+        <slot />
+      </div>
 
       <PopoverArrow
         v-if="showArrow"
