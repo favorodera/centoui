@@ -18,26 +18,27 @@ export const alertDialogVariants = tv({
     action: '',
     cancel: '',
     content: `
-      fixed inset-bs-1/2 inset-s-1/2 z-50 grid inline-[calc(100%-2.5rem)]
-      max-inline-md -translate-1/2 gap-4 overflow-hidden rounded-lg border
-      border-border bg-surface-raised py-4 transition-all
-
-      has-data-[slot=alert-dialog-footer]:pbe-0
+      fixed inset-bs-1/2 inset-s-1/2 z-50 grid inline-[90dvw] max-inline-md
+      -translate-1/2 gap-4 rounded-lg border border-border bg-surface-raised p-6
 
       data-[state=closed]:animate-out data-[state=closed]:fade-out-0
-      data-[state=closed]:zoom-out-98
+      data-[state=closed]:zoom-out-98 data-[state=closed]:duration-150
+      data-[state=closed]:ease-in
 
       data-[state=open]:animate-in data-[state=open]:fade-in-0
-      data-[state=open]:zoom-in-98
+      data-[state=open]:zoom-in-98 data-[state=open]:duration-300
+      data-[state=open]:ease-out
     `,
     description: 'text-sm text-muted-foreground',
     footer: `
-      flex flex-col-reverse gap-2 bg-neutral p-4
+      flex flex-col-reverse gap-2 p-6 -mx-6 -mbe-6 rounded-b-[inherit]
+      bg-neutral
 
       sm:flex-row sm:justify-end
     `,
     header: `
-      flex flex-col gap-1 px-4 text-center
+      flex flex-col gap-1 px-6 pbs-6 text-center -mx-6 -mbs-6
+      rounded-t-[inherit]
 
       sm:text-start
     `,
@@ -45,8 +46,10 @@ export const alertDialogVariants = tv({
       fixed inset-0 z-50 bg-overlay backdrop-blur-xs transition-all
 
       data-[state=closed]:animate-out data-[state=closed]:fade-out-0
+      data-[state=closed]:duration-150 data-[state=closed]:ease-in
 
       data-[state=open]:animate-in data-[state=open]:fade-in-0
+      data-[state=open]:duration-300 data-[state=open]:ease-out
     `,
     title: 'text-base font-semibold text-foreground',
     trigger: '',

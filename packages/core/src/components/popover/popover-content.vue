@@ -14,14 +14,18 @@ const props = withDefaults(defineProps<PopoverContentProps>(), {
   showArrow: false,
   sideOffset: 4,
 })
+
 const delegatedProps = reactiveOmit(props, 'class', 'showArrow')
 
 const forwardedPropsEmits = useForwardPropsEmits(delegatedProps, emits)
 
 const { arrow, content } = popoverVariants()
+
 const classNames = computed(() => ({
-  arrow: arrow(),
-  content: content({ class: props.class }),
+  arrow: arrow(), 
+  content: content({
+     class: props.class 
+    }),
 }))
 </script>
 

@@ -14,8 +14,8 @@ export const popoverVariants = tv({
     arrow: 'z-50 fill-surface stroke-border',
     content: `
       relative z-50 grid inline-xs
-      origin-(--reka-popover-content-transform-origin) gap-2 rounded-md border
-      border-border bg-surface-raised py-1.5 px-2
+      origin-(--reka-popover-content-transform-origin) gap-4 rounded-lg border
+      border-border bg-surface-raised p-4
 
       data-[side=bottom]:slide-in-from-top-2
 
@@ -33,8 +33,14 @@ export const popoverVariants = tv({
       data-[state=open]:zoom-in-95 data-[state=open]:duration-200
       data-[state=open]:ease-out
     `,
-    footer: '-mx-2 -mbe-1.5 rounded-b-[inherit] bg-neutral px-2 py-1.5',
-    header: '-mx-2 -mbs-1.5 rounded-t-[inherit] px-2 py-1.5 text-sm space-y-1',
+    description: 'text-muted-foreground',
+    footer: `
+      -mx-4 -mbe-4 rounded-b-[inherit] bg-neutral p-4 flex items-center gap-2
+    `,
+    header: `
+      -mx-4 -mbs-4 rounded-t-[inherit] px-4 pbs-4 text-sm flex flex-col gap-1
+    `,
+    title: 'font-medium',
     trigger: '',
   },
 })
@@ -42,9 +48,11 @@ export const popoverVariants = tv({
 // COMPONENTS
 export { default as PopoverAnchor } from './popover-anchor.vue'
 export { default as PopoverContent } from './popover-content.vue'
+export { default as PopoverDescription } from './popover-description.vue'
 export { default as PopoverFooter } from './popover-footer.vue'
 export { default as PopoverHeader } from './popover-header.vue'
 export { default as PopoverRoot } from './popover-root.vue'
+export { default as PopoverTitle } from './popover-title.vue'
 export { default as PopoverTrigger } from './popover-trigger.vue'
 
 // PROPS
@@ -65,6 +73,10 @@ export type PopoverContentProps = RekaPopoverContentProps & {
 }
 
 export type PopoverHeaderProps = PrimitiveProps & { class?: any }
+
+export type PopoverTitleProps = PrimitiveProps & { class?: any }
+
+export type PopoverDescriptionProps = PrimitiveProps & { class?: any }
 
 export type PopoverFooterProps = PrimitiveProps & { class?: any }
 

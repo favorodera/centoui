@@ -36,7 +36,7 @@ useStory('Alert Dialog', {})
       </AlertDialogHeader>
 
       <AlertDialogFooter>
-        <AlertDialogCancel variant="outline">
+        <AlertDialogCancel>
           Cancel
         </AlertDialogCancel>
 

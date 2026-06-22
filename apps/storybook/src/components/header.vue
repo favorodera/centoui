@@ -7,9 +7,11 @@ import { ButtonGroup } from '#centoui/components/button-group'
 import { Icon } from '#centoui/components/icon'
 import {
   PopoverContent,
+  PopoverDescription,
   PopoverFooter,
   PopoverHeader,
   PopoverRoot,
+  PopoverTitle,
   PopoverTrigger,
 } from '#centoui/components/popover'
 import {
@@ -58,12 +60,12 @@ watch(
   >
     <!-- Component Selector -->
     <SelectRoot
+        size="sm"
       :model-value="route.path"
       @update:model-value="(value)=>navigation.goTo(value as string)"
     >
       <SelectTrigger
         class="max-inline-3xs"
-        size="sm"
       >
         <SelectValue />
       </SelectTrigger>
@@ -155,13 +157,13 @@ watch(
             :side-offset="5"
           >
             <PopoverHeader>
-              <p class="font-medium">
+              <PopoverTitle >
                 Theme
-              </p>
+              </PopoverTitle>
 
-              <p class="text-muted-foreground">
+              <PopoverDescription>
                 Edit theme settings and preview changes.
-              </p>
+              </PopoverDescription>
             </PopoverHeader>
 
             <Textarea

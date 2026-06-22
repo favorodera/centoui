@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { Button } from '#centoui/components/button'
-import { PopoverContent, PopoverFooter, PopoverHeader, PopoverRoot, PopoverTrigger } from '#centoui/components/popover'
+import { Input } from '#centoui/components/input'
+import { Label } from '#centoui/components/label';
+import { PopoverContent, PopoverDescription, PopoverFooter, PopoverHeader, PopoverRoot, PopoverTitle, PopoverTrigger } from '#centoui/components/popover'
 import { useStory } from '@/composables/use-story'
 
 const controls = useStory('Popover', {
@@ -43,33 +45,51 @@ const controls = useStory('Popover', {
       :align="controls.align"
       :show-arrow="controls.showArrow"
     >
-      <PopoverHeader class="border-be border-border">
-        <h4 class="font-medium text-foreground">
-          Jane Doe
-        </h4>
+      <PopoverHeader>
+        <PopoverTitle>Dimensions</PopoverTitle>
 
-        <p class="text-xs text-muted-foreground">
-          jane.doe@example.com
-        </p>
+        <PopoverDescription>
+          Set the dimensions for the layer.
+        </PopoverDescription>
       </PopoverHeader>
 
-      <!-- Body: Quick Stats or Info -->
-      <div class="flex flex-col gap-1">
-        <p class="text-sm font-medium">
-          Pro Plan Active
-        </p>
+      <div class="flex flex-col gap-4">
+        <div class="flex items-center justify-between">
+          <Label
+            for="width"
+            class="inline-1/2"
+          >
+            Width
+          </Label>
 
-        <p class="text-xs text-muted-foreground">
-          Your subscription will renew in 12 days.
-        </p>
+          <Input
+            id="width"
+            default-value="100%"
+          />
+        </div>
+
+        <div class="flex items-center justify-between">
+          <Label
+            for="height"
+            class="inline-1/2"
+          >
+            Height
+          </Label>
+
+          <Input
+            id="height"
+            default-value="25px"
+          />
+        </div>
       </div>
 
-      <PopoverFooter class="flex items-center justify-end">
-        <Button
-          variant="error"
-          size="sm"
-        >
-          Sign out
+      <PopoverFooter class="justify-between">
+        <Button variant="secondary">
+          Cancel
+        </Button>
+
+        <Button>
+          Save Settings
         </Button>
       </PopoverFooter>
     </PopoverContent>

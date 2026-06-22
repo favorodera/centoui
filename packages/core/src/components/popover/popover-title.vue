@@ -3,26 +3,26 @@ import { reactiveOmit } from '@vueuse/core'
 import { Primitive, useForwardProps } from 'reka-ui'
 import { computed } from 'vue'
 import {
-  type PopoverHeaderProps,
+  type PopoverTitleProps,
   popoverVariants,
 } from '.'
 
-const props = defineProps<PopoverHeaderProps>()
+const props = defineProps<PopoverTitleProps>()
 
 const delegatedProps = reactiveOmit(props, 'class')
 
 const forwardedProps = useForwardProps(delegatedProps)
 
-const { header } = popoverVariants()
+const { title } = popoverVariants()
 
-const classNames = computed(() => header({
+const classNames = computed(() => title({
   class: props.class,
 }))
 </script>
 
 <template>
   <Primitive
-    data-slot="popover-header"
+    data-slot="popover-title"
     v-bind="forwardedProps"
     :class="classNames"
   >

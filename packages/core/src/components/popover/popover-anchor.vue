@@ -3,6 +3,7 @@ import { PopoverAnchor, useForwardProps } from 'reka-ui'
 import type { PopoverAnchorProps } from '.'
 
 const props = defineProps<PopoverAnchorProps>()
+  
 const forwardedProps = useForwardProps(props)
 </script>
 
