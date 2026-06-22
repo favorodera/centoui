@@ -69,6 +69,20 @@
     },
     {
       "$schema": "./schemas/component.json",
+      "name": "breadcrumb",
+      "files": [
+        "breadcrumb/breadcrumb-ellipsis.vue",
+        "breadcrumb/breadcrumb-item.vue",
+        "breadcrumb/breadcrumb-link.vue",
+        "breadcrumb/breadcrumb-list.vue",
+        "breadcrumb/breadcrumb-page.vue",
+        "breadcrumb/breadcrumb-root.vue",
+        "breadcrumb/breadcrumb-separator.vue",
+        "breadcrumb/index.ts"
+      ]
+    },
+    {
+      "$schema": "./schemas/component.json",
       "name": "button-group",
       "files": [
         "button-group/button-group.vue",
