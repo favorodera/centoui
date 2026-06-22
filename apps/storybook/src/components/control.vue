@@ -6,6 +6,7 @@ import { Input } from '#centoui/components/input'
 import { Label } from '#centoui/components/label'
 import {
   SelectContent,
+  SelectGroup,
   SelectItem,
   SelectRoot,
   SelectTrigger,
@@ -57,7 +58,7 @@ function set(key: string, value: unknown) {
       <div
         v-for="entry in entries"
         :key="entry.key"
-        class="space-y-1.5"
+        class="flex flex-col gap-1"
       >
         <Label
           :for="`prop-${entry.key}`"
@@ -98,13 +99,15 @@ function set(key: string, value: unknown) {
           </SelectTrigger>
 
           <SelectContent>
-            <SelectItem
-              v-for="option in entry.options"
-              :key="String(option)"
-              :value="option as any"
-            >
-              {{ option }}
-            </SelectItem>
+            <SelectGroup>
+              <SelectItem
+                v-for="option in entry.options"
+                :key="String(option)"
+                :value="option as any"
+              >
+                {{ option }}
+              </SelectItem>
+            </SelectGroup>
           </SelectContent>
         </SelectRoot>
 
@@ -131,7 +134,7 @@ function set(key: string, value: unknown) {
     >
       <Icon
         icon="lucide:octagon-alert"
-        class="mx-auto block-4 inline-4 text-muted-foreground"
+        class="mx-auto text-muted-foreground"
       />
 
       <div>No controls found</div>
