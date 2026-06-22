@@ -14,6 +14,17 @@
     },
     {
       "$schema": "./schemas/component.json",
+      "name": "alert",
+      "files": [
+        "alert/alert-body.vue",
+        "alert/alert-description.vue",
+        "alert/alert-root.vue",
+        "alert/alert-title.vue",
+        "alert/index.ts"
+      ]
+    },
+    {
+      "$schema": "./schemas/component.json",
       "name": "avatar",
       "files": [
         "avatar/avatar-group.vue",

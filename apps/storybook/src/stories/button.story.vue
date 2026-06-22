@@ -18,7 +18,6 @@ const controls = useStory('Button', {
     options: Object.keys(buttonVariants.variants.variant),
     type: 'array',
   },
-
 })
 </script>
 
