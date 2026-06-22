@@ -5,13 +5,11 @@ export const breadcrumbVariants = tv({
   slots: {
     ellipsis: `
       inline-flex items-center justify-center gap-2 text-muted-foreground
-
-      focus-visible:ring-2 focus-visible:ring-ring
     `,
     item: 'inline-flex min-inline-0 gap-2',
     link: `
       inline-flex min-inline-0 items-center gap-2 text-muted-foreground
-      transition-colors outline-none
+      transition-colors duration-150 ease-in-out outline-none
 
       hover:text-foreground
 

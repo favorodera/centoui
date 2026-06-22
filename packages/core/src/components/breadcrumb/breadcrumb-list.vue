@@ -2,16 +2,21 @@
 import { reactiveOmit } from '@vueuse/core'
 import { Primitive, useForwardProps } from 'reka-ui'
 import { computed } from 'vue'
-import { breadcrumbVariants, type BreadcrumbListProps } from '.'
+import { type BreadcrumbListProps, breadcrumbVariants } from '.'
 
 const props = withDefaults(defineProps<BreadcrumbListProps>(), {
   as: 'ol',
 })
+
 const delegatedProps = reactiveOmit(props, 'class')
+
 const forwardedProps = useForwardProps(delegatedProps)
 
 const { list } = breadcrumbVariants()
-const classNames = computed(() => list({ class: props.class }))
+
+const classNames = computed(() => list({
+  class: props.class,
+}))
 </script>
 
 <template>

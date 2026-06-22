@@ -2,16 +2,21 @@
 import { reactiveOmit } from '@vueuse/core'
 import { Primitive, useForwardProps } from 'reka-ui'
 import { computed } from 'vue'
-import { breadcrumbVariants, type BreadcrumbEllipsisProps } from '.'
-import { Icon } from '../icon'
 import config from '#centoui/config'
+import { type BreadcrumbEllipsisProps, breadcrumbVariants } from '.'
+import { Icon } from '../icon'
 
 const props = defineProps<BreadcrumbEllipsisProps>()
+
 const delegatedProps = reactiveOmit(props, 'class')
+
 const forwardedProps = useForwardProps(delegatedProps)
 
 const { ellipsis } = breadcrumbVariants()
-const classNames = computed(() => ellipsis({ class: props.class }))
+
+const classNames = computed(() => ellipsis({
+  class: props.class,
+}))
 </script>
 
 <template>

@@ -36,7 +36,7 @@ useStory('Breadcrumb', {})
       <BreadcrumbSeparator />
 
       <BreadcrumbItem>
-        <BreadcrumbLink>
+        <BreadcrumbLink href="#">
           <Icon
             icon="lucide:folder-open"
             class="text-warning"
