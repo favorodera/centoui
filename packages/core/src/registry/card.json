@@ -1,0 +1,12 @@
+{
+  "$schema": "./schemas/component.json",
+  "name": "card",
+  "files": [
+    "card/card-description.vue",
+    "card/card-footer.vue",
+    "card/card-header.vue",
+    "card/card-root.vue",
+    "card/card-title.vue",
+    "card/index.ts"
+  ]
+}
