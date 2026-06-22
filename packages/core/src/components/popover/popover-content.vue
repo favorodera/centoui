@@ -22,10 +22,10 @@ const forwardedPropsEmits = useForwardPropsEmits(delegatedProps, emits)
 const { arrow, content } = popoverVariants()
 
 const classNames = computed(() => ({
-  arrow: arrow(), 
+  arrow: arrow(),
   content: content({
-     class: props.class 
-    }),
+    class: props.class,
+  }),
 }))
 </script>
 

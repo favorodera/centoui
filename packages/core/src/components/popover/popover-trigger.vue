@@ -8,7 +8,7 @@ import {
 } from '.'
 
 const props = defineProps<PopoverTriggerProps>()
-  
+
 const delegatedProps = reactiveOmit(props, 'class')
 
 const forwardedProps = useForwardProps(delegatedProps)

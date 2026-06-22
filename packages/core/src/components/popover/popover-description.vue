@@ -8,7 +8,7 @@ import {
 } from '.'
 
 const props = withDefaults(defineProps<PopoverDescriptionProps>(), {
-  as:'p'
+  as: 'p',
 })
 
 const delegatedProps = reactiveOmit(props, 'class')

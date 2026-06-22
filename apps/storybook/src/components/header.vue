@@ -60,7 +60,7 @@ watch(
   >
     <!-- Component Selector -->
     <SelectRoot
-        size="sm"
+      size="sm"
       :model-value="route.path"
       @update:model-value="(value)=>navigation.goTo(value as string)"
     >
@@ -157,7 +157,7 @@ watch(
             :side-offset="5"
           >
             <PopoverHeader>
-              <PopoverTitle >
+              <PopoverTitle>
                 Theme
               </PopoverTitle>
 

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Button } from '#centoui/components/button'
 import { Input } from '#centoui/components/input'
-import { Label } from '#centoui/components/label';
+import { Label } from '#centoui/components/label'
 import { PopoverContent, PopoverDescription, PopoverFooter, PopoverHeader, PopoverRoot, PopoverTitle, PopoverTrigger } from '#centoui/components/popover'
 import { useStory } from '@/composables/use-story'
 
