@@ -1,5 +1,70 @@
 # Changelog
 
+## v1.0.0-alpha.42...v1.0.0-alpha.43
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.42...v1.0.0-alpha.43)
+
+### Added
+
+- **components:** Add collapsible component ([955699a](https://github.com/favorodera/centoui/commit/955699a))
+
+  - implement collapsible root, trigger, and content
+  - add tailwind-variants for styling
+  - register component in the registry
+  - add storybook story for demonstration
+
+- **components:** Add kbd and tooltip components ([9067044](https://github.com/favorodera/centoui/commit/9067044))
+
+  - Add Kbd and Tooltip components to core
+  - Add storybook stories for new components
+  - Update component border radii and variants
+
+- **pagination:** Add new pagination component ([b2e7aba](https://github.com/favorodera/centoui/commit/b2e7aba))
+
+  - implement pagination core components
+  - add storybook story for pagination
+  - register pagination component in registry
+
+- **pin-input:** Implement Pin Input component ([4c8959a](https://github.com/favorodera/centoui/commit/4c8959a))
+
+  - Add PinInput component with group and input parts
+  - Integrate with Reka UI and tailwind-variants
+  - Add storybook documentation for Pin Input
+  - Register component in registry
+
+- **progress:** Add progress component ([44f6004](https://github.com/favorodera/centoui/commit/44f6004))
+
+  - implement progress component using reka-ui
+  - add storybook story for demonstration
+  - register component in the registry
+
+- **sheet:** Add Sheet component and storybook entry ([eaef8dd](https://github.com/favorodera/centoui/commit/eaef8dd))
+
+  - Implement Sheet component using Reka UI
+  - Add variant support for side positioning
+  - Include header, footer, and sub-components
+  - Add storybook documentation
+  - Clean up alert-dialog transition styles
+
+- **slider:** Add slider component and story ([1425500](https://github.com/favorodera/centoui/commit/1425500))
+
+  - implement Slider component using reka-ui
+  - define slider tailwind variants
+  - add slider component to registry
+  - create slider storybook documentation
+
+
+### Fixed
+
+- **collapsible:** Resolve type issues in emits ([542bc94](https://github.com/favorodera/centoui/commit/542bc94))
+
+  - cast emits to any to fix type instantiation error
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.41...v1.0.0-alpha.42
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.41...v1.0.0-alpha.42)

@@ -1,5 +1,23 @@
 # Changelog
 
+## v1.0.0-alpha.42...v1.0.0-alpha.43
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.42...v1.0.0-alpha.43)
+
+### Added
+
+- **components:** Add collapsible component ([955699a](https://github.com/favorodera/centoui/commit/955699a))
+
+  - implement collapsible root, trigger, and content
+  - add tailwind-variants for styling
+  - register component in the registry
+  - add storybook story for demonstration
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.41...v1.0.0-alpha.42
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.41...v1.0.0-alpha.42)
