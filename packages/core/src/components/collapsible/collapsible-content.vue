@@ -14,7 +14,8 @@ const props = defineProps<CollapsibleContentProps>()
 
 const delegatedProps = reactiveOmit(props, 'class')
 
-const forwardedPropsEmits = useForwardPropsEmits(delegatedProps, emits)
+// Note: emits as any is used to avoid type instantiation issues
+const forwardedPropsEmits = useForwardPropsEmits(delegatedProps, emits as any)
 
 const { content } = collapsibleVariants()
 
