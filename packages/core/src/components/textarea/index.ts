@@ -10,7 +10,7 @@ export const textareaVariants = tv({
       overflow-y-auto border border-input bg-transparent outline-none
       scrollbar-thumb-foreground/20 scrollbar-track-transparent
       scrollbar-gutter-stable resize-none transition-colors duration-150
-      ease-in-out
+      ease-in-out min-inline-0
 
       hover:scrollbar-thumb-foreground/30
 
