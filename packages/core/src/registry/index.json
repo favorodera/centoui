@@ -239,6 +239,14 @@
     },
     {
       "$schema": "./schemas/component.json",
+      "name": "slider",
+      "files": [
+        "slider/slider.vue",
+        "slider/index.ts"
+      ]
+    },
+    {
+      "$schema": "./schemas/component.json",
       "name": "switch",
       "files": [
         "switch/switch.vue",
