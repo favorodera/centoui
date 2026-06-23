@@ -12,7 +12,7 @@ const open = ref(false)
 <template>
   <CollapsibleRoot
     v-model:open="open"
-    class="inline-full max-inline-xl rounded-md border border-border"
+    class="inline-full max-inline-xl rounded-lg border border-border"
   >
     <CollapsibleTrigger
       class="

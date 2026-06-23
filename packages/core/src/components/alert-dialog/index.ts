@@ -19,7 +19,7 @@ export const alertDialogVariants = tv({
     cancel: '',
     content: `
       fixed inset-bs-1/2 inset-s-1/2 z-50 grid inline-[90dvw] max-inline-md
-      -translate-1/2 gap-4 rounded-lg border border-border bg-surface-raised p-6
+      -translate-1/2 gap-4 rounded-xl border border-border bg-surface-raised p-6
       overflow-hidden
 
       data-[state=closed]:animate-out data-[state=closed]:fade-out-0

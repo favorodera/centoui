@@ -1,0 +1,9 @@
+{
+  "$schema": "./schemas/component.json",
+  "name": "kbd",
+  "files": [
+    "kbd/kbd-group.vue",
+    "kbd/kbd.vue",
+    "kbd/index.ts"
+  ]
+}

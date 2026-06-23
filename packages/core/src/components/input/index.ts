@@ -22,10 +22,10 @@ export const inputVariants = tv({
   variants: {
     size: {
       lg: {
-        root: 'block-9 rounded-md px-3.5 text-sm',
+        root: 'block-9 rounded-lg px-3.5 text-sm',
       },
       md: {
-        root: 'block-8 rounded-md px-3 text-sm',
+        root: 'block-8 rounded-lg px-3 text-sm',
       },
       sm: {
         root: 'block-7 rounded-md px-2.5 text-xs',

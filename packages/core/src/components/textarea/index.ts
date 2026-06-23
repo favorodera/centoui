@@ -28,13 +28,13 @@ export const textareaVariants = tv({
   variants: {
     size: {
       lg: {
-        root: 'px-3.5 py-3 text-sm rounded-md',
+        root: 'px-3.5 py-3 text-sm rounded-lg',
       },
       md: {
-        root: 'px-3 py-2.5 text-sm rounded-md',
+        root: 'px-3 py-2.5 text-sm rounded-lg',
       },
       sm: {
-        root: 'px-2.5 py-2 text-xs rounded-sm',
+        root: 'px-2.5 py-2 text-xs rounded-md',
       },
     },
   },

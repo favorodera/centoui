@@ -8,7 +8,7 @@ export const badgeVariants = tv({
   slots: {
     root: `
       relative inline-flex align-middle shrink-0 items-center block-6 gap-1 px-2
-      truncate rounded-sm border font-medium select-none text-xs outline-none
+      truncate rounded-md font-medium select-none text-xs outline-none
 
       focus-visible:ring-2 focus-visible:ring-ring
 
@@ -18,19 +18,25 @@ export const badgeVariants = tv({
   variants: {
     variant: {
       error: {
-        root: 'border-error/20 bg-error/8 text-error',
+        root: 'bg-error/15 text-error',
       },
       info: {
-        root: 'border-info/20 bg-info/8 text-info',
+        root: 'bg-info/15 text-info',
       },
       neutral: {
-        root: 'border-border bg-neutral text-neutral-foreground',
+        root: 'bg-neutral text-neutral-foreground',
+      },
+      primary: {
+        root: 'bg-primary text-primary-foreground',
+      },
+      secondary: {
+        root: 'bg-secondary text-secondary-foreground',
       },
       success: {
-        root: 'border-success/20 bg-success/8 text-success',
+        root: 'bg-success/15 text-success',
       },
       warning: {
-        root: 'border-warning/20 bg-warning/8 text-warning',
+        root: 'bg-warning/15 text-warning',
       },
     },
   },

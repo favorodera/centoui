@@ -32,7 +32,7 @@ export const popoverVariants = tv({
       data-[state=open]:ease-out
     `,
     contentWrapper: `
-      gap-4 rounded-md border grid border-border bg-surface-raised p-4
+      gap-4 rounded-xl border grid border-border bg-surface-raised p-4
       overflow-hidden relative
     `,
     description: 'text-muted-foreground',

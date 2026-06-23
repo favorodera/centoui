@@ -7,7 +7,7 @@ export const cardVariants = tv({
     footer: `flex gap-2 p-6 -mx-6 -mbe-6 bg-neutral`,
     header: `flex flex-col gap-1 px-6 pbs-6 -mx-6 -mbs-6`,
     root: `
-      flex flex-col gap-4 overflow-hidden rounded-md border border-border
+      flex flex-col gap-4 overflow-hidden rounded-xl border border-border
       bg-surface p-6
     `,
     title: 'text-base font-semibold',

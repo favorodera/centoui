@@ -8,25 +8,32 @@ export const alertVariants = tv({
   slots: {
     body: 'flex-1 min-inline-0 text-sm',
     description: 'mbs-1 font-normal',
-    root: `flex items-start inline-full p-4 gap-3 rounded-md border flex-wrap`,
+    root: `
+      flex items-start inline-full p-4 gap-3 rounded-lg bg-surface flex-wrap
+    `,
     title: 'font-medium',
   },
   variants: {
     variant: {
       error: {
-        root: 'border-error/20 bg-error/8 text-error',
+        description: 'text-error/90',
+        root: 'text-error',
       },
       info: {
-        root: 'border-info/20 bg-info/8 text-info',
+        description: 'text-info/90',
+        root: 'text-info',
       },
       neutral: {
-        root: 'border-border bg-neutral text-neutral-foreground',
+        description: 'text-foreground/90',
+        root: 'text-foreground',
       },
       success: {
-        root: 'border-success/20 bg-success/8 text-success',
+        description: 'text-success/90',
+        root: 'text-success',
       },
       warning: {
-        root: 'border-warning/20 bg-warning/8 text-warning',
+        description: 'text-warning/90',
+        root: 'text-warning',
       },
     },
   },

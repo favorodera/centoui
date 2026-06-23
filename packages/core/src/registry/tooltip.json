@@ -1,0 +1,11 @@
+{
+  "$schema": "./schemas/component.json",
+  "name": "tooltip",
+  "files": [
+    "tooltip/tooltip-content.vue",
+    "tooltip/tooltip-provider.vue",
+    "tooltip/tooltip-root.vue",
+    "tooltip/tooltip-trigger.vue",
+    "tooltip/index.ts"
+  ]
+}
