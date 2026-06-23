@@ -154,6 +154,21 @@
     },
     {
       "$schema": "./schemas/component.json",
+      "name": "pagination",
+      "files": [
+        "pagination/pagination-ellipsis.vue",
+        "pagination/pagination-first.vue",
+        "pagination/pagination-last.vue",
+        "pagination/pagination-list-item.vue",
+        "pagination/pagination-list.vue",
+        "pagination/pagination-next.vue",
+        "pagination/pagination-prev.vue",
+        "pagination/pagination-root.vue",
+        "pagination/index.ts"
+      ]
+    },
+    {
+      "$schema": "./schemas/component.json",
       "name": "popover",
       "files": [
         "popover/popover-anchor.vue",
