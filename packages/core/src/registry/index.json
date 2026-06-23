@@ -169,6 +169,16 @@
     },
     {
       "$schema": "./schemas/component.json",
+      "name": "pin-input",
+      "files": [
+        "pin-input/pin-input-group.vue",
+        "pin-input/pin-input-input.vue",
+        "pin-input/pin-input-root.vue",
+        "pin-input/index.ts"
+      ]
+    },
+    {
+      "$schema": "./schemas/component.json",
       "name": "popover",
       "files": [
         "popover/popover-anchor.vue",
