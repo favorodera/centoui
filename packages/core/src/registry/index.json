@@ -194,6 +194,14 @@
     },
     {
       "$schema": "./schemas/component.json",
+      "name": "progress",
+      "files": [
+        "progress/progress.vue",
+        "progress/index.ts"
+      ]
+    },
+    {
+      "$schema": "./schemas/component.json",
       "name": "select",
       "files": [
         "select/select-content.vue",

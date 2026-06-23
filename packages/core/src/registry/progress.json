@@ -1,0 +1,8 @@
+{
+  "$schema": "./schemas/component.json",
+  "name": "progress",
+  "files": [
+    "progress/progress.vue",
+    "progress/index.ts"
+  ]
+}
