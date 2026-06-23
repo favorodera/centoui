@@ -1,0 +1,15 @@
+{
+  "$schema": "./schemas/component.json",
+  "name": "sheet",
+  "files": [
+    "sheet/sheet-close.vue",
+    "sheet/sheet-content.vue",
+    "sheet/sheet-description.vue",
+    "sheet/sheet-footer.vue",
+    "sheet/sheet-header.vue",
+    "sheet/sheet-root.vue",
+    "sheet/sheet-title.vue",
+    "sheet/sheet-trigger.vue",
+    "sheet/index.ts"
+  ]
+}
