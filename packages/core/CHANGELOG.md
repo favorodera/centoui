@@ -1,5 +1,28 @@
 # Changelog
 
+## v1.0.0-alpha.43...v1.0.0-alpha.44
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.43...v1.0.0-alpha.44)
+
+### Added
+
+- **input-group:** Add new InputGroup component ([961fc91](https://github.com/favorodera/centoui/commit/961fc91))
+
+  - implement root, control, and addon components
+  - add tailwind-variants for flexible positioning
+  - include storybook documentation
+  - add component to registry
+
+
+### Styling
+
+- **textarea:** Add min-inline-0 to textarea variants ([4b766e8](https://github.com/favorodera/centoui/commit/4b766e8))
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.42...v1.0.0-alpha.43
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.42...v1.0.0-alpha.43)
