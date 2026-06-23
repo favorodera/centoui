@@ -1,0 +1,10 @@
+{
+  "$schema": "./schemas/component.json",
+  "name": "collapsible",
+  "files": [
+    "collapsible/collapsible-content.vue",
+    "collapsible/collapsible-root.vue",
+    "collapsible/collapsible-trigger.vue",
+    "collapsible/index.ts"
+  ]
+}
