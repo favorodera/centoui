@@ -26,6 +26,9 @@
         "alert-dialog/alert-dialog-title.vue",
         "alert-dialog/alert-dialog-trigger.vue",
         "alert-dialog/index.ts"
+      ],
+      "componentDependencies": [
+        "button"
       ]
     },
     {
@@ -79,6 +82,9 @@
         "breadcrumb/breadcrumb-root.vue",
         "breadcrumb/breadcrumb-separator.vue",
         "breadcrumb/index.ts"
+      ],
+      "componentDependencies": [
+        "icon"
       ]
     },
     {
@@ -175,6 +181,10 @@
         "pagination/pagination-prev.vue",
         "pagination/pagination-root.vue",
         "pagination/index.ts"
+      ],
+      "componentDependencies": [
+        "button",
+        "icon"
       ]
     },
     {
@@ -185,6 +195,9 @@
         "pin-input/pin-input-input.vue",
         "pin-input/pin-input-root.vue",
         "pin-input/index.ts"
+      ],
+      "componentDependencies": [
+        "input"
       ]
     },
     {
@@ -222,6 +235,9 @@
         "select/select-trigger.vue",
         "select/select-value.vue",
         "select/index.ts"
+      ],
+      "componentDependencies": [
+        "icon"
       ]
     },
     {
@@ -245,6 +261,10 @@
         "sheet/sheet-title.vue",
         "sheet/sheet-trigger.vue",
         "sheet/index.ts"
+      ],
+      "componentDependencies": [
+        "button",
+        "icon"
       ]
     },
     {
