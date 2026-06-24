@@ -1,5 +1,311 @@
 # Changelog
 
+## v0.2.2...v1.0.0
+
+[compare changes](https://github.com/favorodera/centoui/compare/v0.2.2...v1.0.0)
+
+### Added
+
+- Add remove command to CLI ([4b1170d](https://github.com/favorodera/centoui/commit/4b1170d))
+- Enhance component installation with dependency resolution and overwrite confirmation ([63409bd](https://github.com/favorodera/centoui/commit/63409bd))
+- Improve init command user experience and robustness ([902b918](https://github.com/favorodera/centoui/commit/902b918))
+- Implement component removal command ([99536bd](https://github.com/favorodera/centoui/commit/99536bd))
+- Add vitest configuration for CLI package ([96c8dae](https://github.com/favorodera/centoui/commit/96c8dae))
+- **cli:** Add config defaults URL constant ([b149c11](https://github.com/favorodera/centoui/commit/b149c11))
+- **cli:** Fetch default config from GitHub ([7a9576e](https://github.com/favorodera/centoui/commit/7a9576e))
+
+  - Fetch raw default config from GitHub
+  - Extract inner properties from fetched config
+  - Generate user config with fetched defaults
+
+- **nuxt:** Implement component auto-registration ([a7491f1](https://github.com/favorodera/centoui/commit/a7491f1))
+
+  - Use c12 to load configuration in CLI and Nuxt
+  - Add Nuxt module component registration logic
+
+- **cli:** Add utils file URL constant ([b96dc48](https://github.com/favorodera/centoui/commit/b96dc48))
+
+  - Define UTILS_FILE_URL for centoui init
+
+- **cli:** Add utilsFilePath to CentoUIConfig ([ef8cc5e](https://github.com/favorodera/centoui/commit/ef8cc5e))
+- **cli:** Prompt and create utils file ([9bedc22](https://github.com/favorodera/centoui/commit/9bedc22))
+
+  - Add utilsFilePath prompt to init command
+  - Write empty utils file if confirmed
+  - Pass utils path to config builder
+
+- **config:** Add utilsFilePath to default user config ([c41d67f](https://github.com/favorodera/centoui/commit/c41d67f))
+- **cli:** Add support for utils file configuration ([0e5ca7d](https://github.com/favorodera/centoui/commit/0e5ca7d))
+
+  - Update README with utils file path prompt
+  - Detail utils file creation process
+  - Add utilsFilePath to config documentation
+
+- **cli:** Fetch and write utils file content ([c7045e7](https://github.com/favorodera/centoui/commit/c7045e7))
+
+  - Import fetchUtilsFileContent from registry-utils
+  - Update init command to fetch utils file content
+  - Replace empty file creation with fetched content
+
+- **registry:** Add fetchUtilsFileContent utility ([81dfe22](https://github.com/favorodera/centoui/commit/81dfe22))
+
+  - Add fetchUtilsFileContent to fetch utils file
+  - Export utility for use in cli init command
+
+- **cli:** Set default overwrite confirmation to false ([f3a9e04](https://github.com/favorodera/centoui/commit/f3a9e04))
+
+  - set initialValue to false in confirm prompt
+  - prevent accidental file overwrites
+
+- **cli:** Add automatic utils file installation ([9b5d047](https://github.com/favorodera/centoui/commit/9b5d047))
+
+  - Fetch and write utils file if required
+  - Skip writing if utils file already exists
+  - Update file mapping function naming
+  - Add conditional task for utils generation
+
+- **cli:** Make utils file generation on-demand ([925aeb2](https://github.com/favorodera/centoui/commit/925aeb2))
+
+  - Remove automatic utils file installation
+  - Update init flow to write files via helper
+  - Update utils path prompt description
+
+- **cli:** Add cleanup prompt for unused utils file ([3e946cb](https://github.com/favorodera/centoui/commit/3e946cb))
+
+  - prompt user to delete utils file if no longer needed
+  - fix potential undefined errors in dependency checks
+
+- **cli:** Implement add command and refactor internals ([84e2f81](https://github.com/favorodera/centoui/commit/84e2f81))
+
+  - Implement add command for component installation
+  - Refactor init command and network utilities
+  - Remove project-specific eslint configuration
+  - Update dependencies and registry utility logic
+
+- **cli:** Add remove command and clean up UI strings ([c33c615](https://github.com/favorodera/centoui/commit/c33c615))
+
+  - Add remove command to uninstall components
+  - Register remove command in main CLI
+  - Remove emojis from CLI intro and outro messages
+
+- **cli:** Enhance component removal process ([58e827a](https://github.com/favorodera/centoui/commit/58e827a))
+
+  - Uninstall orphaned dependencies
+  - Add prompt to remove utils file if unused
+  - Improve removal progress feedback
+  - Add completion summary box
+
+- **core:** Add alert component ([9bca1c5](https://github.com/favorodera/centoui/commit/9bca1c5))
+
+  - implement alert root, body, title, and description
+  - include storybook documentation for alert
+  - add alert to component registry
+
+- **components:** Add collapsible component ([955699a](https://github.com/favorodera/centoui/commit/955699a))
+
+  - implement collapsible root, trigger, and content
+  - add tailwind-variants for styling
+  - register component in the registry
+  - add storybook story for demonstration
+
+
+### Fixed
+
+- **cli:** Set default confirmation to false for remove ([262e6dd](https://github.com/favorodera/centoui/commit/262e6dd))
+
+  - prevent accidental deletion by defaulting to no
+
+- **cli:** Ignore version mismatch during installation ([12b3f3e](https://github.com/favorodera/centoui/commit/12b3f3e))
+
+  - Only check package presence by name
+  - Skip version comparison for installed dependencies
+
+- **cli:** Handle undefined component dependencies ([54168c2](https://github.com/favorodera/centoui/commit/54168c2))
+
+  - add optional chaining to componentDeps iteration
+  - prevent runtime errors when dependencies are missing
+
+- **cli:** Handle cancellation in remove command ([fda5e42](https://github.com/favorodera/centoui/commit/fda5e42))
+
+  - add cancel import from clack prompts
+  - exit process if user cancels removal flow
+
+
+### Refactors
+
+- Improve CLI constants for URL and fetch headers ([73fcc33](https://github.com/favorodera/centoui/commit/73fcc33))
+- Update CORE_SRC_BASE_URL to use versioned tag ([5a559ca](https://github.com/favorodera/centoui/commit/5a559ca))
+- Improve component utility function names and descriptions ([e325d38](https://github.com/favorodera/centoui/commit/e325d38))
+- Improve config loading and generation functions ([adb16e8](https://github.com/favorodera/centoui/commit/adb16e8))
+
+  This commit refactors the `loadUserConfig` function to `loadCentoUIConfig` and `generateDefaultUserConfigTemplate` to `buildDefaultConfigFileContent`.
+  The changes include:
+  - Renaming functions for clarity and consistency.
+  - Updating JSDoc comments to be more descriptive and accurate.
+  - Enhancing error messages for better debugging.
+  - Adjusting the dynamic import mechanism to use `file://` URLs for more robust TypeScript config file loading.
+  - Modifying the default config template generation to use `defineConfig` for improved IDE support and pre-filling common icon mappings.
+
+- Improve file system utility function clarity and naming ([86516fe](https://github.com/favorodera/centoui/commit/86516fe))
+- Improve clarity and error handling in package utility functions ([eb5db50](https://github.com/favorodera/centoui/commit/eb5db50))
+
+  This commit refactors the `installPackages` and `removePackages` functions in `packages/cli/src/utils/package-utils.ts`.
+  Key changes include:
+  - Renaming `installPackages` to `installMissingPackages` and `removePackages` to `removeOrphanedPackages` to better reflect their functionality.
+  - Enhancing JSDoc comments for improved clarity and detail on parameters, return values, and error conditions.
+  - Adding try-catch blocks to `installMissingPackages` and `removeOrphanedPackages` to provide more specific error messages when package manager operations fail.
+  - Renaming the `ProgressCallback` type to `PackageProgressCallback` for better context.
+  - Renaming the `packages` parameter to `requiredPackages` in `installMissingPackages` and to `packagesToConsider` in `removeOrphanedPackages`.
+  - Renaming the `installedPackages` variable to `alreadyInstalled` for better readability.
+  - Renaming the `packagesToInstall` variable to `packagesToInstall` (no change, but clarified purpose).
+  - Renaming the `packagesToRemove` variable to `packagesToRemove` (no change, but clarified purpose).
+  - Renaming the `validatePath` function to `validateNonEmptyPath` and refining its validation logic and JSDoc.
+
+- Improve registry fetching and file content retrieval ([bea1aaf](https://github.com/favorodera/centoui/commit/bea1aaf))
+
+  This commit refactors the registry utility functions to enhance clarity, robustness, and naming conventions.
+  Key changes include:
+  - Renaming `fetchRegistry` to `fetchFullRegistry` for better semantic accuracy.
+  - Renaming `fetchComponent` to `fetchRegistryComponentEntry`.
+  - Renaming `resolveComponentTree` to `resolveComponentWithDependencies`.
+  - Renaming `fetchComponentFile` to `fetchRegistryFileContent`.
+  - Renaming `fetchThemeFile` to `fetchThemeCSSContent`.
+  - Updating internal variable names for better readability (e.g., `registryCache` to `cachedRegistry`).
+  - Enhancing error handling with more descriptive messages and including relevant URLs.
+  - Updating JSDoc comments to accurately reflect the function's purpose, parameters, and return values.
+  - Modifying constants usage to align with the new function names and purpose.
+
+- Migrate theme and config to defaults directory ([d6b5c74](https://github.com/favorodera/centoui/commit/d6b5c74))
+
+  This commit introduces a `defaults` directory within the `packages/core` package to house the default theme CSS and configuration. This change aims to centralize these core assets and improve the project's structure.
+  Key changes include:
+  - **Moving `centoui.css`**: The main theme CSS file has been moved from `packages/core/src/css` to `packages/core/src/defaults/centoui.css`.
+  - **New `config.ts`**: A new file `packages/core/src/defaults/config.ts` is introduced to hold default configuration options, specifically icon mappings.
+  - **Updated Imports**: All references to the theme CSS and the `centoui.config.ts` in the `apps/preview` directory have been updated to reflect the new path.
+  - **CLI Adjustments**: The `THEME_CSS_URL` constant in `packages/cli/src/constants.ts` and the `buildDefaultConfigFileContent` utility in `packages/cli/src/utils/config-utils.ts` have been updated to point to the new location. The `version` field has been removed from the generated `centoui.config.ts` as it's no longer necessary.
+  - **Vite Alias**: A new Vite alias is added in `packages/core/vite.config.ts` to resolve `#centoui/config` to the new `config.ts` file.
+  - **Tailwind CSS Integration**: The `eslint.config.mjs` and `tailwind.css` files have been updated to reflect the new path for the `centoui.css` import.
+  - **Dependency Removal**: The `centoui` workspace dependency is removed from `apps/preview/package.json` as it's no longer needed for the preview app.
+  - **Styling Cleanup**: Minor adjustments to Tailwind CSS class order in various Vue components for improved readability.
+  - **Avatar and Button Variants**: Minor adjustments to Tailwind CSS class order in `avatar/index.ts` and `button/index.ts` for consistency.
+
+- **init:** Build user-specific default config ([6808e76](https://github.com/favorodera/centoui/commit/6808e76))
+- **cli:** Update component registry type schema ([9d9d7ad](https://github.com/favorodera/centoui/commit/9d9d7ad))
+
+  - make description a required field
+  - add needsUtils flag
+  - make componentDeps optional
+  - make packageDeps optional
+
+- **cli:** Rename registry path mapping function ([cb93e2e](https://github.com/favorodera/centoui/commit/cb93e2e))
+
+  - Rename function to mapComponentsRegistryPathToProjectDest
+  - Update parameter names for clarity
+  - Update JSDoc documentation to reflect changes
+
+- **cli:** Rename mapRegistryPathToProjectDest ([0f942e9](https://github.com/favorodera/centoui/commit/0f942e9))
+
+  - rename function to mapComponentsRegistryPathToProjectDest
+  - update tests to use new function name
+  - add utilsFilePath to mock config in tests
+
+- **cli:** Simplify command output and flow ([2207db9](https://github.com/favorodera/centoui/commit/2207db9))
+
+  - remove box components from command completion
+  - update outro messages for consistency
+  - optimize dependency uninstallation logic
+
+- **cli:** Remove utils file support ([e3d5f63](https://github.com/favorodera/centoui/commit/e3d5f63))
+
+  - remove utils file creation and configuration
+  - rename packageDeps to npmDependencies
+  - rename componentDeps to componentDependencies
+  - update types and registry logic
+
+
+### Documentation
+
+- Improve type definitions and JSDoc comments ([4e08e8c](https://github.com/favorodera/centoui/commit/4e08e8c))
+
+  This commit enhances the type definitions and JSDoc comments for the `GlobalsRegistry`, `ComponentRegistry`, `Registry`, and `CentoUIConfig` types. The goal is to provide clearer explanations of their purpose, properties, and usage, particularly in the context of the CentoUI CLI and its configuration.
+  Key changes include:
+  - Refining descriptions for better clarity and context.
+  - Adding more specific examples for `packageDeps` and `icons`.
+  - Clarifying the relationship between registry files (`globals.json`, `component.json`, `index.json`) and the type definitions.
+  - Specifying the expected file paths and conventions for component source files.
+  - Emphasizing that `componentDeps` are resolved automatically into a dependency tree.
+  - Explaining the role of `CentoUIConfig` as generated by `centoui init` and consumed by CLI commands.
+
+- Update README shields and description ([55d77d1](https://github.com/favorodera/centoui/commit/55d77d1))
+
+  - Updated npm shield styles
+  - Changed npm shield links
+  - Updated project description text
+  - Updated CentoUI link to core package
+
+- **readme:** Overhaul readmes across monorepo ([96ccaab](https://github.com/favorodera/centoui/commit/96ccaab))
+
+  - Rewrite all package and app README files
+  - Add detailed CLI usage and architecture docs
+  - Update package descriptions and keywords
+
+- **readme:** Clean up and standardize readmes ([2ab5c6f](https://github.com/favorodera/centoui/commit/2ab5c6f))
+
+  - Fix badge URL encoding for spaces
+  - Capitalize and improve alt text descriptions
+  - Remove emoji from preview app header
+
+- **readme:** Refactor links to markdown syntax ([f7f4dc1](https://github.com/favorodera/centoui/commit/f7f4dc1))
+
+  - Convert HTML anchor tags to markdown links
+  - Improve documentation readability across project
+
+
+### Chores
+
+- Add Vitest to CLI package ([14ec55e](https://github.com/favorodera/centoui/commit/14ec55e))
+- Update package versions ([c886462](https://github.com/favorodera/centoui/commit/c886462))
+- Bump versions to alpha.4 ([41dc9c2](https://github.com/favorodera/centoui/commit/41dc9c2))
+- Bump version to alpha.6 ([95231b0](https://github.com/favorodera/centoui/commit/95231b0))
+- Bump versions to alpha 8 ([f581519](https://github.com/favorodera/centoui/commit/f581519))
+- **playgrounds:** Restructure dev playgrounds ([f3aecc8](https://github.com/favorodera/centoui/commit/f3aecc8))
+
+  - Remove deprecated apps/sandbox
+  - Add Vue and Nuxt dev playgrounds
+  - Upgrade workspace pnpm engine to v11
+
+- **docs:** Add target="_blank" to external links ([8c817a7](https://github.com/favorodera/centoui/commit/8c817a7))
+- Remove preview app and unused packages ([b79a23d](https://github.com/favorodera/centoui/commit/b79a23d))
+
+  - remove apps/preview and related configurations
+  - delete packages/core, packages/nuxt, and playgrounds
+  - clean up obsolete CI and issue templates
+  - consolidate and update ESLint configuration
+  - restructure cli utility modules
+
+- **repo:** Add project infrastructure and registry ([7763941](https://github.com/favorodera/centoui/commit/7763941))
+
+  - add github issue and pull request templates
+  - setup ci and release workflows
+  - add funding configuration
+  - implement registry schema and build script
+  - add initial registry components
+
+- **repo:** Add dependabot config and reformat files ([5d32e0b](https://github.com/favorodera/centoui/commit/5d32e0b))
+
+### Styling
+
+- Update comment arrow in test ([78f699d](https://github.com/favorodera/centoui/commit/78f699d))
+- **cli:** Fix punctuation and spacing in add command ([02e49c4](https://github.com/favorodera/centoui/commit/02e49c4))
+
+  - Add missing period to log message
+  - Add empty line for better readability
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.45...v1.0.0-alpha.46
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.45...v1.0.0-alpha.46)
