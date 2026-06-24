@@ -24,7 +24,7 @@ pnpm dlx centoui init
 
 **What it does:**
 
-1. Prompts you for a component directory (default: `src/components/centoui`), a utils file path (default: `src/utils/centoui-utils.ts`), and theme CSS path (default: `src/assets/css/centoui.css`).
+1. Prompts you for a component directory (default: `src/components/centoui`) and theme CSS path (default: `src/assets/css/centoui.css`).
 2. Writes `centoui.config.ts` with your chosen paths and default icon mappings.
 3. Fetches and writes the `centoui.css` theme file with all light/dark color tokens.
 4. Writes the `centoui-utils.ts` file with all utility functions.
