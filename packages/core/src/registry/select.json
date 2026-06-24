@@ -10,5 +10,8 @@
     "select/select-trigger.vue",
     "select/select-value.vue",
     "select/index.ts"
+  ],
+  "componentDependencies": [
+    "icon"
   ]
 }

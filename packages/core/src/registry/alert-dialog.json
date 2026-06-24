@@ -12,5 +12,8 @@
     "alert-dialog/alert-dialog-title.vue",
     "alert-dialog/alert-dialog-trigger.vue",
     "alert-dialog/index.ts"
+  ],
+  "componentDependencies": [
+    "button"
   ]
 }

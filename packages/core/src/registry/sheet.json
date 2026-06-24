@@ -11,5 +11,9 @@
     "sheet/sheet-title.vue",
     "sheet/sheet-trigger.vue",
     "sheet/index.ts"
+  ],
+  "componentDependencies": [
+    "button",
+    "icon"
   ]
 }

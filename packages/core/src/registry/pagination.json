@@ -11,5 +11,9 @@
     "pagination/pagination-prev.vue",
     "pagination/pagination-root.vue",
     "pagination/index.ts"
+  ],
+  "componentDependencies": [
+    "button",
+    "icon"
   ]
 }

@@ -6,5 +6,8 @@
     "pin-input/pin-input-input.vue",
     "pin-input/pin-input-root.vue",
     "pin-input/index.ts"
+  ],
+  "componentDependencies": [
+    "input"
   ]
 }
