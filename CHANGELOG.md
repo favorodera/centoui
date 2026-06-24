@@ -1,5 +1,21 @@
 # Changelog
 
+## v1.0.0-alpha.45...v1.0.0-alpha.46
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.45...v1.0.0-alpha.46)
+
+### Added
+
+- **registry:** Add component dependencies to index ([6e4aa01](https://github.com/favorodera/centoui/commit/6e4aa01))
+
+  - define dependencies for components
+  - update registry mapping for core packages
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.44...v1.0.0-alpha.45
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.44...v1.0.0-alpha.45)

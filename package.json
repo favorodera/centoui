@@ -1,6 +1,6 @@
 {
   "name": "centoui-monorepo",
-  "version": "1.0.0-alpha.45",
+  "version": "1.0.0-alpha.46",
   "private": true,
   "packageManager": "pnpm@11.2.2",
   "description": "Vue components for elegant interfaces",
