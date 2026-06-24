@@ -18,25 +18,19 @@ export const badgeVariants = tv({
   variants: {
     variant: {
       error: {
-        root: 'bg-error/15 text-error',
+        root: 'bg-error/10 text-error',
       },
       info: {
-        root: 'bg-info/15 text-info',
+        root: 'bg-info/10 text-info',
       },
       neutral: {
-        root: 'bg-neutral text-neutral-foreground',
-      },
-      primary: {
-        root: 'bg-primary text-primary-foreground',
-      },
-      secondary: {
-        root: 'bg-secondary text-secondary-foreground',
+        root: 'bg-neutral text-foreground',
       },
       success: {
-        root: 'bg-success/15 text-success',
+        root: 'bg-success/10 text-success',
       },
       warning: {
-        root: 'bg-warning/15 text-warning',
+        root: 'bg-warning/10 text-warning',
       },
     },
   },

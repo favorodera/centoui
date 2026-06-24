@@ -88,7 +88,7 @@ export const buttonVariants = tv({
       },
       outline: {
         root: `
-          border-border bg-transparent
+          border-border bg-transparent text-foreground
 
           hover:bg-accent
         `,

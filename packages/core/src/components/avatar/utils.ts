@@ -22,8 +22,8 @@ export function getInitials(text: string, separator = ' '): string {
     .filter(Boolean)
 
   // Use spread + index for correct Unicode / multi-byte support
-  const firstLetter = firstWord ? [...firstWord][0].toUpperCase() : ''
-  const secondLetter = secondWord ? [...secondWord][0].toUpperCase() : ''
+  const firstLetter = firstWord ? [...firstWord][0]?.toUpperCase() ?? '' : ''
+  const secondLetter = secondWord ? [...secondWord][0]?.toUpperCase() ?? '' : ''
 
   return `${firstLetter}${secondLetter}`
 }
