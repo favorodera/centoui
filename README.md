@@ -41,9 +41,7 @@ This monorepo is managed with [pnpm](https://pnpm.io/) workspaces and [Turborepo
 | [`packages/core`](./packages/core) | `centoui` | Component source, registry, and theme defaults |
 | [`packages/cli`](./packages/cli) | `centoui-cli` | CLI for initializing projects and managing components |
 | [`packages/nuxt`](./packages/nuxt) | `centoui-nuxt` | Official Nuxt module with auto-registration |
-| [`apps/preview`](./apps/preview) | `preview` | Component viewer for visual development |
-| [`playgrounds/vue`](./playgrounds/vue) | `vue-playground` | Vue development sandbox |
-| [`playgrounds/nuxt`](./playgrounds/nuxt) | `nuxt-playground` | Nuxt development sandbox |
+| [`apps/storybook`](./apps/storybook) | `storybook` | Component viewer for visual development |
 
 ## Development
 
