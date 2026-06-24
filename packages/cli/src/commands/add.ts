@@ -40,7 +40,7 @@ export async function add() {
       log.step('Fetching registry.')
       const registry = await fetchRegistry()
 
-      log.step('Resolving components')
+      log.step('Resolving components.')
       // Resolve component(s) transitive dependencies tree
       const resolvedComponents = new Map<string, ComponentRegistryEntry>()
       for (const requested of requestedComponents) {
@@ -88,6 +88,7 @@ export async function add() {
 
               for (const path of entry.files) {
                 message(`Fetching contents from registry.`)
+
                 const content = await sendNetworkRequest(`/components/${path}`)
                 const destination = join(cwd, config.componentsDir, path)
 
