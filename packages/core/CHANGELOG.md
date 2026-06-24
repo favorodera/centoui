@@ -1,5 +1,23 @@
 # Changelog
 
+## v1.0.0-alpha.44...v1.0.0-alpha.45
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.44...v1.0.0-alpha.45)
+
+### Chores
+
+- **registry:** Update component dependencies ([6914ea5](https://github.com/favorodera/centoui/commit/6914ea5))
+
+  - add component dependencies to registry files
+  - define dependencies for alert-dialog, breadcrumb
+  - define dependencies for pagination, pin-input
+  - define dependencies for select and sheet
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0-alpha.43...v1.0.0-alpha.44
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0-alpha.43...v1.0.0-alpha.44)
