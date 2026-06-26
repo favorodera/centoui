@@ -1,5 +1,61 @@
 # Changelog
 
+## v1.0.0...v1.1.0
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0...v1.1.0)
+
+### Added
+
+- **checkbox:** Add checkbox component ([e169731](https://github.com/favorodera/centoui/commit/e169731))
+
+  - initialize checkbox component structure
+  - export checkbox component for package usage
+
+- **registry:** Add checkbox component to registry ([c0aabcf](https://github.com/favorodera/centoui/commit/c0aabcf))
+
+  - register checkbox component definition
+  - update index registry with checkbox entries
+
+- **checkbox:** Implement checkbox component ([d442454](https://github.com/favorodera/centoui/commit/d442454))
+
+  - add Checkbox component using reka-ui
+  - define component variants and slots
+  - export component and types
+
+- **checkbox:** Add icon component dependency ([488e173](https://github.com/favorodera/centoui/commit/488e173))
+
+  - register icon as a dependency for checkbox
+
+- **core:** Add minus icon to configuration ([ecfefbd](https://github.com/favorodera/centoui/commit/ecfefbd))
+
+  - register minus icon in icons object
+  - remove commented out minus icon definition
+
+- **checkbox:** Add support for indeterminate state ([edba1b2](https://github.com/favorodera/centoui/commit/edba1b2))
+
+  - add conditional rendering for icon
+  - display minus icon when state is indeterminate
+
+- **checkbox:** Add styles and size variants ([123576e](https://github.com/favorodera/centoui/commit/123576e))
+
+  - apply base styles to root and indicator slots
+  - define size variants for sm, md, and lg
+  - add state-based styling for unchecked state
+
+- **registry:** Add icon dependency to checkbox ([f1f4c4d](https://github.com/favorodera/centoui/commit/f1f4c4d))
+
+  - add icon component dependency to checkbox entry
+
+
+### Styling
+
+- **repo:** Format json and source files ([e3dea52](https://github.com/favorodera/centoui/commit/e3dea52))
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v0.2.2...v1.0.0
 
 [compare changes](https://github.com/favorodera/centoui/compare/v0.2.2...v1.0.0)

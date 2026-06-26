@@ -1,5 +1,18 @@
 # Changelog
 
+## v1.0.0...v1.1.0
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.0.0...v1.1.0)
+
+### Styling
+
+- **repo:** Format json and source files ([e3dea52](https://github.com/favorodera/centoui/commit/e3dea52))
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v0.2.2...v1.0.0
 
 [compare changes](https://github.com/favorodera/centoui/compare/v0.2.2...v1.0.0)
