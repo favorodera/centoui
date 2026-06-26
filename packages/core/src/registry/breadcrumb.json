@@ -11,7 +11,5 @@
     "breadcrumb/breadcrumb-separator.vue",
     "breadcrumb/index.ts"
   ],
-  "componentDependencies": [
-    "icon"
-  ]
+  "componentDependencies": ["icon"]
 }

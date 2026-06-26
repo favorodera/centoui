@@ -5,7 +5,5 @@
     "checkbox/checkbox.vue",
     "checkbox/index.ts"
   ],
-  "componentDependencies": [
-    "icon"
-  ]
+  "componentDependencies": ["icon"]
 }
