@@ -12,7 +12,7 @@ export const alertVariants = tv({
     title: 'font-medium',
   },
   variants: {
-   variant: {
+    variant: {
       error: {
         root: 'bg-error/10 text-error',
       },

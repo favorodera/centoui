@@ -11,7 +11,5 @@
     "select/select-value.vue",
     "select/index.ts"
   ],
-  "componentDependencies": [
-    "icon"
-  ]
+  "componentDependencies": ["icon"]
 }
