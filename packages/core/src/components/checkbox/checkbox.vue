@@ -44,7 +44,15 @@ const classNames = computed(() => ({
       :class="classNames.indicator"
     >
       <slot v-bind="slotProps">
-        <Icon :icon="config.icons.check" />
+        <Icon
+          v-if="slotProps.state === 'indeterminate'"
+          :icon="config.icons.minus"
+        />
+
+        <Icon
+          v-else
+          :icon="config.icons.check"
+        />
       </slot>
     </CheckboxIndicator>
   </CheckboxRoot>
