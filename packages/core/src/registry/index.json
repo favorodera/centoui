@@ -117,6 +117,14 @@
     },
     {
       "$schema": "./schemas/component.json",
+      "name": "checkbox",
+      "files": [
+        "checkbox/checkbox.vue",
+        "checkbox/index.ts"
+      ]
+    },
+    {
+      "$schema": "./schemas/component.json",
       "name": "collapsible",
       "files": [
         "collapsible/collapsible-content.vue",
