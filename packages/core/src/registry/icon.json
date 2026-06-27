@@ -4,5 +4,8 @@
   "files": [
     "icon/icon.vue",
     "icon/index.ts"
-  ]
+  ],
+  "npmDependencies": {
+    "@iconify/vue": "^5.0.1"
+  }
 }
