@@ -3,7 +3,7 @@
   <p><strong>CentoUI, seamlessly integrated with Nuxt.</strong></p>
   <p>
     <a href="https://npmx.dev/package/centoui-nuxt" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/npm/v/centoui-nuxt.svg?style=plastic&label=NPM%20Version&color=blue" alt="NPM Version"></a>
-    <a href="https://npmx.dev/package/centoui-nuxt" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/npm/dw/centoui-nuxt.svg?style=plastic&label=NPM%20Downloads&color=blue" alt="NPM Downloads"></a>
+    <a href="https://npmx.dev/package/centoui-nuxt" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/npm/dt/centoui-nuxt.svg?style=plastic&label=NPM%20Downloads&color=blue" alt="NPM Downloads"></a>
     <a href="https://npmx.dev/package/centoui-nuxt" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/npm/unpacked-size/centoui-nuxt?style=plastic&label=NPM%20Unpacked%20Size" alt="NPM Unpacked Size"></a>
   </p>
 </div>
