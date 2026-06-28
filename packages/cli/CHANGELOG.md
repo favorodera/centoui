@@ -1,5 +1,25 @@
 # Changelog
 
+## v1.1.0...v1.2.0
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.1.0...v1.2.0)
+
+### Added
+
+- **icon:** Add @iconify/vue dependency to registry ([f0496fa](https://github.com/favorodera/centoui/commit/f0496fa))
+
+  - add @iconify/vue to icon component dependencies
+
+
+### Documentation
+
+- **readme:** Update npm badge to show total downloads ([2283013](https://github.com/favorodera/centoui/commit/2283013))
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0...v1.1.0
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0...v1.1.0)

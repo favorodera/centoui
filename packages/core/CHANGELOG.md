@@ -1,5 +1,36 @@
 # Changelog
 
+## v1.1.0...v1.2.0
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.1.0...v1.2.0)
+
+### Added
+
+- **icon:** Add @iconify/vue dependency to registry ([f0496fa](https://github.com/favorodera/centoui/commit/f0496fa))
+
+  - add @iconify/vue to icon component dependencies
+
+
+### Refactors
+
+- **core:** Update theme and design system tokens ([62ef9bc](https://github.com/favorodera/centoui/commit/62ef9bc))
+
+  - Refactor theme tokens and color palette
+  - Update component styles to use new variables
+  - Reorder CI pipeline to test before build
+  - Remove unused theme editor and popover logic
+  - Add Geist font family for typography
+
+
+### Documentation
+
+- **readme:** Update npm badge to show total downloads ([2283013](https://github.com/favorodera/centoui/commit/2283013))
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.0.0...v1.1.0
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.0.0...v1.1.0)
