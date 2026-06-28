@@ -117,7 +117,7 @@ const socials = [
     <div
       v-if="story.hasProps && models.controlPanelModel.value"
       class="
-        fixed inset-0 z-20 bg-overlay
+        fixed inset-0 z-20 bg-scrim
 
         md:hidden
       "
