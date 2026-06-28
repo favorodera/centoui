@@ -6,7 +6,7 @@ import { type BadgeProps, badgeVariants } from '.'
 
 const props = withDefaults(defineProps<BadgeProps>(), {
   as: 'span',
-  variant: 'neutral',
+  variant: 'primary',
 })
 
 const delegatedProps = reactiveOmit(props, 'class', 'variant')

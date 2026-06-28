@@ -18,39 +18,34 @@ export const alertDialogVariants = tv({
     action: '',
     cancel: '',
     content: `
-      fixed inset-bs-1/2 inset-s-1/2 z-50 grid inline-[90dvw] max-inline-md
-      -translate-1/2 gap-4 rounded-xl border border-border bg-surface-raised p-6
-      overflow-hidden
+      fixed inset-bs-1/2 inset-s-1/2 z-50 grid inline-[90dvw] max-inline-sm
+      -translate-1/2 gap-4 rounded-xl border bg-overlay p-4 overflow-hidden
 
       data-[state=closed]:animate-out data-[state=closed]:fade-out-0
-      data-[state=closed]:zoom-out-98 data-[state=closed]:duration-150
-      data-[state=closed]:ease-in
+      data-[state=closed]:zoom-out-98
 
       data-[state=open]:animate-in data-[state=open]:fade-in-0
-      data-[state=open]:zoom-in-98 data-[state=open]:duration-300
-      data-[state=open]:ease-out
+      data-[state=open]:zoom-in-98
     `,
     description: 'text-sm text-muted-foreground',
     footer: `
-      flex flex-col-reverse gap-2 p-6 -mx-6 -mbe-6 bg-neutral
+      flex flex-col-reverse gap-2 p-4 -mx-4 -mbe-4 bg-muted/50
 
       sm:flex-row sm:justify-end
     `,
     header: `
-      flex flex-col gap-1 px-6 pbs-6 text-center -mx-6 -mbs-6
+      flex flex-col gap-1 px-4 pbs-6 text-center -mx-4 -mbs-4
 
       sm:text-start
     `,
     overlay: `
-      fixed inset-0 z-50 bg-overlay backdrop-blur-xs
+      fixed inset-0 z-50 bg-scrim backdrop-blur-xs
 
       data-[state=closed]:animate-out data-[state=closed]:fade-out-0
-      data-[state=closed]:duration-150 data-[state=closed]:ease-in
 
       data-[state=open]:animate-in data-[state=open]:fade-in-0
-      data-[state=open]:duration-300 data-[state=open]:ease-out
     `,
-    title: 'text-base font-semibold text-foreground',
+    title: 'text-base font-medium',
     trigger: '',
   },
 })

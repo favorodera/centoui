@@ -20,9 +20,9 @@ export const selectVariants = tv({
     size: 'md',
   },
   slots: {
-    arrow: 'z-50 fill-surface-raised stroke-input',
+    arrow: 'z-50 fill-overlay stroke-input',
     content: `
-      bg-surface-raised border border-input z-50 relative space-y-0.5
+      bg-overlay border border-input z-50 relative space-y-0.5
 
       data-[side=bottom]:slide-in-from-top-2
 
@@ -33,12 +33,10 @@ export const selectVariants = tv({
       data-[side=top]:slide-in-from-bottom-2
 
       data-[state=closed]:animate-out data-[state=closed]:fade-out-0
-      data-[state=closed]:zoom-out-95 data-[state=closed]:duration-100
-      data-[state=closed]:ease-in
+      data-[state=closed]:zoom-out-95
 
       data-[state=open]:animate-in data-[state=open]:fade-in-0
-      data-[state=open]:zoom-in-95 data-[state=open]:duration-200
-      data-[state=open]:ease-out
+      data-[state=open]:zoom-in-95
     `,
     group: 'scroll-my-1 p-1 space-y-0.5',
     icon: 'text-muted-foreground',
@@ -55,17 +53,15 @@ export const selectVariants = tv({
     label: 'text-muted-foreground',
     scrollDownButton: `
       flex inline-full cursor-default items-center justify-center
-      rounded-b-[inherit] bg-surface-raised mbe-0
+      rounded-b-[inherit] bg-overlay mbe-0
     `,
     scrollUpButton: `
       flex inline-full cursor-default items-center justify-center
-      rounded-t-[inherit] bg-surface-raised
+      rounded-t-[inherit] bg-overlay
     `,
     trigger: `
       relative flex items-center inline-full min-inline-0 border border-input
-      bg-transparent outline-none transition-colors duration-150 ease-in-out
-
-      hover:bg-accent
+      bg-transparent outline-none transition-colors
 
       focus-visible:ring-2 focus-visible:ring-ring
 

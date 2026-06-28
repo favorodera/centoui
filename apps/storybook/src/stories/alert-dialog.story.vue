@@ -11,7 +11,6 @@ import {
   AlertDialogTrigger,
 } from '#centoui/components/alert-dialog'
 import { Button } from '#centoui/components/button'
-import { Icon } from '#centoui/components/icon'
 import { useStory } from '@/composables/use-story'
 
 useStory('Alert Dialog', {})
@@ -20,18 +19,17 @@ useStory('Alert Dialog', {})
 <template>
   <AlertDialogRoot>
     <AlertDialogTrigger as-child>
-      <Button variant="error">
-        <Icon icon="lucide:trash-2" />
-        Delete Account
+      <Button variant="outline">
+        Show Dialog
       </Button>
     </AlertDialogTrigger>
 
     <AlertDialogContent>
       <AlertDialogHeader>
-        <AlertDialogTitle>Are you sure you want to delete your account?</AlertDialogTitle>
+        <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
 
         <AlertDialogDescription>
-          This action cannot be undone. This will permanently delete your account and remove all your data from our servers.
+          This action cannot be undone. This will permanently delete your account from our servers.
         </AlertDialogDescription>
       </AlertDialogHeader>
 
@@ -40,8 +38,8 @@ useStory('Alert Dialog', {})
           Cancel
         </AlertDialogCancel>
 
-        <AlertDialogAction variant="error">
-          Delete Account
+        <AlertDialogAction>
+          Continue
         </AlertDialogAction>
       </AlertDialogFooter>
     </AlertDialogContent>

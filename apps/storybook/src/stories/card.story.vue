@@ -22,7 +22,7 @@ useStory('Card', {})
   <CardRoot class="max-inline-sm">
     <div
       class="
-        aspect-video block-48 bg-muted min-inline-full -mx-6 -mbs-6
+        aspect-video block-48 bg-muted min-inline-full -mx-4 -mbs-4
         overflow-hidden
       "
     >

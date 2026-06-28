@@ -8,8 +8,8 @@ export const kbdVariants = tv({
   slots: {
     group: 'inline-flex items-center gap-1',
     root: `
-      pointer-events-none inline-fit grid place-items-center bg-neutral z-50
-      font-medium text-neutral-foreground select-none font-mono
+      pointer-events-none inline-fit grid place-items-center bg-muted
+      font-medium text-muted-foreground select-none font-mono
     `,
   },
   variants: {

@@ -34,7 +34,7 @@ const uploadedSize = computed(() => {
       <div
         class="
           flex block-10 inline-10 shrink-0 items-center justify-center
-          rounded-lg border border-border bg-surface
+          rounded-lg border border-border bg-elevated
         "
       >
         <Icon

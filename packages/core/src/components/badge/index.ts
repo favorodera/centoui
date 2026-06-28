@@ -3,7 +3,7 @@ import { tv, type VariantProps } from 'tailwind-variants'
 
 export const badgeVariants = tv({
   defaultVariants: {
-    variant: 'neutral',
+    variant: 'primary',
   },
   slots: {
     root: `
@@ -18,19 +18,22 @@ export const badgeVariants = tv({
   variants: {
     variant: {
       error: {
-        root: 'bg-error/10 text-error',
+        root: 'bg-error text-error-foreground',
       },
       info: {
-        root: 'bg-info/10 text-info',
+        root: 'bg-info text-info-foreground',
       },
-      neutral: {
-        root: 'bg-neutral text-foreground',
+      primary: {
+        root: 'bg-primary text-primary-foreground',
+      },
+      secondary: {
+        root: 'bg-secondary text-secondary-foreground',
       },
       success: {
-        root: 'bg-success/10 text-success',
+        root: 'bg-success text-success-foreground',
       },
       warning: {
-        root: 'bg-warning/10 text-warning',
+        root: 'bg-warning text-warning-foreground',
       },
     },
   },
@@ -48,7 +51,7 @@ export type BadgeProps = PrimitiveProps & {
 
   /**
    * Visual style variant.
-   * @default 'neutral'
+   * @default 'primary'
    */
   variant?: BadgeVariants['variant']
 }

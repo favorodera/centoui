@@ -1,6 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:ital,wght@0,100..900;1,100..900&family=Geist:ital,wght@0,100..900;1,100..900&display=swap');
 @import "../../../packages/core/src/theme.css";
 @source "../../../packages/core/src/**/*.{ts,vue}";
 
 #app {
   @apply min-h-dvh w-full grid place-items-center grid-cols-1;
+}
+
+@theme {
+  --font-sans: 'Geist', sans-serif;
+  --font-mono: 'Geist Mono', monospace;
 }

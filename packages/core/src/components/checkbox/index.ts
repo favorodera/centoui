@@ -9,8 +9,8 @@ export const checkboxVariants = tv({
     indicator: `grid place-content-center text-current transition-none`,
     root: `
       peer relative inline-flex justify-center shrink-0 items-center border
-      outline-none transition-colors duration-150 ease-in-out border-input
-      text-primary-foreground bg-primary
+      outline-none transition-colors border-input text-primary-foreground
+      bg-primary
 
       focus-visible:ring-2 focus-visible:ring-ring
 

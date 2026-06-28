@@ -8,7 +8,6 @@ import {
   BreadcrumbRoot,
   BreadcrumbSeparator,
 } from '#centoui/components/breadcrumb'
-import { Icon } from '#centoui/components/icon'
 import { useStory } from '@/composables/use-story'
 
 useStory('Breadcrumb', {})
@@ -19,11 +18,7 @@ useStory('Breadcrumb', {})
     <BreadcrumbList>
       <BreadcrumbItem>
         <BreadcrumbLink href="#">
-          <Icon
-            icon="lucide:folder-open"
-            class="text-warning"
-          />
-          centoui
+          Home
         </BreadcrumbLink>
       </BreadcrumbItem>
 
@@ -37,11 +32,7 @@ useStory('Breadcrumb', {})
 
       <BreadcrumbItem>
         <BreadcrumbLink href="#">
-          <Icon
-            icon="lucide:folder-open"
-            class="text-warning"
-          />
-          breadcrumb
+          Components
         </BreadcrumbLink>
       </BreadcrumbItem>
 
@@ -49,11 +40,7 @@ useStory('Breadcrumb', {})
 
       <BreadcrumbItem>
         <BreadcrumbPage>
-          <Icon
-            icon="lucide:file-code"
-            class="text-info"
-          />
-          index.ts
+          Breadcrumb
         </BreadcrumbPage>
       </BreadcrumbItem>
     </BreadcrumbList>

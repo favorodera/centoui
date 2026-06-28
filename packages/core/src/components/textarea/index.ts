@@ -8,11 +8,7 @@ export const textareaVariants = tv({
     root: `
       field-sizing-content min-block-20 inline-full scrollbar-thin
       overflow-y-auto border border-input bg-transparent outline-none
-      scrollbar-thumb-foreground/20 scrollbar-track-transparent
-      scrollbar-gutter-stable resize-none transition-colors duration-150
-      ease-in-out min-inline-0
-
-      hover:scrollbar-thumb-foreground/30
+      resize-none transition-colors min-inline-0
 
       selection:bg-primary selection:text-primary-foreground
 

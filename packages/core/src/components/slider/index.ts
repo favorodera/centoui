@@ -26,7 +26,7 @@ export const sliderVariants = tv({
 
       disabled:pointer-events-none disabled:opacity-65
     `,
-    track: 'relative grow overflow-hidden rounded-full bg-muted',
+    track: 'relative grow overflow-hidden rounded-full bg-input',
   },
   variants: {
     orientation: {

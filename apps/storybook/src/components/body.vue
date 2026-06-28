@@ -45,9 +45,9 @@ const socials = [
       v-if="story.hasProps && story.schema"
       class="
         fixed inset-y-0 inset-e-0 z-50 flex inline-72 shrink-0 flex-col border-s
-        border-border bg-surface transition-transform
+        border-border bg-overlay transition-transform
 
-        md:relative md:inset-auto md:translate-x-0
+        md:relative md:inset-auto md:translate-x-0 md:bg-elevated
       "
       :class="models.controlPanelModel.value ? 'translate-x-0' : `
         translate-x-full

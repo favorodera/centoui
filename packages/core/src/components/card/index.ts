@@ -4,11 +4,10 @@ import { tv } from 'tailwind-variants'
 export const cardVariants = tv({
   slots: {
     description: 'text-sm text-muted-foreground',
-    footer: `flex gap-2 p-6 -mx-6 -mbe-6 bg-neutral`,
-    header: `flex flex-col gap-1 px-6 pbs-6 -mx-6 -mbs-6`,
+    footer: `flex gap-2 p-4 -mx-4 -mbe-4 bg-muted/50`,
+    header: `flex flex-col gap-1 px-4 pbs-4 -mx-4 -mbs-4`,
     root: `
-      flex flex-col gap-4 overflow-hidden rounded-xl border border-border
-      bg-surface p-6
+      flex flex-col gap-4 overflow-hidden rounded-xl border bg-elevated p-4
     `,
     title: 'text-base font-semibold',
   },

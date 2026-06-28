@@ -18,27 +18,22 @@ export const sheetVariants = tv({
   slots: {
     close: '',
     content: `
-      fixed z-50 flex flex-col gap-4 border-border bg-surface-raised p-6
-      overflow-hidden
+      fixed z-50 flex flex-col gap-4 bg-overlay p-4 overflow-hidden
 
-      data-[state=closed]:animate-out data-[state=closed]:duration-150
-      data-[state=closed]:ease-in
+      data-[state=closed]:animate-out
 
-      data-[state=open]:animate-in data-[state=open]:duration-300
-      data-[state=open]:ease-out
+      data-[state=open]:animate-in
     `,
     description: 'text-sm text-muted-foreground',
-    footer: `flex gap-2 p-6 -mx-6 -mbe-6 bg-neutral items-center mbs-auto`,
-    header: `relative flex flex-col gap-1 px-6 pbs-6 -mx-6 -mbs-6`,
-    headerClose: 'absolute inset-bs-6 inset-e-6',
+    footer: `flex gap-2 p-4 -mx-4 -mbe-4 bg-muted/50 items-center mbs-auto`,
+    header: `relative flex flex-col gap-1 px-4 pbs-4 -mx-4 -mbs-4`,
+    headerClose: 'absolute inset-bs-4 inset-e-4',
     overlay: `
-      fixed inset-0 z-50 bg-overlay backdrop-blur-xs
+      fixed inset-0 z-50 bg-scrim backdrop-blur-xs
 
       data-[state=closed]:animate-out data-[state=closed]:fade-out-0
-      data-[state=closed]:duration-150 data-[state=closed]:ease-in
 
       data-[state=open]:animate-in data-[state=open]:fade-in-0
-      data-[state=open]:duration-300 data-[state=open]:ease-out
     `,
     title: 'text-base font-semibold text-foreground',
     trigger: '',

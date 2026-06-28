@@ -9,13 +9,13 @@ export const breadcrumbVariants = tv({
     item: 'inline-flex min-inline-0 gap-2',
     link: `
       inline-flex min-inline-0 items-center gap-2 text-muted-foreground
-      transition-colors duration-150 ease-in-out outline-none
+      transition-colors outline-none
 
       hover:text-foreground
 
       focus-visible:ring-2 focus-visible:ring-ring
     `,
-    list: 'flex items-center gap-2 text-sm',
+    list: 'flex items-center gap-3 text-sm',
     page: 'flex items-center gap-2 text-foreground',
     root: 'relative min-inline-0',
     separator: 'flex items-center justify-center gap-2 text-muted-foreground',

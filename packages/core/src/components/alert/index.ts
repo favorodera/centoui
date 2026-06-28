@@ -8,25 +8,28 @@ export const alertVariants = tv({
   slots: {
     body: 'flex-1 min-inline-0 text-sm',
     description: 'mbs-1 font-normal',
-    root: 'flex items-start inline-full p-4 gap-3 rounded-lg flex-wrap',
+    root: `
+      flex items-start inline-full p-4 gap-3 rounded-lg flex-wrap bg-elevated
+      border
+    `,
     title: 'font-medium',
   },
   variants: {
     variant: {
       error: {
-        root: 'bg-error/10 text-error',
+        root: 'text-error',
       },
       info: {
-        root: 'bg-info/10 text-info',
+        root: 'text-info',
       },
       neutral: {
-        root: 'bg-neutral text-foreground',
+        root: 'text-foreground',
       },
       success: {
-        root: 'bg-success/10 text-success',
+        root: 'text-success',
       },
       warning: {
-        root: 'bg-warning/10 text-warning',
+        root: 'text-warning',
       },
     },
   },

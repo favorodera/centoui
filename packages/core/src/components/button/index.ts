@@ -11,7 +11,7 @@ export const buttonVariants = tv({
     root: `
       relative inline-flex items-center shrink-0 cursor-default truncate border
       border-transparent font-medium outline-none select-none justify-center
-      transition-colors duration-150 ease-in-out
+      transition-colors
 
       disabled:pointer-events-none disabled:opacity-65
 
@@ -66,45 +66,42 @@ export const buttonVariants = tv({
         root: `
           bg-error text-error-foreground
 
-          hover:bg-error/90
+          hover:bg-error/80
         `,
       },
       ghost: {
         root: `
-          bg-transparent
+          bg-transparent text-foreground
 
-          hover:bg-accent
+          hover:bg-muted
         `,
       },
       link: {
         root: `
-          underline underline-offset-1 px-0 bg-transparent decoration-1
-          [text-underline-position:under]
+          px-0 text-primary underline-offset-4
 
-          hover:text-primary
-
-          active:translate-y-0
+          hover:underline
         `,
       },
       outline: {
         root: `
           border-border bg-transparent text-foreground
 
-          hover:bg-accent
+          hover:bg-muted
         `,
       },
       primary: {
         root: `
           bg-primary text-primary-foreground
 
-          hover:bg-primary/90
+          hover:bg-primary/80
         `,
       },
       secondary: {
         root: `
           bg-secondary text-secondary-foreground
 
-          hover:bg-secondary/90
+          hover:bg-secondary/80
         `,
       },
     },

@@ -8,7 +8,7 @@ export const switchVariants = tv({
   slots: {
     root: `
       peer relative inline-flex shrink-0 items-center rounded-full border
-      outline-none transition-colors duration-150 ease-in-out
+      outline-none transition-colors bg-input border-input
 
       focus-visible:ring-2 focus-visible:ring-ring
 
@@ -16,13 +16,11 @@ export const switchVariants = tv({
 
       disabled:pointer-events-none disabled:opacity-65
 
-      data-[state=checked]:bg-primary data-[state=checked]:border-transparent
-
-      data-[state=unchecked]:bg-input data-[state=unchecked]:border-border
+      data-[state=checked]:bg-primary
     `,
     thumb: `
       pointer-events-none block shrink-0 rounded-full bg-background
-      transition-transform duration-150 ease-out
+      transition-transform
 
       data-[state=unchecked]:translate-x-0.5
     `,

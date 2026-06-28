@@ -21,7 +21,7 @@ export const avatarVariants = tv({
     image: 'block-full inline-full rounded-[inherit] object-cover',
     root: `
       relative inline-flex shrink-0 items-center justify-center overflow-hidden
-      rounded-full border border-border align-middle bg-muted select-none
+      rounded-full border align-middle bg-muted select-none
     `,
   },
   variants: {

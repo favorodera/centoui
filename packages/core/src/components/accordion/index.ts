@@ -14,9 +14,9 @@ export const accordionVariants = tv({
     content: `
       overflow-hidden text-sm pbe-2 grid gap-2
 
-      data-[state=closed]:animate-[accordion-up_150ms_ease-in]
+      data-[state=closed]:animate-accordion-up
 
-      data-[state=open]:animate-[accordion-down_200ms_ease-out]
+      data-[state=open]:animate-accordion-down
     `,
     item: 'inline-full',
     root: 'inline-full',

@@ -15,9 +15,10 @@ const controls = useStory('Alert', {
 
 <template>
   <AlertRoot :variant="controls.variant">
+    <Icon icon="lucide:lightbulb" />
+
     <AlertBody>
       <AlertTitle>Update Available</AlertTitle>
-      <AlertDescription>A new software version is ready to be installed on your device.</AlertDescription>
     </AlertBody>
   </AlertRoot>
 
