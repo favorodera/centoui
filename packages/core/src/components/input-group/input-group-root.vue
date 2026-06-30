@@ -34,10 +34,10 @@ function handleInputGroupRootClick(event: MouseEvent): void {
   const currentTarget = event.currentTarget as HTMLElement
 
   // If the click originated inside the control itself or a button, let it handle focus naturally
-  if (target.closest('[data-slot=input-group-control], button, [role=button]')) return
+  if (target.closest('[data-input-group-control], button, [role=button]')) return
 
   // Otherwise focus the control — covers clicks on addons, padding, or label areas
-  currentTarget.querySelector<HTMLElement>('[data-slot=input-group-control]')?.focus()
+  currentTarget.querySelector<HTMLElement>('[data-input-group-control]')?.focus()
 }
 </script>
 

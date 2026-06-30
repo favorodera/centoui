@@ -44,16 +44,24 @@ const classNames = computed(() => ({
 </script>
 
 <template>
-  <ComboboxAnchor :class="classNames.anchor">
-    <InputGroupRoot>
+  <ComboboxAnchor
+    :class="classNames.anchor"
+    data-slot="combobox-anchor"
+  >
+    <InputGroupRoot :size="rootContext?.size">
       <ComboboxInput
         v-bind="{...forwardedPropsEmits,...$attrs}"
-        data-slot="input-group-control"
+        data-slot="combobox-input"
+        data-input-group-control
         :class="classNames.input"
       />
 
       <InputGroupAddon align="inline-end">
-        <ComboboxCancel :class="classNames.cancel" />
+        <ComboboxCancel
+          :class="classNames.cancel"
+          data-slot="combobox-cancel"
+        />
+
         <Icon :icon="config.icons.chevronDown" />
       </InputGroupAddon>
     </InputGroupRoot>

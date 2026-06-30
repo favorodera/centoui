@@ -22,7 +22,7 @@ export const selectVariants = tv({
   slots: {
     arrow: 'z-50 fill-overlay stroke-input',
     content: `
-      bg-overlay border border-input z-50 relative space-y-0.5
+      bg-overlay border border-input z-50 relative grid gap-1
 
       data-[side=bottom]:slide-in-from-top-2
 
@@ -38,7 +38,7 @@ export const selectVariants = tv({
       data-[state=open]:animate-in data-[state=open]:fade-in-0
       data-[state=open]:zoom-in-95
     `,
-    group: 'scroll-my-1 p-1 space-y-0.5',
+    group: 'scroll-my-1 p-1 grid gap-1',
     icon: 'text-muted-foreground',
     item: `
       relative flex inline-full cursor-default items-center outline-none
@@ -50,7 +50,7 @@ export const selectVariants = tv({
     `,
     itemIndicator: 'absolute inset-bs-1/2 -translate-y-1/2',
     itemText: 'min-inline-0 truncate',
-    label: 'text-muted-foreground',
+    label: 'text-muted-foreground py-0.5',
     scrollDownButton: `
       flex inline-full cursor-default items-center justify-center
       rounded-b-[inherit] bg-overlay mbe-0

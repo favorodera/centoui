@@ -25,7 +25,7 @@ export const comboboxVariants = tv({
     arrow: 'z-50 fill-overlay stroke-input',
     cancel: '',
     content: `
-      bg-overlay border border-input z-50 space-y-0.5 inline-full
+      bg-overlay border border-input z-50 grid gap-1 inline-full
 
       data-[side=bottom]:slide-in-from-top-2
 
@@ -45,18 +45,18 @@ export const comboboxVariants = tv({
       block-full inline-full flex items-center justify-center
       text-muted-foreground text-sm py-2 text-center
     `,
-    group: 'scroll-my-1 p-1 space-y-0.5',
+    group: 'scroll-my-1 p-1 grid gap-1',
     input: '',
     item: `
       relative flex inline-full cursor-default items-center outline-none
       select-none
 
-      focus:bg-accent focus:text-accent-foreground
+      data-highlighted:bg-accent data-highlighted:text-accent-foreground
 
       data-disabled:pointer-events-none data-disabled:opacity-65
     `,
     itemIndicator: 'absolute inset-bs-1/2 -translate-y-1/2',
-    label: 'text-muted-foreground',
+    label: 'text-muted-foreground py-0.5',
     root: 'relative',
     trigger: '',
     viewport: 'inline-full rounded-[inherit]',
@@ -64,7 +64,7 @@ export const comboboxVariants = tv({
   variants: {
     contentPosition: {
       inline: {
-        content: 'absolute -inset-bs-1',
+        content: 'absolute',
       },
       popper: {
         content: `

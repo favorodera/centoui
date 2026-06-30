@@ -65,16 +65,15 @@ const options = [
     children: [
       { name: 'Apple' },
       { name: 'Banana' },
-      { name: 'Orange' },
+      { disabled: true, name: 'Orange' },
       { name: 'Honeydew' },
     ],
-    name: 'Fruit',
   },
   {
     children: [
       { name: 'Cabbage' },
       { name: 'Carrots' },
-      { name: 'Lettuce' },
+      { disabled: true, name: 'Lettuce' },
       { name: 'Spinach' },
     ],
     name: 'Vegetable',
@@ -95,7 +94,6 @@ const options = [
     />
 
     <ComboboxContent
-      position-strategy="absolute"
       :align="controls.align"
       :position="controls.contentPosition"
       :side="controls.side"
@@ -112,7 +110,7 @@ const options = [
         />
 
         <ComboboxGroup>
-          <ComboboxLabel>
+          <ComboboxLabel v-if="group.name">
             {{ group.name }}
           </ComboboxLabel>
 
@@ -120,6 +118,7 @@ const options = [
             v-for="option in group.children"
             :key="option.name"
             :value="option.name"
+            :disabled="option.disabled"
           >
             {{ option.name }}
           </ComboboxItem>

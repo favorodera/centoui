@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { SelectContent, SelectGroup, SelectItem, SelectLabel, SelectRoot, SelectTrigger, SelectValue, selectVariants } from '#centoui/components/select'
+import { Separator } from '#centoui/components/separator'
 import { useStory } from '@/composables/use-story'
 
 const controls = useStory('Select', {
@@ -83,6 +84,8 @@ const controls = useStory('Select', {
           Orange
         </SelectItem>
       </SelectGroup>
+
+      <Separator />
 
       <SelectGroup>
         <SelectLabel>

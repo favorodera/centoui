@@ -29,7 +29,7 @@ const controls = useStory('Input Group', {
     </InputGroupAddon>
 
     <Input
-      data-slot="input-group-control"
+      data-input-group-control
       placeholder="username"
       :size="controls.size"
       :disabled="controls.disabled"
@@ -43,7 +43,7 @@ const controls = useStory('Input Group', {
 
   <InputGroupRoot :size="controls.size">
     <Input
-      data-slot="input-group-control"
+      data-input-group-control
       placeholder="Enter amount"
       :size="controls.size"
       :disabled="controls.disabled"
@@ -57,7 +57,7 @@ const controls = useStory('Input Group', {
 
   <InputGroupRoot :size="controls.size">
     <Textarea
-      data-slot="input-group-control"
+      data-input-group-control
       placeholder="Write your bio..."
       :size="controls.size"
       :disabled="controls.disabled"
