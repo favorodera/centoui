@@ -101,11 +101,10 @@ export default defineConfig({
     chevronLeft: 'lucide:chevron-left',
     chevronRight: 'lucide:chevron-right',
     chevronUp: 'lucide:chevron-up',
-    close: 'lucide:x',
+    x: 'lucide:x',
     ellipsis: 'lucide:ellipsis',
   },
   themeFilePath: './src/assets/css/centoui.css',
-  utilsFilePath: './src/utils/centoui-utils.ts',
 })
 ```
 

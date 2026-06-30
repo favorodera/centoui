@@ -64,10 +64,9 @@ export default defineConfig({
   icons: {
     check: 'lucide:check',
     chevronDown: 'lucide:chevron-down',
-    close: 'lucide:x',
+    x: 'lucide:x',
   },
   themeFilePath: './src/assets/css/centoui.css',
-  utilsFilePath: './src/utils/centoui-utils.ts',
 })
 ```
 
