@@ -1,5 +1,24 @@
 # Changelog
 
+## v1.2.0...v1.3.0
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.2.0...v1.3.0)
+
+### Added
+
+- **combobox:** Add combobox component and update input-group ([03df301](https://github.com/favorodera/centoui/commit/03df301))
+
+  - implement core combobox component with variants
+  - add storybook stories for combobox and input-group
+  - refactor input-group to support size variants
+  - remove redundant input-group-control component
+  - update theme color palette variables
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.1.0...v1.2.0
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.1.0...v1.2.0)
