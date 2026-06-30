@@ -1,0 +1,9 @@
+{
+  "$schema": "./schemas/component.json",
+  "name": "number-input",
+  "files": [
+    "number-input/number-input.vue",
+    "number-input/index.ts"
+  ],
+  "componentDependencies": ["icon"]
+}
