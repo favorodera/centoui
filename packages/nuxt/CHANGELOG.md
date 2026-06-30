@@ -1,5 +1,23 @@
 # Changelog
 
+## v1.3.0...v1.4.0
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.3.0...v1.4.0)
+
+### Refactors
+
+- **components:** Standardize input group and layout ([221760a](https://github.com/favorodera/centoui/commit/221760a))
+
+  - replace data-slot with data-input-group-control
+  - update combobox and select styling to use grid
+  - add disabled state support to combobox items
+  - minor formatting updates to package.json files
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.2.0...v1.3.0
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.2.0...v1.3.0)

@@ -1,5 +1,55 @@
 # Changelog
 
+## v1.3.0...v1.4.0
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.3.0...v1.4.0)
+
+### Added
+
+- **storybook:** Add story for number input component ([eeb8c17](https://github.com/favorodera/centoui/commit/eeb8c17))
+- **core:** Update icon configuration ([dbbec3d](https://github.com/favorodera/centoui/commit/dbbec3d))
+
+  - Rename close to x
+  - Add plus icon to configuration
+
+- **combobox:** Remove cancel button from input component ([16cddc2](https://github.com/favorodera/centoui/commit/16cddc2))
+
+  - remove ComboboxCancel from combobox-input
+  - update variant logic to exclude cancel styles
+
+- **core:** Add number input component ([7194dbb](https://github.com/favorodera/centoui/commit/7194dbb))
+
+  - implement number input variant styles
+  - add component exports and type definitions
+
+- **core:** Add NumberInput component ([b48f254](https://github.com/favorodera/centoui/commit/b48f254))
+- **registry:** Add number-input component definition ([decee73](https://github.com/favorodera/centoui/commit/decee73))
+
+### Fixed
+
+- **sheet:** Update close icon to x in sheet-header ([ae125c4](https://github.com/favorodera/centoui/commit/ae125c4))
+
+### Refactors
+
+- **components:** Standardize input group and layout ([221760a](https://github.com/favorodera/centoui/commit/221760a))
+
+  - replace data-slot with data-input-group-control
+  - update combobox and select styling to use grid
+  - add disabled state support to combobox items
+  - minor formatting updates to package.json files
+
+- **storybook:** Remove unnecessary wrapper div in input story ([d2dcee8](https://github.com/favorodera/centoui/commit/d2dcee8))
+- **storybook:** Remove unnecessary wrapper div in textarea story ([4ae201a](https://github.com/favorodera/centoui/commit/4ae201a))
+- **combobox:** Remove unused slots from variants ([4c7fd9f](https://github.com/favorodera/centoui/commit/4c7fd9f))
+
+  - remove unused cancel slot
+  - remove unused trigger slot
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.2.0...v1.3.0
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.2.0...v1.3.0)
