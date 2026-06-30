@@ -23,7 +23,6 @@ export const comboboxVariants = tv({
   slots: {
     anchor: 'relative',
     arrow: 'z-50 fill-overlay stroke-input',
-    cancel: '',
     content: `
       bg-overlay border border-input z-50 grid gap-1 inline-full
 
@@ -58,7 +57,6 @@ export const comboboxVariants = tv({
     itemIndicator: 'absolute inset-bs-1/2 -translate-y-1/2',
     label: 'text-muted-foreground py-0.5',
     root: 'relative',
-    trigger: '',
     viewport: 'inline-full rounded-[inherit]',
   },
   variants: {
