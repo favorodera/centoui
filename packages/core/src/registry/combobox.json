@@ -1,0 +1,19 @@
+{
+  "$schema": "./schemas/component.json",
+  "name": "combobox",
+  "files": [
+    "combobox/combobox-content.vue",
+    "combobox/combobox-empty.vue",
+    "combobox/combobox-group.vue",
+    "combobox/combobox-input.vue",
+    "combobox/combobox-item.vue",
+    "combobox/combobox-label.vue",
+    "combobox/combobox-root.vue",
+    "combobox/index.ts"
+  ],
+  "componentDependencies": [
+    "icon",
+    "input",
+    "input-group"
+  ]
+}

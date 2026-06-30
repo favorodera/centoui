@@ -21,6 +21,10 @@ const controls = useStory('Select', {
     default: false,
     type: 'boolean',
   },
+  invalid: {
+    default: false,
+    type: 'boolean',
+  },
   multiple: {
     default: false,
     type: 'boolean',
@@ -53,7 +57,10 @@ const controls = useStory('Select', {
     :multiple="controls.multiple"
     :size="controls.size"
   >
-    <SelectTrigger class="max-inline-sm">
+    <SelectTrigger
+      class="max-inline-sm"
+      :aria-invalid="controls.invalid"
+    >
       <SelectValue placeholder="Select a fruit" />
     </SelectTrigger>
 

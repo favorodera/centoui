@@ -36,9 +36,7 @@ const forwardedPropsEmits = useForwardPropsEmits(delegatedProps, emits)
 const { arrow, content, scrollDownButton, scrollUpButton, viewport } = selectVariants()
 
 const classNames = computed(() => ({
-  arrow: arrow({
-    size: rootContext.size,
-  }),
+  arrow: arrow(),
   content: content({
     class: props.class,
     contentPosition: props.position,
@@ -87,7 +85,7 @@ const classNames = computed(() => ({
       </SelectScrollDownButton>
 
       <SelectArrow
-        v-if="position === 'popper' && showArrow"
+        v-if="showArrow"
         data-slot="select-arrow"
         :class="classNames.arrow"
       />

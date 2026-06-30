@@ -138,6 +138,25 @@
     },
     {
       "$schema": "./schemas/component.json",
+      "name": "combobox",
+      "files": [
+        "combobox/combobox-content.vue",
+        "combobox/combobox-empty.vue",
+        "combobox/combobox-group.vue",
+        "combobox/combobox-input.vue",
+        "combobox/combobox-item.vue",
+        "combobox/combobox-label.vue",
+        "combobox/combobox-root.vue",
+        "combobox/index.ts"
+      ],
+      "componentDependencies": [
+        "icon",
+        "input",
+        "input-group"
+      ]
+    },
+    {
+      "$schema": "./schemas/component.json",
       "name": "icon",
       "files": [
         "icon/icon.vue",
@@ -152,7 +171,6 @@
       "name": "input-group",
       "files": [
         "input-group/input-group-addon.vue",
-        "input-group/input-group-control.vue",
         "input-group/input-group-root.vue",
         "input-group/index.ts"
       ]

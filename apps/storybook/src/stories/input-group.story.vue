@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Icon } from '#centoui/components/icon'
 import { Input } from '#centoui/components/input'
-import { InputGroupAddon, InputGroupControl, InputGroupRoot } from '#centoui/components/input-group'
+import { InputGroupAddon, InputGroupRoot, inputGroupVariants } from '#centoui/components/input-group'
 import { Textarea } from '#centoui/components/textarea'
 import { useStory } from '@/composables/use-story'
 
@@ -14,39 +14,58 @@ const controls = useStory('Input Group', {
     default: false,
     type: 'boolean',
   },
+  size: {
+    default: inputGroupVariants.defaultVariants?.size,
+    options: Object.keys(inputGroupVariants.variants.size),
+    type: 'array',
+  },
 })
 </script>
 
 <template>
-  <InputGroupRoot>
+  <InputGroupRoot :size="controls.size">
     <InputGroupAddon>
       <Icon icon="lucide:at-sign" />
     </InputGroupAddon>
 
-    <InputGroupControl>
-      <Input
-        placeholder="username"
-        :disabled="controls.disabled"
-        :aria-invalid="controls.invalid"
-      />
-    </InputGroupControl>
+    <Input
+      data-slot="input-group-control"
+      placeholder="username"
+      :size="controls.size"
+      :disabled="controls.disabled"
+      :aria-invalid="controls.invalid"
+    />
 
-    <InputGroupAddon position="right">
+    <InputGroupAddon align="inline-end">
       @company.com
     </InputGroupAddon>
   </InputGroupRoot>
 
-  <InputGroupRoot>
-    <InputGroupControl>
-      <Textarea
-        placeholder="Write your bio..."
-        :disabled="controls.disabled"
-        :aria-invalid="controls.invalid"
-      />
-    </InputGroupControl>
+  <InputGroupRoot :size="controls.size">
+    <Input
+      data-slot="input-group-control"
+      placeholder="Enter amount"
+      :size="controls.size"
+      :disabled="controls.disabled"
+      :aria-invalid="controls.invalid"
+    />
+
+    <InputGroupAddon align="block-end">
+      USD
+    </InputGroupAddon>
+  </InputGroupRoot>
+
+  <InputGroupRoot :size="controls.size">
+    <Textarea
+      data-slot="input-group-control"
+      placeholder="Write your bio..."
+      :size="controls.size"
+      :disabled="controls.disabled"
+      :aria-invalid="controls.invalid"
+    />
 
     <InputGroupAddon
-      position="bottom"
+      align="block-end"
       class="flex items-center justify-between text-xs"
     >
       <span class="text-muted-foreground">Shown on your public profile</span>

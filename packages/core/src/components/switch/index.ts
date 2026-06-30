@@ -19,10 +19,12 @@ export const switchVariants = tv({
       data-[state=checked]:bg-primary
     `,
     thumb: `
-      pointer-events-none block shrink-0 rounded-full bg-background
-      transition-transform
+      pointer-events-none block shrink-0 rounded-full bg-foreground
+      transition-[translate,background-color]
 
       data-[state=unchecked]:translate-x-0.5
+
+      data-[state=checked]:bg-primary-foreground
     `,
   },
   variants: {

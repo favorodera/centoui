@@ -11,7 +11,7 @@ export const buttonVariants = tv({
     root: `
       relative inline-flex items-center shrink-0 cursor-default truncate border
       border-transparent font-medium outline-none select-none justify-center
-      transition-colors
+      transition-all
 
       disabled:pointer-events-none disabled:opacity-65
 

@@ -25,8 +25,6 @@ provideRootContext(reactive({
   <SelectRoot
     v-slot="slotProps"
     v-bind="forwardedPropsEmits"
-    data-slot="select-root"
-    :data-size="props.size"
   >
     <slot v-bind="slotProps" />
   </SelectRoot>

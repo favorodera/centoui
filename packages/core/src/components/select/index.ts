@@ -81,6 +81,7 @@ export const selectVariants = tv({
         content: `
           max-block-(--reka-select-content-available-height) inline-full
           min-inline-(--reka-select-trigger-width)
+          origin-(--reka-select-content-transform-origin)
         `,
       },
     },
@@ -171,7 +172,7 @@ export type SelectContentProps = RekaSelectContentProps & {
   class?: any
 
   /**
-   * Whether to show an arrow alongside the content.\
+   * Whether to show an arrow alongside the content.
    * Only available when `position` is set to `popper`.
    * @default false
    */

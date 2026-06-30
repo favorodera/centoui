@@ -49,7 +49,7 @@ export type TooltipContentProps = RekaTooltipContentProps & {
   class?: any
 
   /**
-   * Whether to show an arrow alongside the content.\
+   * Whether to show an arrow alongside the content.
    * @default true
    */
   showArrow?: boolean
