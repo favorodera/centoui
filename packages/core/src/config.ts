@@ -9,9 +9,10 @@ export default {
     chevronLeft: 'lucide:chevron-left',
     chevronRight: 'lucide:chevron-right',
     chevronUp: 'lucide:chevron-up',
-    close: 'lucide:x',
     ellipsis: 'lucide:ellipsis',
     minus: 'lucide:minus',
+    plus: 'lucide:plus',
+    x: 'lucide:x',
   },
 } satisfies Pick<CentoUIConfig, 'icons'>
 
@@ -40,7 +41,6 @@ export default {
 // menu: 'lucide:menu',
 // panelClose: 'lucide:panel-left-close',
 // panelOpen: 'lucide:panel-left-open',
-// plus: 'lucide:plus',
 // reload: 'lucide:refresh-cw',
 // search: 'lucide:search',
 // stop: 'lucide:square',
