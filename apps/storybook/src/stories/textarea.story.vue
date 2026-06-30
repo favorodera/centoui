@@ -23,19 +23,17 @@ const textareaModel = ref('')
 </script>
 
 <template>
-  <div class="inline-full max-inline-sm grid place-items-center gap-4">
-    <Textarea
-      id="textarea"
-      v-model:value="textareaModel"
-      :size="controls.size"
-      :disabled="controls.disabled"
-      :aria-invalid="controls.invalid"
-      placeholder="Enter your text here..."
-      name="textarea"
-    />
+  <Textarea
+    id="textarea"
+    v-model:value="textareaModel"
+    :size="controls.size"
+    :disabled="controls.disabled"
+    :aria-invalid="controls.invalid"
+    placeholder="Enter your text here..."
+    name="textarea"
+  />
 
-    <p class="text-sm text-muted-foreground">
-      {{ textareaModel }}
-    </p>
-  </div>
+  <p class="text-sm text-muted-foreground">
+    {{ textareaModel }}
+  </p>
 </template>
