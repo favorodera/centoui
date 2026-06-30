@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
-import { ComboboxAnchor, ComboboxCancel, ComboboxInput, useForwardPropsEmits } from 'reka-ui'
+import { ComboboxAnchor, ComboboxInput, useForwardPropsEmits } from 'reka-ui'
 import { computed } from 'vue'
 import config from '#centoui/config'
 import {
@@ -27,13 +27,12 @@ const delegatedProps = reactiveOmit(props, 'class')
 
 const forwardedPropsEmits = useForwardPropsEmits(delegatedProps, emits)
 
-const { anchor, cancel, input } = comboboxVariants()
+const { anchor, input } = comboboxVariants()
 
 const { root } = inputVariants()
 
 const classNames = computed(() => ({
   anchor: anchor(),
-  cancel: cancel(),
   input: root({
     class: input({
       class: props.class,
@@ -57,11 +56,6 @@ const classNames = computed(() => ({
       />
 
       <InputGroupAddon align="inline-end">
-        <ComboboxCancel
-          :class="classNames.cancel"
-          data-slot="combobox-cancel"
-        />
-
         <Icon :icon="config.icons.chevronDown" />
       </InputGroupAddon>
     </InputGroupRoot>
