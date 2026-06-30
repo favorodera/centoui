@@ -23,19 +23,17 @@ const inputModel = ref('')
 </script>
 
 <template>
-  <div class="inline-full max-inline-sm grid place-items-center gap-4">
-    <Input
-      id="input"
-      v-model:value="inputModel"
-      :size="controls.size"
-      :disabled="controls.disabled"
-      :aria-invalid="controls.invalid"
-      placeholder="Enter your text here..."
-      name="input"
-    />
+  <Input
+    id="input"
+    v-model:value="inputModel"
+    :size="controls.size"
+    :disabled="controls.disabled"
+    :aria-invalid="controls.invalid"
+    placeholder="Enter your text here..."
+    name="input"
+  />
 
-    <p class="text-sm text-muted-foreground">
-      {{ inputModel }}
-    </p>
-  </div>
+  <p class="text-sm text-muted-foreground">
+    {{ inputModel }}
+  </p>
 </template>
