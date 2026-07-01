@@ -6,11 +6,11 @@ const props = withDefaults(defineProps<FieldLegendProps>(), {
   variant: 'legend',
 })
 
-const { fieldLegend } = fieldVariants()
+const { legend } = fieldVariants()
 
-const classNames = computed(() => fieldLegend({
+const classNames = computed(() => legend({
   class: props.class,
-  fieldLegendVariant: props.variant,
+  legendVariant: props.variant,
 }))
 </script>
 
