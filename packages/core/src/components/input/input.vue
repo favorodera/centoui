@@ -30,5 +30,6 @@ const classNames = computed(() => root({
     data-slot="input"
     :data-size="size"
     :class="classNames"
+    :autocomplete
   >
 </template>
