@@ -4,7 +4,7 @@ import { Primitive, useForwardProps } from 'reka-ui'
 import { computed } from 'vue'
 import { type FieldContentProps, fieldVariants } from '.'
 
-const props =defineProps<FieldContentProps>()
+const props = defineProps<FieldContentProps>()
 
 const delegatedProps = reactiveOmit(props, 'class')
 
