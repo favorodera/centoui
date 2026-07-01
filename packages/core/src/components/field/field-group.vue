@@ -18,11 +18,11 @@ const classNames = computed(() => group({
 </script>
 
 <template>
-  <primitive
+  <Primitive
     data-slot="field-group"
     v-bind="forwardedProps"
     :class="classNames"
   >
     <slot />
-  </primitive>
+  </Primitive>
 </template>
