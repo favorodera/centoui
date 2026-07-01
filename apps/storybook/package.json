@@ -29,6 +29,7 @@
     "@iconify/vue": "catalog:vendor",
     "@tailwindcss/vite": "catalog:vendor",
     "@vueuse/core": "catalog:vendor",
+    "notform": "catalog:vendor",
     "pinia": "catalog:vendor",
     "reka-ui": "catalog:vendor",
     "tailwind-merge": "catalog:vendor",
