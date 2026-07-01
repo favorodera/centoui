@@ -2,10 +2,12 @@
 import { NotField, NotForm, useNotForm } from 'notform'
 import { z } from 'zod'
 import { Button } from '#centoui/components/button'
+import { Checkbox } from '#centoui/components/checkbox'
 import { Field, FieldDescription, FieldError, FieldGroup, FieldLabel, FieldLegend, FieldSet } from '#centoui/components/field'
 import { Input } from '#centoui/components/input'
 import { SelectContent, SelectGroup, SelectItem, SelectRoot, SelectTrigger, SelectValue } from '#centoui/components/select'
 import { Separator } from '#centoui/components/separator'
+import { Textarea } from '#centoui/components/textarea'
 import { useStory } from '@/composables/use-story'
 
 useStory('Field', {})
@@ -34,12 +36,23 @@ const yearOptions = [
 ] as const
 
 const schema = z.object({
+  address: z
+    .string('Invalid address')
+    .trim()
+    .nonempty('Address is required')
+    .min(3, 'Address must be at least 3 characters')
+    .max(50, 'Address must not be more than 50 characters'),
   cardNumber: z
     .string('Invalid card number')
     .nonempty('Card number is required')
     .regex(/^\d+$/, 'Card number must contain only digits')
     .min(13, 'Card number must be at least 13 digits')
     .max(19, 'Card number must not be more than 19 digits'),
+  comments: z
+    .string('Invalid comment')
+    .trim()
+    .max(500, 'Comment must not be more than 500 characters')
+    .optional(),
   cvv: z
     .string('Invalid CVV number')
     .trim()
@@ -55,10 +68,14 @@ const schema = z.object({
     .nonempty('Name on card is required')
     .min(3, 'Name must be at least 3 characters')
     .max(50, 'Name must not be more than 50 characters'),
+  sameAsShipping: z.boolean('Please provide a response'),
   year: z.enum(yearOptions, 'Please select a valid expiration year'),
 })
 
 const form = useNotForm({
+  initialValues: {
+    // sameAsShipping: false,
+  },
   schema,
 })
 </script>
@@ -249,6 +266,93 @@ const form = useNotForm({
       </FieldSet>
 
       <Separator />
+
+      <FieldSet>
+        <FieldLegend>Billing Address</FieldLegend>
+
+        <FieldDescription>
+          The billing address associated with your payment method
+        </FieldDescription>
+
+        <FieldGroup>
+          <NotField
+            v-slot="{path,errors,events,isValid}"
+            path="address"
+          >
+            <Field :data-invalid="!isValid">
+              <FieldLabel :for="path">
+                Address
+              </FieldLabel>
+
+              <Input
+                :id="path"
+                v-model:value="form.values.address"
+                :aria-invalid="!isValid"
+                :name="path"
+                autocomplete="address"
+                placeholder="123 Main St"
+                v-bind="events"
+              />
+
+              <FieldError :errors />
+            </Field>
+          </NotField>
+
+          <NotField
+            v-slot="{path,errors,events,isValid}"
+            path="sameAsShipping"
+          >
+            <Field
+              orientation="horizontal"
+              :data-invalid="!isValid"
+              class="flex-wrap"
+            >
+              <Checkbox
+                :id="path"
+                v-model:model-value="form.values.sameAsShipping"
+                :aria-invalid="!isValid"
+                v-bind="events"
+                default-checked
+              />
+
+              <FieldLabel
+                :for="path"
+                class-name="font-normal"
+              >
+                Same as shipping address
+              </FieldLabel>
+
+              <FieldError
+                :errors
+                class="basis-full"
+              />
+            </Field>
+          </NotField>
+        </FieldGroup>
+      </FieldSet>
+
+      <NotField
+        v-slot="{path,errors,events,isValid}"
+        path="comments"
+      >
+        <Field :data-invalid="!isValid">
+          <FieldLabel :for="path">
+            Comments
+          </FieldLabel>
+
+          <Textarea
+            :id="path"
+            v-model:value="form.values.comments"
+            :aria-invalid="!isValid"
+            :name="path"
+            v-bind="events"
+            placeholder="Add any additional comments"
+            class="resize-none"
+          />
+
+          <FieldError :errors />
+        </Field>
+      </NotField>
 
       <Field orientation="horizontal">
         <Button type="submit">
