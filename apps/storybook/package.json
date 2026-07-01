@@ -36,7 +36,8 @@
     "tailwind-variants": "catalog:vendor",
     "tailwindcss": "catalog:vendor",
     "vue": "catalog:vendor",
-    "vue-router": "catalog:vendor"
+    "vue-router": "catalog:vendor",
+    "zod": "catalog:vendor"
   },
   "devDependencies": {
     "@favorodera/eslint-config": "catalog:tools",
