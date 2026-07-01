@@ -21,7 +21,7 @@ export const comboboxVariants = tv({
     size: 'md',
   },
   slots: {
-    anchor: 'relative',
+    anchor: 'relative inline-full min-inline-0 flex items-center',
     arrow: 'z-50 fill-overlay stroke-input',
     content: `
       bg-overlay border border-input z-50 flex flex-col gap-1 inline-full
