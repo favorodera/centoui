@@ -14,7 +14,7 @@ export const fieldVariants = tv({
     field: `
       flex inline-full gap-2
 
-      data-invalid:text-error
+      data-[invalid=true]:text-error
     `,
     group: 'flex inline-full min-inline-0 flex-col gap-4 @container/field-group',
     label: 'flex',
