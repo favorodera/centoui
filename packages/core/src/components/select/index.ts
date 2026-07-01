@@ -22,7 +22,7 @@ export const selectVariants = tv({
   slots: {
     arrow: 'z-50 fill-overlay stroke-input',
     content: `
-      bg-overlay border border-input z-50 relative grid gap-1
+      bg-overlay border border-input z-50 relative flex flex-col gap-1
 
       data-[side=bottom]:slide-in-from-top-2
 
@@ -38,7 +38,7 @@ export const selectVariants = tv({
       data-[state=open]:animate-in data-[state=open]:fade-in-0
       data-[state=open]:zoom-in-95
     `,
-    group: 'scroll-my-1 p-1 grid gap-1',
+    group: 'scroll-my-1 p-1 flex flex-col gap-1',
     icon: 'text-muted-foreground',
     item: `
       relative flex inline-full cursor-default items-center outline-none
