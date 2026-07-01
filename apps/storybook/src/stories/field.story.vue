@@ -74,7 +74,7 @@ const schema = z.object({
 
 const form = useNotForm({
   initialValues: {
-    // sameAsShipping: false,
+    sameAsShipping: false,
   },
   schema,
 })
