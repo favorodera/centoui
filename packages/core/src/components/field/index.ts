@@ -1,15 +1,17 @@
+import type { PrimitiveProps } from 'reka-ui'
 import { tv, type VariantProps } from 'tailwind-variants'
 
 export const fieldVariants = tv({
   defaultVariants: {
-    fieldLegendVariant: 'legend',
+    legendVariant: 'legend',
   },
   slots: {
-    fieldLegend: 'mbe-1 font-medium',
-    fieldSet: 'flex flex-col gap-4',
+    group: 'flex inline-full min-inline-0 gap-4 @container/field-group',
+    legend: 'mbe-1 font-medium',
+    set: 'flex flex-col gap-4',
   },
   variants: {
-    fieldLegendVariant: {
+    legendVariant: {
       label: 'text-sm',
       legend: 'text-base',
     },
@@ -17,6 +19,7 @@ export const fieldVariants = tv({
 })
 
 // COMPONENTS
+export { default as FieldGroup } from './field-group.vue'
 export { default as FieldLegend } from './field-legend.vue'
 export { default as FieldSet } from './field-set.vue'
 
@@ -38,5 +41,7 @@ export interface FieldLegendProps {
    * as a sub-label rather than competing with the parent legend.
    * @default 'legend'
    */
-  variant?: FieldVariants['fieldLegendVariant']
+  variant?: FieldVariants['legendVariant']
 }
+
+export type FieldGroupProps = PrimitiveProps & { class?: any }
