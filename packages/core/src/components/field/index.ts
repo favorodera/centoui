@@ -9,15 +9,18 @@ export const fieldVariants = tv({
   },
   slots: {
     content: 'flex flex-col flex-1 gap-1',
+    description: 'text-sm text-muted-foreground text-start font-normal',
+    error: 'font-normal text-sm text-error capitalize',
     field: `
       flex inline-full gap-2
 
       data-invalid:text-error
     `,
-    group: 'flex inline-full min-inline-0 gap-4 @container/field-group',
+    group: 'flex inline-full min-inline-0 flex-col gap-4 @container/field-group',
     label: 'flex',
     legend: 'mbe-1 font-medium',
     set: 'flex flex-col gap-4',
+    title: 'flex items-center font-medium text-sm',
   },
   variants: {
     fieldOrientation: {
@@ -44,10 +47,13 @@ export const fieldVariants = tv({
 
 // COMPONENTS
 export { default as FieldContent } from './field-content.vue'
+export { default as FieldDescription } from './field-description.vue'
+export { default as FieldError } from './field-error.vue'
 export { default as FieldGroup } from './field-group.vue'
 export { default as FieldLabel } from './field-label.vue'
 export { default as FieldLegend } from './field-legend.vue'
 export { default as FieldSet } from './field-set.vue'
+export { default as FieldTitle } from './field-title.vue'
 export { default as Field } from './field.vue'
 
 // VARIANTS
@@ -86,3 +92,14 @@ export type FieldProps = PrimitiveProps & {
 export type FieldContentProps = PrimitiveProps & { class?: any }
 
 export type FieldLabelProps = LabelProps
+
+export type FieldTitleProps = PrimitiveProps & { class?: any }
+
+export type FieldDescriptionProps = PrimitiveProps & { class?: any }
+
+export type FieldErrorProps = PrimitiveProps & {
+  class?: any
+
+  /** The error message or messages to display. */
+  errors?: Array<string | undefined | { message?: string }> | string
+}
