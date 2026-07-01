@@ -24,7 +24,7 @@ export const comboboxVariants = tv({
     anchor: 'relative',
     arrow: 'z-50 fill-overlay stroke-input',
     content: `
-      bg-overlay border border-input z-50 grid gap-1 inline-full
+      bg-overlay border border-input z-50 flex flex-col gap-1 inline-full
 
       data-[side=bottom]:slide-in-from-top-2
 
@@ -44,7 +44,7 @@ export const comboboxVariants = tv({
       block-full inline-full flex items-center justify-center
       text-muted-foreground text-sm py-2 text-center
     `,
-    group: 'scroll-my-1 p-1 grid gap-1',
+    group: 'scroll-my-1 p-1 flex flex-col gap-1',
     input: '',
     item: `
       relative flex inline-full cursor-default items-center outline-none
