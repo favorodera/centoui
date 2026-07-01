@@ -4,9 +4,9 @@ import { type FieldSetProps, fieldVariants } from '.'
 
 const props = defineProps<FieldSetProps>()
 
-const { fieldSet } = fieldVariants()
+const { set } = fieldVariants()
 
-const classNames = computed(() => fieldSet({
+const classNames = computed(() => set({
   class: props.class,
 }))
 </script>
