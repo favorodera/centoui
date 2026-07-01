@@ -16,7 +16,7 @@ const { field } = fieldVariants()
 
 const classNames = computed(() => field({
   class: props.class,
-  fieldOrientation:props.orientation
+  fieldOrientation: props.orientation,
 }))
 </script>
 
