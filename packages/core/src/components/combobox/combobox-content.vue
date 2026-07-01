@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { createReusableTemplate, reactiveOmit } from '@vueuse/core'
+import { reactiveOmit } from '@vueuse/core'
 import {
   ComboboxArrow,
   ComboboxContent,
-  ComboboxPortal,
   ComboboxViewport,
   useForwardPropsEmits,
 } from 'reka-ui'
@@ -42,38 +41,25 @@ const classNames = computed(() => ({
     size: rootContext?.size,
   }),
 }))
-
-const [
-  DefineContent,
-  ReuseContent,
-] = createReusableTemplate()
 </script>
 
 <template>
-  <DefineContent>
-    <ComboboxContent
-      v-bind="forwardedPropsEmits"
-      data-slot="combobox-content"
-      :class="classNames.content"
+  <ComboboxContent
+    v-bind="forwardedPropsEmits"
+    data-slot="combobox-content"
+    :class="classNames.content"
+  >
+    <ComboboxViewport
+      data-slot="combobox-viewport"
+      :class="classNames.viewport"
     >
-      <ComboboxViewport
-        data-slot="combobox-viewport"
-        :class="classNames.viewport"
-      >
-        <slot />
-      </ComboboxViewport>
+      <slot />
+    </ComboboxViewport>
 
-      <ComboboxArrow
-        v-if=" showArrow"
-        data-slot="combobox-arrow"
-        :class="classNames.arrow"
-      />
-    </ComboboxContent>
-  </DefineContent>
-
-  <ComboboxPortal v-if="position === 'popper'">
-    <ReuseContent />
-  </ComboboxPortal>
-
-  <ReuseContent v-else />
+    <ComboboxArrow
+      v-if=" showArrow"
+      data-slot="combobox-arrow"
+      :class="classNames.arrow"
+    />
+  </ComboboxContent>
 </template>
