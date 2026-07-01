@@ -95,7 +95,7 @@ const form = useNotForm({
             v-slot="{path,errors,events,isValid}"
             path="name"
           >
-            <Field>
+            <Field :data-invalid="!isValid">
               <FieldLabel :for="path">
                 Name on Card
               </FieldLabel>
@@ -118,7 +118,7 @@ const form = useNotForm({
             v-slot="{path,errors,events,isValid}"
             path="cardNumber"
           >
-            <Field>
+            <Field :data-invalid="!isValid">
               <FieldLabel :for="path">
                 Card Number
               </FieldLabel>
@@ -146,7 +146,7 @@ const form = useNotForm({
               v-slot="{path,errors,events,isValid}"
               path="month"
             >
-              <Field>
+              <Field :data-invalid="!isValid">
                 <FieldLabel :for="path">
                   Month
                 </FieldLabel>
@@ -186,7 +186,7 @@ const form = useNotForm({
               v-slot="{path, errors,events,isValid}"
               path="year"
             >
-              <Field>
+              <Field :data-invalid="!isValid">
                 <FieldLabel :for="path">
                   Year
                 </FieldLabel>
@@ -226,7 +226,7 @@ const form = useNotForm({
               v-slot="{path, errors,events,isValid}"
               path="cvv"
             >
-              <Field>
+              <Field :data-invalid="!isValid">
                 <FieldLabel :for="path">
                   CVV
                 </FieldLabel>
