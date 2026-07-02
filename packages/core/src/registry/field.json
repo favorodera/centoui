@@ -1,0 +1,15 @@
+{
+  "$schema": "./schemas/component.json",
+  "name": "field",
+  "files": [
+    "field/field-content.vue",
+    "field/field-description.vue",
+    "field/field-error.vue",
+    "field/field-group.vue",
+    "field/field-legend.vue",
+    "field/field-set.vue",
+    "field/field-title.vue",
+    "field/field.vue",
+    "field/index.ts"
+  ]
+}
