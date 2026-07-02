@@ -29,7 +29,7 @@ const props = withDefaults(defineProps<SelectContentProps>(), {
 
 const rootContext = injectRootContext()
 
-const delegatedProps = reactiveOmit(props, 'class', 'showArrow',)
+const delegatedProps = reactiveOmit(props, 'class', 'showArrow')
 
 const forwardedPropsEmits = useForwardPropsEmits(delegatedProps, emits)
 
