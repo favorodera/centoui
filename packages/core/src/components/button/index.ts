@@ -26,28 +26,28 @@ export const buttonVariants = tv({
     size: {
       lg: {
         root: `
-          block-9 inline-9 px-3.5 text-sm gap-1.5 rounded-lg
+          min-block-9 inline-9 px-3.5 text-sm gap-1.5 rounded-lg
 
           *:data-[slot=icon]:block-4.5 *:data-[slot=icon]:inline-4.5
         `,
       },
       md: {
         root: `
-          block-8 inline-8 px-3 text-sm gap-1.5 rounded-lg
+          min-block-8 inline-8 px-3 text-sm gap-1.5 rounded-lg
 
           *:data-[slot=icon]:block-4 *:data-[slot=icon]:inline-4
         `,
       },
       sm: {
         root: `
-          block-7 inline-7 px-2.5 text-xs gap-1 rounded-md
+          min-block-7 inline-7 px-2.5 text-xs gap-1 rounded-md
 
           *:data-[slot=icon]:block-3.5 *:data-[slot=icon]:inline-3.5
         `,
       },
       xs: {
         root: `
-          block-6 inline-6 px-2 text-xs gap-1 rounded-md
+          min-block-6 inline-6 px-2 text-xs gap-1 rounded-md
 
           *:data-[slot=icon]:block-3 *:data-[slot=icon]:inline-3
         `,
