@@ -80,7 +80,6 @@ const resolvedErrors = computed<string | string[] | undefined>(() => {
 
     <ul
       v-else
-      class="flex flex-col gap-1 list-disc ms-4"
     >
       <li
         v-for="errorMessage in resolvedErrors"
