@@ -1,5 +1,215 @@
 # Changelog
 
+## v1.4.0...v1.5.0
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.4.0...v1.5.0)
+
+### Added
+
+- **core:** Add Field component and variants ([06ff454](https://github.com/favorodera/centoui/commit/06ff454))
+
+  - Add FieldSet and FieldLegend components
+  - Define tailwind-variants for field styling
+
+- **field:** Add FieldLegend component ([2c42b99](https://github.com/favorodera/centoui/commit/2c42b99))
+- **core:** Add FieldSet component ([97b359d](https://github.com/favorodera/centoui/commit/97b359d))
+- **storybook:** Add field component story ([7aa903a](https://github.com/favorodera/centoui/commit/7aa903a))
+- **field:** Add FieldGroup component ([5201257](https://github.com/favorodera/centoui/commit/5201257))
+- **field:** Add FieldGroup component and refactor variants ([e36f3ba](https://github.com/favorodera/centoui/commit/e36f3ba))
+
+  - Add FieldGroup component
+  - Rename field variants to use concise naming
+  - Update interface types for FieldLegend
+
+- **storybook:** Add form integration to field story ([8a3c895](https://github.com/favorodera/centoui/commit/8a3c895))
+
+  - integrate notform for field validation
+  - add input and button components to story
+  - implement form submission and reset logic
+
+- **core:** Add field-content component ([c0dbe0f](https://github.com/favorodera/centoui/commit/c0dbe0f))
+
+  - Implement FieldContent using Reka-ui Primitive
+  - Add support for variants and class forwarding
+
+- **field:** Add field-label component ([fa494cd](https://github.com/favorodera/centoui/commit/fa494cd))
+- **core:** Add field component ([1c7e9ac](https://github.com/favorodera/centoui/commit/1c7e9ac))
+
+  - implement base field component using reka-ui
+  - add orientation support via variants
+
+- **field:** Add Field, FieldContent, and FieldLabel components ([5dd5b2e](https://github.com/favorodera/centoui/commit/5dd5b2e))
+
+  - add field variants and orientation support
+  - export new components and types
+  - update field slot structure
+
+- **storybook:** Add payment form example to field story ([6158c63](https://github.com/favorodera/centoui/commit/6158c63))
+
+  - implement payment form fields with validation
+  - add card number, expiration, and cvv inputs
+  - integrate field error and description components
+  - update form schema with zod validation rules
+
+- **field:** Add field description component ([517893c](https://github.com/favorodera/centoui/commit/517893c))
+
+  - Implement FieldDescription using Primitive
+  - Add support for variant styling and slotting
+
+- **field:** Add FieldError component ([c25efb7](https://github.com/favorodera/centoui/commit/c25efb7))
+
+  - Implement component for rendering field errors
+  - Support string and object error formats
+  - Normalize and deduplicate error messages
+  - Add accessibility attributes for error display
+
+- **core:** Add FieldTitle component ([ce266de](https://github.com/favorodera/centoui/commit/ce266de))
+
+  - Implement FieldTitle using Reka UI Primitive
+  - Enable styling via field variants
+  - Support custom class delegation
+
+- **field:** Add title, description, and error components ([2a06447](https://github.com/favorodera/centoui/commit/2a06447))
+
+  - add new field sub-components for form accessibility
+  - define styles for title, description, and error
+  - export new components and types for public use
+
+- **input:** Add autocomplete attribute support ([60aeac8](https://github.com/favorodera/centoui/commit/60aeac8))
+
+  - enable browser autocomplete for input component
+
+- **storybook:** Add invalid state to fields ([13877d8](https://github.com/favorodera/centoui/commit/13877d8))
+
+  - apply data-invalid prop based on field validation
+  - improve visual feedback for form errors
+
+- **storybook:** Add address, checkbox, and textarea fields ([7c2da8c](https://github.com/favorodera/centoui/commit/7c2da8c))
+
+  - Add new form fields to the Field story
+  - Implement validation schema for new inputs
+  - Enable testing of address and comment fields
+
+- **storybook:** Add address, checkbox, and textarea fields ([709b35a](https://github.com/favorodera/centoui/commit/709b35a))
+
+  - Add new form fields to the Field story
+  - Implement validation schema for new inputs
+  - Enable testing of address and comment fields
+
+- **storybook:** Update field story components and schema ([1e23c98](https://github.com/favorodera/centoui/commit/1e23c98))
+
+  - Replace FieldLabel with Label component
+  - Add Switch component for notification settings
+  - Update form schema and initial values
+  - Refactor field layout and validation attributes
+
+- **label:** Add required indicator and improve states ([e506544](https://github.com/favorodera/centoui/commit/e506544))
+
+  - Add asterisk for required fields
+  - Standardize disabled state selectors
+  - Improve layout with flex container
+
+- **field:** Add link styling to description slot ([d6099c8](https://github.com/favorodera/centoui/commit/d6099c8))
+
+  - Enable underline for links in description
+  - Add hover color for links in description
+
+- **field:** Improve layout responsiveness and sizing ([1da1cae](https://github.com/favorodera/centoui/commit/1da1cae))
+
+  - Add min-inline-0 to prevent flex item overflow
+  - Standardize field orientation layout logic
+  - Update error text casing to uppercase
+  - Ensure title spans full width
+
+- **field:** Add title select field and update layout ([250478f](https://github.com/favorodera/centoui/commit/250478f))
+
+  - Add title field with validation to storybook
+  - Refactor field layout to use CSS grid
+  - Improve responsiveness for field orientations
+
+- **registry:** Add field component to registry ([585f57a](https://github.com/favorodera/centoui/commit/585f57a))
+
+### Fixed
+
+- **field:** Fix component casing for Primitive ([3a36250](https://github.com/favorodera/centoui/commit/3a36250))
+- **combobox:** Update anchor styles for layout consistency ([3a46052](https://github.com/favorodera/centoui/commit/3a46052))
+
+  - Apply necessary layout classes to anchor slot
+  - Ensure combobox aligns correctly within containers
+
+- **core:** Update invalid data attribute selector ([0a4fba5](https://github.com/favorodera/centoui/commit/0a4fba5))
+
+  - Align field component with updated data attribute naming
+
+- **button:** Use min-block for sizing consistency ([6e9d81d](https://github.com/favorodera/centoui/commit/6e9d81d))
+
+  - Ensure button sizes respect minimum block constraints
+
+- **components:** Update default content positions ([1106aba](https://github.com/favorodera/centoui/commit/1106aba))
+
+  - Change combobox content position to inline
+  - Change select content position to item-aligned
+
+
+### Refactors
+
+- **select:** Update component layout to flex ([8f2dfd6](https://github.com/favorodera/centoui/commit/8f2dfd6))
+
+  - change content slot to flex column
+  - update group slot to flex column
+
+- **field:** Rename fieldLegend variants to legend ([55b33dd](https://github.com/favorodera/centoui/commit/55b33dd))
+- **field:** Rename fieldSet variant to set ([76337e3](https://github.com/favorodera/centoui/commit/76337e3))
+- **combobox:** Remove unnecessary template reuse ([5317f20](https://github.com/favorodera/centoui/commit/5317f20))
+
+  - simplify component structure by removing template
+  - eliminate unused ComboboxPortal import
+  - render content directly for better maintainability
+
+- **field:** Remove unused field-label component ([3fb925b](https://github.com/favorodera/centoui/commit/3fb925b))
+
+  - delete redundant field-label implementation
+  - consolidate label logic within field component
+
+- **field:** Improve field component styles and cleanup ([565572b](https://github.com/favorodera/centoui/commit/565572b))
+
+  - Update error and title slots with new variants
+  - Remove unused FieldLabel component and types
+
+
+### Documentation
+
+- **readme:** Update configuration examples ([6495b12](https://github.com/favorodera/centoui/commit/6495b12))
+- **cli:** Reorder configuration properties in README ([8e0c312](https://github.com/favorodera/centoui/commit/8e0c312))
+
+### Chores
+
+- **storybook:** Add notform dependency to catalog ([3c08127](https://github.com/favorodera/centoui/commit/3c08127))
+- **cli:** Format files array in package.json ([7ba86b1](https://github.com/favorodera/centoui/commit/7ba86b1))
+
+  - Improve readability of configuration file
+  - Maintain consistent formatting style
+
+- **core:** Reformat files array in package.json ([4d4106a](https://github.com/favorodera/centoui/commit/4d4106a))
+
+  - Improve readability of configuration
+  - Maintain consistent formatting standards
+
+
+### Styling
+
+- **select:** Update component layout to flexbox ([42bcd2a](https://github.com/favorodera/centoui/commit/42bcd2a))
+- **field:** Fix missing space in defineProps ([2544a8f](https://github.com/favorodera/centoui/commit/2544a8f))
+- **field:** Add missing space to field orientation prop ([b896b88](https://github.com/favorodera/centoui/commit/b896b88))
+- **nuxt:** Reformat package.json for consistency ([46330e4](https://github.com/favorodera/centoui/commit/46330e4))
+- **field:** Remove unused list styling from error component ([2634b8f](https://github.com/favorodera/centoui/commit/2634b8f))
+- **select:** Remove trailing comma in reactiveOmit ([7ba2772](https://github.com/favorodera/centoui/commit/7ba2772))
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.3.0...v1.4.0
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.3.0...v1.4.0)

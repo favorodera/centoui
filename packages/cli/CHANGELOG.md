@@ -1,5 +1,26 @@
 # Changelog
 
+## v1.4.0...v1.5.0
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.4.0...v1.5.0)
+
+### Documentation
+
+- **readme:** Update configuration examples ([6495b12](https://github.com/favorodera/centoui/commit/6495b12))
+- **cli:** Reorder configuration properties in README ([8e0c312](https://github.com/favorodera/centoui/commit/8e0c312))
+
+### Chores
+
+- **cli:** Format files array in package.json ([7ba86b1](https://github.com/favorodera/centoui/commit/7ba86b1))
+
+  - Improve readability of configuration file
+  - Maintain consistent formatting style
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.3.0...v1.4.0
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.3.0...v1.4.0)

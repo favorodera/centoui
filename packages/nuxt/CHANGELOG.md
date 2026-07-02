@@ -1,5 +1,18 @@
 # Changelog
 
+## v1.4.0...v1.5.0
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.4.0...v1.5.0)
+
+### Styling
+
+- **nuxt:** Reformat package.json for consistency ([46330e4](https://github.com/favorodera/centoui/commit/46330e4))
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.3.0...v1.4.0
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.3.0...v1.4.0)
