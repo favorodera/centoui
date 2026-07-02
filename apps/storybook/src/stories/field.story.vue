@@ -36,6 +36,12 @@ const yearOptions = [
   '2028',
 ] as const
 
+const titleOptions = [
+  'Mr',
+  'Mrs',
+  'Miss',
+] as const
+
 const schema = z.object({
   address: z
     .string('Invalid address')
@@ -72,17 +78,19 @@ const schema = z.object({
   notifications: z.boolean().refine(value => value === true, {
     message: 'It is highly recommended to enable notifications.',
   }),
+  title: z.enum(titleOptions, 'Please select a valid title'),
   year: z.enum(yearOptions, 'Please select a valid expiration year'),
 })
 
 const form = useNotForm({
   initialValues: {
-    name: 'Favour Emeka',
     notifications: false,
   },
   schema,
 })
 </script>
+
+<!--NOTE: For disabled add  data-disabled="true" to field and disabled to input -->
 
 <template>
   <FieldDescription>
@@ -114,12 +122,61 @@ const form = useNotForm({
         <FieldGroup>
           <NotField
             v-slot="{path,errors,events,isValid}"
+            path="title"
+          >
+            <Field
+              :data-invalid="!isValid"
+              data-required
+              orientation="auto"
+            >
+              <FieldContent>
+                <Label :for="path">
+                  Title
+                </Label>
+
+                <FieldDescription>
+                  Select how should we address you? (e.g., Mr., Ms., Dr.)
+                </FieldDescription>
+              </FieldContent>
+
+              <SelectRoot
+                v-model:model-value="form.values.title"
+                :name="path"
+                autocomplete="honorific-prefix"
+                @update:model-value="events.onChange()"
+              >
+                <SelectTrigger
+                  :id="path"
+                  :aria-invalid="!isValid"
+                  @blur="events.onBlur()"
+                >
+                  <SelectValue placeholder="Title" />
+                </SelectTrigger>
+
+                <SelectContent>
+                  <SelectGroup>
+                    <SelectItem
+                      v-for="title in titleOptions"
+                      :key="title"
+                      :value="title"
+                    >
+                      {{ title }}
+                    </SelectItem>
+                  </SelectGroup>
+                </SelectContent>
+              </SelectRoot>
+
+              <FieldError :errors />
+            </Field>
+          </NotField>
+
+          <NotField
+            v-slot="{path,errors,events,isValid}"
             path="name"
           >
             <Field
               :data-invalid="!isValid"
               data-required
-              data-disabled="true"
             >
               <Label :for="path">
                 Name on Card
@@ -132,7 +189,6 @@ const form = useNotForm({
                 autocomplete="cc-name"
                 placeholder="John Doe"
                 v-bind="events"
-                disabled
               />
 
               <FieldError :errors />
@@ -329,7 +385,6 @@ const form = useNotForm({
             :name="path"
             v-bind="events"
             placeholder="Add any additional comments"
-            class="resize-none"
           />
 
           <FieldError :errors />
@@ -344,7 +399,6 @@ const form = useNotForm({
           :data-invalid="!isValid"
           data-required
           orientation="horizontal"
-          class="flex-wrap"
         >
           <FieldContent>
             <Label :for="path">

@@ -16,14 +16,14 @@ export const fieldVariants = tv({
       [&>a:hover]:text-primary
     `,
     error: `
-      font-normal text-sm text-error inline-full min-inline-0
+      col-span-full font-normal text-sm text-error inline-full min-inline-0
 
       first-letter:uppercase
 
       [&>ul]:list-disc [&>ul]:flex-col [&>ul]:flex [&>ul]:gap-1 [&>ul]:ms-4
     `,
     field: `
-      flex inline-full gap-2 group/field min-inline-0
+      gap-2 inline-full group/field min-inline-0
 
       data-[invalid=true]:text-error
     `,
@@ -41,22 +41,27 @@ export const fieldVariants = tv({
     fieldOrientation: {
       auto: {
         field: `
-          flex-col
+          grid grid-cols-1
 
-          @md/field-group:flex-row @md/field-group:items-center
+          @md/field-group:grid-cols-[auto_minmax(0,1fr)]
+          @md/field-group:items-center
+
+          @md/field-group:*:not-data-[slot=field-content]:not-data-[slot=field-error]:justify-self-end
 
           @md/field-group:has-[>[data-slot=field-content]]:items-start
         `,
       },
       horizontal: {
         field: `
-          flex-row items-center
+          grid grid-cols-[auto_minmax(0,1fr)] items-center
+
+          *:not-data-[slot=field-content]:not-data-[slot=field-error]:justify-self-end
 
           has-[>[data-slot=field-content]]:items-start
         `,
       },
       vertical: {
-        field: 'flex-col',
+        field: 'flex flex-col',
       },
     },
     legendVariant: {
