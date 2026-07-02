@@ -1,6 +1,5 @@
 import type { PrimitiveProps } from 'reka-ui'
 import { tv, type VariantProps } from 'tailwind-variants'
-import type { LabelProps } from '../label'
 
 export const fieldVariants = tv({
   defaultVariants: {
@@ -10,17 +9,27 @@ export const fieldVariants = tv({
   slots: {
     content: 'flex flex-col flex-1 gap-1',
     description: 'text-sm text-muted-foreground text-start font-normal',
-    error: 'font-normal text-sm text-error capitalize',
+    error: `
+      font-normal text-sm text-error basis-full
+
+      first-letter:capitalize
+
+      [&>ul]:list-disc [&>ul]:flex-col [&>ul]:flex [&>ul]:gap-1 [&>ul]:ms-4
+    `,
     field: `
-      flex inline-full gap-2
+      flex inline-full gap-2 group/field
 
       data-[invalid=true]:text-error
     `,
     group: 'flex inline-full min-inline-0 flex-col gap-4 @container/field-group',
-    label: 'flex',
-    legend: 'mbe-1 font-medium',
+    legend: 'mbe-1 font-medium text-base',
     set: 'flex flex-col gap-4',
-    title: 'flex items-center font-medium text-sm',
+    title: `
+      flex items-center font-medium text-sm
+
+      group-data-[disabled=true]/field:opacity-65
+      group-data-[disabled=true]/field:pointer-events-none
+    `,
   },
   variants: {
     fieldOrientation: {
@@ -50,7 +59,6 @@ export { default as FieldContent } from './field-content.vue'
 export { default as FieldDescription } from './field-description.vue'
 export { default as FieldError } from './field-error.vue'
 export { default as FieldGroup } from './field-group.vue'
-export { default as FieldLabel } from './field-label.vue'
 export { default as FieldLegend } from './field-legend.vue'
 export { default as FieldSet } from './field-set.vue'
 export { default as FieldTitle } from './field-title.vue'
@@ -90,8 +98,6 @@ export type FieldProps = PrimitiveProps & {
 }
 
 export type FieldContentProps = PrimitiveProps & { class?: any }
-
-export type FieldLabelProps = LabelProps
 
 export type FieldTitleProps = PrimitiveProps & { class?: any }
 
