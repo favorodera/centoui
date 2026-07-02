@@ -8,7 +8,13 @@ export const fieldVariants = tv({
   },
   slots: {
     content: 'flex flex-col flex-1 gap-1',
-    description: 'text-sm text-muted-foreground text-start font-normal',
+    description: `
+      text-sm text-muted-foreground text-start font-normal
+
+      [&>a]:underline [&>a]:underline-offset-4
+
+      [&>a:hover]:text-primary
+    `,
     error: `
       font-normal text-sm text-error basis-full
 
