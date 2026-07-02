@@ -2,11 +2,12 @@
 import { NotField, NotForm, useNotForm } from 'notform'
 import { z } from 'zod'
 import { Button } from '#centoui/components/button'
-import { Checkbox } from '#centoui/components/checkbox'
-import { Field, FieldDescription, FieldError, FieldGroup, FieldLabel, FieldLegend, FieldSet } from '#centoui/components/field'
+import { Field, FieldContent, FieldDescription, FieldError, FieldGroup, FieldLegend, FieldSet } from '#centoui/components/field'
 import { Input } from '#centoui/components/input'
+import { Label } from '#centoui/components/label'
 import { SelectContent, SelectGroup, SelectItem, SelectRoot, SelectTrigger, SelectValue } from '#centoui/components/select'
 import { Separator } from '#centoui/components/separator'
+import { Switch } from '#centoui/components/switch'
 import { Textarea } from '#centoui/components/textarea'
 import { useStory } from '@/composables/use-story'
 
@@ -68,13 +69,16 @@ const schema = z.object({
     .nonempty('Name on card is required')
     .min(3, 'Name must be at least 3 characters')
     .max(50, 'Name must not be more than 50 characters'),
-  sameAsShipping: z.boolean('Please provide a response'),
+  notifications: z.boolean().refine(value => value === true, {
+    message: 'It is highly recommended to enable notifications.',
+  }),
   year: z.enum(yearOptions, 'Please select a valid expiration year'),
 })
 
 const form = useNotForm({
   initialValues: {
-    sameAsShipping: false,
+    name: 'Favour Emeka',
+    notifications: false,
   },
   schema,
 })
@@ -112,19 +116,23 @@ const form = useNotForm({
             v-slot="{path,errors,events,isValid}"
             path="name"
           >
-            <Field :data-invalid="!isValid">
-              <FieldLabel :for="path">
+            <Field
+              :data-invalid="!isValid"
+              data-required
+              data-disabled="true"
+            >
+              <Label :for="path">
                 Name on Card
-              </FieldLabel>
+              </Label>
 
               <Input
                 :id="path"
                 v-model:value="form.values.name"
                 :aria-invalid="!isValid"
-                :name="path"
                 autocomplete="cc-name"
                 placeholder="John Doe"
                 v-bind="events"
+                disabled
               />
 
               <FieldError :errors />
@@ -135,10 +143,13 @@ const form = useNotForm({
             v-slot="{path,errors,events,isValid}"
             path="cardNumber"
           >
-            <Field :data-invalid="!isValid">
-              <FieldLabel :for="path">
+            <Field
+              :data-invalid="!isValid"
+              data-required
+            >
+              <Label :for="path">
                 Card Number
-              </FieldLabel>
+              </Label>
 
               <Input
                 :id="path"
@@ -158,15 +169,18 @@ const form = useNotForm({
             </Field>
           </NotField>
 
-          <FieldGroup class="grid grid-cols-3 gap-4">
+          <FieldGroup class="flex-row items-start">
             <NotField
               v-slot="{path,errors,events,isValid}"
               path="month"
             >
-              <Field :data-invalid="!isValid">
-                <FieldLabel :for="path">
+              <Field
+                :data-invalid="!isValid"
+                data-required
+              >
+                <Label :for="path">
                   Month
-                </FieldLabel>
+                </Label>
 
                 <SelectRoot
                   v-model:model-value="form.values.month"
@@ -203,10 +217,13 @@ const form = useNotForm({
               v-slot="{path, errors,events,isValid}"
               path="year"
             >
-              <Field :data-invalid="!isValid">
-                <FieldLabel :for="path">
+              <Field
+                :data-invalid="!isValid"
+                data-required
+              >
+                <Label :for="path">
                   Year
-                </FieldLabel>
+                </Label>
 
                 <SelectRoot
                   v-model:model-value="form.values.year"
@@ -243,10 +260,13 @@ const form = useNotForm({
               v-slot="{path, errors,events,isValid}"
               path="cvv"
             >
-              <Field :data-invalid="!isValid">
-                <FieldLabel :for="path">
+              <Field
+                :data-invalid="!isValid"
+                data-required
+              >
+                <Label :for="path">
                   CVV
-                </FieldLabel>
+                </Label>
 
                 <Input
                   :id="path"
@@ -262,27 +282,18 @@ const form = useNotForm({
               </Field>
             </NotField>
           </FieldGroup>
-        </FieldGroup>
-      </FieldSet>
 
-      <Separator />
-
-      <FieldSet>
-        <FieldLegend>Billing Address</FieldLegend>
-
-        <FieldDescription>
-          The billing address associated with your payment method
-        </FieldDescription>
-
-        <FieldGroup>
           <NotField
             v-slot="{path,errors,events,isValid}"
             path="address"
           >
-            <Field :data-invalid="!isValid">
-              <FieldLabel :for="path">
+            <Field
+              :data-invalid="!isValid"
+              data-required
+            >
+              <Label :for="path">
                 Address
-              </FieldLabel>
+              </Label>
 
               <Input
                 :id="path"
@@ -297,48 +308,19 @@ const form = useNotForm({
               <FieldError :errors />
             </Field>
           </NotField>
-
-          <NotField
-            v-slot="{path,errors,events,isValid}"
-            path="sameAsShipping"
-          >
-            <Field
-              orientation="horizontal"
-              :data-invalid="!isValid"
-              class="flex-wrap"
-            >
-              <Checkbox
-                :id="path"
-                v-model:model-value="form.values.sameAsShipping"
-                :aria-invalid="!isValid"
-                v-bind="events"
-                default-checked
-              />
-
-              <FieldLabel
-                :for="path"
-                class-name="font-normal"
-              >
-                Same as shipping address
-              </FieldLabel>
-
-              <FieldError
-                :errors
-                class="basis-full"
-              />
-            </Field>
-          </NotField>
         </FieldGroup>
       </FieldSet>
+
+      <Separator />
 
       <NotField
         v-slot="{path,errors,events,isValid}"
         path="comments"
       >
         <Field :data-invalid="!isValid">
-          <FieldLabel :for="path">
+          <Label :for="path">
             Comments
-          </FieldLabel>
+          </Label>
 
           <Textarea
             :id="path"
@@ -348,6 +330,39 @@ const form = useNotForm({
             v-bind="events"
             placeholder="Add any additional comments"
             class="resize-none"
+          />
+
+          <FieldError :errors />
+        </Field>
+      </NotField>
+
+      <NotField
+        v-slot="{path,errors,events,isValid}"
+        path="notifications"
+      >
+        <Field
+          :data-invalid="!isValid"
+          data-required
+          orientation="horizontal"
+          class="flex-wrap"
+        >
+          <FieldContent>
+            <Label :for="path">
+              Notifications
+            </Label>
+
+            <FieldDescription>
+              Enable notifications to track your orders.
+            </FieldDescription>
+          </FieldContent>
+
+          <Switch
+            :id="path"
+            v-model:model-value="form.values.notifications"
+            :name="path"
+            :aria-invalid="!isValid"
+            @update:model-value="events.onChange()"
+            @blur="events.onBlur()"
           />
 
           <FieldError :errors />
