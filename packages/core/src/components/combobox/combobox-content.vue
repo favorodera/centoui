@@ -17,7 +17,7 @@ import {
 const emits = defineEmits<ComboboxContentEmits>()
 
 const props = withDefaults(defineProps<ComboboxContentProps>(), {
-  position: 'popper',
+  position: 'inline',
   showArrow: false,
   sideOffset: 4,
 })

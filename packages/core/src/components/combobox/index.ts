@@ -17,7 +17,7 @@ import { tv, type VariantProps } from 'tailwind-variants'
 
 export const comboboxVariants = tv({
   defaultVariants: {
-    contentPosition: 'popper',
+    contentPosition: 'inline',
     size: 'md',
   },
   slots: {

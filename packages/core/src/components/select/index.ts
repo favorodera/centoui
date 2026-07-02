@@ -16,7 +16,7 @@ import { tv, type VariantProps } from 'tailwind-variants'
 
 export const selectVariants = tv({
   defaultVariants: {
-    contentPosition: 'popper',
+    contentPosition: 'item-aligned',
     size: 'md',
   },
   slots: {

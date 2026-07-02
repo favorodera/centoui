@@ -22,14 +22,14 @@ import { Icon } from '../icon'
 const emits = defineEmits<SelectContentEmits>()
 
 const props = withDefaults(defineProps<SelectContentProps>(), {
-  position: 'popper',
+  position: 'item-aligned',
   showArrow: false,
   sideOffset: 4,
 })
 
 const rootContext = injectRootContext()
 
-const delegatedProps = reactiveOmit(props, 'class', 'showArrow')
+const delegatedProps = reactiveOmit(props, 'class', 'showArrow',)
 
 const forwardedPropsEmits = useForwardPropsEmits(delegatedProps, emits)
 
