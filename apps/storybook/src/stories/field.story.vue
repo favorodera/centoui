@@ -96,7 +96,7 @@ const form = useNotForm({
   <FieldDescription>
     Form validation powered by <Button
       as="a"
-      href="https://github.com/centoui/notform"
+      href="https://github.com/favorodera/notform"
       target="_blank"
       rel="noopener noreferrer"
       variant="link"
