@@ -8,6 +8,8 @@ export const labelVariants = tv({
 
       peer-disabled:pointer-events-none peer-disabled:opacity-65
 
+      peer-aria-invalid:text-error
+
       group-data-required/field:after:ms-1
       group-data-required/field:after:text-error
       group-data-required/field:after:content-['*']
