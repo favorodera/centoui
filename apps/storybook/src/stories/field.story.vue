@@ -2,9 +2,10 @@
 import { NotField, NotForm, useNotForm } from 'notform'
 import { z } from 'zod'
 import { Button } from '#centoui/components/button'
-import { Field, FieldContent, FieldDescription, FieldError, FieldGroup, FieldLegend, FieldSet } from '#centoui/components/field'
+import { Field, FieldContent, FieldDescription, FieldError, FieldGroup, FieldLegend, FieldSet, FieldTitle } from '#centoui/components/field'
 import { Input } from '#centoui/components/input'
 import { Label } from '#centoui/components/label'
+import { RadioGroupItem, RadioGroupRoot } from '#centoui/components/radio-group'
 import { SelectContent, SelectGroup, SelectItem, SelectRoot, SelectTrigger, SelectValue } from '#centoui/components/select'
 import { Separator } from '#centoui/components/separator'
 import { Switch } from '#centoui/components/switch'
@@ -40,6 +41,12 @@ const titleOptions = [
   'Mr',
   'Mrs',
   'Miss',
+] as const
+
+const planOptions = [
+  { description: 'For individuals and small teams', label: 'Starter', value: 'starter' },
+  { description: 'For growing teams', label: 'Pro', value: 'pro' },
+  { description: 'For large teams and enterprises', label: 'Enterprise', value: 'enterprise' },
 ] as const
 
 const schema = z.object({
@@ -78,6 +85,7 @@ const schema = z.object({
   notifications: z.boolean().refine(value => value === true, {
     message: 'It is highly recommended to enable notifications.',
   }),
+  plan: z.enum(planOptions.map(option => option.value), 'Please select a valid plan'),
   title: z.enum(titleOptions, 'Please select a valid title'),
   year: z.enum(yearOptions, 'Please select a valid expiration year'),
 })
@@ -368,6 +376,57 @@ const form = useNotForm({
       </FieldSet>
 
       <Separator />
+
+      <FieldSet>
+        <FieldLegend variant="label">
+          Subscription Plan
+        </FieldLegend>
+
+        <FieldDescription>
+          Select a plan that suits your needs
+        </FieldDescription>
+
+        <NotField
+          v-slot="{ path, errors, events, isValid}"
+          path="plan"
+        >
+          <RadioGroupRoot
+            v-model:model-value="form.values.plan"
+            :name="path"
+            v-bind="events"
+          >
+            <Label
+              v-for="plan in planOptions"
+              :key="plan.value"
+            >
+              <Field
+                orientation="horizontal"
+                :data-invalid="!isValid"
+              >
+                <FieldContent>
+                  <FieldTitle>
+                    {{ plan.label }}
+                  </FieldTitle>
+
+                  <FieldDescription>
+                    {{ plan.description }}
+                  </FieldDescription>
+                </FieldContent>
+
+                <RadioGroupItem
+                  :id="path"
+                  :value="plan.value"
+                  :aria-invalid="!isValid"
+                  :name="path"
+                />
+              </Field>
+
+            </Label>
+          </RadioGroupRoot>
+
+          <FieldError :errors />
+        </NotField>
+      </FieldSet>
 
       <NotField
         v-slot="{path,errors,events,isValid}"
