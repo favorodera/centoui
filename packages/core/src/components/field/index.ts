@@ -46,7 +46,7 @@ export const fieldVariants = tv({
           @md/field-group:grid-cols-[auto_minmax(0,1fr)]
           @md/field-group:items-center
 
-          @md/field-group:*:not-data-[slot=field-content]:not-data-[slot=field-error]:justify-self-end
+          @md/field-group:*:not-data-[slot=field-content]:not-data-[slot=field-error]:not-data-[slot=label]:justify-self-end
 
           @md/field-group:has-[>[data-slot=field-content]]:items-start
         `,
@@ -55,7 +55,7 @@ export const fieldVariants = tv({
         field: `
           grid grid-cols-[auto_minmax(0,1fr)] items-center
 
-          *:not-data-[slot=field-content]:not-data-[slot=field-error]:justify-self-end
+          *:not-data-[slot=field-content]:not-data-[slot=field-error]:not-data-[slot=label]:justify-self-end
 
           has-[>[data-slot=field-content]]:items-start
         `,
