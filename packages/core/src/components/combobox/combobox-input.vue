@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
-import { ComboboxAnchor, ComboboxInput, useForwardPropsEmits } from 'reka-ui'
+import { ComboboxAnchor, ComboboxCancel, ComboboxInput, ComboboxTrigger, injectComboboxRootContext, useForwardPropsEmits } from 'reka-ui'
 import { computed } from 'vue'
 import config from '#centoui/config'
 import {
@@ -19,24 +19,48 @@ defineOptions({
 
 const emits = defineEmits<ComboboxInputEmits>()
 
-const props = defineProps<ComboboxInputProps>()
+const props = withDefaults(defineProps<ComboboxInputProps>(), {
+  showClear: false,
+})
 
 const rootContext = injectRootContext()
+const rekaRootContext = injectComboboxRootContext()
 
-const delegatedProps = reactiveOmit(props, 'class')
+const delegatedProps = reactiveOmit(props, 'class', 'showClear')
 
 const forwardedPropsEmits = useForwardPropsEmits(delegatedProps, emits)
 
-const { anchor, input } = comboboxVariants()
+const hasValue = computed(() => {
+  const value = rekaRootContext.modelValue?.value
+  const isMultipleValues = rekaRootContext.multiple?.value
+
+  if (isMultipleValues) {
+    return Array.isArray(value) && value.length > 0
+  }
+
+  return value !== undefined && value !== null && value !== ''
+})
+
+const showClear = computed(() => props.showClear && hasValue.value)
+
+const { anchor, cancel, input, trigger } = comboboxVariants()
 
 const { root } = inputVariants()
 
 const classNames = computed(() => ({
-  anchor: anchor(),
+  anchor: anchor({
+    size: rootContext?.size,
+  }),
+  cancel: cancel({
+    size: rootContext?.size,
+  }),
   input: root({
     class: input({
       class: props.class,
     }),
+    size: rootContext?.size,
+  }),
+  trigger: trigger({
     size: rootContext?.size,
   }),
 }))
@@ -49,14 +73,28 @@ const classNames = computed(() => ({
   >
     <InputGroupRoot :size="rootContext?.size">
       <ComboboxInput
-        v-bind="{...forwardedPropsEmits,...$attrs}"
+        v-bind="{...$attrs,...forwardedPropsEmits}"
         data-slot="combobox-input"
         data-input-group-control
         :class="classNames.input"
       />
 
       <InputGroupAddon align="inline-end">
-        <Icon :icon="config.icons.chevronDown" />
+        <ComboboxCancel
+          v-if="showClear"
+          :class="classNames.cancel"
+          data-slot="combobox-cancel"
+        >
+          <Icon :icon="config.icons.x" />
+        </ComboboxCancel>
+
+        <ComboboxTrigger
+          v-else
+          :class="classNames.trigger"
+          data-slot="combobox-trigger"
+        >
+          <Icon :icon="config.icons.chevronDown" />
+        </ComboboxTrigger>
       </InputGroupAddon>
     </InputGroupRoot>
   </ComboboxAnchor>
