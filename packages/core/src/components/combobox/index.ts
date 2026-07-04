@@ -23,9 +23,9 @@ export const comboboxVariants = tv({
   slots: {
     anchor: 'relative inline-full min-inline-0 flex items-center',
     arrow: 'z-50 fill-overlay stroke-input',
+    cancel: '',
     content: `
-      bg-overlay border border-input z-50 flex max-block-[90dvh] flex-col gap-1
-      inline-full min-inline-3xs
+      bg-overlay border border-input z-50 relative grid p-1 gap-1
 
       data-[side=bottom]:slide-in-from-top-2
 
@@ -43,9 +43,13 @@ export const comboboxVariants = tv({
     `,
     empty: `
       block-full inline-full flex items-center justify-center
-      text-muted-foreground text-sm py-2 text-center
+      text-muted-foreground py-1 text-center
     `,
-    group: 'scroll-my-1 p-1 flex flex-col gap-1',
+    group: `
+      scroll-my-1 grid gap-1
+
+      *:data-[slot=separator]:-mx-1
+    `,
     input: '',
     item: `
       relative flex inline-full cursor-default items-center outline-none
@@ -58,35 +62,44 @@ export const comboboxVariants = tv({
     itemIndicator: 'absolute inset-bs-1/2 -translate-y-1/2',
     label: 'text-muted-foreground py-0.5',
     root: 'relative',
-    viewport: 'inline-full rounded-[inherit]',
+    trigger: '',
+    viewport: `
+      rounded-[inherit] grid grid-cols-1 gap-1 min-inline-full -mx-1 px-1
+
+      *:data-[slot=separator]:data-[orientation=horizontal]:-mx-1
+    `,
   },
   variants: {
     contentPosition: {
       inline: {
-        content: 'absolute',
+        content: 'absolute inline-full max-block-80',
       },
       popper: {
         content: `
           max-block-(--reka-combobox-content-available-height)
           origin-(--reka-combobox-content-transform-origin)
+          min-inline-(--reka-combobox-trigger-width)
         `,
       },
     },
     size: {
       lg: {
         content: 'rounded-lg',
+        empty: 'text-sm',
         item: 'block-9 rounded-lg ps-2.5 pe-8.5 text-sm gap-1.5',
         itemIndicator: 'inset-e-2.5 block-4.5 inline-4.5',
         label: 'text-xs px-2.5',
       },
       md: {
         content: 'rounded-lg',
+        empty: 'text-sm',
         item: 'block-8 rounded-lg ps-2 pe-7.5 text-sm gap-1.5',
         itemIndicator: 'inset-e-2 block-4 inline-4',
         label: 'text-xs px-2',
       },
       sm: {
         content: 'rounded-md',
+        empty: 'text-xs',
         item: 'block-7 rounded-md ps-1.5 pe-6 text-xs gap-1',
         itemIndicator: 'inset-e-1.5 block-3.5 inline-3.5',
         label: 'text-xs px-1.5',
@@ -126,7 +139,15 @@ export type ComboboxRootProps = RekaComboboxRootProps & {
   size?: ComboboxVariants['size']
 }
 
-export type ComboboxInputProps = RekaComboboxInputProps & { class?: any }
+export type ComboboxInputProps = RekaComboboxInputProps & {
+  class?: any
+
+  /**
+   * Whether to show the clear button
+   * @default false
+   */
+  showClear?: boolean
+}
 
 export type ComboboxContentProps = RekaComboboxContentProps & {
   class?: any
