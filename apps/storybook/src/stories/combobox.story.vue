@@ -43,6 +43,10 @@ const controls = useStory('Combobox', {
     default: true,
     type: 'boolean',
   },
+  showClear: {
+    default: false,
+    type: 'boolean',
+  },
   side: {
     default: 'bottom' as any,
     options: [
@@ -60,24 +64,16 @@ const controls = useStory('Combobox', {
   },
 })
 
-const options = [
-  {
-    children: [
-      { name: 'Apple' },
-      { name: 'Banana' },
-      { disabled: true, name: 'Orange' },
-      { name: 'Honeydew' },
-    ],
-  },
-  {
-    children: [
-      { name: 'Cabbage' },
-      { name: 'Carrots' },
-      { disabled: true, name: 'Lettuce' },
-      { name: 'Spinach' },
-    ],
-    name: 'Vegetable',
-  },
+const fruits = [
+  { name: 'Apple' },
+  { name: 'Banana' },
+  { disabled: true, name: 'Orange' },
+]
+
+const vegetables = [
+  { name: 'Cabbage' },
+  { name: 'Carrots' },
+  { disabled: true, name: 'Lettuce' },
 ]
 </script>
 
@@ -90,6 +86,7 @@ const options = [
     <ComboboxInput
       placeholder="Search a fruit"
       :aria-invalid="controls.invalid"
+      :show-clear="controls.showClear"
     />
 
     <ComboboxContent
@@ -100,29 +97,28 @@ const options = [
     >
       <ComboboxEmpty />
 
-      <template
-        v-for="group, index in options"
-        :key="group.name"
+      <ComboboxItem
+        v-for="fruit in fruits"
+        :key="fruit.name"
+        :value="fruit.name"
+        :disabled="fruit.disabled"
       >
-        <Separator
-          v-if="index !== 0"
-        />
+        {{ fruit.name }}
+      </ComboboxItem>
 
-        <ComboboxGroup>
-          <ComboboxLabel v-if="group.name">
-            {{ group.name }}
-          </ComboboxLabel>
+      <ComboboxGroup>
+        <Separator />
+        <ComboboxLabel>Vegetable</ComboboxLabel>
 
-          <ComboboxItem
-            v-for="option in group.children"
-            :key="option.name"
-            :value="option.name"
-            :disabled="option.disabled"
-          >
-            {{ option.name }}
-          </ComboboxItem>
-        </ComboboxGroup>
-      </template>
+        <ComboboxItem
+          v-for="vegetable in vegetables"
+          :key="vegetable.name"
+          :value="vegetable.name"
+          :disabled="vegetable.disabled"
+        >
+          {{ vegetable.name }}
+        </ComboboxItem>
+      </ComboboxGroup>
     </ComboboxContent>
   </ComboboxRoot>
 </template>
