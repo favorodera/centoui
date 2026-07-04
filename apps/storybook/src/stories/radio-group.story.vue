@@ -45,7 +45,7 @@ const value = ref('banana')
     <div
       v-for="fruit in fruits"
       :key="fruit.id"
-      className="flex items-center gap-3"
+      className="flex items-center gap-1"
     >
       <RadioGroupItem
         :id="fruit.id"
