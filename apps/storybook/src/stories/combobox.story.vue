@@ -88,7 +88,6 @@ const options = [
     :size="controls.size"
   >
     <ComboboxInput
-      data-slot="input-group-control"
       placeholder="Search a fruit"
       :aria-invalid="controls.invalid"
     />
