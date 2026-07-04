@@ -1,5 +1,18 @@
 # Changelog
 
+## v1.5.0...v1.5.1
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.5.0...v1.5.1)
+
+### Styling
+
+- **cli:** Format files array in package.json ([a9a9736](https://github.com/favorodera/centoui/commit/a9a9736))
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.4.0...v1.5.0
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.4.0...v1.5.0)

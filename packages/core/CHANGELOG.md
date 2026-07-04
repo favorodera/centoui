@@ -1,5 +1,79 @@
 # Changelog
 
+## v1.5.0...v1.5.1
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.5.0...v1.5.1)
+
+### Added
+
+- **label:** Add error state styling for invalid fields ([4a72ca2](https://github.com/favorodera/centoui/commit/4a72ca2))
+
+  - add peer-aria-invalid variant to label component
+  - improve visual feedback for invalid form inputs
+
+- **radio-group:** Implement radio group component ([8092254](https://github.com/favorodera/centoui/commit/8092254))
+
+  - add RadioGroup root and item components
+  - define styling variants using tailwind-variants
+  - export necessary types and context providers
+
+- **radio-group:** Add radio-group-item component ([96be2b6](https://github.com/favorodera/centoui/commit/96be2b6))
+
+  - implement radio-group-item with reka-ui
+  - support custom sizes via root context
+  - enable slot customization for indicators
+
+- **radio-group:** Add root component implementation ([c59af1a](https://github.com/favorodera/centoui/commit/c59af1a))
+
+  - implement RadioGroupRoot using reka-ui
+  - provide context for component variants
+  - enable custom styling and size configuration
+
+- **switch:** Update color scheme for component ([602d863](https://github.com/favorodera/centoui/commit/602d863))
+
+  - Change default background to primary
+  - Update unchecked state colors
+  - Align thumb colors with new primary scheme
+
+- **label:** Add size variants and field styling ([7a57925](https://github.com/favorodera/centoui/commit/7a57925))
+
+  - Add size variant support to label component
+  - Implement dynamic styling for nested fields
+  - Export LabelVariants type for improved typing
+
+- **radio-group:** Set default orientation to vertical ([2cbca98](https://github.com/favorodera/centoui/commit/2cbca98))
+
+  - ensure consistent layout for radio group components
+
+- **label:** Add error state border for fields ([69a8da2](https://github.com/favorodera/centoui/commit/69a8da2))
+
+  - add invalid border state to label variants
+  - remove unnecessary whitespace in storybook file
+
+
+### Fixed
+
+- **field:** Exclude label from grid justify-self-end ([99a1ad5](https://github.com/favorodera/centoui/commit/99a1ad5))
+
+  - prevent label from being pushed to the end of grid
+  - ensure labels align correctly in field components
+
+- **core:** Adjust field margin for nested groups ([86cb8fb](https://github.com/favorodera/centoui/commit/86cb8fb))
+
+  - Remove bottom margin when field is last child
+  - Ensure proper spacing within field sets and groups
+
+
+### Styling
+
+- **cli:** Format files array in package.json ([a9a9736](https://github.com/favorodera/centoui/commit/a9a9736))
+- **checkbox:** Remove unnecessary transition-colors ([f9e448b](https://github.com/favorodera/centoui/commit/f9e448b))
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.4.0...v1.5.0
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.4.0...v1.5.0)
