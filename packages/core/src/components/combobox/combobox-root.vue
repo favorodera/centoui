@@ -9,8 +9,7 @@ defineSlots<ComboboxRootSlots>()
 const emits = defineEmits<ComboboxRootEmits>()
 
 const props = withDefaults(defineProps<ComboboxRootProps>(), {
-  openOnClick: true,
-  openOnFocus: true,
+  resetModelValueOnClear: true,
   size: 'md',
 })
 
