@@ -21,6 +21,8 @@ export const fieldVariants = tv({
       first-letter:uppercase
 
       [&>ul]:list-disc [&>ul]:flex-col [&>ul]:flex [&>ul]:gap-1 [&>ul]:ms-4
+
+      [:is([data-slot=field-set],[data-slot=field-group])>&:last-child]:-mbs-2
     `,
     field: `
       gap-2 inline-full group/field min-inline-0
