@@ -8,6 +8,8 @@ export const cardVariants = tv({
     header: `flex flex-col gap-1 px-4 pbs-4 -mx-4 -mbs-4`,
     root: `
       flex flex-col gap-4 overflow-hidden rounded-xl border bg-elevated p-4
+
+      *:data-[slot=separator]:data-[orientation=horizontal]:-mx-4
     `,
     title: 'text-base font-semibold',
   },

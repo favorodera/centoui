@@ -13,6 +13,7 @@ import {
   CardTitle,
 } from '#centoui/components/card'
 import { Icon } from '#centoui/components/icon'
+import { Separator } from '#centoui/components/separator'
 import { useStory } from '@/composables/use-story'
 
 useStory('Card', {})
@@ -43,6 +44,8 @@ useStory('Card', {})
         maintainability at scale — from routing to plugin architecture.
       </CardDescription>
     </CardHeader>
+
+    <Separator  />
 
     <div class="space-y-4 flex-1">
       <div class="flex items-center gap-3">

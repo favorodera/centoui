@@ -22,7 +22,7 @@ export const selectVariants = tv({
   slots: {
     arrow: 'z-50 fill-overlay stroke-input',
     content: `
-      bg-overlay border border-input z-50 relative flex flex-col gap-1
+      bg-overlay border border-input z-50 relative grid p-1 gap-1
 
       data-[side=bottom]:slide-in-from-top-2
 
@@ -38,7 +38,11 @@ export const selectVariants = tv({
       data-[state=open]:animate-in data-[state=open]:fade-in-0
       data-[state=open]:zoom-in-95
     `,
-    group: 'scroll-my-1 p-1 flex flex-col gap-1',
+    group: `
+      scroll-my-1 grid gap-1
+
+      *:data-[slot=separator]:-mx-1
+    `,
     icon: 'text-muted-foreground',
     item: `
       relative flex inline-full cursor-default items-center outline-none
@@ -53,7 +57,7 @@ export const selectVariants = tv({
     label: 'text-muted-foreground py-0.5',
     scrollDownButton: `
       flex inline-full cursor-default items-center justify-center
-      rounded-b-[inherit] bg-overlay mbe-0
+      rounded-b-[inherit] bg-overlay
     `,
     scrollUpButton: `
       flex inline-full cursor-default items-center justify-center
@@ -72,7 +76,11 @@ export const selectVariants = tv({
       data-placeholder:text-muted-foreground
     `,
     value: 'flex flex-1 items-center truncate',
-    viewport: 'inline-full rounded-[inherit]',
+    viewport: `
+      rounded-[inherit] grid grid-cols-1 gap-1 min-inline-full -mx-1 px-1
+
+      *:data-[slot=separator]:data-[orientation=horizontal]:-mx-1
+    `,
   },
   variants: {
     contentPosition: {

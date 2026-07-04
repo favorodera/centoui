@@ -14,11 +14,11 @@ export const separatorVariants = tv({
     orientation: {
       horizontal: {
         line: 'border-bs',
-        root: 'inline-full',
+        root: 'min-inline-full',
       },
       vertical: {
         line: 'border-s',
-        root: 'flex-col self-stretch',
+        root: 'flex-col self-stretch min-block-full',
       },
     },
   },

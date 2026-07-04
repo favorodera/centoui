@@ -71,19 +71,17 @@ const controls = useStory('Select', {
       :side="controls.side"
       :show-arrow="controls.showArrow"
     >
-      <SelectGroup>
-        <SelectItem value="apple">
-          Apple
-        </SelectItem>
+      <SelectItem value="apple">
+        Apple
+      </SelectItem>
 
-        <SelectItem value="banana">
-          Banana
-        </SelectItem>
+      <SelectItem value="banana">
+        Banana
+      </SelectItem>
 
-        <SelectItem value="orange">
-          Orange
-        </SelectItem>
-      </SelectGroup>
+      <SelectItem value="orange">
+        Orange
+      </SelectItem>
 
       <Separator />
 
