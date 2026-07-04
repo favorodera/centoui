@@ -24,7 +24,8 @@ export const comboboxVariants = tv({
     anchor: 'relative inline-full min-inline-0 flex items-center',
     arrow: 'z-50 fill-overlay stroke-input',
     content: `
-      bg-overlay border border-input z-50 flex flex-col gap-1 inline-full
+      bg-overlay border border-input z-50 flex max-block-[90dvh] flex-col gap-1
+      inline-full min-inline-3xs
 
       data-[side=bottom]:slide-in-from-top-2
 
@@ -66,7 +67,7 @@ export const comboboxVariants = tv({
       },
       popper: {
         content: `
-          max-block-(--reka-reka-content-available-height) min-inline-3xs
+          max-block-(--reka-combobox-content-available-height)
           origin-(--reka-combobox-content-transform-origin)
         `,
       },

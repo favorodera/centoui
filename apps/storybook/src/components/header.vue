@@ -3,15 +3,16 @@ import { useRoute } from 'vue-router'
 import { Badge } from '#centoui/components/badge'
 import { Button } from '#centoui/components/button'
 import { ButtonGroup } from '#centoui/components/button-group'
-import { Icon } from '#centoui/components/icon'
 import {
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectRoot,
-  SelectTrigger,
-  SelectValue,
-} from '#centoui/components/select'
+  ComboboxContent,
+  ComboboxEmpty,
+  ComboboxGroup,
+  ComboboxInput,
+  ComboboxItem,
+  ComboboxRoot,
+} from '#centoui/components/combobox'
+import { Icon } from '#centoui/components/icon'
+
 import { Separator } from '#centoui/components/separator'
 import { useApp } from '@/composables/use-app'
 
@@ -27,29 +28,31 @@ const route = useRoute()
     "
   >
     <!-- Component Selector -->
-    <SelectRoot
+    <ComboboxRoot
       size="sm"
       :model-value="route.path"
       @update:model-value="(value)=>navigation.goTo(value as string)"
     >
-      <SelectTrigger
-        class="max-inline-3xs"
-      >
-        <SelectValue />
-      </SelectTrigger>
+      <ComboboxInput
+        data-slot="input-group-control"
+        placeholder="Search a component"
+        :display-value="(value)=> navigation.components.value.find((component)=>component.path === value)?.label || ''"
+      />
 
-      <SelectContent>
-        <SelectGroup>
-          <SelectItem
+      <ComboboxContent>
+        <ComboboxEmpty />
+
+        <ComboboxGroup>
+          <ComboboxItem
             v-for="component in navigation.components.value"
             :key="component.path"
             :value="component.path"
           >
             {{ component.label }}
-          </SelectItem>
-        </SelectGroup>
-      </SelectContent>
-    </SelectRoot>
+          </ComboboxItem>
+        </ComboboxGroup>
+      </ComboboxContent>
+    </ComboboxRoot>
 
     <div class="flex items-center gap-2">
       <!-- Count Badge -->
