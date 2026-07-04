@@ -29,13 +29,14 @@ const route = useRoute()
   >
     <!-- Component Selector -->
     <ComboboxRoot
+      open-on-click
       size="sm"
       :model-value="route.path"
       @update:model-value="(value)=>navigation.goTo(value as string)"
     >
       <ComboboxInput
         data-slot="input-group-control"
-        placeholder="Search a component"
+        placeholder="Select a component"
         :display-value="(value)=> navigation.components.value.find((component)=>component.path === value)?.label || ''"
       />
 
