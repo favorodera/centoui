@@ -10,6 +10,7 @@ import { tv, type VariantProps } from 'tailwind-variants'
 
 export const radioGroupVariants = tv({
   defaultVariants: {
+    orientation: 'vertical',
     size: 'md',
   },
   slots: {
