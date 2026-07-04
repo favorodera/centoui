@@ -283,6 +283,15 @@
     },
     {
       "$schema": "./schemas/component.json",
+      "name": "radio-group",
+      "files": [
+        "radio-group/radio-group-root.vue",
+        "radio-group/radio-group-item.vue",
+        "radio-group/index.ts"
+      ]
+    },
+    {
+      "$schema": "./schemas/component.json",
       "name": "select",
       "files": [
         "select/select-content.vue",
