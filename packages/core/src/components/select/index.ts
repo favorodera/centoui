@@ -87,7 +87,7 @@ export const selectVariants = tv({
       'item-aligned': {},
       'popper': {
         content: `
-          max-block-(--reka-select-content-available-height) inline-full
+          max-block-(--reka-select-content-available-height)
           min-inline-(--reka-select-trigger-width)
           origin-(--reka-select-content-transform-origin)
         `,
