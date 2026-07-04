@@ -1,5 +1,21 @@
 # Changelog
 
+## v1.5.1...v1.6.0
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.5.1...v1.6.0)
+
+### Added
+
+- **registry:** Add radio-group component definition ([6e995ea](https://github.com/favorodera/centoui/commit/6e995ea))
+
+  - register radio-group in core registry
+  - add configuration file for radio-group component
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.5.0...v1.5.1
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.5.0...v1.5.1)
