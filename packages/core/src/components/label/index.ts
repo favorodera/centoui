@@ -23,6 +23,8 @@ export const labelVariants = tv({
       has-[>[data-slot=field]]:border has-[>[data-slot=field]]:flex-col
       has-[>[data-slot=field]]:inline-full
 
+      has-[>[data-slot=field][data-invalid="true"]]:border-error
+
       has-data-[state=checked]:border-primary/25
       has-data-[state=checked]:bg-primary/8
     `,
