@@ -1,6 +1,6 @@
 {
   "name": "centoui-nuxt",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "description": "Official Nuxt module for CentoUI",
   "author": "Favour Emeka <favorodera@gmail.com>",
   "license": "MIT",
@@ -30,10 +30,14 @@
   "main": "./dist/module.mjs",
   "typesVersions": {
     "*": {
-      ".": ["./dist/types.d.mts"]
+      ".": [
+        "./dist/types.d.mts"
+      ]
     }
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "publishConfig": {
     "access": "public"
   },

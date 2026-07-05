@@ -1,5 +1,80 @@
 # Changelog
 
+## v1.6.0...v1.6.1
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.6.0...v1.6.1)
+
+### Added
+
+- **storybook:** Replace select with combobox in header ([486d3d5](https://github.com/favorodera/centoui/commit/486d3d5))
+
+  - migrate component selector to combobox component
+  - add search and filter capability to navigation
+  - update combobox styling for better responsiveness
+
+- **combobox:** Add clear functionality to input ([58cbc48](https://github.com/favorodera/centoui/commit/58cbc48))
+
+  - Add showClear prop to combobox input
+  - Render cancel button when value is present
+  - Use trigger button as fallback
+  - Implement logic to track input value state
+
+- **combobox:** Add resetModelValueOnClear prop ([25c083f](https://github.com/favorodera/centoui/commit/25c083f))
+
+  - Add resetModelValueOnClear to component defaults
+  - Remove deprecated openOnClick and openOnFocus props
+
+- **combobox:** Improve styles and add clear button support ([065ff49](https://github.com/favorodera/centoui/commit/065ff49))
+
+  - Update combobox variants for better layout
+  - Add showClear prop to combobox input
+  - Standardize spacing and grid structures
+
+- **combobox:** Implement button trigger and sizing ([07c8aad](https://github.com/favorodera/centoui/commit/07c8aad))
+
+  - add showTrigger prop to control visibility
+  - update trigger and cancel to use Button component
+  - add 2xs button size for compact inputs
+  - update registry dependencies for button usage
+
+
+### Fixed
+
+- **select:** Remove invalid inline-full class ([1ecd999](https://github.com/favorodera/centoui/commit/1ecd999))
+
+  - remove unsupported inline-full utility class
+  - prevent layout issues in popper variant
+
+
+### Refactors
+
+- **components:** Improve separator layout and styling ([14a925c](https://github.com/favorodera/centoui/commit/14a925c))
+
+  - Update separator styles for consistent alignment
+  - Refactor card and select components to use grid
+  - Fix negative margins for better edge alignment
+  - Clean up package configuration formatting
+
+- **core:** Update theme color palette ([cf86ea1](https://github.com/favorodera/centoui/commit/cf86ea1))
+
+  - Refine oklch values for improved visual contrast
+  - Standardize foreground colors across states
+  - Update dark mode color definitions for consistency
+
+
+### Styling
+
+- **core:** Update component visual styles ([600020e](https://github.com/favorodera/centoui/commit/600020e))
+
+  - Refine checkbox and label colors for consistency
+  - Update slider track and thumb appearance
+  - Adjust switch unchecked state background
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.5.1...v1.6.0
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.5.1...v1.6.0)

@@ -1,5 +1,23 @@
 # Changelog
 
+## v1.6.0...v1.6.1
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.6.0...v1.6.1)
+
+### Refactors
+
+- **components:** Improve separator layout and styling ([14a925c](https://github.com/favorodera/centoui/commit/14a925c))
+
+  - Update separator styles for consistent alignment
+  - Refactor card and select components to use grid
+  - Fix negative margins for better edge alignment
+  - Clean up package configuration formatting
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.5.1...v1.6.0
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.5.1...v1.6.0)
