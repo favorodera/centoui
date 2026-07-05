@@ -9,6 +9,7 @@ import {
   comboboxVariants,
   injectRootContext,
 } from '.'
+import { Button } from '../button'
 import { Icon } from '../icon'
 import { inputVariants } from '../input'
 import { InputGroupAddon, InputGroupRoot } from '../input-group'
@@ -21,6 +22,7 @@ const emits = defineEmits<ComboboxInputEmits>()
 
 const props = withDefaults(defineProps<ComboboxInputProps>(), {
   showClear: false,
+  showTrigger: true,
 })
 
 const rootContext = injectRootContext()
@@ -42,6 +44,17 @@ const hasValue = computed(() => {
 })
 
 const showClear = computed(() => props.showClear && hasValue.value)
+
+const buttonSize = computed(() => {
+  switch (rootContext?.size) {
+    case 'sm': {
+      return '2xs'
+    }
+    default: {
+      return 'xs'
+    }
+  }
+})
 
 const { anchor, cancel, input, trigger } = comboboxVariants()
 
@@ -70,6 +83,7 @@ const classNames = computed(() => ({
   <ComboboxAnchor
     :class="classNames.anchor"
     data-slot="combobox-anchor"
+    as-child
   >
     <InputGroupRoot :size="rootContext?.size">
       <ComboboxInput
@@ -79,22 +93,44 @@ const classNames = computed(() => ({
         :class="classNames.input"
       />
 
-      <InputGroupAddon align="inline-end">
+      <InputGroupAddon
+        align="inline-end"
+        as-child
+      >
         <ComboboxCancel
           v-if="showClear"
           :class="classNames.cancel"
           data-slot="combobox-cancel"
+          as-child
         >
-          <Icon :icon="config.icons.x" />
+          <Button
+            variant="ghost"
+            :size="buttonSize"
+            square
+          >
+            <Icon :icon="config.icons.x" />
+          </Button>
         </ComboboxCancel>
 
         <ComboboxTrigger
-          v-else
+          v-else-if="showTrigger"
           :class="classNames.trigger"
           data-slot="combobox-trigger"
+          as-child
         >
-          <Icon :icon="config.icons.chevronDown" />
+          <Button
+            variant="ghost"
+            :size="buttonSize"
+            square
+          >
+            <Icon :icon="config.icons.chevronDown" />
+          </Button>
         </ComboboxTrigger>
+
+        <Icon
+          v-else
+          :icon="config.icons.chevronDown"
+        />
       </InputGroupAddon>
     </InputGroupRoot>
   </ComboboxAnchor>

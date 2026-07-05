@@ -147,6 +147,12 @@ export type ComboboxInputProps = RekaComboboxInputProps & {
    * @default false
    */
   showClear?: boolean
+
+  /**
+   * Whether to show the trigger button
+   * @default true
+   */
+  showTrigger?: boolean
 }
 
 export type ComboboxContentProps = RekaComboboxContentProps & {

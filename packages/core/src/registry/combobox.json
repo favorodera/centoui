@@ -14,6 +14,7 @@
   "componentDependencies": [
     "icon",
     "input",
-    "input-group"
+    "input-group",
+    "button"
   ]
 }

@@ -47,6 +47,10 @@ const controls = useStory('Combobox', {
     default: false,
     type: 'boolean',
   },
+  showTrigger: {
+    default: true,
+    type: 'boolean',
+  },
   side: {
     default: 'bottom' as any,
     options: [
@@ -87,6 +91,7 @@ const vegetables = [
       placeholder="Search a fruit"
       :aria-invalid="controls.invalid"
       :show-clear="controls.showClear"
+      :show-trigger="controls.showTrigger"
     />
 
     <ComboboxContent

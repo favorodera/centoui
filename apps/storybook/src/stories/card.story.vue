@@ -45,7 +45,7 @@ useStory('Card', {})
       </CardDescription>
     </CardHeader>
 
-    <Separator  />
+    <Separator />
 
     <div class="space-y-4 flex-1">
       <div class="flex items-center gap-3">

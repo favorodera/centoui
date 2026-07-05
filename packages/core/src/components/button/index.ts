@@ -24,28 +24,35 @@ export const buttonVariants = tv({
   },
   variants: {
     size: {
-      lg: {
+      '2xs': {
+        root: `
+          min-block-5 inline-5 px-1.5 text-[10px] gap-1 rounded-sm
+
+          *:data-[slot=icon]:block-2.5 *:data-[slot=icon]:inline-2.5
+        `,
+      },
+      'lg': {
         root: `
           min-block-9 inline-9 px-3.5 text-sm gap-1.5 rounded-lg
 
           *:data-[slot=icon]:block-4.5 *:data-[slot=icon]:inline-4.5
         `,
       },
-      md: {
+      'md': {
         root: `
           min-block-8 inline-8 px-3 text-sm gap-1.5 rounded-lg
 
           *:data-[slot=icon]:block-4 *:data-[slot=icon]:inline-4
         `,
       },
-      sm: {
+      'sm': {
         root: `
           min-block-7 inline-7 px-2.5 text-xs gap-1 rounded-md
 
           *:data-[slot=icon]:block-3.5 *:data-[slot=icon]:inline-3.5
         `,
       },
-      xs: {
+      'xs': {
         root: `
           min-block-6 inline-6 px-2 text-xs gap-1 rounded-md
 
