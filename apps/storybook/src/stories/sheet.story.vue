@@ -3,6 +3,7 @@ import { Button } from '#centoui/components/button'
 import { Icon } from '#centoui/components/icon'
 import { Input } from '#centoui/components/input'
 import { Label } from '#centoui/components/label'
+import { Separator } from '#centoui/components/separator'
 import {
   SheetClose,
   SheetContent,
@@ -40,7 +41,6 @@ const controls = useStory('Sheet', {
 
     <SheetContent :side="controls.side as any">
       <SheetHeader
-        class="border-be border-border pbe-6"
         :show-close="controls.showClose"
       >
         <SheetTitle>Invite Team Member</SheetTitle>
@@ -49,6 +49,8 @@ const controls = useStory('Sheet', {
           Send an invitation link to add someone to your workspace.
         </SheetDescription>
       </SheetHeader>
+
+      <Separator class="-mx-4" />
 
       <div class="flex flex-col gap-4">
         <div class="flex flex-col gap-1">
