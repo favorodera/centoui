@@ -14,7 +14,7 @@ export const sliderVariants = tv({
     `,
     thumb: `
       relative block block-4 inline-4 shrink-0 rounded-full border-2
-      border-primary bg-background ring-ring transition-[color,box-shadow]
+      border-primary bg-primary-foreground ring-ring
 
       group-aria-invalid/slider-root:border-error
       group-aria-invalid/slider-root:ring-2
@@ -26,7 +26,7 @@ export const sliderVariants = tv({
 
       disabled:pointer-events-none disabled:opacity-65
     `,
-    track: 'relative grow overflow-hidden rounded-full bg-input',
+    track: 'relative grow overflow-hidden rounded-full bg-muted',
   },
   variants: {
     orientation: {

@@ -16,7 +16,7 @@ export const switchVariants = tv({
 
       disabled:pointer-events-none disabled:opacity-65
 
-      data-[state=unchecked]:bg-input
+      data-[state=unchecked]:bg-muted
     `,
     thumb: `
       pointer-events-none block shrink-0 rounded-full bg-primary-foreground

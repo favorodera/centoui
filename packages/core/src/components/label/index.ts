@@ -25,8 +25,8 @@ export const labelVariants = tv({
 
       has-[>[data-slot=field][data-invalid="true"]]:border-error
 
-      has-data-[state=checked]:border-primary/25
-      has-data-[state=checked]:bg-primary/8
+      has-data-[state=checked]:border-primary/10
+      has-data-[state=checked]:bg-primary/5
     `,
   },
   variants: {
