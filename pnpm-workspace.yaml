@@ -1,5 +1,5 @@
 minimumReleaseAgeExclude:
-  - '@favorodera/eslint-config@0.1.4'
+  - '@favorodera/eslint-config@1.0.3'
   - relizy@1.4.9
 shellEmulator: true
 
@@ -31,7 +31,7 @@ catalogs:
 
     vue: ^3.0.0
   tools:
-    '@favorodera/eslint-config': ^0.1.4
+    '@favorodera/eslint-config': ^1.0.3
     '@nuxt/module-builder': ^1.0.2
     '@nuxt/schema': ^4.4.8
     '@tsconfig/node24': ^24.0.4
