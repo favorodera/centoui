@@ -1,5 +1,46 @@
 # Changelog
 
+## v1.6.1...v1.7.0
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.6.1...v1.7.0)
+
+### Added
+
+- **core:** Add tags-input component and registry update ([7bf5aec](https://github.com/favorodera/centoui/commit/7bf5aec))
+
+  - implement tags-input component with variant support
+  - automate registry dependency resolution via yaml
+  - standardize eslint configurations across packages
+  - update eslint-config dependency to v1.0.4
+
+- **core:** Support autocomplete and arbitrary attributes ([c10ea6f](https://github.com/favorodera/centoui/commit/c10ea6f))
+
+  - enable autocomplete on input and textarea components
+  - pass $attrs to root elements for better flexibility
+  - clean up registry formatting and storybook styles
+
+- **tags-input:** Implement component styles and logic ([7c898bc](https://github.com/favorodera/centoui/commit/7c898bc))
+
+  - Add variant styles for Tags Input component
+  - Implement Tags Input root and storybook examples
+  - Integrate Tags Input with Combobox component
+  - Register Tags Input in component registry
+
+
+### Refactors
+
+- **storybook:** Improve field components and cleanup ([c9d1305](https://github.com/favorodera/centoui/commit/c9d1305))
+
+  - Replace custom field implementations with Field components
+  - Standardize field structures across stories
+  - Remove redundant autocomplete and name attributes
+  - Adjust layout and spacing for consistency
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.6.0...v1.6.1
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.6.0...v1.6.1)

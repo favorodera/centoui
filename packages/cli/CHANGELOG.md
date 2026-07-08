@@ -1,5 +1,23 @@
 # Changelog
 
+## v1.6.1...v1.7.0
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.6.1...v1.7.0)
+
+### Added
+
+- **core:** Add tags-input component and registry update ([7bf5aec](https://github.com/favorodera/centoui/commit/7bf5aec))
+
+  - implement tags-input component with variant support
+  - automate registry dependency resolution via yaml
+  - standardize eslint configurations across packages
+  - update eslint-config dependency to v1.0.4
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.6.0...v1.6.1
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.6.0...v1.6.1)
