@@ -353,6 +353,19 @@
     },
     {
       "$schema": "./schemas/component.json",
+      "name": "tags-input",
+      "files": [
+        "tags-input/index.ts",
+        "tags-input/tags-input-input.vue",
+        "tags-input/tags-input-item.vue",
+        "tags-input/tags-input-root.vue"
+      ],
+      "componentDependencies": [
+        "icon"
+      ]
+    },
+    {
+      "$schema": "./schemas/component.json",
       "name": "textarea",
       "files": [
         "textarea/textarea.vue",

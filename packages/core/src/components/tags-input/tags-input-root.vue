@@ -9,6 +9,8 @@ defineSlots<TagsInputRootSlots>()
 const emits = defineEmits<TagsInputRootEmits>()
 
 const props = withDefaults(defineProps<TagsInputRootProps>(), {
+  addOnPaste: true,
+  addOnTab: true,
   size: 'md',
 })
 
@@ -20,6 +22,7 @@ const { root } = tagsInputVariants()
 
 const classNames = computed(() => root({
   class: props.class,
+  size: props.size,
 }))
 
 provideRootContext(reactive({

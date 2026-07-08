@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { createReusableTemplate } from '@vueuse/core'
+import { ComboboxAnchor, ComboboxInput as RekaComboboxInput } from 'reka-ui'
+import { ref } from 'vue'
 import {
   ComboboxContent,
   ComboboxEmpty,
@@ -10,6 +13,7 @@ import {
   comboboxVariants,
 } from '#centoui/components/combobox'
 import { Separator } from '#centoui/components/separator'
+import { TagsInputInput, TagsInputItem, TagsInputRoot } from '#centoui/components/tags-input'
 import { useStory } from '@/composables/use-story'
 
 const controls = useStory('Combobox', {
@@ -32,10 +36,6 @@ const controls = useStory('Combobox', {
     type: 'boolean',
   },
   invalid: {
-    default: false,
-    type: 'boolean',
-  },
-  multiple: {
     default: false,
     type: 'boolean',
   },
@@ -79,22 +79,17 @@ const vegetables = [
   { name: 'Carrots' },
   { disabled: true, name: 'Lettuce' },
 ]
+
+const [
+  DefineContent,
+  ReuseContent,
+] = createReusableTemplate()
+
+const multipleModel = ref([])
 </script>
 
 <template>
-  <ComboboxRoot
-    :disabled="controls.disabled"
-    :multiple="controls.multiple"
-    :size="controls.size"
-  >
-    <ComboboxInput
-      id="fruits"
-      placeholder="Search a fruit"
-      :aria-invalid="controls.invalid"
-      :show-clear="controls.showClear"
-      :show-trigger="controls.showTrigger"
-    />
-
+  <DefineContent>
     <ComboboxContent
       :align="controls.align"
       :position="controls.contentPosition"
@@ -126,5 +121,52 @@ const vegetables = [
         </ComboboxItem>
       </ComboboxGroup>
     </ComboboxContent>
+  </DefineContent>
+
+  <ComboboxRoot
+    :disabled="controls.disabled"
+    :size="controls.size"
+  >
+    <ComboboxInput
+      id="fruits"
+      placeholder="Search a fruit"
+      :aria-invalid="controls.invalid"
+      :show-clear="controls.showClear"
+      :show-trigger="controls.showTrigger"
+    />
+
+    <ReuseContent />
+  </ComboboxRoot>
+
+  <ComboboxRoot
+    v-model:model-value="multipleModel"
+    :disabled="controls.disabled"
+    :size="controls.size"
+    open-on-focus
+    multiple
+  >
+    <ComboboxAnchor as-child>
+      <TagsInputRoot
+        v-model:model-value="multipleModel"
+        :disabled="controls.disabled"
+        :size="controls.size"
+        :aria-invalid="controls.invalid"
+      >
+        <TagsInputItem
+          v-for="item in multipleModel"
+          :key="item"
+          :value="item"
+        />
+
+        <RekaComboboxInput
+          as-child
+          :show-trigger="false"
+        >
+          <TagsInputInput placeholder="Search fruits..." />
+        </RekaComboboxInput>
+      </TagsInputRoot>
+    </ComboboxAnchor>
+
+    <ReuseContent />
   </ComboboxRoot>
 </template>
