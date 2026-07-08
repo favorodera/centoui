@@ -88,11 +88,11 @@ const vegetables = [
     :size="controls.size"
   >
     <ComboboxInput
+      id="fruits"
       placeholder="Search a fruit"
       :aria-invalid="controls.invalid"
       :show-clear="controls.showClear"
       :show-trigger="controls.showTrigger"
-      id="fruits"
     />
 
     <ComboboxContent
