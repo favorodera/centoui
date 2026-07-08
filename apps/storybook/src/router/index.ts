@@ -1,16 +1,16 @@
 import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
 
-/** Eagerly discovers all view modules matching the `*.story.vue` convention. */
-const storyModules = import.meta.glob('../stories/*.story.vue')
+/** Eagerly discovers all view modules matching the `*.vue` convention. */
+const storyModules = import.meta.glob('../stories/*.vue')
 
 /**
  * Derives a route record from each discovered view module.
  *
- * Naming convention: `{name}.story.vue` -> `{ path: "/{name}", name: "{name}" }`
+ * Naming convention: `{name}.vue` -> `{ path: "/{name}", name: "{name}" }`
  *
  * Files that don't match the pattern are silently skipped.
  * @example
- * // "../stories/button.story.vue" -> { path: "/button", name: "button", component: ... }
+ * // "../stories/button.vue" -> { path: "/button", name: "button", component: ... }
  */
 const generatedRoutes = Object
   .entries(storyModules)
@@ -18,7 +18,7 @@ const generatedRoutes = Object
     path,
     component,
   ]) => {
-    const name = path.match(/\/([^/]+)\.story\.vue$/)?.[1]
+    const name = path.match(/\/([^/]+)\.vue$/)?.[1]
     return name ? [{ component, name, path: `/${name}` }] : []
   })
 
