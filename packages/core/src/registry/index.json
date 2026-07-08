@@ -374,6 +374,14 @@
     },
     {
       "$schema": "./schemas/component.json",
+      "name": "toggle",
+      "files": [
+        "toggle/index.ts",
+        "toggle/toggle.vue"
+      ]
+    },
+    {
+      "$schema": "./schemas/component.json",
       "name": "tooltip",
       "files": [
         "tooltip/tooltip-content.vue",

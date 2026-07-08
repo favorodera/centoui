@@ -43,7 +43,6 @@ export { default as Textarea } from './textarea.vue'
 export type TextareaVariants = VariantProps<typeof textareaVariants>
 
 // PROPS
-// Note: 'autocomplete' is defined with simpler types to avoid TS2590 union complexity issues
 export interface TextareaProps {
   /**
    * The value of the textarea when it is initially rendered.
@@ -65,8 +64,6 @@ export interface TextareaProps {
    */
   value?: number | string
 
-  /** Controls browser autocomplete suggestions. */
-  autocomplete?: 'off' | 'on' | (string & {})
   class?: any
 }
 
