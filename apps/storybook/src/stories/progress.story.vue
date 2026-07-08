@@ -61,6 +61,9 @@ const uploadedSize = computed(() => {
       </div>
     </div>
 
-    <Progress v-model="progressValue" />
+    <Progress
+      id="upload"
+      v-model="progressValue"
+    />
   </div>
 </template>

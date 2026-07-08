@@ -72,7 +72,7 @@ export const comboboxVariants = tv({
   variants: {
     contentPosition: {
       inline: {
-        content: 'absolute inline-full max-block-80',
+        content: 'absolute inline-full max-block-[90dvh]',
       },
       popper: {
         content: `

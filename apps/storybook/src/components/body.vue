@@ -121,7 +121,6 @@ const socials = [
 
         md:hidden
       "
-      @click="models.controlPanelModel.value = false"
     />
   </div>
 </template>

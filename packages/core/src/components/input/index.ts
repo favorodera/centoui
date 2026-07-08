@@ -63,8 +63,6 @@ export interface InputProps {
    */
   value?: number | string
 
-  /** Controls browser autocomplete suggestions. */
-  autocomplete?: 'off' | 'on' | (string & {})
   class?: any
 }
 

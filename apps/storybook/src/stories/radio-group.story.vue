@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { Field } from '#centoui/components/field'
 import { Label } from '#centoui/components/label'
 import { RadioGroupItem, RadioGroupRoot, radioGroupVariants } from '#centoui/components/radio-group'
 import { useStory } from '@/composables/use-story'
@@ -42,10 +43,10 @@ const value = ref('banana')
     :disabled="controls.disabled"
     class="inline-fit"
   >
-    <div
+    <Field
       v-for="fruit in fruits"
       :key="fruit.id"
-      className="flex items-center gap-1"
+      orientation="horizontal"
     >
       <RadioGroupItem
         :id="fruit.id"
@@ -55,6 +56,6 @@ const value = ref('banana')
       />
 
       <Label :for="fruit.id">{{ fruit.label }}</Label>
-    </div>
+    </Field>
   </RadioGroupRoot>
 </template>

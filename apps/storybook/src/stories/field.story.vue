@@ -149,7 +149,6 @@ const form = useNotForm({
 
               <SelectRoot
                 v-model:model-value="form.values.title"
-                :name="path"
                 autocomplete="honorific-prefix"
                 @update:model-value="events.onChange()"
               >
@@ -218,7 +217,6 @@ const form = useNotForm({
               <Input
                 :id="path"
                 v-model:value="form.values.cardNumber"
-                :name="path"
                 :aria-invalid="!isValid"
                 autocomplete="cc-number"
                 placeholder="1234 5678 1234 5678"
@@ -248,7 +246,6 @@ const form = useNotForm({
 
                 <SelectRoot
                   v-model:model-value="form.values.month"
-                  :name="path"
                   autocomplete="cc-exp"
                   @update:model-value="events.onChange()"
                 >
@@ -291,7 +288,6 @@ const form = useNotForm({
 
                 <SelectRoot
                   v-model:model-value="form.values.year"
-                  :name="path"
                   autocomplete="cc-exp"
                   @update:model-value="events.onChange()"
                 >
@@ -336,7 +332,6 @@ const form = useNotForm({
                   :id="path"
                   v-model:value="form.values.cvv"
                   :aria-invalid="!isValid"
-                  :name="path"
                   autocomplete="cc-csc"
                   placeholder="123"
                   v-bind="events"
@@ -363,7 +358,6 @@ const form = useNotForm({
                 :id="path"
                 v-model:value="form.values.address"
                 :aria-invalid="!isValid"
-                :name="path"
                 autocomplete="address"
                 placeholder="123 Main St"
                 v-bind="events"
@@ -392,12 +386,12 @@ const form = useNotForm({
         >
           <RadioGroupRoot
             v-model:model-value="form.values.plan"
-            :name="path"
             v-bind="events"
           >
             <Label
               v-for="plan in planOptions"
               :key="plan.value"
+              :for="path"
             >
               <Field
                 orientation="horizontal"
@@ -417,7 +411,6 @@ const form = useNotForm({
                   :id="path"
                   :value="plan.value"
                   :aria-invalid="!isValid"
-                  :name="path"
                 />
               </Field>
             </Label>
@@ -440,7 +433,6 @@ const form = useNotForm({
             :id="path"
             v-model:value="form.values.comments"
             :aria-invalid="!isValid"
-            :name="path"
             v-bind="events"
             placeholder="Add any additional comments"
           />
@@ -471,7 +463,6 @@ const form = useNotForm({
           <Switch
             :id="path"
             v-model:model-value="form.values.notifications"
-            :name="path"
             :aria-invalid="!isValid"
             @update:model-value="events.onChange()"
             @blur="events.onBlur()"

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Button } from '#centoui/components/button'
+import { Field, FieldGroup } from '#centoui/components/field'
 import { Input } from '#centoui/components/input'
 import { Label } from '#centoui/components/label'
 import { PopoverContent, PopoverDescription, PopoverFooter, PopoverHeader, PopoverRoot, PopoverTitle, PopoverTrigger } from '#centoui/components/popover'
@@ -53,11 +54,13 @@ const controls = useStory('Popover', {
         </PopoverDescription>
       </PopoverHeader>
 
-      <div class="flex flex-col gap-4">
-        <div class="flex items-center justify-between">
+      <FieldGroup>
+        <Field
+          orientation="horizontal"
+          class="grid-cols-3"
+        >
           <Label
             for="width"
-            class="inline-1/2"
           >
             Width
           </Label>
@@ -65,13 +68,16 @@ const controls = useStory('Popover', {
           <Input
             id="width"
             default-value="100%"
+            class="col-span-2"
           />
-        </div>
+        </Field>
 
-        <div class="flex items-center justify-between">
+        <Field
+          orientation="horizontal"
+          class="grid-cols-3"
+        >
           <Label
             for="height"
-            class="inline-1/2"
           >
             Height
           </Label>
@@ -79,9 +85,10 @@ const controls = useStory('Popover', {
           <Input
             id="height"
             default-value="25px"
+            class="col-span-2"
           />
-        </div>
-      </div>
+        </Field>
+      </FieldGroup>
 
       <PopoverFooter class="justify-between">
         <Button variant="secondary">

@@ -12,7 +12,7 @@ const controls = useStory('Label', {
 </script>
 
 <template>
-  <Label class="flex items-center gap-2">
+  <Label for="switch">
     Toggle notifications
     <Switch
       id="switch"

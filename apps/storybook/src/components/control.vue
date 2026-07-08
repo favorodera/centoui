@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import type { PropsSchema } from '@/utils/types'
+import { Field, FieldDescription, FieldGroup } from '#centoui/components/field'
 import { Icon } from '#centoui/components/icon'
 import { Input } from '#centoui/components/input'
 import { Label } from '#centoui/components/label'
@@ -53,12 +54,11 @@ function set(key: string, value: unknown) {
 </script>
 
 <template>
-  <div class="flex block-full inline-full flex-col space-y-4">
+  <FieldGroup class="block-full">
     <template v-if="entries.length > 0">
-      <div
+      <Field
         v-for="entry in entries"
         :key="entry.key"
-        class="flex flex-col gap-1"
       >
         <Label
           :for="`prop-${entry.key}`"
@@ -68,23 +68,21 @@ function set(key: string, value: unknown) {
         </Label>
 
         <!-- Boolean -->
-        <div
+        <Field
           v-if="entry.type === 'boolean'"
-          class="
-            flex items-center justify-between rounded-md border border-input
-            px-3 py-1.5
-          "
+          orientation="horizontal"
+          class="rounded-md border border-input px-3 py-1.5"
         >
-          <span class="text-xs text-muted-foreground">
+          <FieldDescription>
             {{ get(entry.key) ? 'ON' : 'OFF' }}
-          </span>
+          </FieldDescription>
 
           <Switch
             :id="`prop-${entry.key}`"
             :model-value="!!get(entry.key)"
             @update:model-value="(payload) => set(entry.key, payload)"
           />
-        </div>
+        </Field>
 
         <!-- Array -->
         <SelectRoot
@@ -119,25 +117,23 @@ function set(key: string, value: unknown) {
           @update:value="(value) => set(entry.key, value)"
         />
 
-        <div
+        <FieldDescription
           v-if="entry.hint"
-          class="-mbs-0.5 text-xs text-muted-foreground"
         >
           {{ entry.hint }}
-        </div>
-      </div>
+        </FieldDescription>
+      </Field>
     </template>
 
-    <div
+    <FieldDescription
       v-else
-      class="m-auto space-y-1 text-center text-xs text-muted-foreground"
+      class="m-auto gap-1 place-items-center grid"
     >
       <Icon
         icon="lucide:octagon-alert"
-        class="mx-auto text-muted-foreground"
       />
 
-      <div>No controls found</div>
-    </div>
-  </div>
+      No controls found
+    </FieldDescription>
+  </FieldGroup>
 </template>

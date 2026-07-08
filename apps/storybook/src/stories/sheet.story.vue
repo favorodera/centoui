@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Button } from '#centoui/components/button'
+import { Field, FieldDescription, FieldGroup } from '#centoui/components/field'
 import { Icon } from '#centoui/components/icon'
 import { Input } from '#centoui/components/input'
 import { Label } from '#centoui/components/label'
@@ -52,8 +53,8 @@ const controls = useStory('Sheet', {
 
       <Separator class="-mx-4" />
 
-      <div class="flex flex-col gap-4">
-        <div class="flex flex-col gap-1">
+      <FieldGroup >
+        <Field>
           <Label for="email">Email address</Label>
 
           <Input
@@ -61,9 +62,9 @@ const controls = useStory('Sheet', {
             type="email"
             placeholder="colleague@company.com"
           />
-        </div>
+        </Field>
 
-        <div class="flex flex-col gap-1">
+        <Field>
           <Label for="username">Preferred username</Label>
 
           <Input
@@ -71,12 +72,12 @@ const controls = useStory('Sheet', {
             type="text"
             placeholder="colleague"
           />
-        </div>
+        </Field>
 
-        <p class="text-xs text-muted-foreground">
+        <FieldDescription>
           The invite link will expire in 7 days. You can resend it at any time from the team settings page.
-        </p>
-      </div>
+        </FieldDescription>
+      </FieldGroup>
 
       <SheetFooter
         class="justify-between"

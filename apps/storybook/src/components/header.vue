@@ -35,12 +35,13 @@ const route = useRoute()
       @update:model-value="(value)=>navigation.goTo(value as string)"
     >
       <ComboboxInput
+        id="components"
         data-slot="input-group-control"
         placeholder="Select a component"
         :display-value="(value)=> navigation.components.value.find((component)=>component.path === value)?.label || ''"
       />
 
-      <ComboboxContent>
+      <ComboboxContent class="max-block-[50dvh]">
         <ComboboxEmpty />
 
         <ComboboxGroup>
