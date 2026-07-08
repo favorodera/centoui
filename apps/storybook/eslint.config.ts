@@ -2,13 +2,13 @@ import { factory } from '@favorodera/eslint-config'
 
 export default factory({
   tailwind: {
-    settings: {
-      entryPoint: 'src/index.css',
-    },
-  },
-  typescript: {
-    overrides: {
-      'ts/no-explicit-any': 'off',
-    },
+    entryPoint: 'src/index.css',
   },
 })
+  .override('favorodera/typescript/rules', {
+    rules: {
+      'ts/no-explicit-any': 'off',
+    },
+  })
+  .remove('favorodera/vue/a11y/rules')
+  .remove('favorodera/vue/a11y/setup')

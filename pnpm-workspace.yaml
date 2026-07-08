@@ -1,6 +1,7 @@
 minimumReleaseAgeExclude:
   - '@favorodera/eslint-config@1.0.3'
   - relizy@1.4.9
+  - '@favorodera/eslint-config@1.0.4'
 shellEmulator: true
 
 trustPolicy: no-downgrade
@@ -31,7 +32,7 @@ catalogs:
 
     vue: ^3.0.0
   tools:
-    '@favorodera/eslint-config': ^1.0.3
+    '@favorodera/eslint-config': ^1.0.4
     '@nuxt/module-builder': ^1.0.2
     '@nuxt/schema': ^4.4.8
     '@tsconfig/node24': ^24.0.4
@@ -49,6 +50,7 @@ catalogs:
     vite: ^8.0.16
     vitest: ^4.1.8
     vue-tsc: ^3.3.5
+    yaml: ^2.9.0
   vendor:
     '@clack/prompts': ^1.5.1
     '@iconify/vue': ^5.0.1

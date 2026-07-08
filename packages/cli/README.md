@@ -72,7 +72,7 @@ Every network request the CLI makes — the registry index, individual component
 
 The base URL for all assets is derived directly from the CLI's own `package.json` version at build time:
 
-```
+```plaintext
 https://raw.githubusercontent.com/favorodera/centoui/refs/tags/v<VERSION>/packages/core/src
 ```
 

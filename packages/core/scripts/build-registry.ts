@@ -3,21 +3,23 @@ import { intro, note, outro, tasks } from '@clack/prompts'
 import fsExtra from 'fs-extra'
 import { fileURLToPath } from 'node:url'
 import { dirname, extname, join } from 'pathe'
+import { parse as parseYaml } from 'yaml'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const REGISTRY_DIR = join(__dirname, '../src/registry')
 const REGISTRY_OUTPUT = join(REGISTRY_DIR, 'index.json')
 
-/** Static list of core dependencies required in every CentoUI project. */
-const ROOT_NPM_DEPENDENCIES: PackageJson['dependencies'] = {
-  '@tailwindcss/vite': '^4.3.1',
-  '@vueuse/core': '^14.3.0',
-  'reka-ui': '^2.9.10',
-  'tailwind-merge': '^3.6.0',
-  'tailwind-variants': '^3.2.2',
-  'tailwindcss': '^4.3.1',
-  'tw-animate-css': '^1.4.0',
-}
+/** Static list of core dependency names required in every CentoUI project. */
+const ROOT_NPM_DEPENDENCY_NAMES = [
+  '@tailwindcss/vite',
+  '@vueuse/core',
+  'reka-ui',
+  'tailwind-merge',
+  'tailwind-variants',
+  'tailwindcss',
+  'tw-animate-css',
+]
+const ROOT_NPM_DEPENDENCIES: PackageJson['dependencies'] = {}
 
 let entryFiles: Array<string> = []
 let entries: Array<ComponentRegistryEntry> = []
@@ -33,6 +35,18 @@ await tasks([
 
       if (entryFiles.length === 0) {
         throw new Error('No component entries found')
+      }
+
+      const workspaceYaml = await fsExtra.readFile(join(__dirname, '../../../pnpm-workspace.yaml'), 'utf8')
+      const workspaceConfig = parseYaml(workspaceYaml)
+      const vendorCatalog = workspaceConfig.catalogs?.vendor || {}
+
+      for (const name of ROOT_NPM_DEPENDENCY_NAMES) {
+        if (vendorCatalog[name]) {
+          ROOT_NPM_DEPENDENCIES[name] = vendorCatalog[name]
+        } else {
+          throw new Error(`Dependency ${name} not found in workspace vendor catalog`)
+        }
       }
 
       return `Found ${entryFiles.length} component entries`

@@ -17,8 +17,7 @@ export const checkboxVariants = tv({
 
       disabled:pointer-events-none disabled:opacity-65
 
-      data-[state=unchecked]:bg-muted
-      data-[state=unchecked]:text-foreground
+      data-[state=unchecked]:bg-muted data-[state=unchecked]:text-foreground
     `,
   },
   variants: {

@@ -79,6 +79,7 @@
     "vite": "catalog:tools",
     "vitest": "catalog:tools",
     "vue": "catalog:vendor",
-    "vue-tsc": "catalog:tools"
+    "vue-tsc": "catalog:tools",
+    "yaml": "catalog:tools"
   }
 }
