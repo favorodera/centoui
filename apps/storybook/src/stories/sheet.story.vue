@@ -53,7 +53,7 @@ const controls = useStory('Sheet', {
 
       <Separator class="-mx-4" />
 
-      <FieldGroup >
+      <FieldGroup>
         <Field>
           <Label for="email">Email address</Label>
 
@@ -61,6 +61,7 @@ const controls = useStory('Sheet', {
             id="email"
             type="email"
             placeholder="colleague@company.com"
+            autocomplete="email"
           />
         </Field>
 
@@ -71,6 +72,7 @@ const controls = useStory('Sheet', {
             id="username"
             type="text"
             placeholder="colleague"
+            autocomplete="username"
           />
         </Field>
 

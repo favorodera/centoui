@@ -92,6 +92,7 @@ const vegetables = [
       :aria-invalid="controls.invalid"
       :show-clear="controls.showClear"
       :show-trigger="controls.showTrigger"
+      id="fruits"
     />
 
     <ComboboxContent

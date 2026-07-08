@@ -30,5 +30,6 @@ const classNames = computed(() => root({
     data-slot="textarea"
     :data-size="size"
     :class="classNames"
+    v-bind="$attrs"
   />
 </template>

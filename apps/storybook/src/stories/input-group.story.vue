@@ -33,6 +33,7 @@ const controls = useStory('Input Group', {
       data-input-group-control
       name="username"
       placeholder="username"
+      autocomplete="username"
       :size="controls.size"
       :disabled="controls.disabled"
       :aria-invalid="controls.invalid"

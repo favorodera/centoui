@@ -41,7 +41,6 @@ export { default as Input } from './input.vue'
 export type InputVariants = VariantProps<typeof inputVariants>
 
 // PROPS
-// Note: 'autocomplete' is defined with simpler types to avoid TS2590 union complexity issues
 export interface InputProps {
   /**
    * Visual size scale.

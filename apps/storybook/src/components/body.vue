@@ -32,7 +32,7 @@ const socials = [
     >
       <div
         class="
-          flex inline-full max-inline-3xl flex-wrap content-center items-center
+          flex inline-full max-inline-xl flex-wrap content-center items-center
           justify-center gap-8 bg-background px-3 block-full
         "
       >
