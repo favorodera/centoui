@@ -1,5 +1,4 @@
 minimumReleaseAgeExclude:
-  - '@favorodera/eslint-config@1.0.3'
   - relizy@1.4.9
   - '@favorodera/eslint-config@1.0.4'
 shellEmulator: true
