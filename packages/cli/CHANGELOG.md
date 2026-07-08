@@ -1,5 +1,24 @@
 # Changelog
 
+## v1.7.0...v1.8.0
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.7.0...v1.8.0)
+
+### Added
+
+- **core:** Add Toggle component ([eea7060](https://github.com/favorodera/centoui/commit/eea7060))
+
+  - Implement new Toggle component with variants
+  - Register toggle in the core registry
+  - Add storybook stories for toggle component
+  - Clean up package.json file arrays
+  - Remove unused autocomplete prop from Textarea
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.6.1...v1.7.0
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.6.1...v1.7.0)
