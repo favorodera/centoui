@@ -24,8 +24,7 @@ export const tagsInputVariants = tv({
       has-data-disabled:pointer-events-none has-data-disabled:opacity-65
     `,
     itemDelete: `
-      inline-flex items-center rounded-xs text-muted-foreground
-      transition-colors
+      inline-flex items-center text-muted-foreground transition-colors
 
       hover:text-foreground
 
@@ -49,32 +48,32 @@ export const tagsInputVariants = tv({
     size: {
       lg: {
         input: 'text-sm',
-        item: 'rounded-sm px-2 text-sm gap-1',
+        item: 'block-6 px-2 text-sm rounded-md gap-1.5 py-0.5',
         itemDelete: '*:data-[slot=icon]:block-4 *:data-[slot=icon]:inline-4',
         root: `
-          min-block-9 rounded-lg px-3.5 gap-1.5
+          min-block-9 rounded-lg px-3 gap-1.5 py-1.5
 
-          has-data-[slot=tags-input-item]:py-2
+          has-data-[slot=tags-input-item]:px-1.5
         `,
       },
       md: {
         input: 'text-sm',
-        item: 'rounded-sm px-1.5 text-xs gap-1',
+        item: 'min-block-5 px-1.5 text-xs rounded-md gap-1 py-0.5',
         itemDelete: '*:data-[slot=icon]:block-3.5 *:data-[slot=icon]:inline-3.5',
         root: `
           min-block-8 rounded-lg px-3 gap-1.5
 
-          has-data-[slot=tags-input-item]:py-1.5
+          has-data-[slot=tags-input-item]:px-1
         `,
       },
       sm: {
         input: 'text-xs',
-        item: 'rounded-xs px-1 text-xs gap-1',
+        item: 'min-block-4 px-1 text-xs rounded-md gap-1 py-0.5',
         itemDelete: '*:data-[slot=icon]:block-3 *:data-[slot=icon]:inline-3',
         root: `
-          min-block-7 rounded-md px-2.5 gap-1
+          min-block-7 rounded-md px-2 gap-1 py-1
 
-          has-data-[slot=tags-input-item]:py-1
+          has-data-[slot=tags-input-item]:px-1
         `,
       },
     },

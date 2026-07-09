@@ -18,7 +18,7 @@ export const accordionVariants = tv({
 
       data-[state=open]:animate-accordion-down
     `,
-    item: 'inline-full',
+    item: 'inline-full font-normal',
     root: 'inline-full',
     trigger: `
       flex inline-full cursor-default items-center justify-between py-4

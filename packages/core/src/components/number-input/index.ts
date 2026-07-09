@@ -9,20 +9,8 @@ export const numberInputVariants = tv({
     size: 'md',
   },
   slots: {
-    decrement: `
-      cursor-default inline-flex items-center justify-center block-full
-
-      data-disabled:pointer-events-none data-disabled:opacity-65
-
-      active:translate-y-px
-    `,
-    increment: `
-      cursor-default inline-flex items-center justify-center block-full
-
-      active:translate-y-px
-
-      data-disabled:pointer-events-none data-disabled:opacity-65
-    `,
+    decrement: '',
+    increment: '',
     input: `
       outline-none block-full flex-1 text-center
 
@@ -46,46 +34,22 @@ export const numberInputVariants = tv({
   variants: {
     size: {
       lg: {
-        decrement: `
-          inline-9
-
-          *:data-[slot=icon]:block-4.5 *:data-[slot=icon]:inline-4.5
-        `,
-        increment: `
-          inline-9
-
-          *:data-[slot=icon]:block-4.5 *:data-[slot=icon]:inline-4.5
-        `,
-        input: 'text-sm',
-        root: 'block-9 rounded-lg px-3.5 text-sm gap-1.5',
+        decrement: '-ms-1.5',
+        increment: '-me-1.5',
+        input: 'text-sm block-9',
+        root: 'block-9 rounded-lg px-3 text-sm gap-1.5',
       },
       md: {
-        decrement: `
-          inline-8
-
-          *:data-[slot=icon]:block-4 *:data-[slot=icon]:inline-4
-        `,
-        increment: `
-          inline-8
-
-          *:data-[slot=icon]:block-4 *:data-[slot=icon]:inline-4
-        `,
+        decrement: '-ms-1.5',
+        increment: '-me-1.5',
         input: 'text-sm block-8',
-        root: 'block-8 rounded-lg px-3 text-sm gap-1.5',
+        root: 'block-8 rounded-lg px-2.5 text-sm gap-1.5',
       },
       sm: {
-        decrement: `
-          inline-7
-
-          *:data-[slot=icon]:block-3.5 *:data-[slot=icon]:inline-3.5
-        `,
-        increment: `
-          inline-7
-
-          *:data-[slot=icon]:block-3.5 *:data-[slot=icon]:inline-3.5
-        `,
-        input: 'text-xs',
-        root: 'block-7 rounded-md px-2.5 text-xs gap-1',
+        decrement: '-ms-1',
+        increment: '-me-1',
+        input: 'text-xs block-7',
+        root: 'block-7 rounded-md px-2 text-xs gap-1',
       },
     },
   },

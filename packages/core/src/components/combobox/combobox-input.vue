@@ -126,11 +126,6 @@ const classNames = computed(() => ({
             <Icon :icon="config.icons.chevronDown" />
           </Button>
         </ComboboxTrigger>
-
-        <Icon
-          v-else
-          :icon="config.icons.chevronDown"
-        />
       </InputGroupAddon>
     </InputGroupRoot>
   </ComboboxAnchor>

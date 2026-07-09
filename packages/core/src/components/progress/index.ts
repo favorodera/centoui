@@ -7,7 +7,7 @@ export const progressVariants = tv({
       block-full inline-full origin-left rounded-[inherit] transition-transform
       bg-primary
     `,
-    root: 'relative block-1.5 inline-full overflow-hidden rounded-full bg-muted',
+    root: 'relative block-2 inline-full overflow-hidden rounded-full bg-muted',
   },
 })
 

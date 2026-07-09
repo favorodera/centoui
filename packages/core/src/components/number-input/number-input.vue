@@ -4,6 +4,7 @@ import { NumberFieldDecrement, NumberFieldIncrement, NumberFieldInput, NumberFie
 import { computed } from 'vue'
 import config from '#centoui/config'
 import { type NumberInputEmits, type NumberInputProps, numberInputVariants } from '.'
+import { Button } from '../button'
 import { Icon } from '../icon'
 
 const emits = defineEmits<NumberInputEmits>()
@@ -15,6 +16,17 @@ const props = withDefaults(defineProps<NumberInputProps>(), {
 const delegatedProps = reactiveOmit(props, 'size', 'class', 'placeholder')
 
 const forwardedPropsEmits = useForwardPropsEmits(delegatedProps, emits)
+
+const buttonSize = computed(() => {
+  switch (props.size) {
+    case 'sm': {
+      return '2xs'
+    }
+    default: {
+      return 'xs'
+    }
+  }
+})
 
 const { decrement, increment, input, root } = numberInputVariants()
 
@@ -44,8 +56,16 @@ const classNames = computed(() => ({
     <NumberFieldDecrement
       :class="classNames.decrement"
       data-slot="number-input-decrement"
+      as-child
     >
-      <Icon :icon="config.icons.minus" />
+      <Button
+        variant="ghost"
+        :size="buttonSize"
+        data-spin-button
+        square
+      >
+        <Icon :icon="config.icons.minus" />
+      </Button>
     </NumberFieldDecrement>
 
     <NumberFieldInput
@@ -57,8 +77,16 @@ const classNames = computed(() => ({
     <NumberFieldIncrement
       :class="classNames.increment"
       data-slot="number-input-increment"
+      as-child
     >
-      <Icon :icon="config.icons.plus" />
+      <Button
+        variant="ghost"
+        data-spin-button
+        :size="buttonSize"
+        square
+      >
+        <Icon :icon="config.icons.plus" />
+      </Button>
     </NumberFieldIncrement>
   </NumberFieldRoot>
 </template>

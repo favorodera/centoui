@@ -13,7 +13,7 @@ export const sliderVariants = tv({
       data-disabled:opacity-65
     `,
     thumb: `
-      relative block block-4 inline-4 shrink-0 rounded-full border-2
+      relative block block-5 inline-5 shrink-0 rounded-full border-2
       border-primary bg-primary-foreground ring-ring
 
       group-aria-invalid/slider-root:border-error
@@ -33,12 +33,12 @@ export const sliderVariants = tv({
       horizontal: {
         range: 'block-full',
         root: 'inline-full',
-        track: 'block-1.5 inline-full',
+        track: 'block-2 inline-full',
       },
       vertical: {
         range: 'inline-full',
         root: 'min-block-32 inline-auto flex-col self-stretch',
-        track: 'block-full inline-1.5',
+        track: 'block-full inline-2',
       },
     },
   },

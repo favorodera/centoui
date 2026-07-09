@@ -17,7 +17,7 @@ export const buttonVariants = tv({
 
       aria-invalid:ring-2 aria-invalid:ring-error
 
-      active:translate-y-px
+      active:not-aria-[haspopup]:not-data-spin-button:translate-y-px
 
       focus-visible:ring-2 focus-visible:ring-ring
     `,
@@ -26,35 +26,35 @@ export const buttonVariants = tv({
     size: {
       '2xs': {
         root: `
-          min-block-5 inline-5 px-1.5 text-[10px] gap-1 rounded-sm
+          min-block-5 inline-5 px-1 text-xs gap-1 rounded-sm
 
-          *:data-[slot=icon]:block-2.5 *:data-[slot=icon]:inline-2.5
+          *:data-[slot=icon]:block-3 *:data-[slot=icon]:inline-3
         `,
       },
       'lg': {
         root: `
-          min-block-9 inline-9 px-3.5 text-sm gap-1.5 rounded-lg
+          min-block-9 inline-9 px-3 text-sm gap-1.5 rounded-lg
 
           *:data-[slot=icon]:block-4.5 *:data-[slot=icon]:inline-4.5
         `,
       },
       'md': {
         root: `
-          min-block-8 inline-8 px-3 text-sm gap-1.5 rounded-lg
+          min-block-8 inline-8 px-2.5 text-sm gap-1.5 rounded-lg
 
           *:data-[slot=icon]:block-4 *:data-[slot=icon]:inline-4
         `,
       },
       'sm': {
         root: `
-          min-block-7 inline-7 px-2.5 text-xs gap-1 rounded-md
+          min-block-7 inline-7 px-2 text-xs gap-1 rounded-md
 
           *:data-[slot=icon]:block-3.5 *:data-[slot=icon]:inline-3.5
         `,
       },
       'xs': {
         root: `
-          min-block-6 inline-6 px-2 text-xs gap-1 rounded-md
+          min-block-6 inline-6 px-1.5 text-xs gap-1 rounded-md
 
           *:data-[slot=icon]:block-3 *:data-[slot=icon]:inline-3
         `,

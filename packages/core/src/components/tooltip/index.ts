@@ -15,7 +15,7 @@ export const tooltipVariants = tv({
       pointer-events-auto relative z-50 inline-fit
       origin-(--reka-tooltip-content-transform-origin) animate-in rounded-lg
       bg-foreground px-2.5 py-1.5 text-xs text-background fade-in-0 zoom-in-95
-      border-border border
+      border-border border font-medium
 
       data-[side=bottom]:slide-in-from-top-1
 

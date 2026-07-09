@@ -97,46 +97,58 @@ export const selectVariants = tv({
       lg: {
         content: 'rounded-lg',
         icon: 'block-4.5 inline-4.5',
-        item: 'block-9 rounded-lg ps-2.5 pe-8.5 text-sm gap-1.5',
-        itemIndicator: 'inset-e-2.5 block-4.5 inline-4.5',
-        label: 'text-xs px-2.5',
-        scrollDownButton: 'block-9 px-2.5',
-        scrollUpButton: `
-          block-9 px-2.5
+        item: 'block-9 rounded-lg ps-2 pe-8 text-sm gap-1.5',
+        itemIndicator: 'inset-e-2 block-4.5 inline-4.5',
+        label: 'text-xs px-2',
+        scrollDownButton: `
+          block-9 px-2
 
           *:data-[slot=icon]:block-4.5 *:data-[slot=icon]:inline-4.5
         `,
-        trigger: 'block-9 rounded-lg px-3.5 text-sm gap-1.5',
+        scrollUpButton: `
+          block-9 px-2
+
+          *:data-[slot=icon]:block-4.5 *:data-[slot=icon]:inline-4.5
+        `,
+        trigger: 'block-9 rounded-lg px-3 text-sm gap-1.5',
         value: 'gap-1.5',
       },
       md: {
         content: 'rounded-lg',
         icon: 'block-4 inline-4',
-        item: 'block-8 rounded-lg ps-2 pe-7.5 text-sm gap-1.5',
-        itemIndicator: 'inset-e-2 block-4 inline-4',
-        label: 'text-xs px-2',
-        scrollDownButton: 'block-8 px-2',
-        scrollUpButton: `
-          block-8 px-2
+        item: 'block-8 rounded-lg ps-1.5 pe-7 text-sm gap-1.5',
+        itemIndicator: 'inset-e-1.5 block-4 inline-4',
+        label: 'text-xs px-1.5',
+        scrollDownButton: `
+          block-8 px-1.5
 
           *:data-[slot=icon]:block-4 *:data-[slot=icon]:inline-4
         `,
-        trigger: 'block-8 rounded-lg px-3 text-sm gap-1.5',
+        scrollUpButton: `
+          block-8 px-1.5
+
+          *:data-[slot=icon]:block-4 *:data-[slot=icon]:inline-4
+        `,
+        trigger: 'block-8 rounded-lg px-2.5 text-sm gap-1.5',
         value: 'gap-1.5',
       },
       sm: {
         content: 'rounded-md',
         icon: 'block-3.5 inline-3.5',
-        item: 'block-7 rounded-md ps-1.5 pe-6 text-xs gap-1',
-        itemIndicator: 'inset-e-1.5 block-3.5 inline-3.5',
-        label: 'text-xs px-1.5',
-        scrollDownButton: 'block-7 px-2.5',
-        scrollUpButton: `
-          block-7 px-2.5
+        item: 'block-7 rounded-md ps-1 pe-5.5 text-xs gap-1',
+        itemIndicator: 'inset-e-1 block-3.5 inline-3.5',
+        label: 'text-xs px-1',
+        scrollDownButton: `
+          block-7 px-2
 
           *:data-[slot=icon]:block-3.5 *:data-[slot=icon]:inline-3.5
         `,
-        trigger: 'block-7 rounded-md px-2.5 text-xs gap-1',
+        scrollUpButton: `
+          block-7 px-2
+
+          *:data-[slot=icon]:block-3.5 *:data-[slot=icon]:inline-3.5
+        `,
+        trigger: 'block-7 rounded-md px-2 text-xs gap-1',
         value: 'gap-1',
       },
     },

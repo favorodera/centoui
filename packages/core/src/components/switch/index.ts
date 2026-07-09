@@ -29,11 +29,11 @@ export const switchVariants = tv({
   variants: {
     size: {
       lg: {
-        root: 'inline-11 block-5.5',
+        root: 'inline-12 block-6',
         thumb: `
           inline-4 block-4
 
-          data-[state=checked]:translate-x-6
+          data-[state=checked]:translate-x-7
         `,
       },
       md: {

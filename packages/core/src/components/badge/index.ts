@@ -3,19 +3,41 @@ import { tv, type VariantProps } from 'tailwind-variants'
 
 export const badgeVariants = tv({
   defaultVariants: {
+    size: 'md',
     variant: 'primary',
   },
   slots: {
     root: `
-      relative inline-flex align-middle shrink-0 items-center block-6 gap-1 px-2
-      truncate rounded-md font-medium select-none text-xs outline-none
+      relative inline-flex align-middle shrink-0 items-center truncate
+      font-medium select-none outline-none
 
       focus-visible:ring-2 focus-visible:ring-ring
-
-      *:data-[slot=icon]:block-3 *:data-[slot=icon]:inline-3
     `,
   },
   variants: {
+    size: {
+      lg: {
+        root: `
+          min-block-6 px-2 text-sm rounded-md gap-1.5 py-0.5
+
+          *:data-[slot=icon]:block-4 *:data-[slot=icon]:inline-4
+        `,
+      },
+      md: {
+        root: `
+          min-block-5 px-1.5 text-xs rounded-md gap-1 py-0.5
+
+          *:data-[slot=icon]:block-3.5 *:data-[slot=icon]:inline-3.5
+        `,
+      },
+      sm: {
+        root: `
+          min-block-4 px-1 text-xs rounded-md gap-1 py-0.5
+
+          *:data-[slot=icon]:block-3 *:data-[slot=icon]:inline-3
+        `,
+      },
+    },
     variant: {
       error: {
         root: 'bg-error text-error-foreground',
@@ -54,4 +76,10 @@ export type BadgeProps = PrimitiveProps & {
    * @default 'primary'
    */
   variant?: BadgeVariants['variant']
+
+  /**
+   * Visual size scale.
+   * @default 'md'
+   */
+  size?: BadgeVariants['size']
 }

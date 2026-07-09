@@ -59,9 +59,9 @@ export const inputGroupVariants = tv({
           *:data-[slot=icon]:block-4.5 *:data-[slot=icon]:inline-4.5
         `,
         root: `
-          min-block-9 rounded-lg px-3.5 gap-1.5
+          min-block-9 rounded-lg px-3 gap-1.5
 
-          has-[[data-slot=input-group-addon][data-align*=block]]:py-3
+          has-[[data-slot=input-group-addon][data-align*=block]]:py-2
         `,
       },
       md: {
@@ -71,9 +71,9 @@ export const inputGroupVariants = tv({
           *:data-[slot=icon]:block-4 *:data-[slot=icon]:inline-4
         `,
         root: `
-          min-block-8 rounded-lg px-3 gap-1.5
+          min-block-8 rounded-lg px-2.5 gap-1.5
 
-          has-[[data-slot=input-group-addon][data-align*=block]]:py-2.5
+          has-[[data-slot=input-group-addon][data-align*=block]]:py-1.5
         `,
       },
       sm: {
@@ -83,9 +83,9 @@ export const inputGroupVariants = tv({
           *:data-[slot=icon]:block-3.5 *:data-[slot=icon]:inline-3.5
         `,
         root: `
-          min-block-7 rounded-md px-2.5 gap-1
+          min-block-7 rounded-md px-2 gap-1
 
-          has-[[data-slot=input-group-addon][data-align*=block]]:py-2
+          has-[[data-slot=input-group-addon][data-align*=block]]:py-1
         `,
       },
     },

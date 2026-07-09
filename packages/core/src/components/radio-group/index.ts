@@ -22,11 +22,11 @@ export const radioGroupVariants = tv({
     item: `
       peer relative flex aspect-square shrink-0 rounded-full border border-input
       outline-none items-center justify-center bg-primary
-      text-primary-foreground
+      text-primary-foreground cursor-default
 
       focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring
 
-      disabled:cursor-not-allowed disabled:opacity-65
+      disabled:pointer-events-none disabled:opacity-65
 
       aria-invalid:border-error aria-invalid:ring-2 aria-invalid:ring-error
 
@@ -46,8 +46,8 @@ export const radioGroupVariants = tv({
     },
     size: {
       lg: {
-        indicatorDot: `block-2.75 inline-2.75`,
-        item: 'inline-5.5 block-5.5',
+        indicatorDot: `block-3 inline-3`,
+        item: 'inline-6 block-6',
       },
       md: {
         indicatorDot: `block-2.5 inline-2.5`,

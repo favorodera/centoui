@@ -15,13 +15,13 @@ export const kbdVariants = tv({
   variants: {
     size: {
       lg: {
-        root: 'px-2 rounded-sm text-sm block-6 min-inline-6',
+        root: 'px-2 rounded-md text-sm block-6 min-inline-6',
       },
       md: {
-        root: 'rounded-sm text-xs px-1.5 block-5 min-inline-5',
+        root: 'rounded-md text-xs px-1.5 block-5 min-inline-5',
       },
       sm: {
-        root: 'rounded-sm text-xs px-1 block-4 min-inline-4',
+        root: 'rounded-md text-xs px-1 block-4 min-inline-4',
       },
     },
   },

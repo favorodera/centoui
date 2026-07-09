@@ -24,7 +24,7 @@ export const checkboxVariants = tv({
     size: {
       lg: {
         indicator: `*:data-[slot=icon]:block-4 *:data-[slot=icon]:inline-4`,
-        root: 'inline-5.5 block-5.5 rounded-md',
+        root: 'inline-6 block-6 rounded-md',
       },
       md: {
         indicator: `*:data-[slot=icon]:block-3.5 *:data-[slot=icon]:inline-3.5`,
@@ -32,7 +32,7 @@ export const checkboxVariants = tv({
       },
       sm: {
         indicator: `*:data-[slot=icon]:block-3 *:data-[slot=icon]:inline-3`,
-        root: 'inline-4 block-4 rounded-sm',
+        root: 'inline-4 block-4 rounded-md',
       },
     },
   },
