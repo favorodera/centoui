@@ -6,11 +6,14 @@ import { useStory } from '@/composables/use-story'
 
 const controls = useStory('Toggle Group', {
   compact: {
-    default: toggleGroupVariants.defaultVariants.compact,
-    options: Object.keys(toggleGroupVariants.variants.compact),
-    type: 'array',
+    default: false,
+    type: 'boolean',
   },
   disabled: {
+    default: false,
+    type: 'boolean',
+  },
+  invalid: {
     default: false,
     type: 'boolean',
   },
@@ -46,23 +49,26 @@ const controls = useStory('Toggle Group', {
     :orientation="controls.orientation"
     :compact="controls.compact"
     :type="controls.type"
+    default-value="bold"
   >
     <ToggleGroupItem
       square
-      :disabled="controls.disabled"
       value="bold"
       :variant="controls.variant"
       :size="controls.size"
+      :aria-invalid="controls.invalid"
+      aria-label="Toggle bold"
     >
       <Icon icon="lucide:bold" />
     </ToggleGroupItem>
 
     <ToggleGroupItem
       square
-      :disabled="controls.disabled"
       value="italic"
       :variant="controls.variant"
       :size="controls.size"
+      :aria-invalid="controls.invalid"
+      aria-label="Toggle italic"
     >
       <Icon icon="lucide:italic" />
     </ToggleGroupItem>

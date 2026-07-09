@@ -27,7 +27,7 @@ const classNames = computed(() => root({
 
 <template>
   <ToggleGroupRoot
-  v-slot="slotProps"
+    v-slot="slotProps"
     data-slot="toggle-group-root"
     :data-compact="compact"
     v-bind="forwardedPropsEmits"

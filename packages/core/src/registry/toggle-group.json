@@ -1,0 +1,10 @@
+{
+  "$schema": "./schemas/component.json",
+  "name": "toggle-group",
+  "files": [
+    "toggle-group/index.ts",
+    "toggle-group/toggle-group-item.vue",
+    "toggle-group/toggle-group-root.vue"
+  ],
+  "componentDependencies": ["toggle"]
+}

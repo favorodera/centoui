@@ -8,6 +8,10 @@ const controls = useStory('Toggle', {
     default: false,
     type: 'boolean',
   },
+  invalid: {
+    default: false,
+    type: 'boolean',
+  },
   size: {
     default: toggleVariants.defaultVariants.size,
     options: Object.keys(toggleVariants.variants.size),
@@ -26,6 +30,7 @@ const controls = useStory('Toggle', {
     :size="controls.size"
     :variant="controls.variant"
     :disabled="controls.disabled"
+    :aria-invalid="controls.invalid"
   >
     <Icon
       icon="lucide:bookmark"

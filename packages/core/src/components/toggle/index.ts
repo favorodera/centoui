@@ -20,8 +20,6 @@ export const toggleVariants = tv({
 
       aria-invalid:ring-2 aria-invalid:ring-error
 
-      active:translate-y-px
-
       focus-visible:ring-2 focus-visible:ring-ring
     `,
   },

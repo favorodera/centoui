@@ -8,20 +8,46 @@ import { tv, type VariantProps } from 'tailwind-variants'
 import type { ToggleProps } from '../toggle'
 
 export const toggleGroupVariants = tv({
+  compoundVariants: [
+    {
+      class: {
+        root: `
+          *:not-first:rounded-s-none *:not-first:border-s-0
+
+          *:not-last:rounded-e-none
+        `,
+      },
+      compact: true,
+      orientation: 'horizontal',
+    },
+    {
+      class: {
+        root: `
+          *:not-first:rounded-t-none *:not-first:border-bs-0
+
+          *:not-last:rounded-b-none
+        `,
+      },
+      compact: true,
+      orientation: 'vertical',
+    },
+  ],
   defaultVariants: {
     compact: false,
     orientation: 'horizontal',
   },
   slots: {
     item: '',
-    root: 'flex inline-fit',
+    root: 'flex inline-fit items-stretch',
   },
   variants: {
     compact: {
       false: {
         root: 'gap-2',
       },
-      true: {},
+      true: {
+        root: '*:focus-visible:z-10',
+      },
     },
     orientation: {
       horizontal: {
