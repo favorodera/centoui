@@ -9,7 +9,6 @@ defineSlots<ToggleSlots>()
 const emits = defineEmits<ToggleEmits>()
 
 const props = withDefaults(defineProps<ToggleProps>(), {
-  as: 'button',
   size: 'md',
   square: false,
   variant: 'ghost',
@@ -35,6 +34,7 @@ const classNames = computed(() => root({
     data-slot="toggle"
     :data-variant="variant"
     :data-size="size"
+    :data-square="square"
     v-bind="forwardedPropsEmits"
     :class="classNames"
   >
