@@ -1,5 +1,39 @@
 # Changelog
 
+## v1.8.0...v1.9.0
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.8.0...v1.9.0)
+
+### Added
+
+- **components:** Add ToggleGroup component ([8d5bf70](https://github.com/favorodera/centoui/commit/8d5bf70))
+
+  - implement ToggleGroupRoot and ToggleGroupItem
+  - add storybook documentation for toggle group
+  - update toggle component with missing data attributes
+
+- **toggle-group:** Add compact mode and invalid state ([865a064](https://github.com/favorodera/centoui/commit/865a064))
+
+  - Implement compact styling for toggle groups
+  - Support invalid state via aria-invalid prop
+  - Register toggle-group component in CLI
+  - Clean up package configuration files
+
+
+### Refactors
+
+- **ui:** Update component sizing and spacing ([98fbcf6](https://github.com/favorodera/centoui/commit/98fbcf6))
+
+  - Standardize padding and spacing across components
+  - Add size variant to Badge component
+  - Refactor NumberInput to use Button as spin buttons
+  - Improve consistency in layout and typography
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.7.0...v1.8.0
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.7.0...v1.8.0)

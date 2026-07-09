@@ -1,5 +1,23 @@
 # Changelog
 
+## v1.8.0...v1.9.0
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.8.0...v1.9.0)
+
+### Added
+
+- **toggle-group:** Add compact mode and invalid state ([865a064](https://github.com/favorodera/centoui/commit/865a064))
+
+  - Implement compact styling for toggle groups
+  - Support invalid state via aria-invalid prop
+  - Register toggle-group component in CLI
+  - Clean up package configuration files
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.7.0...v1.8.0
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.7.0...v1.8.0)
