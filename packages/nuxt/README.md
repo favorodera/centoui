@@ -15,8 +15,7 @@
 ## Installation
 
 ```bash
-pnpm add centoui
-pnpm add -D centoui-nuxt
+pnpm add centoui-nuxt
 ```
 
 ## Setup
