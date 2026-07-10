@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { AlertBody, AlertDescription, AlertRoot, AlertTitle, alertVariants } from '#centoui/components/alert'
+import { AlertContent, AlertDescription, AlertRoot, AlertTitle, alertVariants } from '#centoui/components/alert'
 import { Button } from '#centoui/components/button'
 import { Icon } from '#centoui/components/icon'
 import { useStory } from '@/composables/use-story'
@@ -17,18 +17,18 @@ const controls = useStory('Alert', {
   <AlertRoot :variant="controls.variant">
     <Icon icon="lucide:lightbulb" />
 
-    <AlertBody>
+    <AlertContent>
       <AlertTitle>Update Available</AlertTitle>
-    </AlertBody>
+    </AlertContent>
   </AlertRoot>
 
   <AlertRoot :variant="controls.variant">
     <Icon icon="lucide:alert-triangle" />
 
-    <AlertBody>
+    <AlertContent>
       <AlertTitle>Payment Failed</AlertTitle>
       <AlertDescription>We couldn't process your last payment. Please update your billing details.</AlertDescription>
-    </AlertBody>
+    </AlertContent>
 
     <div class="flex items-center gap-2 shrink-0">
       <Button
@@ -47,7 +47,7 @@ const controls = useStory('Alert', {
   <AlertRoot :variant="controls.variant">
     <Icon icon="lucide:x-circle" />
 
-    <AlertBody>
+    <AlertContent>
       <AlertTitle>Validation Failed</AlertTitle>
 
       <AlertDescription>
@@ -59,6 +59,6 @@ const controls = useStory('Alert', {
           <li>You must agree to the privacy policy terms.</li>
         </ul>
       </AlertDescription>
-    </AlertBody>
+    </AlertContent>
   </AlertRoot>
 </template>
