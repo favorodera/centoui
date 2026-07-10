@@ -12,17 +12,18 @@ import { tv } from 'tailwind-variants'
 export const accordionVariants = tv({
   slots: {
     content: `
-      overflow-hidden text-sm pbe-2 grid gap-2
+      overflow-hidden text-sm pbe-2 grid gap-2 group/accordion-content
 
       data-[state=closed]:animate-accordion-up
 
       data-[state=open]:animate-accordion-down
     `,
-    item: 'inline-full font-normal',
-    root: 'inline-full',
+    item: 'inline-full font-normal group/accordion-content-item',
+    root: 'inline-full group/accordion-content-root',
     trigger: `
       flex inline-full cursor-default items-center justify-between py-4
-      text-start text-sm font-medium outline-none
+      group/accordion-content-trigger text-start text-sm font-medium
+      outline-none
 
       focus-visible:ring-2 focus-visible:ring-ring
 
