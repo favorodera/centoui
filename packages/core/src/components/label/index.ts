@@ -7,7 +7,7 @@ export const labelVariants = tv({
   },
   slots: {
     root: `
-      text-sm font-medium select-none flex gap-2 border-input
+      text-sm font-medium select-none flex gap-2 border-input group/label
 
       peer-disabled:pointer-events-none peer-disabled:opacity-65
 

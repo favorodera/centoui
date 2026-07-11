@@ -16,14 +16,17 @@ export const paginationVariants = tv({
   slots: {
     ellipsis: `
       flex block-8 inline-8 items-center justify-center text-muted-foreground
+      group/pagination-ellipsis
     `,
-    first: '',
-    last: '',
-    list: 'flex items-center gap-2',
-    listItem: 'shrink-0',
-    next: '',
-    prev: '',
-    root: 'mx-auto flex inline-full items-center justify-center',
+    first: 'group/pagination-first',
+    last: 'group/pagination-last',
+    list: 'flex items-center gap-2 group/pagination-list',
+    listItem: 'shrink-0 group/pagination-list-item',
+    next: 'group/pagination-next',
+    prev: 'group/pagination-prev',
+    root: `
+      mx-auto flex inline-full items-center justify-center group/pagination-root
+    `,
   },
 })
 

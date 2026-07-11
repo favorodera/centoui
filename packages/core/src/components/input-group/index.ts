@@ -9,10 +9,11 @@ export const inputGroupVariants = tv({
   slots: {
     addon: `
       flex shrink-0 items-center text-sm font-medium text-muted-foreground
+      group/input-group-addon
     `,
     root: `
       relative flex inline-full min-inline-0 items-stretch overflow-hidden
-      border border-input bg-transparent
+      border border-input bg-transparent group/input-group-root
 
       **:data-input-group-control:block-auto **:data-input-group-control:flex-1
       **:data-input-group-control:rounded-none

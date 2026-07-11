@@ -10,14 +10,14 @@ import { tv } from 'tailwind-variants'
 export const collapsibleVariants = tv({
   slots: {
     content: `
-      overflow-hidden
+      overflow-hidden group/collapsible-content
 
       data-[state=closed]:animate-collapsible-up
 
       data-[state=open]:animate-collapsible-down
     `,
-    root: '',
-    trigger: '',
+    root: 'group/collapsible-root',
+    trigger: 'group/collapsible-trigger',
   },
 })
 

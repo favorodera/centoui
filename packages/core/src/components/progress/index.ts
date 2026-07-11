@@ -5,9 +5,12 @@ export const progressVariants = tv({
   slots: {
     indicator: `
       block-full inline-full origin-left rounded-[inherit] transition-transform
-      bg-primary
+      bg-primary group/progress-indicator
     `,
-    root: 'relative block-2 inline-full overflow-hidden rounded-full bg-muted',
+    root: `
+      relative block-2 inline-full overflow-hidden rounded-full bg-muted
+      group/progress-bar-root
+    `,
   },
 })
 

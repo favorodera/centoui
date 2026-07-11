@@ -6,10 +6,11 @@ export const checkboxVariants = tv({
     size: 'md',
   },
   slots: {
-    indicator: `grid place-content-center text-current`,
+    indicator: `grid place-content-center text-current group/checkbox-indicator`,
     root: `
       peer relative inline-flex justify-center shrink-0 items-center border
       outline-none border-input text-primary-foreground bg-primary
+      group/checkbox-root
 
       focus-visible:ring-2 focus-visible:ring-ring
 

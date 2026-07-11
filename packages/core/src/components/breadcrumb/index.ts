@@ -5,20 +5,24 @@ export const breadcrumbVariants = tv({
   slots: {
     ellipsis: `
       inline-flex items-center justify-center gap-2 text-muted-foreground
+      group/breadcrumb-ellipsis
     `,
-    item: 'inline-flex min-inline-0 gap-2',
+    item: 'inline-flex min-inline-0 gap-2 group/breadcrumb-item',
     link: `
       inline-flex min-inline-0 items-center gap-2 text-muted-foreground
-      transition-colors outline-none
+      transition-colors outline-none group/breadcrumb-link
 
       hover:text-foreground
 
       focus-visible:ring-2 focus-visible:ring-ring
     `,
-    list: 'flex items-center gap-3 text-sm',
-    page: 'flex items-center gap-2 text-foreground',
-    root: 'relative min-inline-0',
-    separator: 'flex items-center justify-center gap-2 text-muted-foreground',
+    list: 'flex items-center gap-3 text-sm group/breadcrumb-list',
+    page: 'flex items-center gap-2 text-foreground group/breadcrumb-page',
+    root: 'relative min-inline-0 group/breadcrumb-root',
+    separator: `
+      flex items-center justify-center gap-2 text-muted-foreground
+      group/breadcrumb-separator
+    `,
   },
 })
 

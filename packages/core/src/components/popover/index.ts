@@ -11,9 +11,10 @@ import { tv } from 'tailwind-variants'
 
 export const popoverVariants = tv({
   slots: {
-    arrow: 'z-50 fill-overlay stroke-border',
+    arrow: 'z-50 fill-overlay stroke-border group/popover-arrow',
     content: `
       relative z-50 inline-xs origin-(--reka-popover-content-transform-origin)
+      group/popover-content
 
       data-[side=bottom]:slide-in-from-top-2
 
@@ -31,13 +32,17 @@ export const popoverVariants = tv({
     `,
     contentWrapper: `
       gap-4 rounded-xl border grid border-border bg-overlay p-4 overflow-hidden
-      relative
+      relative group/popover-content-wrapper
     `,
-    description: 'text-muted-foreground',
-    footer: `-mx-4 -mbe-4 bg-muted/50 p-4 flex items-center gap-2`,
-    header: `-mx-4 -mbs-4 px-4 pbs-4 text-sm flex flex-col gap-1`,
-    title: 'font-medium',
-    trigger: '',
+    description: 'text-muted-foreground group/popover-description',
+    footer: `
+      -mx-4 -mbe-4 bg-muted/50 p-4 flex items-center gap-2 group/popover-footer
+    `,
+    header: `
+      -mx-4 -mbs-4 px-4 pbs-4 text-sm flex flex-col gap-1 group/popover-header
+    `,
+    title: 'font-medium group/popover-title',
+    trigger: 'group/popover-trigger',
   },
 })
 

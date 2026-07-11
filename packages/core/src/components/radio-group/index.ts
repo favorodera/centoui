@@ -14,15 +14,17 @@ export const radioGroupVariants = tv({
     size: 'md',
   },
   slots: {
-    indicator: `flex items-center justify-center relative`,
+    indicator: `
+      flex items-center justify-center relative group/radio-group-indicator
+    `,
     indicatorDot: `
       bg-primary-foreground absolute inset-bs-1/2 inset-s-1/2 -translate-1/2
-      rounded-full
+      rounded-full group/radio-group-indicator-dot
     `,
     item: `
       peer relative flex aspect-square shrink-0 rounded-full border border-input
       outline-none items-center justify-center bg-primary
-      text-primary-foreground cursor-default
+      text-primary-foreground cursor-default group/radio-group-item
 
       focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring
 
@@ -33,7 +35,7 @@ export const radioGroupVariants = tv({
       data-[state=unchecked]:bg-transparent
       data-[state=unchecked]:text-foreground
     `,
-    root: 'inline-full min-inline-0 gap-2',
+    root: 'inline-full min-inline-0 gap-2 group/radio-group-root',
   },
   variants: {
     orientation: {

@@ -9,16 +9,16 @@ export const numberInputVariants = tv({
     size: 'md',
   },
   slots: {
-    decrement: '',
-    increment: '',
+    decrement: 'group/number-input-decrement',
+    increment: 'group/number-input-increment',
     input: `
-      outline-none block-full flex-1 text-center
+      outline-none block-full flex-1 text-center group/number-input-input
 
       placeholder:text-muted-foreground
     `,
     root: `
       inline-full min-inline-0 border flex items-center justify-between
-      border-input bg-transparent outline-none
+      border-input bg-transparent outline-none group/number-input-root
 
       data-disabled:pointer-events-none data-disabled:opacity-65
 

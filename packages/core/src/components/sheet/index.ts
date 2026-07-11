@@ -16,27 +16,33 @@ export const sheetVariants = tv({
     side: 'right',
   },
   slots: {
-    close: '',
+    close: 'group/sheet-close',
     content: `
       fixed z-50 flex flex-col gap-4 bg-overlay p-4 overflow-hidden
+      group/sheet-content
 
       data-[state=closed]:animate-out
 
       data-[state=open]:animate-in
     `,
-    description: 'text-sm text-muted-foreground',
-    footer: `flex gap-2 p-4 -mx-4 -mbe-4 bg-muted/50 items-center mbs-auto`,
-    header: `relative flex flex-col gap-1 px-4 pbs-4 -mx-4 -mbs-4`,
-    headerClose: 'absolute inset-bs-4 inset-e-4',
+    description: 'text-sm text-muted-foreground group/sheet-description',
+    footer: `
+      flex gap-2 p-4 -mx-4 -mbe-4 bg-muted/50 items-center mbs-auto
+      group/sheet-footer
+    `,
+    header: `
+      relative flex flex-col gap-1 px-4 pbs-4 -mx-4 -mbs-4 group/sheet-header
+    `,
+    headerClose: 'absolute inset-bs-4 inset-e-4 group/sheet-header-close',
     overlay: `
-      fixed inset-0 z-50 bg-scrim backdrop-blur-xs
+      fixed inset-0 z-50 bg-scrim backdrop-blur-xs group/sheet-overlay
 
       data-[state=closed]:animate-out data-[state=closed]:fade-out-0
 
       data-[state=open]:animate-in data-[state=open]:fade-in-0
     `,
-    title: 'text-base font-semibold text-foreground',
-    trigger: '',
+    title: 'text-base font-semibold text-foreground group/sheet-title',
+    trigger: 'group/sheet-trigger',
   },
   variants: {
     side: {

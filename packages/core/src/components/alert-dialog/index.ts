@@ -15,11 +15,12 @@ import type { ButtonProps } from '../button'
 
 export const alertDialogVariants = tv({
   slots: {
-    action: '',
-    cancel: '',
+    action: 'group/alert-dialog-action',
+    cancel: 'group/alert-dialog-cancel',
     content: `
       fixed inset-bs-1/2 inset-s-1/2 z-50 grid inline-[90dvw] max-inline-sm
       -translate-1/2 gap-4 rounded-xl border bg-overlay p-4 overflow-hidden
+      group/alert-dialog-content
 
       data-[state=closed]:animate-out data-[state=closed]:fade-out-0
       data-[state=closed]:zoom-out-98
@@ -27,26 +28,28 @@ export const alertDialogVariants = tv({
       data-[state=open]:animate-in data-[state=open]:fade-in-0
       data-[state=open]:zoom-in-98
     `,
-    description: 'text-sm text-muted-foreground',
+    description: 'text-sm text-muted-foreground group/alert-dialog-description',
     footer: `
       flex flex-col-reverse gap-2 p-4 -mx-4 -mbe-4 bg-muted/50
+      group/alert-dialog-footer
 
       sm:flex-row sm:justify-end
     `,
     header: `
       flex flex-col gap-1 px-4 pbs-6 text-center -mx-4 -mbs-4
+      group/alert-dialog-header
 
       sm:text-start
     `,
     overlay: `
-      fixed inset-0 z-50 bg-scrim backdrop-blur-xs
+      fixed inset-0 z-50 bg-scrim backdrop-blur-xs group/alert-dialog-overlay
 
       data-[state=closed]:animate-out data-[state=closed]:fade-out-0
 
       data-[state=open]:animate-in data-[state=open]:fade-in-0
     `,
-    title: 'text-base font-medium',
-    trigger: '',
+    title: 'text-base font-medium group/alert-dialog-title',
+    trigger: 'group/alert-dialog-trigger',
   },
 })
 

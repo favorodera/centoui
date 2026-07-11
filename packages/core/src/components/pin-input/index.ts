@@ -10,7 +10,7 @@ import type { InputProps } from '../input'
 export const pinInputVariants = tv({
   slots: {
     group: `
-      relative flex inline-fit items-stretch
+      relative flex inline-fit items-stretch group/pin-input-group
 
       *:not-first:rounded-s-none *:not-first:border-s-0
 
@@ -18,8 +18,8 @@ export const pinInputVariants = tv({
 
       *:focus-visible:z-10
     `,
-    input: 'aspect-square p-0 text-center',
-    root: 'inline-flex items-center gap-2',
+    input: 'aspect-square p-0 text-center group/pin-input-input',
+    root: 'inline-flex items-center gap-2 group/pin-input-root',
   },
 })
 

@@ -10,12 +10,12 @@ import { tv } from 'tailwind-variants'
 
 export const tooltipVariants = tv({
   slots: {
-    arrow: 'z-50 fill-foreground',
+    arrow: 'z-50 fill-foreground group/tooltip-arrow',
     content: `
       pointer-events-auto relative z-50 inline-fit
       origin-(--reka-tooltip-content-transform-origin) animate-in rounded-lg
       bg-foreground px-2.5 py-1.5 text-xs text-background fade-in-0 zoom-in-95
-      border-border border font-medium
+      border-border border font-medium group/tooltip-content
 
       data-[side=bottom]:slide-in-from-top-1
 
@@ -28,7 +28,7 @@ export const tooltipVariants = tv({
       data-[state=closed]:animate-out data-[state=closed]:fade-out-0
       data-[state=closed]:zoom-out-95
     `,
-    trigger: '',
+    trigger: 'group/tooltip-trigger',
   },
 })
 

@@ -1,0 +1,13 @@
+{
+  "$schema": "./schemas/component.json",
+  "name": "item",
+  "files": [
+    "item/item-content.vue",
+    "item/item-description.vue",
+    "item/item-group.vue",
+    "item/item-media.vue",
+    "item/item-root.vue",
+    "item/item-title.vue",
+    "item/index.ts"
+  ]
+}

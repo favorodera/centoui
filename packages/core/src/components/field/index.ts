@@ -7,9 +7,10 @@ export const fieldVariants = tv({
     legendVariant: 'legend',
   },
   slots: {
-    content: 'flex flex-col flex-1 gap-1',
+    content: 'flex flex-col flex-1 gap-1 group/field-content',
     description: `
       text-sm text-muted-foreground text-start font-normal
+      group/field-description
 
       [&>a]:underline [&>a]:underline-offset-4
 
@@ -17,6 +18,7 @@ export const fieldVariants = tv({
     `,
     error: `
       col-span-full font-normal text-sm text-error inline-full min-inline-0
+      group/field-error
 
       first-letter:uppercase
 
@@ -29,11 +31,14 @@ export const fieldVariants = tv({
 
       data-[invalid=true]:text-error
     `,
-    group: 'flex inline-full min-inline-0 flex-col gap-4 @container/field-group',
-    legend: 'mbe-1 font-medium text-base',
-    set: 'flex flex-col gap-4',
+    group: `
+      flex inline-full min-inline-0 flex-col gap-4 @container/field-group
+      group/field-group
+    `,
+    legend: 'mbe-1 font-medium text-base group/field-legend',
+    set: 'flex flex-col gap-4 group/field-set',
     title: `
-      flex items-center font-medium text-sm inline-full
+      flex items-center font-medium text-sm inline-full group/field-title
 
       group-data-[disabled=true]/field:opacity-65
       group-data-[disabled=true]/field:pointer-events-none

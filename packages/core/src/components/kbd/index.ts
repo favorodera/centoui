@@ -6,10 +6,10 @@ export const kbdVariants = tv({
     size: 'md',
   },
   slots: {
-    group: 'inline-flex items-center gap-1',
+    group: 'inline-flex items-center gap-1 group/kbd-group',
     root: `
       pointer-events-none inline-fit grid place-items-center bg-muted
-      font-medium text-muted-foreground select-none font-mono
+      font-medium text-muted-foreground select-none font-mono group/kbd
     `,
   },
   variants: {

@@ -15,13 +15,15 @@ export const avatarVariants = tv({
   slots: {
     fallback: `
       flex block-full inline-full items-center justify-center truncate
-      font-medium text-muted-foreground uppercase
+      font-medium text-muted-foreground uppercase group/avatar-fallback
     `,
-    group: `isolate inline-flex -space-x-2.5`,
-    image: 'block-full inline-full rounded-[inherit] object-cover',
+    group: `isolate inline-flex -space-x-2.5 group/avatar-group`,
+    image: `
+      block-full inline-full rounded-[inherit] object-cover group/avatar-image
+    `,
     root: `
       relative inline-flex shrink-0 items-center justify-center overflow-hidden
-      rounded-full border align-middle bg-muted select-none
+      rounded-full border align-middle bg-muted select-none group/avatar-root
     `,
   },
   variants: {

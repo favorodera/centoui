@@ -18,12 +18,11 @@ export const accordionVariants = tv({
 
       data-[state=open]:animate-accordion-down
     `,
-    item: 'inline-full font-normal group/accordion-content-item',
-    root: 'inline-full group/accordion-content-root',
+    item: 'inline-full font-normal group/accordion-item',
+    root: 'inline-full group/accordion-root',
     trigger: `
       flex inline-full cursor-default items-center justify-between py-4
-      group/accordion-content-trigger text-start text-sm font-medium
-      outline-none
+      group/accordion-trigger text-start text-sm font-medium outline-none
 
       focus-visible:ring-2 focus-visible:ring-ring
 

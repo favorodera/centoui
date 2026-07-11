@@ -21,11 +21,14 @@ export const comboboxVariants = tv({
     size: 'md',
   },
   slots: {
-    anchor: 'relative inline-full min-inline-0 flex items-center',
-    arrow: 'z-50 fill-overlay stroke-input',
-    cancel: '',
+    anchor: `
+      relative inline-full min-inline-0 flex items-center group/combobox-anchor
+    `,
+    arrow: 'z-50 fill-overlay stroke-input group/combobox-arrow',
+    cancel: 'group/combobox-cancel',
     content: `
       bg-overlay border border-input z-50 relative grid p-1 gap-1
+      group/combobox-content
 
       data-[side=bottom]:slide-in-from-top-2
 
@@ -43,28 +46,31 @@ export const comboboxVariants = tv({
     `,
     empty: `
       block-full inline-full flex items-center justify-center
-      text-muted-foreground py-1 text-center
+      text-muted-foreground py-1 text-center group/combobox-empty
     `,
     group: `
-      scroll-my-1 grid gap-1
+      scroll-my-1 grid gap-1 group/combobox-group
 
       *:data-[slot=separator]:-mx-1
     `,
-    input: '',
+    input: 'group/combobox-input',
     item: `
       relative flex inline-full cursor-default items-center outline-none
-      select-none
+      select-none group/combobox-item
 
       data-highlighted:bg-accent data-highlighted:text-accent-foreground
 
       data-disabled:pointer-events-none data-disabled:opacity-65
     `,
-    itemIndicator: 'absolute inset-bs-1/2 -translate-y-1/2',
-    label: 'text-muted-foreground py-0.5',
-    root: 'relative',
-    trigger: '',
+    itemIndicator: `
+      absolute inset-bs-1/2 -translate-y-1/2 group/combobox-item-indicator
+    `,
+    label: 'text-muted-foreground py-0.5 group/combobox-label',
+    root: 'relative group/combobox-root',
+    trigger: 'group/combobox-trigger',
     viewport: `
       rounded-[inherit] grid grid-cols-1 gap-1 min-inline-full -mx-1 px-1
+      group/combobox-viewport
 
       *:data-[slot=separator]:data-[orientation=horizontal]:-mx-1
     `,

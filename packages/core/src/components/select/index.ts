@@ -20,9 +20,10 @@ export const selectVariants = tv({
     size: 'md',
   },
   slots: {
-    arrow: 'z-50 fill-overlay stroke-input',
+    arrow: 'z-50 fill-overlay stroke-input group/select-arrow',
     content: `
       bg-overlay border border-input z-50 relative grid p-1 gap-1
+      group/select-content
 
       data-[side=bottom]:slide-in-from-top-2
 
@@ -39,33 +40,35 @@ export const selectVariants = tv({
       data-[state=open]:zoom-in-95
     `,
     group: `
-      scroll-my-1 grid gap-1
+      scroll-my-1 grid gap-1 group/select-group
 
       *:data-[slot=separator]:-mx-1
     `,
-    icon: 'text-muted-foreground',
+    icon: 'text-muted-foreground group/select-icon',
     item: `
       relative flex inline-full cursor-default items-center outline-none
-      select-none
+      select-none group/select-item
 
       focus:bg-accent focus:text-accent-foreground
 
       data-disabled:pointer-events-none data-disabled:opacity-65
     `,
-    itemIndicator: 'absolute inset-bs-1/2 -translate-y-1/2',
-    itemText: 'min-inline-0 truncate',
-    label: 'text-muted-foreground py-0.5',
+    itemIndicator: `
+      absolute inset-bs-1/2 -translate-y-1/2 group/select-item-indicator
+    `,
+    itemText: 'min-inline-0 truncate group/select-item-text',
+    label: 'text-muted-foreground py-0.5 group/select-label',
     scrollDownButton: `
       flex inline-full cursor-default items-center justify-center
-      rounded-b-[inherit] bg-overlay
+      rounded-b-[inherit] bg-overlay group/select-scroll-down-button
     `,
     scrollUpButton: `
       flex inline-full cursor-default items-center justify-center
-      rounded-t-[inherit] bg-overlay
+      rounded-t-[inherit] bg-overlay group/select-scroll-up-button
     `,
     trigger: `
       relative flex items-center inline-full min-inline-0 border border-input
-      bg-transparent outline-none transition-colors
+      bg-transparent outline-none transition-colors group/select-trigger
 
       focus-visible:ring-2 focus-visible:ring-ring
 
@@ -75,9 +78,10 @@ export const selectVariants = tv({
 
       data-placeholder:text-muted-foreground
     `,
-    value: 'flex flex-1 items-center truncate',
+    value: 'flex flex-1 items-center truncate group/select-value',
     viewport: `
       rounded-[inherit] grid grid-cols-1 gap-1 min-inline-full -mx-1 px-1
+      group/select-viewport
 
       *:data-[slot=separator]:data-[orientation=horizontal]:-mx-1
     `,

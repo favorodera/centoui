@@ -4,11 +4,11 @@ import { Primitive, useForwardProps } from 'reka-ui'
 import { computed } from 'vue'
 import {
   injectRootContext,
-  type ItemBodyProps,
+  type ItemMediaProps,
   itemVariants,
 } from '.'
 
-const props = defineProps<ItemBodyProps>()
+const props = defineProps<ItemMediaProps>()
 
 const rootContext = injectRootContext()
 
@@ -16,18 +16,20 @@ const delegatedProps = reactiveOmit(props, 'class')
 
 const forwardedProps = useForwardProps(delegatedProps)
 
-const { body } = itemVariants()
+const { media } = itemVariants()
 
-const classNames = computed(() => body({
+const classNames = computed(() => media({
   class: props.class,
+  mediaVariant: props.variant,
   variant: rootContext?.variant,
 }))
 </script>
 
 <template>
   <Primitive
-    data-slot="item-body"
+    data-slot="item-media"
     v-bind="forwardedProps"
+    :data-variant="variant"
     :class="classNames"
   >
     <slot />

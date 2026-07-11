@@ -3,7 +3,7 @@ import { tv } from 'tailwind-variants'
 
 export const aspectRatioVariants = tv({
   slots: {
-    root: '',
+    root: 'group/aspect-ratio',
   },
 })
 

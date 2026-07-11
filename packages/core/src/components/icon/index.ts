@@ -3,7 +3,7 @@ import { tv } from 'tailwind-variants'
 
 export const iconVariants = tv({
   slots: {
-    root: 'pointer-events-none block-lh inline-4 shrink-0 align-middle',
+    root: `pointer-events-none block-4 inline-4 shrink-0 align-middle`,
   },
 })
 

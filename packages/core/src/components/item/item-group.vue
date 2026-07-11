@@ -3,30 +3,26 @@ import { reactiveOmit } from '@vueuse/core'
 import { Primitive, useForwardProps } from 'reka-ui'
 import { computed } from 'vue'
 import {
-  injectRootContext,
-  type ItemHeaderProps,
+  type ItemGroupProps,
   itemVariants,
 } from '.'
 
-const props = defineProps<ItemHeaderProps>()
-
-const rootContext = injectRootContext()
+const props = defineProps<ItemGroupProps>()
 
 const delegatedProps = reactiveOmit(props, 'class')
 
 const forwardedProps = useForwardProps(delegatedProps)
 
-const { header } = itemVariants()
+const { group } = itemVariants()
 
-const classNames = computed(() => header({
+const classNames = computed(() => group({
   class: props.class,
-  variant: rootContext?.variant,
 }))
 </script>
 
 <template>
   <Primitive
-    data-slot="item-header"
+    data-slot="item-group"
     v-bind="forwardedProps"
     :class="classNames"
   >

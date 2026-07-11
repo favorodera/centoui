@@ -6,13 +6,29 @@ export const alertVariants = tv({
     variant: 'neutral',
   },
   slots: {
-    body: 'flex-1 min-inline-0 text-sm',
-    description: 'mbs-1 font-normal',
-    root: `
-      flex items-start inline-full p-4 gap-3 rounded-lg flex-wrap bg-elevated
-      border
+    content: `
+      flex-1 min-inline-0 text-sm flex flex-col gap-1 group/alert-content
     `,
-    title: 'font-medium',
+    description: `
+      font-normal text-sm group/alert-description
+
+      **:[a]:underline **:[a]:underline-offset-4 **:[a]:transition-[color]
+
+      **:[a]:hover:text-primary
+    `,
+    root: `
+      flex items-start inline-full p-3 gap-3 rounded-lg flex-wrap bg-elevated
+      border group/alert-root
+
+      *:data-[slot=icon]:translate-y-0.5
+    `,
+    title: `
+      font-medium text-sm group/alert-title
+
+      **:[a]:underline **:[a]:underline-offset-4 **:[a]:transition-[color]
+
+      **:[a]:hover:text-primary
+    `,
   },
   variants: {
     variant: {
@@ -36,7 +52,7 @@ export const alertVariants = tv({
 })
 
 // COMPONENTS
-export { default as AlertBody } from './alert-body.vue'
+export { default as AlertContent } from './alert-content.vue'
 export { default as AlertDescription } from './alert-description.vue'
 export { default as AlertRoot } from './alert-root.vue'
 export { default as AlertTitle } from './alert-title.vue'
@@ -63,7 +79,7 @@ export type AlertRootProps = PrimitiveProps & {
   variant?: AlertVariants['variant']
 }
 
-export type AlertBodyProps = PrimitiveProps & { class?: any }
+export type AlertContentProps = PrimitiveProps & { class?: any }
 
 export type AlertTitleProps = PrimitiveProps & { class?: any }
 

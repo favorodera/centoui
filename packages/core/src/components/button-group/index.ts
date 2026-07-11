@@ -7,7 +7,7 @@ export const buttonGroupVariants = tv({
   },
   slots: {
     root: `
-      isolate flex inline-fit items-stretch
+      isolate flex inline-fit items-stretch group/button-group
 
       *:focus-visible:z-10
 

@@ -6,7 +6,7 @@ export const sliderVariants = tv({
     orientation: 'horizontal',
   },
   slots: {
-    range: 'absolute rounded-[inherit] bg-primary',
+    range: 'absolute rounded-[inherit] bg-primary group/slider-range',
     root: `
       group/slider-root relative flex touch-none items-center select-none
 
@@ -14,7 +14,7 @@ export const sliderVariants = tv({
     `,
     thumb: `
       relative block block-5 inline-5 shrink-0 rounded-full border-2
-      border-primary bg-primary-foreground ring-ring
+      border-primary bg-primary-foreground ring-ring group/slider-thumb
 
       group-aria-invalid/slider-root:border-error
       group-aria-invalid/slider-root:ring-2
@@ -26,7 +26,9 @@ export const sliderVariants = tv({
 
       disabled:pointer-events-none disabled:opacity-65
     `,
-    track: 'relative grow overflow-hidden rounded-full bg-muted',
+    track: `
+      relative grow overflow-hidden rounded-full bg-muted group/slider-track
+    `,
   },
   variants: {
     orientation: {

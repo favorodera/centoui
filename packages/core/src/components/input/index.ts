@@ -7,6 +7,7 @@ export const inputVariants = tv({
   slots: {
     root: `
       inline-full min-inline-0 border border-input bg-transparent outline-none
+      peer group/input
 
       selection:bg-primary selection:text-primary-foreground
 

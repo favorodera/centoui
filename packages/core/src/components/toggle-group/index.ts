@@ -37,8 +37,8 @@ export const toggleGroupVariants = tv({
     orientation: 'horizontal',
   },
   slots: {
-    item: '',
-    root: 'flex inline-fit items-stretch',
+    item: 'group/toggle-group-item',
+    root: 'flex inline-fit items-stretch group/toggle-group-root',
   },
   variants: {
     compact: {

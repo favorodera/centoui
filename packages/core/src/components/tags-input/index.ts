@@ -14,26 +14,28 @@ export const tagsInputVariants = tv({
   },
   slots: {
     input: `
-      flex-1 outline-none
+      flex-1 outline-none group/tags-input-input
 
       placeholder:text-muted-foreground
     `,
     item: `
       bg-muted flex items-center font-medium text-foreground wrap-anywhere
+      group/tags-input-item
 
       has-data-disabled:pointer-events-none has-data-disabled:opacity-65
     `,
     itemDelete: `
       inline-flex items-center text-muted-foreground transition-colors
+      group/tags-input-item-delete
 
       hover:text-foreground
 
       disabled:pointer-events-none
     `,
-    itemText: '',
+    itemText: 'group/tags-input-item-text',
     root: `
       relative inline-flex items-center border border-input bg-transparent
-      outline-none flex-wrap
+      outline-none flex-wrap group/tags-input-root
 
       has-focus:ring-2 has-focus:ring-ring
 

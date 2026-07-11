@@ -31,5 +31,7 @@ const classNames = computed(() => root({
     :data-size="size"
     :class="classNames"
     v-bind="forwardedProps"
-  />
+  >
+    <slot />
+  </PinInputInput>
 </template>
