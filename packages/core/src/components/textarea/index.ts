@@ -52,4 +52,3 @@ export interface TextareaProps {
 
   class?: any
 }
-
