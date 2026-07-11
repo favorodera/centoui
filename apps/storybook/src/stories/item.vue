@@ -28,17 +28,17 @@ const teammates = [
 
 const projects = [
   {
-    cover:'https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=320&auto=format&fit=crop',
+    cover: 'https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=320&auto=format&fit=crop',
     name: 'Aurora Rebrand',
     status: 'In review',
   },
   {
-    cover:'https://images.unsplash.com/photo-1517292987719-0369a794ec0f?q=80&w=320&auto=format&fit=crop',
+    cover: 'https://images.unsplash.com/photo-1517292987719-0369a794ec0f?q=80&w=320&auto=format&fit=crop',
     name: 'Field Notes App',
     status: 'In progress',
   },
   {
-    cover:'https://images.unsplash.com/photo-1559028012-481c04fa702d?q=80&w=320&auto=format&fit=crop',
+    cover: 'https://images.unsplash.com/photo-1559028012-481c04fa702d?q=80&w=320&auto=format&fit=crop',
     name: 'Quarterly Report',
     status: 'Draft',
   },
