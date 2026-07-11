@@ -1,4 +1,4 @@
-import type { CentoUIConfig } from 'centoui-cli'
+import type { CentoUIConfig } from 'centoui'
 import { addComponent, addComponentsDir, addTemplate, defineNuxtModule, extendViteConfig } from '@nuxt/kit'
 import { loadConfig } from 'c12'
 import { existsSync, readdirSync } from 'node:fs'

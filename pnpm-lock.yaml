@@ -327,9 +327,9 @@ importers:
       c12:
         specifier: catalog:vendor
         version: 4.0.0-beta.5(chokidar@5.0.0)(dotenv@17.4.2)(giget@3.3.0)(jiti@2.7.0)(magicast@0.5.3)
-      centoui-cli:
+      centoui:
         specifier: workspace:*
-        version: link:../cli
+        version: link:../core
       pathe:
         specifier: catalog:vendor
         version: 2.0.3

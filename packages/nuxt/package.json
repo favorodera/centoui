@@ -38,12 +38,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "bin": {
-    "centoui": "./bin/centoui.js"
-  },
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "engines": {
     "node": ">=22.0.0",
     "pnpm": ">=11.0.0"
@@ -56,12 +51,13 @@
     "prepublishOnly": "pnpm build"
   },
   "peerDependencies": {
+    "centoui": "workspace:*",
     "nuxt": "catalog:peer"
   },
   "dependencies": {
     "@nuxt/kit": "catalog:vendor",
     "c12": "catalog:vendor",
-    "centoui-cli": "workspace:*",
+    "centoui": "workspace:*",
     "pathe": "catalog:vendor"
   },
   "devDependencies": {
