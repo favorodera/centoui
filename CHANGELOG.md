@@ -1,5 +1,63 @@
 # Changelog
 
+## v1.9.0...v1.10.0
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.9.0...v1.10.0)
+
+### Added
+
+- **nuxt:** Add centoui cli binary and update dependencies ([702e7dd](https://github.com/favorodera/centoui/commit/702e7dd))
+
+  - add bin/centoui.js wrapper for centoui-cli
+  - replace centoui dependency with centoui-cli
+  - update readme installation instructions
+
+- **item:** Add Item component variants ([f70edb3](https://github.com/favorodera/centoui/commit/f70edb3))
+- **item:** Add item-body component with variant support ([20c71fe](https://github.com/favorodera/centoui/commit/20c71fe))
+- **item:** Introduce item-description subcomponent ([768f9bd](https://github.com/favorodera/centoui/commit/768f9bd))
+- **item:** Add item-header subcomponent ([8ae68aa](https://github.com/favorodera/centoui/commit/8ae68aa))
+- **item:** Implement item-root component with variant context ([01c8034](https://github.com/favorodera/centoui/commit/01c8034))
+- **item:** Add item-title subcomponent ([3dd337c](https://github.com/favorodera/centoui/commit/3dd337c))
+- **core:** Add item component and update component group classes ([86bfba4](https://github.com/favorodera/centoui/commit/86bfba4))
+
+  - add new item component to registry
+  - add group classes to component slots
+  - enable better compound styling across library
+
+
+### Refactors
+
+- **item:** Export subcomponents and define root context ([4f91b34](https://github.com/favorodera/centoui/commit/4f91b34))
+- **alert:** Rename AlertBody to AlertContent in storybook ([24d7373](https://github.com/favorodera/centoui/commit/24d7373))
+- **accordion:** Add group names to variant slots ([21f1411](https://github.com/favorodera/centoui/commit/21f1411))
+
+### Documentation
+
+- **storybook:** Add item component examples ([0762fc9](https://github.com/favorodera/centoui/commit/0762fc9))
+
+### Chores
+
+- Format package files array syntax ([ee8f47c](https://github.com/favorodera/centoui/commit/ee8f47c))
+
+### Styling
+
+- **storybook:** Increase max width of body container ([ef2f138](https://github.com/favorodera/centoui/commit/ef2f138))
+- **storybook:** Add missing spaces to project cover urls ([302b562](https://github.com/favorodera/centoui/commit/302b562))
+- **registry:** Format component dependencies ([600da47](https://github.com/favorodera/centoui/commit/600da47))
+
+  - ensure consistent array formatting
+  - improve readability of registry configuration
+
+- **item:** Remove default outline from root ([ecd4b8d](https://github.com/favorodera/centoui/commit/ecd4b8d))
+
+  - prevent default outline on focus
+  - rely on custom focus ring for accessibility
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.8.0...v1.9.0
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.8.0...v1.9.0)

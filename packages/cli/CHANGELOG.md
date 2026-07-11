@@ -1,5 +1,18 @@
 # Changelog
 
+## v1.9.0...v1.10.0
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.9.0...v1.10.0)
+
+### Chores
+
+- Format package files array syntax ([ee8f47c](https://github.com/favorodera/centoui/commit/ee8f47c))
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.8.0...v1.9.0
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.8.0...v1.9.0)
