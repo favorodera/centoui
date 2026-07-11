@@ -25,7 +25,7 @@ export const itemVariants = tv({
     `,
     root: `
       flex inline-full flex-wrap items-center rounded-lg border p-3 gap-3
-      border-transparent group/item-root
+      border-transparent group/item-root outline-none
 
       focus-visible:ring-2 focus-visible:ring-ring
 
