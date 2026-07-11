@@ -1,6 +1,6 @@
 {
   "name": "centoui-nuxt",
-  "version": "1.11.0",
+  "version": "1.11.1",
   "description": "Official Nuxt module for CentoUI",
   "author": "Favour Emeka <favorodera@gmail.com>",
   "license": "MIT",
@@ -38,7 +38,9 @@
   "publishConfig": {
     "access": "public"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "engines": {
     "node": ">=22.0.0",
     "pnpm": ">=11.0.0"

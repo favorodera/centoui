@@ -1,5 +1,12 @@
 # Changelog
 
+## v1.11.0...v1.11.1
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.11.0...v1.11.1)
+
+No relevant changes for this release
+
+
 ## v1.10.0...v1.11.0
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.10.0...v1.11.0)

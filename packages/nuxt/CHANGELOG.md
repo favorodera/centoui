@@ -1,5 +1,23 @@
 # Changelog
 
+## v1.11.0...v1.11.1
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.11.0...v1.11.1)
+
+### Refactors
+
+- **deps:** Rename centoui-cli to centoui ([5df8eba](https://github.com/favorodera/centoui/commit/5df8eba))
+
+  - Rename centoui-cli package to centoui
+  - Update imports in nuxt module
+  - Remove obsolete bin file
+  - Format registry dependencies
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.10.0...v1.11.0
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.10.0...v1.11.0)
