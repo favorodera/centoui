@@ -39,7 +39,7 @@ const users = [
 
   <AvatarRoot :size="controls.size">
     <AvatarFallback>
-      <Icon icon="lucide:user" />
+      <Icon name="lucide:user" />
     </AvatarFallback>
   </AvatarRoot>
 

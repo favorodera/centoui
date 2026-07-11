@@ -29,7 +29,7 @@ const controls = useStory('Badge', {
     :variant="controls.variant"
     :size="controls.size"
   >
-    <Icon icon="lucide:user" />
+    <Icon name="lucide:user" />
     User
   </Badge>
 
@@ -38,6 +38,6 @@ const controls = useStory('Badge', {
     :size="controls.size"
   >
     Loading...
-    <Icon icon="svg-spinners:180-ring" />
+    <Icon name="svg-spinners:180-ring" />
   </Badge>
 </template>

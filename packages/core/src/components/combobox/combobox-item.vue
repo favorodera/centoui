@@ -51,7 +51,7 @@ const classNames = computed(() => ({
       as-child
       :class="classNames.itemIndicator"
     >
-      <Icon :icon="config.icons.check" />
+      <Icon :name="config.icons.check" />
     </ComboboxItemIndicator>
   </ComboboxItem>
 </template>

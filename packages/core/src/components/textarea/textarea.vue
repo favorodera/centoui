@@ -1,20 +1,12 @@
 <script setup lang="ts">
-import { useVModel } from '@vueuse/core'
 import { computed } from 'vue'
-import { type TextareaEmits, type TextareaProps, textareaVariants } from '.'
-
-const emits = defineEmits<TextareaEmits>()
+import { type TextareaProps, textareaVariants } from '.'
 
 const props = withDefaults(defineProps<TextareaProps>(), {
   size: 'md',
 })
 
-const modelValue = useVModel(
-  props,
-  'value',
-  emits,
-  { defaultValue: props.defaultValue },
-)
+const model = defineModel<string>()
 
 const { root } = textareaVariants()
 
@@ -26,10 +18,9 @@ const classNames = computed(() => root({
 
 <template>
   <textarea
-    v-model="modelValue"
+    v-model="model"
     data-slot="textarea"
     :data-size="size"
     :class="classNames"
-    v-bind="$attrs"
   />
 </template>

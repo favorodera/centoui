@@ -45,32 +45,11 @@ export type TextareaVariants = VariantProps<typeof textareaVariants>
 // PROPS
 export interface TextareaProps {
   /**
-   * The value of the textarea when it is initially rendered.
-   *
-   * Use when you do not need to control its value.
-   */
-  defaultValue?: number | string
-
-  /**
    * Visual size scale.
    * @default 'md'
    */
   size?: TextareaVariants['size']
 
-  /**
-   * The controlled value of the textarea.
-   *
-   * Can be binded as v-model:value
-   */
-  value?: number | string
-
   class?: any
 }
 
-// EMITS
-
-/**
- * Event handler for when the value of the textarea changes.
- * @param payload The payload of the event.
- */
-export type TextareaEmits = (event: 'update:value', payload: number | string) => void

@@ -40,7 +40,7 @@ const classNames = computed(() => root({
     :class="classNames"
   >
     <slot>
-      <Icon :icon="config.icons.chevronLeft" />
+      <Icon :name="config.icons.chevronLeft" />
       <span class="sr-only">Previous page</span>
     </slot>
   </PaginationPrev>

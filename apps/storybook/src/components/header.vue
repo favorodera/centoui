@@ -76,7 +76,7 @@ const route = useRoute()
           :disabled="!navigation.canGoPrev"
           @click="navigation.goPrev"
         >
-          <Icon icon="lucide:chevron-left" />
+          <Icon name="lucide:chevron-left" />
         </Button>
 
         <Separator orientation="vertical" />
@@ -89,7 +89,7 @@ const route = useRoute()
           :disabled="!navigation.canGoNext"
           @click="navigation.goNext"
         >
-          <Icon icon="lucide:chevron-right" />
+          <Icon name="lucide:chevron-right" />
         </Button>
       </ButtonGroup>
 
@@ -107,7 +107,7 @@ const route = useRoute()
           aria-label="Toggle dark mode"
           @click="colorMode.toggleColorMode()"
         >
-          <Icon :icon="colorMode.isDarkMode ? 'lucide:sun' : 'lucide:moon'" />
+          <Icon :name="colorMode.isDarkMode ? 'lucide:sun' : 'lucide:moon'" />
         </Button>
 
         <!-- Props Panel Toggle -->
@@ -120,7 +120,7 @@ const route = useRoute()
           class="md:hidden"
           @click="models.controlPanelModel.value = !models.controlPanelModel.value"
         >
-          <Icon :icon="models.controlPanelModel.value ? 'lucide:panel-right-close' : 'lucide:panel-right-open'" />
+          <Icon :name="models.controlPanelModel.value ? 'lucide:panel-right-close' : 'lucide:panel-right-open'" />
         </Button>
       </div>
     </div>

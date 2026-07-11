@@ -59,7 +59,7 @@ const controls = useStory('Toggle Group', {
       :aria-invalid="controls.invalid"
       aria-label="Toggle bold"
     >
-      <Icon icon="lucide:bold" />
+      <Icon name="lucide:bold" />
     </ToggleGroupItem>
 
     <ToggleGroupItem
@@ -70,7 +70,7 @@ const controls = useStory('Toggle Group', {
       :aria-invalid="controls.invalid"
       aria-label="Toggle italic"
     >
-      <Icon icon="lucide:italic" />
+      <Icon name="lucide:italic" />
     </ToggleGroupItem>
   </ToggleGroupRoot>
 </template>

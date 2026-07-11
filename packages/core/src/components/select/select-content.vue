@@ -66,7 +66,7 @@ const classNames = computed(() => ({
         :class="classNames.scrollUpButton"
       >
         <span class="sr-only">Scroll up</span>
-        <Icon :icon="config.icons.chevronUp" />
+        <Icon :name="config.icons.chevronUp" />
       </SelectScrollUpButton>
 
       <SelectViewport
@@ -81,7 +81,7 @@ const classNames = computed(() => ({
         :class="classNames.scrollDownButton"
       >
         <span class="sr-only">Scroll down</span>
-        <Icon :icon="config.icons.chevronDown" />
+        <Icon :name="config.icons.chevronDown" />
       </SelectScrollDownButton>
 
       <SelectArrow

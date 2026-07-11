@@ -49,7 +49,7 @@ const classNames = computed(() => ({
         square
       >
         <span class="sr-only">Close sheet</span>
-        <Icon :icon="config.icons.x" />
+        <Icon :name="config.icons.x" />
       </Button>
     </SheetClose>
   </Primitive>

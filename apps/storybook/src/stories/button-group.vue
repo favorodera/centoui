@@ -17,38 +17,38 @@ useStory('Button Group', {})
 
   <ButtonGroup orientation="vertical">
     <Button variant="secondary">
-      <Icon icon="lucide:plus" />
+      <Icon name="lucide:plus" />
     </Button>
 
     <Separator />
 
     <Button variant="secondary">
-      <Icon icon="lucide:minus" />
+      <Icon name="lucide:minus" />
     </Button>
   </ButtonGroup>
 
   <ButtonGroup>
     <ButtonGroup>
       <Button variant="secondary">
-        <Icon icon="lucide:italic" />
+        <Icon name="lucide:italic" />
       </Button>
 
       <Separator orientation="vertical" />
 
       <Button variant="secondary">
-        <Icon icon="lucide:underline" />
+        <Icon name="lucide:underline" />
       </Button>
     </ButtonGroup>
 
     <ButtonGroup>
       <Button variant="secondary">
-        <Icon icon="lucide:bold" />
+        <Icon name="lucide:bold" />
       </Button>
 
       <Separator orientation="vertical" />
 
       <Button variant="secondary">
-        <Icon icon="lucide:strikethrough" />
+        <Icon name="lucide:strikethrough" />
       </Button>
     </ButtonGroup>
   </ButtonGroup>

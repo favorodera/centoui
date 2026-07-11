@@ -54,7 +54,7 @@ const classNames = computed(() => ({
       data-slot="tags-input-item-delete"
       :class="classNames.itemDelete"
     >
-      <Icon :icon="config.icons.x" />
+      <Icon :name="config.icons.x" />
     </TagsInputItemDelete>
   </TagsInputItem>
 </template>

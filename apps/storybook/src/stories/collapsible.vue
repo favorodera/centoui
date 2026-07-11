@@ -22,7 +22,7 @@ const open = ref(false)
       Account Security
 
       <Icon
-        icon="lucide:chevron-down"
+        name="lucide:chevron-down"
         class="transition-transform"
         :class="{
           'rotate-180 duration-200 ease-out': open,
@@ -48,7 +48,7 @@ const open = ref(false)
             class="flex items-center gap-2"
           >
             <Icon
-              icon="lucide:check"
+              name="lucide:check"
               class="shrink-0 text-success"
             /> {{ value }}
           </li>

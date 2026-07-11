@@ -15,7 +15,7 @@ const controls = useStory('Alert', {
 
 <template>
   <AlertRoot :variant="controls.variant">
-    <Icon icon="lucide:lightbulb" />
+    <Icon name="lucide:lightbulb" />
 
     <AlertContent>
       <AlertTitle>Update Available</AlertTitle>
@@ -23,7 +23,7 @@ const controls = useStory('Alert', {
   </AlertRoot>
 
   <AlertRoot :variant="controls.variant">
-    <Icon icon="lucide:alert-triangle" />
+    <Icon name="lucide:alert-triangle" />
 
     <AlertContent>
       <AlertTitle>Payment Failed</AlertTitle>
@@ -45,7 +45,7 @@ const controls = useStory('Alert', {
   </AlertRoot>
 
   <AlertRoot :variant="controls.variant">
-    <Icon icon="lucide:x-circle" />
+    <Icon name="lucide:x-circle" />
 
     <AlertContent>
       <AlertTitle>Validation Failed</AlertTitle>

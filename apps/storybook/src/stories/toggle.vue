@@ -33,7 +33,7 @@ const controls = useStory('Toggle', {
     :aria-invalid="controls.invalid"
   >
     <Icon
-      icon="lucide:bookmark"
+      name="lucide:bookmark"
       class="group-aria-pressed/toggle:[&>path]:fill-foreground"
     />
     Bookmark
@@ -45,6 +45,6 @@ const controls = useStory('Toggle', {
     square
     :disabled="controls.disabled"
   >
-    <Icon icon="lucide:italic" />
+    <Icon name="lucide:italic" />
   </Toggle>
 </template>

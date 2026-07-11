@@ -25,7 +25,7 @@ const inputModel = ref('')
 <template>
   <Input
     id="input"
-    v-model:value="inputModel"
+    v-model="inputModel"
     :size="controls.size"
     :disabled="controls.disabled"
     :aria-invalid="controls.invalid"

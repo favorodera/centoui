@@ -68,17 +68,17 @@ useStory('Card', {})
         "
       >
         <div>
-          <Icon icon="lucide:clock" />
+          <Icon name="lucide:clock" />
           <span>8 min read</span>
         </div>
 
         <div>
-          <Icon icon="lucide:heart" />
+          <Icon name="lucide:heart" />
           <span>214 likes</span>
         </div>
 
         <div>
-          <Icon icon="lucide:message-circle" />
+          <Icon name="lucide:message-circle" />
           <span>38</span>
         </div>
       </div>
@@ -92,12 +92,12 @@ useStory('Card', {})
       "
     >
       <Button variant="outline">
-        <Icon icon="lucide:bookmark" />
+        <Icon name="lucide:bookmark" />
         Save
       </Button>
 
       <Button>
-        <Icon icon="lucide:book-open" />
+        <Icon name="lucide:book-open" />
         Read article
       </Button>
     </CardFooter>

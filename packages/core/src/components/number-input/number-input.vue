@@ -64,7 +64,7 @@ const classNames = computed(() => ({
         data-spin-button
         square
       >
-        <Icon :icon="config.icons.minus" />
+        <Icon :name="config.icons.minus" />
       </Button>
     </NumberFieldDecrement>
 
@@ -85,7 +85,7 @@ const classNames = computed(() => ({
         :size="buttonSize"
         square
       >
-        <Icon :icon="config.icons.plus" />
+        <Icon :name="config.icons.plus" />
       </Button>
     </NumberFieldIncrement>
   </NumberFieldRoot>

@@ -28,7 +28,7 @@ const controls = useStory('Accordion', {
         Getting Started
 
         <Icon
-          icon="lucide:chevron-down"
+          name="lucide:chevron-down"
           class="transition-transform"
           :class="{
             'rotate-180':open
@@ -60,7 +60,7 @@ const controls = useStory('Accordion', {
       <AccordionTrigger>
         Best Practices
         <Icon
-          icon="lucide:chevron-down"
+          name="lucide:chevron-down"
           class="transition-transform"
           :class="{
             'rotate-180':open

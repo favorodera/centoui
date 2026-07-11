@@ -43,9 +43,8 @@ const classNames = computed(() => ({
     <SelectIcon
       data-slot="select-icon"
       :class="classNames.icon"
-      as-child
     >
-      <Icon :icon="config.icons.chevronDown" />
+      <Icon :name="config.icons.chevronDown" />
     </SelectIcon>
   </SelectTrigger>
 </template>

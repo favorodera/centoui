@@ -11,13 +11,14 @@ export const iconVariants = tv({
 export { default as Icon } from './icon.vue'
 
 // PROPS
-export type IconProps = Omit<IconifyIconProps, 'ariaHidden'> & {
+export type IconProps = Omit<IconifyIconProps, 'icon'> & {
   /**
-   * Controls exposure to assistive technologies.
-   * Set to `false` and provide an accessible label for meaningful icons.
-   * @default true
+   * The iconify or custom ID of the icon.
+   * @see https://icon-sets.iconify.design/
+   * @see https://iconify.design/docs/icon-components/vue/
+   * @see https://github.com/nuxt/icon
    */
-  ariaHidden?: 'false' | 'true' | boolean
+  name: string
 
   class?: any
 }

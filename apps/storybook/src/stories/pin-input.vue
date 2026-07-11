@@ -32,7 +32,7 @@ const controls = useStory('Pin Input', {
     </PinInputGroup>
 
     <Icon
-      icon="lucide:minus"
+      name="lucide:minus"
       class="text-muted-foreground"
     />
 

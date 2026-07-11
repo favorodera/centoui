@@ -36,7 +36,7 @@ const controls = useStory('Button', {
     square
     :disabled="controls.disabled"
   >
-    <Icon icon="lucide:user" />
+    <Icon name="lucide:user" />
   </Button>
 
   <Button
@@ -45,6 +45,6 @@ const controls = useStory('Button', {
     :disabled="controls.disabled"
   >
     Loading...
-    <Icon icon="svg-spinners:180-ring" />
+    <Icon name="svg-spinners:180-ring" />
   </Button>
 </template>

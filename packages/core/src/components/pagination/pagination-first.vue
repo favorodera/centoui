@@ -42,7 +42,7 @@ const classNames = computed(() => root({
     :class="classNames"
   >
     <slot>
-      <Icon :icon="config.icons.chevronDoubleLeft" />
+      <Icon :name="config.icons.chevronDoubleLeft" />
       <span class="sr-only">First page</span>
     </slot>
   </PaginationFirst>

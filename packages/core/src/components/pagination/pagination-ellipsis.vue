@@ -29,7 +29,7 @@ const classNames = computed(() => ellipsis({
     :class="classNames"
   >
     <slot>
-      <Icon :icon="config.icons.ellipsis" />
+      <Icon :name="config.icons.ellipsis" />
       <span class="sr-only">More pages</span>
     </slot>
   </PaginationEllipsis>

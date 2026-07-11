@@ -26,7 +26,7 @@ const controls = useStory('Kbd', {
   <Button
     variant="outline"
   >
-    <Icon icon="lucide:search" />
+    <Icon name="lucide:search" />
     Search documentation
     <KbdGroup>
       <Kbd :size="controls.size">⌘</Kbd>

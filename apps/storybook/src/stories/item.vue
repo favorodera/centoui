@@ -48,7 +48,7 @@ const projects = [
 <template>
   <ItemRoot :variant="controls.variant">
     <ItemMedia variant="icon">
-      <Icon icon="lucide:calendar-clock" />
+      <Icon name="lucide:calendar-clock" />
     </ItemMedia>
 
     <ItemContent>
@@ -66,7 +66,7 @@ const projects = [
 
   <ItemRoot :variant="controls.variant">
     <ItemMedia variant="icon">
-      <Icon icon="lucide:cloud-upload" />
+      <Icon name="lucide:cloud-upload" />
     </ItemMedia>
 
     <ItemContent>
@@ -75,7 +75,7 @@ const projects = [
 
     <Icon
       class="text-muted-foreground"
-      icon="lucide:chevron-right"
+      name="lucide:chevron-right"
     />
   </ItemRoot>
 
@@ -103,7 +103,7 @@ const projects = [
       class="rounded-full"
       aria-label="Message"
     >
-      <Icon icon="lucide:message-circle" />
+      <Icon name="lucide:message-circle" />
     </Button>
   </ItemRoot>
 
@@ -119,7 +119,7 @@ const projects = [
 
       <Icon
         class="text-muted-foreground"
-        icon="lucide:arrow-up-right"
+        name="lucide:arrow-up-right"
       />
     </a>
   </ItemRoot>

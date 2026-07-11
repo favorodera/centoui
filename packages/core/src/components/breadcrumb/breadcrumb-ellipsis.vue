@@ -28,7 +28,7 @@ const classNames = computed(() => ellipsis({
     aria-hidden="true"
   >
     <slot>
-      <Icon :icon="config.icons.ellipsis" />
+      <Icon :name="config.icons.ellipsis" />
     </slot>
   </Primitive>
 </template>

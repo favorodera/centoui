@@ -38,7 +38,7 @@ const uploadedSize = computed(() => {
         "
       >
         <Icon
-          icon="lucide:image"
+          name="lucide:image"
           class="block-5 inline-5 text-muted-foreground"
         />
       </div>

@@ -1,20 +1,12 @@
 <script setup lang="ts">
-import { useVModel } from '@vueuse/core'
 import { computed } from 'vue'
-import { type InputEmits, type InputProps, inputVariants } from '.'
-
-const emits = defineEmits<InputEmits>()
+import { type InputProps, inputVariants } from '.'
 
 const props = withDefaults(defineProps<InputProps>(), {
   size: 'md',
 })
 
-const modelValue = useVModel(
-  props,
-  'value',
-  emits,
-  { defaultValue: props.defaultValue },
-)
+const model = defineModel<string>()
 
 const { root } = inputVariants()
 
@@ -26,10 +18,9 @@ const classNames = computed(() => root({
 
 <template>
   <input
-    v-model="modelValue"
+    v-model="model"
     data-slot="input"
     :data-size="size"
     :class="classNames"
-    v-bind="$attrs"
   >
 </template>

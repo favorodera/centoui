@@ -58,13 +58,13 @@ const priceRangeModelValue = ref([
     >
       <Icon
         v-if="controls.orientation === 'vertical'"
-        icon="lucide:volume-2"
+        name="lucide:volume-2"
         class="text-muted-foreground"
       />
 
       <Icon
         v-else
-        icon="lucide:volume-1"
+        name="lucide:volume-1"
         class="text-muted-foreground"
       />
 
@@ -80,13 +80,13 @@ const priceRangeModelValue = ref([
 
       <Icon
         v-if="controls.orientation === 'vertical'"
-        icon="lucide:volume-1"
+        name="lucide:volume-1"
         class="text-muted-foreground"
       />
 
       <Icon
         v-else
-        icon="lucide:volume-2"
+        name="lucide:volume-2"
         class="text-muted-foreground"
       />
     </div>

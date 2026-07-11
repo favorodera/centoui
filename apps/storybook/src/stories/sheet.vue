@@ -35,7 +35,7 @@ const controls = useStory('Sheet', {
   <SheetRoot>
     <SheetTrigger as-child>
       <Button variant="outline">
-        <Icon icon="lucide:user-plus" />
+        <Icon name="lucide:user-plus" />
         Invite Member
       </Button>
     </SheetTrigger>
@@ -94,7 +94,7 @@ const controls = useStory('Sheet', {
         </SheetClose>
 
         <Button>
-          <Icon icon="lucide:send" />
+          <Icon name="lucide:send" />
           Send Invite
         </Button>
       </SheetFooter>

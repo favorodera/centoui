@@ -57,10 +57,9 @@ const classNames = computed(() => ({
 
     <SelectItemIndicator
       data-slot="select-item-indicator"
-      as-child
       :class="classNames.itemIndicator"
     >
-      <Icon :icon="config.icons.check" />
+      <Icon :name="config.icons.check" />
     </SelectItemIndicator>
   </SelectItem>
 </template>

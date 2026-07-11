@@ -73,7 +73,7 @@ const socials = [
           aria-label="Close props panel"
           @click="models.controlPanelModel.value = false"
         >
-          <Icon icon="lucide:x" />
+          <Icon name="lucide:x" />
         </Button>
       </div>
 
@@ -105,7 +105,7 @@ const socials = [
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Icon :icon="social.icon" />
+              <Icon :name="social.icon" />
               {{ social.name }}
             </a>
           </Button>

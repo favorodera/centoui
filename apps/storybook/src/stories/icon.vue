@@ -12,5 +12,5 @@ const controls = useStory('Icon', {
 </script>
 
 <template>
-  <Icon :icon="controls.icon" />
+  <Icon :name="controls.icon" />
 </template>

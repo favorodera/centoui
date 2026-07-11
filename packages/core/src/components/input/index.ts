@@ -49,27 +49,5 @@ export interface InputProps {
    */
   size?: InputVariants['size']
 
-  /**
-   * Value of the input when it is initially rendered.
-   *
-   * Use when you do not need to control its value.
-   */
-  defaultValue?: number | string
-
-  /**
-   * The controlled value of the input.
-   *
-   * Can be binded as v-model:value.
-   */
-  value?: number | string
-
   class?: any
 }
-
-// EMITS
-
-/**
- * Event handler for when the value of the input changes.
- * @param payload The payload of the event.
- */
-export type InputEmits = (event: 'update:value', payload: number | string) => void

@@ -130,7 +130,7 @@ function set(key: string, value: unknown) {
       class="m-auto gap-1 place-items-center grid"
     >
       <Icon
-        icon="lucide:octagon-alert"
+        name="lucide:octagon-alert"
       />
 
       No controls found

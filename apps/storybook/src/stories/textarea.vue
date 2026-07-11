@@ -25,7 +25,7 @@ const textareaModel = ref('')
 <template>
   <Textarea
     id="textarea"
-    v-model:value="textareaModel"
+    v-model="textareaModel"
     :size="controls.size"
     :disabled="controls.disabled"
     :aria-invalid="controls.invalid"

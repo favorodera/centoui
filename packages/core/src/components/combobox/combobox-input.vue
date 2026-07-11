@@ -108,7 +108,7 @@ const classNames = computed(() => ({
             :size="buttonSize"
             square
           >
-            <Icon :icon="config.icons.x" />
+            <Icon :name="config.icons.x" />
           </Button>
         </ComboboxCancel>
 
@@ -123,7 +123,7 @@ const classNames = computed(() => ({
             :size="buttonSize"
             square
           >
-            <Icon :icon="config.icons.chevronDown" />
+            <Icon :name="config.icons.chevronDown" />
           </Button>
         </ComboboxTrigger>
       </InputGroupAddon>

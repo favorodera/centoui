@@ -28,7 +28,7 @@ const classNames = computed(() => separator({
     aria-hidden="true"
   >
     <slot>
-      <Icon :icon="config.icons.chevronRight" />
+      <Icon :name="config.icons.chevronRight" />
     </slot>
   </Primitive>
 </template>

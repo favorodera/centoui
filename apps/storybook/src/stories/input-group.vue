@@ -25,7 +25,7 @@ const controls = useStory('Input Group', {
 <template>
   <InputGroupRoot :size="controls.size">
     <InputGroupAddon>
-      <Icon icon="lucide:at-sign" />
+      <Icon name="lucide:at-sign" />
     </InputGroupAddon>
 
     <Input
