@@ -1,5 +1,22 @@
 # Changelog
 
+## v1.10.0...v1.11.0
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.10.0...v1.11.0)
+
+### Refactors
+
+- **core:** Standardize icon prop and simplify input models ([8c7419a](https://github.com/favorodera/centoui/commit/8c7419a))
+
+  - Rename icon prop to name in Icon component
+  - Update icon prop references in all components
+  - Migrate Input and Textarea to use defineModel
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.9.0...v1.10.0
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.9.0...v1.10.0)
