@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
 import { AlertDialogCancel, useForwardProps } from 'reka-ui'
-import { computed } from 'vue'
+import { normalizeClass } from 'vue'
 import {
   type AlertDialogCancelProps,
   alertDialogVariants,
@@ -16,25 +16,23 @@ const delegatedProps = reactiveOmit(props, 'class', 'size', 'variant', 'square')
 
 const forwardedProps = useForwardProps(delegatedProps)
 
-const { cancel } = alertDialogVariants()
+const dialogVariants = alertDialogVariants()
 
-const { root } = buttonVariants()
-
-const classNames = computed(() => root({
-  class: cancel({
-    class: props.class,
-  }),
-  size: props.size,
-  square: props.square,
-  variant: props.variant,
-}))
+const variants = buttonVariants()
 </script>
 
 <template>
   <AlertDialogCancel
     data-slot="alert-dialog-cancel"
     v-bind="forwardedProps"
-    :class="classNames"
+    :class="variants.root({
+      class: dialogVariants.cancel({
+        class: normalizeClass(props.class),
+      }),
+      size: props.size,
+      square: props.square,
+      variant: props.variant,
+    })"
   >
     <slot />
   </AlertDialogCancel>

@@ -6,7 +6,7 @@ import {
   SelectItemText,
   useForwardPropsEmits,
 } from 'reka-ui'
-import { computed } from 'vue'
+import { normalizeClass } from 'vue'
 import config from '#centoui/config'
 import {
   injectRootContext,
@@ -26,38 +26,28 @@ const delegatedProps = reactiveOmit(props, 'class')
 
 const forwardedPropsEmits = useForwardPropsEmits(delegatedProps, emits)
 
-const { item, itemIndicator, itemText } = selectVariants()
-
-const classNames = computed(() => ({
-  item: item({
-    class: props.class,
-    size: rootContext.size,
-  }),
-  itemIndicator: itemIndicator({
-    size: rootContext.size,
-  }),
-  itemText: itemText({
-    size: rootContext.size,
-  }),
-}))
+const variants = selectVariants()
 </script>
 
 <template>
   <SelectItem
     data-slot="select-item"
     v-bind="forwardedPropsEmits"
-    :class="classNames.item"
+    :class="variants.item({
+      class: normalizeClass(props.class),
+      size: rootContext?.size,
+    })"
   >
     <SelectItemText
       data-slot="select-item-text"
-      :class="classNames.itemText"
+      :class="variants.itemText({ size: rootContext?.size })"
     >
       <slot />
     </SelectItemText>
 
     <SelectItemIndicator
       data-slot="select-item-indicator"
-      :class="classNames.itemIndicator"
+      :class="variants.itemIndicator({ size: rootContext?.size })"
     >
       <Icon :name="config.icons.check" />
     </SelectItemIndicator>

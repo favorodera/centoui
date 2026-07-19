@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
 import { PaginationNext, useForwardProps } from 'reka-ui'
-import { computed } from 'vue'
+import { normalizeClass } from 'vue'
 import config from '#centoui/config'
 import {
   type PaginationNextProps,
@@ -19,25 +19,21 @@ const delegatedProps = reactiveOmit(props, 'class', 'square', 'variant', 'size')
 
 const forwardedProps = useForwardProps(delegatedProps)
 
-const { next } = paginationVariants()
-
-const { root } = buttonVariants()
-
-const classNames = computed(() => root({
-  class: next({
-    class: props.class,
-  }),
-  size: props.size,
-  square: props.square,
-  variant: props.variant,
-}))
+const variants = buttonVariants()
 </script>
 
 <template>
   <PaginationNext
     data-slot="pagination-next"
     v-bind="forwardedProps"
-    :class="classNames"
+    :class="variants.root({
+      class:paginationVariants().next({
+        class: normalizeClass(props.class),
+      }),
+      size: props.size,
+      square: props.square,
+      variant: props.variant,
+    })"
   >
     <slot>
       <Icon :name="config.icons.chevronRight" />

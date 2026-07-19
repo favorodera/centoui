@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
 import { SelectIcon, SelectTrigger, useForwardProps } from 'reka-ui'
-import { computed } from 'vue'
+import { normalizeClass } from 'vue'
 import config from '#centoui/config'
 import {
   injectRootContext,
@@ -18,31 +18,24 @@ const delegatedProps = reactiveOmit(props, 'class')
 
 const forwardedProps = useForwardProps(delegatedProps)
 
-const { icon, trigger } = selectVariants()
-
-const classNames = computed(() => ({
-  icon: icon({
-    size: rootContext?.size,
-  }),
-  trigger: trigger({
-    class: props.class,
-    size: rootContext?.size,
-  }),
-}))
+const variants = selectVariants()
 </script>
 
 <template>
   <SelectTrigger
     v-bind="forwardedProps"
     data-slot="select-trigger"
-    :class="classNames.trigger"
+    :class="variants.trigger({
+      class: normalizeClass(props.class),
+      size: rootContext?.size,
+    })"
     :data-size="rootContext?.size"
   >
     <slot />
 
     <SelectIcon
       data-slot="select-icon"
-      :class="classNames.icon"
+      :class="variants.icon({size: rootContext?.size,})"
     >
       <Icon :name="config.icons.chevronDown" />
     </SelectIcon>

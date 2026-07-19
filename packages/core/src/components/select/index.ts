@@ -1,3 +1,4 @@
+import type { HTMLAttributes } from 'vue'
 import {
   type AcceptableValue,
   createContext,
@@ -14,6 +15,7 @@ import {
 } from 'reka-ui'
 import { tv, type VariantProps } from 'tailwind-variants'
 
+// Variants
 export const selectVariants = tv({
   defaultVariants: {
     contentPosition: 'item-aligned',
@@ -23,7 +25,7 @@ export const selectVariants = tv({
     arrow: 'z-50 fill-overlay stroke-input group/select-arrow',
     content: `
       bg-overlay border border-input z-50 relative grid p-1 gap-1
-      group/select-content
+      group/select-content bg-clip-padding
 
       data-[side=bottom]:slide-in-from-top-2
 
@@ -40,24 +42,25 @@ export const selectVariants = tv({
       data-[state=open]:zoom-in-95
     `,
     group: `
-      scroll-my-1 grid gap-1 group/select-group
+      scroll-my-1 grid gap-1 group/select-group min-inline-0
 
       *:data-[slot=separator]:-mx-1
     `,
     icon: 'text-muted-foreground group/select-icon',
     item: `
       relative flex inline-full cursor-default items-center outline-none
-      select-none group/select-item
+      select-none group/select-item transition-colors min-inline-0
 
-      focus:bg-accent focus:text-accent-foreground
+      focus:not-data-disabled:bg-accent
+      focus:not-data-disabled:text-accent-foreground
 
-      data-disabled:pointer-events-none data-disabled:opacity-65
+      data-disabled:cursor-not-allowed data-disabled:opacity-70
     `,
     itemIndicator: `
       absolute inset-bs-1/2 -translate-y-1/2 group/select-item-indicator
     `,
     itemText: 'min-inline-0 truncate group/select-item-text',
-    label: 'text-muted-foreground py-0.5 group/select-label',
+    label: 'text-muted-foreground group/select-label',
     scrollDownButton: `
       flex inline-full cursor-default items-center justify-center
       rounded-b-[inherit] bg-overlay group/select-scroll-down-button
@@ -68,11 +71,12 @@ export const selectVariants = tv({
     `,
     trigger: `
       relative flex items-center inline-full min-inline-0 border border-input
-      bg-transparent outline-none transition-colors group/select-trigger
+      bg-transparent outline-none bg-clip-padding group/select-trigger
+      justify-between truncate
 
       focus-visible:ring-2 focus-visible:ring-ring
 
-      disabled:opacity-65 disabled:pointer-events-none
+      disabled:opacity-70 disabled:cursor-not-allowed
 
       aria-invalid:ring-2 aria-invalid:ring-error
 
@@ -80,8 +84,7 @@ export const selectVariants = tv({
     `,
     value: 'flex flex-1 items-center truncate group/select-value',
     viewport: `
-      rounded-[inherit] grid grid-cols-1 gap-1 min-inline-full -mx-1 px-1
-      group/select-viewport
+      rounded-[inherit] grid gap-1 -mx-1 px-1 group/select-viewport min-inline-0
 
       *:data-[slot=separator]:data-[orientation=horizontal]:-mx-1
     `,
@@ -93,6 +96,7 @@ export const selectVariants = tv({
         content: `
           max-block-(--reka-select-content-available-height)
           min-inline-(--reka-select-trigger-width)
+          max-inline-(--reka-select-trigger-width)
           origin-(--reka-select-content-transform-origin)
         `,
       },
@@ -101,26 +105,26 @@ export const selectVariants = tv({
       lg: {
         content: 'rounded-lg',
         icon: 'block-4.5 inline-4.5',
-        item: 'block-9 rounded-lg ps-2 pe-8 text-sm gap-1.5',
+        item: 'block-9 rounded-lg text-sm gap-2 pe-8 ps-2',
         itemIndicator: 'inset-e-2 block-4.5 inline-4.5',
         label: 'text-xs px-2',
         scrollDownButton: `
           block-9 px-2
 
-          *:data-[slot=icon]:block-4.5 *:data-[slot=icon]:inline-4.5
+          *:data-[slot=icon]:block-4 *:data-[slot=icon]:inline-4.5
         `,
         scrollUpButton: `
           block-9 px-2
 
-          *:data-[slot=icon]:block-4.5 *:data-[slot=icon]:inline-4.5
+          *:data-[slot=icon]:block-4 *:data-[slot=icon]:inline-4.5
         `,
-        trigger: 'block-9 rounded-lg px-3 text-sm gap-1.5',
-        value: 'gap-1.5',
+        trigger: 'block-9 px-3 text-sm gap-2 rounded-lg',
+        value: 'gap-2 text-sm',
       },
       md: {
         content: 'rounded-lg',
         icon: 'block-4 inline-4',
-        item: 'block-8 rounded-lg ps-1.5 pe-7 text-sm gap-1.5',
+        item: 'block-8 rounded-lg text-sm gap-1.5 pe-7 ps-1.5',
         itemIndicator: 'inset-e-1.5 block-4 inline-4',
         label: 'text-xs px-1.5',
         scrollDownButton: `
@@ -133,33 +137,34 @@ export const selectVariants = tv({
 
           *:data-[slot=icon]:block-4 *:data-[slot=icon]:inline-4
         `,
-        trigger: 'block-8 rounded-lg px-2.5 text-sm gap-1.5',
-        value: 'gap-1.5',
+        trigger: 'block-8 px-2.5 text-sm gap-1.5 rounded-lg',
+        value: 'gap-1.5 text-sm',
       },
       sm: {
-        content: 'rounded-md',
+        content: 'rounded-lg',
         icon: 'block-3.5 inline-3.5',
-        item: 'block-7 rounded-md ps-1 pe-5.5 text-xs gap-1',
+        item: 'block-7 rounded-lg text-sm gap-1 pe-5.5 ps-1',
         itemIndicator: 'inset-e-1 block-3.5 inline-3.5',
         label: 'text-xs px-1',
         scrollDownButton: `
-          block-7 px-2
+          block-7 px-1
 
           *:data-[slot=icon]:block-3.5 *:data-[slot=icon]:inline-3.5
         `,
         scrollUpButton: `
-          block-7 px-2
+          block-7 px-1
 
           *:data-[slot=icon]:block-3.5 *:data-[slot=icon]:inline-3.5
         `,
-        trigger: 'block-7 rounded-md px-2 text-xs gap-1',
-        value: 'gap-1',
+        trigger: 'block-7 px-2 text-sm gap-1 rounded-lg',
+        value: 'gap-1 text-sm',
       },
     },
   },
 })
+export type SelectVariants = VariantProps<typeof selectVariants>
 
-// COMPONENTS
+// Components
 export { default as SelectContent } from './select-content.vue'
 export { default as SelectGroup } from './select-group.vue'
 export { default as SelectItem } from './select-item.vue'
@@ -168,18 +173,14 @@ export { default as SelectRoot } from './select-root.vue'
 export { default as SelectTrigger } from './select-trigger.vue'
 export { default as SelectValue } from './select-value.vue'
 
-// CONTEXT
+// Context
 export type SelectRootContext = Pick<SelectRootProps, 'size'>
-
 export const [
   injectRootContext,
   provideRootContext,
 ] = createContext<SelectRootContext>('SelectRoot', 'centoui:select-root:context')
 
-// VARIANTS
-export type SelectVariants = VariantProps<typeof selectVariants>
-
-// PROPS
+// Props
 export type SelectRootProps = RekaSelectRootProps & {
   /**
    * Visual size scale.
@@ -188,12 +189,9 @@ export type SelectRootProps = RekaSelectRootProps & {
   size?: SelectVariants['size']
 }
 
-export type SelectTriggerProps = RekaSelectTriggerProps & { class?: any }
-
-export type SelectValueProps = RekaSelectValueProps & { class?: any }
-
 export type SelectContentProps = RekaSelectContentProps & {
-  class?: any
+  /** Custom style class */
+  class?: HTMLAttributes['class']
 
   /**
    * Whether to show an arrow alongside the content.
@@ -203,20 +201,37 @@ export type SelectContentProps = RekaSelectContentProps & {
   showArrow?: boolean
 }
 
-export type SelectItemProps = RekaSelectItemProps & { class?: any }
+export type SelectGroupProps = RekaSelectGroupProps & {
+  /** Custom style class */
+  class?: HTMLAttributes['class']
+}
 
-export type SelectGroupProps = RekaSelectGroupProps & { class?: any }
+export type SelectItemProps = RekaSelectItemProps & {
+  /** Custom style class */
+  class?: HTMLAttributes['class']
+}
 
-export type SelectLabelProps = RekaSelectLabelProps & { class?: any }
+export type SelectLabelProps = RekaSelectLabelProps & {
+  /** Custom style class */
+  class?: HTMLAttributes['class']
+}
+export type SelectTriggerProps = RekaSelectTriggerProps & {
+  /** Custom style class */
+  class?: HTMLAttributes['class']
+}
+export type SelectValueProps = RekaSelectValueProps & {
+  /** Custom style class */
+  class?: HTMLAttributes['class']
+}
 
-// EMITS
-export type SelectRootEmits = RekaSelectRootEmits
-
+// Emits
 export type SelectContentEmits = RekaSelectContentEmits
 
 export type SelectItemEmits = RekaSelectItemEmits
 
-// SLOTS
+export type SelectRootEmits = RekaSelectRootEmits
+
+// Slots
 export interface SelectRootSlots {
   default?: (props: {
     /** Current input values */
@@ -224,7 +239,7 @@ export interface SelectRootSlots {
 
     /** Current open state */
     open: boolean
-  }) => any
+  }) => void
 }
 
 export interface SelectValueSlots {
@@ -234,5 +249,5 @@ export interface SelectValueSlots {
 
     /** Current selected label */
     selectedLabel: Array<string>
-  }) => any
+  }) => void
 }

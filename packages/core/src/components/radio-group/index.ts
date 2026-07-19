@@ -1,3 +1,4 @@
+import type { HTMLAttributes } from 'vue'
 import {
   type AcceptableValue,
   createContext,
@@ -8,32 +9,31 @@ import {
 } from 'reka-ui'
 import { tv, type VariantProps } from 'tailwind-variants'
 
+// Variants
 export const radioGroupVariants = tv({
   defaultVariants: {
     orientation: 'vertical',
     size: 'md',
   },
   slots: {
-    indicator: `
-      flex items-center justify-center relative group/radio-group-indicator
-    `,
+    indicator: `grid place-items-center relative group/radio-group-indicator`,
     indicatorDot: `
       bg-primary-foreground absolute inset-bs-1/2 inset-s-1/2 -translate-1/2
       rounded-full group/radio-group-indicator-dot
     `,
     item: `
-      peer relative flex aspect-square shrink-0 rounded-full border border-input
-      outline-none items-center justify-center bg-primary
-      text-primary-foreground cursor-default group/radio-group-item
+      peer relative shrink-0 rounded-full border border-input outline-none grid
+      place-items-center cursor-default group/radio-item bg-clip-padding
 
-      focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring
+      focus-visible:ring-2 focus-visible:ring-ring
 
-      disabled:pointer-events-none disabled:opacity-65
+      disabled:cursor-not-allowed disabled:opacity-70
 
-      aria-invalid:border-error aria-invalid:ring-2 aria-invalid:ring-error
+      aria-invalid:ring-2 aria-invalid:ring-error
 
       data-[state=unchecked]:bg-transparent
-      data-[state=unchecked]:text-foreground
+
+      data-[state=checked]:bg-primary
     `,
     root: 'inline-full min-inline-0 gap-2 group/radio-group-root',
   },
@@ -62,25 +62,23 @@ export const radioGroupVariants = tv({
     },
   },
 })
+export type RadioGroupVariants = VariantProps<typeof radioGroupVariants>
 
-// COMPONENTS
+// Components
 export { default as RadioGroupItem } from './radio-group-item.vue'
 export { default as RadioGroupRoot } from './radio-group-root.vue'
 
-// CONTEXT
+// Context
 export type RadioGroupRootContext = Pick<RadioGroupRootProps, 'size'>
-
 export const [
   injectRootContext,
   provideRootContext,
 ] = createContext<RadioGroupRootContext>('RadioGroupRoot', 'centoui:radiogroup-root:context')
 
-// VARIANTS
-export type RadioGroupVariants = VariantProps<typeof radioGroupVariants>
-
-// PROPS
+// Props
 export type RadioGroupRootProps = RekaRadioGroupRootProps & {
-  class?: any
+  /** Custom style class */
+  class?: HTMLAttributes['class']
 
   /**
    * Visual size scale.
@@ -89,30 +87,20 @@ export type RadioGroupRootProps = RekaRadioGroupRootProps & {
   size?: RadioGroupVariants['size']
 }
 
-export type RadioGroupItemProps = RekaRadioGroupItemProps & { class?: any }
+export type RadioGroupItemProps = RekaRadioGroupItemProps & {
+  /** Custom style class */
+  class?: HTMLAttributes['class']
+}
 
-// EMITS
+// Emits
 export type RadioGroupRootEmits = RekaRadioGroupRootEmits
 
 export type RadioGroupItemEmits = RekaRadioGroupItemEmits
 
-// SLOTS
+// Slots
 export interface RadioGroupRootSlots {
   default?: (props: {
     /** Current input values */
     modelValue?: AcceptableValue
-  }) => any
-}
-
-export interface RadioGroupItemSlots {
-  default?: (props: {
-    /** Current checked state */
-    checked: boolean
-
-    /** Required state */
-    required: boolean
-
-    /** Disabled state */
-    disabled: boolean
-  }) => any
+  }) => void
 }

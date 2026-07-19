@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
 import { Primitive, useForwardProps } from 'reka-ui'
-import { computed, reactive, toRef } from 'vue'
+import { normalizeClass, reactive, toRef } from 'vue'
 import { type AlertRootProps, alertVariants, provideRootContext } from '.'
 
 const props = withDefaults(defineProps<AlertRootProps>(), {
@@ -12,12 +12,7 @@ const delegatedProps = reactiveOmit(props, 'class', 'variant')
 
 const forwardedProps = useForwardProps(delegatedProps)
 
-const { root } = alertVariants()
-
-const classNames = computed(() => root({
-  class: props.class,
-  variant: props.variant,
-}))
+const variants = alertVariants()
 
 provideRootContext(reactive({
   variant: toRef(props, 'variant'),
@@ -30,7 +25,10 @@ provideRootContext(reactive({
     :data-variant="variant"
     role="alert"
     v-bind="forwardedProps"
-    :class="classNames"
+    :class="variants.root({
+      class: normalizeClass(props.class),
+      variant: props.variant,
+    })"
   >
     <slot />
   </Primitive>

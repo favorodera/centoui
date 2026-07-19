@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
 import { NumberFieldDecrement, NumberFieldIncrement, NumberFieldInput, NumberFieldRoot, useForwardPropsEmits } from 'reka-ui'
-import { computed } from 'vue'
+import { normalizeClass } from 'vue'
 import config from '#centoui/config'
 import { type NumberInputEmits, type NumberInputProps, numberInputVariants } from '.'
 import { Button } from '../button'
@@ -17,33 +17,7 @@ const delegatedProps = reactiveOmit(props, 'size', 'class', 'placeholder')
 
 const forwardedPropsEmits = useForwardPropsEmits(delegatedProps, emits)
 
-const buttonSize = computed(() => {
-  switch (props.size) {
-    case 'sm': {
-      return '2xs'
-    }
-    default: {
-      return 'xs'
-    }
-  }
-})
-
-const { decrement, increment, input, root } = numberInputVariants()
-
-const classNames = computed(() => ({
-  decrement: decrement({
-    size: props.size,
-  }),
-  increment: increment({
-    size: props.size,
-  }),
-  input: input({
-    size: props.size,
-  }),
-  root: root({
-    class: props.class,
-  }),
-}))
+const variants = numberInputVariants()
 </script>
 
 <template>
@@ -51,39 +25,47 @@ const classNames = computed(() => ({
     v-bind="forwardedPropsEmits"
     data-slot="number-input-root"
     :data-size="props.size"
-    :class="classNames.root"
+    :class="variants.root({
+      class: normalizeClass(props.class),
+    })"
   >
     <NumberFieldDecrement
-      :class="classNames.decrement"
+      :class="variants.decrement({
+        size: props.size,
+      })"
       data-slot="number-input-decrement"
       as-child
     >
       <Button
         variant="ghost"
-        :size="buttonSize"
+        size="xs"
         data-spin-button
-        square
+        :square="true"
       >
         <Icon :name="config.icons.minus" />
       </Button>
     </NumberFieldDecrement>
 
     <NumberFieldInput
-      :class="classNames.input"
+      :class="variants.input({
+        size: props.size,
+      })"
       data-slot="number-input-input"
       :placeholder
     />
 
     <NumberFieldIncrement
-      :class="classNames.increment"
+      :class="variants.increment({
+        size: props.size,
+      })"
       data-slot="number-input-increment"
       as-child
     >
       <Button
         variant="ghost"
         data-spin-button
-        :size="buttonSize"
-        square
+        size="xs"
+        :square="true"
       >
         <Icon :name="config.icons.plus" />
       </Button>

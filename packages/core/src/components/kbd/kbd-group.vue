@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
 import { Primitive, useForwardProps } from 'reka-ui'
-import { computed } from 'vue'
+import { normalizeClass } from 'vue'
 import { type KbdGroupProps, kbdVariants } from './index'
 
 const props = withDefaults(defineProps<KbdGroupProps>(), {
@@ -12,17 +12,15 @@ const delegatedProps = reactiveOmit(props, 'class')
 
 const forwardedProps = useForwardProps(delegatedProps)
 
-const { group } = kbdVariants()
-
-const classNames = computed(() => group({
-  class: props.class,
-}))
+const variants = kbdVariants()
 </script>
 
 <template>
   <Primitive
     data-slot="kbd-group"
-    :class="classNames"
+    :class="variants.group({
+      class: normalizeClass(props.class),
+    })"
     v-bind="forwardedProps"
   >
     <slot />

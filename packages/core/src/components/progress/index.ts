@@ -1,6 +1,8 @@
 import type { ProgressRootEmits, ProgressRootProps } from 'reka-ui'
+import type { HTMLAttributes } from 'vue'
 import { tv } from 'tailwind-variants'
 
+// Variants
 export const progressVariants = tv({
   slots: {
     indicator: `
@@ -14,11 +16,14 @@ export const progressVariants = tv({
   },
 })
 
-// COMPONENT
+// Component
 export { default as Progress } from './progress.vue'
 
-// PROPS
-export type ProgressProps = ProgressRootProps & { class?: any }
+// Props
+export type ProgressProps = ProgressRootProps & {
+  /** Custom style class */
+  class?: HTMLAttributes['class']
+}
 
-// EMITS
+// Emits
 export type ProgressEmits = ProgressRootEmits

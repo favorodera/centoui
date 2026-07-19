@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
 import { AvatarImage, useForwardPropsEmits } from 'reka-ui'
-import { computed } from 'vue'
+import { normalizeClass } from 'vue'
 import { type AvatarImageEmits, type AvatarImageProps, avatarVariants, injectRootContext } from '.'
 
 const emits = defineEmits<AvatarImageEmits>()
@@ -14,18 +14,16 @@ const delegatedProps = reactiveOmit(props, 'class')
 
 const forwardedPropsEmits = useForwardPropsEmits(delegatedProps, emits)
 
-const { image } = avatarVariants()
-
-const classNames = computed(() => image({
-  class: props.class,
-  size: rootContext?.size,
-}))
+const variants = avatarVariants()
 </script>
 
 <template>
   <AvatarImage
     data-slot="avatar-image"
     v-bind="forwardedPropsEmits"
-    :class="classNames"
+    :class="variants.image({
+      class: normalizeClass(props.class),
+      size: rootContext?.size,
+    })"
   />
 </template>

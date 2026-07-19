@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
 import { AlertDialogContent, AlertDialogOverlay, AlertDialogPortal, useForwardPropsEmits } from 'reka-ui'
-import { computed, useAttrs } from 'vue'
+import { normalizeClass } from 'vue'
 import {
   type AlertDialogContentEmits,
   type AlertDialogContentProps,
@@ -16,33 +16,26 @@ const emits = defineEmits<AlertDialogContentEmits>()
 
 const props = defineProps<AlertDialogContentProps>()
 
-const attributes = useAttrs()
-
 const delegatedProps = reactiveOmit(props, 'class')
 
 const forwardedPropsEmits = useForwardPropsEmits(delegatedProps, emits)
 
-const { content, overlay } = alertDialogVariants()
-
-const classNames = computed(() => ({
-  content: content({
-    class: props.class,
-  }),
-  overlay: overlay(),
-}))
+const variants = alertDialogVariants()
 </script>
 
 <template>
   <AlertDialogPortal>
     <AlertDialogOverlay
       data-slot="alert-dialog-overlay"
-      :class="classNames.overlay"
+      :class="variants.overlay()"
     />
 
     <AlertDialogContent
       data-slot="alert-dialog-content"
-      v-bind="{ ...attributes, ...forwardedPropsEmits }"
-      :class="classNames.content"
+      v-bind="{ ...$attrs, ...forwardedPropsEmits }"
+      :class="variants.content({
+        class: normalizeClass(props.class),
+      })"
     >
       <slot />
     </AlertDialogContent>

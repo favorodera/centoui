@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
 import { Primitive, useForwardProps } from 'reka-ui'
-import { computed } from 'vue'
+import { computed, normalizeClass } from 'vue'
 import { type FieldErrorProps, fieldVariants } from '.'
 
 const props = defineProps<FieldErrorProps>()
@@ -10,11 +10,7 @@ const delegatedProps = reactiveOmit(props, 'class', 'errors')
 
 const forwardedProps = useForwardProps(delegatedProps)
 
-const { error } = fieldVariants()
-
-const classNames = computed(() => error({
-  class: props.class,
-}))
+const variants = fieldVariants()
 
 /**
  * Type guard to check if a value is a non-empty string.
@@ -63,14 +59,15 @@ const resolvedErrors = computed<string | string[] | undefined>(() => {
 })
 </script>
 
-<!-- eslint-disable-next-line vue/no-root-v-if -->
 <template>
   <Primitive
     v-if="$slots.default || resolvedErrors"
     data-slot="field-error"
     role="alert"
     v-bind="forwardedProps"
-    :class="classNames"
+    :class="variants.error({
+      class:normalizeClass(props.class)
+    })"
   >
     <slot v-if="$slots.default" />
 

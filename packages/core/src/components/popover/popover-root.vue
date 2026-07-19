@@ -15,7 +15,6 @@ const forwardedPropsEmits = useForwardPropsEmits(props, emits)
   <PopoverRoot
     v-slot="slotProps"
     v-bind="forwardedPropsEmits"
-    data-slot="popover-root"
   >
     <slot v-bind="slotProps" />
   </PopoverRoot>

@@ -1,9 +1,8 @@
 import type { NumberFieldRootEmits, NumberFieldRootProps } from 'reka-ui'
-import {
-  tv,
-  type VariantProps,
-} from 'tailwind-variants'
+import type { HTMLAttributes } from 'vue'
+import { tv, type VariantProps } from 'tailwind-variants'
 
+// Variants
 export const numberInputVariants = tv({
   defaultVariants: {
     size: 'md',
@@ -15,29 +14,29 @@ export const numberInputVariants = tv({
       outline-none block-full flex-1 text-center group/number-input-input
 
       placeholder:text-muted-foreground
+
+      data-disabled:cursor-not-allowed
     `,
     root: `
       inline-full min-inline-0 border flex items-center justify-between
       border-input bg-transparent outline-none group/number-input-root
+      bg-clip-padding
 
-      data-disabled:pointer-events-none data-disabled:opacity-65
+      data-disabled:cursor-not-allowed data-disabled:opacity-70
 
       aria-invalid:ring-2 aria-invalid:ring-error
 
       has-[[data-slot=number-input-input]:focus-visible]:ring-2
       has-[[data-slot=number-input-input]:focus-visible]:ring-ring
-
-      has-[[data-slot=number-input-input][data-disabled]]:pointer-events-none
-      has-[[data-slot=number-input-input][data-disabled]]:opacity-65
     `,
   },
   variants: {
     size: {
       lg: {
-        decrement: '-ms-1.5',
-        increment: '-me-1.5',
+        decrement: '-ms-2',
+        increment: '-me-2',
         input: 'text-sm block-9',
-        root: 'block-9 rounded-lg px-3 text-sm gap-1.5',
+        root: 'block-9 rounded-lg px-3 text-sm gap-2',
       },
       md: {
         decrement: '-ms-1.5',
@@ -48,22 +47,21 @@ export const numberInputVariants = tv({
       sm: {
         decrement: '-ms-1',
         increment: '-me-1',
-        input: 'text-xs block-7',
-        root: 'block-7 rounded-md px-2 text-xs gap-1',
+        input: 'text-sm block-7',
+        root: 'block-7 rounded-lg px-2 text-sm gap-1',
       },
     },
   },
 })
-
-// COMPONENTS
-export { default as NumberInput } from './number-input.vue'
-
-// VARIANTS
 export type NumberInputVariants = VariantProps<typeof numberInputVariants>
 
-// PROPS
+// Components
+export { default as NumberInput } from './number-input.vue'
+
+// Props
 export type NumberInputProps = NumberFieldRootProps & {
-  class?: any
+  /** Custom style class */
+  class?: HTMLAttributes['class']
 
   /**
    * The placeholder of the input.
@@ -78,5 +76,5 @@ export type NumberInputProps = NumberFieldRootProps & {
   size?: NumberInputVariants['size']
 }
 
-// EMITS
+// Emits
 export type NumberInputEmits = NumberFieldRootEmits

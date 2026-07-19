@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
 import { ProgressIndicator, ProgressRoot, useForwardPropsEmits } from 'reka-ui'
-import { computed } from 'vue'
+import { normalizeClass } from 'vue'
 import { type ProgressEmits, type ProgressProps, progressVariants } from '.'
 
 const emits = defineEmits<ProgressEmits>()
@@ -12,14 +12,7 @@ const delegatedProps = reactiveOmit(props, 'class')
 
 const forwardedPropsEmits = useForwardPropsEmits(delegatedProps, emits)
 
-const { indicator, root } = progressVariants()
-
-const classNames = computed(() => ({
-  indicator: indicator(),
-  root: root({
-    class: props.class,
-  }),
-}))
+const variants = progressVariants()
 </script>
 
 <template>
@@ -27,10 +20,12 @@ const classNames = computed(() => ({
     v-slot="{modelValue}"
     data-slot="progress-bar-root"
     v-bind="forwardedPropsEmits"
-    :class="classNames.root"
+    :class="variants.root({
+      class:normalizeClass(props.class)
+    })"
   >
     <ProgressIndicator
-      :class="classNames.indicator"
+      :class="variants.indicator()"
       :style="{
         transform: `translateX(calc(-100% + ${modelValue || 0}%))`,
       }"

@@ -1,25 +1,28 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
 import { Primitive, useForwardProps } from 'reka-ui'
-import { computed } from 'vue'
+import { normalizeClass } from 'vue'
 import {
   type PopoverFooterProps,
   popoverVariants,
 } from '.'
 
 const props = defineProps<PopoverFooterProps>()
+
 const delegatedProps = reactiveOmit(props, 'class')
+
 const forwardedProps = useForwardProps(delegatedProps)
 
-const { footer } = popoverVariants()
-const classNames = computed(() => footer({ class: props.class }))
+const variants = popoverVariants()
 </script>
 
 <template>
   <Primitive
     data-slot="popover-footer"
     v-bind="forwardedProps"
-    :class="classNames"
+    :class="variants.footer({
+      class:normalizeClass(props.class)
+    })"
   >
     <slot />
   </Primitive>

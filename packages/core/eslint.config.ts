@@ -5,9 +5,7 @@ export default factory({
     entryPoint: 'src/theme.css',
   },
 })
-  .override('favorodera/typescript/rules', {
-    rules: {
-      'ts/no-explicit-any': 'off',
-    },
-  })
   .remove('favorodera/vue/a11y/rules')
+  .overrideRules({
+    'vue/no-root-v-if': 'off',
+  })

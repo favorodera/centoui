@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
 import { RadioGroupRoot, useForwardPropsEmits } from 'reka-ui'
-import { computed, reactive, toRef } from 'vue'
+import { normalizeClass, reactive, toRef } from 'vue'
 import { provideRootContext, type RadioGroupRootEmits, type RadioGroupRootProps, type RadioGroupRootSlots, radioGroupVariants } from '.'
 
 defineSlots<RadioGroupRootSlots>()
@@ -17,13 +17,7 @@ const delegatedProps = reactiveOmit(props, 'class', 'size')
 
 const forwardedPropsEmits = useForwardPropsEmits(delegatedProps, emits)
 
-const { root } = radioGroupVariants()
-
-const classNames = computed(() => root({
-  class: props.class,
-  orientation: props.orientation,
-  size: props.size,
-}))
+const variants = radioGroupVariants()
 
 provideRootContext(reactive({
   size: toRef(props, 'size'),
@@ -34,7 +28,11 @@ provideRootContext(reactive({
   <RadioGroupRoot
     v-slot="slotProps"
     data-slot="radio-group-root"
-    :class="classNames"
+    :class="variants.root({
+      class: normalizeClass(props.class),
+      orientation: props.orientation,
+      size: props.size,
+    })"
     v-bind="forwardedPropsEmits"
     :data-orientation="orientation"
     :data-size="size"

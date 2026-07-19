@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
 import { ComboboxGroup, useForwardProps } from 'reka-ui'
-import { computed } from 'vue'
+import { normalizeClass } from 'vue'
 import {
   type ComboboxGroupProps,
   comboboxVariants,
@@ -13,18 +13,16 @@ const delegatedProps = reactiveOmit(props, 'class')
 
 const forwardedProps = useForwardProps(delegatedProps)
 
-const { group } = comboboxVariants()
-
-const classNames = computed(() => group({
-  class: props.class,
-}))
+const variants = comboboxVariants()
 </script>
 
 <template>
   <ComboboxGroup
     data-slot="combobox-group"
     v-bind="forwardedProps"
-    :class="classNames"
+    :class="variants.group({
+      class: normalizeClass(props.class),
+    })"
   >
     <slot />
   </ComboboxGroup>

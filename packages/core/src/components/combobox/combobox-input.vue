@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
 import { ComboboxAnchor, ComboboxCancel, ComboboxInput, ComboboxTrigger, injectComboboxRootContext, useForwardPropsEmits } from 'reka-ui'
-import { computed } from 'vue'
+import { computed, normalizeClass } from 'vue'
 import config from '#centoui/config'
 import {
   type ComboboxInputEmits,
@@ -9,9 +9,9 @@ import {
   comboboxVariants,
   injectRootContext,
 } from '.'
-import { Button } from '../button'
-import { Icon } from '../icon'
-import { inputVariants } from '../input'
+import { Button } from '../../components/button'
+import { Icon } from '../../components/icon'
+import { inputVariants } from '../../components/input'
 import { InputGroupAddon, InputGroupRoot } from '../input-group'
 
 defineOptions({
@@ -45,43 +45,14 @@ const hasValue = computed(() => {
 
 const showClear = computed(() => props.showClear && hasValue.value)
 
-const buttonSize = computed(() => {
-  switch (rootContext?.size) {
-    case 'sm': {
-      return '2xs'
-    }
-    default: {
-      return 'xs'
-    }
-  }
-})
-
-const { anchor, cancel, input, trigger } = comboboxVariants()
-
-const { root } = inputVariants()
-
-const classNames = computed(() => ({
-  anchor: anchor({
-    size: rootContext?.size,
-  }),
-  cancel: cancel({
-    size: rootContext?.size,
-  }),
-  input: root({
-    class: input({
-      class: props.class,
-    }),
-    size: rootContext?.size,
-  }),
-  trigger: trigger({
-    size: rootContext?.size,
-  }),
-}))
+const variants = comboboxVariants()
 </script>
 
 <template>
   <ComboboxAnchor
-    :class="classNames.anchor"
+    :class="variants.anchor({
+      size: rootContext?.size,
+    })"
     data-slot="combobox-anchor"
     as-child
   >
@@ -90,7 +61,12 @@ const classNames = computed(() => ({
         v-bind="{...$attrs,...forwardedPropsEmits}"
         data-slot="combobox-input"
         data-input-group-control
-        :class="classNames.input"
+        :class="inputVariants().root({
+          size: rootContext?.size,
+          class: variants.input({
+            class: normalizeClass(props.class),
+          }),
+        })"
       />
 
       <InputGroupAddon
@@ -99,14 +75,16 @@ const classNames = computed(() => ({
       >
         <ComboboxCancel
           v-if="showClear"
-          :class="classNames.cancel"
+          :class="variants.cancel({
+            size: rootContext?.size,
+          })"
           data-slot="combobox-cancel"
           as-child
         >
           <Button
             variant="ghost"
-            :size="buttonSize"
-            square
+            size="xs"
+            :square="true"
           >
             <Icon :name="config.icons.x" />
           </Button>
@@ -114,14 +92,16 @@ const classNames = computed(() => ({
 
         <ComboboxTrigger
           v-else-if="showTrigger"
-          :class="classNames.trigger"
+          :class="variants.trigger({
+            size: rootContext?.size,
+          })"
           data-slot="combobox-trigger"
           as-child
         >
           <Button
             variant="ghost"
-            :size="buttonSize"
-            square
+            size="xs"
+            :square="true"
           >
             <Icon :name="config.icons.chevronDown" />
           </Button>

@@ -1,3 +1,4 @@
+import type { HTMLAttributes } from 'vue'
 import {
   type AcceptableValue,
   createContext,
@@ -15,6 +16,7 @@ import {
 } from 'reka-ui'
 import { tv, type VariantProps } from 'tailwind-variants'
 
+// Variants
 export const comboboxVariants = tv({
   defaultVariants: {
     contentPosition: 'inline',
@@ -27,7 +29,7 @@ export const comboboxVariants = tv({
     arrow: 'z-50 fill-overlay stroke-input group/combobox-arrow',
     cancel: 'group/combobox-cancel',
     content: `
-      bg-overlay border border-input z-50 relative grid p-1 gap-1
+      bg-overlay border bg-clip-padding z-50 relative grid p-1 gap-1
       group/combobox-content
 
       data-[side=bottom]:slide-in-from-top-2
@@ -49,28 +51,29 @@ export const comboboxVariants = tv({
       text-muted-foreground py-1 text-center group/combobox-empty
     `,
     group: `
-      scroll-my-1 grid gap-1 group/combobox-group
+      scroll-my-1 grid gap-1 group/combobox-group min-inline-0
 
       *:data-[slot=separator]:-mx-1
     `,
     input: 'group/combobox-input',
     item: `
       relative flex inline-full cursor-default items-center outline-none
-      select-none group/combobox-item
+      select-none group/combobox-item min-inline-0
 
-      data-highlighted:bg-accent data-highlighted:text-accent-foreground
+      data-highlighted:not-data-disabled:bg-accent
+      data-highlighted:not-data-disabled:text-accent-foreground
 
-      data-disabled:pointer-events-none data-disabled:opacity-65
+      data-disabled:cursor-not-allowed data-disabled:opacity-70
     `,
     itemIndicator: `
       absolute inset-bs-1/2 -translate-y-1/2 group/combobox-item-indicator
     `,
-    label: 'text-muted-foreground py-0.5 group/combobox-label',
+    label: 'text-muted-foreground group/combobox-label',
     root: 'relative group/combobox-root',
     trigger: 'group/combobox-trigger',
     viewport: `
-      rounded-[inherit] grid grid-cols-1 gap-1 min-inline-full -mx-1 px-1
-      group/combobox-viewport
+      rounded-[inherit] grid grid-cols-1 gap-1 -mx-1 px-1
+      group/combobox-viewport min-inline-0
 
       *:data-[slot=separator]:data-[orientation=horizontal]:-mx-1
     `,
@@ -78,13 +81,14 @@ export const comboboxVariants = tv({
   variants: {
     contentPosition: {
       inline: {
-        content: 'absolute inline-full max-block-[90dvh]',
+        content: 'absolute inline-full min-inline-0 max-block-[90dvh]',
       },
       popper: {
         content: `
           max-block-(--reka-combobox-content-available-height)
           origin-(--reka-combobox-content-transform-origin)
           min-inline-(--reka-combobox-trigger-width)
+          max-inline-(--reka-combobox-trigger-width)
         `,
       },
     },
@@ -92,10 +96,10 @@ export const comboboxVariants = tv({
       lg: {
         content: 'rounded-lg',
         empty: 'text-sm',
-        item: 'block-9 rounded-lg ps-2 pe-8 text-sm gap-1.5',
+        item: 'block-9 rounded-lg ps-2 pe-8 text-sm gap-2',
         itemIndicator: 'inset-e-2 block-4.5 inline-4.5',
         label: 'text-xs px-2',
-        trigger: '-me-1.5',
+        trigger: '-me-2',
       },
       md: {
         content: 'rounded-lg',
@@ -106,9 +110,9 @@ export const comboboxVariants = tv({
         trigger: '-me-1.5',
       },
       sm: {
-        content: 'rounded-md',
-        empty: 'text-xs',
-        item: 'block-7 rounded-md ps-1 pe-5.5 text-xs gap-1',
+        content: 'rounded-lg',
+        empty: 'text-sm',
+        item: 'block-7 rounded-lg ps-1 pe-5.5 text-sm gap-1',
         itemIndicator: 'inset-e-1 block-3.5 inline-3.5',
         label: 'text-xs px-1',
         trigger: '-me-1',
@@ -116,8 +120,9 @@ export const comboboxVariants = tv({
     },
   },
 })
+export type ComboboxVariants = VariantProps<typeof comboboxVariants>
 
-// COMPONENTS
+// Components
 export { default as ComboboxContent } from './combobox-content.vue'
 export { default as ComboboxEmpty } from './combobox-empty.vue'
 export { default as ComboboxGroup } from './combobox-group.vue'
@@ -126,20 +131,17 @@ export { default as ComboboxItem } from './combobox-item.vue'
 export { default as ComboboxLabel } from './combobox-label.vue'
 export { default as ComboboxRoot } from './combobox-root.vue'
 
-// CONTEXT
+// Context
 export type ComboboxRootContext = Pick<ComboboxRootProps, 'size'>
-
 export const [
   injectRootContext,
   provideRootContext,
 ] = createContext<ComboboxRootContext>('ComboboxRoot', 'centoui:combobox-root:context')
 
-// VARIANTS
-export type ComboboxVariants = VariantProps<typeof comboboxVariants>
-
-// PROPS
+// Props
 export type ComboboxRootProps = RekaComboboxRootProps & {
-  class?: any
+  /** Custom style class */
+  class?: HTMLAttributes['class']
 
   /**
    * Visual size scale.
@@ -149,7 +151,8 @@ export type ComboboxRootProps = RekaComboboxRootProps & {
 }
 
 export type ComboboxInputProps = RekaComboboxInputProps & {
-  class?: any
+  /** Custom style class */
+  class?: HTMLAttributes['class']
 
   /**
    * Whether to show the clear button
@@ -165,7 +168,8 @@ export type ComboboxInputProps = RekaComboboxInputProps & {
 }
 
 export type ComboboxContentProps = RekaComboboxContentProps & {
-  class?: any
+  /** Custom style class */
+  class?: HTMLAttributes['class']
 
   /**
    * Whether to show an arrow alongside the content.
@@ -175,15 +179,27 @@ export type ComboboxContentProps = RekaComboboxContentProps & {
   showArrow?: boolean
 }
 
-export type ComboboxEmptyProps = RekaComboboxEmptyProps & { class?: any }
+export type ComboboxEmptyProps = RekaComboboxEmptyProps & {
+  /** Custom style class */
+  class?: HTMLAttributes['class']
+}
 
-export type ComboboxItemProps = RekaComboboxItemProps & { class?: any }
+export type ComboboxItemProps = RekaComboboxItemProps & {
+  /** Custom style class */
+  class?: HTMLAttributes['class']
+}
 
-export type ComboboxLabelProps = RekaComboboxLabelProps & { class?: any }
+export type ComboboxLabelProps = RekaComboboxLabelProps & {
+  /** Custom style class */
+  class?: HTMLAttributes['class']
+}
 
-export type ComboboxGroupProps = RekaComboboxGroupProps & { class?: any }
+export type ComboboxGroupProps = RekaComboboxGroupProps & {
+  /** Custom style class */
+  class?: HTMLAttributes['class']
+}
 
-// EMITS
+// Emits
 export type ComboboxRootEmits = RekaComboboxRootEmits
 
 export type ComboboxInputEmits = RekaComboboxInputEmits
@@ -192,7 +208,7 @@ export type ComboboxContentEmits = RekaComboboxContentEmits
 
 export type ComboboxItemEmits = RekaComboboxItemEmits
 
-// SLOTS
+// Slots
 export interface ComboboxRootSlots<TValue = AcceptableValue> {
   default?: (props: {
     /** Current active values */
@@ -200,5 +216,5 @@ export interface ComboboxRootSlots<TValue = AcceptableValue> {
 
     /** Current open state */
     open: boolean
-  }) => any
+  }) => void
 }

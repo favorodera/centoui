@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
 import { Primitive, useForwardProps } from 'reka-ui'
-import { computed } from 'vue'
+import { normalizeClass } from 'vue'
 import { type AlertContentProps, alertVariants, injectRootContext } from '.'
 
 const props = defineProps<AlertContentProps>()
@@ -12,19 +12,17 @@ const delegatedProps = reactiveOmit(props, 'class')
 
 const forwardedProps = useForwardProps(delegatedProps)
 
-const { content } = alertVariants()
-
-const classNames = computed(() => content({
-  class: props.class,
-  variant: rootContext?.variant,
-}))
+const variants = alertVariants()
 </script>
 
 <template>
   <Primitive
     data-slot="alert-content"
     v-bind="forwardedProps"
-    :class="classNames"
+    :class="variants.content({
+      class: normalizeClass(props.class),
+      variant: rootContext?.variant,
+    })"
   >
     <slot />
   </Primitive>

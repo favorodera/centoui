@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
 import { PaginationListItem, useForwardProps } from 'reka-ui'
-import { computed } from 'vue'
+import { normalizeClass } from 'vue'
 import {
   type PaginationListItemProps,
   paginationVariants,
@@ -16,25 +16,21 @@ const delegatedProps = reactiveOmit(props, 'class', 'square', 'variant', 'size')
 
 const forwardedProps = useForwardProps(delegatedProps)
 
-const { listItem } = paginationVariants()
-
-const { root } = buttonVariants()
-
-const classNames = computed(() => root({
-  class: listItem({
-    class: props.class,
-  }),
-  size: props.size,
-  square: props.square,
-  variant: props.variant,
-}))
+const variants = buttonVariants()
 </script>
 
 <template>
   <PaginationListItem
     data-slot="pagination-list-item"
     v-bind="forwardedProps"
-    :class="classNames"
+    :class="variants.root({
+      class: paginationVariants().listItem({
+        class: normalizeClass(props.class),
+      }),
+      size: props.size,
+      square: props.square,
+      variant: props.variant,
+    })"
   >
     <slot />
   </PaginationListItem>

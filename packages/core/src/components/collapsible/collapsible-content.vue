@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
 import { CollapsibleContent, useForwardPropsEmits } from 'reka-ui'
-import { computed } from 'vue'
+import { normalizeClass } from 'vue'
 import {
   type CollapsibleContentEmits,
   type CollapsibleContentProps,
@@ -14,21 +14,19 @@ const props = defineProps<CollapsibleContentProps>()
 
 const delegatedProps = reactiveOmit(props, 'class')
 
-// Note: emits as any is used to avoid type instantiation issues
+// Note: emits as any is used to silence type instantiation issues
 const forwardedPropsEmits = useForwardPropsEmits(delegatedProps, emits as any)
 
-const { content } = collapsibleVariants()
-
-const classNames = computed(() => content({
-  class: props.class,
-}))
+const variants = collapsibleVariants()
 </script>
 
 <template>
   <CollapsibleContent
     data-slot="collapsible-content"
     v-bind="forwardedPropsEmits"
-    :class="classNames"
+    :class="variants.content({
+      class: normalizeClass(props.class),
+    })"
   >
     <slot />
   </CollapsibleContent>

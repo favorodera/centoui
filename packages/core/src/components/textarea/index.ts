@@ -1,22 +1,22 @@
+import type { HTMLAttributes } from 'vue'
 import { tv, type VariantProps } from 'tailwind-variants'
 
+// Variants
 export const textareaVariants = tv({
   defaultVariants: {
     size: 'md',
   },
   slots: {
     root: `
-      field-sizing-content min-block-20 inline-full scrollbar-thin
-      overflow-y-auto border border-input bg-transparent outline-none
-      resize-none transition-colors min-inline-0 group/textarea
-
-      selection:bg-primary selection:text-primary-foreground
+      field-sizing-content min-block-20 scrollbar-thin overflow-y-auto
+      bg-transparent outline-none resize-none min-inline-0 group/textarea
+      inline-full border border-input bg-clip-padding
 
       placeholder:text-muted-foreground
 
       focus-visible:ring-2 focus-visible:ring-ring
 
-      disabled:pointer-events-none disabled:opacity-65
+      disabled:cursor-not-allowed disabled:opacity-70
 
       aria-invalid:ring-2 aria-invalid:ring-error
     `,
@@ -24,25 +24,23 @@ export const textareaVariants = tv({
   variants: {
     size: {
       lg: {
-        root: 'px-3.5 py-2 text-sm rounded-lg',
+        root: 'p-3 text-sm rounded-lg',
       },
       md: {
-        root: 'px-3 py-1.5 text-sm rounded-lg',
+        root: 'p-2.5 text-sm rounded-lg',
       },
       sm: {
-        root: 'px-2.5 py-1 text-xs rounded-md',
+        root: 'p-2 text-sm rounded-lg',
       },
     },
   },
 })
-
-// COMPONENT
-export { default as Textarea } from './textarea.vue'
-
-// VARIANTS
 export type TextareaVariants = VariantProps<typeof textareaVariants>
 
-// PROPS
+// Components
+export { default as Textarea } from './textarea.vue'
+
+// Props
 export interface TextareaProps {
   /**
    * Visual size scale.
@@ -50,5 +48,6 @@ export interface TextareaProps {
    */
   size?: TextareaVariants['size']
 
-  class?: any
+  /** Custom style class */
+  class?: HTMLAttributes['class']
 }

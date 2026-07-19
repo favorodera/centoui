@@ -20,15 +20,32 @@ const controls = useStory('Checkbox', {
 })
 
 const checkboxModel = ref<'indeterminate' | boolean>('indeterminate')
+
+const toggleState = () => {
+  switch (checkboxModel.value) {
+    case 'indeterminate': {
+      checkboxModel.value = true
+      break
+    }
+    case true: {
+      checkboxModel.value = false
+      break
+    }
+    default: {
+      checkboxModel.value = 'indeterminate'
+    }
+  }
+}
 </script>
 
 <template>
   <Checkbox
     id="checkbox"
-    v-model:model-value="checkboxModel"
+    :model-value="checkboxModel"
     :aria-invalid="controls.invalid"
     :disabled="controls.disabled"
     :size="controls.size"
     name="checkbox"
+    @update:model-value="toggleState"
   />
 </template>

@@ -1,6 +1,8 @@
 import type { PrimitiveProps } from 'reka-ui'
+import type { HTMLAttributes } from 'vue'
 import { tv, type VariantProps } from 'tailwind-variants'
 
+// Variants
 export const fieldVariants = tv({
   defaultVariants: {
     fieldOrientation: 'vertical',
@@ -11,10 +13,6 @@ export const fieldVariants = tv({
     description: `
       text-sm text-muted-foreground text-start font-normal
       group/field-description
-
-      [&>a]:underline [&>a]:underline-offset-4
-
-      [&>a:hover]:text-primary
     `,
     error: `
       col-span-full font-normal text-sm text-error inline-full min-inline-0
@@ -22,9 +20,9 @@ export const fieldVariants = tv({
 
       first-letter:uppercase
 
-      [&>ul]:list-disc [&>ul]:flex-col [&>ul]:flex [&>ul]:gap-1 [&>ul]:ms-4
+      *:[ul]:list-disc *:[ul]:flex-col *:[ul]:flex *:[ul]:gap-1 *:[ul]:ms-4
 
-      [:is([data-slot=field-set],[data-slot=field-group])>&:last-child]:-mbs-2
+      [[data-slot=field-set],[data-slot=field-group]]:last:-mbs-2
     `,
     field: `
       gap-2 inline-full group/field min-inline-0
@@ -40,8 +38,8 @@ export const fieldVariants = tv({
     title: `
       flex items-center font-medium text-sm inline-full group/field-title
 
-      group-data-[disabled=true]/field:opacity-65
-      group-data-[disabled=true]/field:pointer-events-none
+      group-data-[disabled=true]/field:opacity-70
+      group-data-[disabled=true]/field:cursor-not-allowed
     `,
   },
   variants: {
@@ -81,8 +79,9 @@ export const fieldVariants = tv({
     },
   },
 })
+export type FieldVariants = VariantProps<typeof fieldVariants>
 
-// COMPONENTS
+// Components
 export { default as FieldContent } from './field-content.vue'
 export { default as FieldDescription } from './field-description.vue'
 export { default as FieldError } from './field-error.vue'
@@ -92,16 +91,15 @@ export { default as FieldSet } from './field-set.vue'
 export { default as FieldTitle } from './field-title.vue'
 export { default as Field } from './field.vue'
 
-// VARIANTS
-export type FieldVariants = VariantProps<typeof fieldVariants>
-
-// PROPS
+// Props
 export interface FieldSetProps {
-  class?: any
+  /** Custom style class */
+  class?: HTMLAttributes['class']
 }
 
 export interface FieldLegendProps {
-  class?: any
+  /** Custom style class */
+  class?: HTMLAttributes['class']
 
   /**
    * Visual style variant.
@@ -113,10 +111,14 @@ export interface FieldLegendProps {
   variant?: FieldVariants['legendVariant']
 }
 
-export type FieldGroupProps = PrimitiveProps & { class?: any }
+export type FieldGroupProps = PrimitiveProps & {
+  /** Custom style class */
+  class?: HTMLAttributes['class']
+}
 
 export type FieldProps = PrimitiveProps & {
-  class?: any
+  /** Custom style class */
+  class?: HTMLAttributes['class']
 
   /**
    * The orientation of the field.
@@ -125,14 +127,24 @@ export type FieldProps = PrimitiveProps & {
   orientation?: FieldVariants['fieldOrientation']
 }
 
-export type FieldContentProps = PrimitiveProps & { class?: any }
+export type FieldContentProps = PrimitiveProps & {
+  /** Custom style class */
+  class?: HTMLAttributes['class']
+}
 
-export type FieldTitleProps = PrimitiveProps & { class?: any }
+export type FieldTitleProps = PrimitiveProps & {
+  /** Custom style class */
+  class?: HTMLAttributes['class']
+}
 
-export type FieldDescriptionProps = PrimitiveProps & { class?: any }
+export type FieldDescriptionProps = PrimitiveProps & {
+  /** Custom style class */
+  class?: HTMLAttributes['class']
+}
 
 export type FieldErrorProps = PrimitiveProps & {
-  class?: any
+  /** Custom style class */
+  class?: HTMLAttributes['class']
 
   /** The error message or messages to display. */
   errors?: Array<string | undefined | { message?: string }> | string

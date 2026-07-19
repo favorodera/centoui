@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
 import { Primitive, useForwardProps } from 'reka-ui'
-import { computed } from 'vue'
+import { normalizeClass } from 'vue'
 import config from '#centoui/config'
 import {
   SheetClose,
@@ -19,27 +19,22 @@ const delegatedProps = reactiveOmit(props, 'class', 'showClose')
 
 const forwardedProps = useForwardProps(delegatedProps)
 
-const { header, headerClose } = sheetVariants()
-
-const classNames = computed(() => ({
-  close: headerClose(),
-  header: header({
-    class: props.class,
-  }),
-}))
+const variants = sheetVariants()
 </script>
 
 <template>
   <Primitive
     data-slot="sheet-header"
     v-bind="forwardedProps"
-    :class="classNames.header"
+    :class="variants.header({
+      class: normalizeClass(props.class),
+    })"
   >
     <slot />
 
     <SheetClose
       v-if="showClose"
-      :class="classNames.close"
+      :class="variants.headerClose()"
       data-slot="sheet-header-close"
       as-child
     >

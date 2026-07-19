@@ -144,6 +144,9 @@ importers:
       relizy:
         specifier: catalog:tools
         version: 1.4.9(@types/node@25.9.4)(magicast@0.5.3)
+      tailwindcss:
+        specifier: catalog:vendor
+        version: 4.3.2
       turbo:
         specifier: catalog:tools
         version: 2.10.4

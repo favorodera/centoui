@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
 import { PaginationLast, useForwardProps } from 'reka-ui'
-import { computed } from 'vue'
+import { normalizeClass } from 'vue'
 import config from '#centoui/config'
 import {
   type PaginationLastProps,
@@ -19,18 +19,7 @@ const delegatedProps = reactiveOmit(props, 'class', 'square', 'variant', 'size')
 
 const forwardedProps = useForwardProps(delegatedProps)
 
-const { last } = paginationVariants()
-
-const { root } = buttonVariants()
-
-const classNames = computed(() => root({
-  class: last({
-    class: props.class,
-  }),
-  size: props.size,
-  square: props.square,
-  variant: props.variant,
-}))
+const variants = buttonVariants()
 </script>
 
 <template>
@@ -39,7 +28,14 @@ const classNames = computed(() => root({
     :data-variant="variant"
     :data-size="size"
     v-bind="forwardedProps"
-    :class="classNames"
+    :class="variants.root({
+      class:paginationVariants().last({
+        class: normalizeClass(props.class),
+      }),
+      size: props.size,
+      square: props.square,
+      variant: props.variant,
+    })"
   >
     <slot>
       <Icon :name="config.icons.chevronDoubleRight" />

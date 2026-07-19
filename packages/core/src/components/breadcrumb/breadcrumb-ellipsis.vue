@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
 import { Primitive, useForwardProps } from 'reka-ui'
-import { computed } from 'vue'
+import { normalizeClass } from 'vue'
 import config from '#centoui/config'
 import { type BreadcrumbEllipsisProps, breadcrumbVariants } from '.'
 import { Icon } from '../icon'
@@ -12,18 +12,16 @@ const delegatedProps = reactiveOmit(props, 'class')
 
 const forwardedProps = useForwardProps(delegatedProps)
 
-const { ellipsis } = breadcrumbVariants()
-
-const classNames = computed(() => ellipsis({
-  class: props.class,
-}))
+const variants = breadcrumbVariants()
 </script>
 
 <template>
   <Primitive
     data-slot="breadcrumb-ellipsis"
     v-bind="forwardedProps"
-    :class="classNames"
+    :class="variants.ellipsis({
+      class: normalizeClass(props.class),
+    })"
     role="presentation"
     aria-hidden="true"
   >

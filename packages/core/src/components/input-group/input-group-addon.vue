@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
 import { Primitive, useForwardProps } from 'reka-ui'
-import { computed } from 'vue'
+import { normalizeClass } from 'vue'
 import { injectRootContext, type InputGroupAddonProps, inputGroupVariants } from '.'
 
 const props = withDefaults(defineProps<InputGroupAddonProps>(), {
@@ -14,13 +14,7 @@ const delegatedProps = reactiveOmit(props, 'class', 'align')
 
 const forwardedProps = useForwardProps(delegatedProps)
 
-const { addon } = inputGroupVariants()
-
-const classNames = computed(() => addon({
-  addonAlignment: props.align,
-  class: props.class,
-  size: rootContext?.size,
-}))
+const variants = inputGroupVariants()
 </script>
 
 <template>
@@ -28,7 +22,11 @@ const classNames = computed(() => addon({
     data-slot="input-group-addon"
     :data-align="props.align"
     v-bind="forwardedProps"
-    :class="classNames"
+    :class="variants.addon({
+      addonAlignment: props.align,
+      class: normalizeClass(props.class),
+      size: rootContext?.size,
+    })"
     role="group"
   >
     <slot />

@@ -114,7 +114,7 @@ function set(key: string, value: unknown) {
           v-else-if="entry.type === 'string'"
           :id="`prop-${entry.key}`"
           :value="String(get(entry.key))"
-          @update:value="(value) => set(entry.key, value)"
+          @update:model-value="(value) => set(entry.key, value)"
         />
 
         <FieldDescription

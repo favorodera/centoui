@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
-import { AlertDialogDescription, useForwardPropsEmits } from 'reka-ui'
-import { computed } from 'vue'
+import { AlertDialogDescription, useForwardProps } from 'reka-ui'
+import { normalizeClass } from 'vue'
 import {
   type AlertDialogDescriptionProps,
   alertDialogVariants,
@@ -11,20 +11,18 @@ const props = defineProps<AlertDialogDescriptionProps>()
 
 const delegatedProps = reactiveOmit(props, 'class')
 
-const forwardedProps = useForwardPropsEmits(delegatedProps)
+const forwardedProps = useForwardProps(delegatedProps)
 
-const { description } = alertDialogVariants()
-
-const classNames = computed(() => description({
-  class: props.class,
-}))
+const variants = alertDialogVariants()
 </script>
 
 <template>
   <AlertDialogDescription
     data-slot="alert-dialog-description"
     v-bind="forwardedProps"
-    :class="classNames"
+    :class="variants.description({
+      class: normalizeClass(props.class),
+    })"
   >
     <slot />
   </AlertDialogDescription>

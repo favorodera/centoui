@@ -2,7 +2,6 @@
   "$schema": "./schemas/component.json",
   "name": "popover",
   "files": [
-    "popover/popover-anchor.vue",
     "popover/popover-content.vue",
     "popover/popover-description.vue",
     "popover/popover-footer.vue",

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
 import { DialogDescription, useForwardProps } from 'reka-ui'
-import { computed } from 'vue'
+import { normalizeClass } from 'vue'
 import {
   type SheetDescriptionProps,
   sheetVariants,
@@ -13,18 +13,16 @@ const delegatedProps = reactiveOmit(props, 'class')
 
 const forwardedProps = useForwardProps(delegatedProps)
 
-const { description } = sheetVariants()
-
-const classNames = computed(() => description({
-  class: props.class,
-}))
+const variants = sheetVariants()
 </script>
 
 <template>
   <DialogDescription
     data-slot="sheet-description"
     v-bind="forwardedProps"
-    :class="classNames"
+    :class="variants.description({
+      class: normalizeClass(props.class),
+    })"
   >
     <slot />
   </DialogDescription>

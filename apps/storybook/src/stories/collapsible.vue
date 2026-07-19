@@ -31,29 +31,27 @@ const open = ref(false)
       />
     </CollapsibleTrigger>
 
-    <CollapsibleContent>
-      <div class="border-bs border-border p-4">
-        <p class="mbe-4 text-sm text-muted-foreground">
-          Two-factor authentication is enabled for your account.
-        </p>
+    <CollapsibleContent class="border-bs border-border p-4">
+      <p class="mbe-4 text-sm text-muted-foreground">
+        Two-factor authentication is enabled for your account.
+      </p>
 
-        <ul class="space-y-2 text-sm">
-          <li
-            v-for="value in [
-              'Authenticator app connected',
-              'Recovery codes generated',
-              '3 trusted devices active'
-            ]"
-            :key="value"
-            class="flex items-center gap-2"
-          >
-            <Icon
-              name="lucide:check"
-              class="shrink-0 text-success"
-            /> {{ value }}
-          </li>
-        </ul>
-      </div>
+      <ul class="space-y-2 text-sm">
+        <li
+          v-for="value in [
+            'Authenticator app connected',
+            'Recovery codes generated',
+            '3 trusted devices active'
+          ]"
+          :key="value"
+          class="flex items-center gap-2"
+        >
+          <Icon
+            name="lucide:check"
+            class="shrink-0 text-success"
+          /> {{ value }}
+        </li>
+      </ul>
     </CollapsibleContent>
   </CollapsibleRoot>
 </template>

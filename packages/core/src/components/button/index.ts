@@ -1,6 +1,8 @@
 import type { PrimitiveProps } from 'reka-ui'
+import type { HTMLAttributes } from 'vue'
 import { tv, type VariantProps } from 'tailwind-variants'
 
+// Variants
 export const buttonVariants = tv({
   defaultVariants: {
     size: 'md',
@@ -9,52 +11,54 @@ export const buttonVariants = tv({
   },
   slots: {
     root: `
-      relative inline-flex items-center shrink-0 cursor-default truncate border
-      border-transparent font-medium outline-none select-none justify-center
-      transition-all group/button
+      relative inline-flex items-center shrink-0 border-transparent border
+      group/button outline-none select-none transition-all font-medium
+      cursor-default justify-center bg-clip-padding
 
-      disabled:pointer-events-none disabled:opacity-65
+      disabled:cursor-not-allowed disabled:opacity-70
 
       aria-invalid:ring-2 aria-invalid:ring-error
 
-      active:not-aria-[haspopup]:not-data-spin-button:translate-y-px
+      invalid:ring-2 invalid:ring-error
+
+      active:not-disabled:not-aria-[haspopup]:not-data-spin-button:translate-y-px
 
       focus-visible:ring-2 focus-visible:ring-ring
     `,
   },
   variants: {
     size: {
-      '2xs': {
+      lg: {
         root: `
-          min-block-5 inline-5 px-1 text-xs gap-1 rounded-sm
-
-          *:data-[slot=icon]:block-3 *:data-[slot=icon]:inline-3
-        `,
-      },
-      'lg': {
-        root: `
-          min-block-9 inline-9 px-3 text-sm gap-1.5 rounded-lg
+          block-9 min-inline-9 px-3 text-sm gap-2 rounded-lg
 
           *:data-[slot=icon]:block-4.5 *:data-[slot=icon]:inline-4.5
         `,
       },
-      'md': {
+      md: {
         root: `
-          min-block-8 inline-8 px-2.5 text-sm gap-1.5 rounded-lg
+          block-8 min-inline-8 px-2.5 text-sm gap-1.5 rounded-lg
 
           *:data-[slot=icon]:block-4 *:data-[slot=icon]:inline-4
         `,
       },
-      'sm': {
+      sm: {
         root: `
-          min-block-7 inline-7 px-2 text-xs gap-1 rounded-md
+          block-7 min-inline-7 px-2 text-sm gap-1 rounded-lg
 
           *:data-[slot=icon]:block-3.5 *:data-[slot=icon]:inline-3.5
         `,
       },
-      'xs': {
+      xl: {
         root: `
-          min-block-6 inline-6 px-1.5 text-xs gap-1 rounded-md
+          block-10 min-inline-10 px-3.5 text-base gap-2.5 rounded-xl
+
+          *:data-[slot=icon]:block-5 *:data-[slot=icon]:inline-5
+        `,
+      },
+      xs: {
+        root: `
+          block-6 min-inline-6 px-1.5 text-xs gap-1 rounded-md
 
           *:data-[slot=icon]:block-3 *:data-[slot=icon]:inline-3
         `,
@@ -62,7 +66,7 @@ export const buttonVariants = tv({
     },
     square: {
       false: {
-        root: 'inline-auto',
+        root: 'min-inline-fit',
       },
       true: {
         root: 'px-0',
@@ -73,55 +77,53 @@ export const buttonVariants = tv({
         root: `
           bg-error text-error-foreground
 
-          hover:bg-error/80
+          hover:not-disabled:bg-error/80
         `,
       },
       ghost: {
         root: `
           bg-transparent text-foreground
 
-          hover:bg-muted
+          hover:not-disabled:bg-muted
         `,
       },
       link: {
         root: `
           px-0 text-primary underline-offset-4
 
-          hover:underline
+          hover:not-disabled:underline
         `,
       },
       outline: {
         root: `
           border-border bg-transparent text-foreground
 
-          hover:bg-muted
+          hover:not-disabled:bg-muted
         `,
       },
       primary: {
         root: `
           bg-primary text-primary-foreground
 
-          hover:bg-primary/80
+          hover:not-disabled:bg-primary/80
         `,
       },
       secondary: {
         root: `
           bg-secondary text-secondary-foreground
 
-          hover:bg-secondary/80
+          hover:not-disabled:bg-secondary/80
         `,
       },
     },
   },
 })
-
-// COMPONENT
-export { default as Button } from './button.vue'
-
-// VARIANTS
 export type ButtonVariants = VariantProps<typeof buttonVariants>
 
-// PROPS
+// Components
+export { default as Button } from './button.vue'
+
+// Props
 export type ButtonProps = PrimitiveProps & {
   /**
    * Visual style variant.
@@ -135,11 +137,12 @@ export type ButtonProps = PrimitiveProps & {
    */
   size?: ButtonVariants['size']
 
-  class?: any
+  /** Custom style class */
+  class?: HTMLAttributes['class']
 
   /**
    * Render the button with equal dimensions.
    * @default false
    */
-  square?: boolean
+  square?: ButtonVariants['square']
 }

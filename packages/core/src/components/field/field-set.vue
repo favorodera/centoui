@@ -1,20 +1,18 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { normalizeClass } from 'vue'
 import { type FieldSetProps, fieldVariants } from '.'
 
 const props = defineProps<FieldSetProps>()
 
-const { set } = fieldVariants()
-
-const classNames = computed(() => set({
-  class: props.class,
-}))
+const variants = fieldVariants()
 </script>
 
 <template>
   <fieldset
     data-slot="field-set"
-    :class="classNames"
+    :class="variants.set({
+      class: normalizeClass(props.class),
+    })"
   >
     <slot />
   </fieldset>

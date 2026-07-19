@@ -44,7 +44,7 @@ const controls = useStory('Tooltip', {
         :side="controls.side"
         :show-arrow="controls.showArrow"
       >
-        <p>This is a tooltip</p>
+        This is a tooltip
       </TooltipContent>
     </TooltipRoot>
   </TooltipProvider>

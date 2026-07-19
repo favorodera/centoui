@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
 import { Primitive, useForwardProps } from 'reka-ui'
-import { computed, reactive, toRef } from 'vue'
+import { normalizeClass, reactive, toRef } from 'vue'
 import { type InputGroupRootProps, inputGroupVariants, provideRootContext } from '.'
 
 const props = withDefaults(defineProps<InputGroupRootProps>(), {
@@ -12,12 +12,7 @@ const delegatedProps = reactiveOmit(props, 'class', 'size')
 
 const forwardedProps = useForwardProps(delegatedProps)
 
-const { root } = inputGroupVariants()
-
-const classNames = computed(() => root({
-  class: props.class,
-  size: props.size,
-}))
+const variants = inputGroupVariants()
 
 provideRootContext(reactive({
   size: toRef(props, 'size'),
@@ -45,7 +40,10 @@ function handleInputGroupRootClick(event: MouseEvent): void {
   <Primitive
     data-slot="input-group-root"
     v-bind="forwardedProps"
-    :class="classNames"
+    :class="variants.root({
+      size: props.size,
+      class: normalizeClass(props.class)
+    })"
     role="group"
     @click="handleInputGroupRootClick"
   >

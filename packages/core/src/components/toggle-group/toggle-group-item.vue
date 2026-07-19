@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
 import { ToggleGroupItem, useForwardProps } from 'reka-ui'
-import { computed } from 'vue'
+import { normalizeClass } from 'vue'
 import { type ToggleGroupItemProps, type ToggleGroupItemSlots, toggleGroupVariants } from '.'
 import { toggleVariants } from '../toggle'
 
@@ -17,18 +17,9 @@ const delegatedProps = reactiveOmit(props, 'class', 'size', 'square', 'variant')
 
 const forwardedProps = useForwardProps(delegatedProps)
 
-const { item } = toggleGroupVariants()
+const itemVariants = toggleGroupVariants()
 
-const { root } = toggleVariants()
-
-const classNames = computed(() => root({
-  class: item({
-    class: props.class,
-  }),
-  size: props.size,
-  square: props.square,
-  variant: props.variant,
-}))
+const variants = toggleVariants()
 </script>
 
 <template>
@@ -39,7 +30,14 @@ const classNames = computed(() => root({
     :data-size="size"
     :data-square="square"
     v-bind="forwardedProps"
-    :class="classNames"
+    :class="variants.root({
+      class: itemVariants.item({
+        class: normalizeClass(props.class),
+      }),
+      size: props.size,
+      square: props.square,
+      variant: props.variant,
+    })"
   >
     <slot v-bind="slotProps" />
   </ToggleGroupItem>

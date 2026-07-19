@@ -9,8 +9,10 @@ import type {
   DialogTitleProps as RekaDialogTitleProps,
   DialogTriggerProps as RekaDialogTriggerProps,
 } from 'reka-ui'
+import type { HTMLAttributes } from 'vue'
 import { tv, type VariantProps } from 'tailwind-variants'
 
+// Variants
 export const sheetVariants = tv({
   defaultVariants: {
     side: 'right',
@@ -19,7 +21,9 @@ export const sheetVariants = tv({
     close: 'group/sheet-close',
     content: `
       fixed z-50 flex flex-col gap-4 bg-overlay p-4 overflow-hidden
-      group/sheet-content
+      group/sheet-content bg-clip-padding
+
+      *:data-[slot=separator]:data-[orientation=horizontal]:-mx-4
 
       data-[state=closed]:animate-out
 
@@ -57,7 +61,7 @@ export const sheetVariants = tv({
       },
       left: {
         content: `
-          inset-y-0 inset-s-0 block-full inline-full max-inline-sm border-e
+          inset-y-0 inset-s-0 block-full inline-full max-inline-xs border-e
 
           data-[state=closed]:slide-out-to-left
 
@@ -66,7 +70,7 @@ export const sheetVariants = tv({
       },
       right: {
         content: `
-          inset-y-0 inset-e-0 block-full inline-full max-inline-sm border-s
+          inset-y-0 inset-e-0 block-full inline-full max-inline-xs border-s
 
           data-[state=closed]:slide-out-to-right
 
@@ -85,8 +89,9 @@ export const sheetVariants = tv({
     },
   },
 })
+export type SheetVariants = VariantProps<typeof sheetVariants>
 
-// COMPONENTS
+// Components
 export { default as SheetClose } from './sheet-close.vue'
 export { default as SheetContent } from './sheet-content.vue'
 export { default as SheetDescription } from './sheet-description.vue'
@@ -96,16 +101,20 @@ export { default as SheetRoot } from './sheet-root.vue'
 export { default as SheetTitle } from './sheet-title.vue'
 export { default as SheetTrigger } from './sheet-trigger.vue'
 
-// VARIANTS
-export type SheetVariants = VariantProps<typeof sheetVariants>
+// Props
+export type SheetRootProps = RekaDialogRootProps & {
+  /** Custom style class */
+  class?: HTMLAttributes['class']
+}
 
-// PROPS
-export type SheetRootProps = RekaDialogRootProps & { class?: any }
-
-export type SheetTriggerProps = RekaDialogTriggerProps & { class?: any }
+export type SheetTriggerProps = RekaDialogTriggerProps & {
+  /** Custom style class */
+  class?: HTMLAttributes['class']
+}
 
 export type SheetContentProps = RekaDialogContentProps & {
-  class?: any
+  /** Custom style class */
+  class?: HTMLAttributes['class']
 
   /**
    * The direction the sheet opens from
@@ -115,7 +124,8 @@ export type SheetContentProps = RekaDialogContentProps & {
 }
 
 export type SheetHeaderProps = PrimitiveProps & {
-  class?: any
+  /** Custom style class */
+  class?: HTMLAttributes['class']
 
   /**
    * Whether to show the close button inside the header
@@ -124,20 +134,32 @@ export type SheetHeaderProps = PrimitiveProps & {
   showClose?: boolean
 }
 
-export type SheetTitleProps = RekaDialogTitleProps & { class?: any }
+export type SheetTitleProps = RekaDialogTitleProps & {
+  /** Custom style class */
+  class?: HTMLAttributes['class']
+}
 
-export type SheetDescriptionProps = RekaDialogDescriptionProps & { class?: any }
+export type SheetDescriptionProps = RekaDialogDescriptionProps & {
+  /** Custom style class */
+  class?: HTMLAttributes['class']
+}
 
-export type SheetCloseProps = RekaDialogCloseProps & { class?: any }
+export type SheetCloseProps = RekaDialogCloseProps & {
+  /** Custom style class */
+  class?: HTMLAttributes['class']
+}
 
-export type SheetFooterProps = PrimitiveProps & { class?: any }
+export type SheetFooterProps = PrimitiveProps & {
+  /** Custom style class */
+  class?: HTMLAttributes['class']
+}
 
-// EMITS
+// Emits
 export type SheetContentEmits = RekaDialogContentEmits
 
 export type SheetRootEmits = RekaDialogRootEmits
 
-// SLOTS
+// Slots
 export interface SheetRootSlots {
   default: (props: {
     /** Current open state */
@@ -145,5 +167,5 @@ export interface SheetRootSlots {
 
     /** Close the sheet */
     close: () => void
-  }) => any
+  }) => void
 }

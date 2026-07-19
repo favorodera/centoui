@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { normalizeClass } from 'vue'
 import { type TextareaProps, textareaVariants } from '.'
 
 const props = withDefaults(defineProps<TextareaProps>(), {
@@ -8,12 +8,7 @@ const props = withDefaults(defineProps<TextareaProps>(), {
 
 const model = defineModel<string>()
 
-const { root } = textareaVariants()
-
-const classNames = computed(() => root({
-  class: props.class,
-  size: props.size,
-}))
+const variants = textareaVariants()
 </script>
 
 <template>
@@ -21,6 +16,9 @@ const classNames = computed(() => root({
     v-model="model"
     data-slot="textarea"
     :data-size="size"
-    :class="classNames"
+    :class="variants.root({
+      class: normalizeClass(props.class),
+      size: props.size,
+    })"
   />
 </template>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
 import { ComboboxLabel, useForwardProps } from 'reka-ui'
-import { computed } from 'vue'
+import { normalizeClass } from 'vue'
 import {
   type ComboboxLabelProps,
   comboboxVariants,
@@ -16,19 +16,17 @@ const delegatedProps = reactiveOmit(props, 'class')
 
 const forwardedProps = useForwardProps(delegatedProps)
 
-const { label } = comboboxVariants()
-
-const classNames = computed(() => label({
-  class: props.class,
-  size: rootContext?.size,
-}))
+const variants = comboboxVariants()
 </script>
 
 <template>
   <ComboboxLabel
     data-slot="combobox-label"
     v-bind="forwardedProps"
-    :class="classNames"
+    :class="variants.label({
+      size: rootContext?.size,
+      class: normalizeClass(props.class),
+    })"
   >
     <slot />
   </ComboboxLabel>
