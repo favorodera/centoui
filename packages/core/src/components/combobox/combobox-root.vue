@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
 import { ComboboxRoot, useForwardPropsEmits } from 'reka-ui'
-import { computed, reactive, toRef } from 'vue'
+import { normalizeClass, reactive, toRef } from 'vue'
 import { type ComboboxRootEmits, type ComboboxRootProps, type ComboboxRootSlots, comboboxVariants, provideRootContext } from '.'
 
 defineSlots<ComboboxRootSlots>()
@@ -17,12 +17,7 @@ const delegatedProps = reactiveOmit(props, 'size', 'class')
 
 const forwardedPropsEmits = useForwardPropsEmits(delegatedProps, emits)
 
-const { root } = comboboxVariants()
-
-const classNames = computed(() => root({
-  class: props.class,
-  size: props.size,
-}))
+const variants = comboboxVariants()
 
 provideRootContext(reactive({
   size: toRef(props, 'size'),
@@ -35,7 +30,10 @@ provideRootContext(reactive({
     v-bind="forwardedPropsEmits"
     data-slot="combobox-root"
     :data-size="props.size"
-    :class="classNames"
+    :class="variants.root({
+      size: props.size,
+      class: normalizeClass(props.class),
+    })"
   >
     <slot v-bind="slotProps" />
   </ComboboxRoot>

@@ -29,25 +29,21 @@ useStory('Button Group', {})
 
   <ButtonGroup>
     <ButtonGroup>
-      <Button variant="secondary">
+      <Button variant="outline">
         <Icon name="lucide:italic" />
       </Button>
 
-      <Separator orientation="vertical" />
-
-      <Button variant="secondary">
+      <Button variant="outline">
         <Icon name="lucide:underline" />
       </Button>
     </ButtonGroup>
 
     <ButtonGroup>
-      <Button variant="secondary">
+      <Button variant="outline">
         <Icon name="lucide:bold" />
       </Button>
 
-      <Separator orientation="vertical" />
-
-      <Button variant="secondary">
+      <Button variant="outline">
         <Icon name="lucide:strikethrough" />
       </Button>
     </ButtonGroup>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
 import { Primitive, useForwardProps } from 'reka-ui'
-import { computed } from 'vue'
+import { normalizeClass } from 'vue'
 import {
   injectRootContext,
   type ItemContentProps,
@@ -16,19 +16,17 @@ const delegatedProps = reactiveOmit(props, 'class')
 
 const forwardedProps = useForwardProps(delegatedProps)
 
-const { content } = itemVariants()
-
-const classNames = computed(() => content({
-  class: props.class,
-  variant: rootContext?.variant,
-}))
+const variants = itemVariants()
 </script>
 
 <template>
   <Primitive
     data-slot="item-content"
     v-bind="forwardedProps"
-    :class="classNames"
+    :class="variants.content({
+      class: normalizeClass(props.class),
+      variant: rootContext?.variant,
+    })"
   >
     <slot />
   </Primitive>

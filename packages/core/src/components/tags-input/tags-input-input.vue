@@ -4,7 +4,7 @@ import {
   TagsInputInput,
   useForwardProps,
 } from 'reka-ui'
-import { computed } from 'vue'
+import { normalizeClass } from 'vue'
 import {
   injectRootContext,
   type TagsInputInputProps,
@@ -19,18 +19,16 @@ const delegatedProps = reactiveOmit(props, 'class')
 
 const forwardedPropsEmits = useForwardProps(delegatedProps)
 
-const { input } = tagsInputVariants()
-
-const classNames = computed(() => input({
-  class: props.class,
-  size: rootContext.size,
-}))
+const variants = tagsInputVariants()
 </script>
 
 <template>
   <TagsInputInput
     data-slot="tags-input-input"
     v-bind="forwardedPropsEmits"
-    :class="classNames"
+    :class="variants.input({
+      size: rootContext?.size,
+      class: normalizeClass(props.class),
+    })"
   />
 </template>

@@ -1,6 +1,8 @@
+import type { HTMLAttributes } from 'vue'
 import { createContext, type PrimitiveProps } from 'reka-ui'
 import { tv, type VariantProps } from 'tailwind-variants'
 
+// Variants
 export const inputGroupVariants = tv({
   defaultVariants: {
     addonAlignment: 'inline-start',
@@ -13,7 +15,7 @@ export const inputGroupVariants = tv({
     `,
     root: `
       relative flex inline-full min-inline-0 items-stretch overflow-hidden
-      border border-input bg-transparent group/input-group-root
+      border border-input bg-transparent group/input-group-root bg-clip-padding
 
       **:data-input-group-control:block-auto **:data-input-group-control:flex-1
       **:data-input-group-control:rounded-none
@@ -27,8 +29,8 @@ export const inputGroupVariants = tv({
 
       has-[[data-slot=input-group-addon][data-align*=block]]:flex-col
 
-      has-[[data-input-group-control]:disabled]:pointer-events-none
-      has-[[data-input-group-control]:disabled]:opacity-65
+      has-[[data-input-group-control]:disabled]:cursor-not-allowed
+      has-[[data-input-group-control]:disabled]:opacity-70
 
       has-[[data-input-group-control]:focus-visible]:ring-2
       has-[[data-input-group-control]:focus-visible]:ring-ring
@@ -55,14 +57,14 @@ export const inputGroupVariants = tv({
     size: {
       lg: {
         addon: `
-          text-sm gap-1.5
+          text-sm gap-2
 
           *:data-[slot=icon]:block-4.5 *:data-[slot=icon]:inline-4.5
         `,
         root: `
-          min-block-9 rounded-lg px-3 gap-1.5
+          min-block-9 rounded-lg px-3 gap-2
 
-          has-[[data-slot=input-group-addon][data-align*=block]]:py-2
+          has-[[data-slot=input-group-addon][data-align*=block]]:py-3
         `,
       },
       md: {
@@ -74,30 +76,31 @@ export const inputGroupVariants = tv({
         root: `
           min-block-8 rounded-lg px-2.5 gap-1.5
 
-          has-[[data-slot=input-group-addon][data-align*=block]]:py-1.5
+          has-[[data-slot=input-group-addon][data-align*=block]]:py-2.5
         `,
       },
       sm: {
         addon: `
-          text-xs gap-1
+          text-sm gap-1
 
           *:data-[slot=icon]:block-3.5 *:data-[slot=icon]:inline-3.5
         `,
         root: `
-          min-block-7 rounded-md px-2 gap-1
+          min-block-7 rounded-lg px-2 gap-1
 
-          has-[[data-slot=input-group-addon][data-align*=block]]:py-1
+          has-[[data-slot=input-group-addon][data-align*=block]]:py-2
         `,
       },
     },
   },
 })
+export type InputGroupVariants = VariantProps<typeof inputGroupVariants>
 
-// COMPONENTS
+// Components
 export { default as InputGroupAddon } from './input-group-addon.vue'
 export { default as InputGroupRoot } from './input-group-root.vue'
 
-// CONTEXT
+// Context
 export type InputGroupRootContext = Pick<InputGroupRootProps, 'size'>
 
 export const [
@@ -105,12 +108,10 @@ export const [
   provideRootContext,
 ] = createContext<InputGroupRootContext>('InputGroupRoot', 'centoui:input-group-root:context')
 
-// VARIANTS
-export type InputGroupVariants = VariantProps<typeof inputGroupVariants>
-
-// PROPS
+// Props
 export type InputGroupRootProps = PrimitiveProps & {
-  class?: any
+  /** Custom style class */
+  class?: HTMLAttributes['class']
 
   /**
    * Visual size scale.
@@ -120,7 +121,8 @@ export type InputGroupRootProps = PrimitiveProps & {
 }
 
 export type InputGroupAddonProps = PrimitiveProps & {
-  class?: any
+  /** Custom style class */
+  class?: HTMLAttributes['class']
 
   /**
    * The position of the addon relative to the input.

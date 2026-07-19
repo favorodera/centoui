@@ -133,7 +133,17 @@
 }
 
 @layer base {
+  * {
+    @apply border-border;
+  }
+ 
+  html {
+    @apply scroll-smooth scroll-pbs-8;
+    @apply scrollbar-thin scrollbar-thumb-muted scrollbar-track-transparent;
+    @apply selection:bg-foreground selection:text-background;
+  }
+ 
   body {
-    @apply antialiased text-foreground bg-background font-sans **:border-border;
+    @apply antialiased text-foreground bg-background font-sans;
   }
 }

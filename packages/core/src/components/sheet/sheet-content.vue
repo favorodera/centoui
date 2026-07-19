@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
 import { DialogContent, DialogOverlay, DialogPortal, useForwardPropsEmits } from 'reka-ui'
-import { computed, useAttrs } from 'vue'
+import { normalizeClass, useAttrs } from 'vue'
 import { type SheetContentEmits, type SheetContentProps, sheetVariants } from '.'
 
 defineOptions({
@@ -20,21 +20,13 @@ const delegatedProps = reactiveOmit(props, 'class', 'side')
 
 const forwardedPropsEmits = useForwardPropsEmits(delegatedProps, emits)
 
-const { content, overlay } = sheetVariants()
-
-const classNames = computed(() => ({
-  content: content({
-    class: props.class,
-    side: props.side,
-  }),
-  overlay: overlay(),
-}))
+const variants = sheetVariants()
 </script>
 
 <template>
   <DialogPortal>
     <DialogOverlay
-      :class="classNames.overlay"
+      :class="variants.overlay()"
       data-slot="sheet-overlay"
     />
 
@@ -42,7 +34,10 @@ const classNames = computed(() => ({
       data-slot="sheet-content"
       :data-side="side"
       v-bind="{...attributes,...forwardedPropsEmits}"
-      :class="classNames.content"
+      :class="variants.content({
+        class: normalizeClass(props.class),
+        side: props.side,
+      })"
     >
       <slot />
     </DialogContent>

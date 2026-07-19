@@ -1,6 +1,8 @@
+import type { HTMLAttributes } from 'vue'
 import { createContext, type PrimitiveProps } from 'reka-ui'
 import { tv, type VariantProps } from 'tailwind-variants'
 
+// Variants
 export const itemVariants = tv({
   defaultVariants: {
     variant: 'ghost',
@@ -11,10 +13,6 @@ export const itemVariants = tv({
     `,
     description: `
       font-normal text-sm text-muted-foreground group/item-description
-
-      **:[a]:transition-[color] **:[a]:underline **:[a]:underline-offset-4
-
-      **:[a]:hover:text-primary
     `,
     group: 'group/item-group flex inline-full flex-col gap-3',
     media: `
@@ -25,7 +23,7 @@ export const itemVariants = tv({
     `,
     root: `
       flex inline-full flex-wrap items-center rounded-lg border p-3 gap-3
-      border-transparent group/item-root outline-none
+      border-transparent group/item-root outline-none bg-clip-padding
 
       focus-visible:ring-2 focus-visible:ring-ring
 
@@ -33,13 +31,7 @@ export const itemVariants = tv({
 
       [a]:hover:bg-muted
     `,
-    title: `
-      font-medium text-sm line-clamp-1 inline-fit group/item-title
-
-      **:[a]:transition-[color] **:[a]:underline **:[a]:underline-offset-4
-
-      **:[a]:hover:text-primary
-    `,
+    title: `font-medium text-sm line-clamp-1 inline-fit group/item-title`,
   },
   variants: {
     mediaVariant: {
@@ -71,8 +63,9 @@ export const itemVariants = tv({
     },
   },
 })
+export type ItemVariants = VariantProps<typeof itemVariants>
 
-// COMPONENTS
+// Components
 export { default as ItemContent } from './item-content.vue'
 export { default as ItemDescription } from './item-description.vue'
 export { default as ItemGroup } from './item-group.vue'
@@ -80,7 +73,7 @@ export { default as ItemMedia } from './item-media.vue'
 export { default as ItemRoot } from './item-root.vue'
 export { default as ItemTitle } from './item-title.vue'
 
-// CONTEXT
+// Context
 export type ItemRootContext = Pick<ItemRootProps, 'variant'>
 
 export const [
@@ -88,12 +81,10 @@ export const [
   provideRootContext,
 ] = createContext<ItemRootContext>('ItemRoot', 'centoui:item-root:context')
 
-// VARIANTS
-export type ItemVariants = VariantProps<typeof itemVariants>
-
-// PROPS
+// Props
 export type ItemRootProps = PrimitiveProps & {
-  class?: any
+  /** Custom style class */
+  class?: HTMLAttributes['class']
 
   /**
    * Visual style variant.
@@ -102,17 +93,30 @@ export type ItemRootProps = PrimitiveProps & {
   variant?: ItemVariants['variant']
 }
 
-export type ItemContentProps = PrimitiveProps & { class?: any }
+export type ItemContentProps = PrimitiveProps & {
+  /** Custom style class */
+  class?: HTMLAttributes['class']
+}
 
-export type ItemDescriptionProps = PrimitiveProps & { class?: any }
+export type ItemDescriptionProps = PrimitiveProps & {
+  /** Custom style class */
+  class?: HTMLAttributes['class']
+}
 
-export type ItemTitleProps = PrimitiveProps & { class?: any }
+export type ItemTitleProps = PrimitiveProps & {
+  /** Custom style class */
+  class?: HTMLAttributes['class']
+}
 
 export type ItemMediaProps = PrimitiveProps & {
-  class?: any
+  /** Custom style class */
+  class?: HTMLAttributes['class']
 
   /** Visual style variant. */
   variant?: ItemVariants['mediaVariant']
 }
 
-export type ItemGroupProps = PrimitiveProps & { class?: any }
+export type ItemGroupProps = PrimitiveProps & {
+  /** Custom style class */
+  class?: HTMLAttributes['class']
+}

@@ -9,13 +9,15 @@ import type {
   PaginationRootEmits as RekaPaginationRootEmits,
   PaginationRootProps as RekaPaginationRootProps,
 } from 'reka-ui'
+import type { HTMLAttributes } from 'vue'
 import { tv, type VariantProps } from 'tailwind-variants'
 import type { ButtonProps } from '../button'
 
+// Variants
 export const paginationVariants = tv({
   slots: {
     ellipsis: `
-      flex block-8 inline-8 items-center justify-center text-muted-foreground
+      block-8 inline-8 grid place-items-center text-muted-foreground
       group/pagination-ellipsis
     `,
     first: 'group/pagination-first',
@@ -29,8 +31,9 @@ export const paginationVariants = tv({
     `,
   },
 })
+export type PaginationVariants = VariantProps<typeof paginationVariants>
 
-// COMPONENTS
+// Components
 export { default as PaginationEllipsis } from './pagination-ellipsis.vue'
 export { default as PaginationFirst } from './pagination-first.vue'
 export { default as PaginationLast } from './pagination-last.vue'
@@ -40,17 +43,23 @@ export { default as PaginationNext } from './pagination-next.vue'
 export { default as PaginationPrev } from './pagination-prev.vue'
 export { default as PaginationRoot } from './pagination-root.vue'
 
-// VARIANTS
-export type PaginationVariants = VariantProps<typeof paginationVariants>
+// Props
+export type PaginationRootProps = RekaPaginationRootProps & {
+  /** Custom style class */
+  class?: HTMLAttributes['class']
+}
 
-// PROPS
-export type PaginationRootProps = RekaPaginationRootProps & { class?: any }
-
-export type PaginationListProps = RekaPaginationListProps & { class?: any }
+export type PaginationListProps = RekaPaginationListProps & {
+  /** Custom style class */
+  class?: HTMLAttributes['class']
+}
 
 export type PaginationListItemProps = ButtonProps & RekaPaginationListItemProps
 
-export type PaginationEllipsisProps = RekaPaginationEllipsisProps & { class?: any }
+export type PaginationEllipsisProps = RekaPaginationEllipsisProps & {
+  /** Custom style class */
+  class?: HTMLAttributes['class']
+}
 
 export type PaginationFirstProps = ButtonProps & RekaPaginationFirstProps
 
@@ -60,10 +69,10 @@ export type PaginationNextProps = ButtonProps & RekaPaginationNextProps
 
 export type PaginationLastProps = ButtonProps & RekaPaginationLastProps
 
-// EMITS
+// Emits
 export type PaginationRootEmits = RekaPaginationRootEmits
 
-// SLOTS
+// Slots
 export interface PaginationRootSlots {
   default?: (props: {
     /** Current page state */
@@ -71,12 +80,12 @@ export interface PaginationRootSlots {
 
     /** Number of pages */
     pageCount: number
-  }) => any
+  }) => void
 }
 
 export interface PaginationListSlots {
   default?: (props: {
     /** Pages items */
     items: Array<{ type: 'ellipsis' } | { type: 'page', value: number }>
-  }) => any
+  }) => void
 }

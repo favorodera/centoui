@@ -1,15 +1,17 @@
 import type { LabelProps as RekaLabelProps } from 'reka-ui'
+import type { HTMLAttributes } from 'vue'
 import { tv, type VariantProps } from 'tailwind-variants'
 
+// Variants
 export const labelVariants = tv({
   defaultVariants: {
     size: 'md',
   },
   slots: {
     root: `
-      text-sm font-medium select-none flex gap-2 border-input group/label
+      text-sm font-medium select-none flex gap-2 group/label bg-clip-padding
 
-      peer-disabled:pointer-events-none peer-disabled:opacity-65
+      peer-disabled:cursor-not-allowed peer-disabled:opacity-70
 
       peer-aria-invalid:text-error
 
@@ -17,8 +19,8 @@ export const labelVariants = tv({
       group-data-required/field:after:text-error
       group-data-required/field:after:content-['*']
 
-      group-data-[disabled=true]/field:opacity-65
-      group-data-[disabled=true]/field:pointer-events-none
+      group-data-[disabled=true]/field:opacity-70
+      group-data-[disabled=true]/field:cursor-not-allowed
 
       has-[>[data-slot=field]]:border has-[>[data-slot=field]]:flex-col
       has-[>[data-slot=field]]:inline-full
@@ -32,36 +34,28 @@ export const labelVariants = tv({
   variants: {
     size: {
       lg: {
-        root: `
-          has-[>[data-slot=field]]:px-3.5 has-[>[data-slot=field]]:py-3
-          has-[>[data-slot=field]]:rounded-lg
-        `,
+        root: `has-[>[data-slot=field]]:p-3 has-[>[data-slot=field]]:rounded-lg`,
       },
       md: {
         root: `
-          has-[>[data-slot=field]]:px-3 has-[>[data-slot=field]]:py-2.5
-          has-[>[data-slot=field]]:rounded-lg
+          has-[>[data-slot=field]]:p-2.5 has-[>[data-slot=field]]:rounded-lg
         `,
       },
       sm: {
-        root: `
-          has-[>[data-slot=field]]:px-2.5 has-[>[data-slot=field]]:py-2
-          has-[>[data-slot=field]]:rounded-md
-        `,
+        root: `has-[>[data-slot=field]]:p-2 has-[>[data-slot=field]]:rounded-md`,
       },
     },
   },
 })
-
-// COMPONENT
-export { default as Label } from './label.vue'
-
-// VARIANTS
 export type LabelVariants = VariantProps<typeof labelVariants>
 
-// PROPS
+// Components
+export { default as Label } from './label.vue'
+
+// Props
 export type LabelProps = RekaLabelProps & {
-  class?: any
+  /** Custom style class */
+  class?: HTMLAttributes['class']
 
   /**
    * Visual size scale.

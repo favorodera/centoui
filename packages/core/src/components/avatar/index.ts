@@ -1,3 +1,4 @@
+import type { HTMLAttributes } from 'vue'
 import {
   createContext,
   type PrimitiveProps,
@@ -8,6 +9,7 @@ import {
 } from 'reka-ui'
 import { tv, type VariantProps } from 'tailwind-variants'
 
+// Variants
 export const avatarVariants = tv({
   defaultVariants: {
     size: 'md',
@@ -71,43 +73,50 @@ export const avatarVariants = tv({
     },
   },
 })
+export type AvatarVariants = VariantProps<typeof avatarVariants>
 
-// COMPONENTS
+// Components
 export { default as AvatarFallback } from './avatar-fallback.vue'
 export { default as AvatarGroup } from './avatar-group.vue'
 export { default as AvatarImage } from './avatar-image.vue'
 export { default as AvatarRoot } from './avatar-root.vue'
 
-// CONTEXT
-export type AvatarRootContext = Pick<AvatarRootProps, 'size'>
+// Utils
+export { getInitials } from './utils.ts'
 
+// Context
+export type AvatarRootContext = Pick<AvatarRootProps, 'size'>
 export const [
   injectRootContext,
   provideRootContext,
 ] = createContext<AvatarRootContext>('AvatarRoot', 'centoui:avatar-root:context')
 
-// VARIANTS
-export type AvatarVariants = VariantProps<typeof avatarVariants>
-
-// UTILITIES
-export { getInitials } from './utils.js'
-
-// PROPS
+// Props
 export type AvatarRootProps = RekaAvatarRootProps & {
-  class?: any
-
   /**
    * Visual size scale.
    * @default 'md'
    */
   size?: AvatarVariants['size']
+
+  /** Custom style class */
+  class?: HTMLAttributes['class']
 }
 
-export type AvatarImageProps = & RekaAvatarImageProps & { class?: any }
+export type AvatarImageProps = RekaAvatarImageProps & {
+  /** Custom style class */
+  class?: HTMLAttributes['class']
+}
 
-export type AvatarFallbackProps = RekaAvatarFallbackProps & { class?: any }
+export type AvatarFallbackProps = RekaAvatarFallbackProps & {
+  /** Custom style class */
+  class?: HTMLAttributes['class']
+}
 
-export type AvatarGroupProps = PrimitiveProps & { class?: any }
+export type AvatarGroupProps = PrimitiveProps & {
+  /** Custom style class */
+  class?: HTMLAttributes['class']
+}
 
-// EMITS
+// Emits
 export type AvatarImageEmits = RekaAvatarImageEmits

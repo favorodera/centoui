@@ -51,7 +51,7 @@ const controls = useStory('Sheet', {
         </SheetDescription>
       </SheetHeader>
 
-      <Separator class="-mx-4" />
+      <Separator />
 
       <FieldGroup>
         <Field>

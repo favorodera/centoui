@@ -36,6 +36,7 @@
     "@types/node": "catalog:tools",
     "eslint": "catalog:tools",
     "relizy": "catalog:tools",
+    "tailwindcss": "catalog:vendor",
     "turbo": "catalog:tools",
     "typescript": "catalog:tools"
   }

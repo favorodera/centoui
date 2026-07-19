@@ -1,5 +1,7 @@
+import type { HTMLAttributes } from 'vue'
 import { tv, type VariantProps } from 'tailwind-variants'
 
+// Variants
 export const inputVariants = tv({
   defaultVariants: {
     size: 'md',
@@ -7,15 +9,13 @@ export const inputVariants = tv({
   slots: {
     root: `
       inline-full min-inline-0 border border-input bg-transparent outline-none
-      peer group/input
-
-      selection:bg-primary selection:text-primary-foreground
+      peer group/input bg-clip-padding
 
       placeholder:text-muted-foreground
 
       focus-visible:ring-2 focus-visible:ring-ring
 
-      disabled:pointer-events-none disabled:opacity-65
+      disabled:cursor-not-allowed disabled:opacity-70
 
       aria-invalid:ring-2 aria-invalid:ring-error
     `,
@@ -29,19 +29,17 @@ export const inputVariants = tv({
         root: 'block-8 rounded-lg px-2.5 text-sm',
       },
       sm: {
-        root: 'block-7 rounded-md px-2 text-xs',
+        root: 'block-7 rounded-lg px-2 text-xs',
       },
     },
   },
 })
-
-// COMPONENT
-export { default as Input } from './input.vue'
-
-// VARIANTS
 export type InputVariants = VariantProps<typeof inputVariants>
 
-// PROPS
+// Components
+export { default as Input } from './input.vue'
+
+// Props
 export interface InputProps {
   /**
    * Visual size scale.
@@ -49,5 +47,6 @@ export interface InputProps {
    */
   size?: InputVariants['size']
 
-  class?: any
+  /** Custom style class */
+  class?: HTMLAttributes['class']
 }

@@ -1,34 +1,22 @@
+import type { HTMLAttributes } from 'vue'
 import { createContext, type PrimitiveProps } from 'reka-ui'
 import { tv, type VariantProps } from 'tailwind-variants'
 
+// Variants
 export const alertVariants = tv({
   defaultVariants: {
     variant: 'neutral',
   },
   slots: {
-    content: `
-      flex-1 min-inline-0 text-sm flex flex-col gap-1 group/alert-content
-    `,
-    description: `
-      font-normal text-sm group/alert-description
-
-      **:[a]:underline **:[a]:underline-offset-4 **:[a]:transition-[color]
-
-      **:[a]:hover:text-primary
-    `,
+    content: `flex-1 min-inline-0 flex flex-col gap-1 group/alert-content`,
+    description: `font-normal group/alert-description`,
     root: `
-      flex items-start inline-full p-3 gap-3 rounded-lg flex-wrap bg-elevated
-      border group/alert-root
+      flex items-start inline-full p-3 gap-3 text-sm rounded-lg flex-wrap
+      bg-elevated border group/alert-root bg-clip-padding
 
       *:data-[slot=icon]:translate-y-0.5
     `,
-    title: `
-      font-medium text-sm group/alert-title
-
-      **:[a]:underline **:[a]:underline-offset-4 **:[a]:transition-[color]
-
-      **:[a]:hover:text-primary
-    `,
+    title: `font-medium group/alert-title`,
   },
   variants: {
     variant: {
@@ -50,27 +38,25 @@ export const alertVariants = tv({
     },
   },
 })
+export type AlertVariants = VariantProps<typeof alertVariants>
 
-// COMPONENTS
+// Components
 export { default as AlertContent } from './alert-content.vue'
 export { default as AlertDescription } from './alert-description.vue'
 export { default as AlertRoot } from './alert-root.vue'
 export { default as AlertTitle } from './alert-title.vue'
 
-// CONTEXT
+// Context
 export type AlertRootContext = Pick<AlertRootProps, 'variant'>
-
 export const [
   injectRootContext,
   provideRootContext,
 ] = createContext<AlertRootContext>('AlertRoot', 'centoui:alert-root:context')
 
-// VARIANTS
-export type AlertVariants = VariantProps<typeof alertVariants>
-
-// PROPS
+// Props
 export type AlertRootProps = PrimitiveProps & {
-  class?: any
+  /** Custom style class */
+  class?: HTMLAttributes['class']
 
   /**
    * Visual style variant.
@@ -79,8 +65,17 @@ export type AlertRootProps = PrimitiveProps & {
   variant?: AlertVariants['variant']
 }
 
-export type AlertContentProps = PrimitiveProps & { class?: any }
+export type AlertContentProps = PrimitiveProps & {
+  /** Custom style class */
+  class?: HTMLAttributes['class']
+}
 
-export type AlertTitleProps = PrimitiveProps & { class?: any }
+export type AlertTitleProps = PrimitiveProps & {
+  /** Custom style class */
+  class?: HTMLAttributes['class']
+}
 
-export type AlertDescriptionProps = PrimitiveProps & { class?: any }
+export type AlertDescriptionProps = PrimitiveProps & {
+  /** Custom style class */
+  class?: HTMLAttributes['class']
+}

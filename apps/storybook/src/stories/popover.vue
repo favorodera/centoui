@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { reactive } from 'vue'
 import { Button } from '#centoui/components/button'
 import { Field, FieldGroup } from '#centoui/components/field'
 import { Input } from '#centoui/components/input'
@@ -30,6 +31,11 @@ const controls = useStory('Popover', {
     ],
     type: 'array',
   },
+})
+
+const dimensionsModel = reactive({
+  height: '100%',
+  width: '25px',
 })
 </script>
 
@@ -67,7 +73,7 @@ const controls = useStory('Popover', {
 
           <Input
             id="width"
-            default-value="100%"
+            v-model:model-value="dimensionsModel.height"
             class="col-span-2"
           />
         </Field>
@@ -84,7 +90,7 @@ const controls = useStory('Popover', {
 
           <Input
             id="height"
-            default-value="25px"
+            v-model:model-value="dimensionsModel.width"
             class="col-span-2"
           />
         </Field>

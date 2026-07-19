@@ -1,6 +1,8 @@
 import type { SeparatorProps as RekaSeparatorProps } from 'reka-ui'
+import type { HTMLAttributes } from 'vue'
 import { tv } from 'tailwind-variants'
 
+// Variants
 export const separatorVariants = tv({
   defaultVariants: {
     orientation: 'horizontal',
@@ -26,8 +28,11 @@ export const separatorVariants = tv({
   },
 })
 
-// COMPONENT
+// Components
 export { default as Separator } from './separator.vue'
 
-// PROPS
-export type SeparatorProps = RekaSeparatorProps & { class?: any }
+// Props
+export type SeparatorProps = RekaSeparatorProps & {
+  /** Custom style class */
+  class?: HTMLAttributes['class']
+}

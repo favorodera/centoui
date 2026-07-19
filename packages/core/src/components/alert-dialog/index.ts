@@ -10,9 +10,11 @@ import type {
   AlertDialogTitleProps as RekaAlertDialogTitleProps,
   AlertDialogTriggerProps as RekaAlertDialogTriggerProps,
 } from 'reka-ui'
+import type { HTMLAttributes } from 'vue'
 import { tv } from 'tailwind-variants'
 import type { ButtonProps } from '../button'
 
+// Variants
 export const alertDialogVariants = tv({
   slots: {
     action: 'group/alert-dialog-action',
@@ -20,7 +22,7 @@ export const alertDialogVariants = tv({
     content: `
       fixed inset-bs-1/2 inset-s-1/2 z-50 grid inline-[90dvw] max-inline-sm
       -translate-1/2 gap-4 rounded-xl border bg-overlay p-4 overflow-hidden
-      group/alert-dialog-content
+      group/alert-dialog-content bg-clip-padding
 
       data-[state=closed]:animate-out data-[state=closed]:fade-out-0
       data-[state=closed]:zoom-out-98
@@ -36,7 +38,7 @@ export const alertDialogVariants = tv({
       sm:flex-row sm:justify-end
     `,
     header: `
-      flex flex-col gap-1 px-4 pbs-6 text-center -mx-4 -mbs-4
+      flex flex-col gap-1 px-4 pbs-4 text-center -mx-4 -mbs-4
       group/alert-dialog-header
 
       sm:text-start
@@ -53,7 +55,7 @@ export const alertDialogVariants = tv({
   },
 })
 
-// COMPONENTS
+// Components
 export { default as AlertDialogAction } from './alert-dialog-action.vue'
 export { default as AlertDialogCancel } from './alert-dialog-cancel.vue'
 export { default as AlertDialogContent } from './alert-dialog-content.vue'
@@ -64,31 +66,49 @@ export { default as AlertDialogRoot } from './alert-dialog-root.vue'
 export { default as AlertDialogTitle } from './alert-dialog-title.vue'
 export { default as AlertDialogTrigger } from './alert-dialog-trigger.vue'
 
-// PROPS
+// Props
 export type AlertDialogRootProps = RekaAlertDialogRootProps
 
-export type AlertDialogTriggerProps = RekaAlertDialogTriggerProps & { class?: any }
+export type AlertDialogTriggerProps = RekaAlertDialogTriggerProps & {
+  /** Custom style class */
+  class?: HTMLAttributes['class']
+}
 
-export type AlertDialogContentProps = RekaAlertDialogContentProps & { class?: any }
+export type AlertDialogContentProps = RekaAlertDialogContentProps & {
+  /** Custom style class */
+  class?: HTMLAttributes['class']
+}
 
-export type AlertDialogHeaderProps = PrimitiveProps & { class?: any }
+export type AlertDialogHeaderProps = PrimitiveProps & {
+  /** Custom style class */
+  class?: HTMLAttributes['class']
+}
 
-export type AlertDialogTitleProps = RekaAlertDialogTitleProps & { class?: any }
+export type AlertDialogTitleProps = RekaAlertDialogTitleProps & {
+  /** Custom style class */
+  class?: HTMLAttributes['class']
+}
 
-export type AlertDialogDescriptionProps = RekaAlertDialogDescriptionProps & { class?: any }
+export type AlertDialogDescriptionProps = RekaAlertDialogDescriptionProps & {
+  /** Custom style class */
+  class?: HTMLAttributes['class']
+}
 
-export type AlertDialogFooterProps = PrimitiveProps & { class?: any }
+export type AlertDialogFooterProps = PrimitiveProps & {
+  /** Custom style class */
+  class?: HTMLAttributes['class']
+}
 
 export type AlertDialogCancelProps = ButtonProps & RekaAlertDialogCancelProps
 
 export type AlertDialogActionProps = ButtonProps & RekaAlertDialogActionProps
 
-// EMITS
+// Emits
 export type AlertDialogRootEmits = RekaAlertDialogRootEmits
 
 export type AlertDialogContentEmits = RekaAlertDialogContentEmits
 
-// SLOTS
+// Slots
 export interface AlertDialogRootSlots {
   default?: (props: {
     /** Current open state */
@@ -96,5 +116,5 @@ export interface AlertDialogRootSlots {
 
     /** Close the dialog */
     close: () => void
-  }) => any
+  }) => void
 }

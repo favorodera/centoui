@@ -15,7 +15,6 @@ const forwardedPropsEmits = useForwardPropsEmits(props, emits)
   <DialogRoot
     v-slot="slotProps"
     v-bind="forwardedPropsEmits"
-    data-slot="sheet-root"
   >
     <slot v-bind="slotProps" />
   </DialogRoot>

@@ -191,7 +191,7 @@ const form = useNotForm({
 
               <Input
                 :id="path"
-                v-model:value="form.values.name"
+                v-model="form.values.name"
                 :aria-invalid="!isValid"
                 autocomplete="cc-name"
                 placeholder="John Doe"
@@ -216,7 +216,7 @@ const form = useNotForm({
 
               <Input
                 :id="path"
-                v-model:value="form.values.cardNumber"
+                v-model="form.values.cardNumber"
                 :aria-invalid="!isValid"
                 autocomplete="cc-number"
                 placeholder="1234 5678 1234 5678"
@@ -356,7 +356,7 @@ const form = useNotForm({
 
               <Input
                 :id="path"
-                v-model:value="form.values.address"
+                v-model="form.values.address"
                 :aria-invalid="!isValid"
                 autocomplete="address"
                 placeholder="123 Main St"
@@ -381,17 +381,17 @@ const form = useNotForm({
         </FieldDescription>
 
         <NotField
-          v-slot="{ path, errors, events, isValid}"
+          v-slot="{ errors, events, isValid}"
           path="plan"
         >
           <RadioGroupRoot
             v-model:model-value="form.values.plan"
-            v-bind="events"
+            @update:model-value="events.onChange()"
           >
             <Label
               v-for="plan in planOptions"
               :key="plan.value"
-              :for="path"
+              :for="plan.value"
             >
               <Field
                 orientation="horizontal"
@@ -408,9 +408,10 @@ const form = useNotForm({
                 </FieldContent>
 
                 <RadioGroupItem
-                  :id="path"
+                  :id="plan.value"
                   :value="plan.value"
                   :aria-invalid="!isValid"
+                  @blur="events.onBlur()"
                 />
               </Field>
             </Label>
@@ -431,7 +432,7 @@ const form = useNotForm({
 
           <Textarea
             :id="path"
-            v-model:value="form.values.comments"
+            v-model="form.values.comments"
             :aria-invalid="!isValid"
             v-bind="events"
             placeholder="Add any additional comments"

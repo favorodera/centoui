@@ -49,3 +49,5 @@ coverage/
 .cache/
 temp/
 tmp/
+packages/core/src/components-old/**/*.vue
+packages/core/src/components-old/**/*.ts

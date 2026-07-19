@@ -2,8 +2,10 @@ import type {
   ToggleEmits as RekaToggleEmits,
   ToggleProps as RekaToggleProps,
 } from 'reka-ui'
+import type { HTMLAttributes } from 'vue'
 import { tv, type VariantProps } from 'tailwind-variants'
 
+// Variants
 export const toggleVariants = tv({
   defaultVariants: {
     size: 'md',
@@ -12,11 +14,11 @@ export const toggleVariants = tv({
   },
   slots: {
     root: `
-      group/toggle relative inline-flex items-center shrink-0 cursor-default
-      truncate border border-transparent font-medium outline-none select-none
-      justify-center transition-all
+      group/toggle inline-flex items-center shrink-0 border-transparent border
+      outline-none select-none transition-all font-medium cursor-default
+      justify-center bg-clip-padding
 
-      data-disabled:pointer-events-none data-disabled:opacity-65
+      data-disabled:cursor-not-allowed data-disabled:opacity-70
 
       aria-invalid:ring-2 aria-invalid:ring-error
 
@@ -27,28 +29,35 @@ export const toggleVariants = tv({
     size: {
       lg: {
         root: `
-          min-block-9 inline-9 px-3 text-sm gap-1.5 rounded-lg
+          min-block-9 px-3 text-base gap-2 rounded-lg
 
           *:data-[slot=icon]:block-4.5 *:data-[slot=icon]:inline-4.5
         `,
       },
       md: {
         root: `
-          min-block-8 inline-8 px-2.5 text-sm gap-1.5 rounded-lg
+          min-block-8 min-inline-8 px-2.5 text-sm gap-1.5 rounded-lg
 
           *:data-[slot=icon]:block-4 *:data-[slot=icon]:inline-4
         `,
       },
       sm: {
         root: `
-          min-block-7 inline-7 px-2 text-xs gap-1 rounded-md
+          min-block-7 min-inline-7 px-2 text-sm gap-1 rounded-lg
 
           *:data-[slot=icon]:block-3.5 *:data-[slot=icon]:inline-3.5
         `,
       },
+      xl: {
+        root: `
+          min-block-10 min-inline-10 px-3.5 text-base gap-2.5 rounded-xl
+
+          *:data-[slot=icon]:block-5 *:data-[slot=icon]:inline-5
+        `,
+      },
       xs: {
         root: `
-          min-block-6 inline-6 px-1.5 text-xs gap-1 rounded-md
+          min-block-6 min-inline-6 px-1.5 text-xs gap-1 rounded-md
 
           *:data-[slot=icon]:block-3 *:data-[slot=icon]:inline-3
         `,
@@ -56,7 +65,7 @@ export const toggleVariants = tv({
     },
     square: {
       false: {
-        root: 'inline-auto',
+        root: 'min-inline-fit',
       },
       true: {
         root: 'px-0',
@@ -67,7 +76,7 @@ export const toggleVariants = tv({
         root: `
           bg-transparent text-foreground
 
-          hover:bg-muted
+          hover:not-disabled:bg-muted
 
           aria-pressed:bg-muted
 
@@ -78,7 +87,7 @@ export const toggleVariants = tv({
         root: `
           border-border bg-transparent text-foreground
 
-          hover:bg-muted
+          hover:not-disabled:bg-muted
 
           aria-pressed:bg-muted
 
@@ -88,14 +97,12 @@ export const toggleVariants = tv({
     },
   },
 })
-
-// COMPONENT
-export { default as Toggle } from './toggle.vue'
-
-// VARIANTS
 export type ToggleVariants = VariantProps<typeof toggleVariants>
 
-// PROPS
+// Components
+export { default as Toggle } from './toggle.vue'
+
+// Props
 export type ToggleProps = RekaToggleProps & {
   /**
    * Visual style variant.
@@ -109,7 +116,8 @@ export type ToggleProps = RekaToggleProps & {
    */
   size?: ToggleVariants['size']
 
-  class?: any
+  /** Custom style class */
+  class?: HTMLAttributes['class']
 
   /**
    * Render the toggle with equal dimensions.
@@ -118,10 +126,10 @@ export type ToggleProps = RekaToggleProps & {
   square?: boolean
 }
 
-// EMITS
+// Emits
 export type ToggleEmits = RekaToggleEmits
 
-// SLOTS
+// Slots
 export interface ToggleSlots {
   default?: (props: {
     /** Current value */
@@ -135,5 +143,5 @@ export interface ToggleSlots {
 
     /** Current disabled state  */
     disabled: boolean
-  }) => any
+  }) => void
 }

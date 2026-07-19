@@ -6,7 +6,7 @@ import {
   ComboboxViewport,
   useForwardPropsEmits,
 } from 'reka-ui'
-import { computed } from 'vue'
+import { normalizeClass } from 'vue'
 import {
   type ComboboxContentEmits,
   type ComboboxContentProps,
@@ -28,30 +28,24 @@ const delegatedProps = reactiveOmit(props, 'class', 'showArrow')
 
 const forwardedPropsEmits = useForwardPropsEmits(delegatedProps, emits)
 
-const { arrow, content, viewport } = comboboxVariants()
-
-const classNames = computed(() => ({
-  arrow: arrow(),
-  content: content({
-    class: props.class,
-    contentPosition: props.position,
-    size: rootContext?.size,
-  }),
-  viewport: viewport({
-    size: rootContext?.size,
-  }),
-}))
+const variants = comboboxVariants()
 </script>
 
 <template>
   <ComboboxContent
     v-bind="forwardedPropsEmits"
     data-slot="combobox-content"
-    :class="classNames.content"
+    :class="variants.content({
+      class: normalizeClass(props.class),
+      contentPosition: props.position,
+      size: rootContext?.size,
+    })"
   >
     <ComboboxViewport
       data-slot="combobox-viewport"
-      :class="classNames.viewport"
+      :class="variants.viewport({
+        size: rootContext?.size,
+      })"
     >
       <slot />
     </ComboboxViewport>
@@ -59,7 +53,7 @@ const classNames = computed(() => ({
     <ComboboxArrow
       v-if=" showArrow"
       data-slot="combobox-arrow"
-      :class="classNames.arrow"
+      :class="variants.arrow()"
     />
   </ComboboxContent>
 </template>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
 import { SwitchRoot, SwitchThumb, useForwardPropsEmits } from 'reka-ui'
-import { computed } from 'vue'
+import { normalizeClass } from 'vue'
 import { type SwitchEmits, type SwitchProps, switchVariants } from '.'
 
 const emits = defineEmits<SwitchEmits>()
@@ -14,17 +14,7 @@ const delegatedProps = reactiveOmit(props, 'class', 'size')
 
 const forwardedPropsEmits = useForwardPropsEmits(delegatedProps, emits)
 
-const { root, thumb } = switchVariants()
-
-const classNames = computed(() => ({
-  root: root({
-    class: props.class,
-    size: props.size,
-  }),
-  thumb: thumb({
-    size: props.size,
-  }),
-}))
+const variants = switchVariants()
 </script>
 
 <template>
@@ -32,11 +22,14 @@ const classNames = computed(() => ({
     :data-size="props.size"
     data-slot="switch-root"
     v-bind="forwardedPropsEmits"
-    :class="classNames.root"
+    :class="variants.root({
+      class: normalizeClass(props.class),
+      size: props.size,
+    })"
   >
     <SwitchThumb
       data-slot="switch-thumb"
-      :class="classNames.thumb"
+      :class="variants.thumb({ size: props.size })"
     />
   </SwitchRoot>
 </template>

@@ -32,12 +32,4 @@ const controls = useStory('Badge', {
     <Icon name="lucide:user" />
     User
   </Badge>
-
-  <Badge
-    :variant="controls.variant"
-    :size="controls.size"
-  >
-    Loading...
-    <Icon name="svg-spinners:180-ring" />
-  </Badge>
 </template>

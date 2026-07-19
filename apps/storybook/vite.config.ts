@@ -1,3 +1,5 @@
+/// <reference types="vite/client" />
+
 import { fileURLToPath } from 'node:url'
 
 import tailwindcss from '@tailwindcss/vite'
@@ -14,6 +16,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '#centoui/components': fileURLToPath(new URL('../../packages/core/src/components', import.meta.url)),
+      '#centoui/components-old': fileURLToPath(new URL('../../packages/core/src/components-old', import.meta.url)),
       '#centoui/config': fileURLToPath(new URL('../../packages/core/src/config.ts', import.meta.url)),
       '@': fileURLToPath(new URL('src', import.meta.url)),
     },

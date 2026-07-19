@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
 import { SelectValue, useForwardProps } from 'reka-ui'
-import { computed } from 'vue'
+import { normalizeClass } from 'vue'
 import {
   injectRootContext,
   type SelectValueProps,
@@ -19,12 +19,7 @@ const delegatedProps = reactiveOmit(props, 'class')
 
 const forwardedProps = useForwardProps(delegatedProps)
 
-const { value } = selectVariants()
-
-const classNames = computed(() => value({
-  class: props.class,
-  size: rootContext.size,
-}))
+const variants = selectVariants()
 </script>
 
 <template>
@@ -32,7 +27,10 @@ const classNames = computed(() => value({
     v-slot="slotProps"
     data-slot="select-value"
     v-bind="forwardedProps"
-    :class="classNames"
+    :class="variants.value({
+      class: normalizeClass(props.class),
+      size: rootContext?.size,
+    })"
   >
     <slot v-bind="slotProps" />
   </SelectValue>

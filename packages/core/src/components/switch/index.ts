@@ -1,6 +1,8 @@
 import type { SwitchRootEmits, SwitchRootProps } from 'reka-ui'
+import type { HTMLAttributes } from 'vue'
 import { tv, type VariantProps } from 'tailwind-variants'
 
+// Variants
 export const switchVariants = tv({
   defaultVariants: {
     size: 'md',
@@ -8,22 +10,26 @@ export const switchVariants = tv({
   slots: {
     root: `
       peer relative inline-flex shrink-0 items-center rounded-full border
-      outline-none transition-colors border-input bg-primary group/switch-root
+      outline-none transition-colors border-input group/switch-root
+      bg-clip-padding px-0.5
 
       focus-visible:ring-2 focus-visible:ring-ring
 
       aria-invalid:ring-2 aria-invalid:ring-error
 
-      disabled:pointer-events-none disabled:opacity-65
+      disabled:cursor-not-allowed disabled:opacity-70
 
       data-[state=unchecked]:bg-muted
+
+      data-[state=checked]:bg-primary
     `,
     thumb: `
-      pointer-events-none block shrink-0 rounded-full bg-primary-foreground
+      pointer-events-none block shrink-0 rounded-full
       transition-[translate,background-color] group/switch-thumb
 
-      data-[state=unchecked]:translate-x-0.5
       data-[state=unchecked]:bg-foreground
+
+      data-[state=checked]:bg-primary-foreground
     `,
   },
   variants: {
@@ -33,7 +39,7 @@ export const switchVariants = tv({
         thumb: `
           inline-4 block-4
 
-          data-[state=checked]:translate-x-7
+          data-[state=checked]:translate-x-6.5
         `,
       },
       md: {
@@ -41,7 +47,7 @@ export const switchVariants = tv({
         thumb: `
           inline-3.5 block-3.5
 
-          data-[state=checked]:translate-x-5.5
+          data-[state=checked]:translate-x-5
         `,
       },
       sm: {
@@ -49,22 +55,21 @@ export const switchVariants = tv({
         thumb: `
           inline-3 block-3
 
-          data-[state=checked]:translate-x-4
+          data-[state=checked]:translate-x-3.5
         `,
       },
     },
   },
 })
-
-// COMPONENTS
-export { default as Switch } from './switch.vue'
-
-// VARIANTS
 export type SwitchVariants = VariantProps<typeof switchVariants>
 
-// PROPS
+// Components
+export { default as Switch } from './switch.vue'
+
+// Props
 export type SwitchProps = SwitchRootProps & {
-  class?: any
+  /** Custom style class */
+  class?: HTMLAttributes['class']
 
   /**
    * Visual size scale.
@@ -73,5 +78,5 @@ export type SwitchProps = SwitchRootProps & {
   size?: SwitchVariants['size']
 }
 
-// EMITS
+// Emits
 export type SwitchEmits = SwitchRootEmits

@@ -50,6 +50,22 @@ const controls = useStory('Select', {
     type: 'array',
   },
 })
+
+const fruits = [
+  { label: 'Apple', value: 'apple' },
+  { disabled: true, label: 'Banana', value: 'banana' },
+  { label: 'Orange', value: 'orange' },
+  { label: 'Mango', value: 'mango' },
+  { label: 'Pineapple', value: 'pineapple' },
+]
+
+const berries = [
+  { disabled: true, label: 'Strawberry', value: 'strawberry' },
+  { label: 'Blueberry', value: 'blueberry' },
+  { label: 'Raspberry', value: 'raspberry' },
+  { label: 'Blackberry', value: 'blackberry' },
+  { label: 'Cranberry', value: 'cranberry' },
+]
 </script>
 
 <template>
@@ -71,16 +87,13 @@ const controls = useStory('Select', {
       :side="controls.side"
       :show-arrow="controls.showArrow"
     >
-      <SelectItem value="apple">
-        Apple
-      </SelectItem>
-
-      <SelectItem value="banana">
-        Banana
-      </SelectItem>
-
-      <SelectItem value="orange">
-        Orange
+      <SelectItem
+        v-for="fruit in fruits"
+        :key="fruit.value"
+        :value="fruit.value"
+        :disabled="fruit.disabled"
+      >
+        {{ fruit.label }}
       </SelectItem>
 
       <Separator />
@@ -91,18 +104,12 @@ const controls = useStory('Select', {
         </SelectLabel>
 
         <SelectItem
-          value="strawberry"
-          disabled
+          v-for="berry in berries"
+          :key="berry.value"
+          :value="berry.value"
+          :disabled="berry.disabled"
         >
-          Strawberry
-        </SelectItem>
-
-        <SelectItem value="blueberry">
-          Blueberry
-        </SelectItem>
-
-        <SelectItem value="raspberry">
-          Raspberry
+          {{ berry.label }}
         </SelectItem>
       </SelectGroup>
     </SelectContent>

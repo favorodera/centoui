@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
 import { ComboboxEmpty, useForwardProps } from 'reka-ui'
-import { computed } from 'vue'
+import { normalizeClass } from 'vue'
 import {
   type ComboboxEmptyProps,
   comboboxVariants,
@@ -16,19 +16,17 @@ const delegatedProps = reactiveOmit(props, 'class')
 
 const forwardedProps = useForwardProps(delegatedProps)
 
-const { empty } = comboboxVariants()
-
-const classNames = computed(() => empty({
-  class: props.class,
-  size: rootContext?.size,
-}))
+const variants = comboboxVariants()
 </script>
 
 <template>
   <ComboboxEmpty
     v-bind="forwardedProps"
     data-slot="combobox-empty"
-    :class="classNames"
+    :class="variants.empty({
+      class: normalizeClass(props.class),
+      size: rootContext?.size,
+    })"
   >
     <slot />
   </ComboboxEmpty>

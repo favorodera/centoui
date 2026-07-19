@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
 import { SliderRange, SliderRoot, SliderThumb, SliderTrack, useForwardPropsEmits } from 'reka-ui'
-import { computed } from 'vue'
+import { normalizeClass } from 'vue'
 import { type SliderEmits, type SliderProps, sliderVariants } from '.'
 
 const emits = defineEmits<SliderEmits>()
@@ -12,23 +12,7 @@ const delegatedProps = reactiveOmit(props, 'class')
 
 const forwardedPropsEmits = useForwardPropsEmits(delegatedProps, emits)
 
-const { range, root, thumb, track } = sliderVariants({ orientation: props.orientation })
-
-const classNames = computed(() => ({
-  range: range({
-    orientation: props.orientation,
-  }),
-  root: root({
-    class: props.class,
-    orientation: props.orientation,
-  }),
-  thumb: thumb({
-    orientation: props.orientation,
-  }),
-  track: track({
-    orientation: props.orientation,
-  }),
-}))
+const variants = sliderVariants()
 </script>
 
 <template>
@@ -36,24 +20,33 @@ const classNames = computed(() => ({
     v-slot="{modelValue}"
     data-slot="slider-root"
     v-bind="forwardedPropsEmits"
-    :class="classNames.root"
+    :class="variants.root({
+      class: normalizeClass(props.class),
+      orientation: props.orientation,
+    })"
   >
     <SliderTrack
       data-slot="slider-track"
-      :class="classNames.track"
+      :class="variants.track({
+        orientation: props.orientation,
+      })"
     >
       <SliderRange
         data-slot="slider-range"
-        :class="classNames.range"
+        :class="variants.range({
+          orientation: props.orientation,
+        })"
       />
     </SliderTrack>
 
     <SliderThumb
       v-for="_,key in modelValue"
-      :key
+      :key="key"
       data-slot="slider-thumb"
       :data-index="key"
-      :class="classNames.thumb"
+      :class="variants.thumb({
+        orientation: props.orientation,
+      })"
     />
   </SliderRoot>
 </template>

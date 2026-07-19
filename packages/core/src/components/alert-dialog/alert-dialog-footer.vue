@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
 import { Primitive, useForwardProps } from 'reka-ui'
-import { computed } from 'vue'
+import { normalizeClass } from 'vue'
 import {
   type AlertDialogFooterProps,
   alertDialogVariants,
@@ -13,18 +13,16 @@ const delegatedProps = reactiveOmit(props, 'class')
 
 const forwardedProps = useForwardProps(delegatedProps)
 
-const { footer } = alertDialogVariants()
-
-const classNames = computed(() => footer({
-  class: props.class,
-}))
+const variants = alertDialogVariants()
 </script>
 
 <template>
   <Primitive
     data-slot="alert-dialog-footer"
     v-bind="forwardedProps"
-    :class="classNames"
+    :class="variants.footer({
+      class: normalizeClass(props.class),
+    })"
   >
     <slot />
   </Primitive>

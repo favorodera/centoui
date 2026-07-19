@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
 import { CollapsibleRoot, useForwardPropsEmits } from 'reka-ui'
-import { computed } from 'vue'
+import { normalizeClass } from 'vue'
 import {
   type CollapsibleRootEmits,
   type CollapsibleRootProps,
@@ -19,11 +19,7 @@ const delegatedProps = reactiveOmit(props, 'class')
 
 const forwardedPropsEmits = useForwardPropsEmits(delegatedProps, emits)
 
-const { root } = collapsibleVariants()
-
-const classNames = computed(() => root({
-  class: props.class,
-}))
+const variants = collapsibleVariants()
 </script>
 
 <template>
@@ -31,7 +27,9 @@ const classNames = computed(() => root({
     v-slot="slotProps"
     data-slot="collapsible-root"
     v-bind="forwardedPropsEmits"
-    :class="classNames"
+    :class="variants.root({
+      class: normalizeClass(props.class),
+    })"
   >
     <slot v-bind="slotProps" />
   </CollapsibleRoot>

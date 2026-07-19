@@ -1,17 +1,18 @@
-import type { IconifyIconProps } from '@iconify/vue'
+import type { HTMLAttributes } from 'vue'
 import { tv } from 'tailwind-variants'
 
+// Variants
 export const iconVariants = tv({
   slots: {
-    root: `pointer-events-none block-4 inline-4 shrink-0 align-middle`,
+    root: `pointer-events-none block-4 inline-4 shrink-0`,
   },
 })
 
-// COMPONENT
+// Components
 export { default as Icon } from './icon.vue'
 
-// PROPS
-export type IconProps = Omit<IconifyIconProps, 'icon'> & {
+// Props
+export interface IconProps {
   /**
    * The iconify or custom ID of the icon.
    * @see https://icon-sets.iconify.design/
@@ -20,5 +21,6 @@ export type IconProps = Omit<IconifyIconProps, 'icon'> & {
    */
   name: string
 
-  class?: any
+  /** Custom style class */
+  class?: HTMLAttributes['class']
 }

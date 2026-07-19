@@ -1,13 +1,15 @@
 import type { PrimitiveProps } from 'reka-ui'
+import type { HTMLAttributes } from 'vue'
 import { tv, type VariantProps } from 'tailwind-variants'
 
+// Variants
 export const buttonGroupVariants = tv({
   defaultVariants: {
     orientation: 'horizontal',
   },
   slots: {
     root: `
-      isolate flex inline-fit items-stretch group/button-group
+      flex inline-fit items-stretch group/button-group
 
       *:focus-visible:z-10
 
@@ -37,16 +39,15 @@ export const buttonGroupVariants = tv({
     },
   },
 })
-
-// COMPONENT
-export { default as ButtonGroup } from './button-group.vue'
-
-// VARIANTS
 export type ButtonGroupVariants = VariantProps<typeof buttonGroupVariants>
 
-// PROPS
+// Components
+export { default as ButtonGroup } from './button-group.vue'
+
+// Props
 export type ButtonGroupProps = PrimitiveProps & {
-  class?: any
+  /** Custom style class */
+  class?: HTMLAttributes['class']
 
   /**
    * The orientation of the button group.

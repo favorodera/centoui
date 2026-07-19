@@ -5,7 +5,7 @@ import {
   ComboboxItemIndicator,
   useForwardPropsEmits,
 } from 'reka-ui'
-import { computed } from 'vue'
+import { normalizeClass } from 'vue'
 import config from '#centoui/config'
 import {
   type ComboboxItemEmits,
@@ -13,7 +13,7 @@ import {
   comboboxVariants,
   injectRootContext,
 } from '.'
-import { Icon } from '../icon'
+import { Icon } from '../../components/icon'
 
 const emits = defineEmits<ComboboxItemEmits>()
 
@@ -25,31 +25,26 @@ const delegatedProps = reactiveOmit(props, 'class')
 
 const forwardedPropsEmits = useForwardPropsEmits(delegatedProps, emits)
 
-const { item, itemIndicator } = comboboxVariants()
-
-const classNames = computed(() => ({
-  item: item({
-    class: props.class,
-    size: rootContext?.size,
-  }),
-  itemIndicator: itemIndicator({
-    size: rootContext?.size,
-  }),
-}))
+const variants = comboboxVariants()
 </script>
 
 <template>
   <ComboboxItem
     data-slot="combobox-item"
     v-bind="forwardedPropsEmits"
-    :class="classNames.item"
+    :class="variants.item({
+      size: rootContext?.size,
+      class: normalizeClass(props.class),
+    })"
   >
     <slot />
 
     <ComboboxItemIndicator
       data-slot="combobox-item-indicator"
       as-child
-      :class="classNames.itemIndicator"
+      :class="variants.itemIndicator({
+        size: rootContext?.size,
+      })"
     >
       <Icon :name="config.icons.check" />
     </ComboboxItemIndicator>

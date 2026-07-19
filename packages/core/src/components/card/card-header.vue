@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
 import { Primitive, useForwardProps } from 'reka-ui'
-import { computed } from 'vue'
+import { normalizeClass } from 'vue'
 import {
   type CardHeaderProps,
   cardVariants,
@@ -13,18 +13,16 @@ const delegatedProps = reactiveOmit(props, 'class')
 
 const forwardedProps = useForwardProps(delegatedProps)
 
-const { header } = cardVariants()
-
-const classNames = computed(() => header({
-  class: props.class,
-}))
+const variants = cardVariants()
 </script>
 
 <template>
   <Primitive
     data-slot="card-header"
     v-bind="forwardedProps"
-    :class="classNames"
+    :class="variants.header({
+      class: normalizeClass(props.class),
+    })"
   >
     <slot />
   </Primitive>

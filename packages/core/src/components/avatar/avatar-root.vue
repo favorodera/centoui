@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
 import { AvatarRoot, useForwardProps } from 'reka-ui'
-import { computed, reactive, toRef } from 'vue'
+import { normalizeClass, reactive, toRef } from 'vue'
 import { type AvatarRootProps, avatarVariants, provideRootContext } from '.'
 
 const props = withDefaults(defineProps<AvatarRootProps>(), {
@@ -12,12 +12,7 @@ const delegatedProps = reactiveOmit(props, 'class', 'size')
 
 const forwardedProps = useForwardProps(delegatedProps)
 
-const { root } = avatarVariants()
-
-const classNames = computed(() => root({
-  class: props.class,
-  size: props.size,
-}))
+const variants = avatarVariants()
 
 provideRootContext(reactive({
   size: toRef(props, 'size'),
@@ -29,7 +24,10 @@ provideRootContext(reactive({
     data-slot="avatar-root"
     :data-size="size"
     v-bind="forwardedProps"
-    :class="classNames"
+    :class="variants.root({
+      class: normalizeClass(props.class),
+      size: props.size,
+    })"
   >
     <slot />
   </AvatarRoot>

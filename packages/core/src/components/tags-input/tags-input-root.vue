@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
 import { TagsInputRoot, useForwardPropsEmits } from 'reka-ui'
-import { computed, reactive, toRef } from 'vue'
+import { normalizeClass, reactive, toRef } from 'vue'
 import { provideRootContext, type TagsInputRootEmits, type TagsInputRootProps, type TagsInputRootSlots, tagsInputVariants } from '.'
 
 defineSlots<TagsInputRootSlots>()
@@ -18,12 +18,7 @@ const delegatedProps = reactiveOmit(props, 'size')
 
 const forwardedPropsEmits = useForwardPropsEmits(delegatedProps, emits)
 
-const { root } = tagsInputVariants()
-
-const classNames = computed(() => root({
-  class: props.class,
-  size: props.size,
-}))
+const variants = tagsInputVariants()
 
 provideRootContext(reactive({
   size: toRef(props, 'size'),
@@ -34,7 +29,10 @@ provideRootContext(reactive({
   <TagsInputRoot
     v-slot="slotProps"
     v-bind="forwardedPropsEmits"
-    :class="classNames"
+    :class="variants.root({
+      size: props.size,
+      class: normalizeClass(props.class),
+    })"
     data-slot="tags-input-root"
     :data-size="size"
   >

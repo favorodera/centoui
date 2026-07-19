@@ -10,3 +10,4 @@ export default factory({
       'ts/no-explicit-any': 'off',
     },
   })
+  .remove('favorodera/vue/a11y/rules')

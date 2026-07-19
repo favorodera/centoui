@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
 import { TooltipArrow, TooltipContent, TooltipPortal, useForwardPropsEmits } from 'reka-ui'
-import { computed } from 'vue'
+import { normalizeClass } from 'vue'
 import {
   type TooltipContentEmits,
   type TooltipContentProps,
@@ -19,14 +19,7 @@ const delegatedProps = reactiveOmit(props, 'class', 'showArrow')
 
 const forwardedPropsEmits = useForwardPropsEmits(delegatedProps, emits)
 
-const { arrow, content } = tooltipVariants()
-
-const classNames = computed(() => ({
-  arrow: arrow(),
-  content: content({
-    class: props.class,
-  }),
-}))
+const variants = tooltipVariants()
 </script>
 
 <template>
@@ -34,13 +27,15 @@ const classNames = computed(() => ({
     <TooltipContent
       data-slot="tooltip-content"
       v-bind="forwardedPropsEmits"
-      :class="classNames.content"
+      :class="variants.content({
+        class: normalizeClass(props.class)
+      })"
     >
       <slot />
 
       <TooltipArrow
         v-if="showArrow"
-        :class="classNames.arrow"
+        :class="variants.arrow()"
         data-slot="tooltip-arrow"
       />
     </TooltipContent>

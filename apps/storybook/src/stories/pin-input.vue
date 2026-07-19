@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import { Icon } from '#centoui/components/icon'
 import { PinInputGroup, PinInputInput, PinInputRoot } from '#centoui/components/pin-input'
 import { useStory } from '@/composables/use-story'
@@ -15,6 +16,8 @@ const controls = useStory('Pin Input', {
     type: 'boolean',
   },
 })
+
+const pinInputModel = ref([])
 </script>
 
 <template>
@@ -47,6 +50,7 @@ const controls = useStory('Pin Input', {
   </PinInputRoot>
 
   <PinInputRoot
+    v-model:model-value="pinInputModel"
     :disabled="controls.disabled"
     placeholder="○"
   >
@@ -57,4 +61,8 @@ const controls = useStory('Pin Input', {
       :aria-invalid="controls.invalid"
     />
   </PinInputRoot>
+
+  <p class="text-sm text-muted-foreground basis-full">
+    {{ pinInputModel }}
+  </p>
 </template>

@@ -9,7 +9,7 @@ import {
   SelectViewport,
   useForwardPropsEmits,
 } from 'reka-ui'
-import { computed } from 'vue'
+import { normalizeClass } from 'vue'
 import config from '#centoui/config'
 import {
   injectRootContext,
@@ -33,25 +33,7 @@ const delegatedProps = reactiveOmit(props, 'class', 'showArrow')
 
 const forwardedPropsEmits = useForwardPropsEmits(delegatedProps, emits)
 
-const { arrow, content, scrollDownButton, scrollUpButton, viewport } = selectVariants()
-
-const classNames = computed(() => ({
-  arrow: arrow(),
-  content: content({
-    class: props.class,
-    contentPosition: props.position,
-    size: rootContext?.size,
-  }),
-  scrollDownButton: scrollDownButton({
-    size: rootContext?.size,
-  }),
-  scrollUpButton: scrollUpButton({
-    size: rootContext?.size,
-  }),
-  viewport: viewport({
-    size: rootContext?.size,
-  }),
-}))
+const variants = selectVariants()
 </script>
 
 <template>
@@ -59,11 +41,15 @@ const classNames = computed(() => ({
     <SelectContent
       v-bind="forwardedPropsEmits"
       data-slot="select-content"
-      :class="classNames.content"
+      :class="variants.content({
+        class: normalizeClass(props.class),
+        contentPosition: props.position,
+        size: rootContext?.size,
+      })"
     >
       <SelectScrollUpButton
         data-slot="select-scroll-up-button"
-        :class="classNames.scrollUpButton"
+        :class="variants.scrollUpButton({ size: rootContext?.size })"
       >
         <span class="sr-only">Scroll up</span>
         <Icon :name="config.icons.chevronUp" />
@@ -71,14 +57,14 @@ const classNames = computed(() => ({
 
       <SelectViewport
         data-slot="select-viewport"
-        :class="classNames.viewport"
+        :class="variants.viewport({ size: rootContext?.size })"
       >
         <slot />
       </SelectViewport>
 
       <SelectScrollDownButton
         data-slot="select-scroll-down-button"
-        :class="classNames.scrollDownButton"
+        :class="variants.scrollDownButton({ size: rootContext?.size })"
       >
         <span class="sr-only">Scroll down</span>
         <Icon :name="config.icons.chevronDown" />
@@ -87,7 +73,7 @@ const classNames = computed(() => ({
       <SelectArrow
         v-if="showArrow"
         data-slot="select-arrow"
-        :class="classNames.arrow"
+        :class="variants.arrow({ size: rootContext?.size })"
       />
     </SelectContent>
   </SelectPortal>

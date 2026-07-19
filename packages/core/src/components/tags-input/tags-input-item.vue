@@ -6,14 +6,14 @@ import {
   TagsInputItemText,
   useForwardProps,
 } from 'reka-ui'
-import { computed } from 'vue'
+import { normalizeClass } from 'vue'
 import config from '#centoui/config'
 import {
   injectRootContext,
   type TagsInputItemProps,
   tagsInputVariants,
 } from '.'
-import { Icon } from '../icon'
+import { Icon } from '../../components/icon'
 
 const props = defineProps<TagsInputItemProps>()
 
@@ -23,36 +23,30 @@ const delegatedProps = reactiveOmit(props, 'class')
 
 const forwardedPropsEmits = useForwardProps(delegatedProps)
 
-const { item, itemDelete, itemText } = tagsInputVariants()
-
-const classNames = computed(() => ({
-  item: item({
-    class: props.class,
-    size: rootContext.size,
-  }),
-  itemDelete: itemDelete({
-    size: rootContext.size,
-  }),
-  itemText: itemText({
-    size: rootContext.size,
-  }),
-}))
+const variants = tagsInputVariants()
 </script>
 
 <template>
   <TagsInputItem
     data-slot="tags-input-item"
     v-bind="forwardedPropsEmits"
-    :class="classNames.item"
+    :class="variants.item({
+      size: rootContext?.size,
+      class: normalizeClass(props.class),
+    })"
   >
     <TagsInputItemText
       data-slot="tags-input-item-text"
-      :class="classNames.itemText"
+      :class="variants.itemText({
+        size: rootContext?.size,
+      })"
     />
 
     <TagsInputItemDelete
       data-slot="tags-input-item-delete"
-      :class="classNames.itemDelete"
+      :class="variants.itemDelete({
+        size: rootContext?.size,
+      })"
     >
       <Icon :name="config.icons.x" />
     </TagsInputItemDelete>

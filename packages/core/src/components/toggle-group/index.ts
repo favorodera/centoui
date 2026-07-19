@@ -4,9 +4,11 @@ import type {
   ToggleGroupRootEmits as RekaToggleGroupRootEmits,
   ToggleGroupRootProps as RekaToggleGroupRootProps,
 } from 'reka-ui'
+import type { HTMLAttributes } from 'vue'
 import { tv, type VariantProps } from 'tailwind-variants'
 import type { ToggleProps } from '../toggle'
 
+// Variants
 export const toggleGroupVariants = tv({
   compoundVariants: [
     {
@@ -59,17 +61,16 @@ export const toggleGroupVariants = tv({
     },
   },
 })
+export type ToggleGroupVariants = VariantProps<typeof toggleGroupVariants>
 
-// COMPONENTS
+// Components
 export { default as ToggleGroupItem } from './toggle-group-item.vue'
 export { default as ToggleGroupRoot } from './toggle-group-root.vue'
 
-// VARIANTS
-export type ToggleGroupVariants = VariantProps<typeof toggleGroupVariants>
-
-// PROPS
+// Props
 export type ToggleGroupRootProps = RekaToggleGroupRootProps & {
-  class?: any
+  /** Custom style class */
+  class?: HTMLAttributes['class']
 
   /**
    * Whether to compact the toggle group (e.g like a button group).
@@ -80,15 +81,15 @@ export type ToggleGroupRootProps = RekaToggleGroupRootProps & {
 
 export type ToggleGroupItemProps = Pick<ToggleProps, 'class' | 'size' | 'square' | 'variant'> & RekaToggleGroupItemProps
 
-// EMITS
+// Emits
 export type ToggleGroupRootEmits = RekaToggleGroupRootEmits
 
-// SLOTS
+// Slots
 export interface ToggleGroupRootSlots {
   default?: (props: {
     /** Current toggle values */
     modelValue?: AcceptableValue | Array<AcceptableValue>
-  }) => any
+  }) => void
 }
 
 export interface ToggleGroupItemSlots {
@@ -104,5 +105,5 @@ export interface ToggleGroupItemSlots {
 
     /** Current disabled state */
     disabled: boolean
-  }) => any
+  }) => void
 }

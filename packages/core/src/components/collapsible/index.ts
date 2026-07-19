@@ -5,8 +5,10 @@ import type {
   CollapsibleRootProps as RekaCollapsibleRootProps,
   CollapsibleTriggerProps as RekaCollapsibleTriggerProps,
 } from 'reka-ui'
+import type { HTMLAttributes } from 'vue'
 import { tv } from 'tailwind-variants'
 
+// Variants
 export const collapsibleVariants = tv({
   slots: {
     content: `
@@ -21,27 +23,36 @@ export const collapsibleVariants = tv({
   },
 })
 
-// COMPONENTS
+// Components
 export { default as CollapsibleContent } from './collapsible-content.vue'
 export { default as CollapsibleRoot } from './collapsible-root.vue'
 export { default as CollapsibleTrigger } from './collapsible-trigger.vue'
 
-// PROPS
-export type CollapsibleRootProps = RekaCollapsibleRootProps & { class?: any }
+// Props
+export type CollapsibleRootProps = RekaCollapsibleRootProps & {
+  /** Custom style class */
+  class?: HTMLAttributes['class']
+}
 
-export type CollapsibleTriggerProps = RekaCollapsibleTriggerProps & { class?: any }
+export type CollapsibleTriggerProps = RekaCollapsibleTriggerProps & {
+  /** Custom style class */
+  class?: HTMLAttributes['class']
+}
 
-export type CollapsibleContentProps = RekaCollapsibleContentProps & { class?: any }
+export type CollapsibleContentProps = RekaCollapsibleContentProps & {
+  /** Custom style class */
+  class?: HTMLAttributes['class']
+}
 
-// EMITS
+// Emits
 export type CollapsibleRootEmits = RekaCollapsibleRootEmits
 
 export type CollapsibleContentEmits = RekaCollapsibleContentEmits
 
-// SLOTS
+// Slots
 export interface CollapsibleRootSlots {
   default?: (props: {
     /** Current open state */
     open: boolean
-  }) => any
+  }) => void
 }

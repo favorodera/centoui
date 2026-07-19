@@ -4,9 +4,11 @@ import type {
   PinInputRootEmits as RekaPinInputRootEmits,
   PinInputRootProps as RekaPinInputRootProps,
 } from 'reka-ui'
+import type { HTMLAttributes } from 'vue'
 import { tv, type VariantProps } from 'tailwind-variants'
 import type { InputProps } from '../input'
 
+// Variants
 export const pinInputVariants = tv({
   slots: {
     group: `
@@ -22,23 +24,27 @@ export const pinInputVariants = tv({
     root: 'inline-flex items-center gap-2 group/pin-input-root',
   },
 })
+export type PinInputVariants = VariantProps<typeof pinInputVariants>
 
-// COMPONENTS
+// Components
 export { default as PinInputGroup } from './pin-input-group.vue'
 export { default as PinInputInput } from './pin-input-input.vue'
 export { default as PinInputRoot } from './pin-input-root.vue'
 
-// VARIANTS
-export type PinInputVariants = VariantProps<typeof pinInputVariants>
+// Props
+export type PinInputRootProps = RekaPinInputRootProps & {
+  /** Custom style class */
+  class?: HTMLAttributes['class']
+}
 
-// PROPS
-export type PinInputRootProps = RekaPinInputRootProps & { class?: any }
+export type PinInputInputProps = InputProps & RekaPinInputInputProps
 
-export type PinInputInputProps = Omit<InputProps, 'defaultValue' | 'value'> & RekaPinInputInputProps
+export type PinInputGroupProps = PrimitiveProps & {
+  /** Custom style class */
+  class?: HTMLAttributes['class']
+}
 
-export type PinInputGroupProps = PrimitiveProps & { class?: any }
-
-// EMITS
+// Emits
 export type PinInputRootEmits = RekaPinInputRootEmits
 
 // SLOTS
@@ -46,5 +52,5 @@ export interface PinInputRootSlots {
   default?: (props: {
     /** Current input values */
     modelValue: Array<string>
-  }) => any
+  }) => void
 }

@@ -1,22 +1,26 @@
 import type { CheckboxRootEmits, CheckboxRootProps } from 'reka-ui'
+import type { HTMLAttributes } from 'vue'
 import { tv, type VariantProps } from 'tailwind-variants'
 
+// Variants
 export const checkboxVariants = tv({
   defaultVariants: {
     size: 'md',
   },
   slots: {
-    indicator: `grid place-content-center text-current group/checkbox-indicator`,
+    indicator: `grid place-items-center text-current group/checkbox-indicator`,
     root: `
-      peer relative inline-flex justify-center shrink-0 items-center border
-      outline-none border-input text-primary-foreground bg-primary
-      group/checkbox-root
+      peer relative inline-grid place-items-center shrink-0 border outline-none
+      border-input group/checkbox-root bg-clip-padding
 
       focus-visible:ring-2 focus-visible:ring-ring
 
       aria-invalid:ring-2 aria-invalid:ring-error
 
-      disabled:pointer-events-none disabled:opacity-65
+      disabled:cursor-not-allowed disabled:opacity-70
+
+      [[data-state=checked],[data-state=indeterminate]]:bg-primary
+      [[data-state=checked],[data-state=indeterminate]]:text-primary-foreground
 
       data-[state=unchecked]:bg-muted data-[state=unchecked]:text-foreground
     `,
@@ -38,16 +42,15 @@ export const checkboxVariants = tv({
     },
   },
 })
-
-// COMPONENTS
-export { default as Checkbox } from './checkbox.vue'
-
-// VARIANTS
 export type CheckboxVariants = VariantProps<typeof checkboxVariants>
 
-// PROPS
+// Components
+export { default as Checkbox } from './checkbox.vue'
+
+// Props
 export type CheckboxProps = CheckboxRootProps & {
-  class?: any
+  /** Custom style class */
+  class?: HTMLAttributes['class']
 
   /**
    * Visual size scale.
@@ -56,16 +59,5 @@ export type CheckboxProps = CheckboxRootProps & {
   size?: CheckboxVariants['size']
 }
 
-// EMITS
+// Emits
 export type CheckboxEmits = CheckboxRootEmits
-
-// SLOTS
-export interface CheckboxSlots<TValue = boolean> {
-  default?: (props: {
-    /** Current value */
-    modelValue: 'indeterminate' | TValue
-
-    /** Current state */
-    state: 'indeterminate' | false | true
-  }) => any
-}

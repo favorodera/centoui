@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
 import { Primitive, useForwardProps } from 'reka-ui'
-import { computed } from 'vue'
+import { normalizeClass } from 'vue'
 import {
   injectRootContext,
   type ItemMediaProps,
@@ -16,13 +16,7 @@ const delegatedProps = reactiveOmit(props, 'class')
 
 const forwardedProps = useForwardProps(delegatedProps)
 
-const { media } = itemVariants()
-
-const classNames = computed(() => media({
-  class: props.class,
-  mediaVariant: props.variant,
-  variant: rootContext?.variant,
-}))
+const variants = itemVariants()
 </script>
 
 <template>
@@ -30,7 +24,11 @@ const classNames = computed(() => media({
     data-slot="item-media"
     v-bind="forwardedProps"
     :data-variant="variant"
-    :class="classNames"
+    :class="variants.media({
+      class: normalizeClass(props.class),
+      mediaVariant: props.variant,
+      variant: rootContext?.variant,
+    })"
   >
     <slot />
   </Primitive>

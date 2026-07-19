@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
 import { AccordionHeader, AccordionTrigger, useForwardProps } from 'reka-ui'
-import { computed, useAttrs } from 'vue'
+import { normalizeClass } from 'vue'
 import { type AccordionTriggerProps, accordionVariants } from '.'
 
 defineOptions({
@@ -10,25 +10,21 @@ defineOptions({
 
 const props = defineProps<AccordionTriggerProps>()
 
-const attributes = useAttrs()
-
 const delegatedProps = reactiveOmit(props, 'class')
 
 const forwardedProps = useForwardProps(delegatedProps)
 
-const { trigger } = accordionVariants()
-
-const classNames = computed(() => trigger({
-  class: props.class,
-}))
+const variants = accordionVariants()
 </script>
 
 <template>
   <AccordionHeader data-slot="accordion-header">
     <AccordionTrigger
       data-slot="accordion-trigger"
-      v-bind="{...attributes,...forwardedProps}"
-      :class="classNames"
+      v-bind="{...$attrs,...forwardedProps}"
+      :class="variants.trigger({
+        class: normalizeClass(props.class),
+      })"
     >
       <slot />
     </AccordionTrigger>

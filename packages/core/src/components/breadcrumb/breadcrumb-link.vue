@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
 import { Primitive, useForwardProps } from 'reka-ui'
-import { computed } from 'vue'
+import { normalizeClass } from 'vue'
 import { type BreadcrumbLinkProps, breadcrumbVariants } from '.'
 
 const props = withDefaults(defineProps<BreadcrumbLinkProps>(), {
@@ -12,18 +12,16 @@ const delegatedProps = reactiveOmit(props, 'class')
 
 const forwardedProps = useForwardProps(delegatedProps)
 
-const { link } = breadcrumbVariants()
-
-const classNames = computed(() => link({
-  class: props.class,
-}))
+const variants = breadcrumbVariants()
 </script>
 
 <template>
   <Primitive
     data-slot="breadcrumb-link"
     v-bind="forwardedProps"
-    :class="classNames"
+    :class="variants.link({
+      class: normalizeClass(props.class),
+    })"
   >
     <slot />
   </Primitive>

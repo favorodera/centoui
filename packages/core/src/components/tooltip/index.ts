@@ -6,8 +6,10 @@ import type {
   TooltipRootProps as RekaTooltipRootProps,
   TooltipTriggerProps as RekaTooltipTriggerProps,
 } from 'reka-ui'
+import type { HTMLAttributes } from 'vue'
 import { tv } from 'tailwind-variants'
 
+// Variants
 export const tooltipVariants = tv({
   slots: {
     arrow: 'z-50 fill-foreground group/tooltip-arrow',
@@ -15,7 +17,7 @@ export const tooltipVariants = tv({
       pointer-events-auto relative z-50 inline-fit
       origin-(--reka-tooltip-content-transform-origin) animate-in rounded-lg
       bg-foreground px-2.5 py-1.5 text-xs text-background fade-in-0 zoom-in-95
-      border-border border font-medium group/tooltip-content
+      border font-medium group/tooltip-content bg-clip-padding
 
       data-[side=bottom]:slide-in-from-top-1
 
@@ -32,21 +34,25 @@ export const tooltipVariants = tv({
   },
 })
 
-// COMPONENTS
+// Components
 export { default as TooltipContent } from './tooltip-content.vue'
 export { default as TooltipProvider } from './tooltip-provider.vue'
 export { default as TooltipRoot } from './tooltip-root.vue'
 export { default as TooltipTrigger } from './tooltip-trigger.vue'
 
-// PROPS
+// Props
 export type TooltipProviderProps = RekaTooltipProviderProps
 
 export type TooltipRootProps = RekaTooltipRootProps
 
-export type TooltipTriggerProps = RekaTooltipTriggerProps & { class?: any }
+export type TooltipTriggerProps = RekaTooltipTriggerProps & {
+  /** Custom style class */
+  class?: HTMLAttributes['class']
+}
 
 export type TooltipContentProps = RekaTooltipContentProps & {
-  class?: any
+  /** Custom style class */
+  class?: HTMLAttributes['class']
 
   /**
    * Whether to show an arrow alongside the content.
@@ -55,15 +61,15 @@ export type TooltipContentProps = RekaTooltipContentProps & {
   showArrow?: boolean
 }
 
-// EMITS
+// Emits
 export type TooltipRootEmits = RekaTooltipRootEmits
 
 export type TooltipContentEmits = RekaTooltipContentEmits
 
-// SLOTS
+// Slots
 export interface TooltipRootSlots {
   default?: (props: {
     /** Current open state */
     open: boolean
-  }) => any
+  }) => void
 }

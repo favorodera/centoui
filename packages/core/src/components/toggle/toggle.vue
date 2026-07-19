@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
 import { Toggle, useForwardPropsEmits } from 'reka-ui'
-import { computed } from 'vue'
+import { normalizeClass } from 'vue'
 import { type ToggleEmits, type ToggleProps, type ToggleSlots, toggleVariants } from '.'
 
 defineSlots<ToggleSlots>()
@@ -18,14 +18,7 @@ const delegatedProps = reactiveOmit(props, 'class', 'variant', 'size', 'square')
 
 const forwardedPropsEmits = useForwardPropsEmits(delegatedProps, emits)
 
-const { root } = toggleVariants()
-
-const classNames = computed(() => root({
-  class: props.class,
-  size: props.size,
-  square: props.square,
-  variant: props.variant,
-}))
+const variants = toggleVariants()
 </script>
 
 <template>
@@ -36,7 +29,12 @@ const classNames = computed(() => root({
     :data-size="size"
     :data-square="square"
     v-bind="forwardedPropsEmits"
-    :class="classNames"
+    :class="variants.root({
+      class: normalizeClass(props.class),
+      size: props.size,
+      square: props.square,
+      variant: props.variant,
+    })"
   >
     <slot v-bind="slotProps" />
   </Toggle>

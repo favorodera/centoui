@@ -27,7 +27,9 @@
         "alert-dialog/alert-dialog-trigger.vue",
         "alert-dialog/index.ts"
       ],
-      "componentDependencies": ["button"]
+      "componentDependencies": [
+        "button"
+      ]
     },
     {
       "$schema": "./schemas/component.json",
@@ -81,7 +83,9 @@
         "breadcrumb/breadcrumb-separator.vue",
         "breadcrumb/index.ts"
       ],
-      "componentDependencies": ["icon"]
+      "componentDependencies": [
+        "icon"
+      ]
     },
     {
       "$schema": "./schemas/component.json",
@@ -118,7 +122,9 @@
         "checkbox/checkbox.vue",
         "checkbox/index.ts"
       ],
-      "componentDependencies": ["icon"]
+      "componentDependencies": [
+        "icon"
+      ]
     },
     {
       "$schema": "./schemas/component.json",
@@ -230,7 +236,9 @@
         "number-input/number-input.vue",
         "number-input/index.ts"
       ],
-      "componentDependencies": ["icon"]
+      "componentDependencies": [
+        "icon"
+      ]
     },
     {
       "$schema": "./schemas/component.json",
@@ -260,13 +268,14 @@
         "pin-input/pin-input-root.vue",
         "pin-input/index.ts"
       ],
-      "componentDependencies": ["input"]
+      "componentDependencies": [
+        "input"
+      ]
     },
     {
       "$schema": "./schemas/component.json",
       "name": "popover",
       "files": [
-        "popover/popover-anchor.vue",
         "popover/popover-content.vue",
         "popover/popover-description.vue",
         "popover/popover-footer.vue",
@@ -307,7 +316,9 @@
         "select/select-value.vue",
         "select/index.ts"
       ],
-      "componentDependencies": ["icon"]
+      "componentDependencies": [
+        "icon"
+      ]
     },
     {
       "$schema": "./schemas/component.json",
@@ -361,7 +372,9 @@
         "tags-input/tags-input-item.vue",
         "tags-input/tags-input-root.vue"
       ],
-      "componentDependencies": ["icon"]
+      "componentDependencies": [
+        "icon"
+      ]
     },
     {
       "$schema": "./schemas/component.json",
@@ -379,7 +392,9 @@
         "toggle-group/toggle-group-item.vue",
         "toggle-group/toggle-group-root.vue"
       ],
-      "componentDependencies": ["toggle"]
+      "componentDependencies": [
+        "toggle"
+      ]
     },
     {
       "$schema": "./schemas/component.json",

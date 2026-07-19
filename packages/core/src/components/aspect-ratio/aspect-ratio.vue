@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
 import { AspectRatio, useForwardProps } from 'reka-ui'
-import { computed } from 'vue'
+import { normalizeClass } from 'vue'
 import { type AspectRatioProps, type AspectRatioSlots, aspectRatioVariants } from '.'
 
 defineSlots<AspectRatioSlots>()
@@ -12,18 +12,16 @@ const delegatedProps = reactiveOmit(props, 'class')
 
 const forwardedProps = useForwardProps(delegatedProps)
 
-const { root } = aspectRatioVariants()
-
-const classNames = computed(() => root({
-  class: props.class,
-}))
+const variants = aspectRatioVariants()
 </script>
 
 <template>
   <AspectRatio
     v-slot="slotProps"
     data-slot="aspect-ratio"
-    :class="classNames"
+    :class="variants.root({
+      class: normalizeClass(props.class),
+    })"
     v-bind="forwardedProps"
   >
     <slot v-bind="slotProps" />

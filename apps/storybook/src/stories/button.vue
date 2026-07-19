@@ -33,7 +33,7 @@ const controls = useStory('Button', {
   <Button
     :size="controls.size"
     :variant="controls.variant"
-    square
+    :square="true"
     :disabled="controls.disabled"
   >
     <Icon name="lucide:user" />
@@ -43,8 +43,12 @@ const controls = useStory('Button', {
     :size="controls.size"
     :variant="controls.variant"
     :disabled="controls.disabled"
+    as-child
   >
-    Loading...
-    <Icon name="svg-spinners:180-ring" />
+    <a to="#">
+      <Icon name="lucide:download" />
+
+      Download
+    </a>
   </Button>
 </template>

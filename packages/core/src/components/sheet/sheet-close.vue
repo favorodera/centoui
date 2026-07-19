@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
 import { DialogClose, useForwardProps } from 'reka-ui'
-import { computed } from 'vue'
+import { normalizeClass } from 'vue'
 import {
   type SheetCloseProps,
   sheetVariants,
@@ -13,18 +13,16 @@ const delegatedProps = reactiveOmit(props, 'class')
 
 const forwardedProps = useForwardProps(delegatedProps)
 
-const { close } = sheetVariants()
-
-const classNames = computed(() => close({
-  class: props.class,
-}))
+const variants = sheetVariants()
 </script>
 
 <template>
   <DialogClose
     data-slot="sheet-close"
     v-bind="forwardedProps"
-    :class="classNames"
+    :class="variants.close({
+      class: normalizeClass(props.class),
+    })"
   >
     <slot />
   </DialogClose>
