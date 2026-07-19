@@ -1,5 +1,23 @@
 # Changelog
 
+## v1.11.1...v1.12.0
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.11.1...v1.12.0)
+
+### Refactors
+
+- **core:** Optimize class bindings and imports ([d4a4461](https://github.com/favorodera/centoui/commit/d4a4461))
+
+  - Use normalizeClass instead of computed for classes
+  - Remove unused imports and clean up ESLint rules
+  - Add global base styles and scrollbar behaviors
+  - Remove unused PopoverAnchor component
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.11.0...v1.11.1
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.11.0...v1.11.1)
