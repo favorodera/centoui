@@ -1,0 +1,61 @@
+import type { SliderRootEmits, SliderRootProps } from 'reka-ui'
+import type { HTMLAttributes } from 'vue'
+import { tv } from 'tailwind-variants'
+
+// Variants
+export const sliderVariants = tv({
+  defaultVariants: {
+    orientation: 'horizontal',
+  },
+  slots: {
+    range: 'absolute rounded-[inherit] bg-primary group/slider-range',
+    root: `
+      group/slider-root relative flex touch-none items-center select-none
+
+      data-disabled:opacity-70
+    `,
+    thumb: `
+      relative block block-5 inline-5 shrink-0 rounded-full border-2
+      border-primary bg-primary-foreground ring-ring group/slider-thumb
+      transition-shadow
+
+      group-aria-invalid/slider-root:ring-2
+      group-aria-invalid/slider-root:ring-error
+
+      hover:not-disabled:ring-2
+
+      focus-visible:ring-2 focus-visible:outline-none
+
+      disabled:cursor-not-allowed disabled:opacity-70
+    `,
+    track: `
+      relative grow overflow-hidden rounded-full bg-muted group/slider-track
+    `,
+  },
+  variants: {
+    orientation: {
+      horizontal: {
+        range: 'block-full',
+        root: 'inline-full',
+        track: 'block-2 inline-full',
+      },
+      vertical: {
+        range: 'inline-full',
+        root: 'min-block-32 inline-auto flex-col self-stretch',
+        track: 'block-full inline-2',
+      },
+    },
+  },
+})
+
+// Component
+export { default as Slider } from './slider.vue'
+
+// Props
+export type SliderProps = SliderRootProps & {
+  /** Custom style class */
+  class?: HTMLAttributes['class']
+}
+
+// Emits
+export type SliderEmits = SliderRootEmits

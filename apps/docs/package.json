@@ -1,0 +1,73 @@
+{
+  "name": "docs",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "description": "CentoUI documentation",
+  "author": "Favour Emeka <favorodera@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://centoui.vercel.app",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/favorodera/centoui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/favorodera/centoui/issues"
+  },
+  "engines": {
+    "node": ">=22.0.0",
+    "pnpm": ">=11.0.0"
+  },
+  "scripts": {
+    "script:pull-components": "tsx scripts/pull-components.ts",
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "typecheck": "nuxt prepare && nuxt typecheck",
+    "lint": "nuxt prepare && eslint . --fix"
+  },
+  "dependencies": {
+    "@nuxt/content": "catalog:vendor",
+    "@nuxt/fonts": "catalog:vendor",
+    "@nuxt/icon": "catalog:vendor",
+    "@nuxt/image": "catalog:vendor",
+    "@nuxtjs/color-mode": "catalog:vendor",
+    "@nuxtjs/mcp-toolkit": "catalog:vendor",
+    "@nuxtjs/seo": "catalog:vendor",
+    "@tailwindcss/vite": "catalog:vendor",
+    "@takumi-rs/core": "catalog:vendor",
+    "@vercel/analytics": "catalog:vendor",
+    "@vueuse/core": "catalog:vendor",
+    "better-sqlite3": "catalog:vendor",
+    "centoui": "workspace:*",
+    "centoui-nuxt": "workspace:*",
+    "notform-nuxt": "catalog:vendor",
+    "nuxt": "catalog:vendor",
+    "nuxt-llms": "catalog:vendor",
+    "nuxt-og-image": "catalog:vendor",
+    "nuxt-schema-org": "catalog:vendor",
+    "reka-ui": "catalog:vendor",
+    "tailwind-merge": "catalog:vendor",
+    "tailwind-variants": "catalog:vendor",
+    "tailwindcss": "catalog:vendor",
+    "tw-animate-css": "catalog:vendor",
+    "vue": "catalog:vendor",
+    "vue-router": "catalog:vendor",
+    "zod": "catalog:vendor",
+    "@iconify/vue": "catalog:vendor"
+  },
+  "devDependencies": {
+    "@favorodera/eslint-config": "catalog:tools",
+    "@nuxt/eslint": "catalog:tools",
+    "@types/node": "catalog:tools",
+    "typescript": "catalog:tools",
+    "vue-tsc": "catalog:tools",
+    "fs-extra": "catalog:vendor",
+    "pathe": "catalog:vendor",
+    "@types/fs-extra": "catalog:tools",
+    "@clack/prompts": "catalog:vendor",
+    "tsx": "catalog:tools"
+  }
+}

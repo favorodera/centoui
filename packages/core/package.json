@@ -40,8 +40,8 @@
     "pnpm": ">=11.0.0"
   },
   "scripts": {
-    "build:registry": "tsx scripts/build-registry.ts",
-    "prebuild": "pnpm run build:registry",
+    "script:build-registry": "tsx scripts/build-registry.ts",
+    "prebuild": "pnpm run script:build-registry",
     "build": "tsdown",
     "dev": "tsdown --watch",
     "test": "vitest run",

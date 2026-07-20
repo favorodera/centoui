@@ -32,6 +32,7 @@ catalogs:
     vue: ^3.0.0
   tools:
     '@favorodera/eslint-config': ^1.0.4
+    '@nuxt/eslint': ^1.16.0
     '@nuxt/module-builder': ^1.0.2
     '@nuxt/schema': ^4.4.8
     '@tsconfig/node24': ^24.0.4
@@ -53,14 +54,28 @@ catalogs:
   vendor:
     '@clack/prompts': ^1.5.1
     '@iconify/vue': ^5.0.1
+    '@nuxt/content': ^3.15.0
+    '@nuxt/fonts': ^0.14.0
+    '@nuxt/icon': ^2.3.1
+    '@nuxt/image': ^2.0.0
     '@nuxt/kit': ^4.4.8
+    '@nuxtjs/color-mode': ^4.0.1
+    '@nuxtjs/mcp-toolkit': ^0.18.0
+    '@nuxtjs/seo': ^5.3.2
     '@tailwindcss/vite': ^4.3.1
+    '@takumi-rs/core': 2.0.0-rc.16
+    '@vercel/analytics': ^2.0.1
     '@vueuse/core': ^14.3.0
+    better-sqlite3: ^12.11.1
     c12: ^4.0.0-beta.5
     citty: ^0.2.2
     fs-extra: ^11.3.5
-    notform: ^2.1.3
+    notform: ^2.2.0
+    notform-nuxt: ^2.2.0
     nuxt: ^4.4.8
+    nuxt-llms: ^0.2.0
+    nuxt-og-image: ^6.7.2
+    nuxt-schema-org: ^6.2.3
     nypm: ^0.6.7
     pathe: ^2.0.3
     pinia: ^3.0.4

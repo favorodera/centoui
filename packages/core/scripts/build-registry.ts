@@ -8,6 +8,7 @@ import { parse as parseYaml } from 'yaml'
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const REGISTRY_DIR = join(__dirname, '../src/registry')
 const REGISTRY_OUTPUT = join(REGISTRY_DIR, 'index.json')
+const PNPM_WORKSPACE = join(__dirname, '../../../pnpm-workspace.yaml')
 
 /** Static list of core dependency names required in every CentoUI project. */
 const ROOT_NPM_DEPENDENCY_NAMES = [
@@ -37,7 +38,7 @@ await tasks([
         throw new Error('No component entries found')
       }
 
-      const workspaceYaml = await fsExtra.readFile(join(__dirname, '../../../pnpm-workspace.yaml'), 'utf8')
+      const workspaceYaml = await fsExtra.readFile(PNPM_WORKSPACE, 'utf8')
       const workspaceConfig = parseYaml(workspaceYaml)
       const vendorCatalog = workspaceConfig.catalogs?.vendor || {}
 

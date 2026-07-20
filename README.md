@@ -42,6 +42,7 @@ This monorepo is managed with [pnpm](https://pnpm.io/) workspaces and [Turborepo
 | [`packages/cli`](./packages/cli) | `centoui-cli` | CLI for initializing projects and managing components |
 | [`packages/nuxt`](./packages/nuxt) | `centoui-nuxt` | Official Nuxt module with auto-registration |
 | [`apps/storybook`](./apps/storybook) | `storybook` | Component viewer for visual development |
+| [`apps/docs`](./apps/docs) | `docs` | Documentation for CentoUI components |
 
 ## Development
 
