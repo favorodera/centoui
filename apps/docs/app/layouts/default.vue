@@ -1,17 +1,13 @@
 <template>
   <div
     class="
-      max-inline-2xl mx-auto px-6 grid grid-rows-[auto_1fr_auto] min-block-full
-      inline-full relative
-
-      sm:px-8
+      mx-auto grid grid-rows-[auto_1fr_auto] min-block-full inline-full relative
     "
   >
     <header
-
-      class="bg-background sticky inset-bs-0 z-50"
+      class="bg-background sticky inset-bs-0 z-50 backdrop-blur-sm top-0 py-4 h-14 lg:h-16"
     >
-      <!-- Nav -->
+      <AppNav />
     </header>
 
     <main

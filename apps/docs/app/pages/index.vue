@@ -1,17 +1,12 @@
 <script setup lang="ts">
-const { data: page } = await useAsyncData('index', () => queryCollection('landing').first())
-
-if (!page.value) {
-  throw createError({
-    fatal: true,
-    statusCode: 404,
-    statusMessage: 'Page not found',
-  })
-}
+const { data: page } = useQuery({
+  key: ['home'],
+  query: () => queryCollection('home').first(),
+})
 </script>
 
 <template>
-  <div>
+  <div class="block-full inline-full">
     <ContentRenderer
       v-if="page"
       :value="page"

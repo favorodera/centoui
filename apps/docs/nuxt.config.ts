@@ -17,22 +17,26 @@ const fontWeights = [
 export default defineNuxtConfig({
 
   modules: [
-    '@nuxt/content',
+    '@vueuse/nuxt',
+    '@pinia/nuxt',
+    '@pinia/colada-nuxt',
 
     'centoui-nuxt',
+    'notform-nuxt',
+
     '@nuxtjs/color-mode',
+    '@nuxt/fonts',
     '@nuxt/icon',
     '@nuxt/image',
-    '@nuxt/fonts',
-    'notform-nuxt',
+    
+    '@nuxt/content',
 
     '@nuxtjs/seo',
     '@vercel/analytics',
 
+    '@nuxt/eslint',
     'nuxt-llms',
     '@nuxtjs/mcp-toolkit',
-
-    '@nuxt/eslint',
   ],
 
   devtools: false,
@@ -146,7 +150,7 @@ export default defineNuxtConfig({
       },
       {
         global: true,
-        name: 'Instrument Serif',
+        name: 'JetBrains Mono',
         weights: fontWeights,
       },
     ],

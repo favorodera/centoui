@@ -1,8 +1,10 @@
 @import "./centoui.css";
 
+@source "../../../content/**/*";
+
 @theme inline {
   --font-sans: 'Bricolage Grotesque', sans-serif;
-  --font-serif: 'Instrument Serif', serif;
+  --font-mono: 'JetBrains Mono', monospace;
 }
 
 .fade-out-in-enter-active,
