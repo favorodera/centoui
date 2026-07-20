@@ -9,38 +9,17 @@ import { RadioGroupItem, RadioGroupRoot } from '#centoui/components/radio-group'
 import { SelectContent, SelectGroup, SelectItem, SelectRoot, SelectTrigger, SelectValue } from '#centoui/components/select'
 import { Separator } from '#centoui/components/separator'
 import { Switch } from '#centoui/components/switch'
+import { TagsInputInput, TagsInputItem, TagsInputRoot } from '#centoui/components/tags-input'
 import { Textarea } from '#centoui/components/textarea'
 import { useStory } from '@/composables/use-story'
 
 useStory('Field', {})
 
-const monthOptions = [
-  '01',
-  '02',
-  '03',
-  '04',
-  '05',
-  '06',
-  '07',
-  '08',
-  '09',
-  '10',
-  '11',
-  '12',
-] as const
-
-const yearOptions = [
-  '2024',
-  '2025',
-  '2026',
-  '2027',
-  '2028',
-] as const
-
-const titleOptions = [
-  'Mr',
-  'Mrs',
-  'Miss',
+const regionOptions = [
+  { label: 'United States', value: 'us' },
+  { label: 'Europe (Frankfurt)', value: 'eu' },
+  { label: 'Asia Pacific (Singapore)', value: 'ap' },
+  { label: 'South America (São Paulo)', value: 'sa' },
 ] as const
 
 const planOptions = [
@@ -49,50 +28,105 @@ const planOptions = [
   { description: 'For large teams and enterprises', label: 'Enterprise', value: 'enterprise' },
 ] as const
 
-const schema = z.object({
-  address: z
-    .string('Invalid address')
-    .trim()
-    .nonempty('Address is required')
-    .min(3, 'Address must be at least 3 characters')
-    .max(50, 'Address must not be more than 50 characters'),
-  cardNumber: z
-    .string('Invalid card number')
-    .nonempty('Card number is required')
-    .regex(/^\d+$/, 'Card number must contain only digits')
-    .min(13, 'Card number must be at least 13 digits')
-    .max(19, 'Card number must not be more than 19 digits'),
-  comments: z
-    .string('Invalid comment')
-    .trim()
-    .max(500, 'Comment must not be more than 500 characters')
-    .optional(),
-  cvv: z
-    .string('Invalid CVV number')
-    .trim()
-    .nonempty('CVV number is required')
-    .regex(/^\d+$/, 'CVV must contain only digits')
-    .min(3, 'Must be at least 3 digits')
-    .max(4, 'Must be at most 4 digits'),
-  month: z.enum(monthOptions, 'Please select a valid month'),
-  name: z
-    .string('Invalid card name')
-    .trim()
-    .regex(/^[a-zA-Z\s.\\-]+$/, 'Name contains invalid characters')
-    .nonempty('Name on card is required')
-    .min(3, 'Name must be at least 3 characters')
-    .max(50, 'Name must not be more than 50 characters'),
-  notifications: z.boolean().refine(value => value === true, {
-    message: 'It is highly recommended to enable notifications.',
-  }),
-  plan: z.enum(planOptions.map(option => option.value), 'Please select a valid plan'),
-  title: z.enum(titleOptions, 'Please select a valid title'),
-  year: z.enum(yearOptions, 'Please select a valid expiration year'),
-})
+const visibilityOptions = [
+  {
+    description: 'Visible and joinable by anyone in your organization.',
+    label: 'Public',
+    value: 'public',
+  },
+  {
+    description: 'Only invited members can find and join the workspace.',
+    label: 'Private',
+    value: 'private',
+  },
+  {
+    description: 'Hidden entirely; members must be added by an admin.',
+    label: 'Secret',
+    value: 'secret',
+  },
+] as const
+
+const notificationChannelOptions = [
+  { description: 'Receive a daily digest of workspace activity.', label: 'Email digest', value: 'email' },
+  { description: 'Get notified in-app for mentions and assignments.', label: 'In-app', value: 'inapp' },
+  { description: 'Push critical alerts to connected devices.', label: 'Push', value: 'push' },
+] as const
+
+const slugify = (value: string) => value
+  .toLowerCase()
+  .trim()
+  .replaceAll(/[^a-z0-9\s-]/g, '')
+  .replaceAll(/\s+/g, '-')
+  .replaceAll(/-+/g, '-')
+
+const schema = z
+  .object({
+    confirmName: z
+      .string('Invalid confirmation')
+      .trim()
+      .nonempty('Please retype the workspace name to confirm'),
+    description: z
+      .string('Invalid description')
+      .trim()
+      .max(280, 'Description must not be more than 280 characters')
+      .optional(),
+    enableNotifications: z.boolean(),
+    invites: z
+      .array(z.string().trim()
+        .email('Enter a valid email address'))
+      .max(20, 'You can invite at most 20 members')
+      .optional(),
+    name: z
+      .string('Invalid workspace name')
+      .trim()
+      .nonempty('Workspace name is required')
+      .min(3, 'Workspace name must be at least 3 characters')
+      .max(50, 'Workspace name must not be more than 50 characters'),
+    notifications: z
+      .object({
+        email: z.boolean(),
+        inapp: z.boolean(),
+        push: z.boolean(),
+      })
+      .optional(),
+    plan: z.enum(planOptions.map(option => option.value), 'Please select a subscription plan'),
+    region: z.enum(regionOptions.map(option => option.value), 'Please select a data region'),
+    slug: z
+      .string('Invalid slug')
+      .trim()
+      .nonempty('Workspace URL slug is required')
+      .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, 'Use lowercase letters, numbers and hyphens')
+      .min(3, 'Slug must be at least 3 characters')
+      .max(40, 'Slug must not be more than 40 characters'),
+    visibility: z.enum(visibilityOptions.map(option => option.value), 'Please select a visibility level'),
+  })
+  .refine(data => data.slug === slugify(data.name) || data.slug !== '', {
+    message: 'Slug must match the workspace name format (auto-generated if left empty).',
+    path: ['slug'],
+  })
+  .refine(data => data.confirmName === data.name, {
+    message: 'Confirmation does not match the workspace name.',
+    path: ['confirmName'],
+  })
+  .refine(
+    data => !data.enableNotifications || (data.notifications && (data.notifications.email || data.notifications.inapp || data.notifications.push)),
+    {
+      message: 'Enable at least one notification channel.',
+      path: ['notifications'],
+    },
+  )
 
 const form = useNotForm({
   initialValues: {
-    notifications: false,
+    enableNotifications: false,
+    invites: [],
+    notifications: {
+      email: true,
+      inapp: true,
+      push: false,
+    },
+    region: 'us',
+    visibility: 'private',
   },
   schema,
 })
@@ -121,62 +155,13 @@ const form = useNotForm({
   >
     <FieldGroup>
       <FieldSet>
-        <FieldLegend>Payment Method</FieldLegend>
+        <FieldLegend>Workspace Details</FieldLegend>
 
         <FieldDescription>
-          All transactions are secure and encrypted
+          These details define how your workspace appears across the organization.
         </FieldDescription>
 
         <FieldGroup>
-          <NotField
-            v-slot="{path,errors,events,isValid}"
-            path="title"
-          >
-            <Field
-              :data-invalid="!isValid"
-              data-required
-              orientation="auto"
-            >
-              <FieldContent>
-                <Label :for="path">
-                  Title
-                </Label>
-
-                <FieldDescription>
-                  Select how should we address you? (e.g., Mr., Ms., Dr.)
-                </FieldDescription>
-              </FieldContent>
-
-              <SelectRoot
-                v-model:model-value="form.values.title"
-                autocomplete="honorific-prefix"
-                @update:model-value="events.onChange()"
-              >
-                <SelectTrigger
-                  :id="path"
-                  :aria-invalid="!isValid"
-                  @blur="events.onBlur()"
-                >
-                  <SelectValue placeholder="Title" />
-                </SelectTrigger>
-
-                <SelectContent>
-                  <SelectGroup>
-                    <SelectItem
-                      v-for="title in titleOptions"
-                      :key="title"
-                      :value="title"
-                    >
-                      {{ title }}
-                    </SelectItem>
-                  </SelectGroup>
-                </SelectContent>
-              </SelectRoot>
-
-              <FieldError :errors />
-            </Field>
-          </NotField>
-
           <NotField
             v-slot="{path,errors,events,isValid}"
             path="name"
@@ -186,182 +171,124 @@ const form = useNotForm({
               data-required
             >
               <Label :for="path">
-                Name on Card
+                Workspace Name
               </Label>
 
               <Input
                 :id="path"
                 v-model="form.values.name"
                 :aria-invalid="!isValid"
-                autocomplete="cc-name"
-                placeholder="John Doe"
-                v-bind="events"
-              />
-
-              <FieldError :errors />
-            </Field>
-          </NotField>
-
-          <NotField
-            v-slot="{path,errors,events,isValid}"
-            path="cardNumber"
-          >
-            <Field
-              :data-invalid="!isValid"
-              data-required
-            >
-              <Label :for="path">
-                Card Number
-              </Label>
-
-              <Input
-                :id="path"
-                v-model="form.values.cardNumber"
-                :aria-invalid="!isValid"
-                autocomplete="cc-number"
-                placeholder="1234 5678 1234 5678"
+                autocomplete="organization"
+                placeholder="Acme Engineering"
                 v-bind="events"
               />
 
               <FieldDescription>
-                Enter your 16-digit card number
+                The display name shown to members of this workspace.
               </FieldDescription>
 
               <FieldError :errors />
             </Field>
           </NotField>
 
-          <FieldGroup class="flex-row items-start">
-            <NotField
-              v-slot="{path,errors,events,isValid}"
-              path="month"
-            >
-              <Field
-                :data-invalid="!isValid"
-                data-required
-              >
-                <Label :for="path">
-                  Month
-                </Label>
-
-                <SelectRoot
-                  v-model:model-value="form.values.month"
-                  autocomplete="cc-exp"
-                  @update:model-value="events.onChange()"
-                >
-                  <SelectTrigger
-                    :id="path"
-                    :aria-invalid="!isValid"
-                    @blur="events.onBlur()"
-                  >
-                    <SelectValue placeholder="MM" />
-                  </SelectTrigger>
-
-                  <SelectContent>
-                    <SelectGroup>
-                      <SelectItem
-                        v-for="month in monthOptions"
-                        :key="month"
-                        :value="month"
-                      >
-                        {{ month }}
-                      </SelectItem>
-                    </SelectGroup>
-                  </SelectContent>
-                </SelectRoot>
-
-                <FieldError :errors />
-              </Field>
-            </NotField>
-
-            <NotField
-              v-slot="{path, errors,events,isValid}"
-              path="year"
-            >
-              <Field
-                :data-invalid="!isValid"
-                data-required
-              >
-                <Label :for="path">
-                  Year
-                </Label>
-
-                <SelectRoot
-                  v-model:model-value="form.values.year"
-                  autocomplete="cc-exp"
-                  @update:model-value="events.onChange()"
-                >
-                  <SelectTrigger
-                    :id="path"
-                    :aria-invalid="!isValid"
-                    @blur="events.onBlur()"
-                  >
-                    <SelectValue placeholder="YYYY" />
-                  </SelectTrigger>
-
-                  <SelectContent>
-                    <SelectGroup>
-                      <SelectItem
-                        v-for="year in yearOptions"
-                        :key="year"
-                        :value="year"
-                      >
-                        {{ year }}
-                      </SelectItem>
-                    </SelectGroup>
-                  </SelectContent>
-                </SelectRoot>
-
-                <FieldError :errors />
-              </Field>
-            </NotField>
-
-            <NotField
-              v-slot="{path, errors,events,isValid}"
-              path="cvv"
-            >
-              <Field
-                :data-invalid="!isValid"
-                data-required
-              >
-                <Label :for="path">
-                  CVV
-                </Label>
-
-                <Input
-                  :id="path"
-                  v-model:value="form.values.cvv"
-                  :aria-invalid="!isValid"
-                  autocomplete="cc-csc"
-                  placeholder="123"
-                  v-bind="events"
-                />
-
-                <FieldError :errors />
-              </Field>
-            </NotField>
-          </FieldGroup>
-
           <NotField
             v-slot="{path,errors,events,isValid}"
-            path="address"
+            path="slug"
           >
             <Field
               :data-invalid="!isValid"
               data-required
             >
               <Label :for="path">
-                Address
+                Workspace URL
               </Label>
 
               <Input
                 :id="path"
-                v-model="form.values.address"
+                v-model="form.values.slug"
                 :aria-invalid="!isValid"
-                autocomplete="address"
-                placeholder="123 Main St"
+                autocomplete="url"
+                placeholder="acme-engineering"
                 v-bind="events"
               />
+
+              <FieldDescription>
+                Lowercase letters, numbers and hyphens only (e.g. app.io/acme-engineering).
+              </FieldDescription>
+
+              <FieldError :errors />
+            </Field>
+          </NotField>
+
+          <NotField
+            v-slot="{path,errors,events,isValid}"
+            path="description"
+          >
+            <Field :data-invalid="!isValid">
+              <Label :for="path">
+                Description
+              </Label>
+
+              <Textarea
+                :id="path"
+                v-model="form.values.description"
+                :aria-invalid="!isValid"
+                v-bind="events"
+                placeholder="What is this workspace used for?"
+              />
+
+              <FieldDescription>
+                Optional. A short summary of the workspace purpose.
+              </FieldDescription>
+
+              <FieldError :errors />
+            </Field>
+          </NotField>
+
+          <NotField
+            v-slot="{path,errors,events,isValid}"
+            path="region"
+          >
+            <Field
+              :data-invalid="!isValid"
+              data-required
+              orientation="auto"
+            >
+              <FieldContent>
+                <Label :for="path">
+                  Data Region
+                </Label>
+
+                <FieldDescription>
+                  Choose where your workspace data is stored.
+                </FieldDescription>
+              </FieldContent>
+
+              <SelectRoot
+                v-model:model-value="form.values.region"
+                autocomplete="region"
+                @update:model-value="events.onChange()"
+              >
+                <SelectTrigger
+                  :id="path"
+                  :aria-invalid="!isValid"
+                  @blur="events.onBlur()"
+                >
+                  <SelectValue placeholder="Select a region" />
+                </SelectTrigger>
+
+                <SelectContent>
+                  <SelectGroup>
+                    <SelectItem
+                      v-for="region in regionOptions"
+                      :key="region.value"
+                      :value="region.value"
+                    >
+                      {{ region.label }}
+                    </SelectItem>
+                  </SelectGroup>
+                </SelectContent>
+              </SelectRoot>
 
               <FieldError :errors />
             </Field>
@@ -373,11 +300,96 @@ const form = useNotForm({
 
       <FieldSet>
         <FieldLegend variant="label">
+          Visibility &amp; Access
+        </FieldLegend>
+
+        <FieldDescription>
+          Control who can discover and join this workspace.
+        </FieldDescription>
+
+        <NotField
+          v-slot="{ errors, events, isValid}"
+          path="visibility"
+        >
+          <RadioGroupRoot
+            v-model:model-value="form.values.visibility"
+            @update:model-value="events.onChange()"
+          >
+            <Label
+              v-for="option in visibilityOptions"
+              :key="option.value"
+              :for="option.value"
+            >
+              <Field
+                orientation="horizontal"
+                :data-invalid="!isValid"
+              >
+                <FieldContent>
+                  <FieldTitle>
+                    {{ option.label }}
+                  </FieldTitle>
+
+                  <FieldDescription>
+                    {{ option.description }}
+                  </FieldDescription>
+                </FieldContent>
+
+                <RadioGroupItem
+                  :id="option.value"
+                  :value="option.value"
+                  :aria-invalid="!isValid"
+                  @blur="events.onBlur()"
+                />
+              </Field>
+            </Label>
+          </RadioGroupRoot>
+
+          <FieldError :errors />
+        </NotField>
+
+        <NotField
+          v-slot="{path,errors,events,isValid}"
+          path="invites"
+        >
+          <Field :data-invalid="!isValid">
+            <Label :for="path">
+              Invite Members
+            </Label>
+
+            <TagsInputRoot
+              :id="path"
+              v-model:model-value="form.values.invites"
+              :aria-invalid="!isValid"
+              @update:model-value="events.onChange()"
+              @blur="events.onBlur()"
+            >
+              <TagsInputItem
+                v-for="invite in form.values.invites"
+                :key="invite"
+                :value="invite"
+              />
+
+              <TagsInputInput placeholder="Add a member email…" />
+            </TagsInputRoot>
+
+            <FieldDescription>
+              Type an email and press enter to invite (optional, max 20).
+            </FieldDescription>
+
+            <FieldError :errors />
+          </Field>
+        </NotField>
+      </FieldSet>
+
+      <Separator />
+
+      <FieldSet>
+        <FieldLegend variant="label">
           Subscription Plan
         </FieldLegend>
 
         <FieldDescription>
-          Select a plan that suits your needs
+          Select a plan that suits your team's needs.
         </FieldDescription>
 
         <NotField
@@ -419,63 +431,127 @@ const form = useNotForm({
 
           <FieldError :errors />
         </NotField>
+
+        <NotField
+          v-slot="{path,errors,events,isValid}"
+          path="enableNotifications"
+        >
+          <Field
+            :data-invalid="!isValid"
+            orientation="horizontal"
+          >
+            <FieldContent>
+              <Label :for="path">
+                Enable Notifications
+              </Label>
+
+              <FieldDescription>
+                Send workspace activity alerts to members.
+              </FieldDescription>
+            </FieldContent>
+
+            <Switch
+              :id="path"
+              v-model:model-value="form.values.enableNotifications"
+              :aria-invalid="!isValid"
+              @update:model-value="events.onChange()"
+              @blur="events.onBlur()"
+            />
+
+            <FieldError :errors />
+          </Field>
+        </NotField>
+
+        <NotField
+          v-slot="{path,errors,events,isValid}"
+          path="notifications"
+        >
+          <Field
+            :data-invalid="!isValid"
+            :data-disabled="!form.values.enableNotifications"
+          >
+            <FieldContent>
+              <Label :for="path">
+                Notification Channels
+              </Label>
+
+              <FieldDescription>
+                Choose how members are notified (required when notifications are enabled).
+              </FieldDescription>
+            </FieldContent>
+
+            <FieldGroup>
+              <Field
+                v-for="channel in notificationChannelOptions"
+                :key="channel.value"
+                orientation="horizontal"
+                :data-disabled="!form.values.enableNotifications"
+              >
+                <FieldContent>
+                  <Label :for="`${path}-${channel.value}`">
+                    {{ channel.label }}
+                  </Label>
+
+                  <FieldDescription>
+                    {{ channel.description }}
+                  </FieldDescription>
+                </FieldContent>
+
+                <Switch
+                  :id="`${path}-${channel.value}`"
+                  v-model:model-value="form.values.notifications[channel.value]"
+                  :disabled="!form.values.enableNotifications"
+                  :aria-invalid="!isValid"
+                  @update:model-value="events.onChange()"
+                  @blur="events.onBlur()"
+                />
+              </Field>
+            </FieldGroup>
+
+            <FieldError :errors />
+          </Field>
+        </NotField>
       </FieldSet>
 
-      <NotField
-        v-slot="{path,errors,events,isValid}"
-        path="comments"
-      >
-        <Field :data-invalid="!isValid">
-          <Label :for="path">
-            Comments
-          </Label>
+      <Separator />
 
-          <Textarea
-            :id="path"
-            v-model="form.values.comments"
-            :aria-invalid="!isValid"
-            v-bind="events"
-            placeholder="Add any additional comments"
-          />
+      <FieldSet>
+        <FieldLegend variant="label">
+          Confirm
+        </FieldLegend>
 
-          <FieldError :errors />
-        </Field>
-      </NotField>
-
-      <NotField
-        v-slot="{path,errors,events,isValid}"
-        path="notifications"
-      >
-        <Field
-          :data-invalid="!isValid"
-          data-required
-          orientation="horizontal"
+        <NotField
+          v-slot="{path,errors,events,isValid}"
+          path="confirmName"
         >
-          <FieldContent>
+          <Field
+            :data-invalid="!isValid"
+            data-required
+          >
             <Label :for="path">
-              Notifications
+              Retype Workspace Name
             </Label>
 
+            <Input
+              :id="path"
+              v-model="form.values.confirmName"
+              :aria-invalid="!isValid"
+              placeholder="Acme Engineering"
+              v-bind="events"
+            />
+
             <FieldDescription>
-              Enable notifications to track your orders.
+              Type the workspace name again to confirm creation.
             </FieldDescription>
-          </FieldContent>
 
-          <Switch
-            :id="path"
-            v-model:model-value="form.values.notifications"
-            :aria-invalid="!isValid"
-            @update:model-value="events.onChange()"
-            @blur="events.onBlur()"
-          />
-
-          <FieldError :errors />
-        </Field>
-      </NotField>
+            <FieldError :errors />
+          </Field>
+        </NotField>
+      </FieldSet>
 
       <Field orientation="horizontal">
         <Button type="submit">
-          Submit
+          Create Workspace
         </Button>
 
         <Button
