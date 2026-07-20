@@ -1,5 +1,48 @@
 # Changelog
 
+## v1.13.0...v1.13.1
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.13.0...v1.13.1)
+
+### Added
+
+- **docs:** Initialize documentation application ([d6a95d0](https://github.com/favorodera/centoui/commit/d6a95d0))
+
+  - Set up new Nuxt 3 project for CentoUI docs
+  - Integrate CentoUI components and theming
+  - Configure content module for Markdown pages
+  - Add basic layouts, pages, and assets
+  - Prepare scripts for component pulling
+
+
+### Refactors
+
+- **storybook:** Update field story example ([e9cfe7b](https://github.com/favorodera/centoui/commit/e9cfe7b))
+
+  - Replace payment form with workspace creation
+  - Showcase TagsInput and conditional switches
+  - Update Zod schema to validate workspace fields
+
+- **components:** Fix and clean up relative imports ([a3515f7](https://github.com/favorodera/centoui/commit/a3515f7))
+
+  - Fix incorrect relative component import paths
+  - Remove explicit .ts extension from avatar utils
+  - Remove obsolete allowImportingTsExtensions option
+
+
+### Chores
+
+- **lint:** Refine eslint rules and formatting ([5ad9af4](https://github.com/favorodera/centoui/commit/5ad9af4))
+
+  - Align ESLint rules across docs and core
+  - Target component directories for Vue rules
+  - Sort dependencies and format config files
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.12.0...v1.13.0
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.12.0...v1.13.0)

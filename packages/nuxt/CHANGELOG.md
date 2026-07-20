@@ -1,5 +1,22 @@
 # Changelog
 
+## v1.13.0...v1.13.1
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.13.0...v1.13.1)
+
+### Refactors
+
+- **storybook:** Update field story example ([e9cfe7b](https://github.com/favorodera/centoui/commit/e9cfe7b))
+
+  - Replace payment form with workspace creation
+  - Showcase TagsInput and conditional switches
+  - Update Zod schema to validate workspace fields
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.12.0...v1.13.0
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.12.0...v1.13.0)
