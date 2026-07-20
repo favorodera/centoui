@@ -5,7 +5,11 @@
     "
   >
     <header
-      class="bg-background sticky inset-bs-0 z-50 backdrop-blur-sm top-0 py-4 h-14 lg:h-16"
+      class="
+        bg-background sticky inset-bs-0 z-50 backdrop-blur-sm py-4 block-14
+
+        lg:block-16
+      "
     >
       <AppNav />
     </header>

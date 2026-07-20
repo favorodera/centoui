@@ -1,7 +1,5 @@
 <script setup lang="ts">
-const coreRoutes = [
-  { label: 'Documentation', path: '/' },
-]
+const coreRoutes = [{ label: 'Documentation', path: '/' }]
 </script>
 
 <template>
