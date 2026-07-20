@@ -13,7 +13,7 @@ import {
   type TagsInputItemProps,
   tagsInputVariants,
 } from '.'
-import { Icon } from '../../components/icon'
+import { Icon } from '../icon'
 
 const props = defineProps<TagsInputItemProps>()
 

@@ -9,9 +9,9 @@ import {
   comboboxVariants,
   injectRootContext,
 } from '.'
-import { Button } from '../../components/button'
-import { Icon } from '../../components/icon'
-import { inputVariants } from '../../components/input'
+import { Button } from '../button'
+import { Icon } from '../icon'
+import { inputVariants } from '../input'
 import { InputGroupAddon, InputGroupRoot } from '../input-group'
 
 defineOptions({

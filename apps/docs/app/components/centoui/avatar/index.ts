@@ -82,7 +82,7 @@ export { default as AvatarImage } from './avatar-image.vue'
 export { default as AvatarRoot } from './avatar-root.vue'
 
 // Utils
-export { getInitials } from './utils.ts'
+export { getInitials } from './utils'
 
 // Context
 export type AvatarRootContext = Pick<AvatarRootProps, 'size'>

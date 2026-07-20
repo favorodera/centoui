@@ -13,7 +13,7 @@ import {
   comboboxVariants,
   injectRootContext,
 } from '.'
-import { Icon } from '../../components/icon'
+import { Icon } from '../icon'
 
 const emits = defineEmits<ComboboxItemEmits>()
 
