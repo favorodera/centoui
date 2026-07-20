@@ -29,6 +29,7 @@
     "lint": "nuxt prepare && eslint . --fix"
   },
   "dependencies": {
+    "@iconify/vue": "catalog:vendor",
     "@nuxt/content": "catalog:vendor",
     "@nuxt/fonts": "catalog:vendor",
     "@nuxt/icon": "catalog:vendor",
@@ -55,19 +56,18 @@
     "tw-animate-css": "catalog:vendor",
     "vue": "catalog:vendor",
     "vue-router": "catalog:vendor",
-    "zod": "catalog:vendor",
-    "@iconify/vue": "catalog:vendor"
+    "zod": "catalog:vendor"
   },
   "devDependencies": {
+    "@clack/prompts": "catalog:vendor",
     "@favorodera/eslint-config": "catalog:tools",
     "@nuxt/eslint": "catalog:tools",
+    "@types/fs-extra": "catalog:tools",
     "@types/node": "catalog:tools",
-    "typescript": "catalog:tools",
-    "vue-tsc": "catalog:tools",
     "fs-extra": "catalog:vendor",
     "pathe": "catalog:vendor",
-    "@types/fs-extra": "catalog:tools",
-    "@clack/prompts": "catalog:vendor",
-    "tsx": "catalog:tools"
+    "tsx": "catalog:tools",
+    "typescript": "catalog:tools",
+    "vue-tsc": "catalog:tools"
   }
 }

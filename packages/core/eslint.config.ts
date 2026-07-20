@@ -5,7 +5,10 @@ export default factory({
     entryPoint: 'src/theme.css',
   },
 })
-  .remove('favorodera/vue/a11y/rules')
-  .overrideRules({
-    'vue/no-root-v-if': 'off',
+  .append({
+    files: ['src/components/**/*.vue'],
+    rules: {
+      'vue-a11y/form-control-has-label': 'off',
+      'vue/no-root-v-if': 'off',
+    },
   })

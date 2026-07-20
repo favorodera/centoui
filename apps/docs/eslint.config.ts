@@ -6,5 +6,12 @@ const resolvedFactory = factory({
     entryPoint: 'app/assets/css/index.css',
   },
 })
+  .append({
+    files: ['app/components/centoui/**/*.vue'],
+    rules: {
+      'vue-a11y/form-control-has-label': 'off',
+      'vue/no-root-v-if': 'off',
+    },
+  })
 
 export default withNuxt(resolvedFactory)
