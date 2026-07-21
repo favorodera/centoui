@@ -1,14 +1,22 @@
 <template>
-  <div class="block-full inline-full grid grid-cols-10">
-    <aside class="col-span-2" />
+  <div
+    class="
+      block-full inline-full grid grid-cols-[auto_1fr] typeset typeset-docs
+    "
+  >
+    <aside
+      class="
+        min-inline-2xs
+
+        max-lg:hidden
+      "
+    />
 
     <main
       id="main"
       tabindex="-1"
-      class="outline-none block-full inline-full col-span-8"
+      class="outline-none block-full inline-full"
     >
-      <NuxtRouteAnnouncer />
-      <NuxtLoadingIndicator />
       <slot />
     </main>
   </div>

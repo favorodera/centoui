@@ -1,2 +1,3 @@
 /* Dummy CSS file to solve tailwind intellisense issue */
 @import './packages/core/src/theme.css';
+@import './apps/docs/app/assets/css/index.css';

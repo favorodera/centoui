@@ -42,6 +42,13 @@ defineOgImage('Image.takumi')
       Skip to main content
     </NuxtLink>
 
+    <NuxtRouteAnnouncer />
+
+    <NuxtLoadingIndicator
+      color="white"
+      error-color="red"
+    />
+
     <NuxtLayout>
       <div
         class="

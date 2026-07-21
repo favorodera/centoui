@@ -1,10 +1,21 @@
+@import "tailwindcss";
 @import "./centoui.css";
+@import "./typography.css";
 
 @source "../../../content/**/*";
 
 @theme inline {
   --font-sans: 'Bricolage Grotesque', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
+}
+
+@utility typeset-docs {
+  --typeset-font-body: var(--font-sans);
+  --typeset-font-heading: var(--font-sans);
+  --typeset-font-mono: var(--font-mono);
+  --typeset-size: 16px;
+  --typeset-leading: 1.75;
+  --typeset-flow: 1.25em;
 }
 
 .fade-out-in-enter-active,

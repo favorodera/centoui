@@ -4,8 +4,6 @@
     tabindex="-1"
     class="outline-none block-full inline-full"
   >
-    <NuxtRouteAnnouncer />
-    <NuxtLoadingIndicator />
     <slot />
   </main>
 </template>

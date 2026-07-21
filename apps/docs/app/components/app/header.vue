@@ -18,13 +18,19 @@ const isRouteActive = (name: string) => {
 <template>
   <header
     class="
-      bg-background sticky inset-bs-0 z-50 backdrop-blur-sm border-be py-2.5
+      bg-background/50 sticky inset-bs-0 z-50 backdrop-blur-xl border-be py-2.5
     "
   >
     <nav
       class="inline-full px-6 mx-auto flex items-center justify-between"
     >
-      <ul class="flex items-center gap-4">
+      <ul
+        class="
+          flex items-center gap-4
+
+          max-lg:hidden
+        "
+      >
         <li
           v-for="link in navLinks"
           :key="link.path"
