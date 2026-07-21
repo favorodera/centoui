@@ -68,6 +68,15 @@ export default defineNuxtConfig({
     },
   },
 
+  routeRules: {
+     '/docs': { 
+      redirect: { 
+        to: '/docs/overview/introduction', 
+        statusCode: 301 
+      } 
+    }
+  },
+
   css: ['~/assets/css/index.css'],
 
   site: {
@@ -111,6 +120,11 @@ export default defineNuxtConfig({
   },
 
   compatibilityDate: '2025-07-15',
+
+  components: [
+    '~/components',
+    '~/app/components',
+  ],
 
   nitro: {
     prerender: {

@@ -13,7 +13,7 @@ export const buttonVariants = tv({
     root: `
       relative inline-flex items-center shrink-0 border-transparent border
       group/button outline-none select-none transition-all font-medium
-      cursor-default justify-center bg-clip-padding
+      justify-center bg-clip-padding
 
       disabled:cursor-not-allowed disabled:opacity-70
 

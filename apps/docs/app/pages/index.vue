@@ -1,16 +1,26 @@
 <script setup lang="ts">
+definePageMeta({
+  layout: false,
+})
+
 const { data: page } = useQuery({
-  key: ['home'],
+  key: ['page', 'home'],
   query: () => queryCollection('home').first(),
 })
 </script>
 
 <template>
   <div class="block-full inline-full">
-    <ContentRenderer
-      v-if="page"
-      :value="page"
-      :prose="false"
-    />
+    <NuxtLayout name="default">
+      <div
+        v-if="page"
+        class="px-6 py-12"
+      >
+        <ContentRenderer
+          :value="page"
+          :prose="false"
+        />
+      </div>
+    </NuxtLayout>
   </div>
 </template>

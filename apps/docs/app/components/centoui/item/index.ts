@@ -29,7 +29,7 @@ export const itemVariants = tv({
 
       [a]:transition-colors
 
-      [a]:hover:bg-muted
+      [a]:hover:bg-muted/50
     `,
     title: `font-medium text-sm line-clamp-1 inline-fit group/item-title`,
   },

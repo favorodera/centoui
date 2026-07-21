@@ -43,7 +43,14 @@ defineOgImage('Image.takumi')
     </NuxtLink>
 
     <NuxtLayout>
-      <NuxtPage />
+      <div
+        class="
+          mx-auto grid grid-rows-[auto_1fr] min-block-full inline-full relative
+        "
+      >
+        <AppHeader />
+        <NuxtPage />
+      </div>
     </NuxtLayout>
   </div>
 </template>

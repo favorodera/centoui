@@ -36,16 +36,14 @@
     </p>
 
     <div class="flex flex-wrap items-center justify-center gap-3">
-      <Button
-        variant="primary"
-      >
-        Get Started
-        <Icon name="lucide:arrow-right" />
+      <Button as-child>
+        <NuxtLink to="/docs">
+          Get Started
+          <Icon name="lucide:arrow-right" />
+        </NuxtLink>
       </Button>
 
-      <Button
-        variant="ghost"
-      >
+      <Button variant="ghost">
         View Components
       </Button>
     </div>
