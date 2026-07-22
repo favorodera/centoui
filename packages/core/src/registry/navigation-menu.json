@@ -12,7 +12,5 @@
     "navigation-menu/navigation-menu-viewport.vue",
     "navigation-menu/index.ts"
   ],
-  "componentDependencies": [
-    "icon"
-  ]
+  "componentDependencies": ["icon"]
 }

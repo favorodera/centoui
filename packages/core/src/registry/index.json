@@ -231,17 +231,6 @@
     },
     {
       "$schema": "./schemas/component.json",
-      "name": "number-input",
-      "files": [
-        "number-input/number-input.vue",
-        "number-input/index.ts"
-      ],
-      "componentDependencies": [
-        "icon"
-      ]
-    },
-    {
-      "$schema": "./schemas/component.json",
       "name": "navigation-menu",
       "files": [
         "navigation-menu/navigation-menu-content.vue",
@@ -253,6 +242,17 @@
         "navigation-menu/navigation-menu-trigger.vue",
         "navigation-menu/navigation-menu-viewport.vue",
         "navigation-menu/index.ts"
+      ],
+      "componentDependencies": [
+        "icon"
+      ]
+    },
+    {
+      "$schema": "./schemas/component.json",
+      "name": "number-input",
+      "files": [
+        "number-input/number-input.vue",
+        "number-input/index.ts"
       ],
       "componentDependencies": [
         "icon"
