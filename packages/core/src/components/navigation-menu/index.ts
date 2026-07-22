@@ -16,17 +16,31 @@ import { tv } from 'tailwind-variants'
 
 // Variants
 export const navigationMenuVariants = tv({
+  defaultVariants: {
+    orientation: 'horizontal',
+  },
   slots: {
-    content: '',
-    indicator: '',
-    item: '',
-    link: '',
-    list: '',
-    root: '',
-    sub: '',
-    trigger: '',
+    content: 'group/navigation-menu-content',
+    indicator: 'group/navigation-menu-indicator',
+    item: 'group/navigation-menu-item',
+    link: 'group/navigation-menu-link',
+    list: `group/navigation-menu-list`,
+    root: 'group/navigation-menu-root',
+    sub: 'group/navigation-menu-sub',
+    trigger: 'group/navigation-menu-trigger',
     triggerIcon: '',
-    viewport: '',
+    viewport: 'group/navigation-menu-viewport',
+  },
+  variants: {
+    orientation: {
+      horizontal: {
+        list: 'flex items-center',
+        root: 'items-center justify-between',
+      },
+      vertical: {
+        root: 'flex-col',
+      },
+    },
   },
 })
 
