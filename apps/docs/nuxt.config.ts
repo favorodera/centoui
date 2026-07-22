@@ -69,12 +69,12 @@ export default defineNuxtConfig({
   },
 
   routeRules: {
-     '/docs': { 
-      redirect: { 
-        to: '/docs/overview/introduction', 
-        statusCode: 301 
-      } 
-    }
+    '/docs': {
+      redirect: {
+        statusCode: 301,
+        to: '/docs/overview/introduction',
+      },
+    },
   },
 
   css: ['~/assets/css/index.css'],

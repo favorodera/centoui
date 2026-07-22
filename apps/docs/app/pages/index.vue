@@ -4,7 +4,10 @@ definePageMeta({
 })
 
 const { data: page } = useQuery({
-  key: ['page', 'home'],
+  key: [
+    'page',
+    'home',
+  ],
   query: () => queryCollection('home').first(),
 })
 </script>

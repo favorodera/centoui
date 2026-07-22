@@ -6,18 +6,14 @@ defineProps<{
 </script>
 
 <template>
-  <div class="flex gap-4 justify-between items-start">
-    <div>
-      <ProseH1>
+  <div class="flex flex-wrap gap-4 justify-between items-start">
+    <div class="md:max-inline-8/10">
+      <ProseH1 class="mbs-0">
         {{ title }}
       </ProseH1>
 
       <ProseP
-        class="
-          text-muted-foreground
-
-          md:max-inline-[80%]
-        "
+        class="text-muted-foreground"
       >
         {{ description }}
       </ProseP>
@@ -26,7 +22,6 @@ defineProps<{
     <Button
       variant="secondary"
       size="sm"
-      class="mbs-(--typeset-flow)"
     >
       <Icon name="lucide:copy" />
       Copy Page

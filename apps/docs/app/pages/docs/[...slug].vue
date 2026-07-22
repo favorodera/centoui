@@ -33,11 +33,15 @@ const { data: surround } = useQuery({
     <NuxtLayout name="docs">
       <div
         v-if="page"
-        class="px-6 py-12 block-full inline-full grid grid-cols-[1fr_auto]"
+        class="
+          px-6 py-12 block-full inline-full grid grid-cols-1
+
+          lg:grid-cols-[1fr_auto]
+        "
       >
         <section
           class="
-            block-full inline-full grid grid-rows-[1fr_auto_auto] gap-4 mx-auto
+            block-full inline-full grid grid-rows-[auto_1fr_auto] gap-4 mx-auto
             max-inline-4xl
           "
         >
@@ -48,6 +52,7 @@ const { data: surround } = useQuery({
 
           <ContentRenderer
             :value="page"
+            class="grid"
           />
 
           <DocsSurround
@@ -58,9 +63,9 @@ const { data: surround } = useQuery({
 
         <aside
           class="
-            inline-2xs
+            hidden
 
-            max-lg:hidden
+            lg:block lg:min-inline-2xs
           "
         >
           <!-- TOC -->

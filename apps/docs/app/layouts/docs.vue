@@ -1,7 +1,9 @@
 <template>
   <div
     class="
-      block-full inline-full grid grid-cols-[auto_1fr] typeset typeset-docs
+      block-full inline-full grid grid-cols-1 typeset typeset-docs
+
+      lg:grid-cols-[auto_1fr]
     "
   >
     <aside

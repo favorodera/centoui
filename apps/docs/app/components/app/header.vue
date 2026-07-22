@@ -13,9 +13,31 @@ const isRouteActive = (name: string) => {
   const routeName = route.name?.toString() ?? ''
   return routeName === name || routeName.startsWith(`${name}-`)
 }
+
+const ReusableNavLinks = createReusableTemplate<{ isMobile?: boolean }>()
 </script>
 
 <template>
+  <ReusableNavLinks.define v-slot="{isMobile}">
+    <li
+      v-for="link in navLinks"
+      :key="link.path"
+    >
+      <Button
+        as-child
+        variant="ghost"
+        :class="{
+          'bg-muted': isRouteActive(link.name),
+          'inline-full justify-start':isMobile
+        }"
+      >
+        <NuxtLink :to="link.path">
+          {{ link.label }}
+        </NuxtLink>
+      </Button>
+    </li>
+  </ReusableNavLinks.define>
+
   <header
     class="
       bg-background/50 sticky inset-bs-0 z-50 backdrop-blur-xl border-be py-2.5
@@ -31,21 +53,38 @@ const isRouteActive = (name: string) => {
           max-lg:hidden
         "
       >
-        <li
-          v-for="link in navLinks"
-          :key="link.path"
+        <ReusableNavLinks.reuse />
+      </ul>
+
+      <SheetRoot>
+        <SheetTrigger
+          as-child
+          variant="ghost"
+          :square="true"
         >
           <Button
-            as-child
-            variant="ghost"
-            :class="{ 'bg-muted': isRouteActive(link.name) }"
+            aria-label="Open Menu"
+            class="lg:hidden"
           >
-            <NuxtLink :to="link.path">
-              {{ link.label }}
-            </NuxtLink>
+            <Icon name="lucide:menu" />
           </Button>
-        </li>
-      </ul>
+        </SheetTrigger>
+
+        <SheetContent side="left">
+          <SheetHeader>
+            <SheetTitle>CentoUI</SheetTitle>
+            <SheetDescription>Vue Components for Elegant Interfaces</SheetDescription>
+          </SheetHeader>
+
+          <Separator />
+
+          <ul
+            class="grid gap-4"
+          >
+            <ReusableNavLinks.reuse :is-mobile="true" />
+          </ul>
+        </SheetContent>
+      </SheetRoot>
 
       <ColorScheme>
         <Button
