@@ -48,7 +48,6 @@ const { data: surround } = useQuery({
 
           <ContentRenderer
             :value="page"
-            :prose="false"
           />
 
           <DocsSurround

@@ -18,7 +18,6 @@ const { data: page } = useQuery({
       >
         <ContentRenderer
           :value="page"
-          :prose="false"
         />
       </div>
     </NuxtLayout>
