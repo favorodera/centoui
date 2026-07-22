@@ -43,7 +43,7 @@ export const toggleVariants = tv({
       },
       sm: {
         root: `
-          min-block-7 min-inline-7 px-2 text-sm gap-1 rounded-lg
+          min-block-7 min-inline-7 px-2 text-xs gap-1 rounded-lg
 
           *:data-[slot=icon]:block-3.5 *:data-[slot=icon]:inline-3.5
         `,

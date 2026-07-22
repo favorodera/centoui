@@ -143,7 +143,7 @@ export const selectVariants = tv({
       sm: {
         content: 'rounded-lg',
         icon: 'block-3.5 inline-3.5',
-        item: 'block-7 rounded-lg text-sm gap-1 pe-5.5 ps-1',
+        item: 'block-7 rounded-lg text-xs gap-1 pe-5.5 ps-1',
         itemIndicator: 'inset-e-1 block-3.5 inline-3.5',
         label: 'text-xs px-1',
         scrollDownButton: `
@@ -157,7 +157,7 @@ export const selectVariants = tv({
           *:data-[slot=icon]:block-3.5 *:data-[slot=icon]:inline-3.5
         `,
         trigger: 'block-7 px-2 text-sm gap-1 rounded-lg',
-        value: 'gap-1 text-sm',
+        value: 'gap-1 text-xs',
       },
     },
   },

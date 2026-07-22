@@ -30,7 +30,7 @@ export const textareaVariants = tv({
         root: 'p-2.5 text-sm rounded-lg',
       },
       sm: {
-        root: 'p-2 text-sm rounded-lg',
+        root: 'p-2 text-xs rounded-lg',
       },
     },
   },

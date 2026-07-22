@@ -71,7 +71,7 @@ export const tagsInputVariants = tv({
         `,
       },
       sm: {
-        input: 'text-sm',
+        input: 'text-xs',
         item: 'min-block-4 px-1.5 text-xs rounded-md gap-1 py-0.5',
         itemDelete: '*:data-[slot=icon]:block-3 *:data-[slot=icon]:inline-3',
         root: `

@@ -111,8 +111,8 @@ export const comboboxVariants = tv({
       },
       sm: {
         content: 'rounded-lg',
-        empty: 'text-sm',
-        item: 'block-7 rounded-lg ps-1 pe-5.5 text-sm gap-1',
+        empty: 'text-xs',
+        item: 'block-7 rounded-lg ps-1 pe-5.5 text-xs gap-1',
         itemIndicator: 'inset-e-1 block-3.5 inline-3.5',
         label: 'text-xs px-1',
         trigger: '-me-1',
