@@ -1,0 +1,18 @@
+{
+  "$schema": "./schemas/component.json",
+  "name": "navigation-menu",
+  "files": [
+    "navigation-menu/navigation-menu-content.vue",
+    "navigation-menu/navigation-menu-indicator.vue",
+    "navigation-menu/navigation-menu-item.vue",
+    "navigation-menu/navigation-menu-link.vue",
+    "navigation-menu/navigation-menu-list.vue",
+    "navigation-menu/navigation-menu-root.vue",
+    "navigation-menu/navigation-menu-trigger.vue",
+    "navigation-menu/navigation-menu-viewport.vue",
+    "navigation-menu/index.ts"
+  ],
+  "componentDependencies": [
+    "icon"
+  ]
+}
