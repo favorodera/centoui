@@ -2,9 +2,9 @@
 const navLinks = [
   { label: 'Home', name: 'index', path: '/' },
   { label: 'Documentation', name: 'docs', path: '/docs' },
-  { label: 'Showcase', name: 'showcase', path: '/showcase' },
-  { label: 'Templates', name: 'templates', path: '/templates' },
-  { label: 'Changelog', name: 'changelog', path: '/changelog' },
+  // { label: 'Showcase', name: 'showcase', path: '/showcase' },
+  // { label: 'Templates', name: 'templates', path: '/templates' },
+  // { label: 'Changelog', name: 'changelog', path: '/changelog' },
 ]
 
 const route = useRoute()
