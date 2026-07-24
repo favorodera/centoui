@@ -18,9 +18,9 @@ const variants = navigationMenuVariants()
     data-slot="navigation-menu-indicator"
     v-bind="forwardedProps"
     :class="variants.indicator({
-      class:normalizeClass(props.class)
+      class: normalizeClass(props.class),
     })"
   >
-    <slot />
+    <div :class="variants.indicatorArrow()" />
   </NavigationMenuIndicator>
 </template>

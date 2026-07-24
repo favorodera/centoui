@@ -2,13 +2,20 @@
 import { reactiveOmit } from '@vueuse/core'
 import { NavigationMenuRoot, useForwardPropsEmits } from 'reka-ui'
 import { normalizeClass } from 'vue'
-import { type NavigationMenuRootEmits, type NavigationMenuRootProps, type NavigationMenuRootSlots, navigationMenuVariants } from '.'
+import {
+  type NavigationMenuRootEmits,
+  type NavigationMenuRootProps,
+  type NavigationMenuRootSlots,
+  navigationMenuVariants,
+} from '.'
 
 defineSlots<NavigationMenuRootSlots>()
 
 const emits = defineEmits<NavigationMenuRootEmits>()
 
-const props = defineProps<NavigationMenuRootProps>()
+const props = withDefaults(defineProps<NavigationMenuRootProps>(), {
+  delayDuration: 0,
+})
 
 const delegatedProps = reactiveOmit(props, 'class')
 
@@ -23,8 +30,7 @@ const variants = navigationMenuVariants()
     data-slot="navigation-menu-root"
     v-bind="forwardedPropsEmits"
     :class="variants.root({
-      class:normalizeClass(props.class),
-      orientation:props.orientation
+      class: normalizeClass(props.class),
     })"
   >
     <slot v-bind="slotProps" />

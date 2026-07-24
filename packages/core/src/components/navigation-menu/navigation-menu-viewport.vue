@@ -14,13 +14,16 @@ const variants = navigationMenuVariants()
 </script>
 
 <template>
-  <NavigationMenuViewport
-    data-slot="navigation-menu-viewport"
-    v-bind="forwardedProps"
-    :class="variants.viewport({
-      class:normalizeClass(props.class)
-    })"
+  <div
+    :class="variants.viewportWrapper()"
+    data-slot="navigation-menu-viewport-wrapper"
   >
-    <slot />
-  </NavigationMenuViewport>
+    <NavigationMenuViewport
+      data-slot="navigation-menu-viewport"
+      v-bind="forwardedProps"
+      :class="variants.viewport({
+        class: normalizeClass(props.class),
+      })"
+    />
+  </div>
 </template>

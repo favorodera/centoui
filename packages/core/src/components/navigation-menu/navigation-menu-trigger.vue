@@ -6,7 +6,9 @@ import config from '#centoui/config'
 import { type NavigationMenuTriggerProps, navigationMenuVariants } from '.'
 import { Icon } from '../icon'
 
-const props = defineProps<NavigationMenuTriggerProps>()
+const props = withDefaults(defineProps<NavigationMenuTriggerProps>(), {
+  size: 'md',
+})
 
 const delegatedProps = reactiveOmit(props, 'class')
 
@@ -19,15 +21,19 @@ const variants = navigationMenuVariants()
   <NavigationMenuTrigger
     data-slot="navigation-menu-trigger"
     v-bind="forwardedProps"
+    :data-size="props.size"
     :class="variants.trigger({
-      class:normalizeClass(props.class)
+      class: normalizeClass(props.class),
+      triggerSize: props.size,
     })"
   >
     <slot />
 
     <Icon
       :name="config.icons.chevronDown"
-      :class="variants.triggerIcon()"
+      :class="variants.triggerIcon({
+        triggerSize: props.size,
+      })"
     />
   </NavigationMenuTrigger>
 </template>

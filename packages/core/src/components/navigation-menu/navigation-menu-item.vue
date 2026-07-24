@@ -18,7 +18,7 @@ const variants = navigationMenuVariants()
     data-slot="navigation-menu-item"
     v-bind="forwardedProps"
     :class="variants.item({
-      class:normalizeClass(props.class)
+      class:normalizeClass(props.class),
     })"
   >
     <slot />

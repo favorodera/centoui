@@ -2,7 +2,7 @@
 import { reactiveOmit } from '@vueuse/core'
 import { NavigationMenuLink, useForwardPropsEmits } from 'reka-ui'
 import { normalizeClass } from 'vue'
-import { type NavigationMenuLinkEmits, type NavigationMenuLinkProps, navigationMenuVariants } from '.'
+import {  type NavigationMenuLinkEmits, type NavigationMenuLinkProps, navigationMenuVariants } from '.'
 
 const emits = defineEmits<NavigationMenuLinkEmits>()
 
@@ -20,7 +20,7 @@ const variants = navigationMenuVariants()
     data-slot="navigation-menu-link"
     v-bind="forwardedPropsEmits"
     :class="variants.link({
-      class:normalizeClass(props.class)
+      class: normalizeClass(props.class),
     })"
   >
     <slot />
