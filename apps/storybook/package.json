@@ -26,12 +26,17 @@
     "lint": "eslint . --fix"
   },
   "dependencies": {
+    "@comark/vue": "catalog:vendor",
     "@iconify/vue": "catalog:vendor",
+    "@shikijs/langs": "catalog:vendor",
+    "@shikijs/themes": "catalog:vendor",
     "@tailwindcss/vite": "catalog:vendor",
     "@vueuse/core": "catalog:vendor",
+    "comark": "catalog:vendor",
     "notform": "catalog:vendor",
     "pinia": "catalog:vendor",
     "reka-ui": "catalog:vendor",
+    "shiki": "catalog:vendor",
     "tailwind-merge": "catalog:vendor",
     "tailwind-variants": "catalog:vendor",
     "tailwindcss": "catalog:vendor",

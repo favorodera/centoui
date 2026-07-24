@@ -1,0 +1,60 @@
+<script setup lang="ts">
+import { Comark } from '@comark/vue'
+import highlight from '@comark/vue/plugins/highlight'
+import javascript from '@shikijs/langs/javascript'
+import json from '@shikijs/langs/json'
+import typescript from '@shikijs/langs/typescript'
+import vue from '@shikijs/langs/vue'
+import lightTheme from '@shikijs/themes/material-theme-lighter'
+import darkTheme from '@shikijs/themes/material-theme-palenight'
+import emoji from 'comark/plugins/emoji'
+import { ProseH1 } from '#centoui/components/prose-h1'
+
+defineProps<{
+  content: any
+}>()
+
+const plugins = [
+  highlight({
+    languages: [
+      javascript,
+      typescript,
+      vue,
+      json,
+    ],
+    registerDefaultLanguages: false,
+    registerDefaultThemes: false,
+    themes: {
+      dark: darkTheme,
+      light: lightTheme,
+    },
+  }),
+  emoji(),
+]
+
+const components = {
+  h1: ProseH1,
+}
+</script>
+
+<template>
+  <Suspense>
+    <Comark
+      :plugins="plugins"
+      :components="components"
+      class="block-full inline-full"
+    >
+      {{ content }}
+    </Comark>
+  </Suspense>
+</template>
+
+<style scoped>
+html.dark .shiki :deep(span) {
+  color: var(--shiki-dark) !important;
+  background-color: var(--shiki-dark-bg) !important;
+  font-style: var(--shiki-dark-font-style) !important;
+  font-weight: var(--shiki-dark-font-weight) !important;
+  text-decoration: var(--shiki-dark-text-decoration) !important;
+}
+</style>

@@ -1,5 +1,3 @@
-/// <reference types="vite/client" />
-
 import { fileURLToPath } from 'node:url'
 
 import tailwindcss from '@tailwindcss/vite'
