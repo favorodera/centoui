@@ -48,61 +48,80 @@ const [
   UseFeaturedItem,
 ] = createReusableTemplate<{
   description: string
+  eyebrow?: string
   href?: string
   image: string
   title: string
 }>()
 
-const products = [
+// "Platform" mega menu — a spend-management product with several
+// distinct surfaces, so it's worth two columns plus a featured rail.
+const platform = [
+  {
+    badge: 'Popular',
+    description: 'Issue smart cards with built-in spending controls for every team',
+    icon: 'lucide:credit-card',
+    title: 'Corporate cards',
+  },
+  {
+    description: 'Approve, pay, and reconcile vendor invoices without leaving Vantage',
+    icon: 'lucide:receipt',
+    title: 'Bill pay',
+  },
+  {
+    description: 'Auto-categorize transactions and close the books in days, not weeks',
+    icon: 'lucide:calculator',
+    title: 'Accounting automation',
+  },
   {
     badge: 'New',
-    description: 'Streamline workflows with AI-powered automation',
-    icon: 'lucide:zap',
-    title: 'Automation',
-  },
-  {
-    description: 'Track performance metrics in real-time',
-    icon: 'lucide:bar-chart-3',
-    title: 'Analytics',
-  },
-  {
-    description: 'Connect with 200+ tools and services',
-    icon: 'lucide:plug-2',
-    title: 'Integrations',
+    description: 'Book flights and hotels that stay inside policy, automatically',
+    icon: 'lucide:plane',
+    title: 'Travel & expense',
   },
 ]
 
+// "Resources" is a flatter, single-column menu — good for testing
+// a narrower NavigationMenuContent against the wider mega menu above.
 const resources = [
   {
-    description: 'Comprehensive guides and API reference',
+    description: 'Setup guides and API references for engineering teams',
     icon: 'lucide:book-open',
     title: 'Documentation',
   },
   {
-    description: 'Latest updates, tutorials, and industry insights',
-    icon: 'lucide:newspaper',
-    title: 'Blog',
+    description: 'How finance leaders at growing companies run on Vantage',
+    icon: 'lucide:quote',
+    title: 'Customer stories',
   },
   {
-    description: 'Join thousands of developers building with us',
-    icon: 'lucide:message-circle',
-    title: 'Community',
+    description: 'Live product walkthroughs and monthly release notes',
+    icon: 'lucide:calendar',
+    title: 'Events & webinars',
   },
 ]
 
 const featuredItems = [
   {
-    description: 'Your intelligent copilot for everyday tasks',
+    description: 'See the workflow their 40-person finance team runs today',
+    eyebrow: 'Case study',
     href: '#',
-    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=300&fit=crop',
-    title: 'AI Assistant',
+    image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=480&h=320&fit=crop',
+    title: 'How Northwind cut close time from 12 days to 2',
   },
   {
-    description: 'Stay productive on the go with our native apps',
+    description: 'A 6-minute walkthrough of what shipped this quarter',
+    eyebrow: 'Product tour',
     href: '#',
-    image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=300&fit=crop',
-    title: 'Mobile App',
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=480&h=320&fit=crop',
+    title: 'A first look at real-time spend dashboards',
   },
+]
+
+const plainLinks = [
+  'Pricing',
+  'Security',
+  'Contact sales',
 ]
 </script>
 
@@ -151,7 +170,7 @@ const featuredItems = [
     </NavigationMenuLink>
   </DefineMenuItemTemplate>
 
-  <DefineFeaturedItemTemplate v-slot="{ title, description, image, href }">
+  <DefineFeaturedItemTemplate v-slot="{ title, description, image, href, eyebrow }">
     <NavigationMenuLink
       :href="href || '#'"
       class="group"
@@ -169,7 +188,14 @@ const featuredItems = [
       </div>
 
       <div class="mbs-2">
-        <div class="font-medium leading-none">
+        <div
+          v-if="eyebrow"
+          class="text-xs font-medium uppercase tracking-wide text-primary"
+        >
+          {{ eyebrow }}
+        </div>
+
+        <div class="mbs-1 font-medium leading-snug">
           {{ title }}
         </div>
 
@@ -180,25 +206,22 @@ const featuredItems = [
     </NavigationMenuLink>
   </DefineFeaturedItemTemplate>
 
-  <div class="block-full inline-full grid items-start justify-items-center">
+  <div class="block-full inline-full items-start justify-center flex">
     <NavigationMenuRoot>
       <NavigationMenuList>
-        <NavigationMenuItem value="products">
+        <NavigationMenuItem value="platform">
           <NavigationMenuTrigger
             :disabled="controls.disabled"
             :size="controls.triggerSize"
           >
-            Products
+            Platform
           </NavigationMenuTrigger>
 
           <NavigationMenuContent>
-            <div
-              class="grid gap-4"
-              style="inline-size: 500px; grid-template-columns: repeat(2, 1fr)"
-            >
+            <div class="grid grid-cols-2 gap-4 inline-[560px]">
               <div class="space-y-3">
                 <div
-                  v-for="item in products.slice(0, 2)"
+                  v-for="item in platform.slice(0, 2)"
                   :key="item.title"
                 >
                   <UseMenuItem v-bind="item" />
@@ -207,7 +230,7 @@ const featuredItems = [
 
               <div class="space-y-3">
                 <div
-                  v-for="item in products.slice(2)"
+                  v-for="item in platform.slice(2)"
                   :key="item.title"
                 >
                   <UseMenuItem v-bind="item" />
@@ -217,14 +240,11 @@ const featuredItems = [
               <Separator class="col-span-2 -mx-3" />
 
               <div class="col-span-2">
-                <div class="font-medium mbe-3 text-sm text-muted-foreground">
+                <div class="mbe-3 text-sm font-medium text-muted-foreground">
                   Featured
                 </div>
 
-                <div
-                  class="grid gap-3"
-                  style="grid-template-columns: repeat(2, 1fr)"
-                >
+                <div class="grid grid-cols-2 gap-3">
                   <div
                     v-for="item in featuredItems"
                     :key="item.title"
@@ -246,10 +266,7 @@ const featuredItems = [
           </NavigationMenuTrigger>
 
           <NavigationMenuContent>
-            <div
-              class="grid gap-3"
-              style="inline-size: 400px"
-            >
+            <div class="grid gap-3 inline-[380px]">
               <div
                 v-for="item in resources"
                 :key="item.title"
@@ -261,13 +278,13 @@ const featuredItems = [
         </NavigationMenuItem>
 
         <NavigationMenuItem
-          v-for="item in [ 'Pricing','Contact',]"
+          v-for="item in plainLinks"
           :key="item"
-          :value="item.toLowerCase()"
+          :value="item.toLowerCase().replace(/\s+/g, '-')"
         >
           <NavigationMenuLink
             href="#"
-            :class="navigationMenuVariants().trigger({triggerSize:controls.triggerSize})"
+            :class="navigationMenuVariants().trigger({ triggerSize: controls.triggerSize })"
           >
             {{ item }}
           </NavigationMenuLink>
