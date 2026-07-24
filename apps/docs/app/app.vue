@@ -29,7 +29,7 @@ defineOgImage('Image.takumi')
 </script>
 
 <template>
-  <div class="min-inline-full min-block-dvh grid">
+  <div class="min-inline-full min-block-dvh">
     <NuxtLink
       to="#main"
       class="
