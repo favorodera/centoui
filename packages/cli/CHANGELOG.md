@@ -1,5 +1,22 @@
 # Changelog
 
+## v1.13.1...v1.14.0
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.13.1...v1.14.0)
+
+### Added
+
+- **docs:** Add home hero, nav, and colada state ([405e56e](https://github.com/favorodera/centoui/commit/405e56e))
+
+  - Add interactive hero and navigation components
+  - Integrate Pinia Colada for optimized querying
+  - Refresh typography and layout structure
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.13.0...v1.13.1
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.13.0...v1.13.1)

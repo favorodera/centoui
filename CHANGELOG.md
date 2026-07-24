@@ -1,5 +1,128 @@
 # Changelog
 
+## v1.13.1...v1.14.0
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.13.1...v1.14.0)
+
+### Added
+
+- **docs:** Add home hero, nav, and colada state ([405e56e](https://github.com/favorodera/centoui/commit/405e56e))
+
+  - Add interactive hero and navigation components
+  - Integrate Pinia Colada for optimized querying
+  - Refresh typography and layout structure
+
+- **docs:** Add basic documentation page rendering ([069d945](https://github.com/favorodera/centoui/commit/069d945))
+
+  - Introduce dynamic docs page routing
+  - Define 'docs' content collection with schema
+  - Add initial 'Getting Started' documentation content
+
+- **docs:** Refactor documentation layout and navigation ([fcee5cd](https://github.com/favorodera/centoui/commit/fcee5cd))
+
+  - Introduce dedicated layouts for default and docs pages.
+  - Create a new header component for global navigation.
+  - Implement a surround component for doc page navigation.
+  - Update content structure with new overview and components.
+  - Redirect `/docs` to `/docs/overview/introduction`.
+
+- **docs:** Add responsive mobile navigation ([c89ff69](https://github.com/favorodera/centoui/commit/c89ff69))
+
+  - Add mobile drawer menu to header component
+  - Adjust docs layout and grids for small screens
+  - Hide sidebar on mobile viewports
+  - Improve typography flow and page header spacing
+
+- **navigation-menu:** Add new component ([4c71cd9](https://github.com/favorodera/centoui/commit/4c71cd9))
+
+  refactor(components): update sm text size to xs
+  - Standardize small text size across components
+  - Affects button, combobox, input-group, number-input
+  - Also select, tags-input, textarea, and toggle
+
+- **navigation-menu:** Add navigation menu component ([c4c5b53](https://github.com/favorodera/centoui/commit/c4c5b53))
+
+  - Exposes all sub-components and their types.
+  - Integrates with `reka-ui` for core functionality.
+  - Adds `class` prop for custom styling.
+  - Registers component in the registry.
+
+- **navigation-menu:** Add orientation support ([3897168](https://github.com/favorodera/centoui/commit/3897168))
+
+  - Add horizontal/vertical orientation variants
+  - Pass orientation prop to root component
+  - Add storybook story for navigation menu
+
+- **navigation-menu:** Enhance Storybook demo and component styling ([d44712c](https://github.com/favorodera/centoui/commit/d44712c))
+
+  - Refactor Storybook demo for better examples.
+  - Add new `triggerSize` variant to component.
+  - Improve content, indicator, and viewport styling.
+  - Introduce `createReusableTemplate` for menu items.
+  - Update `NavigationMenuRoot` to have `delayDuration`.
+
+
+### Fixed
+
+- **docs:** Enable Nuxt Content's default prose styling ([d7eaeae](https://github.com/favorodera/centoui/commit/d7eaeae))
+
+  - Removes redundant :prose="false" attribute
+  - Improves content rendering consistency
+
+
+### Refactors
+
+- **storybook:** Polish navigation-menu story ([f25ddf1](https://github.com/favorodera/centoui/commit/f25ddf1))
+
+  - Update mock data to reflect realistic use cases
+  - Add eyebrow support to featured items
+  - Replace inline CSS with Tailwind classes
+  - Polish layout alignment and typography spacing
+
+
+### Documentation
+
+- **app:** Improve documentation layout and content ([7105383](https://github.com/favorodera/centoui/commit/7105383))
+
+  - Add custom typography styles and utilities
+  - Implement reusable DocsPageHeader component
+  - Enhance layout with sidebar and TOC slots
+  - Update button guide and overview content
+  - Remove placeholder documentation files
+
+
+### Chores
+
+- **docs:** Temporarily hide unused navigation links ([b164d57](https://github.com/favorodera/centoui/commit/b164d57))
+
+### Styling
+
+- **code:** Apply minor formatting adjustments ([08015f1](https://github.com/favorodera/centoui/commit/08015f1))
+
+  - Adjust array and object literal formatting
+  - Remove unnecessary blank lines
+  - Improve class attribute readability
+
+- **registry:** Alphabetize index and format json ([15cc7a6](https://github.com/favorodera/centoui/commit/15cc7a6))
+
+  - Alphabetize number-input entry in registry index
+  - Format navigation-menu dependencies array
+
+- **docs:** Remove grid class from main wrapper ([31dc3b6](https://github.com/favorodera/centoui/commit/31dc3b6))
+- **core:** Fix code formatting and whitespace ([84ac3d6](https://github.com/favorodera/centoui/commit/84ac3d6))
+
+  - Clean up extra space in import statement
+  - Format componentDependencies in registry JSON
+
+- **registry:** Format componentDependencies JSON ([d4e0611](https://github.com/favorodera/centoui/commit/d4e0611))
+
+  - Format single-item dependency arrays across registry
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.13.0...v1.13.1
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.13.0...v1.13.1)
