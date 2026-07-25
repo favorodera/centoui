@@ -83,6 +83,7 @@ export const tagsInputVariants = tv({
     },
   },
 })
+
 export type TagsInputVariants = VariantProps<typeof tagsInputVariants>
 
 // Components

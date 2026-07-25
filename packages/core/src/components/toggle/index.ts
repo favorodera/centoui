@@ -97,6 +97,7 @@ export const toggleVariants = tv({
     },
   },
 })
+
 export type ToggleVariants = VariantProps<typeof toggleVariants>
 
 // Components

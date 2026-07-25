@@ -2,11 +2,15 @@
 @import "../../../packages/core/src/theme.css";
 @source "../../../packages/core/src/**/*.{ts,vue}";
 
+:root {
+  --content-scroll-offset: 44px;
+}
+
 #app {
   @apply min-h-dvh w-full grid place-items-center grid-cols-1;
 }
 
-@theme {
+@theme inline {
   --font-sans: 'Geist', sans-serif;
   --font-mono: 'Geist Mono', monospace;
 }

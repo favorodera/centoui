@@ -94,6 +94,7 @@ export const inputGroupVariants = tv({
     },
   },
 })
+
 export type InputGroupVariants = VariantProps<typeof inputGroupVariants>
 
 // Components

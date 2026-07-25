@@ -53,6 +53,7 @@ export const numberInputVariants = tv({
     },
   },
 })
+
 export type NumberInputVariants = VariantProps<typeof numberInputVariants>
 
 // Components

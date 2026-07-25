@@ -27,7 +27,7 @@ export const alertVariants = tv({
         root: 'text-info',
       },
       neutral: {
-        root: 'text-foreground',
+        root: 'text-elevated-foreground',
       },
       success: {
         root: 'text-success',
@@ -38,6 +38,7 @@ export const alertVariants = tv({
     },
   },
 })
+
 export type AlertVariants = VariantProps<typeof alertVariants>
 
 // Components

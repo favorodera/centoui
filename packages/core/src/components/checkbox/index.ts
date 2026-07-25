@@ -42,6 +42,7 @@ export const checkboxVariants = tv({
     },
   },
 })
+
 export type CheckboxVariants = VariantProps<typeof checkboxVariants>
 
 // Components

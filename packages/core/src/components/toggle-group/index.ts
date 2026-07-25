@@ -61,6 +61,7 @@ export const toggleGroupVariants = tv({
     },
   },
 })
+
 export type ToggleGroupVariants = VariantProps<typeof toggleGroupVariants>
 
 // Components

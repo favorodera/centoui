@@ -21,8 +21,8 @@ export const alertDialogVariants = tv({
     cancel: 'group/alert-dialog-cancel',
     content: `
       fixed inset-bs-1/2 inset-s-1/2 z-50 grid inline-[90dvw] max-inline-sm
-      -translate-1/2 gap-4 rounded-xl border bg-overlay p-4 overflow-hidden
-      group/alert-dialog-content bg-clip-padding
+      -translate-1/2 gap-4 rounded-xl border bg-overlay text-overlay-foreground
+      p-4 overflow-hidden group/alert-dialog-content bg-clip-padding
 
       data-[state=closed]:animate-out data-[state=closed]:fade-out-0
       data-[state=closed]:zoom-out-98

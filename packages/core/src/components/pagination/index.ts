@@ -31,6 +31,7 @@ export const paginationVariants = tv({
     `,
   },
 })
+
 export type PaginationVariants = VariantProps<typeof paginationVariants>
 
 // Components

@@ -8,8 +8,10 @@
   --foreground: oklch(0.145 0 0);
 
   --elevated: oklch(1 0 0);
+  --elevated-foreground: oklch(0.145 0 0);
 
   --overlay: oklch(1 0 0);
+  --overlay-foreground: oklch(0.145 0 0);
 
   --scrim: oklch(0 0 0 / 0.5);
 
@@ -45,6 +47,10 @@
 
   --info: oklch(0.6 0.2 250);
   --info-foreground: oklch(0.145 0 0);
+
+  --content-flow: 1em;
+  --content-scroll-offset: 0px;
+  --content-scroll: calc(var(--content-flow) + var(--content-scroll-offset));
 }
 
 .dark {
@@ -52,8 +58,10 @@
   --foreground: oklch(0.985 0 0);
 
   --elevated: oklch(0.205 0 0);
+  --elevated-foreground: oklch(0.985 0 0);
 
   --overlay: oklch(0.205 0 0);
+  --overlay-foreground: oklch(0.985 0 0);
 
   --scrim: oklch(0 0 0 / 0.8);
 
@@ -96,8 +104,10 @@
   --color-foreground: var(--foreground);
 
   --color-elevated: var(--elevated);
+  --color-elevated-foreground: var(--elevated-foreground);
 
   --color-overlay: var(--overlay);
+  --color-overlay-foreground: var(--overlay-foreground);
 
   --color-scrim: var(--scrim);
 
@@ -130,6 +140,9 @@
 
   --color-info: var(--info);
   --color-info-foreground: var(--info-foreground);
+
+  --spacing-content-flow: var(--content-flow);
+  --spacing-content-scroll: var(--content-scroll);
 }
 
 @layer base {

@@ -63,6 +63,7 @@ export const badgeVariants = tv({
     },
   },
 })
+
 export type BadgeVariants = VariantProps<typeof badgeVariants>
 
 // Components

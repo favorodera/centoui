@@ -36,6 +36,7 @@ export const navigationMenuVariants = tv({
       data-[motion=to-start]:slide-out-to-left-52
 
       group-not-has-data-[slot=navigation-menu-viewport-wrapper]/navigation-menu-root:bg-overlay
+      group-not-has-data-[slot=navigation-menu-viewport-wrapper]/navigation-menu-root:text-overlay-foreground
       group-not-has-data-[slot=navigation-menu-viewport-wrapper]/navigation-menu-root:inset-bs-full
       group-not-has-data-[slot=navigation-menu-viewport-wrapper]/navigation-menu-root:mbs-1
       group-not-has-data-[slot=navigation-menu-viewport-wrapper]/navigation-menu-root:overflow-hidden
@@ -117,7 +118,7 @@ export const navigationMenuVariants = tv({
     viewport: `
       group/navigation-menu-viewport origin-[top,center] bg-overlay relative
       border block-(--reka-navigation-menu-viewport-height) overflow-hidden
-      perspective-near rounded-xl bg-clip-padding mbs-1
+      perspective-near rounded-xl bg-clip-padding mbs-1 text-overlay-foreground
       inset-s-(--reka-navigation-menu-viewport-left)
       transition-[width,height,left,right]
       inline-(--reka-navigation-menu-viewport-width)
@@ -156,6 +157,7 @@ export const navigationMenuVariants = tv({
     },
   },
 })
+
 export type NavigationMenuVariants = VariantProps<typeof navigationMenuVariants>
 
 // Components

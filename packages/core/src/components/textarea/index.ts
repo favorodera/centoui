@@ -35,6 +35,7 @@ export const textareaVariants = tv({
     },
   },
 })
+
 export type TextareaVariants = VariantProps<typeof textareaVariants>
 
 // Components

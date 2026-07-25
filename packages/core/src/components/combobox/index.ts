@@ -29,8 +29,8 @@ export const comboboxVariants = tv({
     arrow: 'z-50 fill-overlay stroke-input group/combobox-arrow',
     cancel: 'group/combobox-cancel',
     content: `
-      bg-overlay border bg-clip-padding z-50 relative grid p-1 gap-1
-      group/combobox-content
+      bg-overlay text-overlay-foreground border bg-clip-padding z-50 relative
+      grid p-1 gap-1 group/combobox-content
 
       data-[side=bottom]:slide-in-from-top-2
 
@@ -120,6 +120,7 @@ export const comboboxVariants = tv({
     },
   },
 })
+
 export type ComboboxVariants = VariantProps<typeof comboboxVariants>
 
 // Components

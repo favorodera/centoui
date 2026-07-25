@@ -33,7 +33,8 @@ export const popoverVariants = tv({
     `,
     contentWrapper: `
       gap-4 rounded-xl border grid bg-overlay p-4 bg-clip-padding
-      overflow-hidden relative group/popover-content-wrapper
+      text-overlay-foreground overflow-hidden relative
+      group/popover-content-wrapper
     `,
     description: 'text-muted-foreground group/popover-description',
     footer: `

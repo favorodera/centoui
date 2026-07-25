@@ -24,6 +24,7 @@ export const pinInputVariants = tv({
     root: 'inline-flex items-center gap-2 group/pin-input-root',
   },
 })
+
 export type PinInputVariants = VariantProps<typeof pinInputVariants>
 
 // Components

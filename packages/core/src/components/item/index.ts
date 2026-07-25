@@ -52,7 +52,7 @@ export const itemVariants = tv({
     },
     variant: {
       elevated: {
-        root: 'bg-elevated',
+        root: 'bg-elevated text-elevated-foreground',
       },
       ghost: {
         root: 'bg-transparent',
@@ -63,6 +63,7 @@ export const itemVariants = tv({
     },
   },
 })
+
 export type ItemVariants = VariantProps<typeof itemVariants>
 
 // Components

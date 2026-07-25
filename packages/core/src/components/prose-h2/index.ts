@@ -2,18 +2,18 @@ import type { HTMLAttributes } from 'vue'
 import { tv, type VariantProps } from 'tailwind-variants'
 
 // Variants
-export const proseH1Variants = tv({
+export const proseH2Variants = tv({
   defaultVariants: {
     anchor: false,
   },
   slots: {
     link: `
-      outline-none group/prose-h1-link
+      outline-none group/prose-h2-link
 
       focus-visible:ring-2 focus-visible:ring-ring
     `,
     root: `
-      group/prose-h1 text-3xl font-semibold mbe-0 flex gap-2 relative
+      group/prose-h2 text-2xl font-semibold mbe-0 flex gap-2 relative
       mbs-content-flow
 
       [&+*]:mbs-4
@@ -29,13 +29,13 @@ export const proseH1Variants = tv({
   },
 })
 
-export type ProseH1Variants = VariantProps<typeof proseH1Variants>
+export type ProseH2Variants = VariantProps<typeof proseH2Variants>
 
 // Component
-export { default as ProseH1 } from './prose-h1.vue'
+export { default as ProseH2 } from './prose-h2.vue'
 
 // Props
-export interface ProseH1Props {
+export interface ProseH2Props {
   /** Unique identifier for the heading */
   id?: string
 
@@ -44,7 +44,7 @@ export interface ProseH1Props {
    * Only works if there is an id
    * @default false
    */
-  anchor?: ProseH1Variants['anchor']
+  anchor?: ProseH2Variants['anchor']
 
   /** Custom style class */
   class?: HTMLAttributes['class']

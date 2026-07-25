@@ -47,6 +47,7 @@ export const labelVariants = tv({
     },
   },
 })
+
 export type LabelVariants = VariantProps<typeof labelVariants>
 
 // Components

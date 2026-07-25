@@ -8,7 +8,9 @@ import vue from '@shikijs/langs/vue'
 import lightTheme from '@shikijs/themes/material-theme-lighter'
 import darkTheme from '@shikijs/themes/material-theme-palenight'
 import emoji from 'comark/plugins/emoji'
+import { h } from 'vue'
 import { ProseH1 } from '#centoui/components/prose-h1'
+import { ProseH2 } from '#centoui/components/prose-h2'
 
 defineProps<{
   content: any
@@ -33,7 +35,8 @@ const plugins = [
 ]
 
 const components = {
-  h1: ProseH1,
+  h1: (props: any, { slots }: any) => h(ProseH1, { ...props, anchor: true }, slots),
+  h2: (props: any, { slots }: any) => h(ProseH2, { ...props, anchor: true }, slots),
 }
 </script>
 

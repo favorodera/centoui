@@ -9,8 +9,8 @@ export const cardVariants = tv({
     footer: `flex gap-2 p-4 -mx-4 -mbe-4 bg-muted/50 group/card-footer`,
     header: `flex flex-col gap-1 px-4 pbs-4 -mx-4 -mbs-4 group/card-header`,
     root: `
-      flex flex-col gap-4 overflow-hidden rounded-xl border bg-elevated p-4
-      group/card-root bg-clip-padding
+      flex flex-col gap-4 overflow-hidden rounded-xl border bg-elevated
+      text-elevated-foreground p-4 group/card-root bg-clip-padding
 
       *:data-[slot=separator]:data-[orientation=horizontal]:-mx-4
     `,
