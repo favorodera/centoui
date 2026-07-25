@@ -314,6 +314,50 @@
     },
     {
       "$schema": "./schemas/component.json",
+      "name": "prose-h1",
+      "files": [
+        "prose-h1/index.ts",
+        "prose-h1/prose-h1.vue"
+      ],
+      "componentDependencies": [
+        "icon"
+      ]
+    },
+    {
+      "$schema": "./schemas/component.json",
+      "name": "prose-h2",
+      "files": [
+        "prose-h2/index.ts",
+        "prose-h2/prose-h2.vue"
+      ],
+      "componentDependencies": [
+        "icon"
+      ]
+    },
+    {
+      "$schema": "./schemas/component.json",
+      "name": "prose-h3",
+      "files": [
+        "prose-h3/index.ts",
+        "prose-h3/prose-h3.vue"
+      ],
+      "componentDependencies": [
+        "icon"
+      ]
+    },
+    {
+      "$schema": "./schemas/component.json",
+      "name": "prose-h4",
+      "files": [
+        "prose-h4/index.ts",
+        "prose-h4/prose-h4.vue"
+      ],
+      "componentDependencies": [
+        "icon"
+      ]
+    },
+    {
+      "$schema": "./schemas/component.json",
       "name": "radio-group",
       "files": [
         "radio-group/radio-group-root.vue",

@@ -2,7 +2,7 @@ import type { HTMLAttributes } from 'vue'
 import { tv, type VariantProps } from 'tailwind-variants'
 
 // Variants
-export const proseH2Variants = tv({
+export const proseH3Variants = tv({
   defaultVariants: {
     anchor: false,
   },
@@ -11,12 +11,12 @@ export const proseH2Variants = tv({
       outline-none opacity-0 inline-fit align-middle no-underline p-1 rounded-sm
       grid place-items-center bg-muted text-primary
 
-      group-hover/prose-h2:opacity-100
+      group-hover/prose-h3:opacity-100
 
       focus-visible:opacity-100 focus-visible:ring-2 focus-visible:ring-ring
     `,
     root: `
-      group/prose-h2 text-3xl font-semibold mbe-0 flex gap-2 relative
+      group/prose-h3 text-2xl font-semibold mbe-0 flex gap-2 relative
       mbs-content-flow items-center
 
       [&+*]:mbs-4
@@ -32,13 +32,13 @@ export const proseH2Variants = tv({
   },
 })
 
-export type ProseH2Variants = VariantProps<typeof proseH2Variants>
+export type ProseH3Variants = VariantProps<typeof proseH3Variants>
 
 // Component
-export { default as ProseH2 } from './prose-h2.vue'
+export { default as ProseH3 } from './prose-h3.vue'
 
 // Props
-export interface ProseH2Props {
+export interface ProseH3Props {
   /** Unique identifier for the heading */
   id?: string
 
@@ -47,7 +47,7 @@ export interface ProseH2Props {
    * Only works if there is an id
    * @default false
    */
-  anchor?: ProseH2Variants['anchor']
+  anchor?: ProseH3Variants['anchor']
 
   /** Custom style class */
   class?: HTMLAttributes['class']

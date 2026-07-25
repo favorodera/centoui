@@ -1,0 +1,9 @@
+{
+  "$schema": "./schemas/component.json",
+  "name": "prose-h4",
+  "files": [
+    "prose-h4/index.ts",
+    "prose-h4/prose-h4.vue"
+  ],
+  "componentDependencies": ["icon"]
+}

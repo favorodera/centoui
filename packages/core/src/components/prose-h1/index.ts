@@ -8,13 +8,16 @@ export const proseH1Variants = tv({
   },
   slots: {
     link: `
-      outline-none group/prose-h1-link
+      outline-none opacity-0 inline-fit align-middle no-underline p-1 rounded-sm
+      grid place-items-center bg-muted text-primary
 
-      focus-visible:ring-2 focus-visible:ring-ring
+      group-hover/prose-h1:opacity-100
+
+      focus-visible:opacity-100 focus-visible:ring-2 focus-visible:ring-ring
     `,
     root: `
-      group/prose-h1 text-3xl font-semibold mbe-0 flex gap-2 relative
-      mbs-content-flow
+      group/prose-h1 text-4xl font-semibold mbe-0 flex gap-2 relative
+      mbs-content-flow items-center
 
       [&+*]:mbs-4
     `,

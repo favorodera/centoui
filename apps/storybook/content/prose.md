@@ -167,9 +167,9 @@ Fenced code block with language for syntax highlighting:
 
 ```javascript
 function greet(name) {
-  const message = `Hello, ${name}!`;
-  console.log(message);
-  return message;
+  const message = `Hello, ${name}!`
+  console.log(message)
+  return message
 }
 ```
 
@@ -183,7 +183,11 @@ def greet(name):
 ```json
 {
   "key": "value",
-  "list": [1, 2, 3],
+  "list": [
+    1,
+    2,
+    3
+  ],
   "nested": { "flag": true }
 }
 ```

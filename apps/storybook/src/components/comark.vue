@@ -11,6 +11,8 @@ import emoji from 'comark/plugins/emoji'
 import { h } from 'vue'
 import { ProseH1 } from '#centoui/components/prose-h1'
 import { ProseH2 } from '#centoui/components/prose-h2'
+import { ProseH3 } from '#centoui/components/prose-h3'
+import { ProseH4 } from '#centoui/components/prose-h4'
 
 defineProps<{
   content: any
@@ -37,6 +39,8 @@ const plugins = [
 const components = {
   h1: (props: any, { slots }: any) => h(ProseH1, { ...props, anchor: true }, slots),
   h2: (props: any, { slots }: any) => h(ProseH2, { ...props, anchor: true }, slots),
+  h3: (props: any, { slots }: any) => h(ProseH3, { ...props, anchor: true }, slots),
+  h4: (props: any, { slots }: any) => h(ProseH4, { ...props, anchor: true }, slots),
 }
 </script>
 
