@@ -358,6 +358,28 @@
     },
     {
       "$schema": "./schemas/component.json",
+      "name": "prose-h5",
+      "files": [
+        "prose-h5/index.ts",
+        "prose-h5/prose-h5.vue"
+      ],
+      "componentDependencies": [
+        "icon"
+      ]
+    },
+    {
+      "$schema": "./schemas/component.json",
+      "name": "prose-h6",
+      "files": [
+        "prose-h6/index.ts",
+        "prose-h6/prose-h6.vue"
+      ],
+      "componentDependencies": [
+        "icon"
+      ]
+    },
+    {
+      "$schema": "./schemas/component.json",
       "name": "radio-group",
       "files": [
         "radio-group/radio-group-root.vue",

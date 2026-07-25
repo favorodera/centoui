@@ -148,14 +148,11 @@
 @layer base {
   * {
     @apply border-border;
-  }
- 
-  html {
     @apply scroll-smooth;
-    @apply scrollbar-thin scrollbar-thumb-muted scrollbar-track-transparent;
+    @apply scrollbar-thumb-muted hover:scrollbar-thumb-muted-foreground scrollbar-track-transparent;
     @apply selection:bg-foreground selection:text-background;
   }
- 
+
   body {
     @apply antialiased text-foreground bg-background font-sans;
   }

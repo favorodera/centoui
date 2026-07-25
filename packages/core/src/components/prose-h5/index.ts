@@ -2,21 +2,21 @@ import type { HTMLAttributes } from 'vue'
 import { tv, type VariantProps } from 'tailwind-variants'
 
 // Variants
-export const proseH4Variants = tv({
+export const proseH5Variants = tv({
   defaultVariants: {
     anchor: false,
   },
   slots: {
     link: `
-      outline-none opacity-0 align-middle no-underline p-1 rounded-sm grid
-      place-items-center bg-muted text-primary transition
+      outline-none opacity-0 transition align-middle no-underline p-1 rounded-sm
+      grid place-items-center bg-muted text-primary
 
-      group-hover/prose-h4:opacity-100
+      group-hover/prose-h5:opacity-100
 
       focus-visible:opacity-100 focus-visible:ring-2 focus-visible:ring-ring
     `,
     root: `
-      group/prose-h4 text-xl font-semibold mbe-0 flex gap-2 mbs-content-flow
+      group/prose-h5 text-lg font-semibold mbe-0 flex gap-2 mbs-content-flow
       items-center
 
       [&+*]:mbs-4
@@ -32,13 +32,13 @@ export const proseH4Variants = tv({
   },
 })
 
-export type ProseH4Variants = VariantProps<typeof proseH4Variants>
+export type ProseH5Variants = VariantProps<typeof proseH5Variants>
 
 // Component
-export { default as ProseH4 } from './prose-h4.vue'
+export { default as ProseH5 } from './prose-h5.vue'
 
 // Props
-export interface ProseH4Props {
+export interface ProseH5Props {
   /** Unique identifier for the heading */
   id?: string
 
@@ -47,7 +47,7 @@ export interface ProseH4Props {
    * Only works if there is an id
    * @default false
    */
-  anchor?: ProseH4Variants['anchor']
+  anchor?: ProseH5Variants['anchor']
 
   /** Custom style class */
   class?: HTMLAttributes['class']

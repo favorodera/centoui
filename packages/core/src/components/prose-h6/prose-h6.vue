@@ -1,22 +1,22 @@
 <script setup lang="ts">
 import { computed, normalizeClass } from 'vue'
 import config from '#centoui/config'
-import { type ProseH3Props, proseH3Variants } from '.'
+import { type ProseH6Props, proseH6Variants } from '.'
 import { Icon } from '../icon'
 
-const props = withDefaults(defineProps<ProseH3Props>(), {
+const props = withDefaults(defineProps<ProseH6Props>(), {
   anchor: false,
 })
 
 const showAnchor = computed(() => props.anchor && !!props.id)
 
-const variants = proseH3Variants()
+const variants = proseH6Variants()
 </script>
 
 <template>
-  <h3
+  <h6
     :id="props.id"
-    data-slot="prose-h3"
+    data-slot="prose-h6"
     :data-anchor="showAnchor"
     :class="variants.root({
       class: normalizeClass(props.class),
@@ -27,7 +27,7 @@ const variants = proseH3Variants()
 
     <a
       v-if="showAnchor"
-      data-slot="prose-h3-link"
+      data-slot="prose-h6-link"
       :href="`#${props.id}`"
       aria-label="Section link"
       :class="variants.link({
@@ -36,5 +36,5 @@ const variants = proseH3Variants()
     >
       <icon :name="config.icons.hash" />
     </a>
-  </h3>
+  </h6>
 </template>

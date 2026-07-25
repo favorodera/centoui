@@ -30,7 +30,9 @@ const variants = proseH2Variants()
       data-slot="prose-h2-link"
       :href="`#${props.id}`"
       aria-label="Section link"
-      :class="variants.link({ anchor: showAnchor })"
+      :class="variants.link({
+        anchor: showAnchor 
+      })"
     >
       <icon :name="config.icons.hash" />
     </a>

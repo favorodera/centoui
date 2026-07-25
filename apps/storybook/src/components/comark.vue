@@ -9,10 +9,20 @@ import lightTheme from '@shikijs/themes/material-theme-lighter'
 import darkTheme from '@shikijs/themes/material-theme-palenight'
 import emoji from 'comark/plugins/emoji'
 import { h } from 'vue'
+import { ProseA } from '#centoui/components/prose-a'
+import { ProseBlockquote } from '#centoui/components/prose-blockquote'
+import { ProseCode } from '#centoui/components/prose-code'
+import { ProseEm } from '#centoui/components/prose-em'
 import { ProseH1 } from '#centoui/components/prose-h1'
 import { ProseH2 } from '#centoui/components/prose-h2'
 import { ProseH3 } from '#centoui/components/prose-h3'
 import { ProseH4 } from '#centoui/components/prose-h4'
+import { ProseH5 } from '#centoui/components/prose-h5'
+import { ProseH6 } from '#centoui/components/prose-h6'
+import { ProseHr } from '#centoui/components/prose-hr'
+import { ProseP } from '#centoui/components/prose-p'
+import { ProsePre } from '#centoui/components/prose-pre'
+import { ProseStrong } from '#centoui/components/prose-strong'
 
 defineProps<{
   content: any
@@ -41,6 +51,16 @@ const components = {
   h2: (props: any, { slots }: any) => h(ProseH2, { ...props, anchor: true }, slots),
   h3: (props: any, { slots }: any) => h(ProseH3, { ...props, anchor: true }, slots),
   h4: (props: any, { slots }: any) => h(ProseH4, { ...props, anchor: true }, slots),
+  h5: (props: any, { slots }: any) => h(ProseH5, { ...props, anchor: true }, slots),
+  h6: (props: any, { slots }: any) => h(ProseH6, { ...props, anchor: true }, slots),
+  ProseA,
+  ProseBlockquote,
+  ProseCode,
+  ProseEm,
+  ProseHr,
+  ProseP,
+  ProsePre,
+  ProseStrong,
 }
 </script>
 

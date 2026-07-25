@@ -149,6 +149,7 @@ Plain bare URL: https://example.com/bare-url (some parsers auto-link this, other
 ## Code
 
 Inline code: `const x = 42;` and `another_variable`.
+Inline code with language: `nuxt.config.ts`{lang="ts-type"}
 
 Indented code block (four spaces):
 
@@ -173,12 +174,13 @@ function greet(name) {
 }
 ```
 
-```python
-def greet(name):
-    message = f"Hello, {name}!"
-    print(message)
-    return message
+```ts [nuxt.config.ts] {2}
+export default defineNuxtConfig({
+  css: ['~/assets/css/main.css'],
+  modules: ['@nuxt/ui'] // This line is highlighted
+})
 ```
+
 
 ```json
 {
