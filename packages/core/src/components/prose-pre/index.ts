@@ -8,27 +8,30 @@ export const prosePreVariants = tv({
   },
   slots: {
     code: `
+      outline-none min-inline-0 overscroll-y-auto overflow-x-auto font-mono
+      text-sm tab-2 p-3 group/prose-pre-code grid
+
       **:[.line]:block
 
       **:[.line.highlight]:-mx-3 **:[.line.highlight]:px-3
-      **:[.line.highlight]:bg-muted **:[.line.highlight]:inline-block
+      **:[.line.highlight]:bg-elevated **:[.line.highlight]:inline-block
       **:[.line.highlight]:inline-[calc(100%+1.5rem)]
-    `,
-    copy: 'absolute inset-bs-3 inset-e-2 z-10',
-    filename: '',
-    header: '',
-    icon: '',
-    root: `
-      group/prose-pre-root bg-muted font-mono text-sm tab-2 rounded-xl border
-      border-muted bg-clip-padding relative p-3 overflow-x-auto mbs-content-flow
-      block-min whitespace-pre-wrap wrap-break-word outline-none min-inline-0
-      overscroll-x-contain overscroll-y-auto
 
       focus-visible:ring-ring focus-visible:ring-2
+    `,
+    copy: 'absolute inset-bs-2 inset-e-2 z-10 group/prose-pre-copy bg-muted',
+    header: `
+      flex items-center gap-2 text-muted-foreground border-be p-3 text-sm
+      group/prose-pre-header
+    `,
+    root: `
+      group/prose-pre-root bg-muted rounded-xl border border-muted
+      bg-clip-padding relative mbs-content-flow grid
     `,
   },
   variants: {
     copy: {
+      false: {},
       true: {},
     },
   },
@@ -41,7 +44,10 @@ export { default as ProsePre } from './prose-pre.vue'
 
 // Props
 export interface ProsePreProps {
-  /** Language of the code block */
+  /**
+   * Language of the code block
+   * @default 'plaintext'
+   */
   language?: string
 
   /**
@@ -52,6 +58,14 @@ export interface ProsePreProps {
 
   /** Code content */
   code?: string
+
+  /**
+   * The iconify or custom ID of the icon to display in header.
+   * @see https://icon-sets.iconify.design/
+   * @see https://iconify.design/docs/icon-components/vue/
+   * @see https://github.com/nuxt/icon
+   */
+  icon?: string
 
   /** Filename of the code block */
   filename?: string

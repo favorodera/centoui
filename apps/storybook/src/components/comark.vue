@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { Comark } from '@comark/vue'
 import highlight from '@comark/vue/plugins/highlight'
+import bash from '@shikijs/langs/bash'
+import diff from '@shikijs/langs/diff'
 import javascript from '@shikijs/langs/javascript'
 import json from '@shikijs/langs/json'
 import typescript from '@shikijs/langs/typescript'
@@ -40,6 +42,8 @@ const plugins = [
       typescript,
       vue,
       json,
+      diff,
+      bash,
     ],
     registerDefaultLanguages: false,
     registerDefaultThemes: false,

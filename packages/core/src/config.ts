@@ -10,7 +10,6 @@ export default {
     chevronRight: 'lucide:chevron-right',
     chevronUp: 'lucide:chevron-up',
     copy: 'lucide:copy',
-    copyCheck: 'lucide:copy-check',
     ellipsis: 'lucide:ellipsis',
     hash: 'lucide:hash',
     minus: 'lucide:minus',

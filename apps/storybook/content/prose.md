@@ -166,7 +166,7 @@ line two of plain code
 
 Fenced code block with language for syntax highlighting:
 
-```javascript
+```js {icon="vscode-icons:file-type-js"}
 function greet(name) {
   const message = `Hello, ${name}!`
   console.log(message)
@@ -176,11 +176,19 @@ function greet(name) {
 
 ```ts [nuxt.config.ts] {2}
 export default defineNuxtConfig({
-  css: ['~/assets/css/main.css'],
-  modules: ['@nuxt/ui'] // This line is highlighted
+  css: ['~/assets/css/main.css'],// This line is highlighted
+  modules: ['@nuxt/ui'] 
 })
 ```
 
+```diff [nuxt.config.ts]
+export default defineNuxtConfig({
+  modules: [
+-   '@nuxt/ui-pro'
++   '@nuxt/ui'
+  ]
+})
+```
 
 ```json
 {

@@ -5,6 +5,7 @@ import config from '#centoui/config'
 import { type ProsePreProps, prosePreVariants } from '.'
 import { Button } from '../button'
 import { Icon } from '../icon'
+import { ProseCodeIcon } from '../prose-code-icon'
 
 defineOptions({
   inheritAttrs: false,
@@ -13,6 +14,7 @@ defineOptions({
 const props = withDefaults(defineProps<ProsePreProps>(), {
   copy: true,
   highlights: () => [],
+  language: 'plaintext'
 })
 
 const prosePreCodeRef = useTemplateRef('prosePreCodeRef')
@@ -35,22 +37,34 @@ const variants = prosePreVariants()
   <figure
     :data-lang="props.language"
     data-slot="prose-pre-root"
-    :class="variants.root({
-
-    })"
+    :class="variants.root()"
   >
+    <figcaption
+      v-if="props.filename"
+      data-slot="prose-pre-header"
+      :class="variants.header()"
+    >
+      <ProseCodeIcon
+        data-slot="prose-pre-header-icon"
+        :filename="props.filename"
+        :icon="props.icon"
+      />
+
+      <span>{{ props.filename }}</span>
+    </figcaption>
+
     <Button
       v-if="props.copy"
-      variant="ghost"
+      variant="outline"
       :square="true"
       size="sm"
-      aria-label="Copy code to clipboard"
+      :aria-label="copied ? 'Code copied successfully!' : 'Copy code to clipboard'"
       :class="variants.copy({
         copy:props.copy
       })"
       @click="copyCode"
     >
-      <icon :name="copied ?config.icons.copyCheck :config.icons.copy " />
+      <icon :name="copied ? config.icons.check : config.icons.copy " />
     </Button>
 
     <pre
@@ -60,7 +74,6 @@ const variants = prosePreVariants()
       :class="variants.code({
         class: normalizeClass(props.class)
       })"
-    ><slot />
-  </pre>
+    ><slot /></pre>
   </figure>
 </template>
