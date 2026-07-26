@@ -31,7 +31,7 @@ const variants = proseH2Variants()
       :href="`#${props.id}`"
       aria-label="Section link"
       :class="variants.link({
-        anchor: showAnchor 
+        anchor: showAnchor
       })"
     >
       <icon :name="config.icons.hash" />

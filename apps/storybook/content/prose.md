@@ -176,8 +176,8 @@ function greet(name) {
 
 ```ts [nuxt.config.ts] {2}
 export default defineNuxtConfig({
-  css: ['~/assets/css/main.css'],// This line is highlighted
-  modules: ['@nuxt/ui'] 
+  css: ['~/assets/css/main.css'], // This line is highlighted
+  modules: ['@nuxt/ui']
 })
 ```
 

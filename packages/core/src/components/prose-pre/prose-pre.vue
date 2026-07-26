@@ -14,7 +14,7 @@ defineOptions({
 const props = withDefaults(defineProps<ProsePreProps>(), {
   copy: true,
   highlights: () => [],
-  language: 'plaintext'
+  language: 'plaintext',
 })
 
 const prosePreCodeRef = useTemplateRef('prosePreCodeRef')

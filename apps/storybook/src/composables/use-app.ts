@@ -33,7 +33,7 @@ export function useApp() {
     },
     navigation: navigation(),
     story: story(),
-     theme: theme(),
+    theme: theme(),
   }
 }
 
