@@ -148,9 +148,6 @@
 @layer base {
   * {
     @apply border-border;
-    @apply scroll-smooth;
-    @apply scrollbar-thumb-muted hover:scrollbar-thumb-muted-foreground scrollbar-track-transparent;
-    @apply selection:bg-foreground selection:text-background;
   }
 
   body {

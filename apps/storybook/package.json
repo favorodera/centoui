@@ -30,6 +30,7 @@
     "@iconify/vue": "catalog:vendor",
     "@shikijs/langs": "catalog:vendor",
     "@shikijs/themes": "catalog:vendor",
+    "@shikijs/transformers": "catalog:vendor",
     "@tailwindcss/vite": "catalog:vendor",
     "@vueuse/core": "catalog:vendor",
     "comark": "catalog:vendor",

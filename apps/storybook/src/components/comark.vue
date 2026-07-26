@@ -7,6 +7,11 @@ import typescript from '@shikijs/langs/typescript'
 import vue from '@shikijs/langs/vue'
 import lightTheme from '@shikijs/themes/material-theme-lighter'
 import darkTheme from '@shikijs/themes/material-theme-palenight'
+import {
+  transformerNotationDiff,
+  transformerNotationFocus,
+  transformerNotationHighlight,
+} from '@shikijs/transformers'
 import emoji from 'comark/plugins/emoji'
 import { h } from 'vue'
 import { ProseA } from '#centoui/components/prose-a'
@@ -42,6 +47,11 @@ const plugins = [
       dark: darkTheme,
       light: lightTheme,
     },
+    transformers: [
+      transformerNotationDiff(),
+      transformerNotationHighlight(),
+      transformerNotationFocus(),
+    ],
   }),
   emoji(),
 ]
@@ -69,7 +79,7 @@ const components = {
     <Comark
       :plugins="plugins"
       :components="components"
-      class="block-full inline-full"
+      class="block-full inline-full grid min-inline-0"
     >
       {{ content }}
     </Comark>

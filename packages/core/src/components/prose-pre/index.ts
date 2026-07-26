@@ -23,6 +23,8 @@ export const prosePreVariants = tv({
       border-muted bg-clip-padding relative p-3 overflow-x-auto mbs-content-flow
       block-min whitespace-pre-wrap wrap-break-word outline-none min-inline-0
       overscroll-x-contain overscroll-y-auto
+
+      focus-visible:ring-ring focus-visible:ring-2
     `,
   },
   variants: {
