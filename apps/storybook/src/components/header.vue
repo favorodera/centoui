@@ -12,22 +12,37 @@ import {
   ComboboxItem,
   ComboboxRoot,
 } from '#centoui/components/combobox'
+import { Field } from '#centoui/components/field'
 import { Icon } from '#centoui/components/icon'
+import { InputGroupAddon } from '#centoui/components/input-group'
+import { Label } from '#centoui/components/label'
 import {
   PopoverContent,
   PopoverDescription,
-  PopoverFooter,
   PopoverHeader,
   PopoverRoot,
   PopoverTitle,
   PopoverTrigger,
 } from '#centoui/components/popover'
+import {
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectRoot,
+  SelectTrigger,
+  SelectValue,
+} from '#centoui/components/select'
 import { Separator } from '#centoui/components/separator'
 import { Textarea } from '#centoui/components/textarea'
 import { useApp } from '@/composables/use-app'
 
-const { colorMode, models, navigation, story, theme } = useApp()
+const { colorMode, models, navigation, theme } = useApp()
 const route = useRoute()
+
+const colorModeOptions = [
+  { icon: 'lucide:sun', label: 'Light', value: 'light' },
+  { icon: 'lucide:moon', label: 'Dark', value: 'dark' },
+]
 
 watch(
   () => theme.customTheme.value,
@@ -54,8 +69,8 @@ watch(
 <template>
   <header
     class="
-      flex block-11 inline-full items-center justify-between gap-4 border-be
-      border-border bg-background px-3
+      flex inline-full items-center justify-between gap-4 border-be
+      border-border bg-background px-4 py-3
     "
   >
     <!-- Component Selector -->
@@ -70,7 +85,17 @@ watch(
         data-slot="input-group-control"
         placeholder="Select a component"
         :display-value="(value)=> navigation.components.value.find((component)=>component.path === value)?.label || ''"
-      />
+      >
+        <InputGroupAddon align="inline-start">
+          <Badge
+            variant="secondary"
+            size="sm"
+            class="-ms-1"
+          >
+            {{ navigation.components.value.length }}
+          </Badge>
+        </InputGroupAddon>
+      </ComboboxInput>
 
       <ComboboxContent class="max-block-[50dvh]">
         <ComboboxEmpty />
@@ -88,19 +113,10 @@ watch(
     </ComboboxRoot>
 
     <div class="flex items-center gap-2">
-      <!-- Count Badge -->
-      <Badge variant="secondary">
-        {{ navigation.activeComponentIndex.value + 1 }} / {{ navigation.components.value.length }}
-      </Badge>
-
-      <Separator
-        orientation="vertical"
-      />
-
       <!-- Navigation Buttons -->
       <ButtonGroup>
         <Button
-          size="xs"
+          size="sm"
           variant="secondary"
           square
           aria-label="Previous component"
@@ -113,7 +129,7 @@ watch(
         <Separator orientation="vertical" />
 
         <Button
-          size="xs"
+          size="sm"
           variant="secondary"
           square
           aria-label="Next component"
@@ -128,101 +144,107 @@ watch(
         orientation="vertical"
       />
 
-      <!-- Actions -->
-      <div class="flex shrink-0 items-center gap-2">
-        <!-- Color Mode Toggle -->
-        <Button
-          size="xs"
-          variant="outline"
-          square
-          aria-label="Toggle dark mode"
-          @click="colorMode.toggleColorMode()"
-        >
-          <Icon :name="colorMode.isDarkMode ? 'lucide:sun' : 'lucide:moon'" />
-        </Button>
-
-        <!-- Theme Editor -->
-        <PopoverRoot v-model:open="models.themePopoverModel.value">
-          <PopoverTrigger as-child>
-            <Button
-              size="xs"
-              variant="outline"
-              square
-              aria-label="Edit theme"
-              :class="theme.hasCustomTheme.value && 'border-warning'"
-            >
-              <Icon name="lucide:swatch-book" />
-            </Button>
-          </PopoverTrigger>
-
-          <PopoverContent
-            side="bottom"
-            align="end"
-            :side-offset="5"
+      <!-- Theme & Appearance Editor -->
+      <PopoverRoot v-model:open="models.themePopoverModel.value">
+        <PopoverTrigger as-child>
+          <Button
+            size="sm"
+            variant="outline"
+            square
+            aria-label="Edit theme"
           >
-            <PopoverHeader>
-              <PopoverTitle>
-                Theme
-              </PopoverTitle>
+            <Icon name="lucide:swatch-book" />
+          </Button>
+        </PopoverTrigger>
 
-              <PopoverDescription>
-                Edit theme settings and preview changes.
-              </PopoverDescription>
-            </PopoverHeader>
+        <PopoverContent
+          side="bottom"
+          align="end"
+        >
+          <PopoverHeader>
+            <PopoverTitle>
+              Theme
+            </PopoverTitle>
+
+            <PopoverDescription>
+              Edit theme and color-mode settings and preview changes.
+            </PopoverDescription>
+          </PopoverHeader>
+
+          <Separator class="-mx-4" />
+
+          <!-- Color Mode Select -->
+          <Field orientation="auto">
+            <Label for="color-mode">
+              Color Mode
+            </Label>
+
+            <SelectRoot
+              :model-value="colorMode.isDarkMode.value ? 'dark' : 'light'"
+              @update:model-value="(value) => colorMode.isDarkMode.value = value === 'dark'"
+            >
+              <SelectTrigger id="color-mode">
+                <SelectValue placeholder="Select color mode" />
+              </SelectTrigger>
+
+              <SelectContent>
+                <SelectGroup>
+                  <SelectItem
+                    v-for="option in colorModeOptions"
+                    :key="option.value"
+                    :value="option.value"
+                  >
+                    {{ option.label }}
+                  </SelectItem>
+                </SelectGroup>
+              </SelectContent>
+            </SelectRoot>
+          </Field>
+
+          <!-- Custom Theme CSS -->
+          <Field>
+            <Label for="custom-theme">
+              Custom Theme
+            </Label>
 
             <Textarea
+              id="custom-theme"
               v-model="theme.customTheme.value"
               spellcheck="false"
               placeholder="Enter CSS theme"
               class="max-block-40"
+              data-input-group-control
             />
 
-            <PopoverFooter>
-              <ButtonGroup class="inline-full">
-                <Button
-                  v-if="theme.hasCustomTheme"
-                  size="sm"
-                  variant="error"
-                  class="flex-1"
-                  @click="theme.resetTheme"
-                >
-                  <Icon
-                    name="lucide:rotate-ccw"
-                  />
-                  Reset
-                </Button>
+            <ButtonGroup class="inline-full">
+              <Button
+                v-if="theme.hasCustomTheme"
+                variant="error"
+                class="flex-1"
+                @click="theme.resetTheme"
+              >
+                <Icon
+                  name="lucide:rotate-ccw"
+                />
+                Reset
+              </Button>
 
-                <Separator orientation="vertical" />
+              <Separator orientation="vertical" />
 
-                <Button
-                  size="sm"
-                  variant="secondary"
-                  class="flex-1"
-                  @click="theme.copyTheme"
-                >
-                  <Icon
-                    :name="theme.isThemeCopied.value ? 'lucide:check' : 'lucide:copy'"
-                  />
-                  {{ theme.isThemeCopied.value ? 'Copied' : 'Copy theme' }}
-                </Button>
-              </ButtonGroup>
-            </PopoverFooter>
-          </PopoverContent>
-        </PopoverRoot>
-
-        <!-- Props Panel Toggle -->
-        <Button
-          v-if="story.hasProps"
-          size="xs"
-          variant="outline"
-          square
-          aria-label="Toggle props panel"
-          class="md:hidden"
-          @click="models.controlPanelModel.value = !models.controlPanelModel.value"
-        >
-          <Icon :name="models.controlPanelModel.value ? 'lucide:panel-right-close' : 'lucide:panel-right-open'" />
-        </Button>
-      </div>
+              <Button
+                variant="secondary"
+                class="flex-1"
+                @click="theme.copyTheme"
+              >
+                <Icon
+                  :name="theme.isThemeCopied.value ? 'lucide:check' : 'lucide:copy'"
+                />
+                {{ theme.isThemeCopied.value ? 'Copied' : 'Copy theme' }}
+              </Button>
+            </ButtonGroup>
+          </Field>
+        </PopoverContent>
+      </PopoverRoot>
     </div>
   </header>
 </template>

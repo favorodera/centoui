@@ -71,7 +71,7 @@ function set(key: string, value: unknown) {
         <Field
           v-if="entry.type === 'boolean'"
           orientation="horizontal"
-          class="rounded-md border border-input px-3 py-1.5"
+          class="rounded-lg border border-input px-2.5 block-8"
         >
           <FieldDescription>
             {{ get(entry.key) ? 'ON' : 'OFF' }}
@@ -127,13 +127,15 @@ function set(key: string, value: unknown) {
 
     <FieldDescription
       v-else
-      class="m-auto gap-1 place-items-center grid"
+      class="
+        m-auto gap-1 min-block-20 flex flex-col items-center justify-center
+      "
     >
       <Icon
         name="lucide:octagon-alert"
       />
 
-      No controls found
+      No controls schema found
     </FieldDescription>
   </FieldGroup>
 </template>
