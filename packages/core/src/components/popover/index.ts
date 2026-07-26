@@ -15,7 +15,7 @@ export const popoverVariants = tv({
     arrow: 'z-50 fill-overlay stroke-border group/popover-arrow',
     content: `
       relative z-50 inline-xs origin-(--reka-popover-content-transform-origin)
-      group/popover-content
+      group/popover-content shadow-md
 
       data-[side=bottom]:slide-in-from-top-2
 

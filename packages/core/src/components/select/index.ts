@@ -25,7 +25,7 @@ export const selectVariants = tv({
     arrow: 'z-50 fill-overlay stroke-input group/select-arrow',
     content: `
       bg-overlay border border-input z-50 relative grid p-1 gap-1
-      group/select-content bg-clip-padding text-overlay-foreground
+      group/select-content bg-clip-padding text-overlay-foreground shadow-md
 
       data-[side=bottom]:slide-in-from-top-2
 

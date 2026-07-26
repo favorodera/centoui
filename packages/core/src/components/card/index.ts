@@ -10,7 +10,7 @@ export const cardVariants = tv({
     header: `flex flex-col gap-1 px-4 pbs-4 -mx-4 -mbs-4 group/card-header`,
     root: `
       flex flex-col gap-4 overflow-hidden rounded-xl border bg-elevated
-      text-elevated-foreground p-4 group/card-root bg-clip-padding
+      text-elevated-foreground p-4 group/card-root bg-clip-padding shadow-xs
 
       *:data-[slot=separator]:data-[orientation=horizontal]:-mx-4
     `,

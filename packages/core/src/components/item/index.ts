@@ -52,7 +52,7 @@ export const itemVariants = tv({
     },
     variant: {
       elevated: {
-        root: 'bg-elevated text-elevated-foreground',
+        root: 'bg-elevated text-elevated-foreground shadow-xs',
       },
       ghost: {
         root: 'bg-transparent',

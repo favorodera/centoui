@@ -12,7 +12,7 @@ export const alertVariants = tv({
     description: `font-normal group/alert-description`,
     root: `
       flex items-start inline-full p-3 gap-3 text-sm rounded-lg flex-wrap
-      bg-elevated border group/alert-root bg-clip-padding
+      bg-elevated border group/alert-root bg-clip-padding shadow-xs
 
       *:data-[slot=icon]:translate-y-0.5
     `,

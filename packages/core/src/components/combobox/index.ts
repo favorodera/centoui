@@ -30,7 +30,7 @@ export const comboboxVariants = tv({
     cancel: 'group/combobox-cancel',
     content: `
       bg-overlay text-overlay-foreground border bg-clip-padding z-50 relative
-      grid p-1 gap-1 group/combobox-content
+      grid p-1 gap-1 group/combobox-content shadow-md
 
       data-[side=bottom]:slide-in-from-top-2
 

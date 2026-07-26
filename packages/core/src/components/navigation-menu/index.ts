@@ -44,6 +44,7 @@ export const navigationMenuVariants = tv({
       group-not-has-data-[slot=navigation-menu-viewport-wrapper]/navigation-menu-root:border
       group-not-has-data-[slot=navigation-menu-viewport-wrapper]/navigation-menu-root:bg-clip-padding
       group-not-has-data-[slot=navigation-menu-viewport-wrapper]/navigation-menu-root:z-50
+      group-not-has-data-[slot=navigation-menu-viewport-wrapper]/navigation-menu-root:shadow-xs
 
       group-not-has-data-[slot=navigation-menu-viewport-wrapper]/navigation-menu-root:data-[state=open]:animate-in
       group-not-has-data-[slot=navigation-menu-viewport-wrapper]/navigation-menu-root:data-[state=open]:zoom-in-95
@@ -121,7 +122,7 @@ export const navigationMenuVariants = tv({
       perspective-near rounded-xl bg-clip-padding mbs-1 text-overlay-foreground
       inset-s-(--reka-navigation-menu-viewport-left)
       transition-[width,height,left,right]
-      inline-(--reka-navigation-menu-viewport-width)
+      inline-(--reka-navigation-menu-viewport-width) shadow-xs
 
       data-[state=open]:animate-in data-[state=open]:zoom-in-90
       data-[state=open]:fade-in-0
