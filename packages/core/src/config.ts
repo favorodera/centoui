@@ -9,6 +9,7 @@ export default {
     chevronLeft: 'lucide:chevron-left',
     chevronRight: 'lucide:chevron-right',
     chevronUp: 'lucide:chevron-up',
+    clipboard: 'lucide:clipboard',
     copy: 'lucide:copy',
     ellipsis: 'lucide:ellipsis',
     hash: 'lucide:hash',

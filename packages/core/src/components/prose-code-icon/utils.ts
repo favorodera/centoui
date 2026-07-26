@@ -50,6 +50,7 @@ export const languageIconMap: Record<string, string> = {
   'nuxt.schema.ts': 'vscode-icons:file-type-nuxt',
   'package.json': 'vscode-icons:file-type-node',
   'pl': 'vscode-icons:file-type-perl',
+  'plaintext': 'vscode-icons:file-type-text',
   'pnpm': 'vscode-icons:file-type-pnpm',
   'ps1': 'vscode-icons:file-type-powershell',
   'psd1': 'vscode-icons:file-type-powershell',
@@ -71,24 +72,31 @@ export const languageIconMap: Record<string, string> = {
 }
 
 /**
- * Resolves an icon from a filename: tries an exact basename match first then the extension
+ * Resolves an icon from a filename.
+ * Priority: basename → extension → fallback
  * @param filename The filename to resolve icon from
- * @returns The resolved icon ID or undefined
+ * @returns The resolved icon ID or the plaintext fallback
  */
 export function resolveIconFromFilename(filename?: string) {
-  if (!filename) return
+  const candidates: Array<string> = []
 
-  const basename = filename
-    .replace(/\s*\(.*\)\s*$/, '')
-    .split('/')
-    .pop()
-    ?.toLowerCase()
+  if (filename) {
+    const basename = filename
+      .replace(/\s*\(.*\)\s*$/, '')
+      .split('/')
+      .pop()
+      ?.toLowerCase()
 
-  if (basename && languageIconMap[basename]) {
-    return languageIconMap[basename]
+    if (basename) {
+      candidates.push(basename)
+      const ext = basename.includes('.') ? basename.split('.').pop() : undefined
+      if (ext) candidates.push(ext)
+    }
   }
 
-  const extension = basename?.includes('.') ? basename.split('.').pop() : undefined
+  for (const key of candidates) {
+    if (languageIconMap[key]) return languageIconMap[key]
+  }
 
-  return extension ? languageIconMap[extension] : undefined
+  return languageIconMap.plaintext
 }

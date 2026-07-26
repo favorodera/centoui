@@ -64,12 +64,13 @@ const variants = prosePreVariants()
       })"
       @click="copyCode"
     >
-      <icon :name="copied ? config.icons.check : config.icons.copy " />
+      <icon :name="copied ? config.icons.check : config.icons.clipboard " />
     </Button>
 
     <pre
       ref="prosePreCodeRef"
       data-slot="prose-pre-code"
+      tabindex="0"
       v-bind="$attrs"
       :class="variants.code({
         class: normalizeClass(props.class)

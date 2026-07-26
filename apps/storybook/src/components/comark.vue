@@ -7,8 +7,8 @@ import javascript from '@shikijs/langs/javascript'
 import json from '@shikijs/langs/json'
 import typescript from '@shikijs/langs/typescript'
 import vue from '@shikijs/langs/vue'
-import lightTheme from '@shikijs/themes/material-theme-lighter'
-import darkTheme from '@shikijs/themes/material-theme-palenight'
+import lightTheme from '@shikijs/themes/catppuccin-latte'
+import darkTheme from '@shikijs/themes/catppuccin-mocha'
 import {
   transformerNotationDiff,
   transformerNotationFocus,
@@ -90,8 +90,8 @@ const components = {
   </Suspense>
 </template>
 
-<style scoped>
-html.dark .shiki :deep(span) {
+<style>
+html.dark .shiki span {
   color: var(--shiki-dark) !important;
   background-color: var(--shiki-dark-bg) !important;
   font-style: var(--shiki-dark-font-style) !important;
