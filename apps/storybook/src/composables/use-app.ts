@@ -1,8 +1,9 @@
-import { useDark, useToggle } from '@vueuse/core'
+import { useClipboard, useDark, useStorage, useToggle } from '@vueuse/core'
 import { storeToRefs } from 'pinia'
 import { computed, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useStoryStore } from '@/stores/story-store'
+import rawDefaultTheme from '../../../../packages/core/src/theme.css?raw'
 
 /** Determines whether the control panel is visible. */
 const controlPanelModel = ref(false)
@@ -32,6 +33,7 @@ export function useApp() {
     },
     navigation: navigation(),
     story: story(),
+     theme: theme(),
   }
 }
 
@@ -130,5 +132,38 @@ function story() {
     setStoryState: store.setStoryState,
     updateValues: store.updateValues,
     values,
+  }
+}
+
+/**
+ * Manages theme customization state and utilities.
+ * @returns Theme helpers for custom theme storage, copy, reset, and state tracking.
+ */
+function theme() {
+  /** ID used for the injected custom theme style element. */
+  const customThemeStyleId = 'centoui-custom-theme'
+
+  const { copied, copy } = useClipboard()
+
+  /** Stored custom theme CSS content persisted in local storage. */
+  const customTheme = useStorage('centoui-custom-theme', rawDefaultTheme)
+
+  /** Whether the stored theme has been modified from the default theme. */
+  const hasCustomTheme = computed(() => customTheme.value.trim() !== rawDefaultTheme.trim())
+
+  /** Reset the custom theme back to the default theme and remove the injected style element. */
+  function resetTheme() {
+    customTheme.value = rawDefaultTheme
+    document.querySelector(`#${customThemeStyleId}`)?.remove()
+  }
+
+  return {
+    copyTheme: () => copy(customTheme.value),
+    customTheme,
+    customThemeStyleId,
+    hasCustomTheme,
+    isThemeCopied: copied,
+    rawDefaultTheme,
+    resetTheme,
   }
 }

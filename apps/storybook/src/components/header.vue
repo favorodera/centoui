@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { Badge } from '#centoui/components/badge'
 import { Button } from '#centoui/components/button'
@@ -12,12 +13,42 @@ import {
   ComboboxRoot,
 } from '#centoui/components/combobox'
 import { Icon } from '#centoui/components/icon'
-
+import {
+  PopoverContent,
+  PopoverDescription,
+  PopoverFooter,
+  PopoverHeader,
+  PopoverRoot,
+  PopoverTitle,
+  PopoverTrigger,
+} from '#centoui/components/popover'
 import { Separator } from '#centoui/components/separator'
+import { Textarea } from '#centoui/components/textarea'
 import { useApp } from '@/composables/use-app'
 
-const { colorMode, models, navigation, story } = useApp()
+const { colorMode, models, navigation, story, theme } = useApp()
 const route = useRoute()
+
+watch(
+  () => theme.customTheme.value,
+  (value) => {
+    if (value.trim() === theme.rawDefaultTheme.trim()) {
+      document.querySelector(`#${theme.customThemeStyleId}`)?.remove()
+      return
+    }
+
+    let tag = document.querySelector(`#${theme.customThemeStyleId}`)
+
+    if (!tag) {
+      tag = document.createElement('style')
+      tag.id = theme.customThemeStyleId
+      document.head.append(tag)
+    }
+
+    tag.textContent = value
+  },
+  { immediate: true },
+)
 </script>
 
 <template>
@@ -109,6 +140,75 @@ const route = useRoute()
         >
           <Icon :name="colorMode.isDarkMode ? 'lucide:sun' : 'lucide:moon'" />
         </Button>
+
+        <!-- Theme Editor -->
+        <PopoverRoot v-model:open="models.themePopoverModel.value">
+          <PopoverTrigger as-child>
+            <Button
+              size="xs"
+              variant="outline"
+              square
+              aria-label="Edit theme"
+              :class="theme.hasCustomTheme.value && 'border-warning'"
+            >
+              <Icon name="lucide:swatch-book" />
+            </Button>
+          </PopoverTrigger>
+
+          <PopoverContent
+            side="bottom"
+            align="end"
+            :side-offset="5"
+          >
+            <PopoverHeader>
+              <PopoverTitle>
+                Theme
+              </PopoverTitle>
+
+              <PopoverDescription>
+                Edit theme settings and preview changes.
+              </PopoverDescription>
+            </PopoverHeader>
+
+            <Textarea
+              v-model="theme.customTheme.value"
+              spellcheck="false"
+              placeholder="Enter CSS theme"
+              class="max-block-40"
+            />
+
+            <PopoverFooter>
+              <ButtonGroup class="inline-full">
+                <Button
+                  v-if="theme.hasCustomTheme"
+                  size="sm"
+                  variant="error"
+                  class="flex-1"
+                  @click="theme.resetTheme"
+                >
+                  <Icon
+                    name="lucide:rotate-ccw"
+                  />
+                  Reset
+                </Button>
+
+                <Separator orientation="vertical" />
+
+                <Button
+                  size="sm"
+                  variant="secondary"
+                  class="flex-1"
+                  @click="theme.copyTheme"
+                >
+                  <Icon
+                    :name="theme.isThemeCopied.value ? 'lucide:check' : 'lucide:copy'"
+                  />
+                  {{ theme.isThemeCopied.value ? 'Copied' : 'Copy theme' }}
+                </Button>
+              </ButtonGroup>
+            </PopoverFooter>
+          </PopoverContent>
+        </PopoverRoot>
 
         <!-- Props Panel Toggle -->
         <Button
