@@ -6,8 +6,8 @@ export const proseCodeVariants = tv({
   slots: {
     root: `
       group/prose-code px-1 py-0.5 text-sm font-mono font-medium rounded-md
-      inline-block bg-muted text-foreground whitespace-nowrap border
-      border-muted bg-clip-padding
+      inline-block bg-elevated text-foreground whitespace-nowrap border
+      bg-clip-padding shadow-xs not-italic
     `,
   },
 })

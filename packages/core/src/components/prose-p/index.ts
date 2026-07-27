@@ -4,7 +4,9 @@ import { tv } from 'tailwind-variants'
 // Variants
 export const prosePVariants = tv({
   slots: {
-    root: `group/prose-p text-base leading-[1.75] mbs-content-spacing`,
+    root: `
+      group/prose-p text-base leading-[1.75] mbs-content-spacing wrap-break-word
+    `,
   },
 })
 

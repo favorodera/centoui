@@ -5,12 +5,12 @@ import { tv } from 'tailwind-variants'
 export const proseAVariants = tv({
   slots: {
     root: `
-      group/prose-a text-primary outline-none font-medium decoration-primary/80
-      underline underline-offset-4
+      group/prose-a outline-none font-medium underline underline-offset-4
+      transition-colors decoration-1
 
       focus-visible:ring-ring focus-visible:ring-2
 
-      hover:decoration-primary
+      hover:text-primary
     `,
   },
 })
