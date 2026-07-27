@@ -3,7 +3,7 @@
 @source "../../../packages/core/src/**/*.{ts,vue}";
 
 :root {
-  --content-scroll-offset: 44px;
+  --content-scroll-offset: 50px;
 }
 
 #app {

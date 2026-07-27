@@ -20,7 +20,6 @@ const variants = proseH6Variants()
     :data-anchor="showAnchor"
     :class="variants.root({
       class: normalizeClass(props.class),
-      anchor: showAnchor,
     })"
   >
     <slot />
@@ -29,10 +28,8 @@ const variants = proseH6Variants()
       v-if="showAnchor"
       data-slot="prose-h6-link"
       :href="`#${props.id}`"
-      aria-label="Section link"
-      :class="variants.link({
-        anchor: showAnchor
-      })"
+      aria-label="Section permalink"
+      :class="variants.link()"
     >
       <icon :name="config.icons.hash" />
     </a>

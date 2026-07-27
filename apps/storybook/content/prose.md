@@ -1,4 +1,4 @@
-<!--  eslint-disable md/fenced-code-language, md/no-space-in-emphasis, md/no-multiple-h1  -->
+<!--  eslint-disable md/fenced-code-language  -->
 
 # Heading Level 1
 
@@ -12,12 +12,6 @@
 
 ###### Heading Level 6
 
-Alternate H1
-============
-
-Alternate H2
-------------
-
 ## Paragraphs & Line Breaks
 
 This is a plain paragraph with regular text. It should wrap normally and contain no special formatting at all, just to check baseline prose rendering.
@@ -27,16 +21,11 @@ This is a second paragraph, separated from the first by a blank line, to confirm
 This line ends with two trailing spaces to force a hard line break.  
 And this is the next line, which should appear directly below without an extra blank line gap.
 
-You can also force a break using a backslash.\
-Like this line right here.
-
 ## Emphasis
 
-Plain text, *italic with asterisks*, _italic with underscores_, **bold with asterisks**, __bold with underscores__, ***bold italic asterisks***, ___bold italic underscores___, ~~strikethrough text~~, and ~single tilde strikethrough~ (some parsers only support double tildes).
+Plain text, *italic text*, **bold text**, ***bold italic text***, and ~~strikethrough text~~.
 
-Mixed inline: **bold with *nested italic* inside**, and *italic with **nested bold** inside*.
-
-Escaped characters: \*not italic\*, \_not italic\_, \`not code\`, \# not a heading, \[not a link\](nowhere).
+Mixed inline: **bold with *nested italic* inside**, and a sentence with `inline code` alongside **bold** and *italic*.
 
 ## Blockquotes
 
@@ -71,12 +60,6 @@ Escaped characters: \*not italic\*, \_not italic\_, \`not code\`, \# not a headi
     - Deeply nested item
 - Fourth item back at top level
 
-* Item using asterisk marker
-* Another asterisk item
-
-+ Item using plus marker
-+ Another plus item
-
 ### Ordered
 
 1. First step
@@ -85,9 +68,6 @@ Escaped characters: \*not italic\*, \_not italic\_, \`not code\`, \# not a headi
    1. Sub-step A
    2. Sub-step B
 4. Fourth step
-
-1) Alternate ordered marker style
-2) Second alternate item
 
 ### Mixed Nesting
 
@@ -127,35 +107,15 @@ Loose list (blank lines between items):
 
 [Inline link with title](https://example.com "Example Title")
 
-[Reference-style link][ref1]
-
-[Reference link using number][1]
-
 <https://example.com/autolink>
-
-[ref1]: https://example.com/reference-one "Reference One Title"
-[1]: https://example.com/reference-two
-
-Plain bare URL: https://example.com/bare-url (some parsers auto-link this, others don't)
 
 ## Images
 
 ![Alt text for image](https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=480&h=320&fit=crop "Placeholder Image")
 
-![Reference-style image][img1]
-
-[img1]: https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=480&h=320&fit=crop "Reference Image"
-
 ## Code
 
 Inline code: `const x = 42;` and `another_variable`.
-Inline code with language: `nuxt.config.ts`{lang="ts-type"}
-
-Indented code block (four spaces):
-
-    function oldStyle() {
-      return "indented code block";
-    }
 
 Fenced code block, no language:
 
@@ -174,12 +134,16 @@ function greet(name) {
 }
 ```
 
+Fenced code block with filename and highlighted line:
+
 ```ts [nuxt.config.ts] {2}
 export default defineNuxtConfig({
   css: ['~/assets/css/main.css'], // This line is highlighted
   modules: ['@nuxt/ui']
 })
 ```
+
+Diff-style code block:
 
 ```diff [nuxt.config.ts]
 export default defineNuxtConfig({
@@ -189,6 +153,8 @@ export default defineNuxtConfig({
   ]
 })
 ```
+
+JSON code block:
 
 ```json
 {
@@ -202,12 +168,6 @@ export default defineNuxtConfig({
 }
 ```
 
-Tilde-fenced code block:
-
-~~~
-tilde fenced block
-~~~
-
 ## Tables
 
 | Left Aligned | Center Aligned | Right Aligned |
@@ -216,33 +176,15 @@ tilde fenced block
 | longer cell  | x               | 1.00          |
 | **bold**     | *italic*        | `code`        |
 
-| No Alignment Specifiers | Second Column |
-| --- | --- |
-| row one col one | row one col two |
-| row two col one | row two col two |
-
-## Horizontal Rules
-
-Three dashes:
+## Horizontal Rule
 
 ---
-
-Three asterisks:
-
-***
-
-Three underscores:
-
-___
 
 ## Footnotes
 
 Here is a sentence with a footnote reference.[^1]
 
-Here is another footnote reference with a named label.[^note]
-
-[^1]: This is the first footnote's content.
-[^note]: This is a named footnote with **formatted** content and a [link](https://example.com).
+[^1]: This is the footnote's content, which can include **formatted** text and a [link](https://example.com).
 
 ## Definition Lists
 
@@ -252,16 +194,6 @@ Term One
 Term Two
 : First definition of term two.
 : Second definition of term two.
-
-## Inline HTML
-
-This paragraph contains <strong>raw HTML bold</strong> and <em>raw HTML italic</em> mixed with markdown **bold**.
-
-<div>
-  <p>A raw HTML block embedded directly in the markdown document.</p>
-</div>
-
-Line with a manual line break tag<br>continuing on the next line.
 
 ## Special Characters & Entities
 
@@ -280,34 +212,6 @@ Emoji shorthand test: :smile: :rocket: :tada:
 Direct unicode emoji: 😀 🚀 🎉
 
 Unicode text: café, naïve, Zürich, 北京, Москва, مرحبا
-
-## Table of Contents Style Links (anchors)
-
-- [Jump to Heading Level 1](#heading-level-1)
-- [Jump to Lists](#lists)
-- [Jump to Tables](#tables)
-
-## Nested Blockquote with List and Code
-
-> Here's a blockquote containing a list:
-> 1. First point
-> 2. Second point
->
-> And here's a code block inside the same blockquote:
->
-> ```
-> quoted_code = True
-> ```
-
-## Edge Case: Empty Elements
-
-Empty link: [](https://example.com)
-
-Empty emphasis markers: ** ** and * *
-
-## Edge Case: Consecutive Formatting
-
-**Bold***Italic*`Code`~~Strike~~ all touching with no spaces.
 
 ## Final Paragraph
 

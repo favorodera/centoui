@@ -45,9 +45,9 @@
   --info: oklch(0.5500 0.2200 264.5300);
   --info-foreground: --foreground: oklch(0 0 0);
 
-  --content-flow: 1em;
-  --content-scroll-offset: 0px;
-  --content-scroll: calc(var(--content-flow) + var(--content-scroll-offset));
+  --content-spacing: 1.25rem;
+  --content-scroll-offset: 0rem;
+  --content-scroll: calc(var(--content-spacing) + var(--content-scroll-offset));
 }
 
 .dark {
@@ -135,7 +135,7 @@
   --color-info: var(--info);
   --color-info-foreground: var(--info-foreground);
 
-  --spacing-content-flow: var(--content-flow);
+  --spacing-content-spacing: var(--content-spacing);
   --spacing-content-scroll: var(--content-scroll);
 }
 
