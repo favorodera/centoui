@@ -4,7 +4,7 @@ import { tv } from 'tailwind-variants'
 // Variants
 export const proseHrVariants = tv({
   slots: {
-    root: `group/prose-hr mbs-content-flow border-bs`,
+    root: `group/prose-hr border-0 border-bs border-border mbs-content-spacing`,
   },
 })
 
