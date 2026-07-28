@@ -34,20 +34,16 @@
   --secondary-foreground: oklch(0 0 0);
 
   --success: oklch(0.65 0.15 150);
-  --success-foreground: --foreground: oklch(0 0 0);
+  --success-foreground: oklch(0 0 0);
 
   --warning: oklch(0.8100 0.1700 75.3500);
-  --warning-foreground: --foreground: oklch(0 0 0);
+  --warning-foreground: oklch(0 0 0);
 
   --error: oklch(0.6300 0.1900 23.0300);
   --error-foreground: oklch(1 0 0);
 
   --info: oklch(0.5500 0.2200 264.5300);
-  --info-foreground: --foreground: oklch(0 0 0);
-
-  --content-spacing: 1.25rem;
-  --content-scroll-offset: 0rem;
-  --content-scroll: calc(var(--content-spacing) + var(--content-scroll-offset));
+  --info-foreground: oklch(0 0 0);
 }
 
 .dark {
@@ -134,9 +130,6 @@
 
   --color-info: var(--info);
   --color-info-foreground: var(--info-foreground);
-
-  --spacing-content-spacing: var(--content-spacing);
-  --spacing-content-scroll: var(--content-scroll);
 }
 
 @layer base {

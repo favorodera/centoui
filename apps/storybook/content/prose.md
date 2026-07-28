@@ -18,14 +18,18 @@ This is a plain paragraph with regular text. It should wrap normally and contain
 
 This is a second paragraph, separated from the first by a blank line, to confirm the parser correctly detects paragraph breaks.
 
-This line ends with two trailing spaces to force a hard line break.  
+This line ends with two trailing spaces to force a hard line break.
 And this is the next line, which should appear directly below without an extra blank line gap.
 
 ## Emphasis
 
-Plain text, *italic text*, **bold text**, ***bold italic text***, and ~~strikethrough text~~.
+Plain text, *italic text*, **bold text**, ***bold italic text***, <mark>highlighted text</mark>, and ~~strikethrough text~~.
 
 Mixed inline: **bold with *nested italic* inside**, and a sentence with `inline code` alongside **bold** and *italic*.
+
+## Keyboard keys
+Press <kbd>Ctrl</kbd> + <kbd>C</kbd> to copy.
+
 
 ## Blockquotes
 
@@ -65,18 +69,18 @@ Mixed inline: **bold with *nested italic* inside**, and a sentence with `inline 
 1. First step
 2. Second step
 3. Third step
-   1. Sub-step A
-   2. Sub-step B
+  1. Sub-step A
+  2. Sub-step B
 4. Fourth step
 
 ### Mixed Nesting
 
 1. Ordered item
-   - Unordered sub-item
-   - Another unordered sub-item
+  - Unordered sub-item
+  - Another unordered sub-item
 2. Another ordered item
-   1. Nested ordered sub-item
-      - Deeply nested unordered item
+  1. Nested ordered sub-item
+    - Deeply nested unordered item
 
 ### Task Lists
 
@@ -86,20 +90,22 @@ Mixed inline: **bold with *nested italic* inside**, and a sentence with `inline 
   - [x] Completed sub-task
   - [ ] Incomplete sub-task
 
-### Loose vs Tight Lists
+### Details
 
-Tight list (no blank lines between items):
-- one
-- two
-- three
+<details>
+<summary>Click to reveal more information</summary>
+This content is hidden by default and only appears when expanded.
+</details>
 
-Loose list (blank lines between items):
+### Definition Lists
 
-- one
+<dl>
+<dt>First Term</dt>
+<dd>This is the definition of the first term.</dd>
 
-- two
-
-- three
+<dt>Second Term</dt>
+<dd>This is the definition of the second term.</dd>
+</dl>
 
 ## Links
 
@@ -111,7 +117,26 @@ Loose list (blank lines between items):
 
 ## Images
 
-![Alt text for image](https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=480&h=320&fit=crop "Placeholder Image")
+![Alt text for image](https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=480&h=320&fit=crop "Placeholder Image"){width="100%"}
+
+## Math
+
+Inline math: $E = mc^2$
+
+Display math:
+$$
+x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+$$
+
+## Diagrams
+
+```mermaid
+graph TD
+    A[Start] --> B{Is it working?}
+    B -->|Yes| C[Great!]
+    B -->|No| D[Debug]
+    D --> A
+```
 
 ## Code
 
@@ -170,49 +195,47 @@ JSON code block:
 
 ## Tables
 
+::div{class="prose-scroll"}
 | Left Aligned | Center Aligned | Right Aligned |
 |:-------------|:---------------:|--------------:|
 | a            | b               | c             |
 | longer cell  | x               | 1.00          |
 | **bold**     | *italic*        | `code`        |
+::
 
 ## Horizontal Rule
 
 ---
 
-## Footnotes
-
-Here is a sentence with a footnote reference.[^1]
-
-[^1]: This is the footnote's content, which can include **formatted** text and a [link](https://example.com).
-
 ## Definition Lists
 
-Term One
-: Definition of term one.
+  Term One
+  : Definition of term one.
 
-Term Two
-: First definition of term two.
-: Second definition of term two.
+  Term Two
+  : First definition of term two.
+  : Second definition of term two.
 
 ## Special Characters & Entities
 
 Ampersand: A & B, entity: A &amp; B
 
-Less than / greater than: 5 < 10 and 10 > 5
+  Less than / greater than: 5 < 10 and 10 > 5
 
-Copyright and trademark entities: &copy; &trade; &mdash; &hellip;
+  Copyright and trademark entities: &copy; &trade; &mdash; &hellip;
 
-Smart quotes test: "double quotes" and 'single quotes' and an em dash — and an en dash –.
+  Smart quotes test: "double quotes" and 'single quotes' and an em dash — and an en dash –.
 
 ## Emoji & Unicode
 
-Emoji shorthand test: :smile: :rocket: :tada:
+  Emoji shorthand test: :smile: :rocket: :tada:
 
-Direct unicode emoji: 😀 🚀 🎉
+  Direct unicode emoji: 😀 🚀 🎉
 
-Unicode text: café, naïve, Zürich, 北京, Москва, مرحبا
+  Unicode text: café, naïve, Zürich, 北京, Москва, مرحبا
 
-## Final Paragraph
+## Footnotes
 
-This closing paragraph confirms the document ends cleanly after a long stretch of mixed markdown elements, tables, code blocks, and lists above.
+  Here is a sentence with a footnote reference.[^1]
+
+  [^1]: This is the footnote's content, which can include **formatted** text and a [link](https://example.com).

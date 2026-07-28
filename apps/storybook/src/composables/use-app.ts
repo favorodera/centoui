@@ -3,7 +3,7 @@ import { storeToRefs } from 'pinia'
 import { computed, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useStoryStore } from '@/stores/story-store'
-import rawDefaultTheme from '../../../../packages/core/src/theme.css?raw'
+import rawDefaultTheme from '../../../../packages/core/src/css/theme.css?raw'
 
 /** Determines whether the control panel is visible. */
 const controlPanelModel = ref(false)

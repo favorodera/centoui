@@ -21,7 +21,7 @@ const { story } = useApp()
       <SheetTrigger as-child>
         <Button
           variant="outline"
-          class="inline-full border-be-0 border-x-0 px-4 py-8"
+          class="inline-full border-be-0 border-x-0 px-4 py-8 rounded-b-none"
         >
           Controls
           <Icon name="lucide:chevron-up" />

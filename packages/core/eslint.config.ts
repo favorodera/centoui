@@ -2,7 +2,7 @@ import { factory } from '@favorodera/eslint-config'
 
 export default factory({
   tailwind: {
-    entryPoint: 'src/theme.css',
+    entryPoint: 'src/css/theme.css',
   },
 })
   .append({

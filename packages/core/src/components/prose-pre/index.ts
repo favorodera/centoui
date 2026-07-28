@@ -26,7 +26,7 @@ export const prosePreVariants = tv({
     `,
     root: `
       group/prose-pre-root bg-elevated rounded-xl border bg-clip-padding
-      relative mbs-content-flow grid shadow-xs
+      relative mbs-content-spacing grid shadow-xs
     `,
   },
   variants: {

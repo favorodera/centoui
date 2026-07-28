@@ -78,7 +78,7 @@ export function init() {
           enabled: shouldWriteTheme,
           task: async (message) => {
             message('Fetching theme from registry.')
-            const themeFileContent = await sendNetworkRequest('/theme.css')
+            const themeFileContent = await sendNetworkRequest('/css/theme.css')
 
             message('Writing to disk.')
             await writeToFile(themePath, themeFileContent)

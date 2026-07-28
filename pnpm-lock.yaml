@@ -133,6 +133,9 @@ catalogs:
     '@vueuse/nuxt':
       specifier: ^14.3.0
       version: 14.3.0
+    beautiful-mermaid:
+      specifier: ^1.1.3
+      version: 1.1.3
     better-sqlite3:
       specifier: ^12.11.1
       version: 12.11.1
@@ -148,6 +151,9 @@ catalogs:
     fs-extra:
       specifier: ^11.3.5
       version: 11.3.6
+    katex:
+      specifier: ^0.18.1
+      version: 0.18.1
     notform:
       specifier: ^2.2.0
       version: 2.2.0
@@ -366,7 +372,7 @@ importers:
     dependencies:
       '@comark/vue':
         specifier: catalog:vendor
-        version: 0.5.1(shiki@4.3.1)(vue@3.5.39(typescript@6.0.3))
+        version: 0.5.1(beautiful-mermaid@1.1.3)(katex@0.18.1)(shiki@4.3.1)(vue@3.5.39(typescript@6.0.3))
       '@iconify/vue':
         specifier: catalog:vendor
         version: 5.0.1(vue@3.5.39(typescript@6.0.3))
@@ -385,9 +391,15 @@ importers:
       '@vueuse/core':
         specifier: catalog:vendor
         version: 14.3.0(vue@3.5.39(typescript@6.0.3))
+      beautiful-mermaid:
+        specifier: catalog:vendor
+        version: 1.1.3
       comark:
         specifier: catalog:vendor
-        version: 0.5.1(shiki@4.3.1)
+        version: 0.5.1(beautiful-mermaid@1.1.3)(katex@0.18.1)(shiki@4.3.1)
+      katex:
+        specifier: catalog:vendor
+        version: 0.18.1
       notform:
         specifier: catalog:vendor
         version: 2.2.0(vue@3.5.39(typescript@6.0.3))
@@ -4837,6 +4849,9 @@ packages:
     engines: {node: '>=6.0.0'}
     hasBin: true
 
+  beautiful-mermaid@1.1.3:
+    resolution: {integrity: sha512-TItrtrAyHp1vwFfFVYauWGrquouk/6SS21Aq3RsxindSYZODcN4xYrPZD6BiZRU+o5mKJzDPz9MUSMvELdylyg==}
+
   better-sqlite3@12.11.1:
     resolution: {integrity: sha512-dq9AtApgg5PGFtBzPFSBl3HZQjHok5gaQCM6zh2Yk0aSmDCs1CbnVI8/HgASQkNKsWFpseIO9beg5xxpYhbIfA==}
     engines: {node: 20.x || 22.x || 23.x || 24.x || 25.x || 26.x}
@@ -5451,6 +5466,9 @@ packages:
 
   electron-to-chromium@1.5.388:
     resolution: {integrity: sha512-Pl/aJaqOOxYxda3vcx1IKSJimwYXHDkEnGn0F+kG2EE68dDtx2uCinaS+Vih8Z91B9t8CSAbiF/HKyWcnXjhzw==}
+
+  elkjs@0.11.1:
+    resolution: {integrity: sha512-zxxR9k+rx5ktMwT/FwyLdPCrq7xN6e4VGGHH8hA01vVYKjTFik7nHOxBnAYtrgYUB1RpAiLvA1/U2YraWxyKKg==}
 
   embla-carousel-auto-height@8.6.0:
     resolution: {integrity: sha512-/HrJQOEM6aol/oF33gd2QlINcXy3e19fJWvHDuHWp2bpyTa+2dm9tVVJak30m2Qy6QyQ6Fc8DkImtv7pxWOJUQ==}
@@ -6565,6 +6583,10 @@ packages:
 
   katex@0.16.47:
     resolution: {integrity: sha512-Eeo8Ys1doU1z+x8AZsPpQu+p/QcZBI5PeOo7QGQdy2x2m0MU/hYagBbGOmXwr5KVbEfVuWv9LpnQWeehogurjg==}
+    hasBin: true
+
+  katex@0.18.1:
+    resolution: {integrity: sha512-Td8GCYSxDAoMhHOlKmCFMJ/hz5qlAAb71n66Dryw9nfCVfumLo7nhuotbvKom/XPADmrYC3O5QR71EPq4DarJQ==}
     hasBin: true
 
   keyv@4.5.4:
@@ -9665,11 +9687,13 @@ snapshots:
 
   '@colordx/core@5.5.0': {}
 
-  '@comark/vue@0.5.1(shiki@4.3.1)(vue@3.5.39(typescript@6.0.3))':
+  '@comark/vue@0.5.1(beautiful-mermaid@1.1.3)(katex@0.18.1)(shiki@4.3.1)(vue@3.5.39(typescript@6.0.3))':
     dependencies:
-      comark: 0.5.1(shiki@4.3.1)
+      comark: 0.5.1(beautiful-mermaid@1.1.3)(katex@0.18.1)(shiki@4.3.1)
       vue: 3.5.39(typescript@6.0.3)
     optionalDependencies:
+      beautiful-mermaid: 1.1.3
+      katex: 0.18.1
       shiki: 4.3.1
 
   '@devframes/hub@0.5.4(devframe@0.5.4(@modelcontextprotocol/sdk@1.29.0(zod@4.4.3))(crossws@0.4.9(srvx@0.11.21))(esbuild@0.28.1)(rolldown@1.1.4)(rollup@4.62.2)(typescript@6.0.3)(vite@8.1.3(@types/node@25.9.4)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(tsx@4.23.0)(yaml@2.9.0)))(esbuild@0.28.1)(rolldown@1.1.4)(rollup@4.62.2)(vite@8.1.3(@types/node@25.9.4)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(tsx@4.23.0)(yaml@2.9.0))':
@@ -13816,6 +13840,11 @@ snapshots:
 
   baseline-browser-mapping@2.10.42: {}
 
+  beautiful-mermaid@1.1.3:
+    dependencies:
+      elkjs: 0.11.1
+      entities: 7.0.1
+
   better-sqlite3@12.11.1:
     dependencies:
       bindings: 1.5.0
@@ -14048,13 +14077,15 @@ snapshots:
 
   colortranslator@5.0.0: {}
 
-  comark@0.5.1(shiki@4.3.1):
+  comark@0.5.1(beautiful-mermaid@1.1.3)(katex@0.18.1)(shiki@4.3.1):
     dependencies:
       entities: 8.0.0
       htmlparser2: 12.0.0
       js-yaml: 5.2.1
       markdown-exit: 1.1.0-beta.2
     optionalDependencies:
+      beautiful-mermaid: 1.1.3
+      katex: 0.18.1
       shiki: 4.3.1
 
   comma-separated-tokens@2.0.3: {}
@@ -14438,6 +14469,8 @@ snapshots:
   ee-first@1.1.1: {}
 
   electron-to-chromium@1.5.388: {}
+
+  elkjs@0.11.1: {}
 
   embla-carousel-auto-height@8.6.0(embla-carousel@8.6.0):
     dependencies:
@@ -15849,6 +15882,10 @@ snapshots:
       graceful-fs: 4.2.11
 
   katex@0.16.47:
+    dependencies:
+      commander: 8.3.0
+
+  katex@0.18.1:
     dependencies:
       commander: 8.3.0
 

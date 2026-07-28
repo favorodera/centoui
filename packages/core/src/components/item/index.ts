@@ -22,7 +22,7 @@ export const itemVariants = tv({
       group-has-data-[slot=item-description]/item-root:self-start
     `,
     root: `
-      flex inline-full flex-wrap items-center rounded-lg border p-3 gap-3
+      flex inline-full flex-wrap items-center rounded-xl border p-3 gap-3
       border-transparent group/item-root outline-none bg-clip-padding
 
       focus-visible:ring-2 focus-visible:ring-ring

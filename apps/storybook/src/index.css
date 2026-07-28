@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Geist+Mono:ital,wght@0,100..900;1,100..900&family=Geist:ital,wght@0,100..900;1,100..900&display=swap');
-@import "../../../packages/core/src/theme.css";
+@import "../../../packages/core/src/css/theme.css";
+@import "../../../packages/core/src/css/prose.css";
 @source "../../../packages/core/src/**/*.{ts,vue}";
 
 :root {
@@ -13,4 +14,15 @@
 @theme inline {
   --font-sans: 'Geist', sans-serif;
   --font-mono: 'Geist Mono', monospace;
+}
+
+@layer components {
+  .prose-docs {
+    --prose-font-body: var(--font-sans);
+    --prose-font-heading: var(--font-sans);
+    --prose-font-mono: var(--font-mono);
+    --prose-font-size: 15px;
+    --prose-line-height: 1.75;
+    --prose-spacing: 1.25em;
+  }
 }

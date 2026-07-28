@@ -4,11 +4,15 @@ import markdown from '../../content/prose.md?raw'
 
 <script setup lang="ts">
 import { Comark } from '@comark/vue'
+import footnotes from '@comark/vue/plugins/footnotes'
 import highlight from '@comark/vue/plugins/highlight'
+import math, { Math } from '@comark/vue/plugins/math'
+import mermaid, { Mermaid } from '@comark/vue/plugins/mermaid'
 import bash from '@shikijs/langs/bash'
 import diff from '@shikijs/langs/diff'
 import javascript from '@shikijs/langs/javascript'
 import json from '@shikijs/langs/json'
+import mermaidLang from '@shikijs/langs/mermaid'
 import typescript from '@shikijs/langs/typescript'
 import vue from '@shikijs/langs/vue'
 import lightTheme from '@shikijs/themes/catppuccin-latte'
@@ -19,24 +23,12 @@ import {
   transformerNotationHighlight,
 } from '@shikijs/transformers'
 import emoji from 'comark/plugins/emoji'
-import { h } from 'vue'
-import { ProseA } from '#centoui/components/prose-a'
-import { ProseBlockquote } from '#centoui/components/prose-blockquote'
-import { ProseCode } from '#centoui/components/prose-code'
-import { ProseEm } from '#centoui/components/prose-em'
-import { ProseH1 } from '#centoui/components/prose-h1'
-import { ProseH2 } from '#centoui/components/prose-h2'
-import { ProseH3 } from '#centoui/components/prose-h3'
-import { ProseH4 } from '#centoui/components/prose-h4'
-import { ProseH5 } from '#centoui/components/prose-h5'
-import { ProseH6 } from '#centoui/components/prose-h6'
-import { ProseHr } from '#centoui/components/prose-hr'
-import { ProseP } from '#centoui/components/prose-p'
-import { ProsePre } from '#centoui/components/prose-pre'
-import { ProseStrong } from '#centoui/components/prose-strong'
+import taskList from 'comark/plugins/task-list'
+import 'katex/dist/katex.min.css'
 import { useStory } from '@/composables/use-story'
 
 const plugins = [
+  taskList(),
   highlight({
     languages: [
       javascript,
@@ -45,6 +37,7 @@ const plugins = [
       json,
       diff,
       bash,
+      mermaidLang,
     ],
     registerDefaultLanguages: false,
     registerDefaultThemes: false,
@@ -59,23 +52,28 @@ const plugins = [
     ],
   }),
   emoji(),
+  footnotes(),
+  math(),
+  mermaid(),
 ]
 
 const components = {
-  h1: (props: any, { slots }: any) => h(ProseH1, { ...props, anchor: true }, slots),
-  h2: (props: any, { slots }: any) => h(ProseH2, { ...props, anchor: true }, slots),
-  h3: (props: any, { slots }: any) => h(ProseH3, { ...props, anchor: true }, slots),
-  h4: (props: any, { slots }: any) => h(ProseH4, { ...props, anchor: true }, slots),
-  h5: (props: any, { slots }: any) => h(ProseH5, { ...props, anchor: true }, slots),
-  h6: (props: any, { slots }: any) => h(ProseH6, { ...props, anchor: true }, slots),
-  ProseA,
-  ProseBlockquote,
-  ProseCode,
-  ProseEm,
-  ProseHr,
-  ProseP,
-  ProsePre,
-  ProseStrong,
+  // h1: (props: any, { slots }: any) => h(ProseH1, { ...props, anchor: true }, slots),
+  // h2: (props: any, { slots }: any) => h(ProseH2, { ...props, anchor: true }, slots),
+  // h3: (props: any, { slots }: any) => h(ProseH3, { ...props, anchor: true }, slots),
+  // h4: (props: any, { slots }: any) => h(ProseH4, { ...props, anchor: true }, slots),
+  // h5: (props: any, { slots }: any) => h(ProseH5, { ...props, anchor: true }, slots),
+  // h6: (props: any, { slots }: any) => h(ProseH6, { ...props, anchor: true }, slots),
+  // ProseA,
+  // ProseBlockquote,
+  // ProseCode,
+  // ProseEm,
+  // ProseHr,
+  // ProseP,
+  // ProsePre,
+  // ProseStrong,
+  math: Math,
+  mermaid: Mermaid,
 }
 
 useStory('Prose', {})
@@ -86,7 +84,7 @@ useStory('Prose', {})
     <Comark
       :plugins="plugins"
       :components="components"
-      class="block-full inline-full block min-inline-0"
+      class="block-full inline-full block prose prose-docs"
     >
       {{ markdown }}
     </Comark>
