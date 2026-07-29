@@ -424,9 +424,11 @@
       font-variant-numeric: tabular-nums;
       border-collapse: separate;
       border-spacing: 0;
-      border-block-end: 1px solid var(--color-border);
+      border: 1px solid var(--color-border);
+      border-radius: 0.75rem;
       margin-block-start: var(--prose-spacing);
       margin-block-end: 0;
+      overflow: hidden;
     }
 
     /* Horizontal scroll for any wide block transferring the spacing from child to itself*/
@@ -448,6 +450,14 @@
       min-inline-size: auto;
     }
 
+    &:where(thead, tfoot) {
+      background-color: var(--color-muted);
+    }
+
+    &:where(thead th + th, tfoot th + th, tfoot td + td) {
+      border-inline-start: 1px solid var(--color-border);
+    }
+
     &:where(thead th) {
       font-weight: 500;
       text-align: start;
@@ -462,12 +472,17 @@
       border-block-start: 1px solid var(--color-border);
     }
 
-    &:where(tbody th, tfoot th) {
-      font-weight: 500;
+    &:where(tbody td + td, tbody th + th) {
+      border-inline-start: 1px solid var(--color-border);
     }
 
-    &:where(th:first-child, td:first-child) {
-      padding-inline-start: 0;
+    &:where(tbody tr + tr td,
+      tbody tr + tr th) {
+      border-block-start: 1px solid var(--color-border);
+    }
+
+    &:where(tbody th, tfoot th) {
+      font-weight: 500;
     }
 
     &:where(th[align="center"], td[align="center"]) {
