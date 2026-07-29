@@ -10,6 +10,7 @@ const isFirstSurroundItem = (index: number) => index === 0
 
 <template>
   <ItemGroup
+    data-not-prose="true"
     class="
       flex-row flex-wrap
 

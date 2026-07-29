@@ -26,6 +26,7 @@ export const kbdVariants = tv({
     },
   },
 })
+
 export type KbdVariants = VariantProps<typeof kbdVariants>
 
 // Components

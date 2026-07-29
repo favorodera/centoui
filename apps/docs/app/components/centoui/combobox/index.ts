@@ -29,8 +29,8 @@ export const comboboxVariants = tv({
     arrow: 'z-50 fill-overlay stroke-input group/combobox-arrow',
     cancel: 'group/combobox-cancel',
     content: `
-      bg-overlay border bg-clip-padding z-50 relative grid p-1 gap-1
-      group/combobox-content
+      bg-overlay text-overlay-foreground border bg-clip-padding z-50 relative
+      grid p-1 gap-1 group/combobox-content shadow-md
 
       data-[side=bottom]:slide-in-from-top-2
 
@@ -111,8 +111,8 @@ export const comboboxVariants = tv({
       },
       sm: {
         content: 'rounded-lg',
-        empty: 'text-sm',
-        item: 'block-7 rounded-lg ps-1 pe-5.5 text-sm gap-1',
+        empty: 'text-xs',
+        item: 'block-7 rounded-lg ps-1 pe-5.5 text-xs gap-1',
         itemIndicator: 'inset-e-1 block-3.5 inline-3.5',
         label: 'text-xs px-1',
         trigger: '-me-1',
@@ -120,6 +120,7 @@ export const comboboxVariants = tv({
     },
   },
 })
+
 export type ComboboxVariants = VariantProps<typeof comboboxVariants>
 
 // Components

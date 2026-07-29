@@ -19,14 +19,11 @@ const variants = avatarVariants()
 
 <template>
   <AvatarImage
-    as-child
     data-slot="avatar-image"
     v-bind="forwardedPropsEmits"
     :class="variants.image({
       class: normalizeClass(props.class),
       size: rootContext?.size,
     })"
-  >
-    <NuxtImg />
-  </AvatarImage>
+  />
 </template>

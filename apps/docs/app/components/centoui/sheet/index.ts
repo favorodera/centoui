@@ -21,7 +21,7 @@ export const sheetVariants = tv({
     close: 'group/sheet-close',
     content: `
       fixed z-50 flex flex-col gap-4 bg-overlay p-4 overflow-hidden
-      group/sheet-content bg-clip-padding
+      group/sheet-content bg-clip-padding text-overlay-foreground
 
       *:data-[slot=separator]:data-[orientation=horizontal]:-mx-4
 
@@ -89,6 +89,7 @@ export const sheetVariants = tv({
     },
   },
 })
+
 export type SheetVariants = VariantProps<typeof sheetVariants>
 
 // Components

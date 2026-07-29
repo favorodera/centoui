@@ -61,6 +61,7 @@ export const switchVariants = tv({
     },
   },
 })
+
 export type SwitchVariants = VariantProps<typeof switchVariants>
 
 // Components

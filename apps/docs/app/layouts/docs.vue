@@ -1,7 +1,7 @@
 <template>
   <div
     class="
-      block-full inline-full grid grid-cols-1 typeset typeset-docs
+      block-full inline-full grid grid-cols-1
 
       lg:grid-cols-[auto_1fr]
     "
@@ -17,7 +17,7 @@
     <main
       id="main"
       tabindex="-1"
-      class="outline-none block-full inline-full"
+      class="outline-none block-full inline-full prose prose-docs"
     >
       <slot />
     </main>

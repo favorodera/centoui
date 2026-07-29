@@ -8,10 +8,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 const SOURCE_DIRECTORY = join(__dirname, '../../../packages/core/src/components')
 const TARGET_DIRECTORY = join(__dirname, '../app/components/centoui')
 
-const IGNORE_COMPONENTS = new Set([
-  'avatar',
-  'icon',
-])
+const IGNORE_COMPONENTS = new Set()
 
 const componentsToPull: Array<string> = []
 const componentsToSkip: Array<string> = []

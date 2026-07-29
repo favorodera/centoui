@@ -47,12 +47,13 @@ export const numberInputVariants = tv({
       sm: {
         decrement: '-ms-1',
         increment: '-me-1',
-        input: 'text-sm block-7',
-        root: 'block-7 rounded-lg px-2 text-sm gap-1',
+        input: 'text-xs block-7',
+        root: 'block-7 rounded-lg px-2 text-xs gap-1',
       },
     },
   },
 })
+
 export type NumberInputVariants = VariantProps<typeof numberInputVariants>
 
 // Components

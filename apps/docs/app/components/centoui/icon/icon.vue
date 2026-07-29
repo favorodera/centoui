@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { Icon } from '@iconify/vue'
 import { normalizeClass } from 'vue'
 import { type IconProps, iconVariants } from '.'
 
@@ -8,7 +9,7 @@ const variants = iconVariants()
 </script>
 
 <template>
-  <NuxtIcon
+  <Icon
     data-slot="icon"
     v-bind="props"
     :class="variants.root({

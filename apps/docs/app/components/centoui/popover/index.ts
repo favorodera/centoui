@@ -14,8 +14,9 @@ export const popoverVariants = tv({
   slots: {
     arrow: 'z-50 fill-overlay stroke-border group/popover-arrow',
     content: `
-      relative z-50 inline-xs origin-(--reka-popover-content-transform-origin)
-      group/popover-content
+      relative z-50 max-inline-xs inline-[calc(100dvw-(--spacing(8)))]
+      origin-(--reka-popover-content-transform-origin) group/popover-content
+      shadow-md
 
       data-[side=bottom]:slide-in-from-top-2
 
@@ -33,7 +34,8 @@ export const popoverVariants = tv({
     `,
     contentWrapper: `
       gap-4 rounded-xl border grid bg-overlay p-4 bg-clip-padding
-      overflow-hidden relative group/popover-content-wrapper
+      text-overlay-foreground overflow-hidden relative
+      group/popover-content-wrapper
     `,
     description: 'text-muted-foreground group/popover-description',
     footer: `

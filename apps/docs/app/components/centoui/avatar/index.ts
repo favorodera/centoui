@@ -73,6 +73,7 @@ export const avatarVariants = tv({
     },
   },
 })
+
 export type AvatarVariants = VariantProps<typeof avatarVariants>
 
 // Components

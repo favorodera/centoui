@@ -107,6 +107,8 @@ const variants = comboboxVariants()
           </Button>
         </ComboboxTrigger>
       </InputGroupAddon>
+
+      <slot />
     </InputGroupRoot>
   </ComboboxAnchor>
 </template>

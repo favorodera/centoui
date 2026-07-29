@@ -81,7 +81,7 @@ export const inputGroupVariants = tv({
       },
       sm: {
         addon: `
-          text-sm gap-1
+          text-xs gap-1
 
           *:data-[slot=icon]:block-3.5 *:data-[slot=icon]:inline-3.5
         `,
@@ -94,6 +94,7 @@ export const inputGroupVariants = tv({
     },
   },
 })
+
 export type InputGroupVariants = VariantProps<typeof inputGroupVariants>
 
 // Components
