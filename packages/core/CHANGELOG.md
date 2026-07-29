@@ -1,5 +1,140 @@
 # Changelog
 
+## v1.14.0...v1.15.0
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.14.0...v1.15.0)
+
+### Added
+
+- **storybook:** Add markdown prose story with comark ([f369c67](https://github.com/favorodera/centoui/commit/f369c67))
+
+  - Add ProseH1 core component with anchor support
+  - Integrate comark with shiki syntax highlighting
+  - Add prose markdown story and content sample
+
+- **core:** Add ProseH2 and theme foreground tokens ([01d39ae](https://github.com/favorodera/centoui/commit/01d39ae))
+
+  - Add ProseH2 component with anchor link support
+  - Add elevated and overlay foreground theme variables
+  - Apply new foreground colors to overlay components
+  - Enhance heading typography spacing and scrolling
+
+- **core:** Add prose-h3 and prose-h4 components ([835c4dc](https://github.com/favorodera/centoui/commit/835c4dc))
+
+  - Add ProseH3 and ProseH4 components
+  - Improve anchor link icon rendering on prose headings
+  - Register prose heading components in registry
+
+- **prose:** Add components for markdown rendering ([82c56ed](https://github.com/favorodera/centoui/commit/82c56ed))
+
+  - Add Prose elements for links, code, and headings
+  - Add copy button functionality to code blocks
+  - Register h5 and h6 heading components
+  - Update Storybook markdown preview and styles
+
+- **storybook:** Add shiki transformers to comark ([9bdd67c](https://github.com/favorodera/centoui/commit/9bdd67c))
+
+  - Add diff, highlight, and focus code transformers
+  - Add focus-visible outline ring to prose-pre
+  - Remove redundant global styles in base theme
+
+- **core:** Add ProseCodeIcon and enhance ProsePre ([d4598b5](https://github.com/favorodera/centoui/commit/d4598b5))
+
+  - Add ProseCodeIcon component for code header icons
+  - Update ProsePre to support headers and file icons
+  - Refine theme color variables for light and dark mode
+
+- **prose:** Update code block styles and icons ([3575184](https://github.com/favorodera/centoui/commit/3575184))
+
+  - Add fallback icon for plaintext in code blocks
+  - Update theme and styling for prose components
+  - Change copy button default icon to clipboard
+
+- **core:** Add prose styles and reorganize CSS ([0f579e3](https://github.com/favorodera/centoui/commit/0f579e3))
+
+  - Add prose.css for markdown and content styling
+  - Move theme.css into dedicated css directory
+  - Update imports and storybook examples for prose
+
+- **registry:** Add prose-code-icon and prose-pre ([90057d7](https://github.com/favorodera/centoui/commit/90057d7))
+
+  - add prose-code-icon and prose-pre to registry
+  - fix indentation formatting in prose headers
+
+
+### Refactors
+
+- **theme:** Remove neutral color variables ([6fb8f8f](https://github.com/favorodera/centoui/commit/6fb8f8f))
+
+  - Remove unused neutral tokens from light and dark themes
+
+- **storybook:** Update controls layout ([d640aa1](https://github.com/favorodera/centoui/commit/d640aa1))
+
+  - Extract control panel to aside and footer
+  - Integrate color mode toggle into theme popover
+  - Add slot support to combobox input addon
+
+- **prose:** Update heading styles and spacing ([d4e9137](https://github.com/favorodera/centoui/commit/d4e9137))
+
+  - Simplify anchor link variants across prose headings
+  - Replace content-flow variable with content-spacing
+  - Adjust heading font sizes and anchor link styles
+
+- **storybook:** Inline comark setup and update prose styles ([60a85d6](https://github.com/favorodera/centoui/commit/60a85d6))
+
+  - Inline Comark configuration into prose story
+  - Delete standalone comark component in storybook
+  - Update prose-hr and prose-p variant styles
+
+- **prose:** Simplify components and styling ([3917b21](https://github.com/favorodera/centoui/commit/3917b21))
+
+  - Remove unnecessary prose component files
+  - Update heading components to use anchor slots
+  - Refactor base typography styles in CSS
+
+- **prose-pre:** Update styles and attributes ([d02b7fa](https://github.com/favorodera/centoui/commit/d02b7fa))
+
+  - Remove redundant content spacing and scroll variables
+  - Replace tabindex with data-not-prose attribute
+  - Enable ProsePre component in Storybook examples
+
+- **prose:** Show anchor links automatically when id exists ([ddb4c83](https://github.com/favorodera/centoui/commit/ddb4c83))
+
+  - Remove anchor prop from prose heading components
+  - Display anchor links whenever an id is provided
+  - Add clipboard, copy, and hash icons to config
+
+
+### Styling
+
+- **core:** Update component shadows and spacing ([e2a33fd](https://github.com/favorodera/centoui/commit/e2a33fd))
+
+  - Add shadow classes to overlay and elevated styles
+  - Adjust padding and gap sizes in accordion variant
+
+- Fix formatting and trailing whitespace ([d706f40](https://github.com/favorodera/centoui/commit/d706f40))
+
+  - Clean up code style across prose components
+  - Format JSON and markdown files consistently
+
+- **prose:** Update typography component styles ([a500840](https://github.com/favorodera/centoui/commit/a500840))
+
+  - Refine link colors and hover transitions
+  - Add italic styling to blockquotes
+  - Update inline code background and shadow styles
+  - Enable word wrapping on prose paragraphs
+
+- **prose:** Improve table borders and styling ([1120494](https://github.com/favorodera/centoui/commit/1120494))
+
+  - Add full border and rounded corners to tables
+  - Apply muted background to headers and footers
+  - Add vertical cell borders for better visual grid
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.13.1...v1.14.0
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.13.1...v1.14.0)

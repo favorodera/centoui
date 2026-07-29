@@ -1,5 +1,22 @@
 # Changelog
 
+## v1.14.0...v1.15.0
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.14.0...v1.15.0)
+
+### Added
+
+- **core:** Add prose-h3 and prose-h4 components ([835c4dc](https://github.com/favorodera/centoui/commit/835c4dc))
+
+  - Add ProseH3 and ProseH4 components
+  - Improve anchor link icon rendering on prose headings
+  - Register prose heading components in registry
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.13.1...v1.14.0
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.13.1...v1.14.0)
