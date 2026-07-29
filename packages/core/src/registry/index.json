@@ -314,6 +314,18 @@
     },
     {
       "$schema": "./schemas/component.json",
+      "name": "prose-code-icon",
+      "files": [
+        "prose-code-icon/index.ts",
+        "prose-code-icon/prose-code-icon.vue",
+        "prose-code-icon/utils.ts"
+      ],
+      "componentDependencies": [
+        "icon"
+      ]
+    },
+    {
+      "$schema": "./schemas/component.json",
       "name": "prose-h1",
       "files": [
         "prose-h1/index.ts",
@@ -376,6 +388,19 @@
       ],
       "componentDependencies": [
         "icon"
+      ]
+    },
+    {
+      "$schema": "./schemas/component.json",
+      "name": "prose-pre",
+      "files": [
+        "prose-pre/index.ts",
+        "prose-pre/prose-pre.vue"
+      ],
+      "componentDependencies": [
+        "button",
+        "icon",
+        "prose-code-icon"
       ]
     },
     {

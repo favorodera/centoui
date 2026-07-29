@@ -26,7 +26,7 @@ const variants = proseH3Variants()
       v-if="showAnchor"
       data-slot="prose-h3-anchor"
       :href="`#${props.id}`"
-      aria-label="Section permalink"  
+      aria-label="Section permalink"
       :class="variants.anchor()"
     >
       <icon :name="config.icons.hash" />

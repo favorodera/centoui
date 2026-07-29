@@ -3,7 +3,7 @@ import { tv } from 'tailwind-variants'
 
 // Variants
 export const proseH3Variants = tv({
-   slots: {
+  slots: {
     anchor: `
       outline-none opacity-0 align-middle no-underline text-muted-foreground
       transition-[color,opacity] group/h3-anchor
