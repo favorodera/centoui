@@ -3,10 +3,6 @@
 @import "../../../packages/core/src/css/prose.css";
 @source "../../../packages/core/src/**/*.{ts,vue}";
 
-:root {
-  --content-scroll-offset: 50px;
-}
-
 #app {
   @apply min-h-dvh w-full grid place-items-center grid-cols-1;
 }

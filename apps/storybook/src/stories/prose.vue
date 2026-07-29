@@ -24,6 +24,7 @@ import { ProseH3 } from '#centoui/components/prose-h3'
 import { ProseH4 } from '#centoui/components/prose-h4'
 import { ProseH5 } from '#centoui/components/prose-h5'
 import { ProseH6 } from '#centoui/components/prose-h6'
+import { ProsePre } from '#centoui/components/prose-pre'
 
 import {
   transformerNotationDiff,
@@ -75,10 +76,9 @@ const components = {
   h4: (props: any, { slots }: any) => h(ProseH4, { ...props, anchor: true }, slots),
   h5: (props: any, { slots }: any) => h(ProseH5, { ...props, anchor: true }, slots),
   h6: (props: any, { slots }: any) => h(ProseH6, { ...props, anchor: true }, slots),
-  // ProseCode,
-  // ProsePre,
   math: Math,
   mermaid: Mermaid,
+  ProsePre,
 }
 
 useStory('Prose', {})

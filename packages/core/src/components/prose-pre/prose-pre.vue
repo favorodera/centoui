@@ -70,7 +70,7 @@ const variants = prosePreVariants()
     <pre
       ref="prosePreCodeRef"
       data-slot="prose-pre-code"
-      tabindex="0"
+      data-not-prose="true"
       v-bind="$attrs"
       :class="variants.code({
         class: normalizeClass(props.class)
