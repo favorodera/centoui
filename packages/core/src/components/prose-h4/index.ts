@@ -3,23 +3,18 @@ import { tv } from 'tailwind-variants'
 
 // Variants
 export const proseH4Variants = tv({
-  slots: {
-    link: `
-      outline-none opacity-0 align-middle no-underline p-1 rounded-sm grid
-      place-items-center text-accent-foreground transition-all bg-accent
-
-      hover:text-primary hover:bg-accent/80
+ slots: {
+    anchor: `
+      outline-none opacity-0 align-middle no-underline text-muted-foreground
+      transition-[color,opacity] group/h4-anchor
 
       group-hover/prose-h4:opacity-100
 
+      hover:text-primary
+
       focus-visible:opacity-100 focus-visible:ring-2 focus-visible:ring-ring
     `,
-    root: `
-      group/prose-h4 text-lg font-semibold flex gap-1 mbs-content-spacing
-      items-center wrap-break-word scroll-mbs-content-scroll
-
-      [&+*]:mbs-4
-    `,
+    root: `group/prose-h4 flex gap-1 items-center`,
   },
 })
 

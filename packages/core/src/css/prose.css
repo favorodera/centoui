@@ -102,6 +102,9 @@
       color: inherit;
       font-weight: 500;
       text-decoration-line: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+      transition: color 150ms ease;
     }
 
     &:where(a:hover) {
@@ -111,7 +114,6 @@
     &:where(a:focus-visible) {
       outline: 2px solid var(--color-ring);
       outline-offset: 2px;
-      border-radius: 0.25em;
     }
 
     &:where(:is(h1, h2, h3, h4, h5, h6) :is(a)) {
@@ -274,7 +276,6 @@
     &:where(summary:focus-visible) {
       outline: 2px solid var(--color-ring);
       outline-offset: 2px;
-      border-radius: 0.25em;
     }
 
     /* Keyboard keys. */

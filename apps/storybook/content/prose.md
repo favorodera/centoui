@@ -1,6 +1,6 @@
 <!--  eslint-disable md/fenced-code-language  -->
 
-# Heading Level 1
+# Heading Level 1 
 
 ## Heading Level 2
 
@@ -14,7 +14,7 @@
 
 ## Paragraphs & Line Breaks
 
-This is a plain paragraph with regular text. It should wrap normally and contain no special formatting at all, just to check baseline prose rendering.
+This is a plain paragraph [^1] with regular text. It should wrap normally and contain no special formatting at all, just to check baseline prose rendering.
 
 This is a second paragraph, separated from the first by a blank line, to confirm the parser correctly detects paragraph breaks.
 
@@ -234,8 +234,4 @@ Ampersand: A & B, entity: A &amp; B
 
   Unicode text: café, naïve, Zürich, 北京, Москва, مرحبا
 
-## Footnotes
-
-  Here is a sentence with a footnote reference.[^1]
-
-  [^1]: This is the footnote's content, which can include **formatted** text and a [link](https://example.com).
+[^1]: This is the footnote's content.

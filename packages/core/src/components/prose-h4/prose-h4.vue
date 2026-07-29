@@ -26,10 +26,10 @@ const variants = proseH4Variants()
 
     <a
       v-if="showAnchor"
-      data-slot="prose-h4-link"
+      data-slot="prose-h4-anchor"
       :href="`#${props.id}`"
       aria-label="Section permalink"
-      :class="variants.link()"
+      :class="variants.anchor()"
     >
       <icon :name="config.icons.hash" />
     </a>

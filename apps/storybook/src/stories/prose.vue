@@ -17,6 +17,14 @@ import typescript from '@shikijs/langs/typescript'
 import vue from '@shikijs/langs/vue'
 import lightTheme from '@shikijs/themes/catppuccin-latte'
 import darkTheme from '@shikijs/themes/catppuccin-mocha'
+import { h } from 'vue'
+import { ProseH1 } from '#centoui/components/prose-h1'
+import { ProseH2 } from '#centoui/components/prose-h2'
+import { ProseH3 } from '#centoui/components/prose-h3'
+import { ProseH4 } from '#centoui/components/prose-h4'
+import { ProseH5 } from '#centoui/components/prose-h5'
+import { ProseH6 } from '#centoui/components/prose-h6'
+
 import {
   transformerNotationDiff,
   transformerNotationFocus,
@@ -52,26 +60,23 @@ const plugins = [
     ],
   }),
   emoji(),
-  footnotes(),
+  footnotes({
+    hr: false,
+    label: 'References',
+  }),
   math(),
   mermaid(),
 ]
 
 const components = {
-  // h1: (props: any, { slots }: any) => h(ProseH1, { ...props, anchor: true }, slots),
-  // h2: (props: any, { slots }: any) => h(ProseH2, { ...props, anchor: true }, slots),
-  // h3: (props: any, { slots }: any) => h(ProseH3, { ...props, anchor: true }, slots),
-  // h4: (props: any, { slots }: any) => h(ProseH4, { ...props, anchor: true }, slots),
-  // h5: (props: any, { slots }: any) => h(ProseH5, { ...props, anchor: true }, slots),
-  // h6: (props: any, { slots }: any) => h(ProseH6, { ...props, anchor: true }, slots),
-  // ProseA,
-  // ProseBlockquote,
+  h1: (props: any, { slots }: any) => h(ProseH1, { ...props, anchor: true }, slots),
+  h2: (props: any, { slots }: any) => h(ProseH2, { ...props, anchor: true }, slots),
+  h3: (props: any, { slots }: any) => h(ProseH3, { ...props, anchor: true }, slots),
+  h4: (props: any, { slots }: any) => h(ProseH4, { ...props, anchor: true }, slots),
+  h5: (props: any, { slots }: any) => h(ProseH5, { ...props, anchor: true }, slots),
+  h6: (props: any, { slots }: any) => h(ProseH6, { ...props, anchor: true }, slots),
   // ProseCode,
-  // ProseEm,
-  // ProseHr,
-  // ProseP,
   // ProsePre,
-  // ProseStrong,
   math: Math,
   mermaid: Mermaid,
 }
