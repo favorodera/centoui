@@ -26,13 +26,6 @@ export interface ProseH3Props {
   /** Unique identifier for the heading */
   id?: string
 
-  /**
-   * Whether to show the heading with an anchor link
-   * Only works if there is an id
-   * @default false
-   */
-  anchor?: boolean
-
   /** Custom style class */
   class?: HTMLAttributes['class']
 }

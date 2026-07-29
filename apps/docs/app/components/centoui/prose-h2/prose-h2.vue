@@ -4,11 +4,9 @@ import config from '#centoui/config'
 import { type ProseH2Props, proseH2Variants } from '.'
 import { Icon } from '../icon'
 
-const props = withDefaults(defineProps<ProseH2Props>(), {
-  anchor: false,
-})
+const props = defineProps<ProseH2Props>()
 
-const showAnchor = computed(() => props.anchor && !!props.id)
+const showAnchor = computed(() => !!props.id)
 
 const variants = proseH2Variants()
 </script>

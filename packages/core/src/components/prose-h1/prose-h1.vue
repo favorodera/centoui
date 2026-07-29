@@ -4,11 +4,9 @@ import config from '#centoui/config'
 import { type ProseH1Props, proseH1Variants } from '.'
 import { Icon } from '../icon'
 
-const props = withDefaults(defineProps<ProseH1Props>(), {
-  anchor: false,
-})
+const props = defineProps<ProseH1Props>()
 
-const showAnchor = computed(() => props.anchor && !!props.id)
+const showAnchor = computed(() => !!props.id)
 
 const variants = proseH1Variants()
 </script>
@@ -17,7 +15,7 @@ const variants = proseH1Variants()
   <h1
     :id="props.id"
     data-slot="prose-h1"
-    :data-anchor="props.anchor"
+    :data-anchor="showAnchor"
     :class="variants.root({
       class:normalizeClass(props.class),
     })"

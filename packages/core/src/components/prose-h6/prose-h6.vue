@@ -4,11 +4,9 @@ import config from '#centoui/config'
 import { type ProseH6Props, proseH6Variants } from '.'
 import { Icon } from '../icon'
 
-const props = withDefaults(defineProps<ProseH6Props>(), {
-  anchor: false,
-})
+const props = defineProps<ProseH6Props>()
 
-const showAnchor = computed(() => props.anchor && !!props.id)
+const showAnchor = computed(() => !!props.id)
 
 const variants = proseH6Variants()
 </script>

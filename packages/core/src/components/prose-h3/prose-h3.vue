@@ -4,11 +4,9 @@ import config from '#centoui/config'
 import { type ProseH3Props, proseH3Variants } from '.'
 import { Icon } from '../icon'
 
-const props = withDefaults(defineProps<ProseH3Props>(), {
-  anchor: false,
-})
+const props = defineProps<ProseH3Props>()
 
-const showAnchor = computed(() => props.anchor && !!props.id)
+const showAnchor = computed(() => !!props.id)
 
 const variants = proseH3Variants()
 </script>
@@ -28,7 +26,7 @@ const variants = proseH3Variants()
       v-if="showAnchor"
       data-slot="prose-h3-anchor"
       :href="`#${props.id}`"
-      aria-label="Section permalink"
+      aria-label="Section permalink"  
       :class="variants.anchor()"
     >
       <icon :name="config.icons.hash" />

@@ -17,7 +17,6 @@ import typescript from '@shikijs/langs/typescript'
 import vue from '@shikijs/langs/vue'
 import lightTheme from '@shikijs/themes/catppuccin-latte'
 import darkTheme from '@shikijs/themes/catppuccin-mocha'
-import { h } from 'vue'
 import { ProseH1 } from '#centoui/components/prose-h1'
 import { ProseH2 } from '#centoui/components/prose-h2'
 import { ProseH3 } from '#centoui/components/prose-h3'
@@ -70,14 +69,14 @@ const plugins = [
 ]
 
 const components = {
-  h1: (props: any, { slots }: any) => h(ProseH1, { ...props, anchor: true }, slots),
-  h2: (props: any, { slots }: any) => h(ProseH2, { ...props, anchor: true }, slots),
-  h3: (props: any, { slots }: any) => h(ProseH3, { ...props, anchor: true }, slots),
-  h4: (props: any, { slots }: any) => h(ProseH4, { ...props, anchor: true }, slots),
-  h5: (props: any, { slots }: any) => h(ProseH5, { ...props, anchor: true }, slots),
-  h6: (props: any, { slots }: any) => h(ProseH6, { ...props, anchor: true }, slots),
   math: Math,
   mermaid: Mermaid,
+  ProseH1,
+  ProseH2,
+  ProseH3,
+  ProseH4,
+  ProseH5,
+  ProseH6,
   ProsePre,
 }
 
