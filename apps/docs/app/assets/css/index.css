@@ -11,7 +11,7 @@
 
 @layer base {
   html {
-    @apply scrollbar-thin scrollbar-thumb-accent scrollbar-track-transparent
+    @apply scrollbar-thin scrollbar-thumb-accent scrollbar-track-transparent scroll-smooth
   }
 }
 
