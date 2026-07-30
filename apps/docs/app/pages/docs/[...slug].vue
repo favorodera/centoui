@@ -34,7 +34,7 @@ const { data: surround } = useQuery({
       <div
         v-if="page"
         class="
-          px-6 py-12 block-full inline-full grid grid-cols-1
+          px-6 py-12 block-full inline-full grid grid-cols-1 gap-8
 
           lg:grid-cols-[1fr_auto]
         "
@@ -42,7 +42,7 @@ const { data: surround } = useQuery({
         <section
           class="
             block-full inline-full grid grid-rows-[auto_1fr_auto] gap-4 mx-auto
-            max-inline-4xl
+            max-inline-5xl
           "
         >
           <DocsPageHeader
@@ -65,10 +65,12 @@ const { data: surround } = useQuery({
           class="
             hidden
 
-            lg:block lg:min-inline-2xs
+            lg:block lg:min-inline-3xs
           "
         >
-          <!-- TOC -->
+          <DocsToc
+            :items="page.body.toc?.links"
+          />
         </aside>
       </div>
     </NuxtLayout>
