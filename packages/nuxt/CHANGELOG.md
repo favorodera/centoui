@@ -1,5 +1,23 @@
 # Changelog
 
+## v1.15.0...v1.16.0
+
+[compare changes](https://github.com/favorodera/centoui/compare/v1.15.0...v1.16.0)
+
+### Refactors
+
+- **icon:** Move icon config to static mapping ([fc3f976](https://github.com/favorodera/centoui/commit/fc3f976))
+
+  - Remove dynamic icon config and global aliases
+  - Add static iconsConfig utility for components
+  - Update component templates to import icons directly
+  - Clean up centoui config handling in CLI and Nuxt
+
+### ❤️ Contributors
+
+- Favour Emeka ([@favorodera](https://github.com/favorodera))
+
+
 ## v1.14.0...v1.15.0
 
 [compare changes](https://github.com/favorodera/centoui/compare/v1.14.0...v1.15.0)
