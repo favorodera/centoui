@@ -10,14 +10,13 @@ import {
   useForwardPropsEmits,
 } from 'reka-ui'
 import { normalizeClass } from 'vue'
-import config from '#centoui/config'
 import {
   injectRootContext,
   type SelectContentEmits,
   type SelectContentProps,
   selectVariants,
 } from '.'
-import { Icon } from '../icon'
+import { Icon, iconsConfig } from '../icon'
 
 const emits = defineEmits<SelectContentEmits>()
 
@@ -52,7 +51,7 @@ const variants = selectVariants()
         :class="variants.scrollUpButton({ size: rootContext?.size })"
       >
         <span class="sr-only">Scroll up</span>
-        <Icon :name="config.icons.chevronUp" />
+        <Icon :name="iconsConfig.chevronUp" />
       </SelectScrollUpButton>
 
       <SelectViewport
@@ -67,7 +66,7 @@ const variants = selectVariants()
         :class="variants.scrollDownButton({ size: rootContext?.size })"
       >
         <span class="sr-only">Scroll down</span>
-        <Icon :name="config.icons.chevronDown" />
+        <Icon :name="iconsConfig.chevronDown" />
       </SelectScrollDownButton>
 
       <SelectArrow

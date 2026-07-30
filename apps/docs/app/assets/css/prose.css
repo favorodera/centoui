@@ -291,20 +291,20 @@
 
     /* Inline code. */
     &:where(:not(pre) > code) {
-      background-color: var(--color-elevated);
+      background-color: var(--color-muted);
       background-clip: padding-box;
-      color: var(--color-elevated-foreground);
+      color: var(--color-foreground);
       border: 1px solid var(--color-border);
       font-family: var(--prose-font-mono);
       display: inline-block;
       font-size: 0.875em;
       border-radius: 0.375em;
-      padding: 0.125em 0.25em;
+      padding: 0.0625em 0.25em;
     }
 
     /* Code blocks. */
     &:where(pre) {
-      background-color: var(--color-elevated);
+      background-color: var(--color-muted);
       display: grid;
       background-clip: padding-box;
       font-family: var(--prose-font-mono);
@@ -339,7 +339,7 @@
     }
 
     &:where(pre code span.line.highlight) {
-      background-color: var(--color-muted) !important;
+      background-color: var(--color-accent) !important;
       display: inline-block;
       margin-inline: -0.75em;
       padding-inline: 0.75em;

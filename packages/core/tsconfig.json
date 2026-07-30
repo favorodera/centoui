@@ -9,9 +9,6 @@
     "moduleDetection": "force",
     "module": "preserve",
     "moduleResolution": "bundler",
-    "paths": {
-      "#centoui/config": ["./src/config.ts"]
-    },
     "resolveJsonModule": true,
     "types": ["node"],
     "strict": true,

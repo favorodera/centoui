@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { computed, normalizeClass } from 'vue'
-import config from '#centoui/config'
 import { type ProseH4Props, proseH4Variants } from '.'
-import { Icon } from '../icon'
+import { Icon, iconsConfig } from '../icon'
 
 const props = defineProps<ProseH4Props>()
 
@@ -29,7 +28,7 @@ const variants = proseH4Variants()
       aria-label="Section permalink"
       :class="variants.anchor()"
     >
-      <icon :name="config.icons.hash" />
+      <icon :name="iconsConfig.hash" />
     </a>
   </h4>
 </template>

@@ -2,7 +2,6 @@
 import { reactiveOmit } from '@vueuse/core'
 import { ComboboxAnchor, ComboboxCancel, ComboboxInput, ComboboxTrigger, injectComboboxRootContext, useForwardPropsEmits } from 'reka-ui'
 import { computed, normalizeClass } from 'vue'
-import config from '#centoui/config'
 import {
   type ComboboxInputEmits,
   type ComboboxInputProps,
@@ -10,7 +9,7 @@ import {
   injectRootContext,
 } from '.'
 import { Button } from '../button'
-import { Icon } from '../icon'
+import { Icon, iconsConfig } from '../icon'
 import { inputVariants } from '../input'
 import { InputGroupAddon, InputGroupRoot } from '../input-group'
 
@@ -86,7 +85,7 @@ const variants = comboboxVariants()
             size="xs"
             :square="true"
           >
-            <Icon :name="config.icons.x" />
+            <Icon :name="iconsConfig.x" />
           </Button>
         </ComboboxCancel>
 
@@ -103,7 +102,7 @@ const variants = comboboxVariants()
             size="xs"
             :square="true"
           >
-            <Icon :name="config.icons.chevronDown" />
+            <Icon :name="iconsConfig.chevronDown" />
           </Button>
         </ComboboxTrigger>
       </InputGroupAddon>

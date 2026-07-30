@@ -2,14 +2,13 @@
 import { reactiveOmit } from '@vueuse/core'
 import { Primitive, useForwardProps } from 'reka-ui'
 import { normalizeClass } from 'vue'
-import config from '#centoui/config'
 import {
   SheetClose,
   type SheetHeaderProps,
   sheetVariants,
 } from '.'
 import { Button } from '../button'
-import { Icon } from '../icon'
+import { Icon, iconsConfig } from '../icon'
 
 const props = withDefaults(defineProps<SheetHeaderProps>(), {
   showClose: true,
@@ -44,7 +43,7 @@ const variants = sheetVariants()
         square
       >
         <span class="sr-only">Close sheet</span>
-        <Icon :name="config.icons.x" />
+        <Icon :name="iconsConfig.x" />
       </Button>
     </SheetClose>
   </Primitive>

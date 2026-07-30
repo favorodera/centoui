@@ -29,9 +29,6 @@ export interface CentoUIConfig {
 
   /** Relative path to the CSS file. */
   themeFilePath: string
-
-  /** Maps internal icon slot names to Iconify IDs. */
-  icons: Record<string, string>
 }
 
 /** Partial package.json structure needed by the CLI. */

@@ -2,13 +2,12 @@
 import { reactiveOmit } from '@vueuse/core'
 import { PaginationLast, useForwardProps } from 'reka-ui'
 import { normalizeClass } from 'vue'
-import config from '#centoui/config'
 import {
   type PaginationLastProps,
   paginationVariants,
 } from '.'
 import { buttonVariants } from '../button'
-import { Icon } from '../icon'
+import { Icon, iconsConfig } from '../icon'
 
 const props = withDefaults(defineProps<PaginationLastProps>(), {
   square: true,
@@ -38,7 +37,7 @@ const variants = buttonVariants()
     })"
   >
     <slot>
-      <Icon :name="config.icons.chevronDoubleRight" />
+      <Icon :name="iconsConfig.chevronDoubleRight" />
       <span class="sr-only">Last page</span>
     </slot>
   </PaginationLast>

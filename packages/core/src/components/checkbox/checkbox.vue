@@ -2,9 +2,8 @@
 import { reactiveOmit } from '@vueuse/core'
 import { CheckboxIndicator, CheckboxRoot, useForwardPropsEmits } from 'reka-ui'
 import { normalizeClass } from 'vue'
-import config from '#centoui/config'
 import { type CheckboxEmits, type CheckboxProps, checkboxVariants } from '.'
-import { Icon } from '../icon'
+import { Icon, iconsConfig } from '../icon'
 
 const emits = defineEmits<CheckboxEmits>()
 
@@ -36,12 +35,12 @@ const variants = checkboxVariants()
     >
       <Icon
         v-if="slotProps.state === 'indeterminate'"
-        :name="config.icons.minus"
+        :name="iconsConfig.minus"
       />
 
       <Icon
         v-else
-        :name="config.icons.check"
+        :name="iconsConfig.check"
       />
     </CheckboxIndicator>
   </CheckboxRoot>

@@ -1,5 +1,5 @@
 import type { CentoUIConfig } from 'centoui'
-import { addComponent, addComponentsDir, addTemplate, defineNuxtModule, extendViteConfig } from '@nuxt/kit'
+import { addComponent, addComponentsDir, defineNuxtModule, extendViteConfig } from '@nuxt/kit'
 import { loadConfig } from 'c12'
 import { existsSync, readdirSync } from 'node:fs'
 import { basename, join } from 'pathe'
@@ -79,14 +79,6 @@ export default defineNuxtModule<ModuleOptions>({
         })
       }
     }
-
-    // Persist the resolved config in the build dir, then alias it so consumers can `import config from '#centoui/config'`.
-    addTemplate({
-      filename: 'centoui/config.ts',
-      getContents: () => `export default ${JSON.stringify(config, undefined, 2)}\n`,
-      write: true,
-    })
-    nuxt.options.alias['#centoui/config'] = join(nuxt.options.buildDir, 'centoui/config.ts')
 
     // Pre-bundle these so dev startup and HMR stay fast.
     extendViteConfig((config) => {

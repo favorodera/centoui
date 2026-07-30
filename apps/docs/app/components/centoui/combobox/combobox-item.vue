@@ -6,14 +6,13 @@ import {
   useForwardPropsEmits,
 } from 'reka-ui'
 import { normalizeClass } from 'vue'
-import config from '#centoui/config'
 import {
   type ComboboxItemEmits,
   type ComboboxItemProps,
   comboboxVariants,
   injectRootContext,
 } from '.'
-import { Icon } from '../icon'
+import { Icon, iconsConfig } from '../icon'
 
 const emits = defineEmits<ComboboxItemEmits>()
 
@@ -46,7 +45,7 @@ const variants = comboboxVariants()
         size: rootContext?.size,
       })"
     >
-      <Icon :name="config.icons.check" />
+      <Icon :name="iconsConfig.check" />
     </ComboboxItemIndicator>
   </ComboboxItem>
 </template>

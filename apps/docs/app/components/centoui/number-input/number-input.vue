@@ -2,10 +2,9 @@
 import { reactiveOmit } from '@vueuse/core'
 import { NumberFieldDecrement, NumberFieldIncrement, NumberFieldInput, NumberFieldRoot, useForwardPropsEmits } from 'reka-ui'
 import { normalizeClass } from 'vue'
-import config from '#centoui/config'
 import { type NumberInputEmits, type NumberInputProps, numberInputVariants } from '.'
 import { Button } from '../button'
-import { Icon } from '../icon'
+import { Icon, iconsConfig } from '../icon'
 
 const emits = defineEmits<NumberInputEmits>()
 
@@ -42,7 +41,7 @@ const variants = numberInputVariants()
         data-spin-button
         :square="true"
       >
-        <Icon :name="config.icons.minus" />
+        <Icon :name="iconsConfig.minus" />
       </Button>
     </NumberFieldDecrement>
 
@@ -67,7 +66,7 @@ const variants = numberInputVariants()
         size="xs"
         :square="true"
       >
-        <Icon :name="config.icons.plus" />
+        <Icon :name="iconsConfig.plus" />
       </Button>
     </NumberFieldIncrement>
   </NumberFieldRoot>

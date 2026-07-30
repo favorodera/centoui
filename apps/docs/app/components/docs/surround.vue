@@ -5,16 +5,18 @@ defineProps<{
   surround: ContentNavigationItem[]
 }>()
 
-const isFirstSurroundItem = (index: number) => index === 0
+const isPrevious = (index: number) => index === 0
 </script>
 
+<!-- eslint-disable vue/no-root-v-if -->
 <template>
   <ItemGroup
+    v-if="surround.some(Boolean)"
     data-not-prose="true"
     class="
-      flex-row flex-wrap
+      mbs-(--prose-spacing) flex-row flex-wrap
 
-      *:inline-fit *:flex-1
+      *:flex-1 *:basis-80
     "
   >
     <template
@@ -29,17 +31,19 @@ const isFirstSurroundItem = (index: number) => index === 0
         <NuxtLink :to="item.path">
           <ItemMedia variant="icon">
             <Icon
-              v-if="isFirstSurroundItem(index)"
+              v-if="isPrevious(index)"
               name="lucide:chevron-left"
             />
           </ItemMedia>
 
           <ItemContent
             :class="{
-              'items-end': !isFirstSurroundItem(index)
+              'items-end text-end': !isPrevious(index),
             }"
           >
-            <ItemTitle>{{ item.title }}</ItemTitle>
+            <ItemTitle>
+              {{ item.title }}
+            </ItemTitle>
 
             <ItemDescription class="line-clamp-1">
               {{ item.description }}
@@ -48,7 +52,7 @@ const isFirstSurroundItem = (index: number) => index === 0
 
           <ItemMedia variant="icon">
             <Icon
-              v-if="!isFirstSurroundItem(index)"
+              v-if="!isPrevious(index)"
               name="lucide:chevron-right"
             />
           </ItemMedia>

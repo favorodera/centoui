@@ -2,9 +2,8 @@
 import { reactiveOmit } from '@vueuse/core'
 import { NavigationMenuTrigger, useForwardProps } from 'reka-ui'
 import { normalizeClass } from 'vue'
-import config from '#centoui/config'
 import { type NavigationMenuTriggerProps, navigationMenuVariants } from '.'
-import { Icon } from '../icon'
+import { Icon, iconsConfig } from '../icon'
 
 const props = withDefaults(defineProps<NavigationMenuTriggerProps>(), {
   size: 'md',
@@ -30,7 +29,7 @@ const variants = navigationMenuVariants()
     <slot />
 
     <Icon
-      :name="config.icons.chevronDown"
+      :name="iconsConfig.chevronDown"
       :class="variants.triggerIcon({
         triggerSize: props.size,
       })"

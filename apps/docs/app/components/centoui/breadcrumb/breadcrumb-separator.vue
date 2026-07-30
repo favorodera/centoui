@@ -2,9 +2,8 @@
 import { reactiveOmit } from '@vueuse/core'
 import { Primitive, useForwardProps } from 'reka-ui'
 import { normalizeClass } from 'vue'
-import config from '#centoui/config'
 import { type BreadcrumbSeparatorProps, breadcrumbVariants } from '.'
-import { Icon } from '../icon'
+import { Icon, iconsConfig } from '../icon'
 
 const props = defineProps<BreadcrumbSeparatorProps>()
 
@@ -26,7 +25,7 @@ const variants = breadcrumbVariants()
     aria-hidden="true"
   >
     <slot>
-      <Icon :name="config.icons.chevronRight" />
+      <Icon :name="iconsConfig.chevronRight" />
     </slot>
   </Primitive>
 </template>

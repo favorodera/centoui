@@ -11,6 +11,9 @@ export const iconVariants = tv({
 // Components
 export { default as Icon } from './icon.vue'
 
+// Utils
+export { iconsConfig } from './utils'
+
 // Props
 export interface IconProps {
   /**

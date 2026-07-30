@@ -2,13 +2,12 @@
 import { reactiveOmit } from '@vueuse/core'
 import { PaginationNext, useForwardProps } from 'reka-ui'
 import { normalizeClass } from 'vue'
-import config from '#centoui/config'
 import {
   type PaginationNextProps,
   paginationVariants,
 } from '.'
 import { buttonVariants } from '../button'
-import { Icon } from '../icon'
+import { Icon, iconsConfig } from '../icon'
 
 const props = withDefaults(defineProps<PaginationNextProps>(), {
   square: true,
@@ -36,7 +35,7 @@ const variants = buttonVariants()
     })"
   >
     <slot>
-      <Icon :name="config.icons.chevronRight" />
+      <Icon :name="iconsConfig.chevronRight" />
       <span class="sr-only">Next page</span>
     </slot>
   </PaginationNext>

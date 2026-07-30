@@ -3,10 +3,6 @@
 @import "../../../packages/core/src/css/prose.css";
 @source "../../../packages/core/src/**/*.{ts,vue}";
 
-#app {
-  @apply min-h-dvh w-full grid place-items-center grid-cols-1;
-}
-
 @theme inline {
   --font-sans: 'Geist', sans-serif;
   --font-mono: 'Geist Mono', monospace;

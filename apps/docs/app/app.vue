@@ -45,7 +45,7 @@ defineOgImage('Image.takumi')
     <NuxtRouteAnnouncer />
 
     <NuxtLoadingIndicator
-      color="white"
+      color="#00a2ff"
       error-color="red"
     />
 

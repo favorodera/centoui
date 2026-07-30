@@ -2,13 +2,12 @@
 import { reactiveOmit } from '@vueuse/core'
 import { SelectIcon, SelectTrigger, useForwardProps } from 'reka-ui'
 import { normalizeClass } from 'vue'
-import config from '#centoui/config'
 import {
   injectRootContext,
   type SelectTriggerProps,
   selectVariants,
 } from '.'
-import { Icon } from '../icon'
+import { Icon, iconsConfig } from '../icon'
 
 const props = defineProps<SelectTriggerProps>()
 
@@ -37,7 +36,7 @@ const variants = selectVariants()
       data-slot="select-icon"
       :class="variants.icon({size: rootContext?.size,})"
     >
-      <Icon :name="config.icons.chevronDown" />
+      <Icon :name="iconsConfig.chevronDown" />
     </SelectIcon>
   </SelectTrigger>
 </template>

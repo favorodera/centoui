@@ -14,7 +14,7 @@ export const prosePreVariants = tv({
       **:[.line]:block
 
       **:[.line.highlight]:-mx-3 **:[.line.highlight]:px-3
-      **:[.line.highlight]:bg-muted! **:[.line.highlight]:inline-block
+      **:[.line.highlight]:bg-accent! **:[.line.highlight]:inline-block
       **:[.line.highlight]:inline-[calc(100%+1.5rem)]
 
       focus-visible:ring-ring focus-visible:ring-2
@@ -23,10 +23,12 @@ export const prosePreVariants = tv({
     header: `
       flex items-center gap-2 text-muted-foreground border-be p-3 text-sm
       group/prose-pre-header
+
+      *:data-[slot=prose-code-icon]:mbs-0.5
     `,
     root: `
-      group/prose-pre-root bg-elevated rounded-xl border bg-clip-padding
-      relative grid
+      group/prose-pre-root bg-muted rounded-xl border bg-clip-padding relative
+      grid
     `,
   },
   variants: {

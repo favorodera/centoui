@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import { useClipboard } from '@vueuse/core'
 import { normalizeClass, useTemplateRef } from 'vue'
-import config from '#centoui/config'
 import { type ProsePreProps, prosePreVariants } from '.'
 import { Button } from '../button'
-import { Icon } from '../icon'
+import { Icon, iconsConfig } from '../icon'
 import { ProseCodeIcon } from '../prose-code-icon'
 
 defineOptions({
@@ -45,7 +44,6 @@ const variants = prosePreVariants()
       :class="variants.header()"
     >
       <ProseCodeIcon
-        data-slot="prose-pre-header-icon"
         :filename="props.filename"
         :icon="props.icon"
       />
@@ -64,7 +62,7 @@ const variants = prosePreVariants()
       })"
       @click="copyCode"
     >
-      <icon :name="copied ? config.icons.check : config.icons.clipboard " />
+      <icon :name="copied ? iconsConfig.check : iconsConfig.clipboard " />
     </Button>
 
     <pre

@@ -7,13 +7,12 @@ import {
   useForwardProps,
 } from 'reka-ui'
 import { normalizeClass } from 'vue'
-import config from '#centoui/config'
 import {
   injectRootContext,
   type TagsInputItemProps,
   tagsInputVariants,
 } from '.'
-import { Icon } from '../icon'
+import { Icon, iconsConfig } from '../icon'
 
 const props = defineProps<TagsInputItemProps>()
 
@@ -48,7 +47,7 @@ const variants = tagsInputVariants()
         size: rootContext?.size,
       })"
     >
-      <Icon :name="config.icons.x" />
+      <Icon :name="iconsConfig.x" />
     </TagsInputItemDelete>
   </TagsInputItem>
 </template>

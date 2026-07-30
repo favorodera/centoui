@@ -2,13 +2,12 @@
 import { reactiveOmit } from '@vueuse/core'
 import { PaginationPrev, useForwardProps } from 'reka-ui'
 import { normalizeClass } from 'vue'
-import config from '#centoui/config'
 import {
   type PaginationPrevProps,
   paginationVariants,
 } from '.'
 import { buttonVariants } from '../button'
-import { Icon } from '../icon'
+import { Icon, iconsConfig } from '../icon'
 
 const props = withDefaults(defineProps<PaginationPrevProps>(), {
   square: true,
@@ -36,7 +35,7 @@ const variants = buttonVariants()
     })"
   >
     <slot>
-      <Icon :name="config.icons.chevronLeft" />
+      <Icon :name="iconsConfig.chevronLeft" />
       <span class="sr-only">Previous page</span>
     </slot>
   </PaginationPrev>

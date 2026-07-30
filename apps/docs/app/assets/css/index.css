@@ -9,6 +9,12 @@
   --font-mono: 'JetBrains Mono', monospace;
 }
 
+@layer base {
+  html {
+    @apply scrollbar-thin scrollbar-thumb-accent scrollbar-track-transparent
+  }
+}
+
 @layer components {
   .prose-docs {
     --prose-font-body: var(--font-sans);

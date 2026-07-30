@@ -4,89 +4,89 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: oklch(0.9900 0 0);
-  --foreground: oklch(0 0 0);
+  --background: oklch(99.2% 0.004 255);
+  --foreground: oklch(21% 0.02 255);
 
-  --elevated: oklch(1 0 0);
-  --elevated-foreground: oklch(0 0 0);
+  --elevated: oklch(100% 0 0);
+  --elevated-foreground: var(--foreground);
 
-  --overlay: oklch(0.9900 0 0);
-  --overlay-foreground: oklch(0 0 0);
+  --overlay: oklch(100% 0 0);
+  --overlay-foreground: var(--foreground);
 
-  --scrim: oklch(0 0 0 / 0.5);
+  --scrim: oklch(0 0 0 / 0.45);
 
-  --ring: oklch(0.708 0 0);
+  --ring: oklch(68.9% 0.175 245.4);
 
-  --border: oklch(0.9200 0 0);
+  --border: oklch(91% 0.01 255);
 
-  --input: oklch(0.9400 0 0);
+  --input: oklch(95% 0.01 255);
 
-  --muted: oklch(0.9700 0 0);
-  --muted-foreground: oklch(0.4400 0 0);
+  --muted: oklch(97.5% 0.008 255);
+  --muted-foreground: oklch(52% 0.02 255);
 
-  --accent: oklch(0.9400 0 0);
-  --accent-foreground: oklch(0 0 0);
+  --accent: oklch(96.5% 0.025 245.4);
+  --accent-foreground: oklch(30% 0.07 245.4);
 
-  --primary: oklch(0 0 0);
-  --primary-foreground: oklch(1 0 0);
+  --primary: oklch(68.9% 0.175 245.4);
+  --primary-foreground: oklch(99% 0 0);
 
-  --secondary: oklch(0.9400 0 0);
-  --secondary-foreground: oklch(0 0 0);
+  --secondary: oklch(94.5% 0.01 255);
+  --secondary-foreground: var(--foreground);
 
-  --success: oklch(0.65 0.15 150);
-  --success-foreground: oklch(0 0 0);
+  --success: oklch(70% 0.16 150);
+  --success-foreground: oklch(100% 0 0);
 
-  --warning: oklch(0.8100 0.1700 75.3500);
-  --warning-foreground: oklch(0 0 0);
+  --warning: oklch(82% 0.17 75);
+  --warning-foreground: oklch(20% 0 0);
 
-  --error: oklch(0.6300 0.1900 23.0300);
-  --error-foreground: oklch(1 0 0);
+  --error: oklch(63% 0.19 23);
+  --error-foreground: oklch(99% 0 0);
 
-  --info: oklch(0.5500 0.2200 264.5300);
-  --info-foreground: oklch(0 0 0);
+  --info: var(--primary);
+  --info-foreground: oklch(99% 0 0);
 }
 
 .dark {
-  --background: oklch(0 0 0);
-  --foreground: oklch(1 0 0);
+  --background: oklch(16% 0.01 255);
+  --foreground: oklch(96% 0.01 255);
 
-  --elevated: oklch(0.1400 0 0);
-  --elevated-foreground: oklch(1 0 0);
+  --elevated: oklch(21% 0.012 255);
+  --elevated-foreground: var(--foreground);
 
-  --overlay: oklch(0.1800 0 0);
-  --overlay-foreground: oklch(1 0 0);
+  --overlay: oklch(24% 0.012 255);
+  --overlay-foreground: var(--foreground);
 
-  --scrim: oklch(0 0 0 / 0.8);
+  --scrim: oklch(0 0 0 / 0.75);
 
-  --ring: oklch(0.7200 0 0);
+  --ring: oklch(68.9% 0.175 245.4);
 
-  --border: oklch(0.2600 0 0);
+  --border: oklch(31% 0.01 255);
 
-  --input: oklch(0.3200 0 0);
+  --input: oklch(26% 0.01 255);
 
-  --muted: oklch(0.2300 0 0);
-  --muted-foreground: oklch(0.7200 0 0);
+  --muted: oklch(22% 0.01 255);
+  --muted-foreground: oklch(72% 0.015 255);
 
-  --accent: oklch(0.3200 0 0);
-  --accent-foreground: oklch(1 0 0);
+  --accent: oklch(30% 0.03 245.4);
+  --accent-foreground: oklch(96% 0.01 255);
 
-  --primary: oklch(1 0 0);
-  --primary-foreground: oklch(0 0 0);
+  --primary: oklch(68.9% 0.175 245.4);
+  --primary-foreground: oklch(15% 0.01 255);
 
-  --secondary: oklch(0.2500 0 0);
-  --secondary-foreground: oklch(1 0 0);
+  --secondary: oklch(26% 0.01 255);
+  --secondary-foreground: var(--foreground);
 
-  --success: oklch(0.65 0.15 150);
-  --success-foreground: oklch(0 0 0);
+  --success: oklch(72% 0.16 150);
+  --success-foreground: oklch(10% 0 0);
 
-  --warning: oklch(0.8100 0.1700 75.3500);
-  --warning-foreground: oklch(0 0 0);
+  --warning: oklch(82% 0.17 75);
+  --warning-foreground: oklch(12% 0 0);
 
-  --error: oklch(0.6900 0.2000 23.9100);
-  --error-foreground: oklch(0 0 0);
+  --error: oklch(70% 0.19 23);
+  --error-foreground: oklch(10% 0 0);
 
-  --info: oklch(0.5800 0.2100 260.8400);
-  --info-foreground: oklch(0 0 0);
+  --info: var(--primary);
+  --info-foreground: oklch(15% 0.01 255);
 }
 
 @theme {
@@ -138,6 +138,6 @@
   }
 
   body {
-    @apply antialiased text-foreground bg-background font-sans;
+    @apply bg-background text-foreground antialiased font-sans;
   }
 }

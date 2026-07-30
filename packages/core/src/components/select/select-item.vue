@@ -7,14 +7,13 @@ import {
   useForwardPropsEmits,
 } from 'reka-ui'
 import { normalizeClass } from 'vue'
-import config from '#centoui/config'
 import {
   injectRootContext,
   type SelectItemEmits,
   type SelectItemProps,
   selectVariants,
 } from '.'
-import { Icon } from '../icon'
+import { Icon, iconsConfig } from '../icon'
 
 const emits = defineEmits<SelectItemEmits>()
 
@@ -49,7 +48,7 @@ const variants = selectVariants()
       data-slot="select-item-indicator"
       :class="variants.itemIndicator({ size: rootContext?.size })"
     >
-      <Icon :name="config.icons.check" />
+      <Icon :name="iconsConfig.check" />
     </SelectItemIndicator>
   </SelectItem>
 </template>

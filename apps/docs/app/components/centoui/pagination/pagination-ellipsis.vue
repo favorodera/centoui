@@ -2,12 +2,11 @@
 import { reactiveOmit } from '@vueuse/core'
 import { PaginationEllipsis, useForwardProps } from 'reka-ui'
 import { normalizeClass } from 'vue'
-import config from '#centoui/config'
 import {
   type PaginationEllipsisProps,
   paginationVariants,
 } from '.'
-import { Icon } from '../icon'
+import { Icon, iconsConfig } from '../icon'
 
 const props = defineProps<PaginationEllipsisProps>()
 
@@ -27,7 +26,7 @@ const variants = paginationVariants()
     })"
   >
     <slot>
-      <Icon :name="config.icons.ellipsis" />
+      <Icon :name="iconsConfig.ellipsis" />
       <span class="sr-only">More pages</span>
     </slot>
   </PaginationEllipsis>

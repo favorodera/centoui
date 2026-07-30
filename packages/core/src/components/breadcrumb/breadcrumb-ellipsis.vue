@@ -2,9 +2,8 @@
 import { reactiveOmit } from '@vueuse/core'
 import { Primitive, useForwardProps } from 'reka-ui'
 import { normalizeClass } from 'vue'
-import config from '#centoui/config'
 import { type BreadcrumbEllipsisProps, breadcrumbVariants } from '.'
-import { Icon } from '../icon'
+import { Icon, iconsConfig } from '../icon'
 
 const props = defineProps<BreadcrumbEllipsisProps>()
 
@@ -26,7 +25,7 @@ const variants = breadcrumbVariants()
     aria-hidden="true"
   >
     <slot>
-      <Icon :name="config.icons.ellipsis" />
+      <Icon :name="iconsConfig.ellipsis" />
     </slot>
   </Primitive>
 </template>

@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { computed, normalizeClass } from 'vue'
-import config from '#centoui/config'
 import { type ProseH5Props, proseH5Variants } from '.'
-import { Icon } from '../icon'
+import { Icon, iconsConfig } from '../icon'
 
 const props = defineProps<ProseH5Props>()
 
@@ -29,7 +28,7 @@ const variants = proseH5Variants()
       aria-label="Section permalink"
       :class="variants.anchor()"
     >
-      <icon :name="config.icons.hash" />
+      <icon :name="iconsConfig.hash" />
     </a>
   </h5>
 </template>
