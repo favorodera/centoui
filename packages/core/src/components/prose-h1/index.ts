@@ -5,8 +5,10 @@ import { tv } from 'tailwind-variants'
 export const proseH1Variants = tv({
   slots: {
     anchor: `
-      outline-none opacity-0 align-middle no-underline text-muted-foreground
+      outline-none align-middle no-underline text-muted-foreground
       transition-[color,opacity] group/h1-anchor
+
+      lg:opacity-0
 
       group-hover/prose-h1:opacity-100
 

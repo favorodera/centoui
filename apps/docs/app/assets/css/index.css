@@ -7,6 +7,8 @@
 @theme inline {
   --font-sans: 'Bricolage Grotesque', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
+
+  --header-height: 48px;
 }
 
 @layer base {
@@ -28,7 +30,7 @@
 
 .fade-out-in-enter-active,
 .fade-out-in-leave-active {
-  transition: all 300ms ease;
+  transition: all 200ms ease;
 }
 
 .fade-out-in-enter-from,

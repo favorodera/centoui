@@ -19,12 +19,13 @@ const isRouteActive = (name: string) => {
 <template>
   <header
     class="
-      bg-background/50 sticky inset-bs-0 z-50 backdrop-blur-xl border-be py-2
+      bg-background/50 sticky inset-bs-0 z-50 backdrop-blur-xl border-be
+      block-(--header-height)
     "
   >
     <NavigationMenuRoot
       class="
-        px-6 mx-auto inline-full
+        px-6 mx-auto inline-full block-full
 
         *:flex-1
       "

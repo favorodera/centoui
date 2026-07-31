@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { useIntersectionObserver } from '@vueuse/core'
+import { computed, nextTick, onMounted, onUnmounted, ref } from 'vue'
+
 type TocLink = {
   children?: TocLink[]
   depth: number
@@ -6,114 +9,120 @@ type TocLink = {
   text: string
 }
 
-const props = defineProps<{
-  items?: TocLink[]
-}>()
+const props = withDefaults(
+  defineProps<{
+    items?: TocLink[]
+    maxDepth?: number
+  }>(),
+  {
+    items: () => [],
+    maxDepth: 3,
+  },
+)
 
-/** Tracks the currently active section identifier based on scroll position. */
+/** Tracks the currently active section identifier. */
 const activeSectionId = ref('')
 
-/** Stores the stop functions for all intersection observers to ensure proper cleanup. */
-const intersectionObserverStops: Array<() => void> = []
+/** Observer cleanup function. */
+let stopObserver: (() => void) | null
 
 /**
- * Helper function to determine if a specific item is currently active.
- * @param itemId The identifier to check against the active state.
- * @returns True if the item is active, false otherwise.
+ * Flattens the nested TOC items into a single-level array.
+ * @param items The nested TOC items.
+ * @returns A flattened array of TOC items.
  */
-function isItemActive(itemId: string): boolean {
-  return activeSectionId.value === itemId
+function flattenItems(items: TocLink[]): TocLink[] {
+  return items.flatMap(item => [
+    item,
+    ...(item.children ? flattenItems(item.children) : []),
+  ])
 }
+
+/** Computed property that flattens and filters TOC items based on maxDepth. */
+const flattenedItems = computed(() => {
+  return flattenItems(props.items).filter(item => item.depth <= props.maxDepth)
+})
 
 onMounted(async () => {
   await nextTick()
 
-  for (const item of props.items ?? []) {
-    const headingElement: HTMLDivElement | null = document.querySelector(`#${item.id}`)
+  // Find all actual DOM nodes for our filtered headings
+  const elements = flattenedItems.value
+    .map(item => document.querySelector(`#${item.id}`))
+    .filter((element): element is HTMLElement => element !== null)
 
-    if (headingElement) {
-      const observer = useIntersectionObserver(
-        headingElement,
-        ([entry]) => {
-          if (entry?.isIntersecting) {
-            activeSectionId.value = item.id
+  if (elements.length === 0) return
+
+  // Track the intersecting states of all headings
+  const visibleHeadingsMap = new Map<string, IntersectionObserverEntry>()
+
+  const { stop } = useIntersectionObserver(
+    elements,
+    (entries) => {
+      // Update our map with the latest entry states
+      for (const entry of entries) {
+        visibleHeadingsMap.set(entry.target.id, entry)
+      }
+
+      // Filter to find only the elements currently inside the rootMargin box
+      const activeEntries = [...visibleHeadingsMap.values()].filter(entry => entry.isIntersecting)
+
+      // If multiple items intersect, select the one closest to the top of the viewport
+      if (activeEntries.length > 0) {
+        let topElement = activeEntries[0]!
+        for (const currentEntry of activeEntries) {
+          if (currentEntry.boundingClientRect.top < topElement.boundingClientRect.top) {
+            topElement = currentEntry
           }
-        },
-        {
-          rootMargin: '-40px 0px -60% 0px',
-          threshold: 0,
-        },
-      )
+        }
+        activeSectionId.value = topElement.target.id
+      }
+    },
+    {
+      rootMargin: '-80px 0px -70% 0px',
+      threshold: 0,
+    },
+  )
 
-      intersectionObserverStops.push(observer.stop)
-    }
-  }
+  stopObserver = stop
 })
 
 onUnmounted(() => {
-  for (const stop of intersectionObserverStops) {
-    stop()
-  }
+  if (stopObserver) stopObserver()
 })
 </script>
 
 <template>
   <nav
     class="
-      sticky inset-bs-[calc(var(--prose-spacing)+80px)] flex flex-col gap-2
+      text-[0.8em] text-muted-foreground flex flex-col gap-2
+      inset-bs-(--header-height) sticky pbs-6
     "
     data-not-prose="true"
   >
-    <h3
-      class="inline-flex items-center gap-1.5 text-sm text-muted-foreground"
-    >
-      <Icon
-        svg
-        name="lucide:text-align-start"
-      />
-      On this page
-    </h3>
+    <h3>On this page</h3>
 
-    <ul>
+    <ul class="space-y-2">
       <li
-        v-for="item in items"
+        v-for="item in flattenedItems"
         :key="item.id"
       >
         <NuxtLink
           :to="`#${item.id}`"
-          :data-active="isItemActive(item.id)"
+          :data-active="activeSectionId === item.id"
           class="
-            group/toc-item text-sm text-muted-foreground transition-colors
+            transition-colors
 
             hover:text-foreground
 
             data-[active=true]:text-primary data-[active=true]:font-medium
           "
+          :style="{
+            paddingInlineStart: `${Math.max(0, (item.depth - 2) * 16)}px`,
+          }"
         >
           {{ item.text }}
         </NuxtLink>
-
-        <ul>
-          <li
-            v-for="child in item.children"
-            :key="child.id"
-          >
-            <NuxtLink
-              :to="`#${child.id}`"
-              :data-active="isItemActive(child.id)"
-              class="
-                group/toc-item text-sm text-muted-foreground transition-colors
-
-                hover:text-foreground
-
-                data-[active=true]:text-primary data-[active=true]:font-medium
-              "
-              :style="{ paddingInlineStart: `${10 * (item.depth + 1)}px` }"
-            >
-              {{ child.text }}
-            </NuxtLink>
-          </li>
-        </ul>
       </li>
     </ul>
   </nav>

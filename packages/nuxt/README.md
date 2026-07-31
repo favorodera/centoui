@@ -39,8 +39,7 @@ That's it — all components from your `centoui.config.ts` component directory a
 1. **Reads your `centoui.config.ts`** — Picks up `componentsDir` to know where your CentoUI components live.
 2. **Auto-registers every `.vue` file** — Scans component group folders (e.g., `button/`, `select/`) and registers each `.vue` file as a global Nuxt component.
 3. **Converts names to PascalCase** — A file named `alert-root.vue` becomes `AlertRoot` (or `CentoAlertRoot` with `prefix: "Cento"`).
-4. **Exposes config at `#centoui/config`** — Your resolved `centoui.config.ts` is available as a Nuxt template import for runtime access.
-5. **Pre-bundles dependencies** — Adds `@vueuse/core`, `reka-ui`, `tailwind-variants`, and `@iconify/vue` to Vite's `optimizeDeps` for faster dev startup.
+4. **Pre-bundles dependencies** — Adds `@vueuse/core`, `reka-ui`, `tailwind-variants`, and `@iconify/vue` to Vite's `optimizeDeps` for faster dev startup.
 
 ## Options
 

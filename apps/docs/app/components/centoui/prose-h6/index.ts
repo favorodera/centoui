@@ -10,6 +10,8 @@ export const proseH6Variants = tv({
 
       group-hover/prose-h6:opacity-100
 
+      lg:opacity-0
+
       hover:text-primary
 
       focus-visible:opacity-100 focus-visible:ring-2 focus-visible:ring-ring

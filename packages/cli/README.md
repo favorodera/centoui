@@ -93,22 +93,9 @@ import { defineConfig } from 'centoui'
 
 export default defineConfig({
   componentsDir: './src/components/centoui',
-  icons: {
-    check: 'lucide:check',
-    chevronDoubleLeft: 'lucide:chevrons-left',
-    chevronDoubleRight: 'lucide:chevrons-right',
-    chevronDown: 'lucide:chevron-down',
-    chevronLeft: 'lucide:chevron-left',
-    chevronRight: 'lucide:chevron-right',
-    chevronUp: 'lucide:chevron-up',
-    ellipsis: 'lucide:ellipsis',
-    x: 'lucide:x',
-  },
   themeFilePath: './src/assets/css/centoui.css',
 })
 ```
-
-The `icons` map lets you swap icon libraries without touching component code. Components reference icons by their slot name (e.g., `check`, `close`), and the config resolves them to [Iconify](https://iconify.design/) IDs.
 
 ## License
 

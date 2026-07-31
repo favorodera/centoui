@@ -14,7 +14,7 @@ const isPrevious = (index: number) => index === 0
     v-if="surround.some(Boolean)"
     data-not-prose="true"
     class="
-      mbs-(--prose-spacing) flex-row flex-wrap
+      pbs-(--prose-spacing) flex-row flex-wrap
 
       *:flex-1 *:basis-80
     "

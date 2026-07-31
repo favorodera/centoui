@@ -34,15 +34,16 @@ const { data: surround } = useQuery({
       <div
         v-if="page"
         class="
-          px-6 py-12 block-full inline-full grid grid-cols-1 gap-8
+          block-full inline-full grid grid-cols-1 relative pbe-6 px-6 prose
+          prose-docs
 
           lg:grid-cols-[1fr_auto]
         "
       >
         <section
           class="
-            block-full inline-full grid grid-rows-[auto_1fr_auto] gap-4 mx-auto
-            max-inline-5xl
+            block-full inline-full grid grid-rows-[auto_1fr_auto] mx-auto
+            max-inline-5xl pbs-6
           "
         >
           <DocsPageHeader
@@ -63,7 +64,7 @@ const { data: surround } = useQuery({
 
         <aside
           class="
-            hidden
+            hidden ps-6
 
             lg:block lg:min-inline-3xs
           "

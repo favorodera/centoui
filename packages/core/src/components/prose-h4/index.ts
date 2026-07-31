@@ -12,6 +12,8 @@ export const proseH4Variants = tv({
 
       hover:text-primary
 
+      lg:opacity-0
+
       focus-visible:opacity-100 focus-visible:ring-2 focus-visible:ring-ring
     `,
     root: `group/prose-h4 flex gap-1 items-center`,

@@ -85,7 +85,7 @@
 
     /* Anchors. */
     &:where([id]) {
-      scroll-margin-block-start: calc(var(--prose-spacing) + 40px);
+      scroll-margin-block-start: calc(var(--prose-spacing) + var(--header-height));
     }
 
     /* Headings own the space below them. */
