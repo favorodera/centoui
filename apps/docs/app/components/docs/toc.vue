@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import { useIntersectionObserver } from '@vueuse/core'
-import { computed, nextTick, onMounted, onUnmounted, ref } from 'vue'
-
 type TocLink = {
   children?: TocLink[]
   depth: number
